@@ -22,7 +22,9 @@ const DESC = 'Simal corporate website + KYC/e-invoicing platform — unified rep
 const TOPICS = 'astro,postgresql,kyc,cms,ua-e-invoicing';
 
 const sh = (cmd, args, opts = {}) => {
-  const r = spawnSync(cmd, args, { cwd: REPO, encoding: 'utf8', shell: process.platform === 'win32', ...opts });
+  // No shell: every binary here is a real .exe and shell quoting would split
+  // arguments containing spaces (the repo description) into separate argv items.
+  const r = spawnSync(cmd, args, { cwd: REPO, encoding: 'utf8', ...opts });
   return { code: r.status, out: (r.stdout || '') + (r.stderr || '') };
 };
 
@@ -45,22 +47,31 @@ let cr = sh(ghBin, ['repo', 'create', GH_TARGET, '--private', `--description=${D
 if (cr.code !== 0 && !/already exists/i.test(cr.out)) die('repo create failed: ' + cr.out.trim().slice(0, 200));
 console.log(cr.code === 0 ? `created private repo ${GH_TARGET}` : `repo ${GH_TARGET} already exists`);
 
-// 4. snapshot commit: same tree as main tip, no parent, provenance in the message
+// 4. snapshot commit: same tree as main tip. When the branch already exists the
+// snapshot is CHAINED onto its tip, so every later run is a fast-forward push.
 const tip = sh('git', ['rev-parse', 'main']).out.trim();
 if (!/^[0-9a-f]{40}$/.test(tip)) die('cannot resolve main');
+sh('git', ['fetch', '--quiet', 'github', 'refs/heads/main:refs/remotes/github/main']);
+const parent = sh('git', ['rev-parse', '--verify', '--quiet', 'refs/remotes/github/main']).out.trim();
+const chained = /^[0-9a-f]{40}$/.test(parent);
 const msg =
   'import: simal-platform unified repository (content snapshot)\n\n' +
   `Tree is identical to the authoritative main tip ${tip.substring(0, 12)} on the\n` +
-  'origin (bare) and platform (Gitea) remotes. GitHub receives this parentless\n' +
-  'snapshot because history commits ee69382..3d7f43e carry vendored ClamAV blobs\n' +
-  '(292MB .lib + ~111MB .pdb) above the 100MB hard limit; rewriting history was\n' +
-  'declined to preserve the commit hashes cited by the audit corpus. See\n' +
+  'origin (bare) and platform (Gitea) remotes. GitHub receives content snapshots\n' +
+  'because history commits ee69382..3d7f43e carry vendored ClamAV blobs (292MB .lib\n' +
+  '+ ~111MB .pdb) above the 100MB hard limit; rewriting history was declined to\n' +
+  'preserve the commit hashes cited by the audit corpus. See\n' +
   'docs/BRANCH_PROTECTION.md (UPDATE 2026-10-19) for the full rationale.\n\n' +
-  'Fast-forward pushes to this branch are possible from a8e981d onward (the\n' +
-  'oversized payloads left the tree there); this import simply starts the branch.';
-const snap = sh('git', ['commit-tree', `main^{tree}`, '-m', msg]).out.trim();
+  (chained
+    ? `Snapshot parent: ${parent.substring(0, 12)} (previous snapshot) — this branch\n` +
+      'chains snapshots so every mirror update is a fast-forward push.\n'
+    : 'This import starts the branch; later runs chain onto it.\n');
+const ctArgs = ['commit-tree', 'main^{tree}'];
+if (chained) ctArgs.push('-p', parent);
+ctArgs.push('-m', msg);
+const snap = sh('git', ctArgs).out.trim();
 if (!/^[0-9a-f]{40}$/.test(snap)) die('commit-tree failed: ' + snap.slice(0, 200));
-console.log('snapshot commit ' + snap.substring(0, 12) + ' (tree of ' + tip.substring(0, 12) + ')');
+console.log('snapshot commit ' + snap.substring(0, 12) + ' (tree of ' + tip.substring(0, 12) + (chained ? ', parent ' + parent.substring(0, 12) : '') + ')');
 
 // 5. remote + push
 const remotes = sh('git', ['remote']).out.split('\n');
@@ -74,7 +85,7 @@ console.log('pushed snapshot to github/main');
 const topicArgs = ['-X', 'PUT', 'repos/' + GH_TARGET + '/topics'];
 for (const t of TOPICS.split(',')) topicArgs.push('-f', 'names[]=' + t);
 sh(ghBin, ['api', ...topicArgs]); // best-effort; silent
-const acts = sh(ghBin, ['api', '-X', 'PUT', `repos/${GH_TARGET}/actions/permissions`, '-F', 'enabled=false', '-F', 'allowed_actions=none']);
+const acts = sh(ghBin, ['api', '-X', 'PUT', `repos/${GH_TARGET}/actions/permissions`, '-F', 'enabled=false']);
 console.log(acts.code === 0 ? 'GitHub Actions disabled (CI authority: platform runner)' : 'note: could not disable Actions — run: gh api -X PUT repos/' + GH_TARGET + '/actions/permissions -F enabled=false');
 
 console.log('\nDONE → https://github.com/' + GH_TARGET + '  (private)');
