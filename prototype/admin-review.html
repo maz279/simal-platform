@@ -1,0 +1,55 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — Application Review — Simal</title>
+<link rel="icon" type="image/png" href="assets/img/brand/favicon-32.png"><link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="assets/js/core.js?v=131"></script>
+</head>
+<body>
+<div class="panel-shell" style="display:grid;grid-template-columns:248px 1fr;min-height:100vh">
+  <aside class="side">
+    <div style="padding:18px 16px;display:flex;gap:12px;align-items:center">
+      <img src="assets/img/brand/simal-logo-white-360w.png" alt="Simal" style="height:30px;width:auto;display:block">
+      <div><b style="color:#fff;font-size:13.5px">Simal Ops</b><div style="font-size:11px;color:#8CA2BC">KYC Review Console</div></div>
+    </div>
+    <nav class="s-nav">
+      <a href="admin-queue.html">📥 Review queue</a>
+      <a class="on" href="admin-review.html">🔍 Application review</a>
+      <a href="index.html">↩ Public site</a>
+      <a href="cms.html">🎨 CMS panel</a>
+    </nav>
+  </aside>
+  <div class="p-main">
+    <div class="p-top"><b>Application review</b><span class="note" id="rv-sub">—</span></div>
+    <div class="p-body" style="padding:22px">
+      <div class="split" style="grid-template-columns:1.3fr .7fr;align-items:start">
+        <div>
+          <div class="card card-p" style="padding:20px">
+            <h3 style="font-size:18px" id="rv-co">—</h3>
+            <p class="note" id="rv-meta">—</p>
+            <table class="tbl" style="margin-top:14px" id="rv-fields"></table>
+            <p class="note" style="margin-top:12px">Click a field to toggle ✓ approve / ⚑ flag. Flagged fields are communicated to the applicant as fix-only-flagged.</p>
+          </div>
+          <div class="card card-p" style="padding:20px;margin-top:16px">
+            <b style="font-size:14px">Document viewer (simulated)</b>
+            <div class="docrow" data-doc="licence">📄 Trade licence <span class="note" style="margin-left:auto">licence.pdf · 1.2 MB</span><span class="statuspill st-ok" style="margin-left:10px">attached</span></div>
+            <div class="docrow" data-doc="passport">📄 Passport / EID <span class="note" style="margin-left:auto">passport.jpg · 820 KB</span><span class="statuspill st-ok" style="margin-left:10px">attached</span></div>
+            <div class="docrow" data-doc="bank">📄 Bank letter <span class="note" style="margin-left:auto">bank.pdf · 300 KB</span><span class="statuspill st-warn" style="margin-left:10px">pending</span></div>
+          </div>
+        </div>
+        <aside>
+          <div class="card card-p" style="padding:18px;position:sticky;top:16px">
+            <b style="font-size:14px">Decision</b>
+            <textarea class="in" id="rv-notes" rows="3" placeholder="Reviewer notes (audit trail)" style="margin-top:10px;resize:vertical"></textarea>
+            <button class="btn btn-p btn-block" id="rv-approve" style="margin-top:12px">✓ Approve</button>
+            <button class="btn btn-wa btn-block" style="margin-top:8px" id="rv-info">✉ Request more info</button>
+            <button class="btn btn-o btn-block" style="margin-top:8px;color:var(--red)" id="rv-reject">✕ Reject</button>
+            <div class="alert al-info" style="margin-top:14px;font-size:12px">Decision + notes are written to the audit trail and notified to the applicant instantly (E-07/E-08/E-09).</div>
+            <a class="btn btn-o btn-block btn-sm" style="margin-top:10px" href="admin-queue.html">← Back to queue</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/pages/admin-review.js?v=131"></script>
+</body></html>

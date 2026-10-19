@@ -1,0 +1,127 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const partnerTiers = [
+  { t: 'Authorized Reseller', req: 'Trade licence · office in territory · $25k annual commitment', margin: 'Standard trade margin', terms: '30-day credit (on approval)', best: 'New resellers & retailers' },
+  { t: 'Premier Partner', req: 'Proven volume · certified staff', margin: 'Tiered volume margins', terms: 'Extended terms + MDF', best: 'Growing integrators' },
+  { t: 'Elite Partner', req: 'Strategic territory coverage', margin: 'Best-tier margins + UniERP territory rights', terms: 'Custom agreement', best: 'Regional leaders' }
+];
+
+const checklist = [
+  { icon: '📄', title: 'Valid Trade Licence', desc: 'Attested copy issued by DED or UAE Free Zone authority.' },
+  { icon: '🪪', title: 'Signatory Identification', desc: 'Passport and Emirates ID copies for authorized company officers.' },
+  { icon: '🧾', title: 'Tax & Peppol Details', desc: '15-digit TRN for FTA compliance and automated UAE Peppol e-invoicing.' },
+  { icon: '🏦', title: 'Banking Documentation', desc: 'Bank reference letter or stamped bank statement with UAE IBAN.' }
+];
+---
+
+<BaseLayout title="Partner Onboarding & KYC — Simal Technologies" description="Join the Simal Technologies authorized partner network. Access wholesale IT distribution, credit terms, and the official B2B KYC portal.">
+  <div class="wrap" style="padding-top:14px">
+    <div class="crumbs"><a href="/">Home</a> › <b>Partner Onboarding (KYC)</b></div>
+  </div>
+
+  <!-- Partner Program Tiers -->
+  <section style="padding:8px 0 6px"><div class="wrap" id="tiers">
+    <div class="sec-head"><div><span class="eyebrow">Partner program — Authorized · Premier · Elite</span><h1 style="font-size:26px;margin:8px 0 16px">Three tiers, one ecosystem: 21 brands + UniERP territory rights</h1></div></div>
+    <div class="grid g3" id="tier-grid">
+      {partnerTiers.map((t, i) => (
+        <div class="card card-p" style={i === 0 ? 'border-top:4px solid var(--blue);' : ''}>
+          <span class={`badge ${i === 2 ? 'b-gold' : 'b-blue'}`}>{t.t}{i === 2 ? ' — invitation' : ''}</span>
+          <p style="font-size:12.5px;color:var(--slate);margin-top:9px"><b>Requirements:</b> {t.req}</p>
+          <p style="font-size:12.5px;color:var(--slate);margin-top:5px"><b>Margins:</b> {t.margin} · <b>Terms:</b> {t.terms}</p>
+          <p style="font-size:12.5px;color:var(--slate);margin-top:5px"><b>Best for:</b> {t.best}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- Official KYC Gateway -->
+  <section style="padding:18px 0 64px"><div class="wrap">
+    <div class="split" style="grid-template-columns:1.3fr .7fr;align-items:start;gap:28px">
+      <div>
+        <span class="eyebrow">Enterprise KYC Portal</span>
+        <h2 style="font-size:24px;font-weight:800;margin:6px 0 8px">Onboard once. Trade with confidence.</h2>
+        <p style="color:var(--slate);margin-bottom:24px;font-size:15px;line-height:1.6">
+          Simal Technologies operates an automated, AML/KYC-compliant onboarding lifecycle backed by our dedicated compliance portal. Applications are processed securely with bank-grade encryption and reviewed by compliance officers within 2 business days.
+        </p>
+
+        <!-- Direct Portal Role Gateways -->
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:28px">
+          <div class="card card-p" style="border-top:4px solid var(--blue);display:flex;flex-direction:column;justify-content:space-between">
+            <div>
+              <span class="badge b-blue" style="margin-bottom:10px">Channel Partners</span>
+              <h3 style="font-size:18px;margin-bottom:8px">Reseller &amp; Customer KYC</h3>
+              <p style="font-size:13px;color:var(--slate);line-height:1.55;margin-bottom:16px">
+                For IT resellers, system integrators, corporate buyers, and government contractors seeking credit terms and channel pricing.
+              </p>
+            </div>
+            <div>
+              <a href="https://kyc.simalme.com/form.html?role=customer" class="btn btn-p" style="width:100%;text-align:center">Start Reseller Application →</a>
+            </div>
+          </div>
+
+          <div class="card card-p" style="border-top:4px solid var(--gold);display:flex;flex-direction:column;justify-content:space-between">
+            <div>
+              <span class="badge b-gold" style="margin-bottom:10px">Principals &amp; Vendors</span>
+              <h3 style="font-size:18px;margin-bottom:8px">Vendor &amp; Supplier KYC</h3>
+              <p style="font-size:13px;color:var(--slate);line-height:1.55;margin-bottom:16px">
+                For component manufacturers, authorized master distributors, and technology vendors establishing UAE distribution lines.
+              </p>
+            </div>
+            <div>
+              <a href="https://kyc.simalme.com/form.html?role=vendor" class="btn btn-gold" style="width:100%;text-align:center">Start Vendor Application →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Documentation Checklist -->
+        <div class="card card-p" style="padding:24px">
+          <h3 style="font-size:18px;margin-bottom:6px">Required Onboarding Documents</h3>
+          <p style="font-size:13px;color:var(--slate);margin-bottom:18px">Please prepare digital copies (PDF or JPG ≤ 10 MB) prior to launching the portal wizard:</p>
+          <div class="grid g2" style="gap:16px">
+            {checklist.map(item => (
+              <div style="display:flex;gap:12px;align-items:flex-start">
+                <div style="font-size:24px;line-height:1">{item.icon}</div>
+                <div>
+                  <b style="font-size:14px;color:var(--ink);display:block">{item.title}</b>
+                  <span style="font-size:12.5px;color:var(--slate);line-height:1.45">{item.desc}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <aside>
+        <div class="card card-p" style="padding:22px;position:sticky;top:80px">
+          <h4 style="font-size:16px;margin-bottom:12px">Already started an application?</h4>
+          <p style="color:var(--slate);font-size:13px;line-height:1.55;margin-bottom:16px">
+            Resume your saved draft or verify the live verification status of your submission in the AMS compliance engine.
+          </p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px">
+            <a href="https://kyc.simalme.com/login.html" class="btn btn-o" style="width:100%;text-align:center">Sign In to Resume Draft →</a>
+            <a href="https://kyc.simalme.com/status.html" class="btn btn-o" style="width:100%;text-align:center">Track Application Status</a>
+          </div>
+
+          <hr style="border:0;border-top:1px solid var(--line);margin:16px 0">
+
+          <h4 style="font-size:14.5px;margin-bottom:10px">Why Simal Compliance</h4>
+          <div class="timeline">
+            <div class="tl" style="margin-bottom:12px"><b>Official Channel Invoicing</b><br><span style="color:var(--slate);font-size:12.5px">Direct Peppol e-invoicing and VAT certificates</span></div>
+            <div class="tl" style="margin-bottom:12px"><b>Zero Plaintext Client Storage</b><br><span style="color:var(--slate);font-size:12.5px">Sensitive credentials never stored in browser memory</span></div>
+            <div class="tl" style="margin-bottom:12px"><b>Automated Expiry Tracking</b><br><span style="color:var(--slate);font-size:12.5px">Advance notification before trade licence renewals</span></div>
+            <div class="tl"><b>2-Business-Day SLA</b><br><span style="color:var(--slate);font-size:12.5px">Rapid compliance turnaround for trade credit</span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div></section>
+</BaseLayout>
+
+<style>
+  @media (max-width: 900px) {
+    .split { grid-template-columns: 1fr !important; }
+    .grid.g2 { grid-template-columns: 1fr !important; }
+  }
+</style>

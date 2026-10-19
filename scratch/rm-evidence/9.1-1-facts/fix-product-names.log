@@ -1,0 +1,15 @@
+PASS admin session — super_admin
+PASS product list — 78 products
+products with literal escapes: 9
+PASS PUT dell-15-laptop-14th-gen-intel-core-3 — {"name":"Dell 15 Laptop – 14th Gen Intel Core 3, 15.6″ FHD 120Hz"}
+PASS PUT hp-laptop — {"name":"HP Laptop, 14″ 2K Display"}
+PASS PUT kingston-xs1000-1tb-portable-ssd-red — {"name":"Kingston XS1000 1TB Portable SSD – Pocket-Sized High-Speed Storage"}
+PASS PUT lenovo-ideapad-slim-3-i5-13th-gen-15-3-inch — {"name":"Lenovo IdeaPad Slim 3 – 13th Gen Intel Core i5, 15.3"}
+PASS PUT nearity-c30r — {"name":"Nearity C30R – 4K All-In-One Conference Camera | Simal Technologies UAE"}
+PASS PUT hs-ssd-e100 — {"name":"HS-SSD-E100"}
+PASS PUT hs-ssd-e1000 — {"name":"HS-SSD-E1000"}
+PASS PUT hs-ssd-e100n — {"name":"HS-SSD-E100N"}
+PASS PUT ugreen-cat8-pure-copper-ethernet-cable-braided-black — {"name":"UGREEN Cat8 Ethernet Cable Braided Black – High-Speed Gigabit Cable UAE"}
+PASS publish accepted — HTTP 200 outbox=pub_1792249486521
+PASS SSG worker processed the publish — processed in 9s
+FIX PRODUCT NAMES: ALL PASS

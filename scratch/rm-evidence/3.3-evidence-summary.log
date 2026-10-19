@@ -1,0 +1,5 @@
+=== rm(3.3) PUBLIC CSP TIGHTENED — EVIDENCE Fri Oct 16 23:51:50 MPST 2026 ===
+1. INLINE ELIMINATION: 357 executable inline scripts -> 0 in dist (consent block externalized to /assets/js/consent-defaults.js: 243 pages; define:vars islands -> JSON-data + external files: compare/rfq/search/pdp; 22 per-page add-rfq handlers -> shared add-rfq.js; 9 remaining page islands -> per-page externals)
+2. CSP: script-src 'unsafe-inline' REMOVED from all 3 surfaces (BaseLayout meta, dev-edge header, nginx public vhost) — live header verified: script-src 'self'
+3. BROWSER under strict CSP: home (hero rendered, mini-cart, dataLayer consent loaded, 0 violations), PDP (JSON block + external island: q-inc qty 1->2, add-rfq -> 'Added ✓'), /products (4 sort chips aria-pressed), /ar (rtl+h1, 0 inline exec), /search + /rfq (JSON islands present)
+4. CI: lint+crawl+a11y 3/3 (TS-cast/generics/IIFE-brace lint fixes en route)

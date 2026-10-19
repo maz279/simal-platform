@@ -1,0 +1,118 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+export async function getStaticPaths() {
+  const brands = await db`SELECT * FROM brands ORDER BY name`;
+  return brands.map((b: any) => ({
+    params: { slug: b.slug },
+    props: { brand: b }
+  }));
+}
+
+const { brand } = Astro.props;
+const products = await db`
+  SELECT * FROM products 
+  WHERE LOWER(brand) = ${brand.slug.toLowerCase()} 
+     OR LOWER(brand) = ${brand.name.toLowerCase()}
+  ORDER BY name
+`;
+
+// Calculate categories and stock
+const cats = new Set(products.map((p: any) => p.cat));
+const inStock = products.filter((p: any) => p.stock).length;
+
+/* deploy-audit D08: line = tagline, note = overview, stored as plain text. The lead used to
+ * repeat the tagline already shown above it, and the seed stored both wrapped in quote marks. */
+const unq = (s: unknown) => String(s ?? '').trim().replace(/^["“]+|["”]+$/g, '').trim();
+const tagline = unq(brand.line);
+const overview = unq(brand.note);
+const leadText = overview
+  ? `${overview} Simal stocks the range in Dubai — genuine units, local UAE warranty and JAFZA fulfillment for resellers, integrators and retailers across GCC · MEA · CIS.`
+  : `Simal stocks the ${brand.name} range in Dubai — genuine units, local UAE warranty and JAFZA fulfillment for resellers, integrators and retailers across GCC · MEA · CIS.`;
+
+function getImg(imgs: any) {
+  let v = '';
+  if (Array.isArray(imgs) && imgs[0]) v = imgs[0];
+  else if (typeof imgs === 'string') {
+    try {
+      const parsed = JSON.parse(imgs);
+      if (Array.isArray(parsed) && parsed[0]) v = parsed[0];
+    } catch {
+      v = imgs;
+    }
+  }
+  return v && !v.startsWith('/') ? '/' + v : v;
+}
+---
+
+<BaseLayout title={`${brand.name} — authorized distributor UAE — Simal`} description={leadText}>
+  <div class="wrap" style="padding-top:14px">
+    <div class="crumbs"><a href="/">Home</a> › <a href="/products">Brands</a> › <b>{brand.name}</b></div>
+  </div>
+
+  <section class="hero"><div class="wrap" style="padding:52px 28px 48px;grid-template-columns:1fr .72fr">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff" id="b-badge">authorized {brand.name} line · uae · gcc</span>
+      <h1 style="font-size:36px;margin:8px 0 6px" id="b-name">{brand.name}</h1>
+      {tagline && <p style="font-size:15px;font-weight:800;color:var(--yellow);margin:-2px 0 8px" id="b-tag">“{tagline}”</p>}
+      <p class="lead" id="b-lead">{leadText}</p>
+      <div class="cta">
+        <a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="#range">Get bulk pricing — RFQ</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/971508487861" target="_blank" rel="noopener">WhatsApp the brand desk</a>
+      </div>
+      <div class="trust" style="margin-top:26px"><div>✓ Authorized supply</div><div>✓ Local warranty</div><div>✓ Same-week GCC delivery</div></div>
+    </div>
+    <div class="hero-card">
+      <h3 id="b-glance-title">{brand.name} at a glance</h3>
+      <div id="b-glance">
+        <div class="row"><span>SKUs on simalme.com</span><b>{products.length}</b></div>
+        <div class="row"><span>Categories</span><b>{cats.size}</b></div>
+        <div class="row"><span>In stock now</span><b>{inStock}</b></div>
+        <div class="row"><span>RFQ response</span><b>≤ 1 business day</b></div>
+        <a class="btn btn-block btn-lg" style="background:var(--yellow);color:var(--ink);margin-top:16px" href="/rfq">Request {brand.name} pricing</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec" id="range"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">The range</span><h2 id="b-range-title">Live {brand.name} SKUs ({products.length})</h2></div>
+    <a class="btn btn-o" href="/products">Browse in catalog →</a></div>
+    
+    <div class="grid g4" id="b-grid">
+      {products.length > 0 ? (
+        products.map((p: any) => {
+          const img = getImg(p.imgs);
+          const sku = p.sku || ''; /* deploy-audit: no SKU is invented — 31 products have none, and the slug prefix used to be shown as one */
+          return (
+            <div class="prod">
+              <a class="go" href={`/products/${p.slug}`} aria-label={`View details — ${p.name}`}></a>
+              <div class={`ph${img ? ' has-img' : ''}`}>
+                {img ? <img src={img} alt={p.name} loading="lazy" /> : <span class="sk">{sku || String(p.brand || '').toUpperCase()}</span>}
+                {p.is_new ? <span class="tag badge b-red">NEW</span> : null}
+              </div>
+              <div class="pb">
+                <span class="cat">{brand.name} · {p.cat_label || p.cat}</span>
+                <h4><a href={`/products/${p.slug}`} style="color:inherit;text-decoration:none">{p.name}</a></h4>
+                <span class="meta">{p.short || ''}</span>
+                <span class="vd">View details →</span>
+                <div class="pr">
+                  <span class="price">RFQ · no list price</span>
+                  <button class="btn btn-sm btn-p add-rfq" data-slug={p.slug}>Add to RFQ</button>
+                </div>
+              </div>
+            </div>
+          );
+        })
+      ) : (
+        <div class="empty" style="grid-column:1/-1;padding:48px 24px;text-align:center;background:#fff;border-radius:12px;border:1px solid var(--line);color:var(--slate)">
+          No live SKUs listed for this brand right now — <a href="/rfq" style="color:var(--blue);font-weight:700">RFQ any {brand.name} requirement</a> and we will quote from distribution stock.
+        </div>
+      )}
+    </div>
+  </div></section>
+
+  
+</BaseLayout>
+
+<script src="/assets/js/add-rfq.js" defer></script>

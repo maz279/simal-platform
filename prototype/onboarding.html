@@ -1,0 +1,118 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Partner Onboarding — KYC — Simal Technologies</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="partners">
+<div id="chrome-top"></div>
+
+<div class="wrap"><div class="crumbs"><a href="index.html">Home</a> › <b>Partner Onboarding (KYC)</b></div></div>
+
+<section style="padding:8px 0 6px"><div class="wrap" id="tiers">
+  <div class="sec-head"><div><span class="eyebrow">Partner program — Authorized · Premier · Elite</span><h2 style="font-size:22px">Three tiers, one ecosystem: 23 brands + UniERP territory rights</h2></div></div>
+  <div class="grid g3" id="tier-grid"></div>
+</div></section>
+
+<section style="padding:14px 0 64px"><div class="wrap">
+  <div class="split" style="grid-template-columns:1.3fr .7fr;align-items:start">
+    <div>
+      <span class="eyebrow">KYC — one account for quotes, documents &amp; e-invoicing</span>
+      <h1 style="font-size:28px;font-weight:800;margin:6px 0 6px">Onboard once. Trade with confidence.</h1>
+      <p style="color:var(--slate);margin-bottom:18px">≈10 minutes · autosaved as you type · reviewed within 2 business days. Already started? <a href="login.html" style="color:var(--blue)">Sign in to resume</a>.</p>
+
+      <div class="steps" id="steps"></div>
+      <div class="wiz-save" id="autosave" hidden>💾 Autosaved just now</div>
+
+      <div class="card card-p" style="padding:24px;margin-top:18px">
+        <!-- STEP 1 -->
+        <div class="wiz" data-step="1">
+          <h3 style="font-size:19px">1 · Company identity</h3>
+          <div class="grid g2" style="gap:14px;margin-top:14px">
+            <div class="field"><label>Legal name *</label><input class="in" data-k="company"></div>
+            <div class="field"><label>Trade licence number *</label><input class="in" data-k="licence"></div>
+            <div class="field"><label>Business type *</label><select class="in" data-k="btype"><option value="">Select…</option><option>LLC</option><option>FZE</option><option>Sole establishment</option><option>Retail</option><option>System integrator</option><option>e-commerce</option></select></div>
+            <div class="field"><label>Website</label><input class="in" data-k="website" placeholder="https://…"></div>
+          </div>
+        </div>
+        <!-- STEP 2 -->
+        <div class="wiz" data-step="2" hidden>
+          <h3 style="font-size:19px">2 · Key contacts</h3>
+          <div class="grid g2" style="gap:14px;margin-top:14px">
+            <div class="field"><label>Owner / director name *</label><input class="in" data-k="owner"></div>
+            <div class="field"><label>Primary contact *</label><input class="in" data-k="contact"></div>
+            <div class="field"><label>Work email *</label><input class="in" data-k="email" type="email"></div>
+            <div class="field"><label>Phone / WhatsApp *</label><input class="in" data-k="phone"></div>
+          </div>
+        </div>
+        <!-- STEP 3 -->
+        <div class="wiz" data-step="3" hidden>
+          <h3 style="font-size:19px">3 · Addresses</h3>
+          <div class="grid g2" style="gap:14px;margin-top:14px">
+            <div class="field"><label>Registered address *</label><input class="in" data-k="addr1" placeholder="Building, street"></div>
+            <div class="field"><label>City / emirate *</label><input class="in" data-k="city"></div>
+            <div class="field"><label>Country *</label><input class="in" data-k="country" value="United Arab Emirates"></div>
+            <div class="field"><label>Delivery address (if different)</label><input class="in" data-k="addr2"></div>
+          </div>
+        </div>
+        <!-- STEP 4 -->
+        <div class="wiz" data-step="4" hidden>
+          <h3 style="font-size:19px">4 · Tax &amp; e-invoicing <span class="badge b-gold" style="vertical-align:middle">Peppol-ready</span></h3>
+          <div class="grid g2" style="gap:14px;margin-top:14px">
+            <div class="field"><label>TRN — Tax Registration Number *</label><input class="in" data-k="trn" inputmode="numeric" maxlength="15" placeholder="Exactly 15 digits">
+              <p class="hint" data-h="trn"></p></div>
+            <div class="field"><label>Peppol ID (auto)</label><input class="in" id="peppol-preview" readonly value="0235:" style="font-family:Consolas,monospace"></div>
+          </div>
+          <div class="alert al-info" style="margin-top:12px;font-size:12.5px">UAE e-invoicing goes live via Peppol — mandatory for ≥AED 50M turnover from <b>1 Jan 2027</b>. We capture your Peppol ID now so invoices never bounce later.</div>
+        </div>
+        <!-- STEP 5 -->
+        <div class="wiz" data-step="5" hidden>
+          <h3 style="font-size:19px">5 · Banking</h3>
+          <div class="grid g2" style="gap:14px;margin-top:14px">
+            <div class="field"><label>Bank name *</label><input class="in" data-k="bank"></div>
+            <div class="field"><label>IBAN (AE) *</label><input class="in" data-k="iban" placeholder="AE00 0000 0000 0000 0000 000" style="font-family:Consolas,monospace">
+              <p class="hint" data-h="iban"></p></div>
+          </div>
+        </div>
+        <!-- STEP 6 -->
+        <div class="wiz" data-step="6" hidden>
+          <h3 style="font-size:19px">6 · Documents</h3>
+          <p style="color:var(--slate);font-size:13.5px;margin:8px 0 10px">Prototype: attestation is simulated — clicking marks the document as provided.</p>
+          <div class="docrow"><input type="checkbox" data-k="doc_licence"><label>Trade licence (attested copy)</label><span class="note" style="margin-left:auto">PDF/JPG ≤ 10 MB</span></div>
+          <div class="docrow"><input type="checkbox" data-k="doc_passport"><label>Owner passport / Emirates ID</label><span class="note" style="margin-left:auto">PDF/JPG ≤ 10 MB</span></div>
+          <div class="docrow"><input type="checkbox" data-k="doc_bank"><label>Bank letter or cancelled cheque</label><span class="note" style="margin-left:auto">PDF/JPG ≤ 10 MB</span></div>
+        </div>
+        <!-- STEP 7 -->
+        <div class="wiz" data-step="7" hidden>
+          <h3 style="font-size:19px">7 · Review &amp; submit</h3>
+          <div id="review" style="margin-top:12px"></div>
+          <label class="consent" style="margin-top:16px"><input type="checkbox" id="w-consent"><span>I confirm the details are true and accept the PDPL privacy notice. *</span></label>
+        </div>
+
+        <div style="display:flex;justify-content:space-between;margin-top:22px">
+          <button class="btn btn-o" id="w-prev" hidden>← Back</button>
+          <span></span>
+          <button class="btn btn-p" id="w-next">Continue →</button>
+        </div>
+        <p class="hint" id="w-err" hidden style="color:var(--red)"></p>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card card-p" style="padding:20px;position:sticky;top:66px">
+        <h4 style="font-size:15px;margin-bottom:10px">Why we ask</h4>
+        <div class="timeline">
+          <div class="tl"><b>Quotes you can PO against</b><span>Verified trade entities only</span></div>
+          <div class="tl"><b>e-invoicing that clears</b><span>TRN + Peppol captured once</span></div>
+          <div class="tl"><b>Documents with expiry alerts</b><span>Licence &amp; ID tracked for you</span></div>
+          <div class="tl"><b>2-business-day review</b><span>Median: same day</span></div>
+        </div>
+        <div class="alert al-ok" style="margin-top:14px;font-size:12.5px"><b>Old portal user?</b> Your kyc.simalme.com application links carry over — token-mapped resume (FR-K.4).</div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/onboarding.js?v=131"></script>
+</body></html>

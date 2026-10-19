@@ -1,0 +1,108 @@
+---
+// 404.astro — Custom 404 error page (FRS G-11 / SEO-6)
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { db } from '../lib/db';
+
+const catRows = await db`SELECT cat, count(*)::int AS count FROM products GROUP BY cat`;
+const catCounts: Record<string, number> = {};
+for (const r of catRows as any[]) {
+  catCounts[r.cat] = r.count;
+}
+
+const topCategories = [
+  { slug: 'internal-ssd', label: 'Internal SSDs', icon: '💾', desc: 'Gen3 → Gen5 NVMe, up to 12,400 MB/s' },
+  { slug: 'portable-ssd', label: 'Portable SSDs', icon: '🔌', desc: 'Rugged USB-C external storage' },
+  { slug: 'memory', label: 'Memory Modules', icon: '🧠', desc: 'DDR4 & DDR5 desktop / laptop' },
+  { slug: 'monitors', label: 'Monitors', icon: '🖥️', desc: 'Productivity & high-refresh displays' },
+  { slug: 'accessories', label: 'Accessories & Docks', icon: '⚡', desc: 'Hubs, cables & surge protection' },
+];
+---
+
+<BaseLayout
+  title="Page Not Found (404) — Simal Technologies Middle East"
+  description="The page you requested could not be found. Search our catalog of 78 live SKUs, explore popular categories, or contact our sales team."
+>
+  <section class="hero-404">
+    <div class="wrap" style="padding: 56px 28px 48px; text-align: center; max-width: 820px; margin: 0 auto;">
+      <span class="badge" style="background: rgba(255,255,255,0.15); color: #fff; margin-bottom: 16px; display: inline-block;">Error 404 · Resource Not Found</span>
+      <h1 style="font-size: 38px; font-weight: 800; color: #fff; margin: 8px 0 16px; line-height: 1.2;">Page Not Found</h1>
+      <p class="lead" style="color: #D9E7F6; font-size: 16px; line-height: 1.6; margin-bottom: 28px;">
+        The link you followed may be outdated, or the address was typed incorrectly. Search our product catalog or explore our core categories below.
+      </p>
+
+      <form action="/products/" method="GET" class="search-404" role="search" aria-label="Search catalog from 404 page">
+        <label for="q-404" class="sr-only">Search products and brands</label>
+        <input
+          type="search"
+          id="q-404"
+          name="q"
+          placeholder="Search 78 live SKUs, brands, or solutions…"
+          autocomplete="off"
+          class="in"
+          style="flex: 1; padding: 12px 18px; font-size: 15px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--navy-900);"
+        />
+        <button type="submit" class="btn btn-gold" style="border-radius: 999px; padding: 12px 24px; font-weight: 700;">
+          Search Catalog
+        </button>
+      </form>
+
+      <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 24px;">
+        <a href="/" class="btn btn-o" style="color: #fff; border-color: rgba(255,255,255,0.4);">← Return to Home</a>
+        <a href="https://wa.me/971508487861" target="_blank" rel="noopener noreferrer" class="btn btn-wa" style="display: inline-flex; align-items: center; gap: 8px;">
+          <span>Ask Support on WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="background: #F8FAFC; border-top: 1px solid var(--line); padding: 48px 0;">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom: 24px;">
+        <div>
+          <span class="eyebrow">Explore our core catalog</span>
+          <h2 style="font-size: 22px;">Popular Categories & Solutions</h2>
+        </div>
+      </div>
+
+      <div class="grid g3" style="gap: 18px;">
+        {topCategories.map(cat => (
+          <a href={`/products#${cat.slug}`} class="card card-p" style="text-decoration: none; color: inherit; display: block; border-top: 3px solid var(--blue);">
+            <div style="font-size: 24px; margin-bottom: 8px;">{cat.icon}</div>
+            <b style="font-size: 16px; color: var(--navy-900); display: block;">{cat.label}</b>
+            <p style="font-size: 13px; color: var(--slate-500); margin: 6px 0 0;">{cat.desc}</p>
+            <span style="font-size: 12px; font-weight: 700; color: var(--gold); display: inline-block; margin-top: 10px;">
+              View {catCounts[cat.slug] || ''} products →
+            </span>
+          </a>
+        ))}
+        <a href="/solutions/" class="card card-p" style="text-decoration: none; color: inherit; display: block; border-top: 3px solid var(--gold);">
+          <div style="font-size: 24px; margin-bottom: 8px;">🛠️</div>
+          <b style="font-size: 16px; color: var(--navy-900); display: block;">IT Solutions & AMC</b>
+          <p style="font-size: 13px; color: var(--slate-500); margin: 6px 0 0;">Annual maintenance, AV, Cloud security & Storage</p>
+          <span style="font-size: 12px; font-weight: 700; color: var(--gold); display: inline-block; margin-top: 10px;">
+            Explore solutions →
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-404 {
+    background: var(--grad-hero);
+    color: #fff;
+  }
+  .search-404 {
+    display: flex;
+    gap: 10px;
+    max-width: 580px;
+    margin: 0 auto;
+    width: 100%;
+  }
+  @media (max-width: 600px) {
+    .search-404 {
+      flex-direction: column;
+    }
+  }
+</style>

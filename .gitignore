@@ -1,0 +1,70 @@
+node_modules/
+dist/
+.astro/
+coverage/
+__pycache__/
+*.log
+apps/portal/data/db.json
+apps/portal/data/uploads/
+apps/portal/tools/legacy-migration-report.json
+scripts/*-backup.sql
+.mimosa/
+
+# --- P0-1 (remediation 2026-10-12): third-party binaries & runtime state ---
+tools/pgsql/
+tools/pgdata/
+tools/*.exe
+tools/k6*/
+tools/nginx/logs/
+tools/nginx/temp/
+# secrets: env files with live credentials (see .env.example for shape)
+.env
+apps/portal/.env
+**/.env
+!**/.env.example
+# CI/local gate artifacts
+artifacts_*/
+scripts/ci/last-run/
+apps/site/dist-gate/
+# rm(9.1-3): every gate build output (dist-gate-41, -sitemap, -ga4, -ga4-noid) — on
+# Windows a locked file can make a gate's cleanup fail and leave one behind
+apps/site/dist-gate-*/
+
+# --- rm(1.2-1): portable toolchain & runtime state (never commit) ---
+tools/node/
+data/
+apps/site/dist-ci-*/
+
+# --- rm(1.3-1): audit evidence logs are tracked on purpose (exception to *.log) ---
+# rm(9.1-3): the rest of scratch/ is working space (roadmap golden rule 1 / 1.2-0)
+scratch/*
+!scratch/rm-evidence/
+!scratch/rm-evidence/**
+# rm(9.1-2): LHCI report output (CI uploads it as the lhci-reports artifact)
+.lighthouseci/
+apps/site/deploy-docroot/
+# rm(8.1): ClamAV vendored tooling — configs stay tracked, but definition updates
+# (freshclam rewrites database/*.cvd daily) and the bundled manual must not churn git.
+tools/clamav/database/
+tools/clamav/UserManual/
+tools/clamav/tmp/
+tools/clamav/*.log
+tools/clamav/*.pdb
+
+# rm(10.2-1): staging rehearsal build target (SITE_OUT_DIR=dist-staging)
+apps/site/dist-staging/
+
+# --- unify(2026-10-19): imported evidence/prototype content must stay tracked.
+# The broad `data/` and `*.log` patterns above predate the unification; git cannot
+# re-include a file whose parent dir is excluded, so unignore the dirs first.
+!audit/**/data/
+!audit/**/data/**
+!audit/**/*.log
+!prototype/data/
+!prototype/data/**
+!ux/assets/data/
+!ux/assets/data/**
+# unify(2026-10-19): vendored ClamAV static-link binaries — same class as the .pdb
+# payload untracked in 3d7f43e; clamav_rust.lib (292MB) also exceeds GitHub's 100MB
+# blob limit, which blocked the tip from being pushed at all
+tools/clamav/*.lib

@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CMS — Content Studio — Simal</title>
+<link rel="icon" type="image/png" href="assets/img/brand/favicon-32.png"><link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="assets/js/core.js?v=131"></script>
+</head>
+<body>
+<div class="panel-shell" style="display:grid;grid-template-columns:248px 1fr;min-height:100vh">
+  <aside class="side">
+    <div style="padding:18px 16px;display:flex;gap:12px;align-items:center">
+      <img src="assets/img/brand/simal-logo-white-360w.png" alt="Simal" style="height:30px;width:auto;display:block">
+      <div><b style="color:#fff;font-size:13.5px">Simal CMS</b><div style="font-size:11px;color:#8CA2BC">Content Studio</div></div>
+    </div>
+    <nav class="s-nav">
+      <a class="on" href="cms.html">📊 Dashboard</a>
+      <a href="cms-editor.html">✏️ Product editor</a>
+      <a href="index.html">↩ Public site</a>
+      <a href="admin-queue.html">🛡 Admin panel</a>
+    </nav>
+  </aside>
+  <div class="p-main">
+    <div class="p-top"><b>Content studio</b><span class="note">single source of truth · bilingual-first</span></div>
+    <div class="p-body" style="padding:22px">
+      <div class="grid g4" style="margin-bottom:20px">
+        <div class="kpi gold"><span style="font-size:26px;font-weight:800" id="c-ar">0</span><span style="font-size:12px;color:#F2E4B8">AR coverage gaps</span></div>
+        <div class="kpi blue"><span style="font-size:26px;font-weight:800" id="c-over">0</span><span style="font-size:12px;color:#BDD6F0">CMS overrides live</span></div>
+        <div class="kpi green"><span style="font-size:26px;font-weight:800" id="c-img">0</span><span style="font-size:12px;color:#CFE8DA">Products with photos</span></div>
+        <div class="kpi red"><span style="font-size:14px;font-weight:700">2 claims</span><span style="font-size:12px;color:#F3C9CE">pending verification</span></div>
+      </div>
+
+      <div class="split" style="grid-template-columns:1.1fr .9fr">
+        <div class="card card-p" style="padding:18px">
+          <b>⚠ AR coverage — products without Arabic content</b>
+          <p class="note" style="margin:6px 0 10px">All 81 SKUs currently rely on the fallback Arabic notice. Edit any product in the editor to close gaps.</p>
+          <div class="list-scroll"><table class="tbl" id="ar-tbl"></table></div>
+        </div>
+        <div>
+          <div class="card card-p" style="padding:18px;margin-bottom:14px">
+            <b>🚩 Claims register (BRule-8)</b>
+            <div class="docrow"><span>“1000+ Customers”</span><span class="statuspill st-warn" style="margin-left:auto">pending sign-off</span></div>
+            <div class="docrow"><span>UGREEN UAE exclusivity</span><span class="statuspill st-warn" style="margin-left:auto">pending sign-off</span></div>
+            <p class="hint" style="margin-top:8px">Claims cannot ship on the live site until verified (gates SG-1).</p>
+          </div>
+          <div class="card card-p" style="padding:18px">
+            <b>🕘 Working hours — single source</b>
+            <p class="note" style="margin-top:6px">Sun–Thu 9:00–18:00 GST is the platform-wide value. Contact-page legacy hours (Mon–Fri+Sat) are retired pending management reconciliation (BRule-3).</p>
+          </div>
+          <div class="card card-p" style="padding:18px;margin-top:14px">
+            <b>🗓 Content calendar</b>
+            <div class="timeline">
+              <div class="tl"><b>This week</b><span>Crucial P510 launch note + AR</span></div>
+              <div class="tl"><b>Next</b><span>Peppol checklist long-read</span></div>
+              <div class="tl"><b>Backlog</b><span>Brand pages: UGREEN, KOORUI AR passes</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/pages/cms.js?v=131"></script>
+</body></html>

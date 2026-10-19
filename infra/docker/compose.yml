@@ -1,0 +1,85 @@
+# compose.yml — Simal production topology on one host: PostgreSQL 16, the portal (+ SSG
+# worker), and the nginx edge (TLS, both vhosts). scripts/deploy-rehearsal.mjs brings this up
+# with generated secrets and verifies it end to end.
+#
+#   docker compose -f infra/docker/compose.yml --env-file <dir>/compose.env up -d --wait
+#
+# compose.env (never committed) provides:
+#   PG_SUPERUSER_PASSWORD, SIMAL_APP_PASSWORD, SIMAL_BUILD_PASSWORD  — hex (URL-safe)
+#   PORTAL_ENV_FILE   path to the portal's env file (see apps/portal/.env.example)
+#   CERTS_DIR         dir with fullchain.pem + privkey.pem for simalme.com / kyc.simalme.com
+#   WATCHLIST_DIR     dir holding watchlist.csv (the sanctions/PEP list — operator data)
+#   PORTAL_IMAGE      e.g. simal-portal:rc (built from apps/portal/Dockerfile, repo-root context)
+#   EDGE_HTTPS_PORT / EDGE_HTTP_PORT  host ports (default 443 / 80)
+#
+# First start of an empty database volume runs migrate.sql, seed.sql and prod-db-roles.sql
+# (least-privilege simal_app / simal_build). Seeds never run again on an existing volume.
+name: simal
+
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: simal
+      POSTGRES_PASSWORD: ${PG_SUPERUSER_PASSWORD:?}
+      POSTGRES_DB: simal
+      SIMAL_APP_PASSWORD: ${SIMAL_APP_PASSWORD:?}
+      SIMAL_BUILD_PASSWORD: ${SIMAL_BUILD_PASSWORD:?}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ../../scripts/migrate.sql:/docker-entrypoint-initdb.d/10-migrate.sql:ro
+      - ../../scripts/seed.sql:/docker-entrypoint-initdb.d/20-seed.sql:ro
+      - ./db-init/30-roles.sh:/docker-entrypoint-initdb.d/30-roles.sh:ro
+      - ../../scripts/prod-db-roles.sql:/sql/prod-db-roles.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U simal -d simal"]
+      interval: 5s
+      timeout: 3s
+      retries: 30
+    networks: [simal]
+    restart: unless-stopped
+
+  portal:
+    image: ${PORTAL_IMAGE:-simal-portal:rc}
+    env_file: ${PORTAL_ENV_FILE:?}
+    environment:
+      DATABASE_URL: postgres://simal_app:${SIMAL_APP_PASSWORD}@db:5432/simal
+      BUILD_DATABASE_URL: postgres://simal_build:${SIMAL_BUILD_PASSWORD}@db:5432/simal
+      TRUSTED_PROXIES: 172.30.10.10          # the edge (static address below)
+      WATCHLIST_CSV: /run/watchlist/watchlist.csv
+    volumes:
+      - portaldata:/app/data
+      - site:/srv/site
+      - ${WATCHLIST_DIR:?}:/run/watchlist:ro
+    depends_on:
+      db: { condition: service_healthy }
+    networks: [simal]
+    restart: unless-stopped
+
+  edge:
+    image: nginx:alpine
+    ports:
+      - "${EDGE_HTTPS_PORT:-443}:443"
+      - "${EDGE_HTTP_PORT:-80}:80"
+    volumes:
+      - ../nginx/portal-staging.conf:/etc/nginx/conf.d/default.conf:ro
+      - ../nginx/snippets:/etc/nginx/snippets:ro
+      - ${CERTS_DIR:?}:/etc/nginx/certs:ro
+      - site:/var/www/simalme/dist:ro
+    depends_on:
+      portal: { condition: service_healthy }
+    networks:
+      simal:
+        ipv4_address: 172.30.10.10
+    restart: unless-stopped
+
+networks:
+  simal:
+    ipam:
+      config:
+        - subnet: 172.30.10.0/24
+
+volumes:
+  pgdata:
+  portaldata:
+  site:

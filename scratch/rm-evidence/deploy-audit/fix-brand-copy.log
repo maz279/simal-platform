@@ -1,0 +1,36 @@
+PASS admin session — super_admin
+FAIL PUT aiwa — "Clarity. Performance. Brilliance."
+FAIL PUT arktek — "Powering Every Pixel."
+FAIL PUT crucial — "Fuel Your System Performance."
+FAIL PUT dell — "Powering Business. Engineered for Re"
+FAIL PUT hikvision — "Intelligent Storage. Enterprise Trus"
+FAIL PUT honeywell — "Protected Power. Trusted Globally."
+FAIL PUT hp — "Innovation That Inspires."
+FAIL PUT kingston — "Memory Made Reliable."
+FAIL PUT koorui — "Your Game. Your Vision."
+FAIL PUT lenovo — "World’s #1 PC. Smart Innovation."
+FAIL PUT msi — "True Gaming. True Quality."
+FAIL PUT nearity — "Transform Your Meetings."
+FAIL PUT pny — "Performance Without Compromise."
+FAIL PUT samsung — "World’s #1 Flash Memory."
+FAIL PUT sandisk — "Capture. Store. Trust."
+FAIL PUT teamgroup — "Memory of Lifetime."
+FAIL PUT toshiba — "Committed to People, Committed to th"
+FAIL PUT ugreen — "Redefining Connectivity."
+FAIL PUT wd — "Powering the World’s Data Infrastruc"
+FAIL PUT zotac — "Push the Limit."
+brands normalized: 20 of 22
+FIX BRAND COPY: 20 FAIL
+--- verification after the first run (PUT returns the brand object; the first run's check read .brand and misreported): 
+[
+ {
+  "still_quoted": "0",
+  "total": "22"
+ }
+]
+[
+ {
+  "brand_revisions_written": "20"
+ }
+]
+--- incident: the rig portal process still ran the pre-fix upsertBrand, which reset counts to {} on the 20 PUTs above (D08 reproduced live). counts restored from the snapshots each PUT wrote first; empty counts now: 0/22

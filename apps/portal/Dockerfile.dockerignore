@@ -1,0 +1,17 @@
+# Build-context whitelist for apps/portal/Dockerfile (context = repository root).
+# Everything is excluded except what the image needs; secrets and host state never enter.
+*
+!package.json
+!package-lock.json
+!packages/shared
+!apps/portal/package.json
+!apps/portal/src
+!apps/portal/public
+!apps/site/package.json
+!apps/site/astro.config.mjs
+!apps/site/tsconfig.json
+!apps/site/src
+!apps/site/public
+**/.env
+**/.env.*
+**/node_modules

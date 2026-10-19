@@ -1,0 +1,144 @@
+---
+// apps/site/src/pages/ar/contact/index.astro — Arabic Contact Twin Page (SEO-1)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+import { arSiteBlock, field } from '../../../lib/blocks';
+
+/* deploy-audit: CMS block site/contact (ar) — title / lead / hoursNote; built-in copy is the fallback */
+const contactBlock = await arSiteBlock('contact');
+
+const r = await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'offices'`;
+const officesRaw = r[0] ? (typeof r[0].payload === 'string' ? JSON.parse(r[0].payload) : r[0].payload) : [];
+
+const AR_OFFICES = [
+  [
+    'المقر الرئيسي — سيمال للتقنيات الشرق الأوسط',
+    'مكتب 201، مبنى دار الرفاعة، شارع خالد بن الوليد، بر دبي، ص.ب 49740، دبي، الإمارات العربية المتحدة',
+    '☎ +971 4 393 0507 · info@simalme.com',
+    'الأحد–الخميس 09:00–18:00 بتوقيت الإمارات'
+  ],
+  [
+    'المستودع المركزي والمركز اللوجستي — ستار سيد',
+    'StarSeed ME FZE، مستودع RA08DA07، المنطقة الحرة بجبل علي (JAFZA)، دبي، الإمارات العربية المتحدة',
+    'استلام وتسليم البضائع والشحن الإقليمي السريع',
+    'الأحد–الخميس 08:30–17:30 بتوقيت الإمارات'
+  ],
+  [
+    'صالة العرض والمبيعات المباشرة — تكنو سيتي',
+    'مركز تكنو سيتي للكمبيوتر، بر دبي، دبي، الإمارات العربية المتحدة',
+    'معاينة المنتجات الأصلية والمبيعات الفورية للشركاء',
+    'السبت–الخميس 09:30–20:30'
+  ],
+  [
+    'مركز التطوير والهندسة البرمجية — يونيسوفت',
+    'يونيسوفت سيستمز المحدودة (Unisoft Systems Ltd)، دكا، بنغلاديش',
+    'مركز الدعم الفني، هندسة ERP، وتكامل الذكاء الاصطناعي',
+    '24/7 عمليات المراقبة والدعم الفني للمؤسسات'
+  ]
+];
+
+const offices = AR_OFFICES;
+
+const contactPageSchema = {
+  '@type': 'ContactPage',
+  '@id': 'https://simalme.com/ar/contact/#contactpage',
+  'name': 'اتصل بنا — سيمال للتقنيات الشرق الأوسط',
+  'description': 'دليل المكاتب والمستودعات وصالات العرض المعتمدة مع أرقام الهواتف والبريد الإلكتروني وأوقات العمل.',
+  'url': 'https://simalme.com/ar/contact/',
+  'mainEntity': {
+    '@id': 'https://simalme.com/#organization'
+  }
+};
+
+const contactBreadcrumbs = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/ar/contact/#breadcrumb',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'الرئيسية', 'item': 'https://simalme.com/ar/' },
+    { '@type': 'ListItem', 'position': 2, 'name': 'اتصل بنا', 'item': 'https://simalme.com/ar/contact/' }
+  ]
+};
+---
+
+<BaseLayout
+  lang="ar"
+  dir="rtl"
+  title="اتصل بنا — سيمال للتقنيات الشرق الأوسط"
+  description="تواصل مع سيمال للتقنيات: دليل المكاتب والمستودعات في دبي وجبل علي مع أرقام الهواتف والبريد الإلكتروني ونموذج استفسارات القنوات المباشر."
+  schemas={[contactPageSchema, contactBreadcrumbs]}
+>
+  <section class="hero" style="padding:0"><div class="wrap" style="padding:46px 28px 40px;grid-template-columns:1fr">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">تواصل مباشرة مع المكتب المختص</span>
+      <h1 style="font-size:34px">{field(contactBlock, 'title', 'اتصل بنا')}</h1>
+      <p class="lead">{field(contactBlock, 'lead', 'أربعة مواقع، فريق عمل موحد. مبيعات القنوات، الدعم الفني، والمحاسبة جاهزون لخدمتكم — أو أرسل رسالتك وسنوجهها فوراً.')}</p>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">دليل المواقع</span><h2>المكاتب، المستودعات وصالة العرض</h2></div></div>
+    <div class="grid g2">
+      {offices.map((o: any) => (
+        <div class="card card-p" style="border-top:4px solid var(--blue)">
+          <b style="font-size:15px">{o[0]}</b>
+          <p style="font-size:13.5px;color:var(--slate);margin:8px 0 0;line-height:1.7">{o[1]}</p>
+          {o[2] && <p style="font-size:13px;margin:8px 0 0;color:var(--blue);font-weight:600">{o[2]}</p>}
+          {o[3] && <p style="font-size:12.5px;color:var(--slate-500);margin:6px 0 0">{o[3]}</p>}
+        </div>
+      ))}
+    </div>
+
+    <div class="alert al-info" style="margin-top:18px;background:var(--blue-050);padding:14px 18px;border-radius:10px;border:1px solid var(--blue-100)">
+      <span style="font-size:13px;color:var(--ink)">{typeof contactBlock.hoursNote === 'string' && contactBlock.hoursNote.trim()
+        ? contactBlock.hoursNote.trim()
+        : <Fragment><b>أوقات العمل الرسمية:</b> تعمل مكاتب خدمة العملاء والشركاء من <b>الأحد إلى الخميس، 09:00–18:00 بتوقيت الإمارات</b>. يتم توثيق ومعالجة الاستفسارات الواردة خارج هذه الساعات في صباح يوم العمل التالي مباشرة.</Fragment>}</span>
+    </div>
+
+    <div class="sec-head" style="margin-top:38px"><div><span class="eyebrow">أرسل رسالة</span><h2>توجيه مباشر للقسم المختص مع التزام بزمن الاستجابة</h2></div></div>
+    <div class="split" style="grid-template-columns:1.1fr .9fr">
+      <div class="card card-p">
+        <form id="arContactForm" style="display:grid;gap:14px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <label for="c-name" style="display:block;font-size:13px;font-weight:700;margin-bottom:4px">الاسم الكريم <span style="color:var(--red)">*</span></label>
+              <input class="in" id="c-name" name="name" required minlength="2" maxlength="80" autocomplete="name" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px">
+            </div>
+            <div>
+              <label for="c-email" style="display:block;font-size:13px;font-weight:700;margin-bottom:4px">البريد الإلكتروني المهني <span style="color:var(--red)">*</span></label>
+              <input class="in" id="c-email" dir="ltr" name="email" type="email" required maxlength="120" autocomplete="email" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px">
+            </div>
+          </div>
+          <div>
+            <label for="c-topic" style="display:block;font-size:13px;font-weight:700;margin-bottom:4px">موضوع الاستفسار <span style="color:var(--red)">*</span></label>
+            <select class="in" id="c-topic" name="topic" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px">
+              <option value="Sales">مبيعات قنوات التوزيع والأسعار</option>
+              <option value="Support">الدعم الفني والضمان (RMA)</option>
+              <option value="Software">خدمات البرمجيات ونظام UniERP</option>
+              <option value="Partnership">برنامج الشركاء والموزعين</option>
+              <option value="General">استفسار عام</option>
+            </select>
+          </div>
+          <div>
+            <label for="c-msg" style="display:block;font-size:13px;font-weight:700;margin-bottom:4px">تفاصيل الرسالة <span style="color:var(--red)">*</span></label>
+            <textarea class="in" id="c-msg" name="message" rows="5" required minlength="10" maxlength="2000" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px"></textarea>
+          </div>
+          <button type="submit" class="btn btn-p" style="align-self:flex-start">إرسال الرسالة الآن ←</button>
+        </form>
+      </div>
+
+      <div class="card card-p" style="background:var(--bg)">
+        <h3 style="font-size:16px;margin-bottom:12px">قنوات الاتصال المباشر</h3>
+        <p style="font-size:13px;color:var(--slate);line-height:1.6;margin-bottom:16px">إذا كان لديك طلب أسعار عاجل أو رغبة في التوريد المباشر من مخازن جبل علي، يمكنك التواصل فوراً:</p>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:13.5px">
+          <div>☎ <b>الهاتف المباشر:</b> <a href="tel:+97143930507" style="color:var(--blue)">+971 4 393 0507</a></div>
+          <div>✉ <b>البريد الإلكتروني:</b> <a href="mailto:info@simalme.com" style="color:var(--blue)">info@simalme.com</a></div>
+          <div>✆ <b>واتساب المبيعات:</b> <a href="https://wa.me/971508487861" target="_blank" rel="noopener" style="color:var(--blue)">+971 50 848 7861</a></div>
+          <div>🛡 <b>بوابة الشركاء:</b> <a href="https://kyc.simalme.com/login.html" style="color:var(--blue)">kyc.simalme.com</a></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  
+  <script src="/assets/js/ar-contact-page.js?v=1" defer></script>
+</BaseLayout>

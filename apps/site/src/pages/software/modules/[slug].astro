@@ -1,0 +1,106 @@
+---
+// software/modules/[slug].astro — ERP module library detail (7 records)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+
+export async function getStaticPaths() {
+  const rows = await db`SELECT entity_id FROM content_blocks WHERE entity = 'software_module' AND lang = 'en'`;
+  return rows.map(r => ({ params: { slug: r.entity_id } }));
+}
+
+const { slug } = Astro.params;
+const rows = await db`SELECT payload FROM content_blocks WHERE entity = 'software_module' AND entity_id = ${slug} AND lang = 'en'`;
+const m = rows[0] ? (typeof rows[0].payload === 'string' ? JSON.parse(rows[0].payload) : rows[0].payload) : null;
+if (!m) return Astro.redirect('/software');
+const all = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'software_module' AND lang = 'en' ORDER BY entity_id`;
+const related = (m.related || []).map((rid: string) => all.find(r => r.entity_id === rid)).filter(Boolean)
+  .map(r => typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+---
+
+<BaseLayout title={`${m.name} — UniERP Module — Simal`} description={m.tag}>
+  <section class="hero-sw">
+    <div class="container">
+      <div class="crumbs"><a href="/">Home</a> › <a href="/software">Software</a> › <a href="/software#modules">ERP Modules</a> › <b>{m.name}</b></div>
+      <span class="icon">{m.icon}</span>
+      <h1>{m.name}</h1>
+      <p class="tagline">{m.tag}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Overview</h2>
+      <p class="overview">{m.overview}</p>
+
+      {m.why && m.why.length > 0 && (
+        <>
+          <h2>Why it matters</h2>
+          <div class="grid-3">
+            {m.why.map((w: string) => <div class="why-card">{w}</div>)}
+          </div>
+        </>
+      )}
+
+      {m.caps && m.caps.length > 0 && (
+        <>
+          <h2>Capabilities</h2>
+          <div class="caps">
+            {m.caps.map(([cap, feats]: [string, string[]]) => (
+              <details class="cap">
+                <summary>{cap} <span class="count">{feats.length} capabilities</span></summary>
+                <ul>{feats.map((f: string) => <li>{f}</li>)}</ul>
+              </details>
+            ))}
+          </div>
+        </>
+      )}
+
+      {related.length > 0 && (
+        <>
+          <h2>Related modules</h2>
+          <div class="grid-3">
+            {related.map((r: any) => (
+              <a href={`/software/modules/${r.id}`} class="rel-card">
+                <span class="icon sm">{r.icon}</span>
+                <b>{r.name}</b>
+                <p>{(r.tag || '').slice(0, 90)}</p>
+              </a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-sw { background: var(--grad-blue-gold); padding: 44px 0 36px; }
+  .container { max-width: 1600px; margin: 0 auto; padding: 0 32px; }
+  .crumbs { font-size: 13px; margin-bottom: 16px; }
+  .crumbs a { color: #CFE0F3; }
+  .crumbs b { color: #fff; }
+  .icon { font-size: 40px; display: block; margin-bottom: 10px; }
+  .icon.sm { font-size: 22px; display: block; margin-bottom: 6px; }
+  .hero-sw h1 { color: #fff; font-size: 32px; margin: 0 0 8px; }
+  .tagline { color: #DAE5F0; font-size: 15px; max-width: 720px; }
+
+  .section { padding: 44px 0; }
+  .section h2 { font-size: 24px; color: var(--navy-800); margin: 32px 0 16px; }
+  .section h2:first-child { margin-top: 0; }
+  .overview { font-size: 15.5px; line-height: 1.8; color: var(--slate); max-width: 900px; }
+
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+  .why-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; font-size: 14px; color: var(--slate); line-height: 1.7; border-top: 4px solid var(--gold); }
+
+  .caps { display: grid; gap: 10px; max-width: 900px; }
+  .cap { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 0; }
+  .cap summary { padding: 14px 18px; font-weight: 700; font-size: 14.5px; color: var(--navy-800); cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+  .cap .count { font-size: 12px; font-weight: 600; color: var(--blue); background: #EEF4FB; padding: 2px 10px; border-radius: 999px; }
+  .cap ul { padding: 0 18px 14px 34px; margin: 0; }
+  .cap li { font-size: 13.5px; color: var(--slate); margin: 5px 0; }
+
+  .rel-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; text-decoration: none; color: inherit; }
+  .rel-card:hover { border-color: var(--blue); }
+  .rel-card b { font-size: 14px; display: block; }
+  .rel-card p { font-size: 12.5px; color: var(--slate); margin: 6px 0 0; }
+</style>

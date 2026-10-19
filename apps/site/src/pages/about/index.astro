@@ -1,0 +1,192 @@
+---
+// about/index.astro — company page. VISUAL CONTRACT: Prototype about.html ported 1:1.
+// Restores 4 corporate entity cards, 2002-2026 milestones timeline, Credibility strip,
+// Awards & Customer testimonials, Mission/Vision/Values, Leadership board,
+// Why choose Simal timeline, and CSR section.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+import { siteFacts } from '../../lib/facts';
+
+const [{ n: productCount }] = await db`SELECT count(*) AS n FROM products`;
+const [{ n: brandCount }] = await db`SELECT count(*) AS n FROM brands WHERE slug != 'other'`;
+const { years, since } = await siteFacts(); // rm(6.1-2/9.1-1, PUB-8): years from site/counters
+const [awardsRow2] = await db`SELECT payload FROM content_blocks WHERE entity='site' AND entity_id='awards' AND lang='en'`;
+const DEFAULT_AWARDS_AB = [{ year: '2025', title: 'Hikvision — Best Distributor Partner', issuer: 'Hikvision' }, { year: '2025', title: 'TeamGroup — Best Partner 2025', issuer: 'TeamGroup' }];
+const awardsList: any[] = Array.isArray(awardsRow2?.payload) ? awardsRow2.payload : DEFAULT_AWARDS_AB;
+const testimonials = await db`SELECT name, role, company, quote FROM testimonials WHERE active = true ORDER BY id`;
+
+const block = async (id: string, fb: any) => {
+  const r = await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = ${id} AND lang = 'en'`;
+  if (!r[0]) return fb;
+  const p = r[0].payload;
+  if (typeof p !== 'string') return p ?? fb;
+  if (p.startsWith('{') || p.startsWith('[')) { try { return JSON.parse(p) ?? fb; } catch { return fb; } }
+  return p || fb;
+};
+
+const leadership = await block('leadership', [
+  ['Chairman', 'Mohammad Mazharul Islam'],
+  ['Managing Director', 'Mohammad Zahirul Islam'],
+  ['Deputy Managing Director', 'S. M. Mohibul Hasan']
+]);
+const mission = await block('mission', 'To supply authentic IT components, infrastructure and software across the Middle East and Africa with verifiable warranties, responsive channel pricing, and service levels businesses can depend on.');
+const vision = await block('vision', 'To become the region’s premier turnkey technology distributor and solutions house — bridging global hardware vendors and modern enterprise software for builders in every market.');
+const values = await block('values', [
+  ['Authenticity', 'Zero gray-market risk — every unit is authorized and traceable.'],
+  ['Accountability', 'One desk, real SLAs, and support personnel who answer directly.'],
+  ['Channel first', 'We succeed when our resellers, integrators and partners succeed.'],
+  ['Long-term trust', `${years} years of stability built on consistency, not short cuts.`]
+]);
+---
+
+<BaseLayout title="About — Simal Technologies ME" description={`Turnkey IT infrastructure distributor behind the region's builders — components, infrastructure and software across UAE, GCC, MEA and CIS since ${since}.`}>
+  <!-- ===== Hero ===== -->
+  <section class="hero"><div class="wrap" style="padding:56px 28px 50px;display:grid;grid-template-columns:1fr">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">since 2002 · independent · Bur Dubai</span>
+      <h1 style="font-size:36px;max-width:820px;line-height:1.2;margin:12px 0">The turnkey IT infrastructure distributor behind the region's builders.</h1>
+      <p class="lead" style="max-width:760px;color:#DAE5F0">Simal Technologies Middle East LLC distributes genuine IT products — storage, memory, security, networking and power — to resellers, integrators, retailers and e-commerce across UAE, GCC, MEA and CIS. Independent since day one; authorized by {brandCount} global brands.</p>
+    </div>
+  </div></section>
+
+  <!-- ===== Entities & Milestones ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start">
+      <div>
+        <span class="eyebrow">The company</span>
+        <h2 style="font-size:26px;margin:6px 0 16px">One company, end-to-end capability</h2>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <div class="card card-p" style="display:flex;gap:14px;align-items:center;border-left:4px solid var(--blue)">
+            <div class="avatar" style="width:42px;height:42px;border-radius:12px;background:var(--blue-050);color:var(--blue);display:grid;place-items:center;font-weight:700">S</div>
+            <div><b>Simal Technologies ME LLC</b><p class="note" style="margin:2px 0 0;font-size:12px;color:var(--slate)">HQ office · Bur Dubai · distribution &amp; channel sales</p></div>
+            <span style="margin-left:auto" class="badge b-blue">YOU ARE HERE</span>
+          </div>
+          <div class="card card-p" style="display:flex;gap:14px;align-items:center">
+            <div class="avatar" style="width:42px;height:42px;border-radius:12px;background:var(--blue-050);color:var(--blue);display:grid;place-items:center;font-weight:700">SS</div>
+            <div><b>StarSeed Technologies ME FZE</b><p class="note" style="margin:2px 0 0;font-size:12px;color:var(--slate)">JAFZA logistics &amp; warehousing — RA08DA07</p></div>
+          </div>
+          <div class="card card-p" style="display:flex;gap:14px;align-items:center">
+            <div class="avatar" style="width:42px;height:42px;border-radius:12px;background:var(--blue-050);color:var(--blue);display:grid;place-items:center;font-weight:700">ST</div>
+            <div><b>Stellent Technologies ME LLC</b><p class="note" style="margin:2px 0 0;font-size:12px;color:var(--slate)">Bur Dubai retail store</p></div>
+          </div>
+          <div class="card card-p" style="display:flex;gap:14px;align-items:center;border-left:4px solid var(--red)">
+            <div class="avatar" style="width:42px;height:42px;border-radius:12px;background:#FDECEC;color:#B91C1C;display:grid;place-items:center;font-weight:700">US</div>
+            <div><b>Unisoft Systems Ltd</b><p class="note" style="margin:2px 0 0;font-size:12px;color:var(--slate)">Dhaka · software delivery partner — powers Simal Software Services</p></div>
+            <span style="margin-left:auto" class="badge b-red">★ NEW</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Milestones</span>
+        <h2 style="font-size:26px;margin:6px 0 16px">{years} years of distribution</h2>
+        <div class="timeline" style="margin-top:20px">
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>2002 — Founded in Bur Dubai</b><span style="display:block;font-size:13px;color:var(--slate)">Components and storage to the UAE channel</span></div>
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>2010s — Authorizations scale</b><span style="display:block;font-size:13px;color:var(--slate)">Crucial/Micron, Hikvision, TeamGroup, UGREEN &amp; more</span></div>
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>2020s — E-commerce era</b><span style="display:block;font-size:13px;color:var(--slate)">Supplying Amazon, Sharaf DG and Microless storefronts</span></div>
+          <div class="tl red" style="padding:10px 0;border-bottom:1px solid var(--line)"><b style="color:var(--red)">2025 — TeamGroup Best Partner</b><span style="display:block;font-size:13px;color:var(--slate)">Awarded at partner summit</span></div>
+          <div class="tl red" style="padding:10px 0"><b style="color:var(--red)">2026 — Software Services launch</b><span style="display:block;font-size:13px;color:var(--slate)">Hardware + software, one accountable desk</span></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Credibility Counters ===== -->
+  <div class="cred"><div class="wrap">
+    <div class="c"><span class="n">{years}</span><span class="l">Years in the channel</span></div>
+    <div class="c"><span class="n">{brandCount}</span><span class="l">Authorized brands</span></div>
+    <div class="c"><span class="n">{productCount}</span><span class="l">Live SKUs</span></div>
+    <div class="c"><span class="n">4</span><span class="l">Regions · UAE/GCC/MEA/CIS</span></div>
+  </div></div>
+
+  <!-- ===== Recognition & Awards ===== -->
+  <section class="sec" id="awards" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Recognition</span><h2>Awards &amp; customer feedback</h2></div></div>
+    <div class="split" style="display:grid;grid-template-columns:1fr 1.3fr;gap:28px;align-items:start">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        {awardsList.map((a: any) => (
+          <div class="card card-p"><span class="badge b-red">🏆 Award {a.year}</span><p style="font-weight:700;margin-top:9px">{a.title}</p></div>
+        ))}
+        <div class="card card-p"><span class="badge b-line">Authorized: {brandCount} brands</span><p style="font-weight:700;margin-top:9px">Including Crucial/Micron, Hikvision, UGREEN, TeamGroup</p></div>
+      </div>
+      <div class="grid g1" id="about-tst" style="display:flex;flex-direction:column;gap:12px">
+        {testimonials.map((t: any) => (
+          <div class="card card-p">
+            <div style="display:flex;gap:6px;align-items:center;color:#A16207;font-size:14px"><span aria-hidden="true">★★★★★</span><span class="sr-only">5 out of 5 stars</span></div>
+            <p style="font-size:13.5px;color:var(--ink);margin:8px 0;line-height:1.6">“{t.quote}”</p>
+            <div style="font-size:12.5px;font-weight:700;color:var(--slate)">{t.name} · {t.role}{t.company ? `, ${t.company}` : ''}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Mission, Vision, Values & Leadership ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start">
+      <div id="mission">
+        <span class="eyebrow">Mission, vision &amp; values</span>
+        <h2 style="font-size:24px;margin:6px 0 14px">Why Simal exists</h2>
+        <div class="card card-p" style="border-left:4px solid var(--blue)"><b>Our mission</b><p style="color:var(--slate);font-size:13.5px;margin-top:6px;line-height:1.6">{mission}</p></div>
+        <div class="card card-p" style="margin-top:12px;border-left:4px solid var(--g3)"><b>Our vision</b><p style="color:var(--slate);font-size:13.5px;margin-top:6px;line-height:1.6">{vision}</p></div>
+        <div class="grid g2" style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px">
+          {values.map((v: any) => (
+            <div class="card card-p" style="padding:12px">
+              <b style="font-size:13px;color:var(--blue)">{v[0]}</b>
+              <p style="font-size:12px;color:var(--slate);margin-top:4px;line-height:1.5">{v[1]}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div id="leadership">
+        <span class="eyebrow">Board of directors</span>
+        <h2 style="font-size:24px;margin:6px 0 14px">Leadership team</h2>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          {leadership.map((l: any) => (
+            <div class="card card-p" style="display:flex;gap:14px;align-items:center">
+              <div class="avatar" style="width:44px;height:44px;border-radius:12px;background:var(--blue-050);color:var(--blue);display:grid;place-items:center;font-weight:700;font-size:15px">
+                {String(l[1]).split(' ').map((w: string) => w[0]).slice(0, 2).join('')}
+              </div>
+              <div><b style="font-size:15px">{l[1]}</b><div style="font-size:12.5px;color:var(--slate)">{l[0]}</div></div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Why Choose Simal & CSR ===== -->
+  <section class="sec" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:start">
+      <div id="why">
+        <span class="eyebrow">Why choose Simal</span>
+        <h2 style="font-size:24px;margin:6px 0 14px">Built for the channel since 2002</h2>
+        <div class="timeline" style="margin-top:16px">
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>Authorized &amp; genuine</b><span style="display:block;font-size:13px;color:var(--slate)">{brandCount} vendor lines, full manufacturer warranty, tender-ready certificates</span></div>
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>Competitive margins</b><span style="display:block;font-size:13px;color:var(--slate)">Tiered pricing that rewards volume and loyalty</span></div>
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>Regional logistics</b><span style="display:block;font-size:13px;color:var(--slate)">JAFZA + Dhaka warehouses — fast GCC &amp; South Asia delivery</span></div>
+          <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)"><b>One accountable desk</b><span style="display:block;font-size:13px;color:var(--slate)">Dedicated account managers, 1:8 ratio from Premier tier</span></div>
+          <div class="tl" style="padding:10px 0"><b>Software + hardware</b><span style="display:block;font-size:13px;color:var(--slate)">UniERP reseller rights and recurring revenue for partners</span></div>
+        </div>
+      </div>
+      <div id="csr">
+        <span class="eyebrow">Corporate social responsibility</span>
+        <h2 style="font-size:24px;margin:6px 0 14px">Giving back, regionally</h2>
+        <div class="card card-p">
+          <p style="color:var(--slate);font-size:13.5px;line-height:1.75">Simal's CSR program invests in digital-literacy and device-access initiatives across the communities it serves — from refurbished-IT donations for schools to internship pathways with UAE universities.</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+            <span class="chip" style="font-size:12.5px;padding:6px 12px;background:#F1F5F9;border-radius:20px">Digital literacy</span>
+            <span class="chip" style="font-size:12.5px;padding:6px 12px;background:#F1F5F9;border-radius:20px">Refurbished-IT donations</span>
+            <span class="chip" style="font-size:12.5px;padding:6px 12px;background:#F1F5F9;border-radius:20px">Graduate internships</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+</BaseLayout>
+
+<style>
+  @media(max-width:900px){
+    .split { grid-template-columns: 1fr!important; }
+    .grid.g2 { grid-template-columns: 1fr!important; }
+  }
+</style>

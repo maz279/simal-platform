@@ -1,0 +1,5 @@
+=== rm(5.1) HONEST PUBLISH TELEMETRY — EVIDENCE Sat Oct 17 11:49:39 MPST 2026 ===
+5.1-1 (KPI): dashboard Last-Publish derives from /api/cms/telemetry/publish (build outcome, not enqueue); telemetry extended w/ lastBuild {status,durationMs,error,ts}; pill+banner states: LAST BUILD FAILED / N build(s) queued / N unpublished edits / all published — browser-verified BOTH directions (FAILED shown honestly during the incident; 'all published' after resolution, pill matches API lastBuild.status=processed)
+5.1-2 (purge): purgeAll carried in event body; worker honors it (purge=['dist/'] full-site + ssg_purge_full audit row=1) vs scoped purge paths; probes: purgeAll publish->purge=[dist/] processed; scoped->dist/announcements/1 processed
+ROOT-CAUSE BONUS (L51): 4 zombie portal PG backends from Oct-16 raced the worker (processed->failed flips, phantom build errors); found via pg_stat_activity, terminated; worker hardened w/ FOR UPDATE SKIP LOCKED claim; publish+25s hold now stays processed
+SUITES: 83/83; CI lint+gate-chrome-blocks green

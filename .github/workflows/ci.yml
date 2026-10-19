@@ -1,0 +1,674 @@
+name: CI
+
+# Repo root = Codebase/ (this .github directory lives inside it).
+# unify(2026-10-19): the prototype moved INTO the repo (prototype/) — the
+# parity job now runs the prototype-side checks instead of skipping them.
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+env:
+  NODE_ENV: test
+  DATABASE_URL: postgres://simal:test@localhost:5432/simal_test
+
+jobs:
+  # L1: Lint + syntax
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: package.json
+      - run: npm ci
+      - run: npx eslint . --ext .js,.mjs
+
+  # L1.5: Secrets scan (pre-merge blocking)
+  secrets-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # rm(9.1-3): the gitleaks CLI (same 8.28.0 as tools/gitleaks.exe), pinned by
+      # checksum, over full history with .gitleaks.toml + .gitleaksignore.
+      # gitleaks-action@v2 needs a paid licence on organisation-owned repos and the
+      # GitHub API, so it could not run on every CI platform.
+      - name: gitleaks (full history)
+        run: |
+          curl -sSfL -o /tmp/gitleaks.tgz https://github.com/gitleaks/gitleaks/releases/download/v8.28.0/gitleaks_8.28.0_linux_x64.tar.gz
+          echo "a65b5253807a68ac0cafa4414031fd740aeb55f54fb7e55f386acb52e6a840eb  /tmp/gitleaks.tgz" | sha256sum -c -
+          tar -xzf /tmp/gitleaks.tgz -C /tmp gitleaks
+          /tmp/gitleaks git . --redact --verbose --config .gitleaks.toml
+
+  # L2: Unit + JSON-mode integration (validators, SSRF, RBAC, partner journeys)
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # rm(9.1-3): the API/workspace suites boot server.js, which imports pg.
+      - run: npm ci
+      - name: portal unit + API/workspace integration tests (JSON store)
+        run: |
+          cd apps/portal
+          NODE_KYC_TEST=1 node --test test/unit/*.test.js test/integration/*.test.js
+      - name: portal feature suites (accounts, token bridge, ASP roundtrip)
+        run: |
+          cd apps/portal
+          NODE_KYC_TEST=1 node --test test/account-services.test.js test/token-exchange.test.js test/peppol-sandbox-roundtrip.test.js test/rfq.test.js
+
+  # L2.5: PG integration tests (schema, seeds, search, constraints, B5, backup)
+  integration:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: apply DDL (migrate.sql, incl. B5)
+        run: |
+          cd apps/portal
+          npm install --no-save pg
+          node -e "const pg=require('pg'),fs=require('fs');const c=new pg.Client({connectionString:process.env.DATABASE_URL});c.connect().then(async()=>{await c.query(fs.readFileSync('../../scripts/migrate.sql','utf8'));await c.query(fs.readFileSync('../../scripts/seed.sql','utf8'));await c.end();console.log('DDL+seed applied');}).catch(e=>{console.error(e.message);process.exit(1);});"
+      - name: PG integration tests
+        run: |
+          cd apps/portal
+          DATABASE_URL=postgres://simal:test@localhost:5432/simal_test node test/pg-integration-test.js
+      - name: delivered-invoice immutability (DB triggers)
+        run: |
+          cd apps/portal
+          DATABASE_URL=postgres://simal:test@localhost:5432/simal_test node test/einvoice-immutability.test.js
+      - name: PG-mode journey (account + workflow features on the PRODUCTION store)
+        run: |
+          cd apps/portal
+          node test/pg-mode-journey.test.js
+      # rm(9.2-2): the PG-dependent regression suites now live under
+      # test/integration/*.test.js (discoverable by `npm test`; they SKIP where
+      # no PostgreSQL is reachable — e.g. the `unit` job) and run for real here:
+      # SLA/expiry batch jobs (7.2-2/7.2-3), the SEC-11 dual-approval matrix
+      # (7.3-4), the stored-URL guard (3.2-2) and the signed-URL drills (8.1-2).
+      # Each provisions its own scratch database via GATE_ADMIN_URL.
+      - name: PG regression suites (batch jobs, dual approval, URL guard, signed URLs)
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: |
+          cd apps/portal
+          node --test test/integration/batch-jobs.test.js test/integration/dual-approval.test.js test/integration/cms-url-guard.test.js test/integration/doc-signed-urls.test.js
+      # rm(9.1-3): GitHub-hosted images ship psql; container runners may not.
+      - name: psql client
+        run: command -v psql || (sudo apt-get update -qq && sudo apt-get install -y -qq postgresql-client)
+      # rm(7.1-3)/DAT-9: prove the app also runs as the least-privilege simal_app
+      # role over scram — apply prod-db-roles.sql with per-run rotated hex
+      # passwords (the service container is isolated, so rotation is free here),
+      # then re-run the schema + journey tests over the app-role URL.
+      - name: least-privilege app role (simal_app over scram)
+        run: |
+          APP_PW=$(node -e "console.log(require('crypto').randomBytes(24).toString('hex'))")
+          BUILD_PW=$(node -e "console.log(require('crypto').randomBytes(24).toString('hex'))")
+          psql "postgres://simal:test@localhost:5432/simal_test" -v ON_ERROR_STOP=1 \
+            -v app_password="$APP_PW" -v build_password="$BUILD_PW" \
+            -f scripts/prod-db-roles.sql
+          # deploy-audit H7: the SSG build role reads content tables only - never users/sessions/KYC
+          BUILD_URL="postgres://simal_build:$BUILD_PW@localhost:5432/simal_test"
+          psql "$BUILD_URL" -v ON_ERROR_STOP=1 -tAc "SELECT count(*) FROM products" > /dev/null
+          if psql "$BUILD_URL" -tAc "SELECT count(*) FROM users" 2>/dev/null; then echo "::error::simal_build can read users"; exit 1; fi
+          cd apps/portal
+          DATABASE_URL="postgres://simal_app:$APP_PW@localhost:5432/simal_test" \
+          ADMIN_DATABASE_URL="postgres://simal:test@localhost:5432/postgres" \
+            node test/pg-integration-test.js
+          DATABASE_URL="postgres://simal_app:$APP_PW@localhost:5432/simal_test" \
+          ADMIN_DATABASE_URL="postgres://simal:test@localhost:5432/postgres" \
+            node test/pg-mode-journey.test.js
+
+  # L2.7: Security audit (headers, secrets, SQL literal discipline, deps)
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      - run: node scripts/security-audit.js
+
+  # L3: Parity checklist (T6.2 — 100% porting verification) — builds SSG first
+  parity:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: apply DDL + seed (parity asserts exact row counts)
+        run: |
+          npm install --no-save pg
+          node -e "const pg=require('pg'),fs=require('fs');const c=new pg.Client({connectionString:process.env.DATABASE_URL});c.connect().then(async()=>{await c.query(fs.readFileSync('scripts/migrate.sql','utf8'));await c.query(fs.readFileSync('scripts/seed.sql','utf8'));await c.end();console.log('DDL+seed applied');}).catch(e=>{console.error(e.message);process.exit(1);});"
+      - name: SSG build (pages come from PG)
+        run: |
+          cd apps/site
+          npm install
+          DATABASE_URL=$DATABASE_URL npx astro build
+      - name: run parity checklist
+        run: |
+          npm install --no-save pg
+          DATABASE_URL=$DATABASE_URL node scripts/parity-checklist.js
+
+  # L4: SSG build artifact gates
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, secrets-scan, unit, integration]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: apply DDL + seed
+        run: |
+          npm install --no-save pg
+          node -e "const pg=require('pg'),fs=require('fs');const c=new pg.Client({connectionString:process.env.DATABASE_URL});c.connect().then(async()=>{await c.query(fs.readFileSync('scripts/migrate.sql','utf8'));await c.query(fs.readFileSync('scripts/seed.sql','utf8'));await c.end();console.log('DDL+seed applied');}).catch(e=>{console.error(e.message);process.exit(1);});"
+      - name: SSG build
+        env:
+          # rm(8.4-1): GA4 ID from the repo variable; unset = GA4 disabled.
+          PUBLIC_GA4_ID: ${{ vars.PUBLIC_GA4_ID }}
+        run: |
+          cd apps/site
+          npm install
+          DATABASE_URL=$DATABASE_URL npx astro build
+      - name: verify pages
+        run: |
+          PAGES=$(find apps/site/dist -name "index.html" | wc -l)
+          echo "Pages: $PAGES"
+          if [ "$PAGES" -lt 100 ]; then echo "FAIL: expected >=100 pages"; exit 1; fi
+      - name: check no JS globals
+        run: |
+          if grep -rl "window\.CATALOG\|window\.SOFTWARE" apps/site/dist/; then
+            echo "FAIL: JS globals found in SSG output"; exit 1; fi
+      - name: check no localStorage
+        run: |
+          if grep -rl "localStorage" apps/site/dist/; then
+            echo "FAIL: localStorage found in SSG output"; exit 1; fi
+      - name: upload dist for downstream gates
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+          retention-days: 3
+
+  # =====================================================================
+  # P0-3 remediation gates (2026-10-12). These are RED BY DESIGN until the
+  # phase that closes each finding lands — see scripts/ci/README.md and
+  # Audit/Independent_Forensic_Audit_2026-10-12/REMEDIATION_PLAN.md §4.
+  # =====================================================================
+
+  gate-clean-db-build:
+    # (a) guards DAT-1 — migrate.sql+seed.sql on an empty DB must build the site
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      - name: clean-DB SSG build gate
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/clean-db-build.mjs
+
+  gate-authz:
+    # (b) guards SEC-3/SEC-5 — deny-by-default on privileged routes
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # rm(9.1-3): scripts/ci/lib.mjs loads pg at import time, like every other gate.
+      - run: npm install --no-save pg
+      - name: authorization matrix gate
+        run: node scripts/ci/authz-matrix.mjs
+
+  gate-pg-reporting:
+    # (c) guards DAT-3/APP-1 — SLA age + reports + CSV on PostgreSQL
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      - name: PG-mode reporting gate
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/pg-reporting.mjs
+
+  gate-sequences:
+    # (c+) guards DAT-6 — sequence drift on a freshly migrated+seeded database.
+    # Cloned from gate-pg-reporting (rm(7.2-1)): the gate provisions its own scratch
+    # database via GATE_ADMIN_URL and never repairs anything (check-only).
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      - name: sequence drift gate (check-only)
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/sequences.mjs
+
+  gate-ga4-consent:
+    # (c+++) guards SEO-5 residue (rm 8.4) — GA4 loads only behind consent.
+    # Provisions its own scratch DB, builds with/without PUBLIC_GA4_ID, then
+    # drives headless Chrome with network capture (fresh/grant/reload/withdraw).
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      # rm(9.1-3): a real, pinned-channel Chrome. The old `apt-get install
+      # chromium-browser || true` installs a snap stub on Ubuntu 24.04 and its
+      # failure was masked; CHROME_PATH then pointed at a binary that may not exist.
+      # rm(9.1-3): one retry. Run #9 lost gate-a11y to a transient archive.ubuntu.com
+      # outage during apt-get update; the other Chrome jobs of that run installed fine.
+      - name: install Chrome
+        id: chrome1
+        continue-on-error: true
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
+      - name: wait before retrying the Chrome install
+        if: steps.chrome1.outcome == 'failure'
+        run: sleep 30
+      - name: install Chrome (retry)
+        id: chrome2
+        if: steps.chrome1.outcome == 'failure'
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
+      - name: GA4 consent gate (rm 8.4)
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+          CHROME_PATH: ${{ steps.chrome1.outputs.chrome-path || steps.chrome2.outputs.chrome-path }}
+        run: node scripts/ci/ga4-consent.mjs
+
+  gate-sitemap-lastmod:
+    # (c++) guards SEO-2 residue (rm 8.3) — sitemap <lastmod> from real content
+    # timestamps. Provisions its own scratch DB via GATE_ADMIN_URL, edits one
+    # entity per sitemap type through the CMS API, builds, and asserts dates.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      - name: sitemap lastmod gate (rm 8.3)
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/sitemap-lastmod.mjs
+
+  gate-link-crawl:
+    # (d) guards PUB-3 — 0 internal 404s / 0 undefined URLs in dist.
+    # Reuses the dist built by the `build` job.
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      - name: internal link crawl gate
+        run: node scripts/ci/link-crawl.mjs
+
+  gate-placeholders:
+    # (d+) guards PUB-7 — 0 placeholder / internal strings in dist (rm 9.1-1).
+    # Reuses the dist built by the `build` job.
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      - name: placeholder / internal strings gate
+        run: node scripts/ci/check-no-placeholders.mjs
+
+  gate-perf:
+    # (d++) NFR-1 fast proxy — static CWV budgets over dist (rm 9.1-1).
+    # The real measured score is the `lighthouse` job (rm 9.1-2); this
+    # gate stays as the fast local proxy per the roadmap.
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      - name: performance budget gate (static proxy)
+        run: node scripts/ci/perf-budget.mjs
+
+  gate-csp-inline:
+    # (d+++) guards SEC-13 (rm 3.3-1, wired by rm 9.1-1) — 0 inline
+    # executable scripts in dist, matching script-src 'self'.
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      - name: inline script gate
+        run: node scripts/ci/check-inline-scripts.mjs
+
+  gate-facts-consistency:
+    # (d++++) guards PUB-8 (rm 6.1-3, wired by rm 9.1-1) — every brand count,
+    # catalogue size and company-age figure on EVERY page of dist equals the
+    # <meta name="simal:*"> reference BaseLayout renders from the DB; awards on
+    # / and /about/ are identical. Reuses the dist built by the `build` job.
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      - name: facts-consistency gate
+        run: node scripts/ci/facts-consistency.mjs
+
+  gate-cms-e2e:
+    # (c+++++) CMS editor -> built-site e2es (rm 4.1-2, wired by rm 9.1-1):
+    # the Phase 4 completeness suite and the chrome-blocks e2e (nav/footer/
+    # newsletter edit -> astro build -> assertion on the built pages).
+    # Scratch DBs only (DAT-7): each suite provisions and drops its own
+    # database via GATE_ADMIN_URL.
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save pg
+      - name: CMS completeness e2e gate
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/test-cms-e2e.mjs
+      - name: chrome-blocks e2e (CMS edit reaches the built site)
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/test-chrome-blocks-e2e.mjs
+      # deploy-audit: CMS writes never destroy or cross-contaminate data (product detail,
+      # EN/AR policies, rollback target, brand counts, media path, category rename)
+      - name: CMS data-integrity regression
+        env:
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/test-cms-integrity.mjs
+
+  lighthouse:
+    # Real Lighthouse CI (rm 9.1-2, NFR-1) — replaces the simulated score.
+    # Thresholds match GOVERNANCE_REQUIREMENTS_BASELINE.md (mobile profile,
+    # LHCI default): Performance >= 0.85, LCP <= 2500ms. Reports are kept
+    # as build artifacts (filesystem upload — temporary-public-storage
+    # would publish them to anyone with the link pre-launch).
+    runs-on: ubuntu-latest
+    needs: [build]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      # rm(9.1-3): one retry. Run #9 lost gate-a11y to a transient archive.ubuntu.com
+      # outage during apt-get update; the other Chrome jobs of that run installed fine.
+      - name: install Chrome
+        id: chrome1
+        continue-on-error: true
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
+      - name: wait before retrying the Chrome install
+        if: steps.chrome1.outcome == 'failure'
+        run: sleep 30
+      - name: install Chrome (retry)
+        id: chrome2
+        if: steps.chrome1.outcome == 'failure'
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
+      # --no-sandbox: Chrome refuses to run as root in container runners, and
+      # Ubuntu 24.04 blocks its user-namespace sandbox. Scores are unaffected.
+      - name: Lighthouse CI (pinned)
+        env:
+          CHROME_PATH: ${{ steps.chrome1.outputs.chrome-path || steps.chrome2.outputs.chrome-path }}
+        run: npx --yes @lhci/cli@0.15.1 autorun --collect.settings.chromeFlags="--no-sandbox"
+      # rm(9.1-3): upload-artifact >= v4.4 skips hidden paths by default, so the
+      # reports in .lighthouseci were dropped with only a warning. They are the
+      # NFR-1 evidence: include them, and fail if they are missing.
+      - name: upload LHCI reports
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lhci-reports
+          path: .lighthouseci
+          include-hidden-files: true
+          if-no-files-found: error
+
+  gate-a11y:
+    # (e) guards Phase 6 — axe-core WCAG 2.1/2.2 A/AA on key pages, plus the
+    # authenticated CMS console (rm(9.2-3)). The console's content API is
+    # SQL-backed, so the job carries a postgres service and the gate audits a
+    # scratch-database portal (falls back to the JSON store without one).
+    runs-on: ubuntu-latest
+    needs: [build]
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: simal
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: simal_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-save axe-core pg
+        # keep the gate self-contained: install into node_modules at repo root.
+        # rm(9.2-3): pg too — the gate boots the portal to audit the
+        # authenticated cms.html, and server.js imports pg at module load.
+      # rm(9.1-3): the gate audits the build job's dist; without this step it
+      # failed on every runner with "apps/site/dist is missing".
+      - name: restore dist from the build job
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist
+          path: apps/site/dist
+      # rm(9.1-3): one retry. Run #9 lost gate-a11y to a transient archive.ubuntu.com
+      # outage during apt-get update; the other Chrome jobs of that run installed fine.
+      - name: install Chrome
+        id: chrome1
+        continue-on-error: true
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
+      - name: wait before retrying the Chrome install
+        if: steps.chrome1.outcome == 'failure'
+        run: sleep 30
+      - name: install Chrome (retry)
+        id: chrome2
+        if: steps.chrome1.outcome == 'failure'
+        uses: browser-actions/setup-chrome@v1
+        with:
+          install-dependencies: true
+      - name: accessibility gate
+        env:
+          CHROME_PATH: ${{ steps.chrome1.outputs.chrome-path || steps.chrome2.outputs.chrome-path }}
+          GATE_ADMIN_URL: postgres://simal:test@localhost:5432/postgres
+        run: node scripts/ci/a11y.mjs
+      # rm(9.1-1): WCAG 3.1.2 Language of Parts, which axe-core cannot test — on
+      # every English page, Arabic text must sit inside a lang="ar" element.
+      - name: page-language gate (WCAG 3.1.2, SEO-1)
+        run: node scripts/ci/check-page-language.mjs

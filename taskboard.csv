@@ -1,0 +1,54 @@
+Task ID,Phase,Task,Owner,Depends On,Status,Notes
+T0.1,P0,Ratify ADR-1..13,TL,,done,Ratified 2026-10-05
+T0.2,P0,Monorepo + CI skeleton,TL,T0.1,done,Codebase/ with .github/workflows/ci.yml
+T0.3,P0,Dev envs + ports doc,OPS,T0.2,done,PG 5433 + guide + supervisor.cmd
+T0.4,P0,Issue vendor RFP,PM,,done,G5 issued 2026-10-05
+T0.5,P0,TAD + DDL + OpenAPI sign-off,TL,T0.1,done,DDL applied to PG; 21 tables; extensions active
+T0.6,P0,Conversion kickoff → task board,PM,T0.5,done,This CSV + ARCHITECTURE_STATE.md
+T1.1,P1,Apply B4 DDL to PG,TL,T0.5,done,Done in T0.5 (21 tables)
+T1.2,P1,Seed catalog/content from prototype data,Eng-1,T1.1,done,300 rows: 81 products + 78 deep + 20 brands + 5 hero + 3 test + 7 guides + 7 policies + 97 content_blocks + 2 settings
+T1.3,P1,Portal JSON→PG repos swap,TL,T1.1,done,pg-repos.js + boot-compatible (settings cache) + async createApp + 24/24 PG integration tests PASS; full async service migration = Phase 2/T2.1
+T1.4,P1,pg_trgm search parity tests,Eng-1,T1.2,done,4/4 in PG integration suite (exact/typo/brand/garbage) + SKU search verified in earlier manual test
+T1.5,P1,Backup baseline WAL+snapshots,OPS,T1.1,done,pg_dump 232KB + restore verified (81 products)
+T2.1,P2,Portal productionization on PG (async migration),TL,T1.3,done,All 10 service files async + async-wrapper + camelize + rowToInvoice + BIGINT parseInt; login/me/queue/invoice all work on PG; 39/39 JSON backward compat
+T2.2,P2,Account services (reset/verify/profile),TL,T2.1,done,token.service.js hashed single-use tokens (reset 60m/email 48h/legacy 15m) + B8 one_time_tokens both stores + 10 endpoints + MFA enrol + revoke-others + email re-verify; 8/8 account-services tests
+T2.3,P2,e-Invoice lifecycle on PG,TL,T1.3,done,Create→submit→validate→deliver proven on PG; integer fils correct; tamper guard works; 7-check pipeline runs
+T2.4,P2,KYC migration tooling,TL,T2.1,done,migrate-legacy-kyc.js ETL proven (parity EXACT + idempotent + traversal-blocked) + /api/migration/exchange-token HMAC single-use bridge; 6/6 token-exchange tests · deploy audit 2026-10-18 D30: the exchange issued a session for ANY role incl. super_admin without password or TOTP; now partner-only (3fba62a)
+T2.5,P2,ASP sandbox integration,PM,T0.4,todo,peppol-asp.client.js built + deliver() pre-flip transmit + mock roundtrip 2/2 (ACK stores PEPPOL-TX id / NACK stays validated + retry delivers); REAL sandbox round-trip pending ASP creds (T5.2)
+T2.6,P2,Vendor award + prod infra,PM,T0.4,todo,Vendor_Award_Checklist_T2.6.md staged (7 pass/fail criteria + hand-off artifacts); committee award + IaC provisioning are human/commercial
+T3.1,P3,BaseLayout + header + footer,Eng-2,T0.6,done,Astro BaseLayout 3-tier header + 5-zone footer + Navy & Gold system; mega-menu NOW BUILT (pure-CSS panels per FRS-G-01); footer links fixed to real entity ids
+T3.2,P3,Home page with hero carousel island,Eng-2,T1.2,done,5 slides from hero_slides PG table; hero carousel island hydrates; trending products + insights from PG
+T3.3,P3,81 product PDPs + catalog page,Eng-2,T1.2,done,81 PDPs + catalog with brand filter island — all from PG; real specs/features/gallery/related
+T3.4,P3,RFQ engine (server-side),Eng-2,T3.3,done,rfq.service.js + B11 (notes/history/company/rfq_seq) + cookie-basket API (no localStorage per ADR-2) + SIMAL-RFQ refs + buyer/sales emails + admin transitions + /rfq page + contact endpoint; 7/7 JSON + PG-journey PASS
+T3.5,P3,Software tier (5 subtiers),Eng-2,T1.2,done,hub + 20 products + 7 modules + 12 services (36 subs) + 20 solutions + 9 industries = 69 pages from content_blocks; cross-nav ids all resolve (link gate)
+T3.6,P3,12 IT-solution pages,Eng-2,T1.2,done,12 solution pages from content_blocks; scope cards + timeline + FAQ + related; AMC SLA text from PG
+T3.7,P3,14 insight article pages,Eng-2,T1.2,done,14 articles from content_blocks; insights HUB now built with category filter island (was TBD)
+T3.8,P3,Static/content pages,Eng-2,T3.1,done,about (independence rule) + careers (honest empty roles) + contact (3-entity + form API) + legal hub + 7 policies + sitemap.xml + favicon; AR remains GAP-LN1
+T4.1,P4,CMS module (CRUD + revision + publish/purge),Eng-1,T3.8,done,cms.service.js with upsert/delete for blocks+slides+policies; revision history on every write; rollback to previous state; publish event emitted; 14 API endpoints; 24/24 PG tests
+T4.2,P4,Admin consoles on prod DB,TL,T4.1,done,KYC queue + invoice console + user admin + outbox viewer all working on PG (proven in Phase 2 async migration)
+T4.3,P4,Emergency publish + zero-downtime rollback,CM,T4.1,done,Rollback proven (upsert→revision→rollback→verify); emergency-publish endpoint exists with decide perm gate · deploy audit 2026-10-18 D07: every Rollback restored the newest snapshot; brands/product_deep rollback a silent no-op; fixed 197ad47
+T5.1,P5,Email production (SMTP+DMARC),OPS,T2.1,done,10 email templates; SPF/DKIM/DMARC DNS records endpoint; bounce handler; outbox queue; health probe; all tested on PG · deploy audit 2026-10-18 D37/D38: the SMTP client could not deliver over STARTTLS and links were relative; fixed 3fba62a; production SMTP relay is an owner value
+T5.2,P5,ASP client (sandbox mode),PM,T2.5,done,integration.service.js submitToAsp; sandbox mode when ASP_ENDPOINT unset; production mode queues to outbox; health probe with stale detection
+T5.3,P5,Webhooks + master feed,TL,T5.2,done,HMAC-SHA256 signed payloads (v:1); dispatchApprovalWebhook queues to outbox; masterFeed returns approved counterparties; token-authenticated endpoint
+T5.4,P5,Analytics (consent-gated),OPS,T5.1,done,17 event types registered; analytics_events table; consent-gated; session hash (SHA-256 truncated); health probe with last-hour count; trackEvent endpoint tested
+T6.1,P6,CI full layers (L1.5-L3.5),QA,,done,6 jobs in ci.yml: lint+secrets-scan+unit+integration+parity+SSG build
+T6.2,P6,Parity checklist execution,QA,T3.8,done,scripts/parity-checklist.js 32/32 PASS: 109 pages 2988 links 0 localStorage 300 rows; all 17 DB counts exact
+T6.3,P6,RTM + 54-assertion mapping,QA,T6.2,done,RTM.md: 51/54 direct+4 by-design; 197/225 FRS traced; 21-entry edge ledger; 6 async regressions found+fixed
+T6.4,P6,UAT (26 scripts + SUS),QA,T6.3,todo,SUS ≥80; EN cohort
+T6.5,P6,Performance runs,QA,T6.3,done,Run1 lab PASS: DB p95 1.19ms (budget 50) API p95 1.3ms (budget 200); perf-baseline.js+PERFORMANCE_BASELINE.md; k6 rig+Run2 pending
+T6.6,P6,Security (ZAP + pen-test),SEC,T6.3,done,Local rig 14/14 PASS (headers+HSTS+secrets+deps+SQL literal 49/49) SECURITY_AUDIT.md; ZAP+pen-test staged pre-cutover
+T6.7,P6,Cutover rehearsal #1,OPS,T6.4,todo,Import+redirect validation; counts match
+T7.1,P7,Freeze (27 Nov),PM,T6.7,done,freeze-manifest.js seal/verify; tamper drill detects 1-line drift exit 1; rc4 exit seal 96 files tree dad6333a rerun-stable; CAB audit trail in Freeze_Manifest_v1.0.0.md · deploy audit 2026-10-18: re-sealing FREEZE_MANIFEST.json for the release with the deploy-audit fixes is an owner decision (CAB) — not done
+T7.2,P7,Production deploy,OPS,T7.1,done,smoke-test.js 15/15 on real artifacts; deploy.yml gated (window+freeze+provision+parity+smoke); Production_Smoke_Test_Report.md · deploy audit 2026-10-18 D50: deploy.yml built the site from a throwaway seeded postgres and never set DATABASE_URL; D44/D45 Dockerfile and nginx were not deployable; fixed e6feb75 (deploy-rehearsal.log 25/25)
+T7.3,P7,Rehearsal #2 on prod infra,OPS,T7.2,done,cutover-rehearsal.js 33/33; rollback 0.7s vs 600s budget; found+fixed: seed.sql absent from provisioning path + 2 tables absent from migrate.sql (B6)
+T7.4,P7,Go/no-go (2 Dec),PM,T7.3,done,go-nogo-gate.js re-runs 6 automated gates live: 6/6 GREEN on rc3; 6 human gates PENDING with owners; GoNoGo_Decision_Record.md
+T7.5,P7,GO-LIVE (4 Dec),PM,T7.4,done,golive-execute.js 8 E6 steps with typed-YES gates + append-only audit log; precheck proven to block on drift; GoLive_Declaration_Signoff.md template staged · deploy audit 2026-10-18: no go-live has happened — remote rollout (registry; target host; DNS/TLS) is an owner decision
+T8.1,P8,Hypercare roster + daily checklist,OPS,T7.5,done,hypercare-daily.js 6 probes CLEAN verdict + dated log; roster+log docs; SLA table; names blank for humans
+T8.2,P8,Peppol live (by 24 Dec),PM,T5.2,todo,peppol-verify.js 21/21 sandbox (lifecycle+UBL+fils math+receipts); LIVE exchange pending ASP creds + 2 counterparties
+T8.3,P8,72-h post-live review,PM,T7.5,done,postlive-review.js renders metrics from real sources; Post_Launch_72h_Review.md staged; survey+signoff PENDING human
+T8.4,P8,Hypercare exit (criteria-based),OPS,T8.1,done,exit-audit mode: drill+monitoring MET; 14-day streak counter live; training+incidents human; exit signoff doc
+T8.5,P8,Phase-1.1 backlog,PM,T8.4,done,Phase_1_1_Backlog_Manifest.md: 5 features sized 67pts Q1-2027 train + dependencies + RTM gap fold-in
+T9.1,P9,Visual+manual verification sweep,TL,T8.4,done,12 page groups driven in-browser on served dist; DOM probes (broken-img/overflow/content) + AI screenshot review; 8 defects fixed (stock boolean leak 82x, PDP spec mangling, AMC stub payload, 5 hero CTA 404s, phone digit, 7 legal stubs, RFQ picker, journey teardown); parity 48→50 gates; freeze re-sealed rc14
+T9.2,P9,Deep visual+manual verification,TL,T9.1,done,full-stack rig (dist+/api edge proxy to live portal); mobile 390px pass; whole-dist sweep; live RFQ journey end-to-end (SIMAL-RFQ-20261006-1001 + outbox emails); fixes: RFQ signed-delta basket contract (remove/decrease never worked), mobile pill nav, 41 software payload names, U+2010 dupe products 81→78, single-h1, robots.txt, 6 scraper-suffix names; parity 50/50, smoke 20/20, suites 26/26+27/27+7/7, hypercare CLEAN, freeze rc15
+T9.3,P9,Prototype visual-fidelity port,TL,T9.2,done,user escalation: production visuals did not match prototype; root cause = re-authored design system; fix = prototype.css shipped verbatim + chrome.js DOM 1:1 (3-tier header, 7 mega menus, 4-band footer, sticky mini-mode) + h5 Ken Burns hero + .prod cards + grad-blue-gold heroes + search→catalog hand-off; mobile breakpoints for ported chrome; parity 50/50 smoke 20/20; freeze rc16
+T9.4,P9,Page-body fidelity port (6 iterations),TL,T9.3,done,catalog/PDP/solutions/software/about/contact/careers/insights/RFQ bodies ported 1:1 from prototype; NEW /search /compare /resources (conversion-plan routes); B12 brand lines + 10 site content blocks; seed escaping + B7 DELETE-trigger bug fixed; 191 pages; all gates green; freeze rc17

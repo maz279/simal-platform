@@ -1,0 +1,28 @@
+{
+  "name": "simal-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "workspaces": [
+    "apps/site",
+    "apps/portal",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:portal": "cd apps/portal && node src/server.js",
+    "dev:site": "cd apps/site && npx astro dev --port 8000",
+    "test": "npm run test:portal && npm run test:site",
+    "test:portal": "cd apps/portal && node --test test/unit/*.test.js",
+    "test:site": "cd apps/site && echo 'site tests — T3.x'",
+    "lint": "npx eslint . --ext .js,.mjs",
+    "migrate": "cd scripts && sh migrate.sh",
+    "seed": "node scripts/gen-seed.js && cd scripts && psql -h 127.0.0.1 -p 5433 -U simal -d simal -f seed.sql"
+  },
+  "devDependencies": {
+    "axe-core": "^4.14.0",
+    "eslint": "^9.0.0"
+  }
+}

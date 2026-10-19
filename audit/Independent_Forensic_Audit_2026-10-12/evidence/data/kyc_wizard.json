@@ -1,0 +1,2360 @@
+{
+ "steps": [
+  {
+   "tag": "01_entry",
+   "heading": "Let’s get started",
+   "progress": "",
+   "fields": [
+    {
+     "id": "gate-email",
+     "type": "email",
+     "req": false,
+     "label": "Your contact email *"
+    }
+   ],
+   "btns": [
+    "Continue"
+   ],
+   "err": []
+  },
+  {
+   "tag": "02_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": []
+  },
+  {
+   "tag": "03_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "04_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "05_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "06_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "07_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "08_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "09_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "10_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "11_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "12_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  },
+  {
+   "tag": "13_after_Continue",
+   "heading": "Let’s get started",
+   "progress": "1 Company 2 Tax & e-invoicing 3 Contacts 4 Signatories & UBO 5 Banking 6 Documents 7 Declare & submit",
+   "fields": [
+    {
+     "id": "f-legal_name_en",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (English) *"
+    },
+    {
+     "id": "f-legal_name_ar",
+     "type": "text",
+     "req": false,
+     "label": "Legal company name (Arabic) optional"
+    },
+    {
+     "id": "f-trade_name",
+     "type": "text",
+     "req": false,
+     "label": "Trade name / DBA optional"
+    },
+    {
+     "id": "f-entity_type",
+     "type": "select-one",
+     "req": false,
+     "label": "Legal entity type *"
+    },
+    {
+     "id": "f-country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country of incorporation *"
+    },
+    {
+     "id": "f-year_established",
+     "type": "text",
+     "req": false,
+     "label": "Year established optional"
+    },
+    {
+     "id": "f-license_number",
+     "type": "text",
+     "req": false,
+     "label": "Trade licence number *"
+    },
+    {
+     "id": "f-license_authority",
+     "type": "select-one",
+     "req": false,
+     "label": "Licensing authority *"
+    },
+    {
+     "id": "f-business_activity",
+     "type": "text",
+     "req": false,
+     "label": "Main business activity *"
+    },
+    {
+     "id": "f-license_issue",
+     "type": "date",
+     "req": false,
+     "label": "Licence issue date *"
+    },
+    {
+     "id": "f-license_expiry",
+     "type": "date",
+     "req": false,
+     "label": "Licence expiry date *"
+    },
+    {
+     "id": "f-addr_building",
+     "type": "text",
+     "req": false,
+     "label": "Building / office *"
+    },
+    {
+     "id": "f-addr_street",
+     "type": "text",
+     "req": false,
+     "label": "Street / area *"
+    },
+    {
+     "id": "f-addr_city",
+     "type": "text",
+     "req": false,
+     "label": "City *"
+    },
+    {
+     "id": "f-addr_emirate",
+     "type": "select-one",
+     "req": false,
+     "label": "Emirate / state *"
+    },
+    {
+     "id": "f-addr_country",
+     "type": "select-one",
+     "req": false,
+     "label": "Country *"
+    },
+    {
+     "id": "f-addr_po_box",
+     "type": "text",
+     "req": false,
+     "label": "PO Box optional"
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.billing_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-bill_building",
+     "type": "text",
+     "req": false,
+     "label": "Billing building / office *"
+    },
+    {
+     "id": "f-bill_street",
+     "type": "text",
+     "req": false,
+     "label": "Billing street / area *"
+    },
+    {
+     "id": "f-bill_city",
+     "type": "text",
+     "req": false,
+     "label": "Billing city & country *"
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "company.warehouse_address_same",
+     "type": "radio",
+     "req": false,
+     "label": ""
+    },
+    {
+     "id": "f-wh_building",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse building *"
+    },
+    {
+     "id": "f-wh_street",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse street / area *"
+    },
+    {
+     "id": "f-wh_city",
+     "type": "text",
+     "req": false,
+     "label": "Warehouse city & emirate *"
+    },
+    {
+     "id": "f-website",
+     "type": "text",
+     "req": false,
+     "label": "Website optional"
+    },
+    {
+     "id": "f-employees",
+     "type": "text",
+     "req": false,
+     "label": "Employees optional"
+    },
+    {
+     "id": "f-turnover",
+     "type": "text",
+     "req": false,
+     "label": "Annual turnover (AED) optional"
+    }
+   ],
+   "btns": [
+    "Back",
+    "Continue"
+   ],
+   "err": [
+    "Numbers only, please.",
+    "Numbers only, please.",
+    "Numbers only, please."
+   ]
+  }
+ ],
+ "api": [
+  "POST /api/public/drafts -> 201",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200",
+  "PUT /api/public/drafts/dft_61e890e1058d71152140 -> 200"
+ ],
+ "errs": []
+}

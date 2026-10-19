@@ -1,0 +1,15 @@
+PASS admin session
+PASS read site/contact (ar) — أوقات العمل: الأحد إلى الخميس من 09:00 إ
+PASS CMS edit of the Arabic hours note saved — HTTP 200
+PASS publish site/contact — HTTP 200
+PASS build pub_1792333130177 — processed
+PASS /ar/contact/ shows the CMS edit
+PASS original hours note restored
+PASS publish site/contact — HTTP 200
+PASS build pub_1792333138328 — processed
+PASS /ar/contact/ back to the original
+PASS Arabic home lead moved to the {years} token
+PASS publish site/home — HTTP 200
+PASS build pub_1792333148446 — processed
+PASS /ar/ lead shows site/counters years (24)
+AR CMS ROUND TRIP: ALL PASS

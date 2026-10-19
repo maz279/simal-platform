@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sign in — Simal Digital Platform</title>
+<link rel="icon" type="image/png" href="assets/img/brand/favicon-32.png"><link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body>
+<style>p.live-note{max-width:520px;margin:0 auto 22px;background:#E3F0FF;border:1.5px solid #B9D4F2;color:#0F4C9C;border-radius:12px;padding:12px 16px;font-size:13.5px;line-height:1.6;text-align:center}p.live-note a{font-weight:800;color:#0F4C9C}</style>
+<p class="live-note">🔬 This page is the <b>static prototype</b> (mock sign-in).<br>The <b>real KYC + e-invoicing portal</b> — with live backend, partner &amp; staff consoles — is at<br><a href="http://127.0.0.1:8090/login.html">http://127.0.0.1:8090/login.html →</a></p>
+<div class="ftr"></div>
+<section style="display:grid;grid-template-columns:1fr 1fr;min-height:100vh">
+  <div style="display:flex;flex-direction:column;justify-content:center;padding:60px 72px;background:var(--grad-blue-gold);color:#fff;position:relative;overflow:hidden">
+    <a class="logo" href="index.html" style="margin-bottom:40px"><img src="assets/img/brand/simal-logo-white-360w.png" alt="Simal Technologies Middle East" style="height:46px;width:auto;display:block"></a>
+    <h2 style="font-size:31px;line-height:1.3">One account for<br>quotes, documents<br><em style="color:var(--yellow);font-style:normal">&amp; e-invoicing.</em></h2>
+    <p style="color:#CFE0F3;margin-top:14px;max-width:420px">The KYC portal is now part of the platform — sign in once for RFQ history, your document vault with expiry alerts, and Peppol-ready billing.</p>
+    <div class="trust" style="margin-top:28px"><div>🛡 MFA for staff accounts</div><div>🧾 SIMAL-RFQ references</div><div>🔒 PDPL-compliant</div></div>
+  </div>
+  <div style="display:grid;place-items:center;background:var(--bg);padding:40px">
+    <div class="card card-p" style="padding:30px;width:100%;max-width:440px">
+      <div class="tabs"><span class="on" id="tab-in">Sign in</span><span id="tab-up">Create account</span></div>
+      <div id="pane-in">
+        <p class="note" style="margin:14px 0 22px">Partners, applicants &amp; staff sign in here.</p>
+        <div class="field"><label>Email</label><input class="in" id="in-email" type="email" placeholder="you@company.ae"></div>
+        <div class="field"><label>Password</label><input class="in" id="in-pass" type="password" placeholder="••••••••••">
+          <p class="hint"><a href="#" id="forgot">Forgot password?</a> · reset link valid 60 minutes</p></div>
+        <label class="consent" style="margin-bottom:18px"><input type="checkbox" id="in-keep" checked><span>Keep me signed in on this device (12h)</span></label>
+        <a class="btn btn-p btn-lg btn-block" id="in-go" style="cursor:pointer">Sign in →</a>
+        <div style="display:flex;align-items:center;gap:12px;margin:18px 0"><span style="flex:1;height:1px;background:var(--line)"></span><span class="note">or</span><span style="flex:1;height:1px;background:var(--line)"></span></div>
+        <a class="btn btn-o btn-block" href="#" id="in-link">Continue with one-time email link</a>
+        <div class="alert al-info" style="margin-top:20px;font-size:12.5px"><b>Staff &amp; reviewers:</b> MFA code required after password. 5 failed attempts locks the account for 15 minutes.</div>
+        <p class="hint" id="in-err" hidden style="color:var(--red);margin-top:12px"></p>
+      </div>
+      <div id="pane-up" hidden>
+        <p class="note" style="margin:14px 0 22px">Creating an account starts KYC onboarding — 7 steps, ≈10 minutes, resumable.</p>
+        <div class="field"><label>Work email</label><input class="in" id="up-email" type="email" placeholder="you@company.ae"></div>
+        <a class="btn btn-p btn-lg btn-block" style="margin-top:16px;cursor:pointer" id="up-go">Start onboarding →</a>
+        <p class="hint" id="up-err" hidden style="color:var(--red);margin-top:12px"></p>
+      </div>
+      <p style="font-size:12px;color:var(--slate-500);margin-top:18px;text-align:center">Old portal user? Your application carries over — sign in with the same email.</p>
+    </div>
+  </div>
+</section>
+<script src="assets/js/pages/login.js?v=131"></script>
+</body></html>

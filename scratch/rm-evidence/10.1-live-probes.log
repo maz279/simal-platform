@@ -1,0 +1,24 @@
+A0 ADMIN LOGIN true role: super_admin
+A. SUBMISSIONS 200 rows: 3
+    SIM-KYC-2026-10155 status: submitted ageDays: 1 slaBreached: false
+    SIM-KYC-2026-10154 status: approved ageDays: 1 slaBreached: false
+    SIM-KYC-2026-10153 status: rejected ageDays: 1 slaBreached: false
+B0. live catalogue slug picked: arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2 (underscore: true)
+B1. BASKET ADD (underscore slug) 200 {"lines":1,"totalQty":2,"basket":[{"slug":"arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2","qty":2,"note":"","na
+B2. RFQ SUBMIT 201 ref: SIMAL-RFQ-20261018-1030
+C. CONTACT 201 {"ok":true}
+D0 VIEWER LOGIN true
+D. VIEWER /api/admin/submissions?per=1 -> 403
+D. VIEWER /api/admin/users -> 403
+D. VIEWER /api/admin/settings -> 403
+D. VIEWER /api/einvoice/admin/queue -> 403
+D. VIEWER /api/integrations/health -> 403
+E. REVIEWER /api/admin/submissions?per=1 -> 200
+E. REVIEWER /api/admin/users -> 403
+E. REVIEWER /api/einvoice/admin/queue -> 200
+F. ANON /api/admin/submissions?per=1 -> 401
+F. ANON /api/cms/blocks -> 401
+G. REVIEWER REPORT 200 hasAE: false trnLeak: false
+   row sample: {"id":"SIM-KYC-2026-10155","company.legal_name_en":"UAT Customer Owner","tax.trn":"1005•••••456","banking.iban":"AE07 03•••• 456","contacts.primary.email":"uat•••"}
+H. REVIEWER OUTBOX 200 resetTokenLeak: false redacted: true
+EXIT=0

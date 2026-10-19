@@ -1,0 +1,148 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Simal Technologies ME — IT Distribution &amp; Software Services, Dubai</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script><script src="data/testimonials.js?v=131"></script><script src="data/insights.js?v=135"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+<style>.hero-search{display:flex;gap:10px;margin-top:18px}.hero-search input{flex:1;max-width:420px;border:1.5px solid rgba(255,255,255,.35);background:rgba(255,255,255,.10);color:#fff;border-radius:12px;padding:12px 16px;font:inherit;outline:none}.hero-search input::placeholder{color:#B9CBE0}</style>
+</head>
+<body data-page="home">
+<div id="chrome-top"></div>
+
+<section class="hero" id="hero5-sec" style="padding:0"><div class="wrap" style="padding:0;display:block">
+  <div id="hero5-stage" style="position:relative;height:520px;overflow:hidden"></div>
+  <div id="hero5-below" style="padding:20px 32px 26px;display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:start">
+    <div>
+      <div class="hero-search"><input id="hq" type="search" placeholder="Search products, brands, SKUs…"><button class="btn btn-gold" id="hqb">Search</button></div>
+      <div class="hero-trust trust">
+        <div>✓ 100% genuine · local warranty</div><div>🚚 JAFZA-fulfilled logistics</div><div>🛡 Peppol e-invoicing ready</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>📦 RFQ basket — quick quote <span class="badge b-ok" style="margin-left:auto" id="mini-count">0 items</span></h3>
+      <div id="mini-basket"></div>
+      <a class="btn btn-block btn-lg" style="background:var(--yellow);color:var(--ink);margin-top:16px" href="rfq.html">Submit RFQ — response ≤ 1 business day</a>
+      <p style="font-size:11.5px;color:#BDD6F0;margin-top:9px;text-align:center">No account needed · or hand off to WhatsApp</p>
+    </div>
+  </div>
+</div></section>
+
+<style>
+/* ---- elegant hero v2 (Redington-grade): Ken Burns, staggered entrances, grain ---- */
+.h5-slide{position:absolute;inset:0;opacity:0;transition:opacity .8s ease;pointer-events:none;display:flex;align-items:center;overflow:hidden}
+.h5-slide.on{opacity:1;pointer-events:auto}
+.h5-bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.h5-slide.on .h5-bgimg{animation:h5kb 7.6s ease-out both}
+@keyframes h5kb{from{transform:scale(1.02)}to{transform:scale(1.1)}}
+.h5-shade{position:absolute;inset:0}
+.h5-motif{position:absolute;inset:0;opacity:.5;pointer-events:none}
+.h5-slide.on .h5-motif{animation:h5kb 9s ease-out both}
+.h5-grain{position:absolute;inset:0;pointer-events:none;opacity:.05;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.6'/></svg>")}
+.h5-vignette{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 40%,transparent 55%,rgba(3,10,20,.42) 100%)}
+.h5-content{position:relative;z-index:2;max-width:680px;padding:0 48px}
+.h5-slide.on .h5-rule{animation:h5rise .7s .05s cubic-bezier(.2,.7,.2,1) both}
+.h5-slide.on .h5-kick{animation:h5rise .7s .12s cubic-bezier(.2,.7,.2,1) both}
+.h5-slide.on .h5-content h1{animation:h5rise .8s .2s cubic-bezier(.2,.7,.2,1) both}
+.h5-slide.on .h5-sub{animation:h5rise .8s .3s cubic-bezier(.2,.7,.2,1) both}
+.h5-slide.on .h5-cta{animation:h5rise .8s .4s cubic-bezier(.2,.7,.2,1) both}
+@keyframes h5rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.h5-rule{width:56px;height:2px;background:var(--g2);margin-bottom:14px}
+.h5-kick{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.22em;color:#E7D9B8;text-transform:uppercase;margin-bottom:14px}
+.h5-content h1{font-size:clamp(30px,3.1vw,46px);line-height:1.12;color:#fff;font-weight:700;letter-spacing:-.015em;max-width:620px;text-shadow:0 2px 24px rgba(3,10,20,.35)}
+.h5-sub{font-size:16.5px;line-height:1.7;color:#DAE5F0;margin-top:14px;max-width:560px}
+.h5-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.28);background:rgba(8,20,38,.28);color:#fff;font-size:19px;cursor:pointer;display:grid;place-items:center;transition:.25s;backdrop-filter:blur(6px)}
+.h5-arrow:hover{background:rgba(8,20,38,.62);border-color:rgba(255,255,255,.5)}
+.h5-arrow.l{left:22px}.h5-arrow.r{right:22px}
+.h5-bar{position:absolute;left:0;right:0;bottom:0;z-index:5;display:flex;align-items:center;gap:22px;padding:0 48px 20px;background:linear-gradient(transparent,rgba(4,12,24,.5))}
+.h5-dot{display:flex;align-items:center;gap:7px;cursor:pointer;padding:6px 0;font-size:11px;font-weight:600;letter-spacing:.12em;color:rgba(255,255,255,.5);position:relative;transition:.25s}
+.h5-dot b{font-weight:600}
+.h5-dot.on{color:#fff}
+.h5-dot .fill{position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--g2)}
+.h5-dot.on .fill{border-radius:0}
+.h5-prog{position:absolute;left:0;right:0;bottom:0;height:2px;z-index:6;background:rgba(255,255,255,.14)}
+.h5-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g2),#E7D9B8)}
+.h5-count{font-size:12px;font-weight:600;color:rgba(255,255,255,.85);letter-spacing:.18em;margin-left:auto}
+@media(max-width:900px){#hero5-stage{height:580px}.h5-content{max-width:100%;padding:0 26px}.h5-bar{padding:0 26px 16px;gap:12px}.h5-dot b{display:none}}
+@media(max-width:1080px){#hero5-below{grid-template-columns:1fr!important}}
+</style>
+
+
+<div class="cred"><div class="wrap" id="cred-strip"></div></div>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">One company, two engines</span><h2>Distribute with us. Build with us.</h2>
+  <p>Hardware at wholesale scale — and, new for 2026, enterprise software &amp; AI delivered by Simal + Unisoft Systems Ltd.</p></div></div>
+  <div class="split">
+    <div class="card card-p" style="border-top:4px solid var(--blue)">
+      <span class="badge b-blue">Distribution · Hardware</span>
+      <div style="display:flex;gap:12px;margin:14px 0 4px">
+        <img id="duo-img-1" alt="Crucial T705 SSD" style="width:96px;height:76px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px">
+        <img id="duo-img-2" alt="KOORUI gaming monitor" style="width:96px;height:76px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px">
+        <img id="duo-img-3" alt="UGREEN USB-C hub" style="width:96px;height:76px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px">
+      </div>
+      <h3 style="font-size:21px;margin:10px 0 8px">81 SKUs live · 23 brands · channel pricing</h3>
+      <p style="color:var(--slate);font-size:14px">Browse specs &amp; datasheets, build a multi-item RFQ basket, get a quote within one business day. Authorized stock with genuineness badges on every product.</p>
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><span class="chip on">Storage</span><span class="chip">Memory</span><span class="chip">Monitors</span><span class="chip">GPU</span><span class="chip">Accessories</span></div>
+      <a class="btn btn-p" style="margin-top:18px" href="category.html">Shop by category</a>
+    </div>
+    <div class="card card-p" style="border-top:4px solid var(--red)">
+      <span class="badge b-red">★ New — Software Services</span>
+      <div style="margin:14px 0 4px;border:1px solid var(--line);border-radius:12px;background:#0E1F33;padding:12px 14px;color:#CFE0F3;font-family:Consolas,monospace;font-size:11.5px;line-height:1.9">
+        <div style="color:#8CA2BC">DISTRIBUTION ERP · LIVE</div>
+        <div>SKU stock &nbsp;<span style="display:inline-block;width:120px;height:7px;border-radius:4px;background:linear-gradient(90deg,var(--g3),var(--g1) 70%,#1D2E42)"></span> <span style="color:var(--g2)">92%</span></div>
+        <div>Quotes SLA &nbsp;<span style="display:inline-block;width:88px;height:7px;border-radius:4px;background:linear-gradient(90deg,#16A34A,#4ADE80 70%,#1D2E42)"></span> <span style="color:#4ADE80">98%</span></div>
+        <div>Peppol &nbsp;✓ ready · UniVAT · UniPOS · AI forecasts</div>
+      </div>
+      <h3 style="font-size:21px;margin:10px 0 8px">ERPs, POS, custom builds &amp; AI — powered by Unisoft</h3>
+      <p style="color:var(--slate);font-size:14px">Distribution ERP, UniPOS, UniVAT + 12 engineering services. 40+ engineers, ISO 9001/27001, SOC 2, 24/7 support — delivered regionally by Simal.</p>
+      <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><span class="chip">Distribution ERP</span><span class="chip">UniPOS</span><span class="chip">AI &amp; ML</span><span class="chip">Cloud</span></div>
+      <a class="btn btn-a" style="margin-top:18px" href="software.html">Explore software services</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">Featured products</span><h2>Top products from the catalog</h2></div><a class="btn btn-o" href="category.html">View all 81 SKUs →</a></div>
+  <div style="display:flex;gap:16px;overflow-x:auto;padding:4px 2px 12px" id="featured-strip"></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">Brand showcase</span><h2>Authorized distributor for 23 global IT brands</h2></div><a class="btn btn-o" href="category.html#all">Browse by brand →</a></div>
+  <div id="brand-rows"></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">Software spotlight</span><h2>Ship your ERP with the people who distribute hardware</h2></div><a class="btn btn-o" href="software.html">All software products →</a></div>
+  <div class="grid g3">
+    <div class="card card-p"><div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">📦</div><span class="badge b-blue" style="margin-top:12px">Flagship ERP</span><h3 style="margin:10px 0 6px">Distribution ERP</h3><p style="color:var(--slate);font-size:13.5px">AI-powered supply-chain &amp; inventory built for distributors — by a partner that runs distribution daily.</p><a class="btn btn-o btn-sm" style="margin-top:14px" href="software-erp.html">Explore the flagship →</a></div>
+    <div class="card card-p"><div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">🛒</div><span class="badge b-blue" style="margin-top:12px">Retail</span><h3 style="margin:10px 0 6px">UniPOS</h3><p style="color:var(--slate);font-size:13.5px">Multi-location point-of-sale with real-time inventory — pair with our POS hardware line.</p><a class="btn btn-o btn-sm" style="margin-top:14px" href="software-products.html#unipos">See UniPOS detail →</a></div>
+    <div class="card card-p"><div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">🧾</div><span class="badge b-blue" style="margin-top:12px">Compliance</span><h3 style="margin:10px 0 6px">UniVAT &amp; e-invoicing</h3><p style="color:var(--slate);font-size:13.5px">NBR-approved VAT automation and UAE Peppol-ready invoicing tooling ahead of the 1 Jan 2027 mandate.</p><a class="btn btn-o btn-sm" style="margin-top:14px" href="software-products.html#univat">See UniVAT detail →</a></div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:var(--ink);color:#fff"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow" style="color:var(--yellow)">Proof, not promises</span><h2 style="color:#fff">Trusted by the channel — recognized by the brands</h2></div></div>
+  <div class="grid" style="grid-template-columns:1.3fr .7fr">
+    <div class="card card-p" style="background:#12233A;border-color:#1D2E42">
+      <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+        <div id="tst-av" style="width:42px;height:42px;border-radius:50%;background:#1D2E42;border:2px solid var(--g3);color:var(--g1);display:grid;place-items:center;font-weight:800;font-size:14px;flex:none">JG</div>
+        <div><div style="display:flex;gap:8px;align-items:center"><span style="color:var(--yellow)">★★★★★</span><b id="tst-name"></b></div></div>
+      </div>
+      <p style="color:#C6D2E0;font-size:14.5px" id="tst-quote"></p>
+      <div style="display:flex;gap:8px;margin-top:14px" id="tst-dots"></div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px">
+      <div class="card card-p" style="background:#12233A;border-color:#1D2E42;display:flex;gap:14px;align-items:center"><div style="width:46px;height:46px;border-radius:12px;background:var(--grad-gold-btn);display:grid;place-items:center;font-size:21px;flex:none">🏆</div><div><span class="badge b-red">Award 2025</span><p style="color:#fff;font-weight:700;margin-top:6px">HIKSEMi Best Distribution Partner — MEA National Distributor Summit</p></div></div>
+      <div class="card card-p" style="background:#12233A;border-color:#1D2E42;display:flex;gap:14px;align-items:center"><div style="width:46px;height:46px;border-radius:12px;background:var(--grad-gold-btn);display:grid;place-items:center;font-size:21px;flex:none">🏆</div><div><span class="badge b-red">Award 2025</span><p style="color:#fff;font-weight:700;margin-top:6px">TEAMGROUP — Best Partner 2025</p></div></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="sec" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+  <div class="sec-head"><div><span class="eyebrow">Tech Talk by Simal</span><h2>Latest insights</h2></div><a class="btn btn-o" href="insights.html">Visit Insights →</a></div>
+  <div class="grid g3" id="home-insights"></div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/home.js?v=138"></script>
+</body></html>

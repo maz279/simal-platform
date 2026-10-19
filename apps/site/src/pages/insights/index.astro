@@ -1,0 +1,126 @@
+---
+// insights/index.astro — the Insights hub. VISUAL CONTRACT: Prototype insights.html ported 1:1.
+// Restores Two-column hero with Monthly digest newsletter card, Category filters,
+// Big Featured Article banner, 3-column article list with author avatars, and
+// Gated 2026 Line card download module.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const rows = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'insight' AND lang = 'en' ORDER BY payload->>'at' DESC NULLS LAST`;
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const arts = rows.map((r: any) => ({ slug: r.entity_id, ...parse(r) }));
+
+const cats = [...new Set(arts.map(a => a.cat).filter(Boolean))].sort();
+const featured = arts[0] || null;
+const list = arts.slice(1);
+
+const fmtDate = (iso: string) => {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+};
+---
+
+<BaseLayout title="Insights & Newsroom — Simal Technologies" description="Storage strategy, vendor moves and UAE compliance — written by the desks that quote and ship daily.">
+  <!-- ===== Hero with Monthly Digest Card ===== -->
+  <section class="hero"><div class="wrap" style="padding:52px 28px 48px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:start">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">tech talk · by the people who move the stock</span>
+      <h1 style="font-size:34px;line-height:1.2;margin:12px 0">Field notes from the channel.</h1>
+      <p class="lead" style="color:#DAE5F0">Storage strategy, vendor moves and UAE compliance — written by the desks that quote and ship daily.</p>
+    </div>
+    <div class="hero-card">
+      <h3>📬 Monthly digest</h3>
+      <p style="font-size:13px;color:#CFE0F3;margin:8px 0 12px">Stock drops, promos &amp; e-invoicing deadlines. Double opt-in, one click out.</p>
+      <input class="in" id="i-mail" placeholder="Work email" style="width:100%;background:rgba(255,255,255,.08);border-color:#2C4159;color:#fff" aria-label="Work email for monthly digest">
+      <button class="btn btn-gold btn-block" id="i-go" style="margin-top:10px">Subscribe</button>
+      <p id="i-msg" style="display:none;font-size:12px;color:var(--yellow);margin-top:8px"></p>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Latest</span><h2>From the desks — {arts.length} articles, every one opens in full</h2></div></div>
+
+    <!-- Category Filters -->
+    <div id="filters" style="display:flex;gap:8px;flex-wrap:wrap;margin:0 0 20px">
+      <button class="chip on fchip" data-f="ALL" id="cat-all" style="cursor:pointer;font-size:13px;padding:8px 16px">All ({arts.length})</button>
+      {cats.map(c => {
+        const count = arts.filter(a => a.cat === c).length;
+        const cid = 'cat-' + c; // rm(6.2): breadcrumb links use #cat-${rawCat} — ids must match exactly
+        return <button class="chip fchip" data-f={c} id={cid} style="cursor:pointer;font-size:13px;padding:8px 16px">{c} ({count})</button>;
+      })}
+    </div>
+
+    <!-- Featured Article Banner — carries data-cat so the chip filter counts it
+         (chips count all arts; the banner is arts[0], the grid is arts.slice(1)) -->
+    {featured && (
+      <div id="featured" data-cat={featured.cat} style="margin-bottom:24px">
+        <div class="card sol-card" style="overflow:hidden;position:relative;display:grid;grid-template-columns:320px 1fr;align-items:stretch">
+          <a class="go2" href={`/insights/${featured.slug}/`} aria-label={`Read ${featured.t}`}></a>
+          <div style="min-height:220px;background:linear-gradient(120deg,var(--blue-050),#fff 80%);display:grid;place-items:center;font-size:12.5px;font-weight:800;color:var(--blue);letter-spacing:.14em;text-align:center;padding:14px">
+            {featured.cat}<br />{featured.mins} MIN READ<br />{fmtDate(featured.at).toUpperCase()}
+          </div>
+          <div class="card-p" style="padding:24px 28px">
+            <h3 style="font-size:22px;margin:0 0 8px;line-height:1.3;max-width:820px">{featured.t}</h3>
+            <p style="color:var(--slate);font-size:14px;line-height:1.7;max-width:900px">{featured.x}</p>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:16px;justify-content:space-between;flex-wrap:wrap">
+              <div style="display:flex;gap:10px;align-items:center">
+                <div class="avatar" style="width:32px;height:32px;font-size:12px;background:var(--blue-050);color:var(--blue);border-radius:50%;display:grid;place-items:center;font-weight:700">
+                  {String(featured.author || 'S')[0]}
+                </div>
+                <b style="font-size:13px">{featured.author}</b>
+                {featured.tags && featured.tags.length > 0 && <span class="note" style="color:var(--slate);font-size:12px">· {featured.tags[0]}</span>}
+              </div>
+              <span class="btn btn-p btn-sm" style="pointer-events:none">Read the full article →</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+
+    <!-- List of Articles -->
+    <div class="grid g3" id="list">
+      {list.map(a => (
+        <div class="card card-p sol-card art-card" data-cat={a.cat} style="position:relative;height:100%">
+          <a class="go2" href={`/insights/${a.slug}/`} aria-label={`Read ${a.t}`}></a>
+          <div style="display:flex;gap:8px;align-items:center;justify-content:space-between">
+            <span style="font-size:10.5px;font-weight:800;letter-spacing:.08em;color:var(--blue)">{a.cat}</span>
+            <span style="font-size:11px;color:var(--slate)">{a.mins} min · {fmtDate(a.at)}</span>
+          </div>
+          <b style="display:block;font-size:15.5px;line-height:1.35;margin-top:8px">{a.t}</b>
+          <p style="font-size:12.5px;color:var(--slate);margin:7px 0 0;line-height:1.55">{(a.x || '').slice(0, 130)}…</p>
+          <span style="display:block;font-size:11.5px;color:var(--slate);margin-top:auto;padding-top:10px">
+            {a.author} · <b style="color:var(--blue)">Read →</b>
+          </span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Download Line Card Module -->
+    <div class="sec-head" style="margin-top:44px"><div><span class="eyebrow">Line card</span><h2>Download the 2026 line card</h2></div></div>
+    <div class="card card-p" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap">
+      <div style="font-size:34px">📄</div>
+      <div style="flex:1">
+        <b>Simal 2026 line card — all 21 brands, 78 SKUs</b>
+        <p class="note" style="color:var(--slate);font-size:12.5px;margin:3px 0 0">PDF · updated monthly · includes Peppol readiness checklist</p>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <input class="in" id="g-mail" type="email" placeholder="Work email (gated)" style="width:220px" aria-label="Work email to receive the PDF line card">
+        <button class="btn btn-p" id="g-go">Get the PDF →</button>
+      </div>
+    </div>
+  </div></section>
+  <script src="/assets/js/insights-page.js?v=2" defer></script>
+</BaseLayout>
+
+<style>
+  .go2 { position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+  .sol-card { transition: .18s; }
+  .sol-card:hover { border-color: var(--blue); box-shadow: 0 10px 26px rgba(0,64,128,.14); }
+  @media(max-width:900px){
+    .hero .wrap { grid-template-columns: 1fr!important; padding: 36px 20px 32px!important; }
+    #featured .sol-card { grid-template-columns: 1fr!important; }
+  }
+</style>
+
+

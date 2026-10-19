@@ -1,0 +1,19 @@
+[1] login through the form
+  PASS login page 200, no exceptions
+  PASS staff login lands on the admin console — /admin.html
+  PASS admin console: no exceptions
+[2] CMS views
+  PASS cms.html 200
+  PASS all 32 CMS views render with 0 exceptions and no error toasts
+  PASS no failed API calls while touring the CMS
+[3] sidebar clicks + pipeline
+  PASS sidebar item "Editorial Desk" visible
+  PASS sidebar click opens Editorial Desk
+  PASS dashboard "Publish pipeline" link visible
+  PASS dashboard link opens the publish pipeline
+  PASS pipeline lists processed publishes
+  PASS navigation editor loads site/nav-menus with all 8 menus (valid JSON payload) — 8
+[4] logout
+  PASS logout ends the session (/api/auth/me -> 401) — 401
+
+CMS E2E iteration 4: 13 pass, 0 fail

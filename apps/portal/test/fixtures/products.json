@@ -1,0 +1,488 @@
+[
+ {
+  "slug": "1672",
+  "name": "Honeywell HC000018/SRG/1.5M/WHT/5/2U/UK Platinum Series 5 Extension Cord",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black",
+  "name": "Aiwa 22 Flat Slim Monitor, 75Hz, Fhd, Hdmi,Vga 56X36X11 Cm Black",
+  "brand": "aiwa",
+  "cat": "gaming"
+ },
+ {
+  "slug": "aiwa-mf2203-v-21-5-inch-fhd-black-slim-led-display-hdmi-vga-monitor",
+  "name": "Aiwa MF2203-V 21.5 Inch FHD Black Slim LED Display HDMI, VGA Monitor",
+  "brand": "aiwa",
+  "cat": "monitors"
+ },
+ {
+  "slug": "aiwa-mf240e-v-flat-slim-monitor",
+  "name": "Aiwa MF240E-V Flat Slim Monitor",
+  "brand": "aiwa",
+  "cat": "monitors"
+ },
+ {
+  "slug": "arktek-geforce-gt610-2gb-ddr3-64-bit-hdmi-dvi-vga",
+  "name": "ARKTEK GeForce GT610 2GB DDR3 64-bit HDMI/DVI/VGA",
+  "brand": "arktek",
+  "cat": "accessories"
+ },
+ {
+  "slug": "arktek-gt730-4gb-ddr3-128bit-low-profile",
+  "name": "ARKTEK GT730 - 4GB, DDR3, 128BIT, LOW PROFILE",
+  "brand": "arktek",
+  "cat": "gaming"
+ },
+ {
+  "slug": "arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2",
+  "name": "ARKTEK RTX3060 LED GA104-150-A1 3584SP GDDR6 12GB 1320~1777 12Gbps 192 3*DP, 1*HDMI Dual 460*390*485mmARKTEK RTX3060 LED GA104-150-A1 3584SP GDDR6 12GB 1320~1777 12Gbps 192 3*DP, 1*HDMI Dual 460 * 390 * 485mm Brand: ARKTEK",
+  "brand": "arktek",
+  "cat": "gaming"
+ },
+ {
+  "slug": "crucial-ddr4-pro-memory",
+  "name": "Crucial DDR4 Pro Memory",
+  "brand": "crucial",
+  "cat": "memory"
+ },
+ {
+  "slug": "crucial-ddr5-memory-desktop-and-laptop",
+  "name": "Crucial DDR5 Memory Desktop and Laptop",
+  "brand": "crucial",
+  "cat": "memory"
+ },
+ {
+  "slug": "crucial-ddr5-pro-memory",
+  "name": "Crucial DDR5 Pro Memory",
+  "brand": "crucial",
+  "cat": "memory"
+ },
+ {
+  "slug": "crucial-overlocking-ddr5-pro-memory",
+  "name": "Crucial Overlocking DDR5 Pro Memory",
+  "brand": "crucial",
+  "cat": "memory"
+ },
+ {
+  "slug": "crucial-p3",
+  "name": "Crucial P3",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-p3-plus",
+  "name": "Crucial P3 Plus",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-p310-2230",
+  "name": "Crucial P310 2230",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-p310-2280",
+  "name": "Crucial P310 2280",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-p510-nvme-ssd",
+  "name": "Crucial P510 1TB PCIe Gen5 NVMe M.2 SSD",
+  "brand": "crucial",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "crucial-t500",
+  "name": "Crucial T500",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-t500-heatsink",
+  "name": "Crucial T500 Heatsink",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-t700-ssd",
+  "name": "Crucial T700 SSD",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-t700-ssd-heatsink",
+  "name": "Crucial T700 SSD Heatsink",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-t705-ssd",
+  "name": "Crucial T705 SSD Heatsink",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-t705-ssd-2",
+  "name": "Crucial T705 SSD",
+  "brand": "crucial",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "crucial-x10-pro-portable-ssd",
+  "name": "Crucial X10 Pro Portable SSD",
+  "brand": "crucial",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "crucial-x9-portable-ssd",
+  "name": "Crucial X9 Portable SSD",
+  "brand": "crucial",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "crucial-x9-pro-portable-ssd",
+  "name": "Crucial X9 Pro Portable SSD",
+  "brand": "crucial",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "dell-15-laptop-14th-gen-intel-core-3",
+  "name": "Dell 15 Laptop \\u2013 14th Gen Intel Core 3, 15.6\\u2033 FHD 120Hz",
+  "brand": "dell",
+  "cat": "laptops"
+ },
+ {
+  "slug": "elite-7s-portable-ssd",
+  "name": "Elite 7S Portable SSD",
+  "brand": "hiksemi",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "gtx1030-2gb-gddr5-64-bit-hdmi-dvi-vga",
+  "name": "GTX1030 2GB GDDR5 64-bit HDMI/DVI/VGA",
+  "brand": "other",
+  "cat": "gaming"
+ },
+ {
+  "slug": "hc000017-srg-1-5m-wht-6-uk",
+  "name": "HC000017/SRG/1.5M/WHT/6/UK",
+  "brand": "other",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-3-out-surge-cube-spike-guard",
+  "name": "Honeywell 3 Out Surge Cube, Spike Guard",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-3-out-surge-protector-with-master-switch",
+  "name": "Honeywell 3 Out Surge Protector with Master Switch",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-4-out-surge-protector-with-master-switch",
+  "name": "Honeywell 4 Out Surge Protector with Master Switch",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-6-out-surge-protector-with-master-switch-spike-guard-ex_24b617a1",
+  "name": "Honeywell 6 Out Surge Protector with Master Switch, Spike Guard/Extension board",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-6-out-surge-protector-with-master-switch-spike-guard-extension-board",
+  "name": "Honeywell 6 Out Surge Protector with Master Switch, Spike Guard/Extension board",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-8-out-surge-protector-with-master-switch",
+  "name": "Honeywell 8 Out Surge Protector with Master Switch",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-hc000016-srg-1-5m-wht-4-uk-platinum-series-4-extension-cord",
+  "name": "Honeywell HC000016/SRG/1.5M/WHT/4/UK Platinum Series 4 Extension Cord",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-surge-protector-4-universal-sockets",
+  "name": "Honeywell Surge Protector, 4 Universal Sockets",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-surge-protector-spike-guard-power-extension-board-4-uni_a13c0ee0",
+  "name": "Honeywell Surge Protector/Spike Guard/Power Extension Board, 4 Universal Sockets,",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-surge-protector-spike-guard-power-extension-board-4-universal-sockets",
+  "name": "Honeywell Surge Protector/Spike Guard/Power Extension Board, 4 Universal Sockets,",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-surge-protector-spike-guard-power-extension-power-strip-8-universal-sockets",
+  "name": "Honeywell Surge Protector/Spike Guard/Power Extension/Power Strip, 8 Universal Sockets",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "honeywell-universal-world-travel-adapter",
+  "name": "Honeywell Universal World Travel Adapter",
+  "brand": "honeywell",
+  "cat": "accessories"
+ },
+ {
+  "slug": "hp-laptop",
+  "name": "HP Laptop, 14\\u2033 2K Display",
+  "brand": "hp",
+  "cat": "laptops"
+ },
+ {
+  "slug": "hs-essd-t100i-portable-ssd",
+  "name": "HS-ESSD-T100i Portable SSD",
+  "brand": "other",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "hs-ssd-e100",
+  "name": "HS\\u2010SSD\\u2010E100",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "hs-ssd-e1000",
+  "name": "HS\\u2010SSD\\u2010E1000",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "hs-ssd-e100n",
+  "name": "HS\\u2010SSD\\u2010E100N",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "hs-ssd-future",
+  "name": "HS-SSD-FUTURE",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "hs‐ssd‐e100",
+  "name": "HS\\u2010SSD\\u2010E100",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "hs‐ssd‐e1000",
+  "name": "HS\\u2010SSD\\u2010E1000",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "hs‐ssd‐e100n",
+  "name": "HS\\u2010SSD\\u2010E100N",
+  "brand": "other",
+  "cat": "internal-ssd"
+ },
+ {
+  "slug": "kingston-xs1000-1tb-portable-ssd-red",
+  "name": "Kingston XS1000 1TB Portable SSD \\u2013 Pocket-Sized High-Speed Storage",
+  "brand": "kingston",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "koorui-27-inch-curved-gaming-monitor",
+  "name": "KOORUI Curved 27 Inch Gaming Monitor",
+  "brand": "koorui",
+  "cat": "gaming"
+ },
+ {
+  "slug": "koorui-27-inch-gaming-monitor",
+  "name": "Koorui 27 inch 1920*1080 GAMING MONITOR- Simal Technologies",
+  "brand": "koorui",
+  "cat": "monitors"
+ },
+ {
+  "slug": "koorui-34-inch-gaming-monitor",
+  "name": "KOORUI 34-inch Curved Ultrawide Gaming Monitor",
+  "brand": "koorui",
+  "cat": "monitors"
+ },
+ {
+  "slug": "lenovo-ideapad-slim-3-i5-13th-gen-15-3-inch",
+  "name": "Lenovo IdeaPad Slim 3 \\u2013 13th Gen Intel Core i5, 15.3",
+  "brand": "lenovo",
+  "cat": "laptops"
+ },
+ {
+  "slug": "msi-b450m-a-pro-max-ii-motherboard",
+  "name": "MSI B450M-A PRO MAX II Motherboard-simal technologies",
+  "brand": "msi",
+  "cat": "accessories"
+ },
+ {
+  "slug": "nearity-c30r",
+  "name": "Nearity C30R \\u2013 4K All-In-One Conference Camera | Simal Technologies UAE",
+  "brand": "nearity",
+  "cat": "accessories"
+ },
+ {
+  "slug": "rtx2060-6gb-gddr6-192-bit-dual-1dp-1hdmi-1dvi",
+  "name": "RTX2060 6GB GDDR6 192-bit Dual 1*DP, 1*HDMI, 1*DVI",
+  "brand": "other",
+  "cat": "gaming"
+ },
+ {
+  "slug": "samsung-t7-shield-portable-ssd-1tb",
+  "name": "Samsung T7 Shield Portable SSD-simal technologies",
+  "brand": "samsung",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "sandisk-extreme-pro-256gb-microsdxc",
+  "name": "SanDisk Extreme Pro 256GB microSDXC UHS-I-simal technologies",
+  "brand": "sandisk",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "teamgroup-ted34g1600c1101-4gb-ddr3",
+  "name": "TEAMGROUP TED34G1600C1101 4GB DDR3",
+  "brand": "teamgroup",
+  "cat": "accessories"
+ },
+ {
+  "slug": "toshiba-2tb-portable-external-hdd-2",
+  "name": "TOSHIBA 2TB Portable External Hard Drive-simal technologies",
+  "brand": "toshiba",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "toshiba-canvio-ready-2tb-portable-external-hdd",
+  "name": "Toshiba Ready 2TB Portable External HDD-simal technologies",
+  "brand": "toshiba",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-5-in-1-usb-c-hub",
+  "name": "UGREEN 5-in-1 USB-C Hub",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-cat-6-u-utp-lan-cable-black",
+  "name": "UGreen Cat 6 U/UTP Lan Cable- Black",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-cat-7-shielded-round-cable-with-braided-modular-plugs",
+  "name": "UGREEN CAT 7 Shielded Round Cable with Braided Modular Plugs",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-cat-7-u-ftp-lan-cable-flat-design-10m-black",
+  "name": "UGREEN Cat 7 U/FTP Lan Cable Flat Design (Black)",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-cat8-pure-copper-ethernet-cable-braided-black",
+  "name": "UGREEN Cat8 Ethernet Cable Braided Black \\u2013 High-Speed Gigabit Cable UAE",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-dp-1-4-male-to-male-plastic-case-braided-cable",
+  "name": "Ugreen DP 1.4 male to male plastic case braided cable",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-dp-male-to-male-cable",
+  "name": "Ugreen DP Male to Male Cable",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-hdmi-cables-am-m-cable-with-braided",
+  "name": "Ugreen HDMI Cables Am/m Cable With Braided",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-hdmi-cables-black",
+  "name": "Ugreen HDMI Cables Black",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-high-end-hdmi-cable-with-nylon-braid-black",
+  "name": "Ugreen High-end HDMI Cable with Nylon Braid Black",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-revodok-pro-209-9-in-1-4k-hdmi-universal-docking-station",
+  "name": "UGREEN Revodok Pro 209 9-in-1 4k HDMI Universal Docking Station",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-revodok-pro-210-10-in-1-usb-c-hub",
+  "name": "UGREEN Revodok Pro 210 10 in 1 USB C Hub",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-revodok-pro-312-12-in-1-4k-hdmi-universal-docking-station",
+  "name": "UGREEN Revodok Pro 312 12-in-1 4k HDMI Universal Docking Station",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-revodok-pro-313-13-in-1-usb-c-docking-station",
+  "name": "UGREEN Revodok Pro 313 13 in 1 USB C Docking Station",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-usb-c-hub-10-in-1-usb-c-dongle-with-4k-hdmi-vga-dual-monitor",
+  "name": "UGREEN USB C Hub, 10-in-1 USB-C Dongle with 4K HDMI & VGA Dual Monitor",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "ugreen-vga-male-to-male",
+  "name": "Ugreen VGA Male to Male",
+  "brand": "ugreen",
+  "cat": "accessories"
+ },
+ {
+  "slug": "western-digital-sn7100-wd-nvme-ssd",
+  "name": "WD SN7100 NVMe SSD | High-Speed Storage Solution",
+  "brand": "wd",
+  "cat": "portable-ssd"
+ },
+ {
+  "slug": "wind-pro-portable-ssd",
+  "name": "Wind Pro Portable SSD",
+  "brand": "other",
+  "cat": "portable-ssd"
+ }
+]

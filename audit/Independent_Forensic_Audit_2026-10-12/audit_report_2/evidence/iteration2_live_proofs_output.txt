@@ -1,0 +1,36 @@
+=== 1. CSRF synchronizer-token bypass (F-2026-N02) ===
+A. evil Origin, NO token      -> 403 {"error":"Cross-origin request blocked: untrusted origin","requestId":"5cccb175-65a8-46e9-
+B. evil Origin, BOGUS token   -> 200 (PASSED CSRF layer with a fake token — BYPASS CONFIRMED)
+C. no Origin (same-site)      -> 200 (control: normal logout works)
+
+=== 2. Partner role RBAC (original SEC-3/F-3 critical) ===
+2.0 provision partner: 400 {"error":"Role must be one of: super_admin, reviewer, viewer","requestId":"54d6b6d9-1486-4e88-a312-6
+2.1 partner login: FAILED
+2.2 partner on 12 privileged routes: leaks = 0 (ALL DENIED — SEC-3 verified live)
+2.3 partner /api/einvoice/mine -> 401 (expected 200: partner session valid)
+2.4 partner foreign document  -> 401 (expect 403)
+2.5 cleanup probe user: 404
+
+=== 3. Rollback safety (DAT-4/5) ===
+3.0 current announcement text: "AUDIT2-MV9PF03D — forensic control-loop probe"
+3.1 revisions held: 9 | latest: "⚡ Gen5 is here — Crucial P510 now in Dubai stock."
+3.2 rollback #1: 200 {"ok":true,"rolled_back":true,"to":"1792079418267"}
+3.3 text after rollback #1: "AUDIT2-MV9PQRP1 — forensic control-loop probe"
+3.4 text after rollback #2: "AUDIT2-MV9PF03D — forensic control-loop probe" (rollback-of-rollback exercised = yes)
+3.5 shared content_blocks untouched by announcement rollback: {"id":108,"entity":"site","entity_id":"featured-products","lang":"en","payload":
+
+=== 4. Reset-token redaction at write time (SEC-4) ===
+4.0 reset request: 200 {"ok":true,"message":"If the address matches an account, a reset link has been sent."}
+4.1 newest reset email body redacted: NO | rawTokenPresent: false
+    body snippet: 
+0. RESTORED original announcement text: 200 "⚡ Gen5 is here — Crucial P510 now in Dubai stock."
+0b verified current text: "⚡ Gen5 is here — Crucial P510 now in Dubai stock."
+
+1.0 public register partner: 201 {"user":{"id":"usr_53bd36af1220d726b206","email":"audit2-partner@simal.test","name":"Audit2 Partner Probe","ro
+1.1 partner login: OK role=partner
+1.2 partner on 16 privileged routes: denied=16, ibanLeaks=0 — SEC-3 VERIFIED LIVE (was Critical F-3)
+1.3 partner /api/einvoice/mine -> 200 (own surface reachable)
+
+2.0 fresh reset request: 200
+2.1 admin outbox keys: 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99 | rows: 0
+2.x no rows parsed — dump first 300 chars: [{"id":"msg_6b8116f3fc72a555d3ac","channel":"email","to":"viewer@simalme.local","subject":"Simal portal — password reset (valid 60 minutes)","text":"A password reset was requested for your account.\nOpen /login.html?reset=[REDACTED] within 60 minutes to choose a new password.\nIf you did not request

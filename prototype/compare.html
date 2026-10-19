@@ -1,0 +1,36 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Compare Products — Simal Technologies</title>
+<link rel="icon" type="image/png" href="assets/img/brand/favicon-32.png">
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script><script src="data/content.js?v=131"></script>
+<script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="catalog">
+<div id="chrome-top"></div>
+
+<div class="wrap"><div class="crumbs"><a href="index.html">Home</a> › <a href="category.html">Products</a> › <b>Compare</b></div></div>
+
+<section style="padding:8px 0 64px"><div class="wrap">
+  <span class="eyebrow">Side by side — up to 4 SKUs</span>
+  <h1 style="font-size:28px;font-weight:800;margin:6px 0 6px">Compare products</h1>
+  <p style="color:var(--slate);max-width:720px;margin-bottom:20px">Pick up to four SKUs and compare specs side by side — whether it's SSDs for a server upgrade or monitors for an office deployment.</p>
+
+  <div class="card card-p" style="padding:18px;margin-bottom:26px">
+    <b style="font-size:14px">Build your comparison</b>
+    <div class="grid g4" style="gap:12px;margin-top:12px" id="pick-grid"></div>
+    <button class="btn btn-p btn-sm" style="margin-top:14px" id="cmp-go">Compare selected →</button>
+    <span class="note" style="margin-left:10px" id="cmp-note"></span>
+  </div>
+
+  <div class="sec-head"><div><span class="eyebrow">Popular comparison — from the content package</span><h2>SSD performance tiers — choose your Crucial NVMe</h2></div></div>
+  <div class="card card-p" style="padding:0;overflow-x:auto">
+    <table class="tbl" id="tier-tbl"></table>
+  </div>
+
+  <div class="sec-head" style="margin-top:36px"><div><span class="eyebrow">Your comparison</span><h2>Selected SKUs</h2></div></div>
+  <div id="cmp-result"></div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/compare.js?v=131"></script>
+</body></html>

@@ -1,0 +1,5 @@
+=== rm(6.1) ONE SOURCE OF TRUTH PER FACT — EVIDENCE Sat Oct 17 12:23:23 MPST 2026 ===
+FULL SWEEP: 243 pages, 239 brand-count matches -> ONE value (21); the sweep found the LAST divergent literal — insight 'simal-two-decades' body said '23 brands' in the DB payload (not in any source file) -> fixed in DB + republished; WhatsApp single number confirmed (wa.me/971...x1)
+AWARDS: home==about identical from site/awards block; DISCOVERED+FIXED: the 4.2 probe had left a probe entry ('CMS Award 4.2 Proof') in the live block (restore had written the mutated version) -> canonical 2-entry block restored via UTF8-safe node client, republished, verified on BOTH served pages
+GATE HARDENED: 5-page one-number assertions (home+about+careers+insights+onboarding) + awards PRESENCE+consistency (weak false===false form replaced); NEGATIVE TEST: diverging careers to '25 brands' -> gate FAILS with exact divergence message; restored -> green
+SUITES: 83/83; CI lint+chrome-blocks+link-crawl 3/3

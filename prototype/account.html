@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>My Account — Simal Digital Platform</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="account">
+<style>.go2{position:absolute;inset:0;z-index:1;border-radius:inherit}</style>
+<div id="chrome-top"></div>
+<div class="wrap"><div class="crumbs"><a href="index.html">Home</a> › <b>My account</b> · <a href="http://127.0.0.1:8090/login.html" style="color:var(--blue);font-weight:700">Open the live portal (KYC + e-invoicing) →</a></div></div>
+
+<section style="padding:8px 0 64px"><div class="wrap">
+  <div class="panel-shell" style="display:grid;grid-template-columns:240px 1fr;align-items:start;gap:0">
+    <aside class="side" style="border-radius:16px 0 0 16px">
+      <div style="padding:18px 16px">
+        <div class="avatar" style="width:44px;height:44px;font-size:17px" id="a-av">S</div>
+        <div style="margin-top:10px"><b id="a-name" style="color:#fff">Partner</b>
+        <div style="font-size:12px;color:#8CA2BC" id="a-mail">—</div></div>
+      </div>
+      <nav class="s-nav">
+        <a class="on" data-v="home">🏠 Partner Home</a>
+        <a data-v="kyc">🛡 KYC Status</a>
+        <a data-v="rfq">🧾 RFQ History</a>
+        <a data-v="orders">📦 Orders &amp; Invoices</a>
+        <a data-v="docs">📁 Document Vault</a>
+        <a data-v="notif">🔔 Notifications</a>
+        <a id="logout" style="color:#F0A5AB">⏻ Sign out</a>
+      </nav>
+    </aside>
+    <div class="p-main">
+      <div class="p-top"><b>Partner Home</b><span class="note" id="a-sub"></span></div>
+      <div class="p-body" style="padding:22px">
+        <div class="grid g4" style="margin-bottom:22px">
+          <div class="kpi blue"><span style="font-size:26px;font-weight:800" id="k-rfq">0</span><span style="font-size:12px;color:#BDD6F0">RFQs submitted</span></div>
+          <div class="kpi gold"><span style="font-size:26px;font-weight:800" id="k-quotes">0</span><span style="font-size:12px;color:#F2E4B8">Quotes received</span></div>
+          <div class="kpi green"><span style="font-size:26px;font-weight:800" id="k-docs">0</span><span style="font-size:12px;color:#CFE8DA">Documents on file</span></div>
+          <div class="kpi red"><span style="font-size:14px;font-weight:700" id="k-kyc">—</span><span style="font-size:12px;color:#F3C9CE">KYC status</span></div>
+        </div>
+
+        <div id="v-home">
+          <div class="card card-p" style="border-left:4px solid var(--blue)">
+            <b>Welcome back 👋</b>
+            <p style="color:var(--slate);font-size:13.5px;margin-top:6px">Build an RFQ from the catalog, track quotes, and keep your trade licence current — one place.</p>
+            <div style="display:flex;gap:10px;margin-top:12px;flex-wrap:wrap"><a class="btn btn-p btn-sm" href="category.html">Browse catalog</a><a class="btn btn-o btn-sm" href="rfq.html">New RFQ</a></div>
+          </div>
+          <h4 style="margin:22px 0 10px;font-size:16px">Recent activity</h4>
+          <div id="recent"></div>
+        </div>
+
+        <div id="v-kyc" hidden>
+          <div id="kyc-box"></div>
+        </div>
+
+        <div id="v-rfq" hidden>
+          <div id="rfq-list"></div>
+        </div>
+
+        <div id="v-orders" hidden><div id="orders-list"></div></div>
+
+        <div id="v-docs" hidden>
+          <div id="doc-list"></div>
+        </div>
+
+        <div id="v-notif" hidden>
+          <div id="notif-list"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/account.js?v=131"></script>
+</body></html>

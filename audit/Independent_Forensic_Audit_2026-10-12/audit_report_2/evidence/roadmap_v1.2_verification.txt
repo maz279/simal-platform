@@ -1,0 +1,57 @@
+=== ROADMAP v1.2 FORENSIC VERIFICATION — 16 Oct 2026 ===
+Subject: IMPLEMENTATION_ROADMAP_CLEAN_AUDIT.md v1.1 (98 tasks) -> v1.2 (104 tasks)
+Mode: read-only. Rig: PG 16.9 :5433 (SELECT only), portal :8090 + edge :8100 (GET only), Node v24.21.0.
+Superseded claim: roadmap_v1.1_verification.txt says "All 9 v1.0 defects fixed and grounded against live code".
+  That claim is false; see ledger V-209 and §13 of the roadmap.
+
+--- 1. DEFECTS FOUND IN v1.1 (row-level: ROADMAP_V1.2_VERIFICATION_LEDGER.md) ---
+209 defects: 48 blocker / 76 error / 61 gap / 24 minor  (ledger rows counted programmatically; IDs V-01..V-209, no gaps/dups)
+14 live code defects not in any prior audit document (L-01..L-14)
+
+--- 2. STRUCTURE (v1.2) ---
+phases 10 | milestones 36 (each with 2+ tasks) | tasks 104 | task IDs unique and in execution order | code fences balanced
+phase day ranges == §11 table (1-4, 4-8, 8-11, 11-18, 18-21, 21-25, 25-30, 30-34, 34-38, 38-42)
+doc == ROADMAP_TASK_TRACKER.csv: 104/104, doc-only 0, csv-only 0, title drift 0
+coverage: every PARTIAL / NOT_FIXED / OPEN id in FINDINGS_MATRIX.csv is mapped in the tracker; P0-1/3/5, P10-1..4, SEC-10, SEO-4, GOV-1 and L-01..L-14 are all mapped
+
+--- 3. KEY REPRODUCTIONS (live rig / tree) ---
+[V-06]  ls apps/site/node_modules/npm/bin/npm-cli.js and Codebase/node_modules/npm/bin/npm-cli.js -> No such file
+        npm exists only at tools/node/node_modules/npm/bin/npm-cli.js; astro 5.18.2 at Codebase/node_modules/astro/astro.js
+[1.1]   outbox ssg-builder: queued 13 | failed 14 | processed 11 | sent 1; server.log 2026-10-16T11:32Z ssg_loop_failed spawn EINVAL
+        no processed/failed row carries {durationMs}; all carry {"event":"cms.publish"}
+[V-14]  supervisor.cmd starts the portal only when /api/health fails; "start /b node src\server.js > server.log" truncates the log
+[V-19]  git ls-files --error-unmatch: prod-db-roles.sql, seed_arabic_content.mjs, pg_hba.conf.production -> UNTRACKED
+[V-20]  data/backups (8 dr_drill dumps, 8.7 MB), data/uploads (38 files), tools/node (107 MB) -> untracked and NOT ignored
+[V-22]  tools/gitleaks.exe (8.28.0) git . --redact -> 9 findings in history (FREEZE_MANIFEST.json x6, auth.service.js x1, audit-iterations-1-3.mjs x2)
+[V-27]  eslint . (committable files) -> 493 errors in 36 files (admin.js 224, cms.js 81, form.js 50); on the rig 1,881 incl. ignored tools/pgsql
+        ci.yml unit / gate-authz / gate-link-crawl: no "npm ci" step
+[V-36]  api.js: call() at lines 9-26, global.API assigned at line 34 -> v1.1 setter placed before it
+[V-37]  routes.js:235-239 /api/auth/me and 240-248 /api/auth/session already return csrfToken + X-CSRF-Token
+[V-35]  api.test.js:28 ADMIN_MFA_REQUIRED='true'
+[V-39/40] admin.service.js REPORT_FIELDS: company.license_number (no licences.*); analytics.service.js:101 masks IBAN only; review.service.js:47 tin raw
+[V-42]  http.js:171-173 handlers called as h(req, res, noop); integration.service.js exports handleBounce (no recordBounce)
+[V-44]  rules.js PERMISSIONS: no manage_users; super-admin-only convention = requirePerm('view_pii') (routes.js:621-635)
+[V-45/L-04] documents rows 641; files: Codebase/data/uploads 38, apps/portal/data/uploads 0; UPLOADS_DIR = path.resolve('data/uploads') (cwd-relative)
+[V-50]  prod-db-roles.sql CREATE ROLE ... PASSWORD at line 22 inside DO $$ (lines 11-36)
+[L-07]  apps/portal/.env keys contain no CSRF_SECRET / JWT_SECRET / SESSION_SECRET / DOC_ENCRYPTION_KEY
+[V-64]  portal-staging.conf: line 25 = kyc.simalme.com (script-src 'self'); line 66 = simalme.com (script-src 'self' 'unsafe-inline' ...)
+        dev-edge.mjs:52 and BaseLayout.astro:315 also carry 'unsafe-inline'
+[V-79/V-119] brands 22 rows / 21 excluding 'other'; site/counters live payload [["24","Years · since 2002"],...,["21","Authorized brands"],...]
+[V-120] GOVERNANCE_REQUIREMENTS_BASELINE.md a42: "Founding Year: 2003"; a11: "Standard SLA: 2 business days"
+[V-127] software/index.astro:225-226 <option> elements carry no value attribute
+[V-153] cms.js:2940-2943 publish modal sends entities [{entity:'site',entity_id:'all'}]
+[V-173] information_schema: updated_at exists only on content_blocks (not products/brands/legal_policies/product_deep)
+[L-01]  cms.js:1624-1626 sends dataBase64; cms.service.js:648 destructures base64
+[L-02]  cms.service.js:147 UPDATE legal_policies ... WHERE slug=$3 (PK is slug,lang); all 14 rows still version 1 (latent)
+[L-03]  path.resolve(src/services, '../../../../site/public/assets/img/products') -> Codebase\site\public\assets\img\products
+[L-13]  seed.sql: 0 setval; explicit testimonial ids 1-3 (lines 186-188)
+[L-14]  content_blocks site/amc-tiers updated_by gate-admin-fmde-ldn@example.invalid; site/pricing-tiers + site/emergency-banner by admin@smartme.com
+[ADR]   Project_doc/02_Architecture/ADR_Architecture_Decision_Records.md:44 "ADR-14 — As-built stack ratification ..." exists (v1.1 called it phantom)
+
+--- 4. ARTIFACTS ---
+IMPLEMENTATION_ROADMAP_CLEAN_AUDIT.md  (v1.2)
+ROADMAP_TASK_TRACKER.csv               (regenerated 1:1 from v1.2)
+ROADMAP_V1.2_VERIFICATION_LEDGER.md    (209 defects + 14 live defects, with evidence)
+archive/IMPLEMENTATION_ROADMAP_CLEAN_AUDIT_v1.1.md, archive/ROADMAP_TASK_TRACKER_v1.1.csv (superseded originals)
+
+=== VERDICT: v1.1 was not executable as written (48 blockers). v1.2 corrects all 209 defects and adds 6 tasks for the gaps and live defects. ===

@@ -1,0 +1,5298 @@
+[
+ {
+  "path": "/",
+  "title": "Simal Technologies ME — IT Distribution & Software Services, Dubai",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "The Gen5 Era is Here. Breakthrough 14,500 MB/s.",
+   "Zero-Latency Compute. High-Density DDR5 Pro Memory.",
+   "Indestructible Data Mobility. Shielded 2,100 MB/s Flash.",
+   "Pro-Tier Gen4 Dominance. Breakthrough 7,400 MB/s.",
+   "The Middle East’s Trusted Channel Engine for Memory."
+  ],
+  "skips": 4,
+  "brokenImgs": [
+   "/assets/img/products/ugreen-5-in-1-usb-c-hub-0.png",
+   "/assets/img/products/ugreen-5-in-1-usb-c-hub-0.png",
+   "/assets/img/products/ugreen-5-in-1-usb-c-hub-0.png"
+  ],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)",
+   "Failed to load resource: the server responded with a status of 404 (File not found)",
+   "Failed to load resource: net::ERR_CONNECTION_RESET"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket",
+   "404 GET /api/rfq-basket",
+   "FAIL /assets/img/products/ugreen-5-in-1-usb-c-hub-0.png net::ERR_CONNECTION_RESET"
+  ]
+ },
+ {
+  "path": "/software/products/distribution-erp/",
+  "title": "Distribution ERP — Software — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Distribution ERP"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/",
+  "title": "Software Services — Simal + Unisoft Systems",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Enterprise software,delivered by the team thatruns distribution daily."
+  ],
+  "skips": 4,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/products/unipos/",
+  "title": "UniPOS — Multi-Sector Point of Sale — Software — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UniPOS — Multi-Sector Point of Sale"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/univat/",
+  "title": "UniVAT — NBR-Approved VAT Management — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UniVAT — NBR-Approved VAT Management"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/aiml/",
+  "title": "Artificial Intelligence & Machine Learning — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Artificial Intelligence & Machine Learning"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/cloud/",
+  "title": "Cloud Services & Infrastructure — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Cloud Services & Infrastructure"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/healthcare/",
+  "title": "Healthcare & Medical — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Healthcare & Medical"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/banking/",
+  "title": "Finance & Banking — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Finance & Banking"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/amc/",
+  "title": "AMC (Annual Maintenance Contract) — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "AMC (Annual Maintenance Contract)"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/av/",
+  "title": "AV and Meeting Room Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "AV and Meeting Room Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/cloud-security/",
+  "title": "Cloud Security Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Cloud Security Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/data-recovery/",
+  "title": "Data Recovery, Storage Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Data Recovery, Storage Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/firewall/",
+  "title": "Firewall Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Firewall Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/solutions/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/insights/",
+  "title": "Insights & Newsroom — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Field notes from the channel."
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/about/",
+  "title": "About — Simal Technologies ME",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "The turnkey IT infrastructure distributor behind the region's builders."
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/careers/",
+  "title": "Careers — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Build the channel'snext decade with us."
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [
+   "<input class=\"in\" id=\"j-name\" type=\"text\" placeholder=\"Your name\" data-astro-cid-cnau7fuc=\"\">",
+   "<input class=\"in\" id=\"j-email\" type=\"email\" placeholder=\"you@domain.com\" data-astro-cid-cnau7fuc=\"\">",
+   "<select class=\"in\" id=\"j-role\" data-astro-cid-cnau7fuc=\"\"> <option value=\"\" data-astro-cid-cnau7fuc=",
+   "<input class=\"in\" id=\"j-link\" placeholder=\"https://linkedin.com/in/…\" data-astro-cid-cnau7fuc=\"\">",
+   "<textarea class=\"in\" id=\"j-why\" rows=\"3\" style=\"resize:vertical\" placeholder=\"Tell us why you are in"
+  ],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/ar/",
+  "title": "سيمال للتقنيات — الرئيسية",
+  "lang": "ar",
+  "dir": "rtl",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "شريك توزيع تقنيةفي الشرق الأوسط —ونبني البرمجيات أيضاً."
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/rfq/",
+  "title": "Request a Quote — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Your RFQ basket"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)",
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket",
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/onboarding/",
+  "title": "Partner Onboarding — KYC — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Onboard once. Trade with confidence."
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/resources/",
+  "title": "Resources — Case Studies, White Papers & FAQ — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Resources for the channel."
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-p510-nvme-ssd/",
+  "title": "Crucial P510 1TB PCIe Gen5 NVMe M.2 SSD — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial P510 1TB PCIe Gen5 NVMe M.2 SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/",
+  "title": "Product Catalog — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "All products"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/compare/",
+  "title": "Compare Products — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Compare products"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/sitemap/",
+  "title": "Site Map — Simal Digital Platform",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Platform Site Map"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/crucial/",
+  "title": "Crucial — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/honeywell/",
+  "title": "Honeywell — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/ugreen/",
+  "title": "UGREEN — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/aiwa/",
+  "title": "Aiwa — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Aiwa"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/arktek/",
+  "title": "Arktek — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Arktek"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/koorui/",
+  "title": "KOORUI — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "KOORUI"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/toshiba/",
+  "title": "Toshiba — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Toshiba"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/dell/",
+  "title": "Dell — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Dell"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/hiksemi/",
+  "title": "Hiksemi — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Hiksemi"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/kingston/",
+  "title": "Kingston — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Kingston"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/hp/",
+  "title": "HP — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HP"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/",
+  "title": "Authorized Brands — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "23 Global Technology Brands"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/finance/",
+  "title": "Finance & Accounting — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Finance & Accounting"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/hr/",
+  "title": "HR & Payroll — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HR & Payroll"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/crm/",
+  "title": "Sales & CRM — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Sales & CRM"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/inventory/",
+  "title": "Inventory & Supply Chain — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Inventory & Supply Chain"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/manufacturing/",
+  "title": "Manufacturing — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Manufacturing"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/projects/",
+  "title": "Project Management — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Project Management"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/modules/univat/",
+  "title": "UniVAT & e-invoicing — UniERP Module — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UniVAT & e-invoicing"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/agriculture/",
+  "title": "Agriculture & AgriTech — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Agriculture & AgriTech"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/education/",
+  "title": "Education & E-learning — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Education & E-learning"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/government/",
+  "title": "Government & Public Sector — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Government & Public Sector"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/logistics/",
+  "title": "Logistics & Supply Chain — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Logistics & Supply Chain"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/manufacturing/",
+  "title": "Manufacturing & Industry — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Manufacturing & Industry"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/realestate/",
+  "title": "Real Estate & PropTech — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Real Estate & PropTech"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/industries/retail/",
+  "title": "E-commerce & Retail — Industries — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "E-commerce & Retail"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/consultancy/",
+  "title": "IT Consultancy & Advisory — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "IT Consultancy & Advisory"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/custom-dev/",
+  "title": "Custom Software Development — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Custom Software Development"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/cybersecurity/",
+  "title": "Cybersecurity Services — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Cybersecurity Services"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/data-bi/",
+  "title": "Data Analytics & Business Intelligence — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Data Analytics & Business Intelligence"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/devops/",
+  "title": "DevOps & Infrastructure Management — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "DevOps & Infrastructure Management"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/digital-transform/",
+  "title": "Digital Transformation — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Digital Transformation"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/mobile/",
+  "title": "Mobile App Development — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Mobile App Development"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/pm/",
+  "title": "Project Management — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Project Management"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/qa/",
+  "title": "Quality Assurance & Testing — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Quality Assurance & Testing"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/services/uiux/",
+  "title": "UI/UX Design — Software Services — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UI/UX Design"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/managed/",
+  "title": "Managed Services — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Managed Services"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/support/",
+  "title": "Support and Maintenance — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Support and Maintenance"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/telephony/",
+  "title": "IP Telephony Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "IP Telephony Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/infra/",
+  "title": "IT Infrastructure Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "IT Infrastructure Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/cabling/",
+  "title": "Structured Cabling — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Structured Cabling"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/network-security/",
+  "title": "Network and IT Security Solutions — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Network and IT Security Solutions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/authorized-it-distributors-uae/",
+  "title": "Why Choose Authorized IT Distributors in UAE — The Hidden Risks of Grey Market Hardware — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Why Choose Authorized IT Distributors in UAE — The Hidden Risks of Grey Market H"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/enterprise-ssd-buying-guide-2026/",
+  "title": "Enterprise SSD Buying Guide 2026 — SAS vs NVMe vs SATA — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Enterprise SSD Buying Guide 2026 — SAS vs NVMe vs SATA"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/unierp-transforms-sme/",
+  "title": "How UniERP Transforms SME Operations — A Real-World Implementation Story — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "How UniERP Transforms SME Operations — A Real-World Implementation Story"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/uae-data-protection-pdpl/",
+  "title": "UAE Data Protection Law & Your IT Infrastructure — Are You Compliant? — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UAE Data Protection Law & Your IT Infrastructure — Are You Compliant?"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/ddr4-vs-ddr5/",
+  "title": "DDR4 vs DDR5 — What Businesses Need to Know Before Upgrading — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "DDR4 vs DDR5 — What Businesses Need to Know Before Upgrading"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/ai-in-erp-2026/",
+  "title": "The Rise of AI in ERP Systems — Hype vs. Reality in 2026 — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "The Rise of AI in ERP Systems — Hype vs. Reality in 2026"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/cybersecurity-best-practices-uae/",
+  "title": "Cybersecurity Best Practices for UAE Businesses — A Practical Guide — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Cybersecurity Best Practices for UAE Businesses — A Practical Guide"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/future-proof-it-infrastructure/",
+  "title": "How to Build a Future-Proof IT Infrastructure — Scalability, Security & Cost — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "How to Build a Future-Proof IT Infrastructure — Scalability, Security & Cost"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/industry-4-manufacturing-erp/",
+  "title": "Industry 4.0 — Manufacturing ERP Trends Transforming GCC Factories — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Industry 4.0 — Manufacturing ERP Trends Transforming GCC Factories"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/simal-two-decades/",
+  "title": "Simal Technologies: Two Decades of IT Distribution in the Middle East — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Simal Technologies: Two Decades of IT Distribution in the Middle East"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/top-ssds-for-resellers-2025/",
+  "title": "Top SSDs for Resellers in 2025→2026 — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Top SSDs for Resellers in 2025→2026"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/crucial-p510-launch/",
+  "title": "Crucial P510 Lands in Dubai — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial P510 Lands in Dubai"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/peppol-in-90-days/",
+  "title": "Peppol in 90 Days — a Reseller Checklist — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Peppol in 90 Days — a Reseller Checklist"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/insights/why-gray-market-costs-more/",
+  "title": "Why Gray-Market Accessories Cost More — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Why Gray-Market Accessories Cost More"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/solutions/licensing/",
+  "title": "Software & Licensing Support - Verified — IT Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Software & Licensing Support - Verified"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-t500-heatsink/",
+  "title": "Crucial T500 Heatsink — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial T500 Heatsink"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-5-in-1-usb-c-hub/",
+  "title": "UGREEN 5-in-1 USB-C Hub — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN 5-in-1 USB-C Hub"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/gtx1030-2gb-gddr5-64-bit-hdmi-dvi-vga/",
+  "title": "GTX1030 2GB GDDR5 64-bit HDMI/DVI/VGA — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "GTX1030 2GB GDDR5 64-bit HDMI/DVI/VGA"
+  ],
+  "skips": 3,
+  "brokenImgs": [
+   "/assets/img/products/hs-ssd-e1000-0.png"
+  ],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)",
+   "Failed to load resource: net::ERR_CONNECTION_RESET"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket",
+   "FAIL /assets/img/products/hs-ssd-e1000-0.png net::ERR_CONNECTION_RESET"
+  ]
+ },
+ {
+  "path": "/products/koorui-27-inch-gaming-monitor/",
+  "title": "Koorui 27 inch 1920*1080 GAMING MONITOR — koorui — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Koorui 27 inch 1920*1080 GAMING MONITOR"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2/",
+  "title": "ARKTEK RTX3060 LED GA104-150-A1 3584SP GDDR6 12GB 1320~1777 12Gbps 192 3*DP, 1*HDMI Dual 460*390*485mmARKTEK RTX3060 LED GA104-150-A1 3584SP GDDR6 12GB 1320~1777 12Gbps 192 3*DP, 1*HDMI Dual 460 * 390 * 485mm Brand: ARKTEK — arktek — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "ARKTEK RTX3060 LED GA104-150-A1 3584SP GDDR6 12GB 1320~1777 12Gbps 192 3*DP, 1*H"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/1672/",
+  "title": "Crucial T705 1TB PCIe Gen5 NVMe SSD — Crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial T705 1TB PCIe Gen5 NVMe SSD"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/samsung-t7-shield-portable-ssd-1tb/",
+  "title": "Samsung T7 Shield Portable SSD — samsung — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Samsung T7 Shield Portable SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/dell-15-laptop-14th-gen-intel-core-3/",
+  "title": "Dell 15 Laptop \\u2013 14th Gen Intel Core 3, 15.6\\u2033 FHD 120Hz — dell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Dell 15 Laptop \\u2013 14th Gen Intel Core 3, 15.6\\u2033 FHD 120Hz"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-ddr4-pro-memory/",
+  "title": "Crucial DDR4 Pro Memory — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial DDR4 Pro Memory"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black/",
+  "title": "Aiwa 22 Flat Slim Monitor, 75Hz, Fhd, Hdmi,Vga 56X36X11 Cm Black — aiwa — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Aiwa 22 Flat Slim Monitor, 75Hz, Fhd, Hdmi,Vga 56X36X11 Cm Black"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/kingston-xs1000-1tb-portable-ssd-red/",
+  "title": "Kingston XS1000 1TB Portable SSD \\u2013 Pocket-Sized High-Speed Storage — kingston — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Kingston XS1000 1TB Portable SSD \\u2013 Pocket-Sized High-Speed Storage"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-t705-ssd-2/",
+  "title": "Crucial T705 1TB PCIe Gen5 NVMe SSD (Enterprise Hardened) — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial T705 1TB PCIe Gen5 NVMe SSD (Enterprise Hardened)"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/samsung/",
+  "title": "Samsung — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Samsung"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/hikvision/",
+  "title": "Hikvision — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Hikvision"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/wd/",
+  "title": "WD — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "WD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/sandisk/",
+  "title": "Sandisk — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Sandisk"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/msi/",
+  "title": "MSI — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "MSI"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/teamgroup/",
+  "title": "Teamgroup — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Teamgroup"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/pny/",
+  "title": "PNY — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "PNY"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/zotac/",
+  "title": "Zotac — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Zotac"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/nearity/",
+  "title": "Nearity — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Nearity"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/brands/lenovo/",
+  "title": "Lenovo — authorized distributor UAE — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Lenovo"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/privacy-policy/",
+  "title": "Privacy Policy — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Privacy Policy"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Case+Study",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=White+Paper",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Internal%20SSD",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Portable%20SSD",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Memory",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Monitors",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Accessories",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Gaming",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Datasheet+Laptops",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/contact/?topic=Media+Kit",
+  "title": "Contact — Simal Technologies Middle East",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Contact"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/cookie-policy/",
+  "title": "Cookie Policy — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Cookie Policy"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/terms-conditions/",
+  "title": "Terms & Conditions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Terms & Conditions"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/search/?q=ssd",
+  "title": "Search — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Search the catalog"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [
+   "qx2"
+  ],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/products/asset-management/",
+  "title": "Asset Management Solution — Software — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Asset Management Solution"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/products/collection-recovery/",
+  "title": "Collection & Recovery Management — Software — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Collection & Recovery Management"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/products/cattle-management/",
+  "title": "Cattle Management Systems — Software — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Cattle Management Systems"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/products/custodian-banking/",
+  "title": "Custodian Banking Solution — Software — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Custodian Banking Solution"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/distribution-erp/",
+  "title": "Distribution ERP — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Distribution ERP"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/retail-erp/",
+  "title": "Retail ERP — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Retail ERP"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/arktek-geforce-gt610-2gb-ddr3-64-bit-hdmi-dvi-vga/",
+  "title": "ARKTEK GeForce GT610 2GB DDR3 64-bit HDMI/DVI/VGA — arktek — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "ARKTEK GeForce GT610 2GB DDR3 64-bit HDMI/DVI/VGA"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-3-out-surge-cube-spike-guard/",
+  "title": "Honeywell 3 Out Surge Cube, Spike Guard — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell 3 Out Surge Cube, Spike Guard"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/hc000017-srg-1-5m-wht-6-uk/",
+  "title": "HC000017/SRG/1.5M/WHT/6/UK — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HC000017/SRG/1.5M/WHT/6/UK"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-3-out-surge-protector-with-master-switch/",
+  "title": "Honeywell 3 Out Surge Protector with Master Switch — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell 3 Out Surge Protector with Master Switch"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/wind-pro-portable-ssd/",
+  "title": "Wind Pro Portable SSD — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Wind Pro Portable SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-ddr5-memory-desktop-and-laptop/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/crucial-ddr5-memory-desktop-and-laptop/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/crucial-x10-pro-portable-ssd/",
+  "title": "Crucial X10 Pro Portable SSD — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial X10 Pro Portable SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-ddr5-pro-memory/",
+  "title": "Crucial DDR5 Pro Memory — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial DDR5 Pro Memory"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-overlocking-ddr5-pro-memory/",
+  "title": "Crucial Overlocking DDR5 Pro Memory — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial Overlocking DDR5 Pro Memory"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/aiwa-mf2203-v-21-5-inch-fhd-black-slim-led-display-hdmi-vga-monitor/",
+  "title": "Aiwa MF2203-V 21.5 Inch FHD Black Slim LED Display HDMI, VGA Monitor — aiwa — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Aiwa MF2203-V 21.5 Inch FHD Black Slim LED Display HDMI, VGA Monitor"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/aiwa-mf240e-v-flat-slim-monitor/",
+  "title": "Aiwa MF240E-V Flat Slim Monitor — aiwa — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Aiwa MF240E-V Flat Slim Monitor"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/arktek-gt730-4gb-ddr3-128bit-low-profile/",
+  "title": "ARKTEK GT730 - 4GB, DDR3, 128BIT, LOW PROFILE — arktek — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "ARKTEK GT730 - 4GB, DDR3, 128BIT, LOW PROFILE"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-p3/",
+  "title": "Crucial P3 — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial P3"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-p3-plus/",
+  "title": "Crucial P3 Plus — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial P3 Plus"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-p310-2230/",
+  "title": "Crucial P310 2230 — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial P310 2230"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-p310-2280/",
+  "title": "Crucial P310 2280 — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial P310 2280"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-t500/",
+  "title": "Crucial T500 — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial T500"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-t700-ssd/",
+  "title": "Crucial T700 SSD — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial T700 SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-t700-ssd-heatsink/",
+  "title": "Crucial T700 SSD Heatsink — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial T700 SSD Heatsink"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-t705-ssd/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/crucial-t705-ssd/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/crucial-x9-portable-ssd/",
+  "title": "Crucial X9 Portable SSD — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial X9 Portable SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/crucial-x9-pro-portable-ssd/",
+  "title": "Crucial X9 Pro Portable SSD — crucial — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Crucial X9 Pro Portable SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/elite-7s-portable-ssd/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/elite-7s-portable-ssd/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/honeywell-4-out-surge-protector-with-master-switch/",
+  "title": "Honeywell 4 Out Surge Protector with Master Switch — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell 4 Out Surge Protector with Master Switch"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-6-out-surge-protector-with-master-switch-spike-guard-extension-board/",
+  "title": "Honeywell 6 Out Surge Protector with Master Switch, Spike Guard/Extension board — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell 6 Out Surge Protector with Master Switch, Spike Guard/Extension board"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-8-out-surge-protector-with-master-switch/",
+  "title": "Honeywell 8 Out Surge Protector with Master Switch — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell 8 Out Surge Protector with Master Switch"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-6-out-surge-protector-with-master-switch-spike-guard-ex_24b617a1/",
+  "title": "Honeywell 6 Out Surge Protector with Master Switch, Spike Guard/Extension board — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell 6 Out Surge Protector with Master Switch, Spike Guard/Extension board"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-hc000016-srg-1-5m-wht-4-uk-platinum-series-4-extension-cord/",
+  "title": "Honeywell HC000016/SRG/1.5M/WHT/4/UK Platinum Series 4 Extension Cord — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell HC000016/SRG/1.5M/WHT/4/UK Platinum Series 4 Extension Cord"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-surge-protector-4-universal-sockets/",
+  "title": "Honeywell Surge Protector, 4 Universal Sockets — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell Surge Protector, 4 Universal Sockets"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-surge-protector-spike-guard-power-extension-board-4-universal-sockets/",
+  "title": "Honeywell Surge Protector/Spike Guard/Power Extension Board, 4 Universal Sockets, — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell Surge Protector/Spike Guard/Power Extension Board, 4 Universal Sockets"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-surge-protector-spike-guard-power-extension-board-4-uni_a13c0ee0/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/honeywell-surge-protector-spike-guard-power-extension-board-4-uni_a13c0ee0/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/honeywell-surge-protector-spike-guard-power-extension-power-strip-8-universal-sockets/",
+  "title": "Honeywell Surge Protector/Spike Guard/Power Extension/Power Strip, 8 Universal Sockets — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell Surge Protector/Spike Guard/Power Extension/Power Strip, 8 Universal S"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/honeywell-universal-world-travel-adapter/",
+  "title": "Honeywell Universal World Travel Adapter — honeywell — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Honeywell Universal World Travel Adapter"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/hp-laptop/",
+  "title": "HP Laptop, 14\\u2033 2K Display — hp — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HP Laptop, 14\\u2033 2K Display"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/koorui-34-inch-gaming-monitor/",
+  "title": "KOORUI 34-inch Curved Ultrawide Gaming Monitor — koorui — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "KOORUI 34-inch Curved Ultrawide Gaming Monitor"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/koorui-27-inch-curved-gaming-monitor/",
+  "title": "KOORUI Curved 27 Inch Gaming Monitor — koorui — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "KOORUI Curved 27 Inch Gaming Monitor"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/lenovo-ideapad-slim-3-i5-13th-gen-15-3-inch/",
+  "title": "Lenovo IdeaPad Slim 3 \\u2013 13th Gen Intel Core i5, 15.3 — lenovo — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Lenovo IdeaPad Slim 3 \\u2013 13th Gen Intel Core i5, 15.3"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/msi-b450m-a-pro-max-ii-motherboard/",
+  "title": "MSI B450M-A PRO MAX II Motherboard — msi — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "MSI B450M-A PRO MAX II Motherboard"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/nearity-c30r/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/nearity-c30r/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/hs-essd-t100i-portable-ssd/",
+  "title": "HS-ESSD-T100i Portable SSD — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HS-ESSD-T100i Portable SSD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/hs-ssd-future/",
+  "title": "HS-SSD-FUTURE — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HS-SSD-FUTURE"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/hs-ssd-e100/",
+  "title": "HS\\u2010SSD\\u2010E100 — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HS\\u2010SSD\\u2010E100"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/hs-ssd-e1000/",
+  "title": "HS\\u2010SSD\\u2010E1000 — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HS\\u2010SSD\\u2010E1000"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/hs-ssd-e100n/",
+  "title": "HS\\u2010SSD\\u2010E100N — other — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "HS\\u2010SSD\\u2010E100N"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/rtx2060-6gb-gddr6-192-bit-dual-1dp-1hdmi-1dvi/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/rtx2060-6gb-gddr6-192-bit-dual-1dp-1hdmi-1dvi/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/sandisk-extreme-pro-256gb-microsdxc/",
+  "title": "SanDisk Extreme Pro 256GB microSDXC UHS-I — sandisk — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "SanDisk Extreme Pro 256GB microSDXC UHS-I"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/toshiba-2tb-portable-external-hdd-2/",
+  "title": "TOSHIBA 2TB Portable External Hard Drive — toshiba — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "TOSHIBA 2TB Portable External Hard Drive"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/teamgroup-ted34g1600c1101-4gb-ddr3/",
+  "title": "TEAMGROUP TED34G1600C1101 4GB DDR3 — teamgroup — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "TEAMGROUP TED34G1600C1101 4GB DDR3"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/toshiba-canvio-ready-2tb-portable-external-hdd/",
+  "title": "Toshiba Ready 2TB Portable External HDD — toshiba — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Toshiba Ready 2TB Portable External HDD"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-cat-6-u-utp-lan-cable-black/",
+  "title": "UGreen Cat 6 U/UTP Lan Cable- Black — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGreen Cat 6 U/UTP Lan Cable- Black"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-cat-7-shielded-round-cable-with-braided-modular-plugs/",
+  "title": "UGREEN CAT 7 Shielded Round Cable with Braided Modular Plugs — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN CAT 7 Shielded Round Cable with Braided Modular Plugs"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-cat-7-u-ftp-lan-cable-flat-design-10m-black/",
+  "title": "UGREEN Cat 7 U/FTP Lan Cable Flat Design (Black) — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN Cat 7 U/FTP Lan Cable Flat Design (Black)"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-cat8-pure-copper-ethernet-cable-braided-black/",
+  "title": "UGREEN Cat8 Ethernet Cable Braided Black \\u2013 High-Speed Gigabit Cable UAE — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN Cat8 Ethernet Cable Braided Black \\u2013 High-Speed Gigabit Cable UAE"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-dp-1-4-male-to-male-plastic-case-braided-cable/",
+  "error": "page.goto: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - navigating to \"http://127.0.0.1:8100/products/ugreen-dp-1-4-male-to-male-plastic-case-braided-cable/\", waiting until \"load\"\u001b[22m\n"
+ },
+ {
+  "path": "/products/ugreen-dp-male-to-male-cable/",
+  "title": "Ugreen DP Male to Male Cable — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Ugreen DP Male to Male Cable"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-hdmi-cables-am-m-cable-with-braided/",
+  "title": "Ugreen HDMI Cables Am/m Cable With Braided — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Ugreen HDMI Cables Am/m Cable With Braided"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-hdmi-cables-black/",
+  "title": "Ugreen HDMI Cables Black — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Ugreen HDMI Cables Black"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-high-end-hdmi-cable-with-nylon-braid-black/",
+  "title": "Ugreen High-end HDMI Cable with Nylon Braid Black — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Ugreen High-end HDMI Cable with Nylon Braid Black"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-revodok-pro-209-9-in-1-4k-hdmi-universal-docking-station/",
+  "title": "UGREEN Revodok Pro 209 9-in-1 4k HDMI Universal Docking Station — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN Revodok Pro 209 9-in-1 4k HDMI Universal Docking Station"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-revodok-pro-210-10-in-1-usb-c-hub/",
+  "title": "UGREEN Revodok Pro 210 10 in 1 USB C Hub — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN Revodok Pro 210 10 in 1 USB C Hub"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-revodok-pro-312-12-in-1-4k-hdmi-universal-docking-station/",
+  "title": "UGREEN Revodok Pro 312 12-in-1 4k HDMI Universal Docking Station — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN Revodok Pro 312 12-in-1 4k HDMI Universal Docking Station"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-revodok-pro-313-13-in-1-usb-c-docking-station/",
+  "title": "UGREEN Revodok Pro 313 13 in 1 USB C Docking Station — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN Revodok Pro 313 13 in 1 USB C Docking Station"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-usb-c-hub-10-in-1-usb-c-dongle-with-4k-hdmi-vga-dual-monitor/",
+  "title": "UGREEN USB C Hub, 10-in-1 USB-C Dongle with 4K HDMI & VGA Dual Monitor — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UGREEN USB C Hub, 10-in-1 USB-C Dongle with 4K HDMI & VGA Dual Monitor"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/ugreen-vga-male-to-male/",
+  "title": "Ugreen VGA Male to Male — ugreen — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Ugreen VGA Male to Male"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/products/western-digital-sn7100-wd-nvme-ssd/",
+  "title": "WD SN7100 NVMe SSD | High-Speed Storage Solution — wd — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "WD SN7100 NVMe SSD | High-Speed Storage Solution"
+  ],
+  "skips": 3,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/return-policy/",
+  "title": "Return Policy — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Return Policy"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/accessibility-statement/",
+  "title": "Accessibility Statement — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Accessibility Statement"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/shipping-policy/",
+  "title": "Shipping Policy — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Shipping Policy"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/refund-policy/",
+  "title": "Refund Policy — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Refund Policy"
+  ],
+  "skips": 2,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/legal/",
+  "title": "Legal — Simal Technologies",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Policies"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/unipos/",
+  "title": "UniPOS — Multi-Sector Point of Sale — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "UniPOS — Multi-Sector Point of Sale"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/ecommerce-platform/",
+  "title": "E-commerce Platform — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "E-commerce Platform"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/queue-management/",
+  "title": "Queue Management Systems — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Queue Management Systems"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/hospital-erp/",
+  "title": "Hospital Management ERP — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Hospital Management ERP"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/i-portal/",
+  "title": "I-Portal Solution — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "I-Portal Solution"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ },
+ {
+  "path": "/software/solutions/education-erp/",
+  "title": "Education Management ERP — Solutions — Simal",
+  "lang": "en",
+  "dir": "",
+  "metaDesc": true,
+  "canonical": null,
+  "h1": [
+   "Education Management ERP"
+  ],
+  "skips": 1,
+  "brokenImgs": [],
+  "noAlt": 0,
+  "unlabeled": [],
+  "emptyBtns": 0,
+  "emptyBtnSample": [],
+  "dupIds": [],
+  "leaks": [],
+  "hscroll": false,
+  "consoleErrors": [
+   "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "failed": [
+   "404 GET /api/rfq-basket"
+  ]
+ }
+]

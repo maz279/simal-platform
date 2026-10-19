@@ -1,0 +1,395 @@
+{"ts":"2026-10-18T12:24:45.502Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_secver_mvdsskbc"}
+{"ts":"2026-10-18T12:24:45.503Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T12:24:45.737Z","level":"info","event":"http","id":"73b40c77-e47a-4c61-a66b-7cde94a5a94b","method":"POST","path":"/api/auth/login","status":200,"ms":44}
+{"ts":"2026-10-18T12:24:45.786Z","level":"info","event":"http","id":"259ef555-8044-4722-9aae-118c5496fb15","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+{"ts":"2026-10-18T12:24:45.829Z","level":"info","event":"http","id":"f52a8171-31d7-475f-a749-db963df4bbb2","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+
+A. Authentication & authorization
+  PASS A1 unauthenticated admin/CMS/einvoice APIs are 401
+  PASS A2 viewer denied super-admin-only routes
+  PASS A3 reviewer denied super-admin trust ops
+  PASS A4 login lockout: 5 failed attempts then 429 (GOV a20)
+{"ts":"2026-10-18T12:24:46.077Z","level":"info","event":"http","id":"73e2af20-af57-40db-8742-8118ae96e804","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+{"ts":"2026-10-18T12:24:46.081Z","level":"info","event":"http","id":"bdd7506e-cf49-42fb-93be-0c52ad5a9d5d","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:46.084Z","level":"info","event":"http","id":"3f91c7c8-adf6-4c54-af1e-8f5cce66f744","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.087Z","level":"info","event":"http","id":"a8c32a71-9046-4478-a005-5ec75385720a","method":"POST","path":"/api/auth/logout","status":200,"ms":2}
+  PASS A5 session cookie is HttpOnly + SameSite; logout invalidates it
+{"ts":"2026-10-18T12:24:46.098Z","level":"info","event":"http","id":"1d95397d-fa05-4306-9617-1f4afcfeafeb","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":8}
+{"ts":"2026-10-18T12:24:46.100Z","level":"info","event":"http","id":"76dadec3-88dd-45e9-97de-b6a691650bc2","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":1}
+  PASS A6 password-reset does not enumerate accounts
+
+B. CSRF (synchronizer token)
+  PASS B1 cross-origin POST without a token is blocked
+  PASS B2 a BOGUS token cannot bypass cross-origin blocking
+{"ts":"2026-10-18T12:24:46.138Z","level":"info","event":"http","id":"3ace66a7-da54-4b6d-8e2b-96ec50205786","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-18T12:24:46.142Z","level":"info","event":"http","id":"44519f9b-aca4-4679-a205-cf3c2ce26535","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:46.146Z","level":"info","event":"http","id":"82cbc489-ab18-4383-aa9b-62c123ba8a71","method":"POST","path":"/api/auth/logout","status":200,"ms":3}
+  PASS B3 a valid own-session token is accepted
+
+C. Object-level authorization (IDOR/BOLA)
+  PASS C1 reviewer without view_pii cannot read an unassigned submission document
+{"ts":"2026-10-18T12:24:46.276Z","level":"info","event":"http","id":"64bcc9d9-2b57-473d-8a62-d426e45741a6","method":"POST","path":"/api/auth/register","status":201,"ms":43}
+  PASS C2 a partner cannot read another party's document
+{"ts":"2026-10-18T12:24:46.286Z","level":"info","event":"http","id":"c611b5a5-bb28-4490-aa6d-ea5095e0ed15","method":"POST","path":"/api/admin/documents/doc_dd27a39844fc073b005f/sign","status":200,"ms":4}
+  PASS C3 a signed token for document A is rejected on document B
+
+D. Injection, XSS and unsafe URL writes
+{"ts":"2026-10-18T12:24:46.293Z","level":"info","event":"http","id":"7f25bb65-5eec-4d14-9312-ba88665ebaeb","method":"GET","path":"/api/admin/submissions","status":200,"ms":5}
+{"ts":"2026-10-18T12:24:46.298Z","level":"info","event":"http","id":"8caa1455-21df-4dbb-be46-dc61607cade0","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+  PASS D1 SQL metacharacters in admin filters are parameterized (no 500, no leak)
+{"ts":"2026-10-18T12:24:46.304Z","level":"info","event":"http","id":"30805c99-5185-4ae2-aab5-021cb5478d99","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.312Z","level":"info","event":"http","id":"870dc224-b132-47ee-abb2-869f6d94e3c8","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:46.316Z","level":"info","event":"http","id":"15b9f5b3-6c7a-443b-ad5b-acbc59fe43ac","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:46.321Z","level":"info","event":"http","id":"9c16b28c-3f25-4ab4-a0b5-46cfe3270b36","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.326Z","level":"info","event":"http","id":"e92fe865-d5cd-44ff-bc2a-3d5ce5659ed6","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.331Z","level":"info","event":"http","id":"b13380cd-4ee3-451e-b9f2-94f36757c01b","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:46.338Z","level":"info","event":"http","id":"6cc96bb9-8baa-4b95-b4c7-4de380b63628","method":"PUT","path":"/api/cms/announcements/1","status":200,"ms":6}
+  PASS D2 javascript:/data://host/control-char URLs are rejected on every CMS write path
+  PASS D3 path traversal in document/media paths is refused
+{"ts":"2026-10-18T12:24:46.349Z","level":"info","event":"http","id":"cb238d9e-9eef-450a-a721-5d5d28a8bf93","method":"POST","path":"/api/public/drafts","status":201,"ms":3}
+  PASS D4 upload with a false PDF extension is refused by magic-byte sniffing
+
+E. Dual-approval workflow (SEC-11)
+{"ts":"2026-10-18T12:24:46.361Z","level":"info","event":"http","id":"da2e6c3b-bc2f-427f-b1b7-6e7a0e9610a1","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.369Z","level":"info","event":"http","id":"2c7fddaf-73da-4b11-a7d8-7adbd0433c89","method":"PUT","path":"/api/cms/blocks/erp/pricing","status":200,"ms":7}
+{"ts":"2026-10-18T12:24:46.373Z","level":"info","event":"http","id":"afc95f27-d7ba-4fdd-98fd-d86191a3e6e9","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.385Z","level":"info","event":"http","id":"56c60a52-fa3a-47b1-a0eb-62557b8a4935","method":"POST","path":"/api/cms/publish","status":202,"ms":11}
+  PASS E1 sensitive publish returns 202 pending and enqueues nothing
+{"ts":"2026-10-18T12:24:46.428Z","level":"info","event":"http","id":"2ae4b15e-1bf6-4a65-82da-a8cec290e6f1","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+{"ts":"2026-10-18T12:24:46.431Z","level":"info","event":"http","id":"b592fa89-5481-4339-8f4c-766c3bfada80","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:46.437Z","level":"info","event":"http","id":"79c6107d-6827-4a51-892f-a0f6f76c29d8","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+  PASS E2 the requester (and a second session of the same user) cannot approve
+{"ts":"2026-10-18T12:24:46.449Z","level":"info","event":"http","id":"bf43a659-008f-42ea-adf2-5a4879803852","method":"POST","path":"/api/cms/publish-approvals/apr_mvdsslkbgom4/approve","status":200,"ms":6}
+  PASS E3 a distinct super_admin approves and exactly one build is enqueued
+{"ts":"2026-10-18T12:24:46.451Z","level":"info","event":"http","id":"979ce14f-2cd0-42a5-a2c3-eb18a5a49401","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+  PASS E4 a reviewer cannot use the emergency override with an attested approver
+
+F. Integration boundaries
+{"ts":"2026-10-18T12:24:46.462Z","level":"info","event":"http","id":"a28bb6ca-8aa5-4ece-8104-600d5fb8f022","method":"POST","path":"/api/integrations/email/bounce","status":200,"ms":1}
+  PASS F1 the bounce webhook requires a fresh timestamp bound into the HMAC
+  PASS F2 the integration master feed rejects a wrong token
+
+G. Response and header hygiene
+{"ts":"2026-10-18T12:24:46.465Z","level":"error","event":"http_error","id":"7e9180c6-e0d9-4fc3-9be6-f3f0c6269495","path":"/api/admin/observability/test-error","error":"Synthetic test error for observability verification (NFR-3)","stack":"Error: Synthetic test error for observability verification (NFR-3)\n    at file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/services/routes.js:1147:11\n    at dispatch (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/lib/http.js:186:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Server.<anonymous> (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/server.js:113:7"}
+  PASS G1 5xx responses leak no stack, SQL or driver text
+{"ts":"2026-10-18T12:24:46.468Z","level":"info","event":"http","id":"1e5446b7-5a6d-4d7c-a393-01f88fa2c6a7","method":"GET","path":"/login.html","status":200,"ms":1}
+  PASS G2 pages carry nosniff + a frame-ancestors CSP; no X-Powered-By
+
+H. Rate-limit tiers (strict mode)
+{"ts":"2026-10-18T12:24:53.528Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_secverstrict_mvdssqdn"}
+{"ts":"2026-10-18T12:24:53.528Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T12:24:53.831Z","level":"info","event":"http","id":"02dac577-39d9-4420-9b89-42816be4ecda","method":"POST","path":"/api/auth/login","status":200,"ms":85}
+{"ts":"2026-10-18T12:24:53.885Z","level":"info","event":"http","id":"b2e6bdbe-b42e-477b-acc6-afe0ef377e4e","method":"POST","path":"/api/contact","status":201,"ms":52}
+{"ts":"2026-10-18T12:24:53.921Z","level":"info","event":"http","id":"8b804db8-2c3a-4ce9-9e24-96bc14f5a50c","method":"POST","path":"/api/contact","status":201,"ms":35}
+{"ts":"2026-10-18T12:24:53.957Z","level":"info","event":"http","id":"e1ff3084-9d29-4547-a76a-afa89534a1d4","method":"POST","path":"/api/contact","status":201,"ms":35}
+{"ts":"2026-10-18T12:24:53.993Z","level":"info","event":"http","id":"a415e488-9a4e-4acd-bb1c-b01a48887b68","method":"POST","path":"/api/contact","status":201,"ms":35}
+{"ts":"2026-10-18T12:24:54.029Z","level":"info","event":"http","id":"7f906523-f72d-417b-99dd-ec3b20f31286","method":"POST","path":"/api/contact","status":201,"ms":35}
+  PASS H1 public forms are limited to 5 per 10 min per IP
+{"ts":"2026-10-18T12:24:54.045Z","level":"info","event":"http","id":"74061d7d-cad4-4862-af87-823244995380","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.059Z","level":"info","event":"http","id":"f0361d9d-8167-4b2c-aa7f-433535881c55","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.075Z","level":"info","event":"http","id":"21e963ba-8be5-4f77-ad7c-5d053f66fe3a","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.109Z","level":"info","event":"http","id":"b6c84ccd-c5ab-4d52-a647-44c63ea0015f","method":"GET","path":"/api/admin/submissions","status":200,"ms":33}
+{"ts":"2026-10-18T12:24:54.140Z","level":"info","event":"http","id":"b69ec84c-2110-4c27-8c58-56ac1d183cc8","method":"GET","path":"/api/admin/submissions","status":200,"ms":30}
+{"ts":"2026-10-18T12:24:54.213Z","level":"info","event":"http","id":"358a1964-566e-4507-a8dc-865f73b142fa","method":"GET","path":"/api/admin/submissions","status":200,"ms":72}
+{"ts":"2026-10-18T12:24:54.296Z","level":"info","event":"http","id":"a80bfb03-b103-4261-b3a2-3d8f9b2761bc","method":"GET","path":"/api/admin/submissions","status":200,"ms":83}
+{"ts":"2026-10-18T12:24:54.372Z","level":"info","event":"http","id":"42bca513-38cc-48a9-8199-b41fc4f76168","method":"GET","path":"/api/admin/submissions","status":200,"ms":75}
+{"ts":"2026-10-18T12:24:54.434Z","level":"info","event":"http","id":"ff374c74-6cb2-4100-a13a-4c47e02df891","method":"GET","path":"/api/admin/submissions","status":200,"ms":61}
+{"ts":"2026-10-18T12:24:54.448Z","level":"info","event":"http","id":"9f9b6810-ad35-4dd8-a883-815ca0b35715","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.463Z","level":"info","event":"http","id":"2e84a3fe-fc5e-4e39-a359-9a0e4e6d1860","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.478Z","level":"info","event":"http","id":"f98a9d0f-63ad-42fe-896a-a2597b4746fb","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.493Z","level":"info","event":"http","id":"633b9308-eb8a-4c67-a026-6779c39c2567","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.507Z","level":"info","event":"http","id":"e369ab46-4fa7-4e92-9ad9-a56526cbabb0","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.523Z","level":"info","event":"http","id":"ddd5733c-5dc9-4d6e-b407-13539b462be3","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.539Z","level":"info","event":"http","id":"3f8a6544-4ca4-4120-b836-b89096561f81","method":"GET","path":"/api/admin/submissions","status":200,"ms":16}
+{"ts":"2026-10-18T12:24:54.553Z","level":"info","event":"http","id":"bcb3b1b9-641f-4223-885b-c73d935859bc","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.566Z","level":"info","event":"http","id":"f79c1e38-1dc5-40be-80fe-b19a67f99533","method":"GET","path":"/api/admin/submissions","status":200,"ms":12}
+{"ts":"2026-10-18T12:24:54.579Z","level":"info","event":"http","id":"64d38b06-d58f-40c6-b52f-92dee5f70877","method":"GET","path":"/api/admin/submissions","status":200,"ms":12}
+{"ts":"2026-10-18T12:24:54.593Z","level":"info","event":"http","id":"028a6350-8a94-45a0-956f-81cfc1c41280","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.608Z","level":"info","event":"http","id":"cd45df52-de91-4ca5-b44f-006dd4353ad2","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.625Z","level":"info","event":"http","id":"3c85dc40-5b53-4f90-ace2-0d556fc49e4e","method":"GET","path":"/api/admin/submissions","status":200,"ms":16}
+{"ts":"2026-10-18T12:24:54.641Z","level":"info","event":"http","id":"db75c206-5ffe-4565-8780-95b712bd9924","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.658Z","level":"info","event":"http","id":"1e6fc149-4fac-47c7-ba3a-51a17015e974","method":"GET","path":"/api/admin/submissions","status":200,"ms":16}
+{"ts":"2026-10-18T12:24:54.673Z","level":"info","event":"http","id":"bfd3dd33-b498-4b7d-8dc6-87bcc8c0e733","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.692Z","level":"info","event":"http","id":"233918bb-f1de-4ea4-be27-abc2b0107377","method":"GET","path":"/api/admin/submissions","status":200,"ms":17}
+{"ts":"2026-10-18T12:24:54.708Z","level":"info","event":"http","id":"9d19e19b-3066-4eec-8113-91c0f542d4de","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.723Z","level":"info","event":"http","id":"5ae263f7-1409-4ec2-a627-c45dc5e075f3","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.737Z","level":"info","event":"http","id":"fd54cdba-4322-4053-abc7-cab991671598","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.752Z","level":"info","event":"http","id":"05d3ee45-0f35-4cb8-9720-d1d3e94ac03a","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.767Z","level":"info","event":"http","id":"e83412ba-33c4-48a7-ad38-a3792d6f457c","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.780Z","level":"info","event":"http","id":"9d10aead-7773-431f-9f8e-4462dd0594fb","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.795Z","level":"info","event":"http","id":"d86ca769-e910-4376-8cbb-27693e002211","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.810Z","level":"info","event":"http","id":"b2293d7a-d935-4382-899f-880f0b94b705","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.826Z","level":"info","event":"http","id":"17a51e52-1296-4873-8334-89a6073cff10","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.840Z","level":"info","event":"http","id":"2eaaf7f4-c981-4f3a-b85b-f4e09717366f","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.856Z","level":"info","event":"http","id":"9748d72a-0c15-453d-b0af-f176200a54d3","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.872Z","level":"info","event":"http","id":"609227cc-885e-4224-aa3b-0d4a607a6464","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.888Z","level":"info","event":"http","id":"4a7f3a93-9cac-4db0-b24e-2fda48dc638d","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.903Z","level":"info","event":"http","id":"2682ea8c-c69e-4859-97d7-23514a84a24c","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.918Z","level":"info","event":"http","id":"6910c433-f387-444f-b86c-c18cb6ef3d61","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.934Z","level":"info","event":"http","id":"0f469026-a6d4-44b8-b084-d71dd0d03dd1","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:54.948Z","level":"info","event":"http","id":"8982561e-4545-4478-84ad-da02b65e4626","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.962Z","level":"info","event":"http","id":"6d928b99-0caa-44ee-8c42-7f87dab55cdd","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:54.977Z","level":"info","event":"http","id":"6a3a8d23-8335-4628-87c6-b9c45db2b2e7","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:54.992Z","level":"info","event":"http","id":"9627c29c-7057-4521-baf4-8ba33b22e1c1","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.008Z","level":"info","event":"http","id":"ca0183c0-e179-4d82-8208-819ead0dfefe","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.023Z","level":"info","event":"http","id":"60fe4199-9f8d-46ee-8c2b-68fdb8d19b2a","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.038Z","level":"info","event":"http","id":"6f7ee64a-eed8-4962-a571-5dda70c4dfeb","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.052Z","level":"info","event":"http","id":"a89189f2-4672-423c-a866-46822de68edd","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.067Z","level":"info","event":"http","id":"a11d80e4-bb01-43e8-877f-2752b6bd9fa7","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.082Z","level":"info","event":"http","id":"87c7af86-674c-441e-9d9a-90e3721a5343","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.096Z","level":"info","event":"http","id":"f9a702d7-92dd-4110-a7f6-c14ae11bf599","method":"GET","path":"/api/admin/submissions","status":200,"ms":13}
+{"ts":"2026-10-18T12:24:55.111Z","level":"info","event":"http","id":"92009942-0ac0-481c-a387-a41d28645e71","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.126Z","level":"info","event":"http","id":"c89e7a07-b433-4bba-9fe6-52e67555f39b","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.142Z","level":"info","event":"http","id":"c7883eb7-6216-464a-aa41-f32276f032dc","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.157Z","level":"info","event":"http","id":"5e8db390-8746-4824-8087-3e5700ef0924","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.174Z","level":"info","event":"http","id":"b52b87f1-7c72-4563-a711-bfafbfd8b9cd","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.189Z","level":"info","event":"http","id":"5ad24f2f-c257-4d70-8be5-0728ca835dbb","method":"GET","path":"/api/admin/submissions","status":200,"ms":14}
+{"ts":"2026-10-18T12:24:55.206Z","level":"info","event":"http","id":"f3564665-1130-4437-b7d8-13148e7f5b51","method":"GET","path":"/api/admin/submissions","status":200,"ms":16}
+{"ts":"2026-10-18T12:24:55.223Z","level":"info","event":"http","id":"40732dfe-3a9e-40cb-bf89-f8e84cfad7ee","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.240Z","level":"info","event":"http","id":"028737fa-86f1-45d7-b767-d494a7bb4fe7","method":"GET","path":"/api/admin/submissions","status":200,"ms":16}
+{"ts":"2026-10-18T12:24:55.256Z","level":"info","event":"http","id":"f1cab949-afc7-447b-b072-be3638fce925","method":"GET","path":"/api/admin/submissions","status":200,"ms":15}
+{"ts":"2026-10-18T12:24:55.260Z","level":"info","event":"http","id":"305a8d6b-add4-45da-8e24-97074c6d34cc","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.264Z","level":"info","event":"http","id":"35ebd5ce-eda4-4b19-8ed7-2b357c22f3d9","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.267Z","level":"info","event":"http","id":"9fc5c92d-2b01-4dc3-a377-53076ba87162","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.270Z","level":"info","event":"http","id":"b244fdd0-ffd0-4586-a88e-8c11efcb3c2d","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.272Z","level":"info","event":"http","id":"e2a9eb18-5a0e-44ae-8951-2114d9b51a93","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.275Z","level":"info","event":"http","id":"5727bb07-3f5c-4bb7-ab29-46015aa409a3","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.279Z","level":"info","event":"http","id":"8e01e0c2-cd88-40de-80b9-54d9a2eb79f7","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.281Z","level":"info","event":"http","id":"22698eb4-cc72-4593-9d64-7a47350e03db","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.283Z","level":"info","event":"http","id":"dc80ae99-77c8-468f-8284-8d894ec86858","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.285Z","level":"info","event":"http","id":"2134b92b-4023-4c65-99a1-19407c78fb64","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.287Z","level":"info","event":"http","id":"c26a803e-5452-4c5b-baae-525268eb5f84","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.289Z","level":"info","event":"http","id":"03a321ae-d7eb-42d5-8f6c-cef3340ea54e","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.293Z","level":"info","event":"http","id":"263c4d17-d1ca-4c9e-9c9d-0afebb7cf00b","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.295Z","level":"info","event":"http","id":"81918dcd-9bec-4e65-87f1-32de71435e71","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.297Z","level":"info","event":"http","id":"1300efe4-a537-4181-b773-38a52fcd42d6","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.299Z","level":"info","event":"http","id":"69694263-a8aa-4cc3-a893-15a2bcddf4b4","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.301Z","level":"info","event":"http","id":"9352f404-32d7-4e0e-bc01-d3e8c0d2e472","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.303Z","level":"info","event":"http","id":"036e6818-9de5-4cf3-b331-a3d2c7cee22a","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.305Z","level":"info","event":"http","id":"7845ac71-b6e9-476d-b7bc-a1c2d6afa820","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.308Z","level":"info","event":"http","id":"86216dbb-81ef-4d99-a1bf-15c756191d7a","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.312Z","level":"info","event":"http","id":"d727dae0-2faf-4f17-9198-0913980828f1","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.315Z","level":"info","event":"http","id":"a85040d3-aff6-40a4-9d25-b5fadc0919b4","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.317Z","level":"info","event":"http","id":"9194141d-6c13-4373-91ff-a6c329f133dd","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.320Z","level":"info","event":"http","id":"35b0dfc8-42e8-4a93-afde-30de343345d6","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.322Z","level":"info","event":"http","id":"5a9f7079-38ca-4366-979a-66582dae487b","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.325Z","level":"info","event":"http","id":"166fe288-fdd8-406f-a851-2141e005a9e1","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.328Z","level":"info","event":"http","id":"632b9b6c-09ce-4101-8ec6-af49fb9a75d4","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.332Z","level":"info","event":"http","id":"ecc61352-26b2-4e0b-a5f8-41b9b49254b4","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.334Z","level":"info","event":"http","id":"e39b5394-369a-441f-9d36-73ba52ab1a94","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.336Z","level":"info","event":"http","id":"cfd0bca6-7ae9-4d4c-b1db-9e19e3703cfe","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.338Z","level":"info","event":"http","id":"379a5d7e-7e28-410a-aa4d-78f78421865f","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.341Z","level":"info","event":"http","id":"8db8bfd7-549b-4f13-91b7-fa1228d95fae","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.344Z","level":"info","event":"http","id":"167f8ab9-5156-4d6a-b6af-e7523a78f57b","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.346Z","level":"info","event":"http","id":"22c48ca8-b684-4b68-9004-a2d4270f7dbb","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.348Z","level":"info","event":"http","id":"cde8c2c1-9dea-4744-b239-2a7392edf2bc","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.350Z","level":"info","event":"http","id":"14c2709d-5189-43b3-a8c0-f177d5be3b57","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.352Z","level":"info","event":"http","id":"ac8cdf33-c8ac-4294-b86c-182f6f9ac914","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.354Z","level":"info","event":"http","id":"e427a6d7-4898-4148-9587-1086e8bad1fd","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.356Z","level":"info","event":"http","id":"aaef07cd-547d-4a83-8b50-41129e3b57b9","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.361Z","level":"info","event":"http","id":"4687302a-bc1a-4008-b641-ce474962c111","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+{"ts":"2026-10-18T12:24:55.363Z","level":"info","event":"http","id":"2acdc0c7-5068-482c-b1e2-48c51daa8187","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.366Z","level":"info","event":"http","id":"946ce048-5d3c-469b-865a-feb04a26e0fc","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.371Z","level":"info","event":"http","id":"44364b73-f03f-4008-8f9f-a1e5038c0618","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.373Z","level":"info","event":"http","id":"89beb69c-c391-4f9b-a297-d63c1dba75d1","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.376Z","level":"info","event":"http","id":"cf866b57-2fe8-40d4-986b-035f23a37524","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.379Z","level":"info","event":"http","id":"78c937e4-2c98-45b1-a21a-d1ed0153ca56","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.381Z","level":"info","event":"http","id":"bfd75f67-1bb5-4407-a530-3e6cc70d7bdd","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.383Z","level":"info","event":"http","id":"83ac40e7-1aa0-42f8-b10c-e1c45b6c8843","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.385Z","level":"info","event":"http","id":"789fa70c-3824-4d70-bc99-86730fb02ede","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.388Z","level":"info","event":"http","id":"0c54ac0a-1175-477a-91dc-09f0fa146791","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.389Z","level":"info","event":"http","id":"b465b8c1-32a6-4e1a-8134-7c391922203e","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.393Z","level":"info","event":"http","id":"0b876eb6-8f9e-4bb9-8adb-935ee69ccc83","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+{"ts":"2026-10-18T12:24:55.395Z","level":"info","event":"http","id":"61e35249-95e7-4d1b-baa2-6dd2d6e3fb31","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.398Z","level":"info","event":"http","id":"1668b568-87b4-4823-9c9b-0760b0543b90","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.403Z","level":"info","event":"http","id":"33be3f09-549b-4054-b34e-58a8e08e7374","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.412Z","level":"info","event":"http","id":"1e708f54-751e-405e-8f0d-3e41b2e0c399","method":"GET","path":"/api/admin/submissions","status":200,"ms":8}
+{"ts":"2026-10-18T12:24:55.416Z","level":"info","event":"http","id":"6b88803d-59c7-4fe9-aa4a-8d2d7c3855e6","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.419Z","level":"info","event":"http","id":"ba03aee7-a948-4675-825e-553ac0f31d81","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.423Z","level":"info","event":"http","id":"8b3991e0-cf79-4af3-9b2d-e44f830d1e34","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.427Z","level":"info","event":"http","id":"53b2d29a-2e63-47b8-83e6-d6cd45d05ca4","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+{"ts":"2026-10-18T12:24:55.431Z","level":"info","event":"http","id":"580c2a35-4f19-4430-9b18-fdf94f0dc263","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.435Z","level":"info","event":"http","id":"ea334511-9fde-41c1-a517-cd019c2f8480","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.438Z","level":"info","event":"http","id":"d1a007b3-0738-4e36-903b-03bd00928112","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.441Z","level":"info","event":"http","id":"665f68d2-cef9-47f3-bd13-a1a8df97ae6d","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.444Z","level":"info","event":"http","id":"813a7a3e-95d5-43a4-a122-86e61f2e50ca","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.446Z","level":"info","event":"http","id":"cd3aa10a-87cf-4cc3-923d-59b870302409","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.448Z","level":"info","event":"http","id":"203de64c-c2ba-415c-9b08-1839c1fcad3e","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.451Z","level":"info","event":"http","id":"6a3ffabe-64b9-480c-bcc1-4d9bd7873d75","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.455Z","level":"info","event":"http","id":"c1dd1988-bbac-40fd-9134-c1bdb463f774","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.461Z","level":"info","event":"http","id":"1e25e39f-e6a0-48a0-bab3-242b95557579","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+{"ts":"2026-10-18T12:24:55.464Z","level":"info","event":"http","id":"89155b1d-73df-4de0-b92e-b7a690b016b5","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.468Z","level":"info","event":"http","id":"3e09d6c5-b964-4e14-9ead-e029e92f2f3d","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.471Z","level":"info","event":"http","id":"65278c2e-fdde-4643-87fa-6e79b2fbafbb","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.473Z","level":"info","event":"http","id":"b323c71e-0d2c-4820-b120-e9288e46dfba","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.476Z","level":"info","event":"http","id":"35d43a2e-953f-46d8-aaa4-d07c3340a791","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.478Z","level":"info","event":"http","id":"dda94cbb-ffcf-4e87-aae6-e0ff719bd78d","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.481Z","level":"info","event":"http","id":"27ad9430-6ac1-44f5-845a-02802f12236f","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.482Z","level":"info","event":"http","id":"14a2f2ac-367f-4a2c-89a4-0752919f4979","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.484Z","level":"info","event":"http","id":"b856eff6-1d9c-4d55-9d85-4e205cea4a8e","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.485Z","level":"info","event":"http","id":"1eaf9b61-d35e-47e7-a47b-e46de7372c81","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.487Z","level":"info","event":"http","id":"cbe7aa4e-44d2-4d99-8bb3-d48922bd177a","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.488Z","level":"info","event":"http","id":"fb466706-7539-4eed-8b5d-d39f5936c18f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.490Z","level":"info","event":"http","id":"a7495c04-71b4-4547-b9a9-a086ab27469d","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.493Z","level":"info","event":"http","id":"20b701c6-408e-4259-87ff-de96aeed668f","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.497Z","level":"info","event":"http","id":"31462dcb-13d0-424f-b983-70c446a95747","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.500Z","level":"info","event":"http","id":"8422302c-f905-470e-9d3a-d7b2a2a2c4a3","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.502Z","level":"info","event":"http","id":"bd3b6a22-9056-4138-aecc-b8dfd89442ab","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.503Z","level":"info","event":"http","id":"fa774a1b-c5ed-44e8-a900-f1c23a9d4f51","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.505Z","level":"info","event":"http","id":"221355d8-2b8e-4faf-b942-bb903c6d75e2","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.506Z","level":"info","event":"http","id":"12361ff9-7a8a-4ed8-b86d-619e7f284d4a","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.508Z","level":"info","event":"http","id":"6a78ef54-a2e6-4a78-b99f-7004f8d0df33","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.511Z","level":"info","event":"http","id":"b16d28d3-872d-4d44-9422-85a0e8a1b7aa","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.514Z","level":"info","event":"http","id":"14779ddc-eb2f-4881-8fe4-950ab8c15aa1","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.515Z","level":"info","event":"http","id":"b6fce61a-18f1-4520-8d52-fe298002a5a1","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.517Z","level":"info","event":"http","id":"5e48aa9f-b40a-4a3b-9879-446627fb5958","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.519Z","level":"info","event":"http","id":"7229e55f-6b4f-4ba2-a139-569b7b742f8a","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.520Z","level":"info","event":"http","id":"3f11cfde-1ebe-4e65-8c0c-1806331be11c","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.521Z","level":"info","event":"http","id":"41ac3b30-f392-4b59-81a9-574985d8c041","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.522Z","level":"info","event":"http","id":"e2c84015-c06e-4532-a577-3aaf44430bbe","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.523Z","level":"info","event":"http","id":"5fa00843-4600-4234-9ac6-f1f980768ec2","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.526Z","level":"info","event":"http","id":"5985ca84-5041-4726-9fbb-6286396a2e3c","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.528Z","level":"info","event":"http","id":"94d1b9e6-1516-4c89-832c-9b8b6ec2f13f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.530Z","level":"info","event":"http","id":"9b6e4973-54fc-4004-83fd-0782a561f91f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.532Z","level":"info","event":"http","id":"1ac281ea-8ca0-449b-84d7-c77a3eae0213","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.533Z","level":"info","event":"http","id":"2b933fd7-b111-46cb-a54e-2e7845d3ef59","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.534Z","level":"info","event":"http","id":"c0ff8445-3eda-4d19-815d-fdbcd0b337cf","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.535Z","level":"info","event":"http","id":"da686e49-d44c-4e20-9657-bdc156e87148","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.536Z","level":"info","event":"http","id":"96c4e3de-6cad-48bc-af81-ded0b2ed1fbc","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-18T12:24:55.538Z","level":"info","event":"http","id":"eb87ee5f-8e46-4889-9e65-902b6391dd50","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.539Z","level":"info","event":"http","id":"10bea472-20b9-4427-a1dd-12e2ad54235d","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.542Z","level":"info","event":"http","id":"35d7894c-c0d6-4402-89f7-efd1edd4ca3e","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.545Z","level":"info","event":"http","id":"7c594239-f05f-48f6-bf9b-ca3fc78241f0","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.547Z","level":"info","event":"http","id":"6290abfc-38d3-4d5d-b4db-517dad581f25","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.549Z","level":"info","event":"http","id":"cfda11db-183d-490a-afbe-2b32c6a8b29a","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.550Z","level":"info","event":"http","id":"d6b48e02-f2ab-4b8e-a38b-fa449db64e05","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.551Z","level":"info","event":"http","id":"2efc69f5-dd95-432b-8c46-c574c83c22cc","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.553Z","level":"info","event":"http","id":"8ee3685c-91d5-4fe1-8161-078d18d0f27b","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.554Z","level":"info","event":"http","id":"4e84cac9-19c6-4b97-a3b4-0f71bb47c57e","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.558Z","level":"info","event":"http","id":"0ea56935-a6a4-4d64-9bb4-d208ebfe8819","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.563Z","level":"info","event":"http","id":"ff1d48d7-03bf-4e2f-96b2-ca7df75fdaa2","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+{"ts":"2026-10-18T12:24:55.565Z","level":"info","event":"http","id":"caf28764-03b9-4185-922d-1a2c78ae2102","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.567Z","level":"info","event":"http","id":"8e14cfe9-a2e5-4133-89ad-3b16d628a8bf","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.568Z","level":"info","event":"http","id":"e7341d49-a5b5-4c4a-834a-f7f03a0c1208","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.569Z","level":"info","event":"http","id":"11b78387-5e9b-4136-9283-c20c50869dd7","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.571Z","level":"info","event":"http","id":"3c9a18d7-4d75-471e-9111-f4d10a85f740","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.572Z","level":"info","event":"http","id":"c91d570c-ea95-4269-9467-d03e630d69da","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.575Z","level":"info","event":"http","id":"eefd1241-c4a7-4895-ba8b-5b4243468e39","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.578Z","level":"info","event":"http","id":"26e596a5-3c97-4fe6-9a68-c459fa41e6d9","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.580Z","level":"info","event":"http","id":"76307012-91fd-4dfa-b0ff-70f316e3ea50","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.582Z","level":"info","event":"http","id":"56d627b1-bd9e-457b-83e2-e0c0c1fe41be","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.583Z","level":"info","event":"http","id":"993ac6df-aa39-4678-b0e7-d1e060d592cc","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.585Z","level":"info","event":"http","id":"62460ebe-c61c-4354-9f78-ca163ee18bc2","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.586Z","level":"info","event":"http","id":"6f999f1d-5ba5-4116-8024-03314e770c57","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.588Z","level":"info","event":"http","id":"bc47ea70-f3c5-4edc-bfea-24f6fabb8304","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.591Z","level":"info","event":"http","id":"d9ed67ca-23fc-4ea0-98fe-7f6696ab6ca0","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.594Z","level":"info","event":"http","id":"3289651f-3da0-4939-aee0-ace0b9c4bdb1","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.597Z","level":"info","event":"http","id":"b05227ba-30b7-4976-9721-daba3d635e13","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.599Z","level":"info","event":"http","id":"39485be1-1fed-4319-ac80-c4b474b24fcc","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.600Z","level":"info","event":"http","id":"9a11283f-ea5c-4daf-b0f5-81470a20470b","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.602Z","level":"info","event":"http","id":"70efcb32-0712-4f00-87f3-cae408781493","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.604Z","level":"info","event":"http","id":"c6ec786e-5be5-4d22-9963-5c76c6f33a2e","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.605Z","level":"info","event":"http","id":"44121b4f-0b13-4ffc-bbb8-1bd2b41fcb02","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.608Z","level":"info","event":"http","id":"ffb3dce8-3f85-42f7-a127-951fc8418894","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.611Z","level":"info","event":"http","id":"e87d7bd3-c0eb-4ef1-a90d-ef43ef68b65e","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.612Z","level":"info","event":"http","id":"10fbaa51-79b5-41ff-879b-477af5309f4e","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.614Z","level":"info","event":"http","id":"9ac828c5-fade-4aab-8ff3-eeb3952cf5bb","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.616Z","level":"info","event":"http","id":"9e6c3ce9-697c-4e61-bece-e7ea85152528","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.617Z","level":"info","event":"http","id":"b9e962d7-f504-4b4b-8f27-6123e3c30e1f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.618Z","level":"info","event":"http","id":"f0459d6a-dedc-4998-9a9b-23f4f1c2fbc6","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.620Z","level":"info","event":"http","id":"0243e2cb-671e-409a-9c91-4005b5263e07","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.621Z","level":"info","event":"http","id":"b17437eb-c9ea-4793-b645-acfc082d4b20","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.622Z","level":"info","event":"http","id":"d24f05d7-e1b4-426d-9f83-d1fd0502cd6a","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.624Z","level":"info","event":"http","id":"9bbee238-1a44-4ad2-aee9-767eff81d401","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.627Z","level":"info","event":"http","id":"ac0643ec-0dba-41fe-b6c2-b9881c0133c1","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.629Z","level":"info","event":"http","id":"13a63b45-0d25-4112-bfb2-78c56b8b8021","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.630Z","level":"info","event":"http","id":"2981922e-8ba2-42ca-9133-79f31f535ac3","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.632Z","level":"info","event":"http","id":"b71d002e-6d6c-41cf-bb47-cc27408a941f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.633Z","level":"info","event":"http","id":"be51b181-2e90-4f1c-8e6e-6e26b0e26d67","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.634Z","level":"info","event":"http","id":"845b0ef8-442f-4fba-a08f-4d2f297dc741","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.635Z","level":"info","event":"http","id":"495c9acf-fd15-446f-94cd-624214d63f8c","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.636Z","level":"info","event":"http","id":"2b4a02ee-ac4b-40d1-890f-07bdbe1ce6fd","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.638Z","level":"info","event":"http","id":"1f5530ce-d459-4674-98e2-e5ee47df5697","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.639Z","level":"info","event":"http","id":"97456528-f16a-4db0-aeb1-ce4bae012d61","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.641Z","level":"info","event":"http","id":"fb33bb43-da99-4e2d-b93e-ec343f51e053","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.645Z","level":"info","event":"http","id":"13f28119-dd86-4488-8b61-6da4320aa3a4","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.647Z","level":"info","event":"http","id":"b8dcbca7-398c-4da2-a3da-e5a06d109cfc","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.649Z","level":"info","event":"http","id":"3412d5a1-7671-4925-9594-b8764c0cf9f7","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.650Z","level":"info","event":"http","id":"853f5eb7-6698-48d5-8e5f-acb839b08659","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.651Z","level":"info","event":"http","id":"a6ddaf43-af9d-4493-bf05-ae05f91bdceb","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.652Z","level":"info","event":"http","id":"a87dfef1-8404-4ac4-8351-05f840f370ca","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.654Z","level":"info","event":"http","id":"d6204cba-07b8-4417-9ec2-acc4f6b0cd47","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.655Z","level":"info","event":"http","id":"0cbb67a2-bbaa-476e-91bb-9da221fe78ef","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.657Z","level":"info","event":"http","id":"b5d54a4d-f76b-4c47-91b7-46da0beabd09","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.659Z","level":"info","event":"http","id":"be635930-9889-4940-8806-195c67a22808","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.662Z","level":"info","event":"http","id":"63d40029-deba-4ac8-b3ea-18c0acc2f9e6","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.664Z","level":"info","event":"http","id":"499c0d71-b8f6-4dc7-993c-e505a2923508","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.666Z","level":"info","event":"http","id":"7daaea71-c1b1-4ad0-abf6-faf228bde7f5","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.669Z","level":"info","event":"http","id":"97a9df2b-4e01-462f-905b-a468e90ff270","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.670Z","level":"info","event":"http","id":"ba62360f-6c38-434e-8502-25f5023bf6b7","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.671Z","level":"info","event":"http","id":"90a33290-df57-4844-b932-200d4639c0da","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.673Z","level":"info","event":"http","id":"f8d3c0de-8940-4c7d-ade2-8fff513e9077","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.677Z","level":"info","event":"http","id":"5e5b1a3f-a891-43db-900d-5c122e449db4","method":"GET","path":"/api/admin/submissions","status":200,"ms":4}
+{"ts":"2026-10-18T12:24:55.679Z","level":"info","event":"http","id":"fd73d9f4-53e3-4a90-955b-ca8bc17f3bbc","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.681Z","level":"info","event":"http","id":"b0063ded-3bc1-4a7a-bb14-9e97b64d2a68","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.682Z","level":"info","event":"http","id":"26139133-269d-4a6e-a4b1-0cfcbaf97e9f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.683Z","level":"info","event":"http","id":"263772b9-6286-4b00-b9fc-3b239438dd85","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.685Z","level":"info","event":"http","id":"06dd254a-baba-4044-b610-7b6d62bbfb3d","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.686Z","level":"info","event":"http","id":"19666c77-4f04-4abd-b551-ed10e0035f76","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.687Z","level":"info","event":"http","id":"f5a9b8ac-6f8a-4a71-af64-112865774a07","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.688Z","level":"info","event":"http","id":"64f361e9-9529-416f-8a74-4c63f0875bbc","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-18T12:24:55.690Z","level":"info","event":"http","id":"3f0bdb27-c1a2-434e-84d5-8827b2a66715","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.694Z","level":"info","event":"http","id":"73491185-7cb9-46b1-98af-2280c69f72cf","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.696Z","level":"info","event":"http","id":"c12b5429-51b5-46ef-bd8b-058cf9b85f63","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.698Z","level":"info","event":"http","id":"c1f574b5-9b66-45ce-b33f-e078e552a986","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.700Z","level":"info","event":"http","id":"f31c444f-533a-4828-8c53-2f08408b6d3f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.702Z","level":"info","event":"http","id":"843fe66f-351f-460c-9b05-f99c571040a4","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.704Z","level":"info","event":"http","id":"81de0539-1f83-4cee-aabd-c5f9cf143609","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.705Z","level":"info","event":"http","id":"f68b40a8-3991-41bb-861b-c013bc576cd2","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.706Z","level":"info","event":"http","id":"74a2e94f-c215-443c-b6ae-5fe38fcee1fb","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.709Z","level":"info","event":"http","id":"3602742f-cbd4-4ad6-b083-ab01b1e69ac8","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.712Z","level":"info","event":"http","id":"f6fc7206-e6f0-49af-9249-203f292515ca","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.714Z","level":"info","event":"http","id":"cdf1faeb-002d-44ff-9b9c-811c649c9446","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.715Z","level":"info","event":"http","id":"5f92a6d7-7377-4a4d-8a18-7f7027c8277d","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.717Z","level":"info","event":"http","id":"3555d904-cb81-435d-8322-0eb14d1f4e88","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.718Z","level":"info","event":"http","id":"aafefd3e-9982-4f1b-83e0-ce29cd34e5ca","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.719Z","level":"info","event":"http","id":"b418df0f-4fb8-402a-ad6c-01aac7caedb8","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.721Z","level":"info","event":"http","id":"39c18361-71ce-4c9e-bea0-9d046f2684b1","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.722Z","level":"info","event":"http","id":"5e4c7818-c1e6-4d2f-a3de-ac8fdbfb3ace","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.724Z","level":"info","event":"http","id":"54de5fe8-a380-49a8-b09a-6940a159d28f","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.727Z","level":"info","event":"http","id":"d76b5905-8d8d-4403-a4d5-b9fb59b415b3","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.730Z","level":"info","event":"http","id":"852569a3-e46e-411d-83df-c9c33c22abad","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.731Z","level":"info","event":"http","id":"23537ca7-b27b-42de-8fe6-9f072f40e55d","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.732Z","level":"info","event":"http","id":"a98ce15a-e600-42ff-a696-49cf2f9eadab","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-18T12:24:55.734Z","level":"info","event":"http","id":"2028445a-d9fd-40ba-acee-7d51430d06ca","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.735Z","level":"info","event":"http","id":"b4cb376e-9dc9-4aa4-a82a-67599aa8a778","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.736Z","level":"info","event":"http","id":"8934c9e8-a639-430f-9758-9f6f0fc68c8a","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.737Z","level":"info","event":"http","id":"ee66d8ed-dfd6-4a1b-ba63-0caf5d87cebb","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.738Z","level":"info","event":"http","id":"a79ebed4-9060-4096-8112-b97f184584ea","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.740Z","level":"info","event":"http","id":"0740fda8-7736-4feb-b7fa-80791b076503","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.743Z","level":"info","event":"http","id":"55e248c7-4b37-475f-823c-63c2d9c4fcca","method":"GET","path":"/api/admin/submissions","status":200,"ms":3}
+{"ts":"2026-10-18T12:24:55.746Z","level":"info","event":"http","id":"a5d73fb8-2d55-43b9-a201-ecb33078e7af","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.748Z","level":"info","event":"http","id":"daa777c8-4cad-4cef-9c65-d14818391552","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.750Z","level":"info","event":"http","id":"62e4028d-49eb-441c-9ae7-48e008e15739","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.751Z","level":"info","event":"http","id":"0a464bdd-5e0d-412d-ae2f-482b63d78838","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.753Z","level":"info","event":"http","id":"cf3f50b9-5565-4d16-ac01-91a5b9e62ab0","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.754Z","level":"info","event":"http","id":"1de62502-1b5e-41ab-999d-a01d38574e13","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.755Z","level":"info","event":"http","id":"faa4b6ef-1ab0-4863-8e51-489d31c4b1cd","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.756Z","level":"info","event":"http","id":"bea411da-88a3-4d05-8ede-0f26f0fa4aa7","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.758Z","level":"info","event":"http","id":"213a45c5-d21b-4970-9db1-a208a733b1b9","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.761Z","level":"info","event":"http","id":"9ecde52c-206b-49cc-bf61-63ffad1e0ab5","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-18T12:24:55.763Z","level":"info","event":"http","id":"60b02107-0d16-4dca-ac3f-1665d54336cb","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.765Z","level":"info","event":"http","id":"d6737a37-17a2-4d2f-b3ae-49625976878c","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.766Z","level":"info","event":"http","id":"63d926ff-fa34-49a8-b2b6-a332ad2fce17","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.768Z","level":"info","event":"http","id":"688efaac-c976-4af6-8061-c512aaa1606d","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.769Z","level":"info","event":"http","id":"06662c22-9163-427a-9216-0254fe02c549","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.770Z","level":"info","event":"http","id":"a6b213b5-978c-4579-b212-5988182ba304","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T12:24:55.771Z","level":"info","event":"http","id":"6989b4f0-b786-4433-8c36-bf6beeed855f","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+  PASS H2 authenticated staff APIs are capped at 300 requests/min
+
+=== SECURITY VERIFICATION SUMMARY (internal, pre-engagement) ===
+26/26 cases PASS
+PASS — every adversarial case in the commission pack's internal matrix behaved as designed.
+EXIT=0

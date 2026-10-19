@@ -1,0 +1,17 @@
+=== rm(1.2-2) BRANCH PROTECTION DRILL — 2026-10-16 ===
+Remote: origin -> ../remotes/simal-platform.git (local bare, branch main)
+Hook: remotes/simal-platform.git/hooks/update (reject deletion of main; reject non-FF/force push to main)
+
+NEGATIVE TEST 1 — force push after drill commit:
+  ! [remote rejected] main -> main (hook declined)            -> PASS (rejected)
+
+NEGATIVE TEST 2 — delete main:
+  ! [remote rejected] main (deletion of the current branch prohibited)  -> PASS (rejected)
+
+POSITIVE TEST — normal fast-forward push:
+  ce8d072..2a86de6  main -> main                               -> PASS (accepted)
+
+Drill residue cleanup: hook temporarily disabled, force-cleaned to ce8d072, re-enabled (documented admin action).
+Verified: local == remote == 2a86de6; working tree clean.
+NOTE: local bare remote cannot enforce PR-required merges / status checks — swap-in runbook in
+docs/BRANCH_PROTECTION.md (UPDATE 2026-10-16 section); local CI mirror = scripts/ci/run-local-ci.mjs.

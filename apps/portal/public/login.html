@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in &mdash; Simal KYC &amp; e-Invoicing Portal</title>
+<link rel="icon" type="image/png" href="assets/img/favicon.png">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/login.css">
+</head>
+<body class="auth-page">
+
+<div class="auth-viewport">
+
+  <!-- ====================================================================
+       LEFT COLUMN: Enterprise Visual Trust Cockpit
+       ==================================================================== -->
+  <aside class="auth-brand-side" aria-label="Simal Corporate Identity">
+    <div class="auth-ambient-glow" aria-hidden="true"></div>
+
+    <!-- Brand Header -->
+    <header class="auth-brand-header">
+      <a href="/" class="auth-brand-logo-wrap" title="Simal Technologies">
+        <img src="assets/img/logo-white.png" alt="Simal Technologies" class="auth-brand-logo">
+      </a>
+      <div class="auth-gateway-pill" role="status" aria-label="System Status">
+        <span class="auth-pulse-dot" aria-hidden="true"></span>
+        <span>Dubai Gateway: Active &bull; 99.99% SLA</span>
+      </div>
+    </header>
+
+    <!-- Brand Centerpiece -->
+    <div class="auth-brand-body">
+      <span class="auth-brand-badge">Enterprise Access Control</span>
+      <h1 class="auth-brand-title">
+        Next-Generation Gateway for <span>Global Memory &amp; Supply Chain KYC</span>
+      </h1>
+      <p class="auth-brand-desc">
+        Unified portal for automated vendor &amp; customer onboarding, real-time UAE FTA tax compliance, and accredited Peppol e-invoicing exchange.
+      </p>
+
+      <!-- Security & Trust Proof Points -->
+      <div class="auth-feature-list" role="list">
+        <div class="auth-feature-item" role="listitem">
+          <div class="auth-feature-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <path d="m9 12 2 2 4-4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="auth-feature-title">Zero-Trust Identity Governance</div>
+            <p class="auth-feature-sub">Automated PEP, sanctions screening and instant EmaraTax TRN validation with immutable audit trails.</p>
+          </div>
+        </div>
+
+        <div class="auth-feature-item" role="listitem">
+          <div class="auth-feature-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <div>
+            <div class="auth-feature-title">Accredited Peppol E-Invoicing</div>
+            <p class="auth-feature-sub">Certified bilateral exchange point <code style="font-size:11px;color:#93C5FD">0235:1005481729</code> complying with UAE FTA e-invoicing mandates.</p>
+          </div>
+        </div>
+
+        <div class="auth-feature-item" role="listitem">
+          <div class="auth-feature-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+          <div>
+            <div class="auth-feature-title">Hardware-Grade Cryptography</div>
+            <p class="auth-feature-sub">RFC 6238 TOTP two-factor authentication, scrypt key derivation, and strict session sandboxing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand Footer -->
+    <footer class="auth-brand-footer">
+      <div>&copy; 2026 Simal Technologies Middle East LLC.</div>
+      <div class="auth-compliance-tags">
+        <span class="auth-tag">DED &amp; DMCC Licensed</span>
+        <span>•</span>
+        <span class="auth-tag">TLS 1.3 Encryption</span>
+      </div>
+    </footer>
+  </aside>
+
+  <!-- ====================================================================
+       RIGHT COLUMN: Authentication Cockpit
+       ==================================================================== -->
+  <main class="auth-cockpit-side" id="main-content">
+    <div class="auth-card-container">
+
+      <!-- Mobile Brand Header -->
+      <div class="auth-mobile-header">
+        <a href="https://www.simalme.com/" title="Simal Technologies">
+          <img src="assets/img/logo-lockup-color.png" alt="Simal Technologies" class="auth-mobile-logo">
+        </a>
+      </div>
+
+      <!-- Navigation Bar above Cockpit -->
+      <div class="auth-cockpit-nav">
+        <a href="https://www.simalme.com/" class="auth-back-link" title="Return to Simal Technologies Corporate Website">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+          </svg>
+          <span>simalme.com</span>
+        </a>
+        <a href="index.html" class="auth-back-link" title="KYC Onboarding Portal Home">
+          <span>Portal Home</span>
+        </a>
+      </div>
+
+
+      <!-- Authentication Card Box -->
+      <div class="auth-card">
+
+        <!-- ============================================================
+             STEP 1: Credentials Form
+             ============================================================ -->
+        <div class="auth-step-credentials" id="step-credentials">
+          <header class="auth-header">
+            <span class="auth-portal-badge">KYC &amp; E-Invoicing Gateway</span>
+            <h2 class="auth-title">Sign in to Simal</h2>
+            <p class="auth-subtitle">Enter your corporate credentials to access your secure workspace.</p>
+          </header>
+
+          <div class="auth-tabs" role="tablist" style="display:flex;gap:6px;margin:16px 0 20px;background:#F1F5F9;padding:4px;border-radius:10px">
+            <button type="button" class="auth-tab on" id="tab-signin" role="tab" aria-selected="true" style="flex:1;padding:8px 12px;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;background:#fff;color:#0F172A;box-shadow:0 1px 2px rgba(0,0,0,0.06)">Sign In</button>
+            <button type="button" class="auth-tab" id="tab-register" role="tab" aria-selected="false" style="flex:1;padding:8px 12px;border:none;border-radius:8px;font-weight:600;font-size:13px;cursor:pointer;background:transparent;color:#64748B">Register Partner</button>
+          </div>
+
+          <!-- Error Alert Banner -->
+          <div class="auth-alert" id="auth-alert" hidden role="alert" aria-live="assertive">
+            <svg class="auth-alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="auth-alert-text">Invalid credentials</span>
+          </div>
+
+          <form id="form-credentials" action="#" method="POST" autocomplete="on">
+            <!-- Email Input -->
+            <div class="auth-form-group">
+              <label for="em" class="auth-label">Work Email</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <input id="em" name="username" type="email" class="auth-input" autocomplete="username" placeholder="name@company.ae" required spellcheck="false">
+              </div>
+            </div>
+
+            <!-- Password Input -->
+            <div class="auth-form-group">
+              <label for="pw" class="auth-label">
+                <span>Password</span>
+              </label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </span>
+                <input id="pw" name="password" type="password" class="auth-input" autocomplete="current-password" placeholder="••••••••" required>
+                <button type="button" class="auth-password-toggle" id="toggle-pw" title="Show password" aria-label="Show password">
+                  <svg id="pw-icon-show" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/>
+                    <circle cx="12" cy="12" r="3"/>
+                  </svg>
+                  <svg id="pw-icon-hide" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+                    <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/>
+                    <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/>
+                    <path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/>
+                    <line x1="2" y1="2" x2="22" y2="22"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Options Row -->
+            <div class="auth-options-row">
+              <label class="auth-checkbox-label">
+                <input type="checkbox" id="remember-me" class="auth-checkbox" checked>
+                <span>Keep session active</span>
+              </label>
+              <button type="button" class="auth-link-btn" id="btn-show-forgot" title="Reset your account password">Forgot password?</button>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="auth-btn-primary" id="go">
+              <span id="btn-text">Sign In</span>
+              <svg id="btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+              <span class="auth-spinner" id="btn-spinner" style="display:none" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <!-- Register Form (GAP-A1 / FRS A-01/08) -->
+          <form id="form-register" action="#" method="POST" autocomplete="on" style="display:none">
+            <div class="auth-form-group">
+              <label for="reg-name" class="auth-label">Full Name / Authorized Contact</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </span>
+                <input id="reg-name" type="text" class="auth-input" placeholder="Your Full Name" required minlength="2">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="reg-em" class="auth-label">Work Email</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <input id="reg-em" type="email" class="auth-input" placeholder="name@company.ae" required spellcheck="false">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="reg-pw" class="auth-label">Password (min 8 characters)</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </span>
+                <input id="reg-pw" type="password" class="auth-input" placeholder="••••••••" required minlength="8">
+              </div>
+            </div>
+
+            <div class="auth-form-group">
+              <label for="reg-pw-confirm" class="auth-label">Confirm Password</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </span>
+                <input id="reg-pw-confirm" type="password" class="auth-input" placeholder="••••••••" required minlength="8">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-btn-primary" id="reg-go" style="margin-top:16px">
+              <span id="reg-btn-text">Create Partner Account</span>
+              <svg id="reg-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+              <span class="auth-spinner" id="reg-btn-spinner" style="display:none" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- ============================================================
+             STEP 2: Segmented MFA / OTP Form
+             ============================================================ -->
+        <div class="auth-step-mfa" id="step-mfa">
+          <form id="form-mfa" action="#" method="POST" autocomplete="off">
+            <button type="button" class="auth-mfa-back" id="mfa-back">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="19" y1="12" x2="5" y2="12"/>
+                <polyline points="12 19 5 12 12 5"/>
+              </svg>
+              <span>Back to credentials</span>
+            </button>
+
+            <div class="auth-mfa-shield-badge">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+            </div>
+
+            <h2 class="auth-title">Two-Factor Authentication</h2>
+            <p class="auth-subtitle">
+              Enter the 6-digit verification code from your authenticator app.
+            </p>
+
+            <div class="auth-mfa-account-chip">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+              <span id="mfa-user-email">user@simalme.com</span>
+            </div>
+
+            <!-- MFA Error Banner -->
+            <div class="auth-alert" id="mfa-alert" hidden role="alert" aria-live="assertive">
+              <svg class="auth-alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="8" x2="12" y2="12"/>
+                <line x1="12" y1="16" x2="12.01" y2="16"/>
+              </svg>
+              <span id="mfa-alert-text">Invalid 6-digit code. Please try again.</span>
+            </div>
+
+            <!-- Segmented 6-Digit OTP Inputs -->
+            <div class="auth-otp-row" id="otp-container" role="group" aria-label="6-Digit Verification Code">
+              <input type="text" class="auth-otp-box" id="otp-1" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="one-time-code" aria-label="Digit 1" autofocus>
+              <input type="text" class="auth-otp-box" id="otp-2" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 2">
+              <input type="text" class="auth-otp-box" id="otp-3" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 3">
+              <input type="text" class="auth-otp-box" id="otp-4" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 4">
+              <input type="text" class="auth-otp-box" id="otp-5" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 5">
+              <input type="text" class="auth-otp-box" id="otp-6" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 6">
+            </div>
+
+
+            <!-- Verify MFA Button -->
+            <button type="submit" class="auth-btn-primary" id="mfa-go">
+              <span id="mfa-btn-text">Verify &amp; Continue</span>
+              <svg id="mfa-btn-arrow" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span class="auth-spinner" id="mfa-btn-spinner" style="display:none" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- ============================================================
+             STEP 3: Forgot Password Request Form
+             ============================================================ -->
+        <div class="auth-step-reset" id="step-reset-request" style="display:none">
+          <button type="button" class="auth-mfa-back" id="reset-back">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="19" y1="12" x2="5" y2="12"/>
+              <polyline points="12 19 5 12 12 5"/>
+            </svg>
+            <span>Back to sign in</span>
+          </button>
+
+          <header class="auth-header" style="margin-top:14px">
+            <span class="auth-portal-badge">Account Recovery</span>
+            <h2 class="auth-title">Reset your password</h2>
+            <p class="auth-subtitle">Enter your registered work email to receive a secure password recovery link.</p>
+          </header>
+
+          <div class="auth-alert" id="reset-alert" hidden role="alert" aria-live="assertive">
+            <svg class="auth-alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="reset-alert-text">Error</span>
+          </div>
+
+          <div class="auth-success" id="reset-success" hidden role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--auth-emerald-500);flex-shrink:0" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span id="reset-success-text">If an account matches, a recovery link has been dispatched to your email.</span>
+          </div>
+
+          <form id="form-reset-request" action="#" method="POST">
+            <div class="auth-form-group">
+              <label for="reset-email" class="auth-label">Work Email</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="20" height="16" x="2" y="4" rx="2"/>
+                    <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                  </svg>
+                </span>
+                <input id="reset-email" type="email" class="auth-input" placeholder="name@company.ae" required spellcheck="false">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-btn-primary" id="btn-reset-submit">
+              <span id="reset-btn-text">Send Recovery Link</span>
+              <span class="auth-spinner" id="reset-btn-spinner" style="display:none" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <p style="margin-top:16px;font-size:12.5px;color:var(--auth-ink-muted)">
+            Need direct help? Contact <a href="mailto:accounts@simalme.com" class="auth-link">accounts@simalme.com</a>
+          </p>
+        </div>
+
+        <!-- ============================================================
+             STEP 4: Password Reset Confirm Form (?reset=TOKEN)
+             ============================================================ -->
+        <div class="auth-step-reset" id="step-reset-confirm" style="display:none">
+          <header class="auth-header">
+            <span class="auth-portal-badge">Create New Password</span>
+            <h2 class="auth-title">Set your new password</h2>
+            <p class="auth-subtitle">Choose a new password with at least 8 characters.</p>
+          </header>
+
+          <div class="auth-alert" id="reset-confirm-alert" hidden role="alert" aria-live="assertive">
+            <svg class="auth-alert-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <line x1="12" y1="8" x2="12" y2="12"/>
+              <line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span id="reset-confirm-alert-text">Error</span>
+          </div>
+
+          <div class="auth-success" id="reset-confirm-success" hidden role="status">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:var(--auth-emerald-500);flex-shrink:0" aria-hidden="true">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <span id="reset-confirm-success-text">Password updated successfully. Redirecting to sign in...</span>
+          </div>
+
+          <form id="form-reset-confirm" action="#" method="POST">
+            <div class="auth-form-group">
+              <label for="reset-new-pw" class="auth-label">New Password</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </span>
+                <input id="reset-new-pw" type="password" class="auth-input" placeholder="At least 8 characters" required minlength="8">
+              </div>
+            </div>
+            <div class="auth-form-group">
+              <label for="reset-confirm-pw" class="auth-label">Confirm New Password</label>
+              <div class="auth-input-wrap">
+                <span class="auth-input-icon" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/>
+                    <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                  </svg>
+                </span>
+                <input id="reset-confirm-pw" type="password" class="auth-input" placeholder="Repeat new password" required minlength="8">
+              </div>
+            </div>
+
+            <button type="submit" class="auth-btn-primary" id="btn-confirm-submit">
+              <span id="confirm-btn-text">Save New Password &amp; Sign In</span>
+              <span class="auth-spinner" id="confirm-btn-spinner" style="display:none" aria-hidden="true"></span>
+            </button>
+          </form>
+        </div>
+
+        <!-- Footer Card Info -->
+        <footer class="auth-footer-help">
+          <p style="margin:0 0 8px">
+            New partner or vendor? Your account is created when your <a href="form.html" class="auth-link">KYC application is approved</a> — credentials arrive by secure email.
+          </p>
+          <p style="margin:0;color:#94A3B8;font-size:12px">
+            Staff access is audited and monitored according to UAE PDPL &amp; ISO 27001 policies.
+          </p>
+        </footer>
+
+      </div>
+
+      <div class="auth-footer-copyright">
+        Protected by TLS 1.3 • AES-256 GCM • Simal Enterprise Cloud
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+<script src="assets/js/api.js?v=6"></script>
+<script src="assets/js/login.js"></script>
+</body>
+</html>

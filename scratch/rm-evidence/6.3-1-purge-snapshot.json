@@ -1,0 +1,412 @@
+{
+  "ts": "2026-10-17T05:10:17.640Z",
+  "reason": "rm(6.3-1) F-2026-N011/DAT-7 test-data purge: e2e blocks (gate-*@example.invalid), smartme.com probe banners, p4-rollback revision rows; amc-tiers + nav-menus restored to seed canonical (e2e had overwritten nav-menus label to \"CMS-Driven Products 4.1\")",
+  "deletedBlocks": [
+    {
+      "id": 329,
+      "entity": "site",
+      "entity_id": "emergency_broadcast",
+      "lang": "en",
+      "payload": {
+        "reason": "Critical vulnerability mitigation broadcast"
+      },
+      "updated_by": "gate-rev-h_89x2pp@example.invalid",
+      "updated_at": "1791917829896"
+    },
+    {
+      "id": 330,
+      "entity": "site",
+      "entity_id": "super_admin_broadcast",
+      "lang": "en",
+      "payload": {
+        "reason": "Super admin security broadcast"
+      },
+      "updated_by": "gate-admin-fmde-ldn@example.invalid",
+      "updated_at": "1791917829902"
+    },
+    {
+      "id": 348,
+      "entity": "site",
+      "entity_id": "emergency-banner",
+      "lang": "en",
+      "payload": {
+        "message": "Live Operational Probe Rehearsal (Phase 9 Iteration 3)"
+      },
+      "updated_by": "admin@smartme.com",
+      "updated_at": "1791917011749"
+    },
+    {
+      "id": 349,
+      "entity": "site",
+      "entity_id": "pricing-tiers",
+      "lang": "en",
+      "payload": {
+        "tier": "enterprise",
+        "discount": "50% off wholesale"
+      },
+      "updated_by": "admin@smartme.com",
+      "updated_at": "1791916977948"
+    }
+  ],
+  "deletedRevisions": [
+    {
+      "id": 36,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831747021:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-w8tz4vr-@example.invalid (rollback)",
+      "created_at": "1791831747035"
+    },
+    {
+      "id": 34,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831747021:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-w8tz4vr-@example.invalid",
+      "created_at": "1791831747026"
+    },
+    {
+      "id": 35,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831747021:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-w8tz4vr-@example.invalid",
+      "created_at": "1791831747029"
+    },
+    {
+      "id": 43,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831782308:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-gi0ypaxr@example.invalid",
+      "created_at": "1791831782313"
+    },
+    {
+      "id": 44,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831782308:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-gi0ypaxr@example.invalid",
+      "created_at": "1791831782317"
+    },
+    {
+      "id": 45,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831782308:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-gi0ypaxr@example.invalid (rollback)",
+      "created_at": "1791831782324"
+    },
+    {
+      "id": 54,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831872234:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-0fxfqble@example.invalid",
+      "created_at": "1791831872238"
+    },
+    {
+      "id": 55,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831872234:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-0fxfqble@example.invalid",
+      "created_at": "1791831872242"
+    },
+    {
+      "id": 56,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791831872234:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-0fxfqble@example.invalid (rollback)",
+      "created_at": "1791831872248"
+    },
+    {
+      "id": 65,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791832056884:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-fmygmstq@example.invalid",
+      "created_at": "1791832056889"
+    },
+    {
+      "id": 66,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791832056884:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-fmygmstq@example.invalid",
+      "created_at": "1791832056892"
+    },
+    {
+      "id": 67,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791832056884:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-fmygmstq@example.invalid (rollback)",
+      "created_at": "1791832056898"
+    },
+    {
+      "id": 76,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791903527022:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-pp_epl2c@example.invalid",
+      "created_at": "1791903527030"
+    },
+    {
+      "id": 77,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791903527022:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-pp_epl2c@example.invalid",
+      "created_at": "1791903527034"
+    },
+    {
+      "id": 78,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791903527022:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-pp_epl2c@example.invalid (rollback)",
+      "created_at": "1791903527045"
+    },
+    {
+      "id": 87,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791906693206:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-n1c0xbsl@example.invalid",
+      "created_at": "1791906693211"
+    },
+    {
+      "id": 88,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791906693206:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-n1c0xbsl@example.invalid",
+      "created_at": "1791906693215"
+    },
+    {
+      "id": 89,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791906693206:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-n1c0xbsl@example.invalid (rollback)",
+      "created_at": "1791906693221"
+    },
+    {
+      "id": 99,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791917106224:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-1gimnwj6@example.invalid",
+      "created_at": "1791917106232"
+    },
+    {
+      "id": 100,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791917106224:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-1gimnwj6@example.invalid",
+      "created_at": "1791917106238"
+    },
+    {
+      "id": 101,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791917106224:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-1gimnwj6@example.invalid (rollback)",
+      "created_at": "1791917106250"
+    },
+    {
+      "id": 110,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791917829845:en",
+      "payload": {
+        "t": "State 1: Initial Release",
+        "v": 1
+      },
+      "actor": "gate-admin-fmde-ldn@example.invalid",
+      "created_at": "1791917829854"
+    },
+    {
+      "id": 111,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791917829845:en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "actor": "gate-admin-fmde-ldn@example.invalid",
+      "created_at": "1791917829863"
+    },
+    {
+      "id": 112,
+      "table_name": "content_blocks",
+      "record_id": "insight:p4-rollback-article-1791917829845:en",
+      "payload": {
+        "t": "State 3: Erroneous Publish",
+        "v": 3
+      },
+      "actor": "gate-admin-fmde-ldn@example.invalid (rollback)",
+      "created_at": "1791917829877"
+    }
+  ],
+  "restoredBefore": [
+    {
+      "entity_id": "amc-tiers",
+      "updated_by": "gate-admin-fmde-ldn@example.invalid",
+      "updated_at": "1791917829726",
+      "payload": {
+        "head": [
+          "Feature",
+          "Basic",
+          "Standard",
+          "Premium"
+        ],
+        "rows": [
+          [
+            "Response time",
+            "Next business day",
+            "4 hours",
+            "1 hour"
+          ],
+          [
+            "Resolution time",
+            "48 hours",
+            "8 hours",
+            "4 hours"
+          ],
+          [
+            "Support hours",
+            "Sun–Thu 9–18",
+            "Sun–Thu 8–20",
+            "24×7×365"
+          ],
+          [
+            "On-site visits",
+            "4 / year (quarterly)",
+            "12 / year (monthly)",
+            "Unlimited"
+          ],
+          [
+            "Remote support",
+            "Email & phone",
+            "+ remote desktop",
+            "All + dedicated engineer"
+          ]
+        ]
+      }
+    },
+    {
+      "entity_id": "nav-menus",
+      "updated_by": "gate-admin-jueoe9j1@example.invalid",
+      "updated_at": "1792209859057",
+      "payload": {
+        "menus": [
+          {
+            "id": "home",
+            "label": "Home"
+          },
+          {
+            "id": "products",
+            "label": "CMS-Driven Products 4.1"
+          },
+          {
+            "id": "brands",
+            "label": "Brands"
+          },
+          {
+            "id": "software",
+            "label": "Software Services"
+          },
+          {
+            "id": "solutions",
+            "label": "IT Solutions"
+          },
+          {
+            "id": "partners",
+            "label": "Partners"
+          },
+          {
+            "id": "insights",
+            "label": "Insights"
+          },
+          {
+            "id": "about",
+            "label": "About"
+          }
+        ],
+        "utility": {
+          "email": "info@simalme.com",
+          "hours": "🕘 Sun–Thu 9:00–18:00 GST",
+          "phone": "+971 4 393 0507",
+          "phoneHref": "tel:+97143930507",
+          "portalLabel": "🛡 KYC Portal — Sign in"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,422 @@
+
+================ JOB unit ================
+
+>>>>>>>> unit+json-integration: node --test test/unit/content-governance.test.js test/unit/security-rules-store.test.js test/unit/ssrf-screening.test.js test/unit/validators.test.js test/integration/api.test.js test/integration/workspace.test.js
+{"ts":"2026-10-16T13:12:04.964Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-it-O299Ij"}
+{"ts":"2026-10-16T13:12:04.965Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-16T13:12:05.136Z","level":"info","event":"http","id":"8d5fb399-6cb0-4735-91c3-d5d141e9c1e8","method":"GET","path":"/api/health","status":200,"ms":3}
+{"ts":"2026-10-16T13:12:05.146Z","level":"info","event":"http","id":"425382ec-2170-4c8b-a425-d747f57dc289","method":"GET","path":"/api/health","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:05.152Z","level":"info","event":"http","id":"0fb7d708-181c-49a2-acda-f87cc7104b6f","method":"GET","path":"/api/settings","status":200,"ms":1}
+✔ health + settings + security headers (34.8829ms)
+✔ 404 for unknown API + unknown page (4.6264ms)
+{"ts":"2026-10-16T13:12:05.256Z","level":"info","event":"http","id":"11ed3231-943b-4856-8410-1a9166bd43b2","method":"POST","path":"/api/auth/login","status":200,"ms":43}
+{"ts":"2026-10-16T13:12:05.267Z","level":"info","event":"http","id":"a6613d93-8866-41e9-8c03-a2baca54f31d","method":"POST","path":"/api/auth/mfa","status":200,"ms":9}
+{"ts":"2026-10-16T13:12:05.270Z","level":"info","event":"http","id":"627cf575-69f8-425a-a982-85493d82b5b3","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.275Z","level":"info","event":"http","id":"61b86e6d-a435-4242-9c24-a0756da072e8","method":"POST","path":"/api/auth/logout","status":200,"ms":4}
+✔ auth: wrong password 401; admin MFA flow; me; logout (115.9266ms)
+{"ts":"2026-10-16T13:12:05.316Z","level":"info","event":"http","id":"80128c0b-3da2-412c-b1ac-e988d2e9d043","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+✔ auth: bad MFA code rejected (49.832ms)
+✔ admin endpoints require auth (401 without session) (4.9029ms)
+✔ rate limiter: 429 after repeated login failures (13.1598ms)
+{"ts":"2026-10-16T13:12:05.351Z","level":"info","event":"http","id":"d01195a7-9951-4e3d-b5a4-e3027972e6f8","method":"POST","path":"/api/public/drafts","status":201,"ms":5}
+{"ts":"2026-10-16T13:12:05.356Z","level":"info","event":"http","id":"cf325e9e-1166-4004-a959-c021e4e80bb3","method":"PUT","path":"/api/public/drafts/dft_09b882e584385aaeeae1","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:05.358Z","level":"info","event":"http","id":"6e29f2ec-2c7d-49ec-91c7-0e3335929ea9","method":"GET","path":"/api/public/drafts/dft_09b882e584385aaeeae1","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.399Z","level":"info","event":"http","id":"b61d9b5d-08c3-4c0a-8e32-2ef79a24dbee","method":"POST","path":"/api/public/drafts/dft_09b882e584385aaeeae1/documents","status":200,"ms":40}
+{"ts":"2026-10-16T13:12:05.661Z","level":"info","event":"http","id":"4017284f-9829-43de-a4b3-9018de3c731c","method":"POST","path":"/api/public/drafts/dft_09b882e584385aaeeae1/documents","status":200,"ms":258}
+{"ts":"2026-10-16T13:12:05.924Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:05.924Z","level":"info","event":"http","id":"9f85f4fb-6f7e-4053-b2d5-10348ccfa7a0","method":"POST","path":"/api/public/applications","status":201,"ms":261}
+{"ts":"2026-10-16T13:12:06.157Z","level":"info","event":"http","id":"2159dcd2-6e68-4eb3-a867-307b665876bd","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:06.193Z","level":"info","event":"http","id":"eaaa71cd-38d2-4a4d-8d43-254ec7362f4c","method":"POST","path":"/api/auth/login","status":200,"ms":35}
+{"ts":"2026-10-16T13:12:06.199Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"start","by":"Review Staff"}
+{"ts":"2026-10-16T13:12:06.199Z","level":"info","event":"http","id":"9b27cf93-4054-4860-8532-f7a535914d4e","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:06.210Z","level":"info","event":"http","id":"8925daa4-bff0-4d5e-9936-f2c729e7687b","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/query","status":200,"ms":9}
+{"ts":"2026-10-16T13:12:06.221Z","level":"info","event":"http","id":"fde91771-cf21-473f-a7f2-7339e95f79af","method":"POST","path":"/api/public/applications/SIM-KYC-2026-10061/respond","status":200,"ms":10}
+{"ts":"2026-10-16T13:12:06.266Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"approve","by":"Review Staff"}
+{"ts":"2026-10-16T13:12:06.270Z","level":"info","event":"http","id":"a39c9bd4-6b6d-41b6-97c6-2123c1ec3e84","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":48}
+{"ts":"2026-10-16T13:12:06.275Z","level":"info","event":"http","id":"d1361e7c-b0de-4bd8-bfe2-6532502adf68","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:06.276Z","level":"info","event":"http","id":"7aeaf749-4ce1-49cd-b8be-0cfeb48a0ef6","method":"GET","path":"/api/admin/audit","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:06.277Z","level":"info","event":"http","id":"637461a8-a043-46d3-a465-4900dd792583","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":0}
+✔ full partner journey: draft → submit → status → query → respond → approve (932.6655ms)
+{"ts":"2026-10-16T13:12:06.282Z","level":"info","event":"http","id":"aa0d183a-9391-48ca-b3f0-a528f917b2f2","method":"POST","path":"/api/public/drafts","status":201,"ms":4}
+{"ts":"2026-10-16T13:12:06.287Z","level":"info","event":"http","id":"2053443c-f9cf-4cf1-b875-4381a8d57cb9","method":"PUT","path":"/api/public/drafts/dft_36fb4ff9c94772ec136b","status":200,"ms":3}
+{"ts":"2026-10-16T13:12:06.325Z","level":"info","event":"http","id":"deb98380-5161-4d17-985d-ea720874a19f","method":"POST","path":"/api/public/drafts/dft_36fb4ff9c94772ec136b/documents","status":200,"ms":37}
+{"ts":"2026-10-16T13:12:06.327Z","level":"info","event":"http","id":"724bfbd0-4253-4ed2-aac3-1dc6d062bdfe","method":"POST","path":"/api/public/drafts","status":201,"ms":0}
+{"ts":"2026-10-16T13:12:06.332Z","level":"info","event":"http","id":"230310ce-9879-407c-80c0-f4ecc4d83b30","method":"POST","path":"/api/public/drafts","status":201,"ms":4}
+✔ draft resume: existing draft returned with data/documents/step (55.8912ms)
+{"ts":"2026-10-16T13:12:06.510Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10062","role":"customer","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:06.510Z","level":"info","event":"http","id":"76c6036c-202f-4be3-9298-0be0fc1b7649","method":"POST","path":"/api/public/applications","status":201,"ms":173}
+{"ts":"2026-10-16T13:12:06.515Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"start","by":"Review Staff"}
+{"ts":"2026-10-16T13:12:06.516Z","level":"info","event":"http","id":"8fca9654-3398-4030-b7f1-01b300d5749a","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":5}
+{"ts":"2026-10-16T13:12:06.562Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"approve","by":"Review Staff"}
+{"ts":"2026-10-16T13:12:06.566Z","level":"info","event":"http","id":"ab28f9b5-3dc7-4e65-b955-8f181df03597","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":48}
+{"ts":"2026-10-16T13:12:06.607Z","level":"info","event":"http","id":"1899e1dc-7ace-4a13-89cf-7a9303014145","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-16T13:12:06.614Z","level":"info","event":"http","id":"782ae7ad-2c0c-4114-b4a3-ace2f58fd39c","method":"POST","path":"/api/auth/mfa","status":200,"ms":6}
+{"ts":"2026-10-16T13:12:06.618Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"reopen","by":"System Administrator"}
+{"ts":"2026-10-16T13:12:06.619Z","level":"info","event":"http","id":"bf754195-817d-402f-b029-c5121f25cdf8","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":4}
+✔ RBAC: reviewer cannot reopen; admin can (286.0041ms)
+{"ts":"2026-10-16T13:12:06.860Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10063","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:06.860Z","level":"info","event":"http","id":"09c0b267-9227-4896-b2dc-5214b6ff7ec4","method":"POST","path":"/api/public/applications","status":201,"ms":240}
+{"ts":"2026-10-16T13:12:06.861Z","level":"info","event":"http","id":"9697b26e-e939-49ee-8fe4-13626f0c1efc","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10063","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:06.862Z","level":"info","event":"http","id":"ca7ae8a7-4161-4bd3-b665-d0932fd550ef","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10063","status":200,"ms":0}
+✔ review details mask PII; super admin can unmask (243.3067ms)
+{"ts":"2026-10-16T13:12:06.864Z","level":"info","event":"http","id":"df325723-2d02-4b78-88a6-43879b91b908","method":"GET","path":"/api/admin/export.csv","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:06.865Z","level":"info","event":"http","id":"0c00d461-d729-404f-810b-750636018de8","method":"GET","path":"/api/admin/export.csv","status":200,"ms":0}
+✔ export.csv is PII-safe by default and full for super admin (3.113ms)
+{"ts":"2026-10-16T13:12:06.872Z","level":"info","event":"http","id":"3427a2d3-c2b1-4a55-ae63-5b624e81cf70","method":"POST","path":"/api/admin/invites/bulk","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:06.872Z","level":"info","event":"http","id":"4a2d9059-f421-40b7-9cf6-d93814e427ad","method":"GET","path":"/api/public/invites/INV-11DF8751","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:06.873Z","level":"info","event":"http","id":"f6c2e467-5812-422d-900c-71a59ebf4382","method":"GET","path":"/api/public/invites/INV-NOPE","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:07.045Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10064","role":"customer","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:07.045Z","level":"info","event":"http","id":"701d6223-2661-4648-bdfb-b25fe6a89b41","method":"POST","path":"/api/public/applications","status":201,"ms":171}
+{"ts":"2026-10-16T13:12:07.046Z","level":"info","event":"http","id":"a264fdc1-6490-48fc-9b56-8fa0050ed950","method":"GET","path":"/api/admin/invites","status":200,"ms":0}
+✔ invite closed loop: bulk import → link redeem → submission converts (180.5059ms)
+{"ts":"2026-10-16T13:12:07.280Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10065","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:07.281Z","level":"info","event":"http","id":"c1c5caea-629c-4974-8166-2766d45992d0","method":"POST","path":"/api/public/applications","status":201,"ms":234}
+{"ts":"2026-10-16T13:12:07.521Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10066","role":"vendor","screeningHits":0,"duplicateTin":true}
+{"ts":"2026-10-16T13:12:07.522Z","level":"info","event":"http","id":"2897f4c7-4d6d-4052-9d3f-f1ffd016c262","method":"POST","path":"/api/public/applications","status":201,"ms":239}
+{"ts":"2026-10-16T13:12:07.523Z","level":"info","event":"http","id":"c8e0b4e1-f095-42f5-9233-192fa0154206","method":"GET","path":"/api/public/tin-check","status":200,"ms":0}
+✔ duplicate TRN detection surfaces on submission + live tin-check (476.4667ms)
+{"ts":"2026-10-16T13:12:07.766Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10067","role":"vendor","screeningHits":1,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:07.767Z","level":"info","event":"http","id":"d4049a5b-2d58-4133-9eb3-3b7abf50c746","method":"POST","path":"/api/public/applications","status":201,"ms":243}
+{"ts":"2026-10-16T13:12:07.769Z","level":"info","event":"http","id":"fdf1c57d-c62d-47b2-8892-821a1d617f72","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10067","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:08.004Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10068","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:08.004Z","level":"info","event":"http","id":"76474a69-6d88-4eae-ac8f-05536e5cf129","method":"POST","path":"/api/public/applications","status":201,"ms":234}
+✔ screening: suspicious name flagged, clean name clears (481.2796ms)
+{"ts":"2026-10-16T13:12:08.238Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10069","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:08.238Z","level":"info","event":"http","id":"1e0eb59e-0e95-4ece-832d-49cb60d1098a","method":"POST","path":"/api/public/applications","status":201,"ms":232}
+{"ts":"2026-10-16T13:12:08.251Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10069","action":"reject","by":"Review Staff"}
+{"ts":"2026-10-16T13:12:08.251Z","level":"info","event":"http","id":"9e3e5709-11e7-410e-9fbd-5cf7b6478f81","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10069/actions","status":200,"ms":10}
+✔ workflow guards: approve from submitted is 409; reject requires reason (247.508ms)
+{"ts":"2026-10-16T13:12:08.253Z","level":"info","event":"http","id":"6e16588b-dbd8-4f1b-9a15-1c8b489f86e5","method":"GET","path":"/api/admin/analytics","status":200,"ms":0}
+✔ analytics: stats reflect submissions; aging + expiries shaped (1.7245ms)
+{"ts":"2026-10-16T13:12:08.255Z","level":"info","event":"http","id":"cc9e820b-7b8c-4e4b-ad57-905d8596ae0c","method":"GET","path":"/api/integration/master","status":200,"ms":0}
+✔ integration master endpoint: token-gated counterparty feed (1.6331ms)
+{"ts":"2026-10-16T13:12:08.257Z","level":"info","event":"http","id":"c09d568c-3cd9-4500-a9fa-ad45fe89e75b","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:08.257Z","level":"info","event":"http","id":"eaed662e-7c8f-4a2c-96a7-c74f780ae21b","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:08.258Z","level":"info","event":"http","id":"b587e55f-a936-4962-9666-755fd4366573","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:08.259Z","level":"info","event":"http","id":"7341e2b2-2a06-44eb-b179-1c6947972b18","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+✔ list endpoint: filters, pagination, search (3.6843ms)
+{"ts":"2026-10-16T13:12:08.493Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10070","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:08.493Z","level":"info","event":"http","id":"cfd739d7-fcc5-4b7e-9c68-4a26c0a6b8dd","method":"POST","path":"/api/public/applications","status":201,"ms":233}
+{"ts":"2026-10-16T13:12:08.499Z","level":"info","event":"http","id":"0cbf5234-6b09-4387-b5b4-2fe6b8efdaec","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10070/checklist","status":200,"ms":5}
+{"ts":"2026-10-16T13:12:08.505Z","level":"info","event":"http","id":"51d3eff9-91a1-465b-8815-53d9480fbcb9","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10070/notes","status":200,"ms":4}
+✔ checklist + notes endpoints persist (246.5537ms)
+{"ts":"2026-10-16T13:12:04.956Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-ws-C5YjnE"}
+{"ts":"2026-10-16T13:12:04.957Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-16T13:12:05.178Z","level":"info","event":"http","id":"7122f53f-6c88-4c65-bb29-5eb60b989669","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+{"ts":"2026-10-16T13:12:05.201Z","level":"info","event":"http","id":"ca41586c-b6ed-4bd9-981c-5f672eadd60e","method":"POST","path":"/api/auth/mfa","status":200,"ms":12}
+{"ts":"2026-10-16T13:12:05.206Z","level":"info","event":"http","id":"35e173e0-a6bc-4a35-ab1d-41ed3c84d1ac","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.251Z","level":"info","event":"http","id":"21eab50b-8af0-45f7-afe7-44f6e097fbe1","method":"POST","path":"/api/auth/login","status":200,"ms":43}
+✔ users list: super admin OK, reviewer forbidden (RBAC) (133.6926ms)
+{"ts":"2026-10-16T13:12:05.295Z","level":"info","event":"http","id":"610b0c63-e629-43b6-9d8a-64a075c1f93b","method":"POST","path":"/api/admin/users","status":201,"ms":39}
+{"ts":"2026-10-16T13:12:05.336Z","level":"info","event":"http","id":"dba0cfab-b211-4324-b56a-641b5f887906","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+✔ user create: happy path + validation + duplicate email (91.833ms)
+{"ts":"2026-10-16T13:12:05.347Z","level":"info","event":"http","id":"93c76a71-d007-46a8-a50b-a51a06f2b489","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:05.352Z","level":"info","event":"http","id":"85ee68ba-25a6-4ef6-bfe5-071c9a90da7c","method":"PUT","path":"/api/admin/users/usr_b7fdb78b5cc51fc66ca5","status":200,"ms":4}
+✔ user update: role change OK; bootstrap admin protected (10.6935ms)
+{"ts":"2026-10-16T13:12:05.358Z","level":"info","event":"http","id":"2261c835-128f-4cf3-924c-30d72153b232","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.396Z","level":"info","event":"http","id":"c41a9243-3aa5-4064-b111-ac0c3a2058d5","method":"POST","path":"/api/admin/users/usr_b7fdb78b5cc51fc66ca5/reset-password","status":200,"ms":37}
+{"ts":"2026-10-16T13:12:05.439Z","level":"info","event":"http","id":"f716109e-3268-4426-a053-36e4818b70e9","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+✔ reset password: issues one-time credential and it works (83.296ms)
+{"ts":"2026-10-16T13:12:05.441Z","level":"info","event":"http","id":"c44c1aec-43ee-4f59-982b-ffe050c506c9","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:05.448Z","level":"info","event":"http","id":"c8f0fb6d-3e90-4163-971f-66ee37ac19df","method":"POST","path":"/api/admin/users/usr_b7fdb78b5cc51fc66ca5/deactivate","status":200,"ms":3}
+{"ts":"2026-10-16T13:12:05.489Z","level":"info","event":"http","id":"025fda6a-56ba-4d4b-a3cc-5d12a02e4709","method":"POST","path":"/api/admin/users/usr_b7fdb78b5cc51fc66ca5/reset-password","status":200,"ms":40}
+✔ deactivate: self blocked; other OK and login refused (51.1466ms)
+{"ts":"2026-10-16T13:12:05.531Z","level":"info","event":"http","id":"6746b989-f45d-42cd-bf7d-08a5c2ffc466","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+{"ts":"2026-10-16T13:12:05.538Z","level":"info","event":"http","id":"1e15903b-3424-461e-a0eb-9a77411375f8","method":"POST","path":"/api/auth/mfa","status":200,"ms":6}
+{"ts":"2026-10-16T13:12:05.540Z","level":"info","event":"http","id":"8a343657-252a-47f3-bea6-c8296badb1ff","method":"GET","path":"/api/admin/sessions","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.546Z","level":"info","event":"http","id":"df6f1866-eb0c-4067-b5c3-b47dd4144f07","method":"POST","path":"/api/admin/sessions/c6def56e/force-logout","status":200,"ms":5}
+{"ts":"2026-10-16T13:12:05.548Z","level":"info","event":"http","id":"0ff3244e-c8e3-4418-a7a3-accd239070b4","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+✔ active sessions + force logout terminates a live session (57.5658ms)
+{"ts":"2026-10-16T13:12:05.587Z","level":"info","event":"http","id":"d9b614ad-3145-4f6e-8831-a4274f85915e","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+{"ts":"2026-10-16T13:12:05.590Z","level":"info","event":"http","id":"a3c0988e-5335-47fd-8678-e2d600178edf","method":"GET","path":"/api/admin/settings","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.595Z","level":"info","event":"http","id":"aaad3a00-acbb-4073-b2c7-b197488d86d1","method":"PUT","path":"/api/admin/settings","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:05.602Z","level":"info","event":"http","id":"60b3d7ee-23fc-4cfe-884f-8765836f086a","method":"PUT","path":"/api/admin/settings","status":200,"ms":4}
+✔ settings: read + write round-trip, reviewer forbidden (53.0477ms)
+{"ts":"2026-10-16T13:12:05.857Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:05.858Z","level":"info","event":"http","id":"e92a26cf-7784-4422-b11f-02a3b793f6a7","method":"POST","path":"/api/public/applications","status":201,"ms":254}
+✔ seed: one submitted application exists for reports (256.5546ms)
+{"ts":"2026-10-16T13:12:05.862Z","level":"info","event":"http","id":"21efab19-92f4-43fd-9b31-6f6cc5395b88","method":"GET","path":"/api/admin/reports","status":200,"ms":1}
+✔ report catalog exposes built-ins and field dictionary (4.28ms)
+{"ts":"2026-10-16T13:12:05.866Z","level":"info","event":"http","id":"ea51d075-1055-417f-85a7-5f284863a669","method":"POST","path":"/api/admin/reports/build","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:05.867Z","level":"info","event":"http","id":"c0cebb5d-2a10-49f4-bb3c-904e7405d73c","method":"POST","path":"/api/admin/reports/build","status":200,"ms":0}
+✔ custom report: field selection, status filter, sorting (4.2758ms)
+{"ts":"2026-10-16T13:12:05.869Z","level":"info","event":"http","id":"ef08580e-9da8-4b55-8e2e-11d69267b88d","method":"POST","path":"/api/admin/reports/build","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:05.870Z","level":"info","event":"http","id":"a628836e-2b93-4952-836d-e78490b7bf16","method":"POST","path":"/api/admin/reports/build","status":200,"ms":0}
+✔ built-in reports resolve their advertised defaults (2.4116ms)
+{"ts":"2026-10-16T13:12:05.871Z","level":"info","event":"http","id":"e120e486-29fa-4b91-b50e-76101dfa56f6","method":"POST","path":"/api/admin/reports/export.csv","status":200,"ms":0}
+✔ CSV export: correct content type, quoted header, CRLF rows (1.4273ms)
+▶ Content Governance & Dual Approval (SEC-11 / P9-4)
+  ✔ 1. Non-sensitive content publishes directly without second approver (1.4051ms)
+  ✔ 2. Sensitive pricing claim without second approver is blocked (403) (1.6692ms)
+  ✔ 3. Sensitive brand authorization claim with self-approval is blocked (403) (0.3845ms)
+  ✔ 4. Sensitive compliance dates with inactive or non-staff approver is blocked (403) (0.5106ms)
+  ✔ 5. Sensitive content with valid distinct reviewer succeeds and logs dual-approval (0.3456ms)
+  ✔ 6. Sensitive content with compliance_officer second approval succeeds (0.3101ms)
+  ✔ 7. Super admin emergency publish with override succeeds and logs override (0.5709ms)
+  ✔ 8. Reviewer emergency publish requires second approver (0.5505ms)
+✔ Content Governance & Dual Approval (SEC-11 / P9-4) (8.8741ms)
+{"ts":"2026-10-16T13:12:05.031Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-S2NYi5\\db.json.tmp'"}
+{"ts":"2026-10-16T13:12:05.032Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-S2NYi5\\db.json.tmp'"}
+{"ts":"2026-10-16T13:12:05.033Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-S2NYi5\\db.json.tmp'"}
+{"ts":"2026-10-16T13:12:05.033Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-S2NYi5\\db.json.tmp'"}
+{"ts":"2026-10-16T13:12:05.033Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-S2NYi5\\db.json.tmp'"}
+✔ scrypt hash verifies round-trip (133.8724ms)
+✔ TOTP verify accepts current code, rejects others (2.436ms)
+✔ TOTP accepts previous step (drift ±1), rejects far codes (0.6146ms)
+✔ timingSafeEqual basics (0.2098ms)
+✔ rate limiter blocks after max within window (0.2871ms)
+✔ content sniffing detects real types and rejects garbage (0.2345ms)
+✔ RBAC: viewer read/export only; reviewer decides; super_admin reopens (0.1501ms)
+✔ workflow: full happy path transitions allowed (0.1933ms)
+✔ workflow: approve blocked from submitted; reject requires reason (0.184ms)
+✔ workflow: rejected is terminal (reapply = new submission) (0.7059ms)
+✔ partner-editable states exclude review states (0.096ms)
+✔ store: persists and reloads; versioned migration adds missing collections (7.4158ms)
+✔ repos: users, drafts, submissions, invites lifecycle (7.0383ms)
+{"ts":"2026-10-16T13:12:04.935Z","level":"info","event":"watchlist_loaded","path":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\scr-Kl9Stu\\watchlist.csv","entries":2}
+✔ SSRF guard refuses loopback, private and reserved targets (45.7446ms)
+✔ SSRF guard accepts a public http/https URL (7.8122ms)
+✔ screening loads the watchlist (0.3514ms)
+✔ exact match after legal-token normalisation (LLC/FZE/TRADING stripped) (6.131ms)
+✔ clean name clears (3.4015ms)
+✔ signatory and UBO names are screened too (3.0842ms)
+✔ results persist per reference (0.2056ms)
+✔ TIN generator produces checksum-valid 15-digit numbers (1.6693ms)
+✔ tampered TIN still passes — validation is structural only (OQ-9 resolved) (0.2378ms)
+✔ real FTA TRNs observed in production are accepted (0.1488ms)
+✔ 10-digit TRN rejected (0.1175ms)
+✔ IBAN generator passes mod-97; wrong check digits rejected (0.4311ms)
+✔ Emirates ID structure validated (0.2854ms)
+✔ Peppol pattern (0.2544ms)
+✔ complete valid application passes (1.7085ms)
+✔ bad TRN blocks submission with field error (0.6785ms)
+✔ foreign entity swaps TRN for foreign tax id (0.5939ms)
+✔ UAE Peppol must equal 0235:TIN (0.4585ms)
+✔ expired licence rejected (0.328ms)
+✔ missing required vendor documents rejected (1.5438ms)
+✔ POA signatory requires POA document (0.3719ms)
+✔ expired signatory ID rejected (0.3428ms)
+✔ ownership over 100 rejected (0.4034ms)
+✔ unaccepted declarations rejected (0.151ms)
+✔ invalid IBAN rejected (0.1874ms)
+✔ customer role requires fewer documents (0.2126ms)
+ℹ tests 79
+ℹ suites 0
+ℹ pass 79
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3800.2075
+
+>>>>>>>> feature-suites: node --test test/account-services.test.js test/token-exchange.test.js test/peppol-sandbox-roundtrip.test.js test/rfq.test.js
+{"ts":"2026-10-16T13:12:08.791Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\acct-EZtBxU"}
+{"ts":"2026-10-16T13:12:08.793Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\data\\watchlist.csv","entries":5}
+{"ts":"2026-10-16T13:12:08.985Z","level":"info","event":"http","id":"a34c83bd-813a-4e48-8262-a78d69b0c0b1","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.011Z","level":"info","event":"http","id":"491b453b-9f18-4282-9411-82b261abc7c8","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":17}
+✔ reset request: unknown email gets the identical response (no enumeration) (59.3932ms)
+{"ts":"2026-10-16T13:12:09.072Z","level":"info","event":"http","id":"2222ba57-c08e-44e8-9c09-72dd8a2aa3ed","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+{"ts":"2026-10-16T13:12:09.075Z","level":"info","event":"http","id":"9199022e-0b14-43c5-9380-87ab3bc09576","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:09.091Z","level":"info","event":"http","id":"b485c449-ce5a-4704-acea-ece74845423c","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":14}
+{"ts":"2026-10-16T13:12:09.095Z","level":"info","event":"http","id":"dd24ba7f-ccd1-441e-a0b4-7b03c02e6205","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+✔ reset request for real user emails a single-use link (token only in email) (77.7163ms)
+{"ts":"2026-10-16T13:12:09.172Z","level":"info","event":"http","id":"1007613c-f6ab-43f9-bfaf-7ba28471aa44","method":"POST","path":"/api/auth/login","status":200,"ms":70}
+{"ts":"2026-10-16T13:12:09.175Z","level":"info","event":"http","id":"f70125e2-39c9-47f5-a958-328e976f05d8","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:09.192Z","level":"info","event":"http","id":"ffafae7d-183d-4f12-9cdf-285194e37853","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":14}
+{"ts":"2026-10-16T13:12:09.195Z","level":"info","event":"http","id":"800ed7ba-1f02-4f7e-81d3-556c4cc80c85","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:09.257Z","level":"info","event":"http","id":"ac239842-2f3c-4662-848a-cc46b9ccc4df","method":"POST","path":"/api/auth/login","status":200,"ms":51}
+{"ts":"2026-10-16T13:12:09.323Z","level":"info","event":"http","id":"eb9d0c2d-5e30-48c2-af90-5d1b3e0c187b","method":"POST","path":"/api/auth/password-reset/confirm","status":200,"ms":63}
+{"ts":"2026-10-16T13:12:09.425Z","level":"info","event":"http","id":"6c25057d-f350-40ed-a71f-53a7807003e6","method":"POST","path":"/api/auth/login","status":200,"ms":47}
+{"ts":"2026-10-16T13:12:09.473Z","level":"info","event":"http","id":"54475dd3-5cb3-4bf4-880f-aa0a0452b7e5","method":"POST","path":"/api/auth/login","status":200,"ms":46}
+{"ts":"2026-10-16T13:12:09.474Z","level":"info","event":"http","id":"d2f00a8e-fc6a-47cb-83ec-16cce8319b33","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:09.486Z","level":"info","event":"http","id":"52ab78b1-2799-4575-b0de-351e7d922889","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":11}
+{"ts":"2026-10-16T13:12:09.487Z","level":"info","event":"http","id":"ca31b456-4562-40e8-b64d-c3603bf839d0","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:09.549Z","level":"info","event":"http","id":"a103c450-d2f4-4023-b99a-8abcc8af5b81","method":"POST","path":"/api/auth/password-reset/confirm","status":200,"ms":61}
+✔ reset confirm: weak password rejected, then full happy path + session kill + replay block (453.9162ms)
+✔ reset with an EXPIRED token is rejected (direct service, ttl 1ms) (36.2079ms)
+{"ts":"2026-10-16T13:12:09.634Z","level":"info","event":"http","id":"76a6d218-5342-4913-a55e-e26a905cbce3","method":"POST","path":"/api/auth/login","status":200,"ms":45}
+✔ session cookie carries HttpOnly + SameSite=Strict (Secure only in production) (48.778ms)
+{"ts":"2026-10-16T13:12:09.676Z","level":"info","event":"http","id":"3452a458-5bc1-46dd-a2c8-8025bb082897","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T13:12:09.677Z","level":"info","event":"http","id":"ee0f34a6-fef1-450f-a3d0-379c1a9d083f","method":"GET","path":"/api/auth/profile","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:09.682Z","level":"info","event":"http","id":"db416b73-d212-427b-a531-d1b255a8d1ad","method":"PUT","path":"/api/auth/profile","status":200,"ms":4}
+✔ profile: sessions listed; name update works; password change demands current (88.1842ms)
+{"ts":"2026-10-16T13:12:09.764Z","level":"info","event":"http","id":"706e8541-d2e0-45ce-99de-c40dcdc36d43","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+{"ts":"2026-10-16T13:12:09.770Z","level":"info","event":"http","id":"13aa4958-29aa-4d55-bb99-c1193f8bd512","method":"POST","path":"/api/auth/mfa/begin","status":200,"ms":5}
+{"ts":"2026-10-16T13:12:09.778Z","level":"info","event":"http","id":"af184c14-6aa8-4b42-a632-7673f674ae41","method":"POST","path":"/api/auth/mfa/confirm","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.818Z","level":"info","event":"http","id":"150554d9-32cb-40a2-8a2d-266a256d73a3","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T13:12:09.827Z","level":"info","event":"http","id":"4526978b-5aee-4d0e-b539-821d0d972547","method":"POST","path":"/api/auth/mfa","status":200,"ms":7}
+{"ts":"2026-10-16T13:12:09.832Z","level":"info","event":"http","id":"3bf0cdbb-7a58-4465-9acc-5ab224e879f5","method":"POST","path":"/api/auth/mfa/disable","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.876Z","level":"info","event":"http","id":"f79a3a13-2f2f-4e63-b09a-9250f64604ad","method":"POST","path":"/api/auth/login","status":200,"ms":42}
+✔ MFA enrolment: begin → confirm activates; login requires TOTP; disable with code (152.0646ms)
+{"ts":"2026-10-16T13:12:09.913Z","level":"info","event":"http","id":"6f49b627-b4f6-4f0b-9065-15fc0e9ed9b3","method":"POST","path":"/api/auth/login","status":200,"ms":35}
+{"ts":"2026-10-16T13:12:09.949Z","level":"info","event":"http","id":"8b22bf3c-fbe8-41e2-a854-9319ff7cd149","method":"POST","path":"/api/auth/login","status":200,"ms":35}
+{"ts":"2026-10-16T13:12:09.954Z","level":"info","event":"http","id":"9fa945f3-7f2e-48ca-b80a-1fbba85a690f","method":"POST","path":"/api/auth/sessions/revoke-others","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.955Z","level":"info","event":"http","id":"82154334-4d7f-4618-b454-ccefabfb4c51","method":"GET","path":"/api/auth/me","status":200,"ms":0}
+✔ revoke-others keeps the current session and kills the rest (79.7617ms)
+{"ts":"2026-10-16T13:12:09.993Z","level":"info","event":"http","id":"849a01ab-1416-4d81-935e-2c3d807b5f2a","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-16T13:12:10.029Z","level":"info","event":"http","id":"83905cc6-da33-438f-aa41-1a6675b6c9e8","method":"POST","path":"/api/auth/login","status":200,"ms":35}
+{"ts":"2026-10-16T13:12:10.030Z","level":"info","event":"http","id":"01469c14-be0c-46d6-8d38-c903546a82c9","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:10.053Z","level":"info","event":"http","id":"adf73812-b655-4753-a1fd-17507f05929a","method":"POST","path":"/api/auth/email/change","status":200,"ms":21}
+{"ts":"2026-10-16T13:12:10.054Z","level":"info","event":"http","id":"57cd6c79-0503-4be4-a5f8-3ae195079d62","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:10.055Z","level":"info","event":"http","id":"ad8de153-f4f3-4854-96c1-3fc23e29cd29","method":"GET","path":"/api/auth/profile","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:10.066Z","level":"info","event":"http","id":"00524bab-55f0-475f-98a0-1a48c43cf6bb","method":"POST","path":"/api/auth/email/verify","status":200,"ms":10}
+{"ts":"2026-10-16T13:12:10.107Z","level":"info","event":"http","id":"28d860c5-7aa9-4d31-9790-89856484aee5","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-16T13:12:10.146Z","level":"info","event":"http","id":"caf5263c-5f6e-4bd3-a36c-61bd93518f83","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T13:12:10.147Z","level":"info","event":"http","id":"ac417e5c-17cc-4ed0-9121-332020f33ea2","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:10.168Z","level":"info","event":"http","id":"0b9d935c-6df1-4e82-8cc8-231e70705c0d","method":"POST","path":"/api/auth/email/change","status":200,"ms":20}
+{"ts":"2026-10-16T13:12:10.169Z","level":"info","event":"http","id":"6d751b32-0fd7-4461-b1f5-965676e9742a","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-16T13:12:10.180Z","level":"info","event":"http","id":"e1634fa6-b24d-4858-b50c-d6f5deae0c37","method":"POST","path":"/api/auth/email/verify","status":200,"ms":10}
+✔ email change: link to new + alert to old; verify applies; replay blocked (224.249ms)
+{"ts":"2026-10-16T13:12:08.819Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-16T13:12:08.821Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\data\\watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T13:12:09.111Z","level":"info","event":"http","id":"2118c21b-7635-49b5-a829-0486c6091ab8","method":"POST","path":"/api/auth/login","status":200,"ms":62}
+{"ts":"2026-10-16T13:12:09.503Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10143","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:09.503Z","level":"info","event":"http","id":"0301640b-bbac-464c-91af-4a43cc375819","method":"POST","path":"/api/public/applications","status":201,"ms":374}
+{"ts":"2026-10-16T13:12:09.512Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10143","action":"start","by":"System Administrator"}
+{"ts":"2026-10-16T13:12:09.513Z","level":"info","event":"http","id":"f84a9d5c-3e29-4ecb-8772-cdeb6f85fc61","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10143/actions","status":200,"ms":8}
+{"ts":"2026-10-16T13:12:09.525Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10143","action":"approve","by":"System Administrator"}
+{"ts":"2026-10-16T13:12:09.526Z","level":"info","event":"http","id":"7a439f12-8bb1-40e1-b571-76fe630ca637","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10143/actions","status":200,"ms":10}
+{"ts":"2026-10-16T13:12:09.824Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10144","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:12:09.824Z","level":"info","event":"http","id":"00994986-6d27-45ae-a96b-80120ec1146b","method":"POST","path":"/api/public/applications","status":201,"ms":294}
+{"ts":"2026-10-16T13:12:09.831Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10144","action":"start","by":"System Administrator"}
+{"ts":"2026-10-16T13:12:09.832Z","level":"info","event":"http","id":"a69f8a79-995a-41bc-945d-a80a38ee3f22","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10144/actions","status":200,"ms":6}
+{"ts":"2026-10-16T13:12:09.839Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10144","action":"approve","by":"System Administrator"}
+{"ts":"2026-10-16T13:12:09.839Z","level":"info","event":"http","id":"8693fadf-6f99-4804-a9a6-a1501d659af8","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10144/actions","status":200,"ms":6}
+{"ts":"2026-10-16T13:12:09.847Z","level":"info","event":"http","id":"a90b1c70-02f9-4cf7-8bd2-c8d448b6b967","method":"GET","path":"/api/admin/outbox","status":200,"ms":7}
+✖ full round-trip: KYC approvals → invoice → validate → ASP transmit → ACK + transmissionId on delivered UBL (817.8515ms)
+✖ NACK path: invoice stays validated for staff retry (13.6152ms)
+{"ts":"2026-10-16T13:58:00.551Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792159072152"}
+{"ts":"2026-10-16T13:58:09.368Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792159072152","durationMs":8816,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-16T14:01:30.709Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792159286395"}
+{"ts":"2026-10-16T14:01:40.153Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792159286395","durationMs":9444,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\solutions\\_id_.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T02:41:53.298Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792204905770"}
+{"ts":"2026-10-17T02:42:01.475Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792204905770","durationMs":8176,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T02:42:03.302Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792204917899"}
+{"ts":"2026-10-17T02:42:12.370Z","level":"info","event":"ssg_build_completed","outboxId":"pub_1792204917899","durationMs":9067}
+{"ts":"2026-10-17T03:36:45.116Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208199507"}
+{"ts":"2026-10-17T03:36:52.960Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208199507","durationMs":7843,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:38:45.185Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208316474"}
+{"ts":"2026-10-17T03:38:52.823Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208316474","durationMs":7637,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:38:55.186Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208329067"}
+{"ts":"2026-10-17T03:39:03.574Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208329067","durationMs":8388,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:43:45.348Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208616022"}
+{"ts":"2026-10-17T03:43:53.064Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208616022","durationMs":7716,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:45:35.402Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208725936"}
+{"ts":"2026-10-17T03:45:43.132Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208725936","durationMs":7729,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+{"ts":"2026-10-16T13:12:08.819Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-16T13:12:08.820Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\data\\watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T13:12:09.068Z","level":"info","event":"http","id":"61676e2b-351d-46cb-8fcf-0184520d4315","method":"POST","path":"/api/rfq-basket","status":200,"ms":5}
+{"ts":"2026-10-16T13:12:09.087Z","level":"info","event":"http","id":"7cb3e09c-5891-41f3-98b2-308742626124","method":"POST","path":"/api/rfq-basket","status":200,"ms":2}
+{"ts":"2026-10-16T13:12:09.098Z","level":"info","event":"http","id":"6a883983-908a-4c4c-9da2-80f9a175e7a1","method":"POST","path":"/api/rfq-basket","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.102Z","level":"info","event":"http","id":"086ea1dc-09e4-4c0e-9ddf-360cb8af241d","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+✔ basket: add, merge, and view via httpOnly cookie (61.8655ms)
+✔ basket: unknown slug 404, bad qty 400, slug injection rejected (23.1872ms)
+{"ts":"2026-10-16T13:12:09.136Z","level":"info","event":"http","id":"98e27579-5ea1-44da-889e-db43cd8a8f8f","method":"POST","path":"/api/rfq-basket","status":200,"ms":4}
+✔ basket: accepts catalogue slug containing underscore (PUB-6) (8.9924ms)
+{"ts":"2026-10-16T13:12:09.145Z","level":"info","event":"http","id":"469b2f58-fd13-4d71-9630-027b0ecf2e58","method":"POST","path":"/api/rfq-basket","status":200,"ms":2}
+{"ts":"2026-10-16T13:12:09.148Z","level":"info","event":"http","id":"2d01ff2e-a5c5-4e0c-823d-24205c5ca369","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:09.151Z","level":"info","event":"http","id":"9cd7e354-431a-4c46-88c5-4f5bf6c783d5","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:09.156Z","level":"info","event":"http","id":"b88f5ad7-cace-4db6-88f4-3b2f15b2634c","method":"POST","path":"/api/rfq-basket","status":200,"ms":2}
+✔ basket: negative delta decrements, past-zero removes (the UI remove button) (21.2327ms)
+{"ts":"2026-10-16T13:12:09.185Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261016-1024","lines":2}
+{"ts":"2026-10-16T13:12:09.187Z","level":"info","event":"http","id":"1d9f7369-5f6a-4519-a3b2-87e2a7ede1e3","method":"POST","path":"/api/rfq","status":201,"ms":25}
+{"ts":"2026-10-16T13:12:09.193Z","level":"info","event":"http","id":"fb1a1073-9301-4c35-9e8f-80ac06f70224","method":"GET","path":"/api/rfq-basket","status":200,"ms":2}
+{"ts":"2026-10-16T13:12:09.250Z","level":"info","event":"http","id":"6163a248-4ddb-4032-b757-9fc5b8e36af9","method":"POST","path":"/api/auth/login","status":200,"ms":52}
+{"ts":"2026-10-16T13:12:09.260Z","level":"info","event":"http","id":"945f2a52-c3e0-4108-b5ad-773de464d1ae","method":"GET","path":"/api/admin/outbox","status":200,"ms":9}
+{"ts":"2026-10-16T13:12:09.265Z","level":"info","event":"http","id":"45b33614-b60d-4268-a778-46698ec7214a","method":"GET","path":"/api/rfq/SIMAL-RFQ-20261016-1024","status":200,"ms":2}
+✔ submit: reference format, emails both ways, basket cleared (108.8553ms)
+{"ts":"2026-10-16T13:12:09.271Z","level":"info","event":"http","id":"9de91b2f-9ae4-4c44-8340-089a89c86545","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:09.281Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261016-1025","lines":1}
+{"ts":"2026-10-16T13:12:09.281Z","level":"info","event":"http","id":"63b5aded-6db7-4309-bb1d-94416a8dab46","method":"POST","path":"/api/rfq","status":201,"ms":5}
+{"ts":"2026-10-16T13:12:09.283Z","level":"info","event":"http","id":"e682b4cf-dd48-4822-8a7b-39ddc47b1324","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-16T13:12:09.291Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261016-1026","lines":1}
+{"ts":"2026-10-16T13:12:09.293Z","level":"info","event":"http","id":"fab32d82-5103-4316-9806-45d2fc8f439d","method":"POST","path":"/api/rfq","status":201,"ms":9}
+✔ submit: empty basket 400, missing company 400, second RFQ increments ref (27.0468ms)
+{"ts":"2026-10-16T13:12:09.304Z","level":"info","event":"http","id":"2427fe81-bde8-4932-934e-28928965213a","method":"GET","path":"/api/admin/rfqs","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.314Z","level":"info","event":"http","id":"b6a9a259-149d-4147-94dd-4048123238bf","method":"POST","path":"/api/admin/rfqs/SIMAL-RFQ-20261016-1026/actions","status":200,"ms":8}
+{"ts":"2026-10-16T13:12:09.320Z","level":"info","event":"http","id":"a2626bd8-559c-42c3-b31d-91768c454a4b","method":"POST","path":"/api/admin/rfqs/SIMAL-RFQ-20261016-1026/actions","status":200,"ms":4}
+{"ts":"2026-10-16T13:12:09.328Z","level":"info","event":"http","id":"14c6fa00-525a-429f-881b-ae2df70db498","method":"GET","path":"/api/rfq/SIMAL-RFQ-20261016-1026","status":200,"ms":1}
+✔ admin: list + transitions with guards (33.5642ms)
+{"ts":"2026-10-16T13:12:09.334Z","level":"info","event":"http","id":"6a1af7c7-b7cf-4e6e-aa33-31cb1d9a00c0","method":"POST","path":"/api/contact","status":201,"ms":2}
+{"ts":"2026-10-16T13:12:09.339Z","level":"info","event":"http","id":"e8957f3b-8731-47f5-8df2-b6146089dd17","method":"GET","path":"/api/admin/outbox","status":200,"ms":4}
+✔ contact endpoint (FRS-CT): validation + inbox routing (13.6857ms)
+✔ unauthenticated admin RFQ endpoints are gated (5.2444ms)
+{"ts":"2026-10-16T13:12:08.819Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-16T13:12:08.820Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\data\\watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T13:12:09.071Z","level":"info","event":"http","id":"25b7263c-d1e4-4493-a2ec-a40799a0a58c","method":"POST","path":"/api/migration/exchange-token","status":200,"ms":15}
+{"ts":"2026-10-16T13:12:09.092Z","level":"info","event":"http","id":"6d92d118-2b6d-420c-a8fb-2aae634d2937","method":"GET","path":"/api/auth/me","status":200,"ms":7}
+✔ valid legacy token → session cookie + redirect to status (59.6019ms)
+{"ts":"2026-10-16T13:12:09.111Z","level":"info","event":"http","id":"1c233677-8fe9-40ed-adff-9bcea9cd35f4","method":"POST","path":"/api/migration/exchange-token","status":200,"ms":6}
+✔ replayed token → 409 (single use, permanently consumed) (20.8691ms)
+✔ tampered signature → 401 (4.147ms)
+✔ expired token → 401 (6.4596ms)
+{"ts":"2026-10-16T13:12:09.142Z","level":"info","event":"http","id":"1a00a26c-9e05-4252-b66f-6ee8e9249163","method":"POST","path":"/api/migration/exchange-token","status":200,"ms":5}
+✔ unknown legacy account → structured no_account, no session (13.5405ms)
+✔ garbage shapes → 401 without detail (21.013ms)
+{"ts":"2026-10-16T13:58:00.551Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792159072152"}
+{"ts":"2026-10-16T13:58:09.404Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792159072152","durationMs":8851,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-16T14:01:30.709Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792159286395"}
+{"ts":"2026-10-16T14:01:40.216Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792159286395","durationMs":9507,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\solutions.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T02:41:53.252Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792204905770"}
+{"ts":"2026-10-17T02:41:59.481Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792204905770","durationMs":6227,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nUnable to find the module for src/pages/404.astro. This is unexpected and likely a bug in Astro, please report.\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at generatePage (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/generate.js:139:11)\n    at async staticBuild (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/static-build.js:87:5)\n    at async AstroBuilder.run (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/index.js:188:7)\n    at async build (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/cli/build/index.js:29:3)\n    at async cli (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/cli/index.js:238:5)\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T02:42:03.254Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792204917899"}
+{"ts":"2026-10-17T02:42:12.436Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792204917899","durationMs":9181,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\solutions.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:36:44.968Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208199507"}
+{"ts":"2026-10-17T03:36:50.868Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208199507","durationMs":5900,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nUnable to find the module for src/pages/ar/index.astro. This is unexpected and likely a bug in Astro, please report.\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at generatePage (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/generate.js:139:11)\n    at async staticBuild (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/static-build.js:87:5)\n    at async AstroBuilder.run (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/index.js:188:7)\n    at async build (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/cli/build/index.js:29:3)\n    at async cli (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/cli/index.js:238:5)\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:38:45.035Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208316474"}
+{"ts":"2026-10-17T03:38:52.674Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208316474","durationMs":7638,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:38:55.045Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208329067"}
+{"ts":"2026-10-17T03:39:01.738Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208329067","durationMs":6693,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nThe requested module '../chunks/BaseLayout_DTMfijcF.mjs' does not provide an export named '$'\n  \u001b[1mLocation:\u001b[22m\n    \u001b[4mC:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js:221:15\u001b[24m\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at #asyncInstantiate (node:internal/modules/esm/module_job:455:21)\n    at async node:internal/modules/esm/loader:647:26\n    at async generatePages (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/generate.js:98:21)\n    at async AstroBuilder.build (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/index.js:157:5)\n    at async build (file:///C:/software_project/Simal_Corporate_website/Codebase/node_modules/astro/dist/core/build/index.js:45:3)\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:43:45.186Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208616022"}
+{"ts":"2026-10-17T03:43:52.964Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208616022","durationMs":7778,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+{"ts":"2026-10-17T03:45:35.245Z","level":"info","event":"ssg_build_started","outboxId":"pub_1792208725936"}
+{"ts":"2026-10-17T03:45:43.010Z","level":"error","event":"ssg_build_failed","outboxId":"pub_1792208725936","durationMs":7765,"error":"Command failed: C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node.exe C:\\software_project\\Simal_Corporate_website\\Codebase\\tools\\node\\node_modules\\npm\\bin\\npm-cli.js run build\nCannot find module 'C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\\dist\\pages\\products.astro.mjs' imported from C:\\software_project\\Simal_Corporate_website\\Codebase\\node_modules\\astro\\dist\\core\\build\\pipeline.js\n  \u001b[1mStack trace:\u001b[22m\n\u001b[2m    at finalizeResolution (node:internal/modules/esm/resolve:272:11)\n    at defaultResolve (node:internal/modules/esm/resolve:1006:11)\n    at #resolveAndMaybeBlockOnLoaderThread (node:internal/modules/esm/loader:725:38)\n    at #resolve (node:internal/modules/esm/loader:687:17)\n    at node:internal/modules/esm/loader:636:32\u001b[22m\nnpm error Lifecycle script `build` failed with error:\nnpm error code 1\nnpm error path C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error workspace @simal/site@0.1.0\nnpm error location C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\site\nnpm error command failed\nnpm error command C:\\WINDOWS\\system32\\cmd.exe /d /s /c astro build\n"}
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+ℹ tests 26
+ℹ suites 0
+ℹ pass 24
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52522418.6813
+
+✖ failing tests:
+
+test at test\peppol-sandbox-roundtrip.test.js:100:1
+✖ full round-trip: KYC approvals → invoice → validate → ASP transmit → ACK + transmissionId on delivered UBL (817.8515ms)
+  TypeError: Cannot read properties of undefined (reading 'text')
+      at TestContext.<anonymous> (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/test/peppol-sandbox-roundtrip.test.js:115:23)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:387:3)
+
+test at test\peppol-sandbox-roundtrip.test.js:144:1
+✖ NACK path: invoice stays validated for staff retry (13.6152ms)
+  AssertionError [ERR_ASSERTION]: NACK surfaces as 502 to staff
+  
+  404 !== 502
+  
+      at TestContext.<anonymous> (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/test/peppol-sandbox-roundtrip.test.js:154:10)
+      at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
+      at async Test.run (node:internal/test_runner/test:1409:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:974:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 404,
+    expected: 502,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+================ CI SUMMARY ================
+  FAIL  unit
+0/1 jobs green

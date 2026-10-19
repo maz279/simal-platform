@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Onboarding Form — Simal KYC Portal</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/base.css?v=8">
+  <link rel="stylesheet" href="assets/css/portal.css?v=8">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="portal-header compact no-print">
+    <div class="inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/logo-lockup-color.png" alt="Simal Technologies" width="166" height="36">
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span class="brand-title"><b>Partner Onboarding</b>&amp; KYC Portal</span>
+      </a>
+      <a class="btn btn-ghost btn-sm" href="index.html" id="btn-exit">Exit &amp; save</a>
+    </div>
+  </header>
+
+  <main id="main" class="form-shell">
+
+    <!-- ============ Email gate (draft identity, FR-P-005/011) ============ -->
+    <section id="gate" class="card card-pad" style="max-width:560px;margin-inline:auto" aria-labelledby="gate-title">
+      <div class="stack mt-2">
+        <div>
+          <span class="badge badge-brand" id="gate-role-badge">…</span>
+        </div>
+        <h1 id="gate-title" style="font-size:var(--fs-2xl)">Let’s get started</h1>
+        <p class="muted mb-0">We’ll save your progress as you go. Enter the email we should tie this
+          submission to — you’ll use it to resume or track your application later.</p>
+        <div class="field">
+          <label for="gate-email">Your contact email <span style="color:var(--danger-600)">*</span></label>
+          <input class="input" id="gate-email" type="email" autocomplete="email" placeholder="you@company.ae">
+          <span class="hint">A business email belonging to your company.</span>
+          <span class="error" id="gate-email-err">Please enter a valid email address.</span>
+        </div>
+        <div class="alert alert-info">
+          <span data-icon="info" aria-hidden="true"></span>
+          <span id="gate-notice">Takes about 10 minutes. You’ll need your trade licence, TRN certificate, MOA, signatory ID and a bank letter or cheque.</span>
+        </div>
+        <button class="btn btn-primary btn-lg" id="gate-continue">Continue <span data-icon="chevR" aria-hidden="true"></span></button>
+        <p class="small muted mb-0">By continuing you accept our <a href="terms.html">terms of use</a> and <a href="privacy.html">privacy notice</a> (UAE PDPL).</p>
+      </div>
+    </section>
+
+    <!-- ============ Wizard ============ -->
+    <section id="wizard" hidden>
+      <div class="form-topbar">
+        <div>
+          <h1 id="wizard-title" style="font-size:var(--fs-xl)">Vendor / Supplier onboarding</h1>
+          <p class="muted small mb-0" id="wizard-sub">Company · Tax &amp; e-invoicing · Contacts · Signatories &amp; UBO · Banking · Documents · Declarations</p>
+        </div>
+        <div class="row">
+          <span class="save-state" id="save-state" role="status" aria-live="polite">
+            <span class="ss-dot" aria-hidden="true"></span><span id="save-state-text">Draft</span>
+          </span>
+        </div>
+      </div>
+
+      <nav aria-label="Onboarding progress"><ol class="stepper mb-4" id="stepper" aria-label="Form progress"></ol></nav>
+
+      <form class="form-card" id="kyc-form" novalidate>
+
+        <!-- ================= STEP 1 — COMPANY ================= -->
+        <fieldset class="step-body" id="step-1" data-step="1">
+          <legend class="step-legend">Company information</legend>
+          <span class="sublegend">Exactly as printed on your trade licence — this is what our e-invoices must match.</span>
+
+          <div class="form-section">
+            <h2 class="form-heading">Identity</h2>
+            <div class="grid grid-2">
+              <div class="field">
+                <div class="label-row"><label for="f-legal_name_en">Legal company name (English) <span style="color:var(--danger-600)">*</span></label></div>
+                <input class="input" id="f-legal_name_en" name="company.legal_name_en" data-rules="required" autocomplete="organization" placeholder="e.g. Desert Byte Technologies LLC">
+                <span class="hint">As printed on the trade licence, including the entity suffix (LLC, FZE…).</span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-legal_name_ar">Legal company name (Arabic) <span class="optional">optional</span></label>
+                <input class="input" id="f-legal_name_ar" name="company.legal_name_ar" dir="auto" lang="ar" placeholder="الاسم القانوني">
+                <span class="hint">If it appears on the licence.</span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-trade_name">Trade name / DBA <span class="optional">optional</span></label>
+                <input class="input" id="f-trade_name" name="company.trade_name" placeholder="If different from legal name">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-entity_type">Legal entity type <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-entity_type" name="company.entity_type" data-rules="required">
+                  <option value="">Select…</option>
+                  <option>LLC</option><option>Sole Establishment</option><option>FZE</option><option>FZ-LLC</option>
+                  <option>Free Zone Branch</option><option>Civil Company</option><option>PJSC / PSC</option>
+                  <option>Foreign Company (Branch / Rep. Office)</option><option>Other</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-country">Country of incorporation <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-country" name="company.country" data-rules="required">
+                  <option value="">Select…</option>
+                  <option value="AE" selected>United Arab Emirates</option>
+                  <option value="AF">Afghanistan</option>
+                  <option value="AX">Aland Islands</option>
+                  <option value="AL">Albania</option>
+                  <option value="DZ">Algeria</option>
+                  <option value="AS">American Samoa</option>
+                  <option value="AD">Andorra</option>
+                  <option value="AO">Angola</option>
+                  <option value="AI">Anguilla</option>
+                  <option value="AQ">Antarctica</option>
+                  <option value="AG">Antigua and Barbuda</option>
+                  <option value="AR">Argentina</option>
+                  <option value="AM">Armenia</option>
+                  <option value="AW">Aruba</option>
+                  <option value="AU">Australia</option>
+                  <option value="AT">Austria</option>
+                  <option value="AZ">Azerbaijan</option>
+                  <option value="BS">Bahamas</option>
+                  <option value="BH">Bahrain</option>
+                  <option value="BD">Bangladesh</option>
+                  <option value="BB">Barbados</option>
+                  <option value="BY">Belarus</option>
+                  <option value="BE">Belgium</option>
+                  <option value="BZ">Belize</option>
+                  <option value="BJ">Benin</option>
+                  <option value="BM">Bermuda</option>
+                  <option value="BT">Bhutan</option>
+                  <option value="BO">Bolivia</option>
+                  <option value="BQ">Bonaire, Sint Eustatius and Saba</option>
+                  <option value="BA">Bosnia and Herzegovina</option>
+                  <option value="BW">Botswana</option>
+                  <option value="BV">Bouvet Island</option>
+                  <option value="BR">Brazil</option>
+                  <option value="IO">British Indian Ocean Territory</option>
+                  <option value="BN">Brunei Darussalam</option>
+                  <option value="BG">Bulgaria</option>
+                  <option value="BF">Burkina Faso</option>
+                  <option value="BI">Burundi</option>
+                  <option value="CV">Cabo Verde</option>
+                  <option value="KH">Cambodia</option>
+                  <option value="CM">Cameroon</option>
+                  <option value="CA">Canada</option>
+                  <option value="KY">Cayman Islands</option>
+                  <option value="CF">Central African Republic</option>
+                  <option value="TD">Chad</option>
+                  <option value="CL">Chile</option>
+                  <option value="CN">China</option>
+                  <option value="CX">Christmas Island</option>
+                  <option value="CC">Cocos (Keeling) Islands</option>
+                  <option value="CO">Colombia</option>
+                  <option value="KM">Comoros</option>
+                  <option value="CG">Congo</option>
+                  <option value="CD">Congo (Democratic Republic of the)</option>
+                  <option value="CK">Cook Islands</option>
+                  <option value="CR">Costa Rica</option>
+                  <option value="CI">Cote d'Ivoire</option>
+                  <option value="HR">Croatia</option>
+                  <option value="CU">Cuba</option>
+                  <option value="CW">Curacao</option>
+                  <option value="CY">Cyprus</option>
+                  <option value="CZ">Czechia</option>
+                  <option value="DK">Denmark</option>
+                  <option value="DJ">Djibouti</option>
+                  <option value="DM">Dominica</option>
+                  <option value="DO">Dominican Republic</option>
+                  <option value="EC">Ecuador</option>
+                  <option value="EG">Egypt</option>
+                  <option value="SV">El Salvador</option>
+                  <option value="GQ">Equatorial Guinea</option>
+                  <option value="ER">Eritrea</option>
+                  <option value="EE">Estonia</option>
+                  <option value="SZ">Eswatini</option>
+                  <option value="ET">Ethiopia</option>
+                  <option value="FK">Falkland Islands</option>
+                  <option value="FO">Faroe Islands</option>
+                  <option value="FJ">Fiji</option>
+                  <option value="FI">Finland</option>
+                  <option value="FR">France</option>
+                  <option value="GF">French Guiana</option>
+                  <option value="PF">French Polynesia</option>
+                  <option value="TF">French Southern Territories</option>
+                  <option value="GA">Gabon</option>
+                  <option value="GM">Gambia</option>
+                  <option value="GE">Georgia</option>
+                  <option value="DE">Germany</option>
+                  <option value="GH">Ghana</option>
+                  <option value="GI">Gibraltar</option>
+                  <option value="GR">Greece</option>
+                  <option value="GL">Greenland</option>
+                  <option value="GD">Grenada</option>
+                  <option value="GP">Guadeloupe</option>
+                  <option value="GU">Guam</option>
+                  <option value="GT">Guatemala</option>
+                  <option value="GG">Guernsey</option>
+                  <option value="GN">Guinea</option>
+                  <option value="GW">Guinea-Bissau</option>
+                  <option value="GY">Guyana</option>
+                  <option value="HT">Haiti</option>
+                  <option value="HM">Heard Island and McDonald Islands</option>
+                  <option value="VA">Holy See (Vatican)</option>
+                  <option value="HN">Honduras</option>
+                  <option value="HK">Hong Kong</option>
+                  <option value="HU">Hungary</option>
+                  <option value="IS">Iceland</option>
+                  <option value="IN">India</option>
+                  <option value="ID">Indonesia</option>
+                  <option value="IR">Iran</option>
+                  <option value="IQ">Iraq</option>
+                  <option value="IE">Ireland</option>
+                  <option value="IM">Isle of Man</option>
+                  <option value="IL">Israel</option>
+                  <option value="IT">Italy</option>
+                  <option value="JM">Jamaica</option>
+                  <option value="JP">Japan</option>
+                  <option value="JE">Jersey</option>
+                  <option value="JO">Jordan</option>
+                  <option value="KZ">Kazakhstan</option>
+                  <option value="KE">Kenya</option>
+                  <option value="KI">Kiribati</option>
+                  <option value="KW">Kuwait</option>
+                  <option value="KG">Kyrgyzstan</option>
+                  <option value="LA">Laos</option>
+                  <option value="LV">Latvia</option>
+                  <option value="LB">Lebanon</option>
+                  <option value="LS">Lesotho</option>
+                  <option value="LR">Liberia</option>
+                  <option value="LY">Libya</option>
+                  <option value="LI">Liechtenstein</option>
+                  <option value="LT">Lithuania</option>
+                  <option value="LU">Luxembourg</option>
+                  <option value="MO">Macao</option>
+                  <option value="MG">Madagascar</option>
+                  <option value="MW">Malawi</option>
+                  <option value="MY">Malaysia</option>
+                  <option value="MV">Maldives</option>
+                  <option value="ML">Mali</option>
+                  <option value="MT">Malta</option>
+                  <option value="MH">Marshall Islands</option>
+                  <option value="MQ">Martinique</option>
+                  <option value="MR">Mauritania</option>
+                  <option value="MU">Mauritius</option>
+                  <option value="YT">Mayotte</option>
+                  <option value="MX">Mexico</option>
+                  <option value="FM">Micronesia</option>
+                  <option value="MD">Moldova</option>
+                  <option value="MC">Monaco</option>
+                  <option value="MN">Mongolia</option>
+                  <option value="ME">Montenegro</option>
+                  <option value="MS">Montserrat</option>
+                  <option value="MA">Morocco</option>
+                  <option value="MZ">Mozambique</option>
+                  <option value="MM">Myanmar</option>
+                  <option value="NA">Namibia</option>
+                  <option value="NR">Nauru</option>
+                  <option value="NP">Nepal</option>
+                  <option value="NL">Netherlands</option>
+                  <option value="NC">New Caledonia</option>
+                  <option value="NZ">New Zealand</option>
+                  <option value="NI">Nicaragua</option>
+                  <option value="NE">Niger</option>
+                  <option value="NG">Nigeria</option>
+                  <option value="NU">Niue</option>
+                  <option value="NF">Norfolk Island</option>
+                  <option value="KP">North Korea</option>
+                  <option value="MK">North Macedonia</option>
+                  <option value="MP">Northern Mariana Islands</option>
+                  <option value="NO">Norway</option>
+                  <option value="OM">Oman</option>
+                  <option value="PK">Pakistan</option>
+                  <option value="PW">Palau</option>
+                  <option value="PS">Palestine</option>
+                  <option value="PA">Panama</option>
+                  <option value="PG">Papua New Guinea</option>
+                  <option value="PY">Paraguay</option>
+                  <option value="PE">Peru</option>
+                  <option value="PH">Philippines</option>
+                  <option value="PN">Pitcairn</option>
+                  <option value="PL">Poland</option>
+                  <option value="PT">Portugal</option>
+                  <option value="PR">Puerto Rico</option>
+                  <option value="QA">Qatar</option>
+                  <option value="RE">Reunion</option>
+                  <option value="RO">Romania</option>
+                  <option value="RU">Russia</option>
+                  <option value="RW">Rwanda</option>
+                  <option value="BL">Saint Barthelemy</option>
+                  <option value="SH">Saint Helena</option>
+                  <option value="KN">Saint Kitts and Nevis</option>
+                  <option value="LC">Saint Lucia</option>
+                  <option value="MF">Saint Martin</option>
+                  <option value="PM">Saint Pierre and Miquelon</option>
+                  <option value="VC">Saint Vincent and the Grenadines</option>
+                  <option value="WS">Samoa</option>
+                  <option value="SM">San Marino</option>
+                  <option value="ST">Sao Tome and Principe</option>
+                  <option value="SA">Saudi Arabia</option>
+                  <option value="SN">Senegal</option>
+                  <option value="RS">Serbia</option>
+                  <option value="SC">Seychelles</option>
+                  <option value="SL">Sierra Leone</option>
+                  <option value="SG">Singapore</option>
+                  <option value="SX">Sint Maarten</option>
+                  <option value="SK">Slovakia</option>
+                  <option value="SI">Slovenia</option>
+                  <option value="SB">Solomon Islands</option>
+                  <option value="SO">Somalia</option>
+                  <option value="ZA">South Africa</option>
+                  <option value="GS">South Georgia and the South Sandwich Islands</option>
+                  <option value="KR">South Korea</option>
+                  <option value="SS">South Sudan</option>
+                  <option value="ES">Spain</option>
+                  <option value="LK">Sri Lanka</option>
+                  <option value="SD">Sudan</option>
+                  <option value="SR">Suriname</option>
+                  <option value="SJ">Svalbard and Jan Mayen</option>
+                  <option value="SE">Sweden</option>
+                  <option value="CH">Switzerland</option>
+                  <option value="SY">Syria</option>
+                  <option value="TW">Taiwan</option>
+                  <option value="TJ">Tajikistan</option>
+                  <option value="TZ">Tanzania</option>
+                  <option value="TH">Thailand</option>
+                  <option value="TL">Timor-Leste</option>
+                  <option value="TG">Togo</option>
+                  <option value="TK">Tokelau</option>
+                  <option value="TO">Tonga</option>
+                  <option value="TT">Trinidad and Tobago</option>
+                  <option value="TN">Tunisia</option>
+                  <option value="TR">Turkiye</option>
+                  <option value="TM">Turkmenistan</option>
+                  <option value="TC">Turks and Caicos Islands</option>
+                  <option value="TV">Tuvalu</option>
+                  <option value="UG">Uganda</option>
+                  <option value="UA">Ukraine</option>
+                  <option value="GB">United Kingdom</option>
+                  <option value="US">United States</option>
+                  <option value="UM">United States Minor Outlying Islands</option>
+                  <option value="UY">Uruguay</option>
+                  <option value="UZ">Uzbekistan</option>
+                  <option value="VU">Vanuatu</option>
+                  <option value="VE">Venezuela</option>
+                  <option value="VN">Viet Nam</option>
+                  <option value="VG">Virgin Islands (British)</option>
+                  <option value="VI">Virgin Islands (U.S.)</option>
+                  <option value="WF">Wallis and Futuna</option>
+                  <option value="EH">Western Sahara</option>
+                  <option value="YE">Yemen</option>
+                  <option value="ZM">Zambia</option>
+                  <option value="ZW">Zimbabwe</option>
+                  <option value="OTHER">Other</option>
+                </select>
+                <span class="hint">Determines whether we ask for a UAE TRN or your home-country tax ID.</span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-year_established">Year established <span class="optional">optional</span></label>
+                <input class="input" id="f-year_established" name="company.year_established" inputmode="numeric" data-rules="number" placeholder="e.g. 2012">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Licence</h2>
+            <div class="grid grid-3">
+              <div class="field">
+                <label for="f-license_number">Trade licence number <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-license_number" name="company.license_number" data-rules="required" placeholder="As printed on the licence">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-license_authority">Licensing authority <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-license_authority" name="company.license_authority" data-rules="required">
+                  <option value="">Select…</option>
+                  <option>Abu Dhabi DED (ADDED)</option>
+                  <option>Dubai DET (DED)</option>
+                  <option>Sharjah Economic Development Dept.</option>
+                  <option>Ajman Department of Economic Development</option>
+                  <option>Ras Al Khaimah DED</option>
+                  <option>Fujairah Department of Industry & Economy</option>
+                  <option>Umm Al Quwain DED</option>
+                  <option>ADGM</option>
+                  <option>DIFC</option>
+                  <option>KEZAD (Khalifa Economic Zones)</option>
+                  <option>Masdar City</option>
+                  <option>twofour54</option>
+                  <option>DMCC</option>
+                  <option>JAFZA</option>
+                  <option>DAFZA</option>
+                  <option>Dubai South</option>
+                  <option>Dubai Silicon Oasis Authority</option>
+                  <option>Dubai Healthcare City (DHCC)</option>
+                  <option>Dubai CommerCity</option>
+                  <option>Meydan Free Zone</option>
+                  <option>DUQE</option>
+                  <option>IFZA</option>
+                  <option>SHAMS (Sharjah Media City)</option>
+                  <option>SAIF Zone</option>
+                  <option>Hamriyah Free Zone</option>
+                  <option>Sharjah Airport International FZ</option>
+                  <option>Ajman Free Zone</option>
+                  <option>RAKEZ</option>
+                  <option>Fujairah Free Zone</option>
+                  <option>Fujairah Creative City</option>
+                  <option>UAQ Free Trade Zone</option>
+                  <option>Other free zone</option>
+                  <option>Foreign registry</option>
+                  <option>Other</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-business_activity">Main business activity <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-business_activity" name="company.business_activity" data-rules="required" placeholder="e.g. Retail of computers & peripherals">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-license_issue">Licence issue date <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-license_issue" name="company.license_issue" type="date" data-rules="required dateNotFuture">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-license_expiry">Licence expiry date <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-license_expiry" name="company.license_expiry" type="date" data-rules="required dateNotPast">
+                <span class="hint">Must be valid today — we track renewal with you.</span>
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Registered address</h2>
+            <div class="grid grid-3">
+              <div class="field">
+                <label for="f-addr_building">Building / office <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-addr_building" name="company.address.building" data-rules="required" placeholder="Office 201, Dar Al Riffa Bldg">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-addr_street">Street / area <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-addr_street" name="company.address.street" data-rules="required" placeholder="Khalid Bin Al Waleed Rd">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-addr_city">City <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-addr_city" name="company.address.city" data-rules="required" placeholder="Dubai">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-addr_emirate">Emirate / state <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-addr_emirate" name="company.address.emirate" data-rules="required">
+                  <option value="">Select…</option>
+                  <option>Dubai</option><option>Abu Dhabi</option><option>Sharjah</option><option>Ajman</option>
+                  <option>Umm Al Quwain</option><option>Ras Al Khaimah</option><option>Fujairah</option>
+                  <option>Outside UAE</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-addr_country">Country <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-addr_country" name="company.address.country" data-rules="required">
+                  <option value="">Select…</option>
+                  <option selected>United Arab Emirates</option>
+                  <option>Afghanistan</option>
+                  <option>Aland Islands</option>
+                  <option>Albania</option>
+                  <option>Algeria</option>
+                  <option>American Samoa</option>
+                  <option>Andorra</option>
+                  <option>Angola</option>
+                  <option>Anguilla</option>
+                  <option>Antarctica</option>
+                  <option>Antigua and Barbuda</option>
+                  <option>Argentina</option>
+                  <option>Armenia</option>
+                  <option>Aruba</option>
+                  <option>Australia</option>
+                  <option>Austria</option>
+                  <option>Azerbaijan</option>
+                  <option>Bahamas</option>
+                  <option>Bahrain</option>
+                  <option>Bangladesh</option>
+                  <option>Barbados</option>
+                  <option>Belarus</option>
+                  <option>Belgium</option>
+                  <option>Belize</option>
+                  <option>Benin</option>
+                  <option>Bermuda</option>
+                  <option>Bhutan</option>
+                  <option>Bolivia</option>
+                  <option>Bonaire, Sint Eustatius and Saba</option>
+                  <option>Bosnia and Herzegovina</option>
+                  <option>Botswana</option>
+                  <option>Bouvet Island</option>
+                  <option>Brazil</option>
+                  <option>British Indian Ocean Territory</option>
+                  <option>Brunei Darussalam</option>
+                  <option>Bulgaria</option>
+                  <option>Burkina Faso</option>
+                  <option>Burundi</option>
+                  <option>Cabo Verde</option>
+                  <option>Cambodia</option>
+                  <option>Cameroon</option>
+                  <option>Canada</option>
+                  <option>Cayman Islands</option>
+                  <option>Central African Republic</option>
+                  <option>Chad</option>
+                  <option>Chile</option>
+                  <option>China</option>
+                  <option>Christmas Island</option>
+                  <option>Cocos (Keeling) Islands</option>
+                  <option>Colombia</option>
+                  <option>Comoros</option>
+                  <option>Congo</option>
+                  <option>Congo (Democratic Republic of the)</option>
+                  <option>Cook Islands</option>
+                  <option>Costa Rica</option>
+                  <option>Cote d'Ivoire</option>
+                  <option>Croatia</option>
+                  <option>Cuba</option>
+                  <option>Curacao</option>
+                  <option>Cyprus</option>
+                  <option>Czechia</option>
+                  <option>Denmark</option>
+                  <option>Djibouti</option>
+                  <option>Dominica</option>
+                  <option>Dominican Republic</option>
+                  <option>Ecuador</option>
+                  <option>Egypt</option>
+                  <option>El Salvador</option>
+                  <option>Equatorial Guinea</option>
+                  <option>Eritrea</option>
+                  <option>Estonia</option>
+                  <option>Eswatini</option>
+                  <option>Ethiopia</option>
+                  <option>Falkland Islands</option>
+                  <option>Faroe Islands</option>
+                  <option>Fiji</option>
+                  <option>Finland</option>
+                  <option>France</option>
+                  <option>French Guiana</option>
+                  <option>French Polynesia</option>
+                  <option>French Southern Territories</option>
+                  <option>Gabon</option>
+                  <option>Gambia</option>
+                  <option>Georgia</option>
+                  <option>Germany</option>
+                  <option>Ghana</option>
+                  <option>Gibraltar</option>
+                  <option>Greece</option>
+                  <option>Greenland</option>
+                  <option>Grenada</option>
+                  <option>Guadeloupe</option>
+                  <option>Guam</option>
+                  <option>Guatemala</option>
+                  <option>Guernsey</option>
+                  <option>Guinea</option>
+                  <option>Guinea-Bissau</option>
+                  <option>Guyana</option>
+                  <option>Haiti</option>
+                  <option>Heard Island and McDonald Islands</option>
+                  <option>Holy See (Vatican)</option>
+                  <option>Honduras</option>
+                  <option>Hong Kong</option>
+                  <option>Hungary</option>
+                  <option>Iceland</option>
+                  <option>India</option>
+                  <option>Indonesia</option>
+                  <option>Iran</option>
+                  <option>Iraq</option>
+                  <option>Ireland</option>
+                  <option>Isle of Man</option>
+                  <option>Israel</option>
+                  <option>Italy</option>
+                  <option>Jamaica</option>
+                  <option>Japan</option>
+                  <option>Jersey</option>
+                  <option>Jordan</option>
+                  <option>Kazakhstan</option>
+                  <option>Kenya</option>
+                  <option>Kiribati</option>
+                  <option>Kuwait</option>
+                  <option>Kyrgyzstan</option>
+                  <option>Laos</option>
+                  <option>Latvia</option>
+                  <option>Lebanon</option>
+                  <option>Lesotho</option>
+                  <option>Liberia</option>
+                  <option>Libya</option>
+                  <option>Liechtenstein</option>
+                  <option>Lithuania</option>
+                  <option>Luxembourg</option>
+                  <option>Macao</option>
+                  <option>Madagascar</option>
+                  <option>Malawi</option>
+                  <option>Malaysia</option>
+                  <option>Maldives</option>
+                  <option>Mali</option>
+                  <option>Malta</option>
+                  <option>Marshall Islands</option>
+                  <option>Martinique</option>
+                  <option>Mauritania</option>
+                  <option>Mauritius</option>
+                  <option>Mayotte</option>
+                  <option>Mexico</option>
+                  <option>Micronesia</option>
+                  <option>Moldova</option>
+                  <option>Monaco</option>
+                  <option>Mongolia</option>
+                  <option>Montenegro</option>
+                  <option>Montserrat</option>
+                  <option>Morocco</option>
+                  <option>Mozambique</option>
+                  <option>Myanmar</option>
+                  <option>Namibia</option>
+                  <option>Nauru</option>
+                  <option>Nepal</option>
+                  <option>Netherlands</option>
+                  <option>New Caledonia</option>
+                  <option>New Zealand</option>
+                  <option>Nicaragua</option>
+                  <option>Niger</option>
+                  <option>Nigeria</option>
+                  <option>Niue</option>
+                  <option>Norfolk Island</option>
+                  <option>North Korea</option>
+                  <option>North Macedonia</option>
+                  <option>Northern Mariana Islands</option>
+                  <option>Norway</option>
+                  <option>Oman</option>
+                  <option>Pakistan</option>
+                  <option>Palau</option>
+                  <option>Palestine</option>
+                  <option>Panama</option>
+                  <option>Papua New Guinea</option>
+                  <option>Paraguay</option>
+                  <option>Peru</option>
+                  <option>Philippines</option>
+                  <option>Pitcairn</option>
+                  <option>Poland</option>
+                  <option>Portugal</option>
+                  <option>Puerto Rico</option>
+                  <option>Qatar</option>
+                  <option>Reunion</option>
+                  <option>Romania</option>
+                  <option>Russia</option>
+                  <option>Rwanda</option>
+                  <option>Saint Barthelemy</option>
+                  <option>Saint Helena</option>
+                  <option>Saint Kitts and Nevis</option>
+                  <option>Saint Lucia</option>
+                  <option>Saint Martin</option>
+                  <option>Saint Pierre and Miquelon</option>
+                  <option>Saint Vincent and the Grenadines</option>
+                  <option>Samoa</option>
+                  <option>San Marino</option>
+                  <option>Sao Tome and Principe</option>
+                  <option>Saudi Arabia</option>
+                  <option>Senegal</option>
+                  <option>Serbia</option>
+                  <option>Seychelles</option>
+                  <option>Sierra Leone</option>
+                  <option>Singapore</option>
+                  <option>Sint Maarten</option>
+                  <option>Slovakia</option>
+                  <option>Slovenia</option>
+                  <option>Solomon Islands</option>
+                  <option>Somalia</option>
+                  <option>South Africa</option>
+                  <option>South Georgia and the South Sandwich Islands</option>
+                  <option>South Korea</option>
+                  <option>South Sudan</option>
+                  <option>Spain</option>
+                  <option>Sri Lanka</option>
+                  <option>Sudan</option>
+                  <option>Suriname</option>
+                  <option>Svalbard and Jan Mayen</option>
+                  <option>Sweden</option>
+                  <option>Switzerland</option>
+                  <option>Syria</option>
+                  <option>Taiwan</option>
+                  <option>Tajikistan</option>
+                  <option>Tanzania</option>
+                  <option>Thailand</option>
+                  <option>Timor-Leste</option>
+                  <option>Togo</option>
+                  <option>Tokelau</option>
+                  <option>Tonga</option>
+                  <option>Trinidad and Tobago</option>
+                  <option>Tunisia</option>
+                  <option>Turkiye</option>
+                  <option>Turkmenistan</option>
+                  <option>Turks and Caicos Islands</option>
+                  <option>Tuvalu</option>
+                  <option>Uganda</option>
+                  <option>Ukraine</option>
+                  <option>United Kingdom</option>
+                  <option>United States</option>
+                  <option>United States Minor Outlying Islands</option>
+                  <option>Uruguay</option>
+                  <option>Uzbekistan</option>
+                  <option>Vanuatu</option>
+                  <option>Venezuela</option>
+                  <option>Viet Nam</option>
+                  <option>Virgin Islands (British)</option>
+                  <option>Virgin Islands (U.S.)</option>
+                  <option>Wallis and Futuna</option>
+                  <option>Western Sahara</option>
+                  <option>Yemen</option>
+                  <option>Zambia</option>
+                  <option>Zimbabwe</option>
+                  <option>Other</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-addr_po_box">PO Box <span class="optional">optional</span></label>
+                <input class="input" id="f-addr_po_box" name="company.address.po_box" placeholder="e.g. 49740">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+
+            <div class="stack mt-6">
+              <div>
+                <span class="small" style="font-weight:600;color:var(--gray-700)">Is your billing address the same as the registered address? <span style="color:var(--danger-600)">*</span></span>
+                <div class="row mt-2" role="radiogroup" aria-label="Billing address same?">
+                  <label class="choice"><input type="radio" name="company.billing_address_same" value="yes" checked><span class="choice-title">Yes, same</span></label>
+                  <label class="choice"><input type="radio" name="company.billing_address_same" value="no"><span class="choice-title">No — different billing address</span></label>
+                </div>
+              </div>
+              <div class="grid grid-3" data-show="company.billing_address_same==='no'">
+                <div class="field">
+                  <label for="f-bill_building">Billing building / office <span style="color:var(--danger-600)">*</span></label>
+                  <input class="input" id="f-bill_building" name="company.billing.building" data-rules="requiredIfVisible">
+                  <span class="error" data-err></span>
+                </div>
+                <div class="field">
+                  <label for="f-bill_street">Billing street / area <span style="color:var(--danger-600)">*</span></label>
+                  <input class="input" id="f-bill_street" name="company.billing.street" data-rules="requiredIfVisible">
+                  <span class="error" data-err></span>
+                </div>
+                <div class="field">
+                  <label for="f-bill_city">Billing city &amp; country <span style="color:var(--danger-600)">*</span></label>
+                  <input class="input" id="f-bill_city" name="company.billing.city" data-rules="requiredIfVisible" placeholder="Dubai, UAE">
+                  <span class="error" data-err></span>
+                </div>
+              </div>
+
+              <div id="warehouse-q">
+                <span class="small" style="font-weight:600;color:var(--gray-700)">Is your delivery / warehouse address the same? <span class="optional">vendors only</span></span>
+                <div class="row mt-2" role="radiogroup" aria-label="Warehouse address same?">
+                  <label class="choice"><input type="radio" name="company.warehouse_address_same" value="yes" checked><span class="choice-title">Yes, same</span></label>
+                  <label class="choice"><input type="radio" name="company.warehouse_address_same" value="no"><span class="choice-title">No — different warehouse</span></label>
+                </div>
+                <div class="grid grid-3 mt-4" data-show="company.warehouse_address_same==='no'">
+                  <div class="field">
+                    <label for="f-wh_building">Warehouse building <span style="color:var(--danger-600)">*</span></label>
+                    <input class="input" id="f-wh_building" name="company.warehouse.building" data-rules="requiredIfVisible">
+                    <span class="error" data-err></span>
+                  </div>
+                  <div class="field">
+                    <label for="f-wh_street">Warehouse street / area <span style="color:var(--danger-600)">*</span></label>
+                    <input class="input" id="f-wh_street" name="company.warehouse.street" data-rules="requiredIfVisible">
+                    <span class="error" data-err></span>
+                  </div>
+                  <div class="field">
+                    <label for="f-wh_city">Warehouse city &amp; emirate <span style="color:var(--danger-600)">*</span></label>
+                    <input class="input" id="f-wh_city" name="company.warehouse.city" data-rules="requiredIfVisible">
+                    <span class="error" data-err></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Profile</h2>
+            <div class="grid grid-4">
+              <div class="field">
+                <label for="f-website">Website <span class="optional">optional</span></label>
+                <input class="input" id="f-website" name="company.website" data-rules="url" placeholder="https://…">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-employees">Employees <span class="optional">optional</span></label>
+                <input class="input" id="f-employees" name="company.employees" inputmode="numeric" data-rules="number" placeholder="e.g. 25">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-turnover">Annual turnover (AED) <span class="optional">optional</span></label>
+                <input class="input" id="f-turnover" name="company.annual_turnover_aed" inputmode="numeric" data-rules="number" placeholder="e.g. 2500000">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ================= STEP 2 — TAX & E-INVOICING ================= -->
+        <fieldset class="step-body" id="step-2" data-step="2" hidden>
+          <legend class="step-legend">Tax &amp; e-invoicing</legend>
+          <span class="sublegend">Required so our invoices clear UAE e-invoicing (Peppol) validation on the first try.</span>
+
+          <div class="form-section">
+            <h2 class="form-heading">Tax registration</h2>
+            <div id="uae-tax-fields" data-show="company.country==='AE'">
+              <div class="grid grid-2">
+                <div class="field">
+                  <label for="f-trn">TRN / TIN (15 digits) <span style="color:var(--danger-600)">*</span></label>
+                  <input class="input mono" id="f-trn" name="tax.trn" inputmode="numeric" maxlength="15"
+                         data-rules="required tin tinChecksum" placeholder="100472847700003">
+                  <span class="hint">Exactly as issued by the FTA — found on your TRN certificate / EmaraTax.</span>
+                  <span class="error" data-err></span>
+                  <div class="alert alert-warn" id="trn-duplicate-warning" hidden style="margin-top:8px;padding:8px 12px">
+                    <span data-icon="alertTri" aria-hidden="true"></span>
+                    <span class="small" id="trn-duplicate-text"></span>
+                  </div>
+                </div>
+                <div class="field">
+                  <label for="f-vat_registered">Are you VAT registered? <span style="color:var(--danger-600)">*</span></label>
+                  <select class="select" id="f-vat_registered" name="tax.vat_registered" data-rules="required">
+                    <option value="">Select…</option>
+                    <option value="yes">Yes — VAT registered</option>
+                    <option value="no">No</option>
+                  </select>
+                  <span class="error" data-err></span>
+                </div>
+              </div>
+              <div class="field mt-4">
+                <label>Branch TRNs <span class="optional">optional — only if you invoice from branches with separate TRNs</span></label>
+                <div id="branch-trn-list" class="stack"></div>
+                <button type="button" class="btn btn-secondary btn-sm mt-2" id="add-branch-trn">+ Add branch TRN</button>
+              </div>
+            </div>
+
+            <div id="foreign-tax-fields" class="grid grid-2" data-show="company.country!=='AE'" hidden>
+              <div class="field">
+                <label for="f-foreign_tax_type">Home-country tax ID type <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-foreign_tax_type" name="tax.foreign_tax_type" data-rules="requiredIfVisible">
+                  <option value="">Select…</option>
+                  <option>VAT / GST number</option><option>Business registration number</option><option>Other tax ID</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-foreign_tax_id">Home-country tax ID <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-foreign_tax_id" name="tax.foreign_tax_id" data-rules="requiredIfVisible">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+
+            <div class="grid grid-3 mt-6">
+              <div class="field">
+                <label for="f-excise">Excise-registered? <span class="optional">optional</span></label>
+                <select class="select" id="f-excise" name="tax.excise">
+                  <option value="no">No</option><option value="yes">Yes</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-customs_code">Customs code <span class="optional">optional</span></label>
+                <input class="input" id="f-customs_code" name="tax.customs_code" placeholder="If you import / export">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-reverse_charge">Reverse charge (RCM) applies?</label>
+                <select class="select" id="f-reverse_charge" name="tax.reverse_charge">
+                  <option value="no">No</option><option value="yes">Yes — imports / designated supplies</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">E-invoicing (Peppol)</h2>
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="f-peppol_id">Peppol ID <span class="optional">optional — if already registered</span></label>
+                <input class="input mono" id="f-peppol_id" name="tax.peppol_id" data-rules="peppol" placeholder="0235:1004728477">
+                <span class="hint">UAE format: <code>0235:</code> + 10-digit TIN.
+                  <button type="button" class="btn btn-ghost btn-sm" id="fill-peppol" style="padding:2px 8px">Use 0235: + my TIN</button></span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-asp_name">Your e-invoicing provider (ASP) <span class="optional">optional</span></label>
+                <select class="select" id="f-asp_name" name="tax.asp_name">
+                  <option value="">Not selected / not aware</option>
+                  <option>e&amp; Enterprise</option><option>EmaraTech ASP</option><option>Qvalitia FZ</option>
+                  <option>FinTech Partners ME</option><option>Other accredited provider</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-einv_status">E-invoicing readiness <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-einv_status" name="tax.einv_status" data-rules="required">
+                  <option value="">Select…</option>
+                  <option value="live">Live — exchanging Peppol invoices</option>
+                  <option value="in_progress">In progress — implementation underway</option>
+                  <option value="not_started">Not started</option>
+                  <option value="not_aware">Not aware of the requirement</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-invoice_currency">Preferred invoice currency <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-invoice_currency" name="tax.invoice_currency" data-rules="required">
+                  <option value="">Select…</option>
+                  <option selected>AED</option><option>USD</option><option>EUR</option><option>GBP</option><option>SAR</option><option>INR</option><option>CNY</option><option>JPY</option><option>Other</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Tax correspondence contact <span class="optional">optional</span></h2>
+            <div class="grid grid-3">
+              <div class="field">
+                <label for="f-tax_contact_name">Name</label>
+                <input class="input" id="f-tax_contact_name" name="tax.tax_contact.name">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-tax_contact_email">Email</label>
+                <input class="input" id="f-tax_contact_email" name="tax.tax_contact.email" data-rules="email" placeholder="tax@company.ae">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-tax_contact_phone">Phone</label>
+                <input class="input" id="f-tax_contact_phone" name="tax.tax_contact.phone" data-rules="phone" placeholder="+971 5x xxx xxxx">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ================= STEP 3 — CONTACTS ================= -->
+        <fieldset class="step-body" id="step-3" data-step="3" hidden>
+          <legend class="step-legend">Key contacts</legend>
+          <span class="sublegend">Who should we talk to for day-to-day business, accounts and orders?</span>
+
+          <div class="form-section">
+            <h2 class="form-heading">Primary contact <span style="color:var(--danger-600)">*</span></h2>
+            <div class="grid grid-4">
+              <div class="field">
+                <label for="f-pc_name">Full name <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-pc_name" name="contacts.primary.name" data-rules="required">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-pc_designation">Designation <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-pc_designation" name="contacts.primary.designation" data-rules="required" placeholder="e.g. Procurement Manager">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-pc_email">Email <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-pc_email" name="contacts.primary.email" data-rules="required email">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-pc_mobile">Mobile <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-pc_mobile" name="contacts.primary.mobile" data-rules="required phone" placeholder="+971 5x xxx xxxx">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 id="finance-h" class="form-heading">Accounts / finance contact</h2>
+            <div class="grid grid-4">
+              <div class="field">
+                <label for="f-fc_name">Full name</label>
+                <input class="input" id="f-fc_name" name="contacts.finance.name">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-fc_email">Email</label>
+                <input class="input" id="f-fc_email" name="contacts.finance.email" data-rules="email">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-fc_mobile">Mobile <span class="optional">optional</span></label>
+                <input class="input" id="f-fc_mobile" name="contacts.finance.mobile" data-rules="phone">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-oc_name" id="other-label">Sales / procurement contact <span class="optional">optional</span></label>
+                <input class="input" id="f-oc_name" name="contacts.other.name">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+            <label class="checkline mt-4">
+              <input type="checkbox" id="f-whatsapp" name="contacts.whatsapp_opt_in">
+              <span class="small muted">Send me status updates on WhatsApp too (recommended — faster responses)</span>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ================= STEP 4 — SIGNATORY & UBO ================= -->
+        <fieldset class="step-body" id="step-4" data-step="4" hidden>
+          <legend class="step-legend">Signatories &amp; beneficial owners</legend>
+          <span class="sublegend">Who can legally bind the company, and who ultimately owns it (UAE Cabinet Decision 58/2020).</span>
+
+          <div class="form-section">
+            <h2 class="form-heading">Authorized signatories <span style="color:var(--danger-600)">*</span></h2>
+            <div id="signatory-list" class="stack"></div>
+            <button type="button" class="btn btn-secondary btn-sm mt-4" id="add-signatory">+ Add another signatory <span class="muted small">(max 3)</span></button>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Beneficial owners (≥ 25% ownership or ultimate control)</h2>
+            <div id="ubo-list" class="stack"></div>
+            <button type="button" class="btn btn-secondary btn-sm mt-4" id="add-ubo">+ Add beneficial owner</button>
+            <p class="small muted mt-2 mb-0" id="ubo-total-hint">Ownership total: 0%</p>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Nominee arrangements</h2>
+            <div>
+              <span class="small" style="font-weight:600;color:var(--gray-700)">Are any of your shareholders or directors acting as nominees? <span style="color:var(--danger-600)">*</span></span>
+              <div class="row mt-2" role="radiogroup" aria-label="Nominee arrangement?">
+                <label class="choice"><input type="radio" name="tax.nominee_arrangement" value="no" checked><span class="choice-title">No nominees</span></label>
+                <label class="choice"><input type="radio" name="tax.nominee_arrangement" value="yes"><span class="choice-title">Yes — nominee arrangement exists</span></label>
+              </div>
+            </div>
+            <div class="field mt-4" data-show="tax.nominee_arrangement==='yes'" hidden>
+              <label for="f-nominee_detail">Identify the true beneficial owner(s) behind the nominee(s) <span style="color:var(--danger-600)">*</span></label>
+              <textarea class="textarea" id="f-nominee_detail" name="tax.nominee_detail" data-rules="requiredIfVisible"
+                placeholder="Name of nominee, capacity, and the beneficial owner they represent…"></textarea>
+              <span class="hint">Required by Cabinet Decision No. 58 of 2020 on beneficial ownership procedures.</span>
+              <span class="error" data-err></span>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ================= STEP 5 — BANKING ================= -->
+        <fieldset class="step-body" id="step-5" data-step="5" hidden>
+          <legend class="step-legend">Banking details</legend>
+          <span class="sublegend">Where should invoices be paid / collected? Verified against your bank letter in the next step.</span>
+
+          <div class="alert alert-warn">
+            <span data-icon="alertTri" aria-hidden="true"></span>
+            <span><b>Fraud control:</b> Simal verifies bank changes through a call-back to a known contact. We will never ask for passwords, OTPs or card numbers.</span>
+          </div>
+
+          <div class="form-section mt-6">
+            <div class="grid grid-2">
+              <div class="field">
+                <label for="f-bank_name">Bank name <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-bank_name" name="banking.bank_name" data-rules="required">
+                  <option value="">Select…</option>
+                  <option>Emirates NBD</option><option>First Abu Dhabi Bank</option><option>Mashreq Bank</option>
+                  <option>Dubai Islamic Bank</option><option>Abu Dhabi Commercial Bank</option><option>RAKBANK</option>
+                  <option>Commercial Bank of Dubai</option><option>Wio Bank</option><option>HSBC Middle East</option>
+                  <option>Standard Chartered UAE</option><option>Other</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-bank_swift">SWIFT / BIC <span class="optional">optional</span></label>
+                <input class="input mono" id="f-bank_swift" name="banking.swift" placeholder="e.g. EBILAEAD" maxlength="11">
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-iban">IBAN <span style="color:var(--danger-600)">*</span></label>
+                <input class="input mono" id="f-iban" name="banking.iban" data-rules="required iban" placeholder="AE07 0331 2345 6789 0123 456" style="text-transform:uppercase">
+                <span class="hint">UAE IBAN is 23 characters (AE + 21). Validated automatically.</span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-account_holder">Account holder name <span style="color:var(--danger-600)">*</span></label>
+                <input class="input" id="f-account_holder" name="banking.account_holder" data-rules="required">
+                <span class="hint">Usually the company legal name.</span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field">
+                <label for="f-account_currency">Account currency <span style="color:var(--danger-600)">*</span></label>
+                <select class="select" id="f-account_currency" name="banking.currency" data-rules="required">
+                  <option value="">Select…</option>
+                  <option selected>AED</option><option>USD</option><option>EUR</option><option>Multi-currency</option>
+                </select>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field" id="terms-field">
+                <label for="f-payment_terms">Requested payment terms <span class="optional">optional</span></label>
+                <select class="select" id="f-payment_terms" name="banking.payment_terms_days">
+                  <option value="">—</option><option value="0">Advance / prepay</option><option value="15">15 days</option>
+                  <option value="30" selected>30 days</option><option value="45">45 days</option><option value="60">60 days</option><option value="90">90 days</option>
+                </select>
+                <span class="hint">Final terms confirmed by Simal after review.</span>
+                <span class="error" data-err></span>
+              </div>
+              <div class="field" id="credit-field" hidden>
+                <label for="f-credit_limit">Credit limit requested (AED) <span class="optional">optional</span></label>
+                <input class="input" id="f-credit_limit" name="banking.credit_limit_requested" inputmode="numeric" data-rules="number" placeholder="e.g. 250000">
+                <span class="error" data-err></span>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ================= STEP 6 — DOCUMENTS ================= -->
+        <fieldset class="step-body" id="step-6" data-step="6" hidden>
+          <legend class="step-legend">Supporting documents</legend>
+          <span class="sublegend">PDF, JPG or PNG · up to 10&nbsp;MB per file · clear scans or photos. Everything is encrypted in transit and at rest.</span>
+          <div id="doc-slots" class="stack"><!-- rendered by form.js --></div>
+        </fieldset>
+
+        <!-- ================= STEP 7 — DECLARATIONS ================= -->
+        <fieldset class="step-body" id="step-7" data-step="7" hidden>
+          <legend class="step-legend">Review &amp; declarations</legend>
+          <span class="sublegend">One last check before submission.</span>
+
+          <div class="form-section">
+            <h2 class="form-heading">Summary</h2>
+            <div class="card card-pad" id="review-summary"><!-- rendered --></div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Declarations</h2>
+            <div class="stack">
+              <label class="checkline">
+                <input type="checkbox" id="dec-accuracy" data-dec="accuracy">
+                <span class="small">I confirm that the information and documents provided are <b>true, complete and accurate</b>, and match our official records. <span style="color:var(--danger-600)">*</span></span>
+              </label>
+              <label class="checkline">
+                <input type="checkbox" id="dec-ubo" data-dec="ubo_aml">
+                <span class="small">I declare the <b>beneficial ownership</b> information given is complete, no nominee arrangement is undisclosed, and the company is not owned/controlled by sanctioned persons. <span style="color:var(--danger-600)">*</span></span>
+              </label>
+              <label class="checkline">
+                <input type="checkbox" id="dec-updates">
+                <span class="small">We undertake to notify Simal of changes (licence, TRN, banking, ownership) <b>within 10 business days</b>. <span style="color:var(--danger-600)">*</span></span>
+              </label>
+              <label class="checkline">
+                <input type="checkbox" id="dec-pdpl">
+                <span class="small">I consent to the processing of personal data for onboarding &amp; compliance under the <b>UAE PDPL</b> (Federal Decree-Law 45/2021). <span style="color:var(--danger-600)">*</span></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h2 class="form-heading">Signature</h2>
+            <div class="sign-box">
+              <div class="grid grid-2">
+                <div class="field">
+                  <label for="dec-signature">Type your full name to sign <span style="color:var(--danger-600)">*</span></label>
+                  <input class="input" id="dec-signature" placeholder="e.g. Ahmed Al Hashimi">
+                  <span class="hint">Your typed name, timestamp and IP are recorded as the e-signature.</span>
+                  <span class="error" id="sig-error" hidden>Please type your full name (min. 4 characters).</span>
+                </div>
+                <div>
+                  <span class="small" style="font-weight:600;color:var(--gray-700)">Signature preview</span>
+                  <div class="sign-line mt-2" id="sign-preview">&nbsp;</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- ================= Nav ================= -->
+        <div class="form-nav no-print">
+          <button type="button" class="btn btn-secondary" id="btn-prev"><span data-icon="chevL" aria-hidden="true"></span> Back</button>
+          <div class="row">
+            <span class="small muted" id="step-counter"></span>
+            <button type="button" class="btn btn-primary" id="btn-next">Continue <span data-icon="chevR" aria-hidden="true"></span></button>
+            <button type="submit" class="btn btn-success btn-lg" id="btn-submit" hidden><span data-icon="send" aria-hidden="true"></span> Submit for review</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- ======= Templates ======= -->
+  <template id="tpl-signatory">
+    <div class="repeat-block" data-signatory>
+      <div class="repeat-head">
+        <b>Signatory <span data-idx>1</span></b>
+        <button type="button" class="btn btn-ghost btn-sm" data-remove><span data-icon="x" aria-hidden="true"></span> Remove</button>
+      </div>
+      <div class="grid grid-3">
+        <div class="field"><label>Full name <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="name" data-rules="required"><span class="error" data-err></span></div>
+        <div class="field"><label>Nationality <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="nationality" data-rules="required" placeholder="e.g. UAE"><span class="error" data-err></span></div>
+        <div class="field"><label>Designation <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="designation" data-rules="required" placeholder="e.g. General Manager"><span class="error" data-err></span></div>
+        <div class="field">
+          <label>ID type <span style="color:var(--danger-600)">*</span></label>
+          <select class="select" data-f="id_type"><option value="eid">Emirates ID</option><option value="passport">Passport</option></select>
+          <span class="error" data-err></span>
+        </div>
+        <div class="field"><label>ID number <span style="color:var(--danger-600)">*</span></label><input class="input mono" data-f="id_number" data-rules="required eid" placeholder="784-YYYY-NNNNNNN-C"><span class="hint">Emirates ID: 784-birth year-7 digits-check.</span><span class="error" data-err></span></div>
+        <div class="field"><label>ID expiry <span style="color:var(--danger-600)">*</span></label><input class="input" type="date" data-f="id_expiry" data-rules="required dateNotPast"><span class="error" data-err></span></div>
+        <div class="field">
+          <label>Authority basis <span style="color:var(--danger-600)">*</span></label>
+          <select class="select" data-f="authority_basis" data-rules="required"><option value="">Select…</option><option>MOA (manager)</option><option>Board resolution</option><option>POA</option></select>
+          <span class="error" data-err></span>
+        </div>
+        <div class="field"><label>Email <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="email" data-rules="required email"><span class="error" data-err></span></div>
+        <div class="field"><label>Mobile <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="mobile" data-rules="required phone" placeholder="+971 5x xxx xxxx"><span class="error" data-err></span></div>
+      </div>
+    </div>
+  </template>
+
+  <template id="tpl-ubo">
+    <div class="repeat-block" data-ubo>
+      <div class="repeat-head">
+        <b>Beneficial owner <span data-idx>1</span></b>
+        <button type="button" class="btn btn-ghost btn-sm" data-remove><span data-icon="x" aria-hidden="true"></span> Remove</button>
+      </div>
+      <div class="grid grid-3">
+        <div class="field"><label>Full name <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="name" data-rules="required"><span class="error" data-err></span></div>
+        <div class="field"><label>Nationality <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="nationality" data-rules="required"><span class="error" data-err></span></div>
+        <div class="field"><label>Ownership % <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="ownership_pct" inputmode="decimal" data-rules="required pct" placeholder="e.g. 60"><span class="error" data-err></span></div>
+        <div class="field">
+          <label>ID type <span style="color:var(--danger-600)">*</span></label>
+          <select class="select" data-f="id_type"><option value="passport">Passport</option><option value="eid">Emirates ID</option></select>
+          <span class="error" data-err></span>
+        </div>
+        <div class="field"><label>ID / passport number <span style="color:var(--danger-600)">*</span></label><input class="input mono" data-f="id_number" data-rules="required"><span class="error" data-err></span></div>
+        <div class="field"><label>Country of residence <span style="color:var(--danger-600)">*</span></label><input class="input" data-f="country_of_residence" data-rules="required" placeholder="e.g. United Arab Emirates"><span class="error" data-err></span></div>
+      </div>
+    </div>
+  </template>
+
+  <script src="assets/js/ui.js?v=1"></script>
+  <script src="assets/js/api.js?v=6"></script>
+  <script src="assets/js/form.js?v=6"></script>
+</body>
+</html>

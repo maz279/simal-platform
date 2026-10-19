@@ -1,0 +1,113 @@
+---
+// apps/site/src/pages/ar/solutions/index.astro — Arabic IT Solutions Hub (SEO-1)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+import { siteFacts } from '../../../lib/facts';
+
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+
+const rowsAr = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'it_solution' AND lang = 'ar' ORDER BY entity_id`;
+const rowsEn = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'it_solution' AND lang = 'en' ORDER BY entity_id`;
+/* deploy-audit D23: all 12 lines, each in Arabic when an AR twin exists. The page used the AR
+ * rows alone whenever any existed (5 of 12 under a "12 lines" heading) and read title/short
+ * while the payload keys are t/d, so headings rendered as raw ids ("amc"). */
+const arById = new Map(rowsAr.map((r: any) => [r.entity_id, parse(r)]));
+const sols = rowsEn.map((r: any) => ({ id: r.entity_id, ...parse(r), ...(arById.get(r.entity_id) || {}), hasAr: arById.has(r.entity_id) }));
+const { years } = await siteFacts(); // rm(6.1-2/9.1-1, PUB-8): years from site/counters
+
+const icons: Record<string, string> = {
+  infra: '🖧', amc: '📅', managed: '📦', 'network-security': '🔐', firewall: '🧱',
+  'cloud-security': '☁️', cabling: '🪛', av: '🎥', telephony: '☎', 'data-recovery': '💾',
+  licensing: '🧾', support: '🔧'
+};
+
+const DEFAULT_SOLUTIONS5_AR = [
+  { slug: 'amc', targetId: 'amc', t: 'عقود الصيانة السنوية (AMC)', tag: 'الحفاظ على أداء البنية التحتية بأعلى جاهزية',
+    d: 'صيانة وقائية شاملة تشمل العتاد والبرمجيات وشبكات المؤسسات مع اتفاقيات مستوى خدمة محددة ومراقبة استباقية 24/7.', icon: '📅' },
+  { slug: 'av', targetId: 'av', t: 'حلول الصوتيات والمرئيات وقاعات الاجتماعات', tag: 'تطوير أسلوب تعاون فرق العمل',
+    d: 'أنظمة Nearity الموحدة، شاشات العرض الاحترافية، التحكم الصوتي والمرئي المصمم لقاعات الاجتماعات والمؤتمرات.', icon: '🎥' },
+  { slug: 'cloud', targetId: 'cloud-security', t: 'حلول أمان السحابة', tag: 'حماية بيانات الأعمال والبيئات السحابية',
+    d: 'كشف التهديدات، إدارة الهويات والوصول، التشفير والامتثال مع مراقبة أمنية على مدار الساعة ضد برمجيات الفدية وهجمات DDoS.', icon: '☁️' },
+  { slug: 'storage', targetId: 'data-recovery', t: 'استعادة البيانات والتخزين', tag: 'حماية واسترجاع أصولك الرقمية',
+    d: 'استرجاع متقدم للبيانات وتصميم معماريات NAS وSAN والتخزين السحابي وحلول النسخ الاحتياطي للأقراص والأنظمة المتضررة.', icon: '💾' },
+  { slug: 'firewall', targetId: 'firewall', t: 'حلول الجدران النارية والشبكات', tag: 'حماية محيط الشبكة من التهديدات السيبرانية',
+    d: 'جدران نارية من الجيل التالي مبنية على Sophos XG Series مع تصفية الويب والتحكم في التطبيقات وإدارة VPN.', icon: '🛡️' }
+];
+
+const solutions5Row = (await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'solutions5' AND lang = 'ar'`)[0];
+const rawSolutions5 = solutions5Row ? parse(solutions5Row) : null;
+/* rm(4.5-1): the AR twin may be a flat array (editor default) OR the {items:[…]} seed shape —
+ * normalize both; never silently fall back to hardcoded Arabic when CMS data exists. */
+const normalized5 = Array.isArray(rawSolutions5) ? rawSolutions5
+  : (rawSolutions5 && Array.isArray(rawSolutions5.items)) ? rawSolutions5.items.map((it: any, i: number) => ({
+      slug: it.slug || it.targetId || ('s' + i), targetId: it.targetId || it.slug || '',
+      t: it.t || it.title || it.name || '', tag: it.tag || '', d: it.d || it.desc || it.descr || '', icon: it.icon || '🔧'
+    }))
+  : null;
+const solutions5 = normalized5 && normalized5.length ? normalized5 : DEFAULT_SOLUTIONS5_AR;
+
+const breadcrumbsSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/ar/solutions/#breadcrumb',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'الرئيسية', 'item': 'https://simalme.com/ar/' },
+    { '@type': 'ListItem', 'position': 2, 'name': 'حلول التقنية', 'item': 'https://simalme.com/ar/solutions/' }
+  ]
+};
+---
+
+<BaseLayout
+  lang="ar"
+  dir="rtl"
+  title="حلول وخدمات تقنية المعلومات — سيمال للتقنيات"
+  description={`${years} عاماً من تنفيذ وصيانة مشاريع البنية التحتية والشبكات بالإمارات — ${sols.length} خط خدمات احترافية، 5 ممارسات رئيسية، واتفاقيات مستوى خدمة AMC موثقة.`}
+  schemas={[breadcrumbsSchema]}
+>
+  <section class="hero hero-green"><div class="wrap" style="padding:54px 28px 50px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:start">
+    <div>
+      <span class="badge" style="background:rgba(255,255,255,.14);color:#fff">{sols.length} خط خدمة معتمد للبنية التحتية والشبكات</span>
+      <h1 style="font-size:38px;line-height:1.2;margin:12px 0">حلول تقنية المعلومات،<br><em style="color:#E9F5CE;font-style:normal">تنفيذ وصيانة احترافية</em><br>في كافة أنحاء الإمارات.</h1>
+      <p class="lead" style="color:#CFE8DA;margin-bottom:24px">خبرة تمتد لأكثر من {years} عاماً في مشاريع البنية التحتية للمكاتب والمتاجر والمستودعات والجهات الحكومية — عروض أسعار وعقود موحدة مع عتاد الأجهزة.</p>
+      <div class="cta">
+        <a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="#lines">استكشف خطوط الخدمة الـ 12</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/971508487861" target="_blank" rel="noopener">تواصل مع مكتب الخدمات عبر واتساب</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3 style="font-size:16px;margin-bottom:16px">🛠 الخدمات في لمحة</h3>
+      <div class="row"><span>خطوط الخدمة الاحترافية</span><b>{sols.length} خطاً</b></div>
+      <div class="row"><span>معدل تجديد عقود AMC</span><b>+90% سنوياً</b></div>
+      <div class="row"><span>نطاق التغطية الجغرافية</span><b>الإمارات · الخليج</b></div>
+      <div class="row"><span>اتفاقية سرعة الاستجابة</span><b>4 ساعات للمدن</b></div>
+    </div>
+  </div></section>
+
+  <!-- Flagship Practices -->
+  <section class="sec" style="background:#fff"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">الممارسات الرئيسية الخمس</span><h2>أهم حلول البنية التحتية للمؤسسات</h2></div></div>
+    <div class="grid g3">
+      {solutions5.map(s => (
+        <div class="card card-p" style="border-top:4px solid var(--blue)">
+          <div style="font-size:28px;margin-bottom:8px">{s.icon}</div>
+          <span class="badge b-blue" style="font-size:11px;margin-bottom:6px">{s.tag}</span>
+          <h3 style="font-size:17px;margin:6px 0 10px">{s.t}</h3>
+          <p style="font-size:13px;color:var(--slate);line-height:1.6">{s.d}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- 12 Service Lines Directory -->
+  <section class="sec" id="lines"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">دليل الخدمات</span><h2>كافة خطوط الخدمات التقنية ({sols.length} خطاً)</h2></div></div>
+    <div class="grid g4">
+      {sols.map(s => (
+        <div class="card card-p">
+          <div style="font-size:24px">{icons[s.id] || '🔧'}</div>
+          <h3 style="font-size:15px;margin:8px 0 4px" lang={s.hasAr ? undefined : 'en'}>{s.t || s.title || s.name || s.id}</h3>
+          <p style="font-size:12.5px;color:var(--slate);line-height:1.5" lang={s.hasAr ? undefined : 'en'}>{s.d || s.short || s.descr || 'خدمة احترافية معتمدة من سيمال للتقنيات.'}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+</BaseLayout>

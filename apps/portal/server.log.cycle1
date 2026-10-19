@@ -1,0 +1,17 @@
+{"ts":"2026-10-16T14:31:50.718Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-16T14:31:50.720Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T14:31:50.882Z","level":"info","event":"server_started","host":"127.0.0.1","port":8090,"env":"development","dataDir":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\data"}
+{"ts":"2026-10-16T14:31:56.682Z","level":"info","event":"http","id":"7c008a5e-8131-4671-ab04-eaef9bb63fcb","method":"GET","path":"/api/health","status":200,"ms":3}
+{"ts":"2026-10-16T14:31:56.886Z","level":"info","event":"http","id":"300f6687-bcaa-4c32-9e37-32ef437a9014","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+{"ts":"2026-10-16T14:32:18.541Z","level":"info","event":"http","id":"2a35cfa5-6b0d-4402-913a-d1eeeb7bd75b","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T14:32:18.555Z","level":"info","event":"http","id":"8f407faf-d69f-4567-854c-a34b54c286d8","method":"POST","path":"/api/admin/users/usr_admin_pg/deactivate","status":200,"ms":5}
+{"ts":"2026-10-16T14:32:58.811Z","level":"info","event":"http","id":"df8dd758-acca-44f6-9112-eb1af18b9da1","method":"GET","path":"/cms.html","status":200,"ms":2}
+{"ts":"2026-10-16T14:32:58.977Z","level":"info","event":"http","id":"4e922c0a-2144-4b8c-a4d3-e53ab46bbf0f","method":"GET","path":"/assets/img/logo-lockup-white.png","status":200,"ms":1}
+{"ts":"2026-10-16T14:33:07.982Z","level":"info","event":"http","id":"a730af74-0715-4ecf-b901-498e5fed6580","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":1}
+{"ts":"2026-10-16T14:33:16.467Z","level":"info","event":"http","id":"83a46301-0338-42f5-86e1-02a9acbfc095","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":0}
+{"ts":"2026-10-16T14:33:24.143Z","level":"info","event":"http","id":"6459b0ec-646e-468e-95e8-eef01f375e34","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":0}
+{"ts":"2026-10-16T14:34:14.992Z","level":"info","event":"http","id":"d9a18114-7340-4ad0-9193-3347c00a79e2","method":"GET","path":"/cms.html","status":200,"ms":1}
+{"ts":"2026-10-16T14:34:15.106Z","level":"info","event":"http","id":"07d1e890-fbf3-4725-a947-7aead0575035","method":"GET","path":"/assets/img/logo-lockup-white.png","status":200,"ms":1}
+{"ts":"2026-10-16T14:34:24.852Z","level":"info","event":"http","id":"359128f7-7894-44a7-afd7-832ca2f44be3","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":1}
+{"ts":"2026-10-16T14:34:53.851Z","level":"info","event":"http","id":"56bd1e72-11b5-4d27-ae10-a63914894e08","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":1}

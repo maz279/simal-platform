@@ -1,0 +1,70 @@
+---
+// legal/[slug].astro — policy pages from legal_policies (7 records)
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+export async function getStaticPaths() {
+  const rows = await db`SELECT slug, lang FROM legal_policies`;
+  return rows
+    .filter(r => r.lang === 'en')
+    .map(r => ({ params: { slug: r.slug } }));
+}
+
+const { slug } = Astro.params;
+const rows = await db`SELECT slug, title, body, version FROM legal_policies WHERE slug = ${slug} AND lang = 'en'`;
+const doc = rows[0] || null;
+if (!doc) return Astro.redirect('/legal');
+const all = await db`SELECT slug, title FROM legal_policies WHERE lang = 'en' ORDER BY slug`;
+const paras: string[] = Array.isArray(doc.body) ? doc.body : String(doc.body || '').split(/\n{2,}/).filter(Boolean);
+---
+
+<BaseLayout title={`${doc.title} — Simal`} description={`${doc.title} — Simal Technologies Middle East LLC policy (v${doc.version || '1.0'}).`}>
+  <section class="hero-lg">
+    <div class="container">
+      <div class="crumbs"><a href="/">Home</a> › <a href="/legal">Legal &amp; policies</a> › <b>{doc.title}</b></div>
+      <h1>{doc.title}</h1>
+      <p class="ver">Version {doc.version || '1.0'}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container legal-grid">
+      <aside class="toc">
+        <b>All policies</b>
+        <ul>
+          {all.map(l => (
+            <li><a href={`/legal/${l.slug}`} class={l.slug === slug ? 'on' : ''}>{l.title}</a></li>
+          ))}
+        </ul>
+      </aside>
+      <article class="doc">
+        {paras.map(p => <p>{p}</p>)}
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-lg { background: var(--grad-blue-gold); padding: 44px 0 36px; }
+  .container { max-width: 1600px; margin: 0 auto; padding: 0 32px; }
+  .crumbs { font-size: 13px; margin-bottom: 16px; }
+  .crumbs a { color: #CFE0F3; }
+  .crumbs b { color: #fff; }
+  .hero-lg h1 { color: #fff; font-size: 30px; margin: 0 0 6px; }
+  .ver { color: #9FB6CC; font-size: 13px; }
+
+  .section { padding: 40px 0; }
+  .legal-grid { display: grid; grid-template-columns: 260px 1fr; gap: 32px; }
+
+  .toc { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; align-self: start; position: sticky; top: 16px; }
+  .toc b { font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--navy-800); }
+  .toc ul { list-style: none; margin: 10px 0 0; padding: 0; }
+  .toc li a { display: block; padding: 6px 8px; font-size: 13px; color: var(--slate); text-decoration: none; border-radius: 6px; }
+  .toc li a:hover { background: #F0F5FA; color: var(--blue); }
+  .toc li a.on { background: #EEF4FB; color: var(--blue); font-weight: 700; }
+
+  .doc { max-width: 820px; }
+  .doc p { font-size: 14.5px; line-height: 1.9; color: var(--slate); margin: 0 0 18px; }
+
+  @media (max-width: 900px) { .legal-grid { grid-template-columns: 1fr; } .toc { position: static; } }
+</style>

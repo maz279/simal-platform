@@ -1,0 +1,54 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Catalog — Simal Technologies</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="catalog">
+<div id="chrome-top"></div>
+
+<section class="hero" style="padding:0"><div class="wrap" style="padding:46px 28px 40px;grid-template-columns:1fr">
+  <div>
+    <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">live catalog · ported from simalme.com</span>
+    <h1 style="font-size:34px" id="cat-title">All products</h1>
+    <p class="lead" id="cat-sub">Every SKU, spec and photo — genuine stock, JAFZA-fulfilled.</p>
+  </div>
+</div></section>
+
+<div class="wrap"><div class="crumbs"><a href="index.html">Home</a> › <a href="category.html">Products</a> › <b id="crumb">All</b></div></div>
+
+<section style="padding:6px 0 60px"><div class="wrap">
+  <div class="card card-p" id="cat-guide" style="margin-bottom:20px;border-top:4px solid var(--g3);display:none"></div>
+  <div class="split" style="grid-template-columns:250px 1fr;align-items:start">
+    <aside class="card card-p" style="padding:18px;position:sticky;top:66px">
+      <h4 style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin-bottom:10px">Category</h4>
+      <div id="f-cat" style="display:flex;flex-direction:column;gap:6px;font-size:13.5px"></div>
+      <h4 style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin:18px 0 10px">Brand</h4>
+      <div id="f-brand" style="display:flex;flex-direction:column;gap:6px;font-size:13.5px;max-height:260px;overflow:auto"></div>
+      <h4 style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate);margin:18px 0 10px">Availability</h4>
+      <label class="consent" style="margin:0"><input type="checkbox" id="f-stock"><span>In stock only</span></label>
+      <button class="btn btn-o btn-sm btn-block" style="margin-top:16px" id="f-clear">Clear filters</button>
+    </aside>
+    <div>
+      <div style="display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap">
+        <span class="note" id="count-note"></span>
+        <div style="display:flex;gap:10px;align-items:center"><span class="note">Sort:</span>
+          <span class="chip on" data-sort="featured">Featured</span>
+          <span class="chip" data-sort="newest">Newest</span>
+          <span class="chip" data-sort="brand">Brand A–Z</span>
+          <span class="chip" data-sort="name">Name A–Z</span>
+        </div>
+      </div>
+      <div class="grid g3" id="grid"></div>
+      <div class="pagebar" id="pager"></div>
+      <div class="card card-p" id="grid-help" style="margin-top:22px;border-top:4px solid var(--g3);display:none"></div>
+    </div>
+  </div>
+
+  <div class="sec-head" style="margin-top:42px" id="recent-head"><div><span class="eyebrow">Where you have been</span><h2>Recently viewed</h2></div></div>
+  <div class="grid g4" id="recent"></div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/category.js?v=131"></script>
+</body></html>

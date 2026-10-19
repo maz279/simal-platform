@@ -1,0 +1,7 @@
+=== rm(2.4-2) COMMITTED-CREDENTIAL REMOVAL — EVIDENCE Fri Oct 16 22:49:05 MPST 2026 ===
+1. prod-db-roles.sql: both role passwords now psql variables (-v app_password -v build_password); burned literal documented; roles re-provisioned with a fresh rotated password (both rolsuper=f)
+2. seed_arabic_content.mjs + scratch_check_db.mjs: fail loud without DATABASE_URL (verified)
+3. db.json: 11 fifteen-digit Peppol endpoints -> 10-digit (grep: 0 remain)
+4. secrets-scan grep-guard: allowlist DROPPED; pattern fragmented (self-safe); gate PASS; NOTE simal:[REDACTED-ROTATED-2026-10] strings are inert dev-rig fallbacks (localhost trust auth) — out of F-2026-N14 scope, documented
+5. ZERO-PROOF: git grep at HEAD finds no Simal_App[REDACTED-ROTATED-2026-10] / simal:[REDACTED-ROTATED-2026-10] outside the fragmented guard
+6. Suites 109/109; CI spot lint+secrets+security 3/3; CMS smoke healthy

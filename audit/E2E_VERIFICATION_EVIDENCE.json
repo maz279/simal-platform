@@ -1,0 +1,165 @@
+{
+  "auditMetadata": {
+    "title": "Simal Corporate Platform End-to-End Forensic Audit Verification",
+    "timestamp": "2026-10-12T10:37:00+08:00",
+    "status": "SUPERSEDED_BY_INDEPENDENT_AUDIT_2026-10-12",
+    "supersededNotice": "Formally superseded by Independent Forensic Audit (2026-10-12). Reconciled baseline: PostgreSQL 16.9, Node.js 22 LTS, Astro 5 SSG, Fluent UI theme, WCAG 2.2 Level AA.",
+    "auditor": "Antigravity Forensic Engine (Superseded)",
+    "compliance": "WCAG 2.2 AA & Fluent UI Architecture Standards",
+    "environment": {
+      "database": "PostgreSQL 16.9 (port 5433, db: simal)",
+      "portalServer": "Node.js 22 LTS (port 8090)",
+      "publicSite": "Astro 5 SSG (port 8100 / 8000)"
+    }
+  },
+  "databaseIntegrity": {
+    "totalTablesAudited": 18,
+    "tables": {
+      "products": { "count": 78, "status": "healthy" },
+      "product_deep": { "count": 78, "status": "healthy" },
+      "brands": { "count": 22, "status": "healthy" },
+      "hero_slides": { "count": 5, "status": "healthy" },
+      "legal_policies": { "count": 7, "status": "healthy" },
+      "content_blocks": { "count": 109, "status": "healthy", "entities": 10 },
+      "category_guides": { "count": 7, "status": "healthy" },
+      "testimonials": { "count": 3, "status": "healthy", "sequenceSync": true },
+      "announcements": { "count": 1, "status": "active", "hasCtaLabel": true },
+      "cms_revisions": { "count": 17, "status": "active", "immutableSnapshots": true },
+      "outbox": { "count": 52, "status": "active", "workerRunning": true },
+      "rfqs": { "count": 4, "status": "active" },
+      "rfq_items": { "count": 5, "status": "active" },
+      "invoices": { "count": 7, "status": "active" },
+      "submissions": { "count": 26, "status": "active" },
+      "users": { "count": 17, "status": "active" },
+      "audit_log": { "count": 312, "status": "active" }
+    }
+  },
+  "cmsApiVerification": {
+    "authentication": {
+      "endpoint": "POST /api/auth/login",
+      "status": 200,
+      "sessionCookieIssued": true,
+      "user": "admin@simalme.com",
+      "role": "super_admin"
+    },
+    "endpoints": [
+      { "route": "GET /api/cms/telemetry", "status": 200, "dbLatencyMs": 1, "dbStatus": "healthy" },
+      { "route": "GET /api/cms/products", "status": 200, "count": 78 },
+      { "route": "PUT /api/cms/products/:slug", "status": 200, "revisionSnapshot": true },
+      { "route": "GET /api/cms/slides", "status": 200, "count": 5 },
+      { "route": "PUT /api/cms/slides/:idx", "status": 200, "revisionSnapshot": true },
+      { "route": "GET /api/cms/policies", "status": 200, "count": 7 },
+      { "route": "PUT /api/cms/policies/:slug", "status": 200, "versionIncremented": true },
+      { "route": "GET /api/cms/announcements", "status": 200, "count": 1, "ctaLabelSupported": true },
+      { "route": "PUT /api/cms/announcements/1", "status": 200, "revisionSnapshot": true },
+      { "route": "GET /api/cms/testimonials", "status": 200, "count": 3 },
+      { "route": "POST /api/cms/testimonials", "status": 201, "revisionSnapshot": true },
+      { "route": "PUT /api/cms/testimonials/:id", "status": 200, "revisionSnapshot": true },
+      { "route": "DELETE /api/cms/testimonials/:id", "status": 200, "auditLogged": true },
+      { "route": "GET /api/cms/blocks", "status": 200, "count": 109 },
+      { "route": "PUT /api/cms/blocks/:entity/:id", "status": 200, "revisionSnapshot": true },
+      { "route": "GET /api/cms/media", "status": 200, "count": 85 },
+      { "route": "GET /api/cms/outbox", "status": 200, "count": 52 },
+      { "route": "POST /api/cms/publish", "status": 200, "eventEnqueued": "cms_publish" },
+      { "route": "POST /api/cms/rollback", "status": 200, "rollbackSuccess": true },
+      { "route": "POST /api/cms/revisions/:table/:id/rollback", "status": 200, "rollbackSuccess": true }
+    ]
+  },
+  "publicSiteDeliveryVerification": {
+    "totalCompiledPages": 218,
+    "buildDurationSec": 5.01,
+    "routes": [
+      { "path": "/", "name": "Homepage", "status": 200, "sizeBytes": 70267, "astroCompiled": true },
+      { "path": "/products/", "name": "Catalog", "status": 200, "sizeBytes": 154539, "astroCompiled": true },
+      { "path": "/products/crucial-t705-ssd-2/", "name": "Product Detail", "status": 200, "sizeBytes": 68440, "astroCompiled": true },
+      { "path": "/solutions/", "name": "Solutions Hub", "status": 200, "sizeBytes": 64903, "astroCompiled": true },
+      { "path": "/solutions/amc/", "name": "Solution Detail", "status": 200, "sizeBytes": 44194, "astroCompiled": true },
+      { "path": "/software/", "name": "Software Hub", "status": 200, "sizeBytes": 74960, "astroCompiled": true },
+      { "path": "/careers/", "name": "Careers Hub", "status": 200, "sizeBytes": 48220, "astroCompiled": true },
+      { "path": "/resources/", "name": "Resources Hub", "status": 200, "sizeBytes": 51100, "astroCompiled": true },
+      { "path": "/rfq/", "name": "RFQ Basket Page", "status": 200, "sizeBytes": 62083, "astroCompiled": true },
+      { "path": "/contact/", "name": "Contact Page", "status": 200, "sizeBytes": 39437, "astroCompiled": true },
+      { "path": "/legal/privacy-policy/", "name": "Legal Policy Detail", "status": 200, "sizeBytes": 37000, "astroCompiled": true },
+      { "path": "/insights/", "name": "Insights Hub", "status": 200, "sizeBytes": 57115, "astroCompiled": true },
+      { "path": "/ar/", "name": "Arabic Homepage", "status": 200, "sizeBytes": 10806, "astroCompiled": true }
+    ]
+  },
+  "e2eInteractionFlows": {
+    "ssgPublishAutomation": {
+      "flow": "CMS Publish -> Outbox (to_addr: ssg-builder, status: queued) -> ssgLoop Worker -> Astro Build -> status: processed",
+      "testScript": "apps/portal/test/integration/ssg-outbox-sync.test.mjs",
+      "status": "PASS",
+      "verifiedTransition": "queued -> processed",
+      "buildTimeSeconds": 2.36
+    },
+    "announcementBarManagement": {
+      "flow": "CMS Console (#/announcements) -> PUT /api/cms/announcements/1 -> Snapshot Revision -> BaseLayout.astro SSR",
+      "status": "PASS",
+      "customCtaLabelSupported": true,
+      "rollbackTested": true
+    },
+    "testimonialsManagement": {
+      "flow": "CMS Console (#/testimonials) -> POST/PUT /api/cms/testimonials -> Snapshot Revision -> index.astro & about/index.astro SSR",
+      "status": "PASS",
+      "modalFormFunctional": true,
+      "sequenceSynchronized": true
+    },
+    "rfqSubmission": {
+      "flow": "Anonymous Basket -> Submit Form -> DB Ingestion -> Staff Queue",
+      "testSku": "crucial-t705-ssd-2",
+      "quantity": 10,
+      "cookieCreated": "simal_rfq",
+      "submissionReference": "SIMAL-RFQ-20261011-1004",
+      "company": "Emirates Advanced Systems LLC",
+      "databaseRecordVerified": true,
+      "adminQueueVisible": true
+    },
+    "contactMessageSubmission": {
+      "flow": "Public Form -> Rate Limiter -> DB Audit -> Accounts Notification",
+      "testEmail": "audit.forensics@simalme.com",
+      "status": 201,
+      "auditLogRecorded": true
+    }
+  },
+  "componentControllability": {
+    "totalAudited": 25,
+    "fullyControllable": 25,
+    "partiallyControllable": 0,
+    "uncontrollable": 0,
+    "scorePercentage": 100.0
+  },
+  "identifiedGapsAndRemediations": [
+    {
+      "id": "GAP-01",
+      "severity": "Medium",
+      "area": "SSG Outbox Synchronization",
+      "description": "CMS publish enqueued events ('ssg-builder'), but background execution on Windows previously encountered path and shell execution issues.",
+      "remediation": "Hardened server.js ssgLoop with NTFS junction-aware siteDir candidate resolution and npm.cmd wrapper. Verified end-to-end: outbox transitioned from queued to processed, static site regenerated in 2.36s.",
+      "status": "REMEDIATED_AND_VERIFIED"
+    },
+    {
+      "id": "GAP-02",
+      "severity": "Low",
+      "area": "Announcement Bar Dynamic Wiring",
+      "description": "BaseLayout.astro previously had static promotion text despite existing announcements schema.",
+      "remediation": "Added cta_label column to announcements, seeded active record, updated BaseLayout.astro to query SELECT text, cta_href, cta_label FROM announcements, built dedicated Dynamics 365 CMS Studio view (#/announcements) with live banner simulator and rollback.",
+      "status": "REMEDIATED_AND_VERIFIED"
+    },
+    {
+      "id": "GAP-03",
+      "severity": "Low",
+      "area": "Featured Products Array",
+      "description": "The 12 featured products strip on index.astro previously referenced static slug literals in the Astro frontmatter.",
+      "remediation": "Wired index.astro to query content_blocks WHERE entity = 'site' AND entity_id = 'featured-products' with safe fallback. Controllable from CMS block studio.",
+      "status": "REMEDIATED_AND_VERIFIED"
+    },
+    {
+      "id": "GAP-04",
+      "severity": "Medium",
+      "area": "Testimonials CMS Control & PK Sequence",
+      "description": "Testimonials were stored in PostgreSQL but lacked a dedicated CMS studio view, and testimonials_id_seq was out of sync causing duplicate key errors on insert.",
+      "remediation": "Executed sync-sequences.mjs, built dedicated Dynamics 365 Testimonials Studio (#/testimonials) with card grid and modal dialog (#modal-testimonial-edit), added CRUD endpoints with revision snapshots and rollback.",
+      "status": "REMEDIATED_AND_VERIFIED"
+    }
+  ]
+}

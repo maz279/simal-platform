@@ -1,0 +1,366 @@
+{
+ "loginHint": "Super Admin: admin@simalme.com / ****\n• Reviewer: reviewer@simalme.com / ****",
+ "views": [
+  {
+   "view": "dashboard",
+   "heading": "Executive Dashboard",
+   "chars": 3017,
+   "hasUndefined": false,
+   "sample": "Executive Dashboard Content operations · Simal Technologies UAE · updated just now Refresh Live Site CONTENT BLOCKS +110 upd / 7d 110 Across",
+   "cmdbar": [
+    "Refresh Data",
+    "Push Site Build",
+    "Quick Create",
+    "Audit Trail",
+    "Export CSV",
+    "View Public Site"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "workspace-editorial",
+   "heading": "Editorial Desk & Research Publishing Queue",
+   "chars": 3415,
+   "hasUndefined": false,
+   "sample": "Editorial Desk & Research Publishing Queue Manage the 14 comprehensive thought leadership articles with sticky TOC sidebars, author attribut",
+   "cmdbar": [
+    "New Article",
+    "Refresh Desk",
+    "Filter: All Articles"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "slides",
+   "heading": "",
+   "chars": 1375,
+   "hasUndefined": false,
+   "sample": "HOMEPAGE HERO LIVE PREVIEW SIMULATION 5 Active Slides Rotating PCIE GEN5 SSD LEADERSHIP · DUBAI HUB The Gen5 Era is Here. Breakthrough 14,50",
+   "cmdbar": [
+    "Save All Slides",
+    "Add New Slide",
+    "Push Live",
+    "Preview Simulation 👁️"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "media-library",
+   "heading": "Media & Product Photography Asset Studio",
+   "chars": 10818,
+   "hasUndefined": false,
+   "sample": "Media & Product Photography Asset Studio Verified product photographs and high-res brand lockups indexed directly from the asset repository.",
+   "cmdbar": [
+    "Refresh Gallery",
+    "85 Product Photographs · 18 Brands"
+   ],
+   "newErrors": [
+    "console: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "console: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "console: Executing inline event handler violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyw",
+    "console: Executing inline event handler violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyw",
+    "console: Failed to load resource: the server responded with a status of 404 (Not Found)",
+    "console: Executing inline event handler violates the following Content Security Policy directive 'script-src 'self''. Either the 'unsafe-inline' keyw"
+   ]
+  },
+  {
+   "view": "blocks",
+   "heading": "",
+   "chars": 8501,
+   "hasUndefined": false,
+   "sample": "Search blocks by entity, ID, or title All Entities (110) amc (1) erp (1) insight (14) it_solution (12) site (14) software_industry (9) softw",
+   "cmdbar": [
+    "New Block",
+    "Refresh Blocks",
+    "Export Block Catalog",
+    "Total: 110 Blocks",
+    "All Entities (110)",
+    "amc (1)",
+    "erp (1)",
+    "insight (14)"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "claims-register",
+   "heading": "Claims & Single-Source Hours Register",
+   "chars": 1472,
+   "hasUndefined": false,
+   "sample": "Claims & Single-Source Hours Register Single-source business hours, addresses, contact cards, and warranty claim procedures. ID SUMMARY ACTI",
+   "cmdbar": [
+    "New Block",
+    "Refresh Blocks",
+    "Export Block Catalog",
+    "Total: 110 Blocks"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "it-solutions",
+   "heading": "12 Enterprise IT Solution Lines",
+   "chars": 1665,
+   "hasUndefined": false,
+   "sample": "12 Enterprise IT Solution Lines Manage the 12 corporate IT solution lines ported from the site mirror. SOLUTION ID HEADLINE DESCRIPTION ACTI",
+   "cmdbar": [
+    "New Solution Line",
+    "Refresh Solutions"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "amc-tiers",
+   "heading": "Annual Maintenance Contract (AMC) SLA Tiers",
+   "chars": 473,
+   "hasUndefined": false,
+   "sample": "Annual Maintenance Contract (AMC) SLA Tiers Tiered response times, resolution guarantees, and on-site visits across UAE sites. FEATURE AUDMV",
+   "cmdbar": [
+    "New Solution Line",
+    "Refresh Solutions"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "software-suites",
+   "heading": "Software Solutions: UniERP & UniVAT",
+   "chars": 4280,
+   "hasUndefined": false,
+   "sample": "Software Solutions: UniERP & UniVAT ERP modules, UAE Peppol 2027 E-Invoicing integrations, and industry verticals. ENTITY RECORD KEY TITLE A",
+   "cmdbar": [
+    "New Solution Line",
+    "Refresh Solutions"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "products-catalog",
+   "heading": "Hardware Product Portfolio & Inventory Management",
+   "chars": 17898,
+   "hasUndefined": false,
+   "sample": "Hardware Product Portfolio & Inventory Management High-density catalog of 78 enterprise hardware SKUs synced directly from the PostgreSQL pr",
+   "cmdbar": [
+    "Refresh Inventory",
+    "Export Catalog CSV",
+    "View Photo Assets 📷",
+    "78 Active Products · 20 Brands"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "policies",
+   "heading": "Legal & Compliance Regulatory Policies",
+   "chars": 886,
+   "hasUndefined": false,
+   "sample": "Legal & Compliance Regulatory Policies Seven mandatory regulatory policies aligned with UAE PDPL, Peppol 2027 E-Invoicing mandates, and cons",
+   "cmdbar": [
+    "Refresh Policies",
+    "Push Live",
+    "7 Regulatory Policies"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "loc-audit",
+   "heading": "Arabic / English Parity & Localization Audit",
+   "chars": 248,
+   "hasUndefined": false,
+   "sample": "Arabic / English Parity & Localization Audit Audit Arabic RTL coverage across product catalog, solution lines, and legal policies. LEGAL POL",
+   "cmdbar": [
+    "Refresh Policies",
+    "Push Live",
+    "7 Regulatory Policies"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "revisions",
+   "heading": "Micro-Revisions & Rollback Inspector",
+   "chars": 296,
+   "hasUndefined": false,
+   "sample": "Micro-Revisions & Rollback Inspector Every write creates an immutable audit snapshot in PostgreSQL. Roll back to any prior revision with 1 c",
+   "cmdbar": [
+    "Revisions & Rollback Studio"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "publish-pipeline",
+   "heading": "ADR-13 Static Site Generation & Outbox Pipeline",
+   "chars": 9415,
+   "hasUndefined": false,
+   "sample": "ADR-13 Static Site Generation & Outbox Pipeline Transactional Outbox queue streaming site rebuilds, CDN invalidations, and system event disp",
+   "cmdbar": [
+    "Trigger Build & Purge",
+    "Refresh Outbox",
+    "50 Total Pipeline Events"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "audit-trail",
+   "heading": "Enterprise Security & Change Audit Trail",
+   "chars": 7584,
+   "hasUndefined": false,
+   "sample": "Enterprise Security & Change Audit Trail Immutable audit logs recording logins, staff actions, content mutations, and rollbacks. TIMESTAMP A",
+   "cmdbar": [
+    "Refresh Audit Stream"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "users-management",
+   "heading": "Staff Directory & Role-Based Access Control",
+   "chars": 1984,
+   "hasUndefined": false,
+   "sample": "Staff Directory & Role-Based Access Control Manage staff accounts, assign Dynamics 365 security roles, reset credentials, or deactivate acce",
+   "cmdbar": [
+    "Provision Staff User",
+    "Refresh Directory",
+    "13 Staff Accounts"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "rbac-matrix",
+   "heading": "Role-Based Access Control (RBAC) Privilege Matrix",
+   "chars": 557,
+   "hasUndefined": false,
+   "sample": "Role-Based Access Control (RBAC) Privilege Matrix Formal permissions mapping according to FR-A-002 specification. OPERATIONAL PRIVILEGE SUPE",
+   "cmdbar": [
+    "Provision Staff User",
+    "Refresh Directory",
+    "13 Staff Accounts"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "active-sessions",
+   "heading": "Active Security Sessions & Devices",
+   "chars": 404,
+   "hasUndefined": false,
+   "sample": "Active Security Sessions & Devices Active staff sessions with 20-minute idle expiration. Administrators can force logout any session. USER I",
+   "cmdbar": [
+    "Refresh Sessions"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "system-telemetry",
+   "heading": "System Telemetry & Platform Diagnostics",
+   "chars": 956,
+   "hasUndefined": false,
+   "sample": "System Telemetry & Platform Diagnostics Every value below is measured at request time — statuses derive from live probes, not asserted const",
+   "cmdbar": [
+    "Refresh"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "announcements",
+   "heading": "Top Announcement & Promotional Bar",
+   "chars": 782,
+   "hasUndefined": false,
+   "sample": "Top Announcement & Promotional Bar Controls the global promo strip displayed at the top of all public pages. Supports dynamic message text, ",
+   "cmdbar": [
+    "Save Announcement",
+    "Push Live",
+    "Refresh Data",
+    "View Public Site"
+   ],
+   "newErrors": []
+  },
+  {
+   "view": "testimonials",
+   "heading": "Testimonials & Client Endorsements",
+   "chars": 1086,
+   "hasUndefined": false,
+   "sample": "Testimonials & Client Endorsements Manage the verified customer quotes displayed on the public Homepage and About page. Add new reviews, edi",
+   "cmdbar": [
+    "New Testimonial",
+    "Push Live",
+    "Refresh Data",
+    "View Public Site"
+   ],
+   "newErrors": []
+  }
+ ],
+ "portalPages": [
+  {
+   "page": "/login.html",
+   "status": 200,
+   "title": "Admin Console — Simal KYC Portal",
+   "url": "http://127.0.0.1:18090/admin.html",
+   "newErrors": []
+  },
+  {
+   "page": "/form.html",
+   "status": 200,
+   "title": "Partner Onboarding & KYC Portal — Simal Technologies Middle East LLC",
+   "url": "http://127.0.0.1:18090/index.html",
+   "newErrors": []
+  },
+  {
+   "page": "/status.html",
+   "status": 200,
+   "title": "Track your application — Simal KYC Portal",
+   "url": "http://127.0.0.1:18090/status.html",
+   "newErrors": []
+  },
+  {
+   "page": "/invoices.html",
+   "status": 200,
+   "title": "e-Invoice Console — Simal Staff",
+   "url": "http://127.0.0.1:18090/invoices-admin.html",
+   "newErrors": [
+    "console: Failed to load resource: the server responded with a status of 404 (Not Found)"
+   ]
+  },
+  {
+   "page": "/admin.html",
+   "status": 200,
+   "title": "Admin Console — Simal KYC Portal",
+   "url": "http://127.0.0.1:18090/admin.html",
+   "newErrors": []
+  },
+  {
+   "page": "/invoices-admin.html",
+   "status": 200,
+   "title": "e-Invoice Console — Simal Staff",
+   "url": "http://127.0.0.1:18090/invoices-admin.html",
+   "newErrors": []
+  },
+  {
+   "page": "/index.html",
+   "status": 200,
+   "title": "Partner Onboarding & KYC Portal — Simal Technologies Middle East LLC",
+   "url": "http://127.0.0.1:18090/index.html",
+   "newErrors": []
+  },
+  {
+   "page": "/privacy.html",
+   "status": 200,
+   "title": "Privacy Notice — Simal KYC Portal",
+   "url": "http://127.0.0.1:18090/privacy.html",
+   "newErrors": []
+  },
+  {
+   "page": "/terms.html",
+   "status": 200,
+   "title": "Terms of Use — Simal KYC Portal",
+   "url": "http://127.0.0.1:18090/terms.html",
+   "newErrors": []
+  },
+  {
+   "page": "/confirmation.html",
+   "status": 200,
+   "title": "Submission received — Simal KYC Portal",
+   "url": "http://127.0.0.1:18090/confirmation.html",
+   "newErrors": []
+  }
+ ],
+ "failedRequests": [
+  "401 /api/auth/me",
+  "404 /assets/img/products/hs%E2%80%90ssd%E2%80%90e100-0.png",
+  "404 /assets/img/products/hs%E2%80%90ssd%E2%80%90e100n-0.png",
+  "404 /assets/img/products/hs%E2%80%90ssd%E2%80%90e1000-0.png"
+ ]
+}

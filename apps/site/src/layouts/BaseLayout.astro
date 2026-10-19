@@ -1,0 +1,1106 @@
+---
+// BaseLayout.astro — shared shell for all Simal pages.
+// VISUAL CONTRACT: this chrome is the prototype's "Navy & Gold Executive" layer
+// (Prototype/assets/js/chrome.js + assets/css/styles.css) ported 1:1 — announcement
+// bar → navy utility strip → logo/search/RFQ-pill row → navy mega nav; footer is the
+// 4-band f2 stack. Hrefs remapped to production routes; data (brand chips) from PG.
+interface Props {
+  title?: string;
+  description?: string;
+  lang?: 'en' | 'ar';
+  dir?: 'ltr' | 'rtl';
+  canonical?: string;
+  ogType?: string;
+  ogImage?: string;
+  is404?: boolean;
+  schemas?: any[];
+}
+
+
+import '../styles/tokens.css';
+import '../styles/prototype.css';
+import { db } from '../lib/db';
+
+const PORTAL = 'https://kyc.simalme.com';
+/* rm(8.4-1): GA4 measurement ID from the build env (apps/site/.env locally,
+ * CI/deploy env in pipelines). Unset = GA4 fully disabled: no meta, no load. */
+const GA4_ID = import.meta.env.PUBLIC_GA4_ID;
+const brandRows = await db`SELECT slug, name FROM brands WHERE slug != 'other' ORDER BY name`;
+const brands = brandRows.map((b: { name: string }) => b.name);
+const productCount = await db`SELECT count(*)::int AS n FROM products`;
+const nowEpoch = Date.now();
+const [announcement] = await db`
+  SELECT text, cta_href, cta_label 
+  FROM announcements 
+  WHERE active = true 
+    AND (starts_at IS NULL OR starts_at <= ${nowEpoch})
+    AND (ends_at IS NULL OR ends_at >= ${nowEpoch})
+  ORDER BY id DESC 
+  LIMIT 1
+`;
+
+/* rm(4.1): site chrome (nav labels + utility contacts, footer, newsletter) is CMS data —
+ * content_blocks site/nav-menus, site/footer, site/newsletter. Fallbacks below equal the
+ * pre-4.1 hardcoded literals, so an unseeded DB renders pixel-identically. */
+const chromeRows = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'site' AND entity_id IN ('nav-menus','footer','newsletter','seo-defaults','counters','awards') AND lang = 'en'`;
+const chromeBlock = (id: string) => chromeRows.find((r: any) => r.entity_id === id)?.payload;
+const DEFAULT_NAV = { utility: { phone: '+971 4 393 0507', phoneHref: 'tel:+97143930507', email: 'info@simalme.com', hours: '🕘 Sun–Thu 9:00–18:00 GST', portalLabel: '🛡 KYC Portal — Sign in' }, menus: [{ id: 'home', label: 'Home' }, { id: 'products', label: 'Products & Brands' }, { id: 'brands', label: 'Brands' }, { id: 'software', label: 'Software Services' }, { id: 'solutions', label: 'IT Solutions' }, { id: 'partners', label: 'Partners' }, { id: 'insights', label: 'Insights' }, { id: 'about', label: 'About' }] };
+const DEFAULT_NEWSLETTER = { heading: 'Stay ahead of the Middle East IT channel', blurb: 'Monthly stock drops, vendor promotions & UAE e-invoicing updates. No spam — unsubscribe anytime.', buttonLabel: 'Subscribe', placeholder: 'Work email address' };
+const navData: any = { ...DEFAULT_NAV, ...(chromeBlock('nav-menus') || {}) };
+const utility: any = { ...DEFAULT_NAV.utility, ...(navData.utility || {}) };
+const menuLabel = (id: string) => (navData.menus || []).find((m: any) => m.id === id)?.label || (DEFAULT_NAV.menus.find((m: any) => m.id === id) || {}).label || id;
+const newsletter: any = { ...DEFAULT_NEWSLETTER, ...(chromeBlock('newsletter') || {}) };
+const footerData: any = chromeBlock('footer') || null; // structured columns + addresses; null = hardcoded default rendering
+/* rm(4.2): SEO defaults + single-source counters + awards (feeds PUB-8: one value per fact) */
+const seoDefaults: any = { title: 'Simal Technologies ME — IT Distribution & Software Services, Dubai', description: 'Premier IT distributor & enterprise software partner across UAE, GCC, Africa & Central Asia. Authorized lines for Crucial, Hikvision, TeamGroup, UGREEN, and bespoke enterprise ERP solutions.', ogImage: '/assets/img/brand/simal-logo-360w.png', ...(chromeBlock('seo-defaults') || {}) };
+const brandCountLive = brandRows.length; // live brands table (single source of truth per GOV a2: 22)
+const DEFAULT_COUNTERS = { brands: 22, skus: 78, years: 24, since: 2002 };
+const counters: any = { ...DEFAULT_COUNTERS, ...(chromeBlock('counters') || {}) };
+const awards: any[] = Array.isArray(chromeBlock('awards')) ? chromeBlock('awards') : [{ year: '2025', title: 'Hikvision — Best Distributor Partner', issuer: 'Hikvision' }, { year: '2025', title: 'TeamGroup — Best Partner 2025', issuer: 'TeamGroup' }];
+/* rm(6.1-2/9.1-1, PUB-8): the About menu's awards line comes from site/awards too (it said
+ * "HIKSEMi · TEAMGROUP 2025" while both award walls say Hikvision / TeamGroup). Escaped:
+ * mi() output goes through set:html. */
+const escText = (s: unknown) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c] as string));
+const awardsSummary = escText([...new Set(awards.map((a: any) => a.issuer || String(a.title || '').split(' — ')[0]))].join(' · ')
+  + ' ' + [...new Set(awards.map((a: any) => a.year))].join('/'));
+
+const {
+  title = seoDefaults.title,
+  description = seoDefaults.description,
+  lang: propLang,
+  dir: propDir,
+  canonical: propCanonical,
+  ogType = 'website',
+  ogImage = 'https://simalme.com/assets/img/brand/simal-logo-1200w.png',
+  is404 = false,
+  schemas = []
+} = Astro.props;
+
+// URL sanitizer rejecting dangerous pseudo-protocols (SEC-13 / P8-4)
+const safeHref = (href?: string) => {
+  if (!href) return '#';
+  const clean = String(href).trim();
+  if (/^(?:javascript|data|vbscript):/i.test(clean)) return '#';
+  return clean;
+};
+
+// Dynamic category counts from DB
+const catRows = await db`SELECT cat, count(*)::int AS count FROM products GROUP BY cat`;
+const catCounts: Record<string, number> = {};
+for (const r of catRows as any[]) {
+  catCounts[r.cat] = r.count;
+}
+
+// Dynamic top 11 brands with counts for the dedicated Brands dropdown
+const topBrandsQuery = await db`
+  SELECT b.slug, b.name, count(p.slug)::int AS count
+  FROM brands b
+  LEFT JOIN products p ON p.brand = b.slug
+  WHERE b.slug != 'other'
+  GROUP BY b.slug, b.name
+  ORDER BY count DESC, b.name ASC
+  LIMIT 11
+`;
+
+const BRAND_INFO: Record<string, string> = {
+  crucial: 'Fuel Your System Performance.',
+  ugreen: 'Redefining Connectivity.',
+  honeywell: 'Protected Power. Trusted Globally.',
+  aiwa: 'Clarity. Performance. Brilliance.',
+  arktek: 'Powering Every Pixel.',
+  koorui: 'Your Game. Your Vision.',
+  toshiba: 'Committed to People, Committed to the Future.',
+  teamgroup: 'Memory of Lifetime.',
+  nearity: 'Transform Your Meetings.',
+  sandisk: 'Capture. Store. Trust.',
+  hp: 'Innovation That Inspires.',
+  dell: 'Powering Business. Engineered for Reliability.',
+  hiksemi: 'Intelligent Storage. Enterprise Trust.',
+  hikvision: 'Intelligent Storage. Enterprise Trust.',
+  samsung: 'World’s #1 Flash Memory.',
+  kingston: 'Memory Made Reliable.',
+  wd: 'Powering the World’s Data Infrastructure.',
+  msi: 'True Gaming. True Quality.',
+  zotac: 'Push the Limit.',
+  pny: 'Performance Without Compromise.',
+  lenovo: 'World’s #1 PC. Smart Innovation.'
+};
+
+const pathname = Astro.url.pathname;
+const isArabic = propLang === 'ar' || pathname.startsWith('/ar');
+const lang = propLang || (isArabic ? 'ar' : 'en');
+const dir = propDir || (isArabic ? 'rtl' : 'ltr');
+
+// Canonical and reciprocal paths (trailing slash normalization)
+let cleanPath = pathname;
+if (!cleanPath.endsWith('/') && !cleanPath.includes('.')) {
+  cleanPath += '/';
+}
+
+const exactTwinRoots = [
+  '/',
+  '/products/',
+  '/solutions/',
+  '/software/',
+  '/about/',
+  '/contact/',
+  '/rfq/',
+  '/onboarding/',
+  '/insights/',
+  '/legal/',
+];
+
+const normPath = cleanPath.startsWith('/ar/') ? (cleanPath.replace(/^\/ar/, '') || '/') : cleanPath;
+const isLegalDetail = normPath.startsWith('/legal/') && normPath !== '/legal/';
+const hasArTwin = exactTwinRoots.includes(normPath) || isLegalDetail;
+
+let enPath = cleanPath;
+let arPath = cleanPath;
+
+if (isArabic) {
+  enPath = cleanPath.replace(/^\/ar(\/|$)/, '/') || '/';
+  if (!enPath.endsWith('/') && !enPath.includes('.')) enPath += '/';
+  arPath = cleanPath;
+} else {
+  enPath = cleanPath;
+  if (hasArTwin) {
+    arPath = cleanPath === '/' ? '/ar/' : '/ar' + cleanPath;
+  } else if (cleanPath.startsWith('/products/') || cleanPath.startsWith('/brands/') || cleanPath.startsWith('/compare/')) {
+    arPath = '/ar/products/';
+  } else if (cleanPath.startsWith('/solutions/')) {
+    arPath = '/ar/solutions/';
+  } else if (cleanPath.startsWith('/software/')) {
+    arPath = '/ar/software/';
+  } else if (cleanPath.startsWith('/insights/')) {
+    arPath = '/ar/insights/';
+  } else if (cleanPath.startsWith('/about/') || cleanPath.startsWith('/careers/') || cleanPath.startsWith('/resources/')) {
+    arPath = '/ar/about/';
+  } else {
+    arPath = '/ar/';
+  }
+}
+
+const canonicalUrl = propCanonical || `https://simalme.com${cleanPath}`;
+const enUrl = `https://simalme.com${enPath}`;
+const arUrl = `https://simalme.com${arPath}`;
+
+// JSON-LD Baseline Schemas (SEO-4)
+const baselineSchemas = [
+  {
+    '@type': 'Organization',
+    '@id': 'https://simalme.com/#organization',
+    'name': 'Simal Technologies Middle East LLC',
+    'legalName': 'Simal Technologies Middle East LLC',
+    'url': 'https://simalme.com/',
+    'logo': 'https://simalme.com/assets/img/brand/simal-logo-360w.png',
+    'description': 'Premier IT hardware distributor & enterprise software engineering provider across UAE, GCC, Africa & Central Asia.',
+    'foundingDate': '2002',
+    'sameAs': [
+      'https://www.linkedin.com/company/simal-technologies',
+      'https://www.instagram.com/simaltechnologies'
+    ],
+    'contactPoint': [
+      {
+        '@type': 'ContactPoint',
+        'telephone': '+971-4-393-0507',
+        'contactType': 'sales',
+        'areaServed': ['AE', 'SA', 'QA', 'OM', 'BH', 'KW'],
+        'availableLanguage': ['English', 'Arabic']
+      },
+      {
+        '@type': 'ContactPoint',
+        'telephone': '+971-4-393-0507',
+        'contactType': 'customer support',
+        'email': 'info@simalme.com',
+        'availableLanguage': ['English', 'Arabic']
+      }
+    ]
+  },
+  {
+    '@type': 'WebSite',
+    '@id': 'https://simalme.com/#website',
+    'url': 'https://simalme.com/',
+    'name': 'Simal Technologies Middle East',
+    'publisher': { '@id': 'https://simalme.com/#organization' },
+    'potentialAction': {
+      '@type': 'SearchAction',
+      'target': 'https://simalme.com/search/?q={search_term_string}',
+      'query-input': 'required name=search_term_string'
+    }
+  },
+  {
+    '@type': 'WholesaleStore',
+    '@id': 'https://simalme.com/#dubai-hq',
+    'name': 'Simal Technologies Middle East LLC - Dubai HQ',
+    'url': 'https://simalme.com/',
+    'telephone': '+971-4-393-0507',
+    'email': 'info@simalme.com',
+    'priceRange': '$$$',
+    'image': 'https://simalme.com/assets/img/brand/simal-logo-1200w.png',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': 'Office 201, Dar Al Riffa Bldg, Khalid Bin Al Waleed Rd, Bur Dubai',
+      'addressLocality': 'Dubai',
+      'addressRegion': 'Dubai',
+      'postalCode': '49740',
+      'addressCountry': 'AE'
+    },
+    'geo': {
+      '@type': 'GeoCoordinates',
+      'latitude': 25.2575,
+      'longitude': 55.2974
+    },
+    'openingHoursSpecification': [
+      {
+        '@type': 'OpeningHoursSpecification',
+        'dayOfWeek': ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+        'opens': '09:00',
+        'closes': '18:00'
+      }
+    ]
+  },
+  {
+    '@type': 'LocalBusiness',
+    '@id': 'https://simalme.com/#riyadh-liaison',
+    'name': 'Simal Technologies - Riyadh Regional Operations',
+    'telephone': '+971-4-393-0507',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': 'King Fahd Road, Al Olaya',
+      'addressLocality': 'Riyadh',
+      'addressCountry': 'SA'
+    }
+  },
+  {
+    '@type': 'LocalBusiness',
+    '@id': 'https://simalme.com/#doha-liaison',
+    'name': 'Simal Technologies - Doha Regional Operations',
+    'telephone': '+971-4-393-0507',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': 'Grand Hamad Street',
+      'addressLocality': 'Doha',
+      'addressCountry': 'QA'
+    }
+  }
+];
+
+const allSchemas = [...baselineSchemas, ...schemas];
+
+const mi = (icon: string, label: string, href: string, desc: string) =>
+  `<a href="${href}"><span class="mi">${icon}</span>${label}<span class="md">${desc}</span></a>`;
+
+const isHome = pathname === '/' || pathname === '' || pathname === '/ar' || pathname === '/ar/';
+const isProducts = pathname.includes('/products') || pathname.includes('/compare');
+const isBrands = pathname.includes('/brands');
+const isSoftware = pathname.includes('/software');
+const isSolutions = pathname.includes('/solutions');
+const isPartners = pathname.includes('/onboarding') || pathname.includes('/rfq');
+const isInsights = pathname.includes('/insights') || pathname.includes('/resources');
+const isAbout = pathname.includes('/about') || pathname.includes('/careers') || pathname.includes('/contact');
+---
+
+<!DOCTYPE html>
+<html lang={lang} dir={dir}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {/* rm(6.1-3/9.1-1, PUB-8): the known reference for scripts/ci/facts-consistency.mjs */}
+  <meta name="simal:brand-count" content={String(brandCountLive)} />
+  <meta name="simal:sku-count" content={String(productCount[0].n)} />
+  <meta name="simal:years" content={String(counters.years)} />
+  <meta name="simal:since" content={String(counters.since)} />
+  <link rel="icon" type="image/png" href="/assets/img/brand/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/img/brand/favicon-96.png" />
+
+  {is404 ? (
+    <meta name="robots" content="noindex, nofollow" />
+  ) : (
+    <>
+      <link rel="canonical" href={canonicalUrl} />
+      <link rel="alternate" hreflang="en" href={enUrl} />
+      {hasArTwin && <link rel="alternate" hreflang="ar" href={arUrl} />}
+      <link rel="alternate" hreflang="x-default" href={enUrl} />
+    </>
+  )}
+
+  <!-- Open Graph / Facebook (SEO-6) -->
+  <meta property="og:site_name" content={isArabic ? 'سيمال للتقنيات الشرق الأوسط' : 'Simal Technologies Middle East'} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:locale" content={isArabic ? 'ar_AE' : 'en_US'} />
+  <meta property="og:locale:alternate" content={isArabic ? 'en_US' : 'ar_AE'} />
+
+  <!-- Twitter Card (SEO-6) -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@SimalME" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- Content Security Policy Floor (SEC-13 / P8-4). frame-ancestors is header-only
+       (dev-edge, nginx, plus X-Frame-Options: DENY): browsers ignore it in a meta
+       policy and log a console error on every page (rm 9.1-3 browser sweep). -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://*.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https: https://*.google-analytics.com https://*.googletagmanager.com; connect-src 'self' https://kyc.simalme.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; base-uri 'self'; form-action 'self';" />
+
+  <!-- Fonts: Tajawal is the RTL/Arabic face only ([dir=rtl] stack in
+       prototype.css); the LTR body face is the system stack (--font in
+       tokens.css). Loading the Tajawal stylesheet on LTR pages made an
+       external render-blocking fetch delay first paint (rm 9.1-2: home
+       LCP 2711ms vs the 2500ms budget, render delay 2257ms) for zero
+       glyphs. Arabic pages keep the full preconnect + stylesheet. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  {isArabic && <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />}
+
+  {GA4_ID ? <meta name="ga4-id" content={GA4_ID} /> : null}
+
+  <!-- Google Consent Mode v2 (rm(3.3): externalized — CSP can drop script-src 'unsafe-inline') -->
+  <script src="/assets/js/consent-defaults.js" defer></script>
+
+  <!-- GA4 loader (rm(8.4-1): external file, NOT a processed script element —
+       Astro inlines small processed scripts under assetsInlineLimit, and the
+       Phase-3 CSP (script-src 'self') would block an inlined loader. Deferred
+       classic scripts run in document order: consent-defaults.js first. -->
+  <script src="/assets/js/ga4-loader.js" defer></script>
+
+  <!-- JSON-LD Structured Data Graph (SEO-4) -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': allSchemas
+  })} />
+</head>
+<body>
+  <a href="#main" class="skip-link">{isArabic ? 'الانتقال إلى المحتوى الرئيسي' : 'Skip to main content'}</a>
+
+  <!-- ===== V2 three-tier header (CDW-class) — ported from Prototype chrome.js ===== -->
+  <header class="v2hdr" id="v2hdr">
+    {announcement && (
+      <div class="annbar" id="annbar" role="region" aria-label={isArabic ? 'شريط الإعلانات' : 'Announcement banner'}>
+        <div class="wrap">
+          <span>{announcement.text}</span>
+          {announcement.cta_href && (
+            <a href={safeHref(announcement.cta_href)} aria-label={announcement.cta_label || (isArabic ? 'عرض تفاصيل الإعلان' : 'View announced product and request channel pricing')}>
+              {announcement.cta_label || (isArabic ? 'شاهد المنتج واطلب عرض السعر ←' : 'See the SKU & RFQ channel pricing →')}
+            </a>
+          )}
+          <button class="x" id="annx" title={isArabic ? 'إغلاق الإعلان' : 'Dismiss'} aria-label={isArabic ? 'إغلاق الإعلان' : 'Dismiss announcement'}>✕</button>
+        </div>
+      </div>
+    )}
+
+    <div class="u2"><div class="wrap">
+      <div class="l">
+        <a href={utility.phoneHref} style="color:inherit;text-decoration:none"><span>☎ {utility.phone}</span></a><span class="sep">·</span>
+        <a href={'mailto:' + utility.email} style="color:inherit;text-decoration:none"><span>✉ {utility.email}</span></a><span class="sep">·</span>
+        <span>{isArabic ? '🕘 الأحد–الخميس 9:00–18:00 بتوقيت الإمارات' : utility.hours}</span>
+      </div>
+      <div class="r">
+        <a class="kycl" href={`${PORTAL}/login.html`}>{isArabic ? '🛡 بوابة KYC — تسجيل الدخول' : utility.portalLabel}</a>
+        <span class="lng">
+          {isArabic ? (
+            <><a href={enPath} lang="en" hreflang="en" style="color:inherit;text-decoration:none">EN</a><b>العربية</b></>
+          ) : (
+            <><b>EN</b><a href={arPath} lang="ar" hreflang="ar" style="color:inherit;text-decoration:none">العربية</a></>
+          )}
+        </span>
+        <span class="soc">
+          <a href="https://www.linkedin.com/company/simal-technologies" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2Z"/></svg></a>
+          <a href="https://www.instagram.com/simaltechnologies" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><span aria-hidden="true">◉</span></a>
+          <a href="https://wa.me/971508487861" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><span aria-hidden="true">✆</span></a>
+        </span>
+      </div>
+    </div></div>
+
+    <div class="h2main"><div class="wrap">
+      <a class="logo" href={isArabic ? '/ar/' : '/'} style="gap:0;margin-right:10px" aria-label={isArabic ? 'سيمال للتقنيات الشرق الأوسط - الرئيسية' : 'Simal Technologies Middle East Home'}>
+        <img src="/assets/img/brand/simal-logo-360w.png" alt={isArabic ? 'سيمال للتقنيات الشرق الأوسط' : 'Simal Technologies Middle East'} style="height:42px;width:auto;display:block">
+      </a>
+      <label class="search2" aria-label={isArabic ? 'البحث في الموقع' : 'Site search'}>🔍
+        <input id="hdr-q" type="search" placeholder={isArabic ? `ابحث في ${productCount[0].n} منتجاً، علامة، حلاً…` : `Search ${productCount[0].n} SKUs, brands, solutions…`} aria-label={isArabic ? 'البحث في كتالوج المنتجات والعلامات' : 'Search catalog SKUs, brands, solutions'} autocomplete="off">
+        <b id="qb">{isArabic ? 'بحث' : 'Search'}</b>
+      </label>
+      <div class="sp"></div>
+      <a href={`${PORTAL}/login.html`} class="btn btn-o btn-sm">{isArabic ? 'تسجيل الدخول ◁' : '▷ Sign in'}</a>
+      <a href={isArabic ? '/ar/rfq/' : '/rfq/'} class="rfq-pill" title={isArabic ? 'سلة طلبات الأسعار' : 'RFQ quote basket'}><span aria-hidden="true">🧾 </span>{isArabic ? 'طلب سعر' : 'RFQ'} <span class="cnt" id="rfqCount">0</span></a>
+      <a href={isArabic ? '/ar/onboarding/' : '/onboarding/'} class="btn btn-gold">{isArabic ? 'كن شريكاً' : 'Become a Partner'}</a>
+    </div></div>
+
+    <nav class="h2nav" aria-label={isArabic ? 'التنقل الرئيسي' : 'Main navigation'}><div class="wrap">
+      <!-- 1. Home -->
+      <div class={`ni ${isHome ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة الرئيسية' : 'Home menu'}>
+        {isArabic ? 'الرئيسية' : menuLabel('home')}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'روابط سريعة' : 'Home navigation'}>
+          <b>{isArabic ? 'الأكثر طلباً الآن' : 'Popular right now'}</b>
+          <Fragment set:html={mi('⚡', isArabic ? 'وصل حديثاً — الكتالوج المباشر' : 'New arrivals — live catalog', isArabic ? '/ar/products/' : '/products/', isArabic ? `${productCount[0].n} منتجاً مع التحديث المستمر` : `${productCount[0].n} SKUs, newest flagged`)} />
+          <Fragment set:html={mi('🆕', isArabic ? 'Crucial P510 — الجيل الخامس' : 'Crucial P510 — just landed', '/products/crucial-p510-nvme-ssd/', isArabic ? 'أحدث أقراص Gen5 NVMe في دبي' : 'Mainstream Gen5 NVMe')} />
+          <Fragment set:html={mi('🧾', isArabic ? 'بناء سلة طلب أسعار' : 'Build an RFQ basket', isArabic ? '/ar/rfq/' : '/rfq/', isArabic ? 'عرض سعر رسمي خلال يوم عمل' : 'Quote within 1 business day')} />
+          <Fragment set:html={mi('🧑‍💻', isArabic ? 'خدمات البرمجيات — UniERP' : 'Software services — UniERP', isArabic ? '/ar/software/' : '/software/', isArabic ? 'تخطيط الموارد · نقاط البيع · الذكاء الاصطناعي' : 'ERP · POS · AI with Unisoft')} />
+          <Fragment set:html={mi('🤝', isArabic ? 'كن موزعاً وشريكاً معتمداً' : 'Become a reseller partner', isArabic ? '/ar/onboarding/' : '/onboarding/', isArabic ? 'برنامج شراكة متعدد المستويات' : 'Tiered program, online KYC')} />
+          <Fragment set:html={mi('🗺', isArabic ? 'خريطة الموقع الكاملة' : 'Full site map', '/sitemap.xml', isArabic ? 'جميع الصفحات المتاحة' : 'Every page, one screen')} />
+        </div>
+      </div>
+
+      <!-- 2. Products & Brands -->
+      <div class={`ni ${isProducts ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة المنتجات والعلامات' : 'Products & Brands menu'}>
+        {isArabic ? 'المنتجات والعلامات' : menuLabel('products')}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'تصفح المنتجات' : 'Products and Brands navigation'}>
+          <b>{isArabic ? `تصفح الفئات — ${productCount[0].n} منتجاً متوفراً` : `Shop by category — ${productCount[0].n} SKUs live`}</b>
+          <Fragment set:html={mi('💾', isArabic ? `أقراص SSD داخلية · ${catCounts['internal-ssd'] || 17}` : `Internal SSDs · ${catCounts['internal-ssd'] || 17}`, isArabic ? '/ar/products/#internal-ssd' : '/products/#internal-ssd', isArabic ? 'من Gen3 إلى Gen5 بسرعات حتى 12,400 MB/s' : 'Gen3 → Gen5 NVMe, up to 12,400 MB/s')} />
+          <Fragment set:html={mi('🔌', isArabic ? `أقراص SSD محمولة · ${catCounts['portable-ssd'] || 12}` : `Portable SSDs · ${catCounts['portable-ssd'] || 12}`, isArabic ? '/ar/products/#portable-ssd' : '/products/#portable-ssd', isArabic ? 'وحدات تخزين خارجية متينة بمنفذ USB-C' : 'Rugged external drives, USB-C')} />
+          <Fragment set:html={mi('🧠', isArabic ? `الذاكرة العشوائية (RAM) · ${catCounts['memory'] || 4}` : `Memory (RAM) · ${catCounts['memory'] || 4}`, isArabic ? '/ar/products/#memory' : '/products/#memory', 'DDR4 / DDR5 UDIMM &amp; SO-DIMM')} />
+          <Fragment set:html={mi('🖥️', isArabic ? `الشاشات ووحدات العرض · ${catCounts['monitors'] || 4}` : `Monitors &amp; Displays · ${catCounts['monitors'] || 4}`, isArabic ? '/ar/products/#monitors' : '/products/#monitors', isArabic ? 'شاشات الألعاب والأعمال حتى 280Hz' : 'Gaming &amp; office, up to 280 Hz')} />
+          <Fragment set:html={mi('🎮', isArabic ? `الألعاب الإلكترونية · ${catCounts['gaming'] || 6}` : `Gaming · ${catCounts['gaming'] || 6}`, isArabic ? '/ar/products/#gaming' : '/products/#gaming', isArabic ? 'بطاقات الرسوميات ومعدات الألعاب' : 'GPUs and gaming gear')} />
+          <Fragment set:html={mi('🧰', isArabic ? `الملحقات والطاقة · ${catCounts['accessories'] || 35}` : `Accessories &amp; Power · ${catCounts['accessories'] || 35}`, isArabic ? '/ar/products/#accessories' : '/products/#accessories', isArabic ? 'محولات وموزعات وكابلات وشواحن' : 'Hubs, docks, chargers, cables')} />
+          <Fragment set:html={mi('💻', isArabic ? `الحواسيب المحمولة · ${catCounts['laptops'] || 3}` : `Laptops · ${catCounts['laptops'] || 3}`, isArabic ? '/ar/products/#laptops' : '/products/#laptops', isArabic ? 'أجهزة الشركات وحلول الحزم' : 'Business notebooks, bundling')} />
+          <Fragment set:html={mi('⚖', isArabic ? 'مقارنة المنتجات' : 'Compare products', '/compare/', isArabic ? 'مقارنة جنباً إلى جنب حتى 4 منتجات' : 'Up to 4 SKUs side by side')} />
+          <div class="mega-promo">
+            <img src="/assets/img/products/crucial-p510-nvme-ssd-0.webp" alt="Crucial P510">
+            <b>{isArabic ? '★ وصل حديثاً' : '★ Just landed'}</b>
+            <p>{isArabic ? 'قرص Crucial P510 Gen5 NVMe — متوفر في مخازن دبي.' : 'Crucial P510 Gen5 NVMe — now in Dubai stock.'}</p>
+            <a class="btn btn-gold" href="/products/crucial-p510-nvme-ssd/">{isArabic ? 'شاهد المنتج ←' : 'See the SKU →'}</a>
+          </div>
+          <div class="mega-foot"><a href={isArabic ? '/ar/products/' : '/products/'}>{isArabic ? 'جميع المنتجات' : 'All products'}</a><span>·</span><span>{isArabic ? 'منتجات أصلية بضمان محلي' : 'Every SKU genuine with local warranty'}</span></div>
+        </div>
+      </div>
+
+      <!-- 3. Brands -->
+      <div class={`ni ${isBrands ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة العلامات التجارية' : 'Brands menu'}>
+        {isArabic ? 'العلامات التجارية' : menuLabel('brands')}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'دليل العلامات التجارية' : 'Brands navigation'}>
+          <b>{isArabic ? `العلامات التجارية المعتمدة — ${brandRows.length} علامة` : `Authorized vendor lines — ${brandRows.length} brands`}</b>
+          {topBrandsQuery.map((b: any) => (
+            <Fragment set:html={mi(
+              `<b style="font-size:10.5px;color:var(--blue)">${b.name.charAt(0)}</b>`,
+              `${b.name} · ${b.count}`,
+              `/brands/${b.slug}/`,
+              BRAND_INFO[b.slug] || (isArabic ? 'خط توزيع معتمد' : 'Authorized line')
+            )} />
+          ))}
+          <Fragment set:html={mi('🗂', isArabic ? 'دليل العلامات الكامل' : 'Brands overview', '/brands/', isArabic ? 'تصفح كافة العلامات من أ إلى ي' : 'Browse the full A–Z')} />
+        </div>
+      </div>
+
+      <!-- 4. Software Services -->
+      <div class={`ni ${isSoftware ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة خدمات البرمجيات' : 'Software Services menu'}>
+        {isArabic ? 'خدمات البرمجيات' : menuLabel('software')}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'حلول البرمجيات المؤسسية' : 'Software Services navigation'}>
+          <b>{isArabic ? 'خدمات البرمجيات — شراكة سيمال مع يونيسوفت' : 'Software services — the Simal + Unisoft practice'}</b>
+          <Fragment set:html={mi('🧩', isArabic ? 'نظام UniERP المتكامل' : 'UniERP flagship ERP', '/software/products/distribution-erp/', isArabic ? 'مبني على Odoo 19 CE · ترخيص $0 · سبع وحدات' : 'Odoo 19 CE · $0 licensing · 7 modules')} />
+          <Fragment set:html={mi('🗂', isArabic ? 'مكتبة وحدات ERP (7 وحدات)' : 'ERP module library (7)', '/software/#modules', isArabic ? 'من الإدارة المالية إلى الفوترة الضريبية' : 'Finance → UniVAT — full detail pages')} />
+          <Fragment set:html={mi('📦', isArabic ? 'كافة المنظومات والمنتجات (20 نظاماً)' : 'All products &amp; platforms (20)', '/software/#products', isArabic ? 'عشرة أنظمة قطاعية وعشرة حلول متخصصة' : '10 industry ERPs + 10 specialized systems')} />
+          <Fragment set:html={mi('🛒', isArabic ? 'UniPOS — نقاط البيع متعددة القطاعات' : 'UniPOS — multi-sector POS', '/software/products/unipos/', isArabic ? 'قطاع التجزئة والمطاعم والأزياء' : 'Retail · fashion · food service')} />
+          <Fragment set:html={mi('🧾', isArabic ? 'UniVAT — الفوترة والامتثال الضريبي' : 'UniVAT — NBR-approved VAT', '/software/solutions/univat/', isArabic ? 'أتمتة الضرائب وجاهزية Peppol بالإمارات' : 'Tax automation · Peppol-ready UAE tooling')} />
+          <Fragment set:html={mi('🛠', isArabic ? 'الخدمات الهندسية (12 خدمة)' : 'Engineering services (12)', '/software/#services', isArabic ? 'تطوير مخصص · سحابة · ضمان جودة · ذكاء أعمال' : 'Custom dev · cloud · QA → data &amp; BI')} />
+          <Fragment set:html={mi('🤖', isArabic ? 'الذكاء الاصطناعي وتعلم الآلة' : 'AI &amp; machine learning', '/software/services/aiml/', isArabic ? 'نماذج تنبؤية وتحليلات ذكاء الأعمال' : 'ML · BI · predictive analytics')} />
+          <Fragment set:html={mi('☁️', isArabic ? 'السحابة وعمليات DevOps' : 'Cloud &amp; DevOps', '/software/services/cloud/', isArabic ? 'ترحيل السحابة والتحكم في البنية التحتية' : 'Migration · CI/CD · infrastructure')} />
+          <Fragment set:html={mi('🏭', isArabic ? 'القطاعات والصناعات (9 قطاعات)' : 'Industries &amp; sectors (9)', '/software/#industries', isArabic ? 'من الرعاية الصحية إلى التجارة والتوزيع' : 'Healthcare → agriculture')} />
+          <Fragment set:html={mi('🏥', isArabic ? 'الرعاية الصحية والمستشفيات' : 'Healthcare &amp; medical', '/software/industries/healthcare/', isArabic ? 'إدارة المستشفيات والعيادات وقوائم الانتظار' : 'Hospital ERP · queue management')} />
+          <Fragment set:html={mi('🏦', isArabic ? 'القطاع المالي والمصرفي' : 'Finance &amp; banking', '/software/industries/banking/', isArabic ? 'حلول القروض والحفظ والأصول' : 'Loan → custodian banking')} />
+          <Fragment set:html={mi('🧭', isArabic ? 'الأسعار وحاسبة العائد وطلب العرض' : 'Pricing · ROI · demo', '/software/#pricing', isArabic ? 'باقات التنفيذ وحاسبة التكلفة' : 'Packages, calculator, demo form')} />
+          <div class="mega-promo">
+            <b>{isArabic ? 'احجز عرضاً حياً لنظام ERP' : 'Book an ERP demo'}</b>
+            <p>{isArabic ? 'عرض حي لمدة 30 دقيقة على منتج حقيقي.' : '30 minutes, live product — no slideware.'}</p>
+            <a class="btn btn-gold" href="/software/#demo">{isArabic ? 'طلب العرض ←' : 'Request demo →'}</a>
+          </div>
+          <div class="mega-foot"><a href={isArabic ? '/ar/software/' : '/software/'}>{isArabic ? 'بوابة البرمجيات' : 'Software home'}</a><span>·</span><a href="/software/#impl">{isArabic ? 'منهجية التنفيذ في 7 مراحل' : '7-phase implementation'}</a><span>·</span><span>{isArabic ? 'ترخيص $0 لكل مستخدم مدى الحياة' : '$0 per-user licensing, forever'}</span></div>
+        </div>
+      </div>
+
+      <!-- 5. IT Solutions -->
+      <div class={`ni ${isSolutions ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة حلول التقنية' : 'IT Solutions menu'}>
+        {isArabic ? 'حلول التقنية' : menuLabel('solutions')}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'حلول تقنية المعلومات' : 'IT Solutions navigation'}>
+          <b>{isArabic ? 'الخدمات المهنية — خمس ممارسات رئيسية' : 'Professional services — 5 flagship practices'}</b>
+          <Fragment set:html={mi('📅', isArabic ? 'عقود الصيانة السنوية AMC' : 'Annual Maintenance Contract', '/solutions/amc/', isArabic ? 'الحفاظ على أداء البنية التحتية بأعلى جاهزية' : 'Keep infrastructure at peak performance')} />
+          <Fragment set:html={mi('🎥', isArabic ? 'حلول الصوتيات والمرئيات وقاعات الاجتماعات' : 'AV &amp; Meeting Room Solutions', '/solutions/av/', isArabic ? 'تطوير أسلوب تعاون فرق العمل' : 'Transform how teams collaborate')} />
+          <Fragment set:html={mi('☁️', isArabic ? 'حلول أمان السحابة' : 'Cloud Security Solutions', '/solutions/cloud-security/', isArabic ? 'حماية بيانات الأعمال والبيئات السحابية' : 'Protect business data')} />
+          <Fragment set:html={mi('💾', isArabic ? 'استعادة البيانات والتخزين' : 'Data Recovery &amp; Storage', '/solutions/data-recovery/', isArabic ? 'حماية واسترجاع أصولك الرقمية' : 'Your most valuable asset, protected')} />
+          <Fragment set:html={mi('🛡️', isArabic ? 'حلول الجدران النارية والشبكات' : 'Firewall Solutions', '/solutions/firewall/', isArabic ? 'حماية محيط الشبكة من التهديدات السيبرانية' : 'Safeguard the network perimeter')} />
+          <Fragment set:html={mi('📋', isArabic ? 'كافة خدمات التقنية (12 خطاً)' : 'All 12 service lines', isArabic ? '/ar/solutions/' : '/solutions/', isArabic ? 'مباشرة من شركة سيمال' : 'Live from simalme.com')} />
+          <Fragment set:html={mi('🛡', isArabic ? 'مستويات اتفاقية مستوى الخدمة SLA' : 'AMC SLA tiers', '/solutions/amc/#sla', isArabic ? 'استجابة خلال 1 ساعة / 4 ساعات / يوم العمل التالي' : '1h / 4h / NBD response')} />
+        </div>
+      </div>
+
+      <!-- 6. Partners -->
+      <div class={`ni ${isPartners ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة الشركاء' : 'Partners menu'}>
+        {isArabic ? 'الشركاء والتوزيع' : 'Partners'}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'برنامج الشركاء' : 'Partners navigation'}>
+          <b>{isArabic ? 'برنامج الشراكة وقنوات التوزيع' : 'Partner program'}</b>
+          <Fragment set:html={mi('🏅', isArabic ? 'مستويات الشراكة والمزايا' : 'Program &amp; tiers', isArabic ? '/ar/onboarding/#tiers' : '/onboarding/#tiers', isArabic ? 'معتمد · متميز · نخبوي' : 'Authorized · Premier · Elite')} />
+          <Fragment set:html={mi('📝', isArabic ? 'سجل كموزع — معالج KYC الرقمي' : 'Become a reseller — KYC wizard', isArabic ? '/ar/onboarding/' : '/onboarding/', isArabic ? '7 خطوات سريعة، حوالي 10 دقائق' : '7 steps, ≈10 min, resumable')} />
+          <Fragment set:html={mi('🔐', isArabic ? 'بوابة الشركاء B2B — تسجيل الدخول' : 'B2B portal — sign in', `${PORTAL}/login.html`, isArabic ? 'حساب موحد لإدارة كافة المعاملات' : 'One account for everything')} />
+          <Fragment set:html={mi('📦', isArabic ? 'الطلبات والفواتير الإلكترونية' : 'Orders &amp; invoices', `${PORTAL}/login.html`, isArabic ? 'يتاح فور اعتماد ملف KYC' : 'Unlocks on KYC approval')} />
+          <Fragment set:html={mi('🧾', isArabic ? 'طلب عرض سعر مباشر' : 'Request a quote first', isArabic ? '/ar/rfq/' : '/rfq/', isArabic ? 'بدون الحاجة لإنشاء حساب مسبق' : 'No account needed')} />
+        </div>
+      </div>
+
+      <!-- 7. Insights -->
+      <div class={`ni ${isInsights ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة المقالات والموارد' : 'Insights menu'}>
+        {isArabic ? 'المقالات والتقارير' : 'Insights'}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'الموارد والأخبار' : 'Insights navigation'}>
+          <b>{isArabic ? 'الموارد المعرفية والأخبار' : 'Resources'}</b>
+          <Fragment set:html={mi('📰', isArabic ? 'المدونة والمركز الإخباري' : 'Blog &amp; newsroom', isArabic ? '/ar/insights/' : '/insights/', isArabic ? 'تقارير السوق وتحليلات قنوات التوزيع' : '10-post calendar + desk notes')} />
+          <Fragment set:html={mi('📊', isArabic ? 'دراسات الحالة (8 دراسات)' : 'Case studies (8)', '/resources/#cases', isArabic ? 'قصص نجاح التحول الرقمي وتطبيق ERP' : '3× revenue · ERP wins')} />
+          <Fragment set:html={mi('📄', isArabic ? 'الأوراق البيضاء الفنية' : 'White papers', '/resources/#papers', isArabic ? 'أدلة قابلة للتحميل في البنية والفوترة' : 'Gated PDF downloads')} />
+          <Fragment set:html={mi('📑', isArabic ? 'كتيبات ومواصفات المنتجات' : 'Product datasheets', '/resources/#datasheets', isArabic ? 'مكتبة ملفات PDF لكافة الفئات' : 'Per-category PDF library')} />
+          <Fragment set:html={mi('❓', isArabic ? 'الأسئلة الشائعة FAQ' : 'FAQ', '/resources/#faq', isArabic ? 'أهم استفسارات الشركاء والموزعين' : 'What partners ask most')} />
+          <Fragment set:html={mi('🎙', isArabic ? 'المركز الصحفي وحزمة الإعلام' : 'Press room &amp; media kit', '/resources/#press', isArabic ? 'الشعارات والبيانات الصحفية المعتمدة' : 'Logos · bios · boilerplate')} />
+        </div>
+      </div>
+
+      <!-- 8. About -->
+      <div class={`ni ${isAbout ? 'on' : ''}`} tabindex="0" role="button" aria-haspopup="true" aria-expanded="false" aria-label={isArabic ? 'قائمة عن سيمال' : 'About menu'}>
+        {isArabic ? 'عن سيمال' : 'About'}<span class="caret" aria-hidden="true">▾</span>
+        <div class="mega" role="region" aria-label={isArabic ? 'عن الشركة' : 'About navigation'}>
+          <b>{isArabic ? 'الشركة والكيانات' : 'Company'}</b>
+          <Fragment set:html={mi('🏢', isArabic ? 'نبذة عن الشركة' : 'Company overview', isArabic ? '/ar/about/' : '/about/', isArabic ? 'بيت توزيع مستقل منذ عام 2002' : 'Independent since 2002')} />
+          <Fragment set:html={mi('👔', isArabic ? 'الإدارة والقيادة التنفيذية' : 'Leadership team', isArabic ? '/ar/about/#leadership' : '/about/#leadership', isArabic ? 'مجلس الإدارة والمدراء التنفيذيون' : 'Board of directors')} />
+          <Fragment set:html={mi('🎯', isArabic ? 'الرسالة والرؤية والقيم' : 'Mission, vision &amp; values', isArabic ? '/ar/about/#mission' : '/about/#mission', isArabic ? 'المبادئ التوجيهية للتميز' : 'Why Simal exists')} />
+          <Fragment set:html={mi('🏆', isArabic ? 'الجوائز والاعتمادات' : 'Awards &amp; achievements', isArabic ? '/ar/about/#awards' : '/about/#awards', awardsSummary)} />
+          <Fragment set:html={mi('🤝', isArabic ? 'لماذا تختار سيمال' : 'Why choose Simal', isArabic ? '/ar/about/#why' : '/about/#why', isArabic ? 'مزايا القنوات واللوجستيات' : 'Channel advantages')} />
+          <Fragment set:html={mi('🌱', isArabic ? 'المسؤولية الاجتماعية للشركات' : 'CSR', isArabic ? '/ar/about/#csr' : '/about/#csr', isArabic ? 'محو الأمية الرقمية والمبادرات البيئية' : 'Digital literacy · donations')} />
+          <Fragment set:html={mi('💼', isArabic ? 'الوظائف والفرص الشاغرة' : 'Careers — open roles', '/careers/', isArabic ? 'وظائف شاغرة في دبي والمنطقة' : '12 live job codes')} />
+          <Fragment set:html={mi('📍', isArabic ? 'التواصل والمكاتب' : 'Contact &amp; offices', isArabic ? '/ar/contact/' : '/contact/', isArabic ? '4 مواقع ومكتب استجابة مركزي' : '4 locations · routed desk')} />
+          <Fragment set:html={mi('🌐', isArabic ? '<span lang="en">English Version</span>' : '<span lang="ar">النسخة العربية</span>', isArabic ? '/' : '/ar/', isArabic ? '<span lang="en">Return to English site</span>' : '<span lang="ar">واجهة كاملة باللغة العربية</span>')} />
+        </div>
+      </div>
+
+      <span class="hot">★ {isArabic ? 'منتجات أصلية · توريد من جبل علي · منذ 2002' : 'Genuine stock · JAFZA-fulfilled · since 2002'}</span>
+    </div></nav>
+
+    <!-- Mobile fallback row -->
+    <nav class="m-nav" aria-label={isArabic ? 'التنقل في الجوال' : 'Main (mobile)'}>
+      <a href={isArabic ? '/ar/' : '/'}>{isArabic ? 'الرئيسية' : 'Home'}</a>
+      <a href={isArabic ? '/ar/products/' : '/products/'}>{isArabic ? 'المنتجات' : 'Products'}</a>
+      <a href={isArabic ? '/brands/' : '/brands/'}>{isArabic ? 'العلامات' : 'Brands'}</a>
+      <a href={isArabic ? '/ar/software/' : '/software/'}>{isArabic ? 'البرمجيات' : 'Software'}</a>
+      <a href={isArabic ? '/ar/solutions/' : '/solutions/'}>{isArabic ? 'الحلول' : 'Solutions'}</a>
+      <a href={isArabic ? '/ar/onboarding/' : '/onboarding/'}>{isArabic ? 'الشركاء' : 'Partners'}</a>
+      <a href={isArabic ? '/ar/insights/' : '/insights/'}>{isArabic ? 'المقالات' : 'Insights'}</a>
+      <a href={isArabic ? '/ar/about/' : '/about/'}>{isArabic ? 'عن سيمال' : 'About'}</a>
+      <a href={isArabic ? '/ar/contact/' : '/contact/'}>{isArabic ? 'اتصل بنا' : 'Contact'}</a>
+      <a href={isArabic ? '/ar/rfq/' : '/rfq/'} class="cta">{isArabic ? 'طلب سعر' : 'RFQ'}</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <!-- ===== V2 rich footer (Redington/CDW-class) — ported from Prototype chrome.js ===== -->
+  <div class="f2-cta"><div class="wrap">
+    <div>
+      <h3>{isArabic ? 'ابقَ على اطلاع بأحدث تطورات قنوات تقنية المعلومات بالشرق الأوسط' : newsletter.heading}</h3>
+      <p>{isArabic ? 'إشعارات توفر المخزون، عروض الموزعين الحصرية، وتحديثات الفوترة الإلكترونية بالإمارات. لا رسائل غير مرغوب فيها — إلغاء الاشتراك متاح دائماً.' : newsletter.blurb}</p>
+    </div>
+    <div class="nl">
+      <input id="nlmail" type="email" placeholder={isArabic ? 'عنوان بريدك المهني…' : newsletter.placeholder} aria-label={isArabic ? 'البريد الإلكتروني المهني للاشتراك' : 'Work email address for newsletter updates'}>
+      <button class="btn btn-gold" id="nlbtn">{isArabic ? 'اشترك' : newsletter.buttonLabel}</button>
+    </div>
+  </div></div>
+
+  <footer class="f2-main"><div class="wrap">
+    <div>
+      <a href={isArabic ? '/ar/' : '/'} style="display:inline-block;margin-bottom:16px" aria-label={isArabic ? 'سيمال للتقنيات الشرق الأوسط' : 'Simal Technologies Middle East Home'}>
+        <img src="/assets/img/brand/simal-logo-white-360w.png" alt={isArabic ? 'سيمال للتقنيات الشرق الأوسط' : 'Simal Technologies Middle East'} style="height:36px;width:auto;display:block">
+      </a>
+      <p class="ent">{isArabic ? 'بيت توزيع تقنية معلومات مستقل — منتجات أصلية ومعتمدة منذ 2002. حلول وخدمات البرمجيات المؤسسية بالتعاون مع Unisoft Systems Ltd.' : 'Independent IT distribution house — authorized & genuine since 2002. Software services delivered with Unisoft Systems Ltd.'}</p>
+      <div class="soc">
+        <a href="https://www.linkedin.com/company/simal-technologies" target="_blank" rel="noopener noreferrer" title="LinkedIn" aria-label="LinkedIn"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true" style="display:inline-block;vertical-align:middle"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2Z"/></svg></a>
+        <a href="https://www.instagram.com/simaltechnologies" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram"><span aria-hidden="true">◉</span></a>
+        <a href="https://wa.me/971508487861" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp"><span aria-hidden="true">✆</span></a>
+        <a href="https://x.com/simalme" target="_blank" rel="noopener noreferrer" title="X Twitter" aria-label="X Twitter"><span aria-hidden="true">✕</span></a>
+      </div>
+    </div>
+    <div>
+      {!isArabic && footerData && Array.isArray(footerData.columns) ? footerData.columns.map((col: any) => (
+        <div>
+          <h4>{col.heading}</h4>
+          {(col.links || []).map((l: any) => <a href={l.href}>{l.text}</a>)}
+        </div>
+      )) : (
+        <>
+<div>
+      <h4>{isArabic ? 'الخدمات والحلول' : 'Services & Solutions'}</h4>
+      <a href={isArabic ? '/ar/solutions/' : '/solutions/'}>{isArabic ? 'حلول تقنية المعلومات — 12 خطاً' : 'IT Solutions — 12 lines'}</a>
+      <a href={isArabic ? '/ar/software/' : '/software/'}>{isArabic ? 'خدمات البرمجيات المؤسسية' : 'Software Services home'}</a>
+      <a href="/software/products/distribution-erp/">{isArabic ? 'نظام UniERP — مبني على Odoo 19' : 'UniERP — Odoo 19 CE'}</a>
+      <a href="/software/#products">{isArabic ? 'منتجات البرمجيات (20 نظاماً)' : 'Software products (20)'}</a>
+      <a href="/software/#services">{isArabic ? 'الخدمات الهندسية (12 خدمة)' : 'Engineering services (12)'}</a>
+      <a href="/software/#industries">{isArabic ? 'الحلول القطاعية (9 صناعات)' : 'Industry solutions (9)'}</a>
+      <a href={isArabic ? '/ar/rfq/' : '/rfq/'}>{isArabic ? 'طلب عرض أسعار رسمي' : 'RFQ — request a quote'}</a>
+      <a href={isArabic ? '/ar/onboarding/' : '/onboarding/'}>{isArabic ? 'انضم كشريك توزيع معتمد' : 'Become a partner'}</a>
+      <a href={`${PORTAL}/login.html`}>{isArabic ? 'بوابة التحقق KYC' : 'KYC verification portal'}</a>
+    </div>
+    <div>
+      <h4>{isArabic ? 'الشركة والمؤسسة' : 'Company'}</h4>
+      <a href={isArabic ? '/ar/about/' : '/about/'}>{isArabic ? 'عن الشركة والكيانات' : 'About & entities'}</a>
+      <a href="/careers/">{isArabic ? 'الوظائف والفرص المهنية' : 'Careers'}</a>
+      <a href={isArabic ? '/ar/insights/' : '/insights/'}>{isArabic ? 'المركز الإخباري والتقارير' : 'Insights & newsroom'}</a>
+      <a href="/resources/">{isArabic ? 'مكتبة الموارد والوثائق' : 'Resources library'}</a>
+      <a href={isArabic ? '/ar/contact/' : '/contact/'}>{isArabic ? 'اتصل بنا ومواقع المكاتب' : 'Contact us'}</a>
+      <a href={isArabic ? '/' : '/ar/'} lang={isArabic ? 'en' : 'ar'} hreflang={isArabic ? 'en' : 'ar'}>{isArabic ? 'English Version (LTR)' : 'العربية (RTL)'}</a>
+    </div>
+    
+        </>
+      )}
+      <h4>{isArabic ? 'التواصل والعناوين' : 'Contact'}</h4>
+      <p class="ent"><b>{isArabic ? 'المكتب الرئيسي' : 'Head office'}</b>{isArabic ? 'مكتب 201، مبنى دار الرفاعة' : 'Office 201, Dar Al Riffa Bldg'}<br>{isArabic ? 'شارع خالد بن الوليد، بر دبي' : 'Khalid Bin Al Waleed Rd, Bur Dubai'}<br>{isArabic ? 'ص.ب 49740، دبي، الإمارات' : 'PO Box 49740, Dubai, UAE'}</p>
+      <p class="ent"><b>{isArabic ? 'المستودع المركزي' : 'Warehouse'}</b>StarSeed ME FZE · JAFZA RA08DA07</p>
+      <p class="ent"><b>{isArabic ? 'الأحد–الخميس' : 'Sun–Thu'}</b>9:00–18:00 GST · ☎ +971 4 393 0507</p>
+    </div>
+  </footer>
+
+  <div class="f2-brands"><div class="wrap">
+    {brandRows.map((b: any) => <a href={`/brands/${b.slug}/`} style="color:inherit;text-decoration:none"><span>{b.name}</span></a>)}
+  </div></div>
+
+  <div class="f2-cert"><div class="wrap">
+    <span class="cb">📍 <b>{isArabic ? 'مكتب بر دبي' : 'Bur Dubai'}</b> · {isArabic ? 'مستودع جبل علي' : 'JAFZA warehouse'}</span>
+    <span class="cb">🤝 <b>{brandRows.length}</b> {isArabic ? 'شريك عالمي معتمد' : 'global vendor partners'}</span>
+    <span class="cb">🇦🇪 {isArabic ? 'متوافق مع قانون حماية البيانات' : 'UAE'} <b>PDPL</b> {isArabic ? '' : 'aligned'}</span>
+    <span class="cb">🧾 <b>Peppol {isArabic ? 'الفوترة الإلكترونية' : 'e-invoicing'}</b> {isArabic ? 'جاهزية 2027' : 'ready 2027'}</span>
+    <span class="cb">✔ ISO 9001 · 27001 — <b>Unisoft Systems</b></span>
+  </div></div>
+
+  <div class="f2-legal"><div class="wrap">
+    <span>© 2026 {isArabic ? 'شركة سيمال للتقنيات الشرق الأوسط ش.ذ.م.م · بر دبي، دبي، الإمارات' : 'Simal Technologies Middle East LLC · Bur Dubai, Dubai, UAE'}</span>
+    <span>
+      <a href={isArabic ? '/ar/legal/privacy-policy/' : '/legal/privacy-policy/'}>{isArabic ? 'إشعار الخصوصية' : 'Privacy Notice'}</a>
+      <a href={isArabic ? '/ar/legal/terms-conditions/' : '/legal/terms-conditions/'}>{isArabic ? 'الشروط والأحكام' : 'Terms of Use'}</a>
+      <a href={isArabic ? '/ar/legal/cookie-policy/' : '/legal/cookie-policy/'}>{isArabic ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Notice'}</a>
+      <a href={isArabic ? '/ar/legal/privacy-policy/' : '/legal/privacy-policy/'}>{isArabic ? 'حقوق أصحاب البيانات' : 'PDPL — Data Subject Rights'}</a>
+      <a href="/sitemap.xml">{isArabic ? 'خريطة الموقع' : 'Sitemap'}</a>
+      <button type="button" id="open-cookie-settings" class="cookie-settings-btn" aria-haspopup="dialog">
+        {isArabic ? 'إعدادات ملفات تعريف الارتباط' : 'Cookie Settings'}
+      </button>
+    </span>
+  </div></div>
+  <div class="ftr"></div>
+
+  <!-- UAE PDPL & Saudi PDPL Compliant Cookie Consent Banner (SEO-9) -->
+  <aside id="cookie-banner" class="cookie-banner" role="region" aria-label={isArabic ? 'الموافقة على ملفات تعريف الارتباط' : 'Cookie consent preferences'}>
+    <div class="wrap cookie-banner-wrap">
+      <div class="cookie-banner-text">
+        <strong>{isArabic ? 'احترام خصوصية بياناتك وفق القانون الاتحادي الإماراتي رقم 45 لسنة 2021' : 'Respecting your data privacy under UAE Federal Decree-Law No. 45/2021 (PDPL)'}</strong>
+        <p>
+          {isArabic
+            ? 'نحن نستخدم ملفات تعريف الارتباط الضرورية لتمكين وظائف المنصة وسلة عروض الأسعار RFQ وبوابة KYC. بموافقتك، نستخدم ملفات تحليلية وتسويقية مجهولة الهوية لتحسين الكتالوج وتجربة التوزيع. يمكنك تخصيص خياراتك أو سحب موافقتك في أي وقت.'
+            : 'We use strictly necessary cookies for core operations, RFQ basket persistence, and secure KYC portal sessions. With your permission, we use privacy-first analytics to optimize catalog performance and B2B logistics. You may manage or withdraw your consent at any time.'}
+          <a href={isArabic ? '/ar/legal/cookie-policy/' : '/legal/cookie-policy/'}>{isArabic ? 'سياسة ملفات تعريف الارتباط' : 'Cookie Policy'}</a> · 
+          <a href={isArabic ? '/ar/legal/privacy-policy/' : '/legal/privacy-policy/'}>{isArabic ? 'إشعار الخصوصية' : 'Privacy Notice'}</a>
+        </p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" id="cookie-accept-all" class="btn btn-gold btn-sm">{isArabic ? 'قبول الكل' : 'Accept All'}</button>
+        <button type="button" id="cookie-reject-all" class="btn btn-o btn-sm" style="color:#fff;border-color:rgba(255,255,255,0.4);background:transparent">{isArabic ? 'رفض غير الأساسي' : 'Reject Non-Essential'}</button>
+        <button type="button" id="cookie-customize" class="btn btn-g btn-sm" style="color:#CBD5E1;text-decoration:underline">{isArabic ? 'تخصيص الإعدادات' : 'Customize'}</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Cookie Preferences Modal Dialog (Accessible) -->
+  <div id="cookie-backdrop" class="cookie-backdrop" aria-hidden="true"></div>
+  <div id="cookie-modal" class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title" style="display:none">
+    <div class="cookie-modal-head">
+      <h2 id="cookie-modal-title" style="font-size:20px;font-weight:700;margin:0">{isArabic ? 'مركز تفضيلات ملفات تعريف الارتباط والخصوصية' : 'Cookie & Data Privacy Preferences'}</h2>
+      <button type="button" id="cookie-modal-close" class="cookie-close-btn" aria-label={isArabic ? 'إغلاق نافذة التفضيلات' : 'Close preferences dialog'}>✕</button>
+    </div>
+    <p style="font-size:13px;color:var(--slate);margin:10px 0 16px;line-height:1.5">
+      {isArabic
+        ? 'وفقاً للمرسوم بقانون اتحادي رقم 45 لسنة 2021 في شأن حماية البيانات الشخصية بدولة الإمارات ونظام حماية البيانات الشخصية السعودي، نمنحك التحكم الكامل في بياناتك. اختر الفئات التي توافق عليها أدناه.'
+        : 'In compliance with UAE Federal Decree-Law No. 45/2021 (PDPL) and Saudi PDPL, you have full sovereignty over your personal data. You can toggle each category below before submitting.'}
+    </p>
+
+    <div class="cookie-cat-list">
+      <!-- Category 1: Necessary -->
+      <div class="cookie-cat-item">
+        <div class="cookie-cat-header">
+          <div>
+            <strong>{isArabic ? 'ملفات تعريف الارتباط الأساسية (إلزامية)' : 'Strictly Necessary (Always Active)'}</strong>
+            <span class="badge b-blue" style="margin-inline-start:8px">{isArabic ? 'نشط دائماً' : 'Required'}</span>
+          </div>
+          <input type="checkbox" id="consent-necessary" checked disabled aria-label={isArabic ? 'ملفات تعريف الارتباط الأساسية مفعلة دائماً' : 'Strictly necessary cookies always active'} />
+        </div>
+        <p style="font-size:12px;color:var(--slate);margin-top:6px">
+          {isArabic
+            ? 'ضرورية لتشغيل سلة عروض الأسعار RFQ، جلسات بوابة KYC المشفرة، تفضيلات اللغة، وحماية النظام ضد الهجمات.'
+            : 'Essential for cryptographic sessions in KYC portal, RFQ basket persistence, language switcher, and security firewalls.'}
+        </p>
+      </div>
+
+      <!-- Category 2: Analytics -->
+      <div class="cookie-cat-item">
+        <div class="cookie-cat-header">
+          <div>
+            <strong>{isArabic ? 'التحليلات وقياس الأداء' : 'Performance & Analytics'}</strong>
+          </div>
+          <input type="checkbox" id="consent-analytics" aria-label={isArabic ? 'تفعيل ملفات التحليلات' : 'Enable analytics cookies'} />
+        </div>
+        <p style="font-size:12px;color:var(--slate);margin-top:6px">
+          {isArabic
+            ? 'تساعدنا على قياس حركة الكتالوج والبحث عن القطع والتحقق من أوقات استجابة الخوادم لتحسين الخدمة للموزعين.'
+            : 'Aggregated metrics that help us evaluate catalog searches, SKU inventory interest, and server latency.'}
+        </p>
+      </div>
+
+      <!-- Category 3: Marketing -->
+      <div class="cookie-cat-item">
+        <div class="cookie-cat-header">
+          <div>
+            <strong>{isArabic ? 'التسويق وتفضيلات التوزيع' : 'Marketing & Communications'}</strong>
+          </div>
+          <input type="checkbox" id="consent-marketing" aria-label={isArabic ? 'تفعيل ملفات التسويق' : 'Enable marketing cookies'} />
+        </div>
+        <p style="font-size:12px;color:var(--slate);margin-top:6px">
+          {isArabic
+            ? 'تُستخدم لتخصيص الإعلانات التقنية لقنوات التوزيع وإشعارات إطلاق المنتجات الجديدة من Crucial وHikvision وغيرها.'
+            : 'Tailors hardware product launch notifications and channel partner promotions on professional networks.'}
+        </p>
+      </div>
+    </div>
+
+    <div class="cookie-modal-foot" style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px;padding-top:16px;border-top:1px solid var(--line)">
+      <button type="button" id="cookie-save-prefs" class="btn btn-p btn-sm">{isArabic ? 'حفظ تفضيلاتي' : 'Save Preferences'}</button>
+    </div>
+  </div>
+
+<script>
+  /* Global Toast System (accessible notification toasts, zero localStorage) */
+  (window as any).showToast = (msg: string, kind?: 'info' | 'err' | 'ok') => {
+    const t = document.createElement('div');
+    t.className = 'toast' + (kind === 'err' ? ' toast-err' : '');
+    t.textContent = msg;
+    t.setAttribute('role', 'status');
+    t.setAttribute('aria-live', 'polite');
+    document.body.appendChild(t);
+    setTimeout(() => t.classList.add('in'), 10);
+    setTimeout(() => {
+      t.classList.remove('in');
+      setTimeout(() => t.remove(), 300);
+    }, 2600);
+  };
+
+  /* Chrome island — RFQ pill count, search submit, announcement dismiss */
+  const rfqCount = document.getElementById('rfqCount');
+  if (rfqCount) fetch('/api/rfq-basket').then(r => r.json()).then(j => {
+    rfqCount.textContent = String(j?.totalQty ?? 0);
+  }).catch(() => {});
+
+  const q = (document.getElementById('hdr-q') || document.getElementById('q')) as HTMLInputElement | null;
+  const goSearch = () => { if (q && q.value.trim()) location.href = '/search/?q=' + encodeURIComponent(q.value.trim()); };
+  document.getElementById('qb')?.addEventListener('click', goSearch);
+  q?.addEventListener('keydown', (e) => { if (e.key === 'Enter') goSearch(); });
+
+  /* '/' keyboard shortcut: focuses search box unless typing elsewhere */
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && !/input|textarea|select/i.test((e.target as HTMLElement)?.tagName || '')) {
+      e.preventDefault();
+      if (q) { q.focus(); q.select(); }
+    }
+  });
+
+  const annbar = document.getElementById('annbar');
+  /* ADR-2 (zero localStorage): dismiss preference is a cookie */
+  if (document.cookie.split('; ').some(c => c === 'simal_ann=1') && annbar) annbar.remove();
+  document.getElementById('annx')?.addEventListener('click', () => {
+    document.cookie = 'simal_ann=1; max-age=15552000; path=/';
+    annbar?.remove();
+    (window as any).showToast?.('Announcement dismissed');
+  });
+
+  const hdr = document.getElementById('v2hdr');
+  if (hdr) window.addEventListener('scroll', () => {
+    hdr.classList.toggle('mini', window.scrollY > 220);
+  }, { passive: true });
+
+  /* Viewport-aware mega menu positioning */
+  function alignMegas() {
+    const vw = document.documentElement.clientWidth;
+    document.querySelectorAll<HTMLElement>('.h2nav .ni').forEach(it => {
+      const mg = it.querySelector<HTMLElement>('.mega');
+      if (!mg) return;
+      mg.style.left = '';
+      const keep = mg.style.display, keepV = mg.style.visibility;
+      mg.style.visibility = 'hidden';
+      if (getComputedStyle(mg).display === 'none') mg.style.display = 'grid';
+      const r = it.getBoundingClientRect();
+      const w = mg.offsetWidth || 880;
+      mg.style.display = keep; mg.style.visibility = keepV;
+      const absLeft = Math.max(10, Math.min(r.left, vw - w - 10));
+      mg.style.left = Math.round(absLeft - r.left) + 'px';
+    });
+  }
+  alignMegas();
+  window.addEventListener('resize', alignMegas);
+
+  /* Dropdown open/close state machine & keyboard accessibility */
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.h2nav .ni[tabindex]'));
+  const closeAll = (except?: HTMLElement) => {
+    items.forEach(it => {
+      if (it !== except) {
+        it.classList.remove('open');
+        it.setAttribute('aria-expanded', 'false');
+      }
+    });
+  };
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const activeNi = document.querySelector<HTMLElement>('.h2nav .ni.open');
+      closeAll();
+      activeNi?.focus();
+    }
+  });
+
+  items.forEach(ni => {
+    ni.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('.mega')) return;
+      const wasOpen = ni.classList.contains('open');
+      closeAll();
+      if (!wasOpen) {
+        ni.classList.add('open');
+        ni.setAttribute('aria-expanded', 'true');
+      }
+      e.preventDefault();
+    });
+    ni.addEventListener('mouseenter', () => {
+      closeAll(ni);
+      ni.classList.add('open');
+      ni.setAttribute('aria-expanded', 'true');
+    });
+    ni.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown') {
+        if ((e.target as HTMLElement).closest('.mega')) return;
+        e.preventDefault();
+        const wasOpen = ni.classList.contains('open');
+        closeAll();
+        if (!wasOpen) {
+          ni.classList.add('open');
+          ni.setAttribute('aria-expanded', 'true');
+          if (e.key === 'ArrowDown') {
+            const firstLink = ni.querySelector<HTMLAnchorElement>('.mega a');
+            firstLink?.focus();
+          }
+        }
+      }
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!(e.target as HTMLElement).closest('.v2hdr')) closeAll();
+  });
+
+  const navBar = document.querySelector('.h2nav');
+  navBar?.addEventListener('mouseleave', () => closeAll());
+
+  /* newsletter → routed contact inbox */
+  const nlbtn = document.getElementById('nlbtn');
+  nlbtn?.addEventListener('click', async () => {
+    const mail = (document.getElementById('nlmail') as HTMLInputElement).value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) {
+      nlbtn.textContent = 'Enter a valid email';
+      (window as any).showToast?.('Enter a valid work email', 'err');
+      return;
+    }
+    nlbtn.textContent = 'Subscribing…';
+    try {
+      const r = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: 'Newsletter subscriber', email: mail, topic: 'Newsletter', message: 'Newsletter signup from the website footer.' })
+      });
+      if (r.ok) {
+        nlbtn.textContent = 'Subscribed ✓';
+        (window as any).showToast?.('Subscribed to channel updates ✓');
+        (document.getElementById('nlmail') as HTMLInputElement).value = '';
+      } else {
+        nlbtn.textContent = 'Failed — email info@simalme.com';
+        (window as any).showToast?.('Failed — email info@simalme.com', 'err');
+      }
+    } catch {
+      nlbtn.textContent = 'Network error';
+      (window as any).showToast?.('Network error', 'err');
+    }
+    setTimeout(() => { nlbtn.textContent = 'Subscribe'; }, 4000);
+  });
+
+  /* Cookie Consent Manager (UAE PDPL & Google Consent Mode v2) */
+  const CONSENT_COOKIE_NAME = 'simal_consent';
+  const POLICY_VERSION = '2026-10-12';
+
+  function getConsent() {
+    try {
+      const match = document.cookie.match(new RegExp('(?:^|; )' + CONSENT_COOKIE_NAME + '=([^;]*)'));
+      if (match) return JSON.parse(decodeURIComponent(match[1]));
+    } catch (e) {}
+    return null;
+  }
+
+  function setConsent(analytics: boolean, marketing: boolean) {
+    const prevConsent = getConsent();
+    const payload = {
+      v: POLICY_VERSION,
+      ts: Date.now(),
+      categories: {
+        necessary: true,
+        analytics: Boolean(analytics),
+        marketing: Boolean(marketing)
+      }
+    };
+    document.cookie = `${CONSENT_COOKIE_NAME}=${encodeURIComponent(JSON.stringify(payload))}; path=/; max-age=31536000; SameSite=Lax`;
+    
+    // Update Google Consent Mode v2
+    const grants = {
+      'analytics_storage': analytics ? 'granted' : 'denied',
+      'ad_storage': marketing ? 'granted' : 'denied',
+      'ad_user_data': marketing ? 'granted' : 'denied',
+      'ad_personalization': marketing ? 'granted' : 'denied'
+    };
+    if (typeof (window as any).gtag === 'function') {
+      (window as any).gtag('consent', 'update', grants);
+    }
+
+    /* rm(8.4-2): notify the GA4 loader. Grants are mirrored on window so any
+     * later reader sees the same state consent-defaults.js would compute. */
+    (window as any).__simalConsentGrants = grants;
+    window.dispatchEvent(new CustomEvent('simal:consent-accepted', { detail: grants }));
+
+    /* rm(8.4-2): withdrawal of a previously granted analytics consent while
+     * GA4 is live in this page — removing the <script> node does not stop an
+     * already-running gtag.js, so disable it and reload into the denied
+     * state (consent-defaults.js then keeps GA4 off from the first byte). */
+    if (!analytics && prevConsent?.categories?.analytics && document.getElementById('ga4-src')) {
+      const ga4Id = document.querySelector('meta[name="ga4-id"]')?.getAttribute('content');
+      if (ga4Id) (window as any)['ga-disable-' + ga4Id] = true;
+      hideBanner();
+      hideModal();
+      location.reload();
+      return;
+    }
+
+    hideBanner();
+    hideModal();
+  }
+
+  const banner = document.getElementById('cookie-banner');
+  const backdrop = document.getElementById('cookie-backdrop');
+  const modal = document.getElementById('cookie-modal');
+  const openBtn = document.getElementById('open-cookie-settings');
+  const acceptAllBtn = document.getElementById('cookie-accept-all');
+  const rejectAllBtn = document.getElementById('cookie-reject-all');
+  const customizeBtn = document.getElementById('cookie-customize');
+  const modalCloseBtn = document.getElementById('cookie-modal-close');
+  const savePrefsBtn = document.getElementById('cookie-save-prefs');
+  const analyticsInput = document.getElementById('consent-analytics') as HTMLInputElement | null;
+  const marketingInput = document.getElementById('consent-marketing') as HTMLInputElement | null;
+
+  function showBanner() {
+    if (banner) banner.style.display = 'block';
+  }
+  function hideBanner() {
+    if (banner) banner.style.display = 'none';
+  }
+  function showModal() {
+    const c = getConsent();
+    if (analyticsInput) analyticsInput.checked = Boolean(c?.categories?.analytics);
+    if (marketingInput) marketingInput.checked = Boolean(c?.categories?.marketing);
+    if (backdrop) backdrop.style.display = 'block';
+    if (modal) modal.style.display = 'block';
+    modalCloseBtn?.focus();
+  }
+  function hideModal() {
+    if (backdrop) backdrop.style.display = 'none';
+    if (modal) modal.style.display = 'none';
+  }
+
+  // Check consent state on initial load. The banner is server-rendered visible, so a
+  // recorded choice must hide it explicitly (rm 9.1-3 browser sweep: it reappeared on
+  // every page after Accept/Reject). A consent from an older policy version re-prompts.
+  const consent = getConsent();
+  if (!consent || consent.v !== POLICY_VERSION) {
+    showBanner();
+  } else {
+    hideBanner();
+  }
+
+  acceptAllBtn?.addEventListener('click', () => {
+    setConsent(true, true);
+    (window as any).showToast?.('Cookie consent preferences saved ✓', 'ok');
+  });
+
+  rejectAllBtn?.addEventListener('click', () => {
+    setConsent(false, false);
+    (window as any).showToast?.('Non-essential cookies rejected', 'info');
+  });
+
+  customizeBtn?.addEventListener('click', showModal);
+  openBtn?.addEventListener('click', showModal);
+  modalCloseBtn?.addEventListener('click', hideModal);
+  backdrop?.addEventListener('click', hideModal);
+
+  savePrefsBtn?.addEventListener('click', () => {
+    setConsent(Boolean(analyticsInput?.checked), Boolean(marketingInput?.checked));
+    (window as any).showToast?.('Cookie preferences updated ✓', 'ok');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+      hideModal();
+      openBtn?.focus();
+    }
+  });
+</script>
+
+<style>
+  /* chrome is styled entirely by prototype.css (ported verbatim); only the mobile
+   * fallback row lives here because the prototype is desktop-only */
+  @media (max-width: 1240px) {
+    .h2nav .hot { display: none !important; }
+  }
+  /* rm(9.1-3 browser sweep): the desktop bar shows from 901px, but its 8 items need ~1025px
+   * in Arabic (~884px in English), so AR pages scrolled sideways below ~1100px and EN below
+   * ~965px. Tighten the items in two tiers; measured to fit both languages down to 901px. */
+  @media (min-width: 901px) and (max-width: 1240px) {
+    .h2nav .wrap { padding: 0 16px; }
+    .h2nav a.ni, .h2nav .ni { padding: 13.5px 9px; font-size: 13px; }
+    .h2nav .ni .caret { margin-left: 2px; }
+    .h2nav .ni.on::after { left: 9px; right: 9px; }
+  }
+  @media (min-width: 901px) and (max-width: 1000px) {
+    .h2nav a.ni, .h2nav .ni { padding: 13.5px 6px; font-size: 12.5px; }
+    .h2nav .ni.on::after { left: 6px; right: 6px; }
+  }
+  .m-nav { display: none; }
+  @media (max-width: 900px) {
+    .h2nav, .search2, .h2main .btn-o, .h2main .btn-gold { display: none !important; }
+    .m-nav { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 16px 12px; background: #fff; border-top: 1px solid var(--line); }
+    .m-nav a { font-size: 13px; font-weight: 600; color: var(--ink); text-decoration: none; padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; }
+    .m-nav a.cta { background: var(--grad-gold-btn); color: #221A05; border-color: #8A6A1E; font-weight: 800; }
+  }
+  @media (max-width: 860px) {
+    .u2 .l > span:last-child, .u2 .l .sep:last-of-type, .u2 .soc { display: none !important; }
+  }
+  /* phones: the utility strip drops email/hours/lang/socials — phone + portal link only;
+   * the 5-column footer and CTA band stack */
+  @media (max-width: 620px) {
+    .u2 .l a:nth-of-type(n+2), .u2 .l > span, .u2 .sep, .u2 .lng, .u2 .soc { display: none !important; }
+    .u2 .r { gap: 10px; }
+    .f2-main .wrap { grid-template-columns: 1fr !important; gap: 22px; padding: 32px 20px 24px; }
+    .f2-main .wrap > * { min-width: 0; }
+    .f2-cta .wrap { padding: 20px; }
+    .f2-cta .nl { margin-left: 0; width: 100%; }
+    .f2-cta .nl input { width: 100%; min-width: 0; flex: 1; }
+    .f2-legal .wrap { flex-direction: column; gap: 6px; }
+  }
+</style>
+</body>
+</html>

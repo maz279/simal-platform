@@ -1,0 +1,93 @@
+{
+  "ts": "2026-10-07T02:46:27.176Z",
+  "automated": {
+    "total": 6,
+    "green": 6,
+    "red": 0
+  },
+  "human": {
+    "total": 6,
+    "pending": 6
+  },
+  "verdict": "AUTOMATED GATES GREEN — human sign-offs outstanding (default: NO-GO until signed)",
+  "checklist": [
+    {
+      "gate": "code freeze verifier (T7.1)",
+      "type": "automated",
+      "status": "GREEN",
+      "ms": 202,
+      "evidence": "freeze v1.0.0-rc17 sealed 2026-10-07T02:46:22.120Z | FREEZE INTACT — no sealed source file has changed."
+    },
+    {
+      "gate": "parity checklist 32 checks (T6.2)",
+      "type": "automated",
+      "status": "GREEN",
+      "ms": 723,
+      "evidence": "PASS total seeded rows >= 290 — 307 rows | PARITY CHECKLIST: 50 PASS, 0 FAIL (50 total) | ALL PARITY CHECKS PASS"
+    },
+    {
+      "gate": "PG integration 27 tests",
+      "type": "automated",
+      "status": "GREEN",
+      "ms": 194,
+      "evidence": "PASS b5: invites widened columns (company/created_by/conversion) round-trip | PASS b5: screening_results upsert keeps latest | ALL PASS: 27 passed, 0 failed"
+    },
+    {
+      "gate": "production smoke 15 checks (T7.2)",
+      "type": "automated",
+      "status": "GREEN",
+      "ms": 316,
+      "evidence": "PASS security headers on portal response | PASS brute-force rate limiting kicks in (429) | SMOKE: 20 PASS, 0 FAIL → scripts/smoke-results.json"
+    },
+    {
+      "gate": "security audit 14 checks (T6.6)",
+      "type": "automated",
+      "status": "GREEN",
+      "ms": 2215,
+      "evidence": "PASS SQL parameterisation: every client.query uses a literal SQL string (63/63) | PASS uploads path traversal guard present | SECURITY AUDIT (local): 14 PASS, 0 FAIL"
+    },
+    {
+      "gate": "performance budgets (T6.5)",
+      "type": "automated",
+      "status": "GREEN",
+      "ms": 936,
+      "evidence": "DB pass: YES (worst p95 1.31 ms) | API pass: YES (worst p95 1.4 ms)"
+    },
+    {
+      "gate": "UAT: 26 scripts + SUS ≥ 80 (EN cohort)",
+      "type": "human",
+      "status": "PENDING",
+      "evidence": "T6.4 — scripts staged in Project_doc/04_Quality/UAT_Plan_and_Script.md"
+    },
+    {
+      "gate": "Security: ZAP baseline + external pen-test (ASVS L2)",
+      "type": "human",
+      "status": "PENDING",
+      "evidence": "T6.6 external rig — scheduled pre-cutover"
+    },
+    {
+      "gate": "Compliance: Peppol sandbox round-trip certified",
+      "type": "human",
+      "status": "PENDING",
+      "evidence": "T5.2 — ASP production credentials (20 Nov gate)"
+    },
+    {
+      "gate": "Compliance: DPIA signed",
+      "type": "human",
+      "status": "PENDING",
+      "evidence": "C1 — process gate"
+    },
+    {
+      "gate": "Operations: 72-hour staffed roster confirmed",
+      "type": "human",
+      "status": "PENDING",
+      "evidence": "F1 v2.0 — roster naming per E6"
+    },
+    {
+      "gate": "Comms: partner migration notice sent (INT-6)",
+      "type": "human",
+      "status": "PENDING",
+      "evidence": "E6 T-7 checklist item"
+    }
+  ]
+}

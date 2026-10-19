@@ -1,0 +1,72 @@
+[
+ {
+  "n": "reviewer login",
+  "p": true,
+  "d": "200 role=reviewer"
+ },
+ {
+  "n": "approve straight from submitted is blocked",
+  "p": true,
+  "d": "409 Action \"approve\" is not allowed from status \"submitted\""
+ },
+ {
+  "n": "start review (submitted->under_review)",
+  "p": true,
+  "d": "200 -> under_review"
+ },
+ {
+  "n": "reviewer checklist item",
+  "p": true,
+  "d": "200"
+ },
+ {
+  "n": "internal note",
+  "p": true,
+  "d": "200"
+ },
+ {
+  "n": "raise query to applicant",
+  "p": true,
+  "d": "200 -> query_raised"
+ },
+ {
+  "n": "applicant sees the query on the status page",
+  "p": false,
+  "d": "status=undefined history=0 queries=0"
+ },
+ {
+  "n": "applicant responds to query",
+  "p": false,
+  "d": "403 -> undefined"
+ },
+ {
+  "n": "approve",
+  "p": false,
+  "d": "409 -> undefined"
+ },
+ {
+  "n": "reviewer identity stored on the record",
+  "p": true,
+  "d": "reviewer=\"{}\""
+ },
+ {
+  "n": "audit actor is a real identity",
+  "p": false,
+  "d": "events=6 actors=[\"{}\",\"system\",\"probe.kyc.1791780321756@example.invalid\"]"
+ },
+ {
+  "n": "final status visible to applicant",
+  "p": false,
+  "d": "status=undefined history=0"
+ },
+ {
+  "n": "decision notifications queued",
+  "p": true,
+  "d": "63: Simal KYC — reviewer query (SIM-KYC-2026-10088) | Simal KYC — submission received (SIM-KYC-2026-10088) | Simal portal — your password was changed | Simal portal — password reset (valid 60 minutes) | I"
+ },
+ {
+  "n": "partner account provisioned on approval",
+  "p": false,
+  "d": "no account created for the applicant"
+ }
+]

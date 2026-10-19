@@ -1,0 +1,130 @@
+---
+// software/industries/[slug].astro — industry deep-dive (9 records)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+
+export async function getStaticPaths() {
+  const rows = await db`SELECT entity_id FROM content_blocks WHERE entity = 'software_industry' AND lang = 'en'`;
+  return rows.map(r => ({ params: { slug: r.entity_id } }));
+}
+
+const { slug } = Astro.params;
+const rows = await db`SELECT payload FROM content_blocks WHERE entity = 'software_industry' AND entity_id = ${slug} AND lang = 'en'`;
+const s = rows[0] ? (typeof rows[0].payload === 'string' ? JSON.parse(rows[0].payload) : rows[0].payload) : null;
+if (!s) return Astro.redirect('/software');
+
+const [svcs, inds] = await Promise.all([
+  db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'software_service' AND lang = 'en'`,
+  db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'software_industry' AND lang = 'en' ORDER BY entity_id`,
+]);
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const svcMap = new Map(svcs.map(r => [r.entity_id, parse(r)]));
+const indMap = new Map(inds.map(r => [r.entity_id, parse(r)]));
+const services = (s.services || []).map((id: string) => svcMap.get(id)).filter(Boolean);
+const related = (s.related || []).map((id: string) => indMap.get(id)).filter(Boolean);
+---
+
+<BaseLayout title={`${s.name || s.id} — Industries — Simal`} description={(s.what || '').slice(0, 150)}>
+  <section class="hero-sw">
+    <div class="container">
+      <div class="crumbs"><a href="/">Home</a> › <a href="/software">Software</a> › <a href="/software#industries">Industries</a> › <b>{s.name || s.id}</b></div>
+      <h1>{s.name || s.id}</h1>
+      <p class="tagline">{(s.what || '').slice(0, 200)}</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>The sector reality</h2>
+      <p class="overview">{s.what}</p>
+
+      {s.pains && s.pains.length > 0 && (
+        <>
+          <h2>Where it hurts today</h2>
+          <div class="grid-3">
+            {s.pains.map((p: string) => <div class="pain-card">{p}</div>)}
+          </div>
+        </>
+      )}
+
+      {s.plays && s.plays.length > 0 && (
+        <>
+          <h2>How we change it</h2>
+          <div class="timeline">
+            {s.plays.map((p: any) => {
+              const [t, d] = Array.isArray(p) ? p : [String(p).split(' — ')[0], String(p)];
+              return <div class="step"><b>{t}</b><span>{d}</span></div>;
+            })}
+          </div>
+        </>
+      )}
+
+      {services.length > 0 && (
+        <>
+          <h2>Services that land this</h2>
+          <div class="grid-4">
+            {services.map((v: any) => (
+              <a href={`/software/services/${v.id}`} class="rel-card gold"><b>{v.name || v.id}</b><p>{(v.overview || '').slice(0, 80)}…</p></a>
+            ))}
+          </div>
+        </>
+      )}
+
+      {s.faq && s.faq.length > 0 && (
+        <>
+          <h2>Common questions</h2>
+          <div class="grid-2">
+            {s.faq.map(([q, a]: [string, string]) => <div class="faq-card"><b>Q · {q}</b><p>{a}</p></div>)}
+          </div>
+        </>
+      )}
+
+      {related.length > 0 && (
+        <>
+          <h2>Related industries</h2>
+          <div class="grid-4">
+            {related.map((r: any) => (
+              <a href={`/software/industries/${r.id}`} class="rel-card"><b>{r.name || r.id}</b><p>{(r.what || '').slice(0, 80)}…</p></a>
+            ))}
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero-sw { background: var(--grad-blue-gold); padding: 44px 0 36px; }
+  .container { max-width: 1600px; margin: 0 auto; padding: 0 32px; }
+  .crumbs { font-size: 13px; margin-bottom: 16px; }
+  .crumbs a { color: #CFE0F3; }
+  .crumbs b { color: #fff; }
+  .hero-sw h1 { color: #fff; font-size: 32px; margin: 0 0 8px; }
+  .tagline { color: #DAE5F0; font-size: 15px; max-width: 760px; }
+
+  .section { padding: 44px 0; }
+  .section h2 { font-size: 24px; color: var(--navy-800); margin: 32px 0 16px; }
+  .section h2:first-child { margin-top: 0; }
+  .overview { font-size: 15.5px; line-height: 1.8; color: var(--slate); max-width: 900px; }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); gap: 16px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+
+  .pain-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; font-size: 14px; color: var(--slate); line-height: 1.7; border-left: 4px solid #C0392B; }
+
+  .timeline { display: grid; gap: 12px; max-width: 760px; }
+  .step { display: flex; gap: 16px; padding: 14px 18px; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); border-left: 4px solid var(--gold); }
+  .step b { font-size: 14px; color: var(--blue); min-width: 130px; }
+  .step span { font-size: 13.5px; color: var(--slate); }
+
+  .faq-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 22px; }
+  .faq-card b { font-size: 14px; color: var(--blue); }
+  .faq-card p { font-size: 13.5px; color: var(--slate); margin: 8px 0 0; line-height: 1.7; }
+
+  .rel-card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; text-decoration: none; color: inherit; }
+  .rel-card:hover { border-color: var(--blue); }
+  .rel-card.gold { border-top: 3px solid var(--gold); }
+  .rel-card b { font-size: 14px; display: block; }
+  .rel-card p { font-size: 12.5px; color: var(--slate); margin: 6px 0 0; }
+</style>

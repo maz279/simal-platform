@@ -1,0 +1,175 @@
+{
+  "timestamp": "2026-10-12T12:08:22.656Z",
+  "records": {
+    "users": [
+      {
+        "id": "usr_b78ff7edefa3478c6f1b",
+        "email": "perf-admin@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791259931224"
+      },
+      {
+        "id": "usr_e7902bab3a5be409d489",
+        "email": "smoke-admin@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791266791149"
+      },
+      {
+        "id": "usr_660679432463d952fc2b",
+        "email": "sec-admin@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791267418341"
+      },
+      {
+        "id": "usr_603616554fd24a2ae098",
+        "email": "mfaprobe@example.com",
+        "role": "viewer",
+        "name": "Probe",
+        "created_at": "1791276433013"
+      },
+      {
+        "id": "usr_adec6c98912adaf01570",
+        "email": "ih@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791276998541"
+      },
+      {
+        "id": "usr_3ba78761516f45ff227a",
+        "email": "ws-reviewer@example.com",
+        "role": "reviewer",
+        "name": "Review Staff",
+        "created_at": "1791793050794"
+      },
+      {
+        "id": "usr_e6746e4643421aeaaaa2",
+        "email": "journey@example.com",
+        "role": "partner",
+        "name": "Pat Ner",
+        "created_at": "1791471476329"
+      },
+      {
+        "id": "usr_226c5923e4658a1da8b9",
+        "email": "rbac@example.com",
+        "role": "partner",
+        "name": "Pat Ner",
+        "created_at": "1791471476517"
+      },
+      {
+        "id": "usr_68ca4fa55ea5382b809f",
+        "email": "acct-admin@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791795748604"
+      },
+      {
+        "id": "usr_23281aa285cc3a2b10ba",
+        "email": "ws-admin@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791793050753"
+      },
+      {
+        "id": "usr_194900b28fd837de3dd7",
+        "email": "ws-newbie@example.com",
+        "role": "reviewer",
+        "name": "Ws Newbie II",
+        "created_at": "1791793050944"
+      },
+      {
+        "id": "usr_674d57dd1e809be9bdc4",
+        "email": "it-admin@example.com",
+        "role": "super_admin",
+        "name": "System Administrator",
+        "created_at": "1791471475483"
+      },
+      {
+        "id": "usr_976e3170517df081a043",
+        "email": "it-reviewer@example.com",
+        "role": "reviewer",
+        "name": "Review Staff",
+        "created_at": "1791471475531"
+      }
+    ],
+    "submissions": [],
+    "invoices": [
+      {
+        "id": "inv_imm_test_1791341150221_4",
+        "ref": "REF-inv_imm_test_1791341150221_4",
+        "buyer_name": "Immutable Test Buyer",
+        "partner_email": "imm@example.com",
+        "status": "delivered",
+        "created_at": "1791341150221"
+      },
+      {
+        "id": "inv_imm_test_1791341150223_5",
+        "ref": "REF-inv_imm_test_1791341150223_5",
+        "buyer_name": "Immutable Test Buyer",
+        "partner_email": "imm@example.com",
+        "status": "delivered",
+        "created_at": "1791341150223"
+      },
+      {
+        "id": "inv_imm_test_1791341150226_6",
+        "ref": "REF-inv_imm_test_1791341150226_6",
+        "buyer_name": "Immutable Test Buyer",
+        "partner_email": "imm@example.com",
+        "status": "delivered",
+        "created_at": "1791341150226"
+      },
+      {
+        "id": "inv_imm_test_1791341150214_1",
+        "ref": "REF-inv_imm_test_1791341150214_1",
+        "buyer_name": "Immutable Test Buyer",
+        "partner_email": "imm@example.com",
+        "status": "delivered",
+        "created_at": "1791341150214"
+      },
+      {
+        "id": "inv_imm_test_1791341150217_2",
+        "ref": "REF-inv_imm_test_1791341150217_2",
+        "buyer_name": "Immutable Test Buyer",
+        "partner_email": "imm@example.com",
+        "status": "delivered",
+        "created_at": "1791341150217"
+      },
+      {
+        "id": "inv_imm_test_1791341150219_3",
+        "ref": "REF-inv_imm_test_1791341150219_3",
+        "buyer_name": "Immutable Test Buyer",
+        "partner_email": "imm@example.com",
+        "status": "delivered",
+        "created_at": "1791341150219"
+      }
+    ],
+    "rfqs": [
+      {
+        "ref": "SIMAL-RFQ-20261006-1001",
+        "email": "visual.check@example.com",
+        "company": "Deep Sweep Verification LLC",
+        "status": "submitted",
+        "submitted_at": "1791286145542"
+      },
+      {
+        "ref": "SIMAL-RFQ-20261006-1002",
+        "email": "iter6@example.com",
+        "company": "Iteration Six LLC",
+        "status": "submitted",
+        "submitted_at": "1791292238246"
+      }
+    ],
+    "products": [
+      {
+        "slug": "crucial-t705-ssd-2",
+        "sku": "CT1000T705SSD3",
+        "name": "Crucial T705 1TB PCIe Gen5 NVMe SSD (Enterprise Hardened)",
+        "brand": "crucial",
+        "cat": "internal-ssd"
+      }
+    ],
+    "audit_log": []
+  }
+}

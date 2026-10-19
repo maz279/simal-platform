@@ -1,0 +1,52 @@
+page /: 0 violation rule(s) [0 serious/critical]
+page /products/: 0 violation rule(s) [0 serious/critical]
+page /brands/: 0 violation rule(s) [0 serious/critical]
+page /insights/: 0 violation rule(s) [0 serious/critical]
+page /software/: 0 violation rule(s) [0 serious/critical]
+page /contact/: 0 violation rule(s) [0 serious/critical]
+page /about/: 0 violation rule(s) [0 serious/critical]
+{"ts":"2026-10-18T05:33:38.352Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_a11y_mvde3v3k"}
+{"ts":"2026-10-18T05:33:38.354Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T05:33:38.564Z","level":"info","event":"http","id":"12dabb0b-ccfb-42ab-a092-abdcc7bcf7d0","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+{"ts":"2026-10-18T05:33:38.572Z","level":"info","event":"http","id":"43b1622f-e912-49c2-bfac-e481ab056829","method":"POST","path":"/api/auth/mfa","status":200,"ms":5}
+{"ts":"2026-10-18T05:33:38.588Z","level":"info","event":"http","id":"1c743933-e5b7-4573-bba9-67786dee3c13","method":"GET","path":"/cms.html","status":200,"ms":1}
+{"ts":"2026-10-18T05:33:38.600Z","level":"info","event":"http","id":"c8d862f1-1256-4ca3-9dc8-d4020cfea18b","method":"GET","path":"/assets/css/base.css","status":200,"ms":1}
+{"ts":"2026-10-18T05:33:38.601Z","level":"info","event":"http","id":"dad422f3-feee-458e-834f-2abd8a0b494f","method":"GET","path":"/assets/css/admin.css","status":200,"ms":0}
+{"ts":"2026-10-18T05:33:38.603Z","level":"info","event":"http","id":"6e8aa06b-54bd-4503-9fa1-e54ee51f9f0e","method":"GET","path":"/assets/css/d365-cms.css","status":200,"ms":1}
+{"ts":"2026-10-18T05:33:38.604Z","level":"info","event":"http","id":"3d6e5d53-535a-4b06-8139-f01575d933a4","method":"GET","path":"/assets/js/api.js","status":200,"ms":0}
+{"ts":"2026-10-18T05:33:38.606Z","level":"info","event":"http","id":"59851673-2ff9-4562-9395-1261eaa7bf5c","method":"GET","path":"/assets/js/ui.js","status":200,"ms":0}
+{"ts":"2026-10-18T05:33:38.609Z","level":"info","event":"http","id":"bf3f24f7-16ff-4ce9-b0ca-1d5bb5c867d6","method":"GET","path":"/assets/js/icon-loader.js","status":200,"ms":1}
+{"ts":"2026-10-18T05:33:38.610Z","level":"info","event":"http","id":"31516020-6784-4e3d-b5c2-1c821470eee3","method":"GET","path":"/assets/js/cms.js","status":200,"ms":1}
+{"ts":"2026-10-18T05:33:38.613Z","level":"info","event":"http","id":"f7c8fd6c-485c-4b4e-96a3-36acef03e7bb","method":"GET","path":"/assets/img/logo-lockup-white.png","status":200,"ms":1}
+{"ts":"2026-10-18T05:33:38.633Z","level":"info","event":"http","id":"a1251964-65ff-419d-916b-b247be557334","method":"GET","path":"/api/auth/me","status":200,"ms":5}
+(node:16684) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"ts":"2026-10-18T05:33:38.669Z","level":"info","event":"http","id":"b429035b-aaf1-491f-8127-39200559d9ad","method":"GET","path":"/api/cms/blocks","status":200,"ms":19}
+{"ts":"2026-10-18T05:33:38.669Z","level":"info","event":"http","id":"d6b30f2b-e144-45c9-9561-4817fdde6e37","method":"GET","path":"/api/cms/slides","status":200,"ms":18}
+{"ts":"2026-10-18T05:33:38.671Z","level":"info","event":"http","id":"e6831ad0-10d3-488b-a17d-1fc82c1d2b1c","method":"GET","path":"/api/cms/policies","status":200,"ms":20}
+{"ts":"2026-10-18T05:33:38.673Z","level":"info","event":"http","id":"6354fbb0-2cb5-4613-a282-6ed03a85989e","method":"GET","path":"/api/admin/audit","status":200,"ms":21}
+{"ts":"2026-10-18T05:33:38.675Z","level":"info","event":"http","id":"faf27682-733c-4281-933c-234100371f4b","method":"GET","path":"/api/admin/users","status":200,"ms":23}
+{"ts":"2026-10-18T05:33:38.679Z","level":"info","event":"http","id":"1c464883-b897-4615-9feb-f404d8969564","method":"GET","path":"/api/admin/sessions","status":200,"ms":26}
+{"ts":"2026-10-18T05:33:38.687Z","level":"info","event":"http","id":"a967e164-04f0-47cc-9904-89ae4a2a6fd5","method":"GET","path":"/api/cms/telemetry","status":200,"ms":16}
+{"ts":"2026-10-18T05:33:38.688Z","level":"info","event":"http","id":"069fbf2e-1bd5-490e-b26e-eefb967c3aa6","method":"GET","path":"/api/cms/products","status":200,"ms":16}
+{"ts":"2026-10-18T05:33:38.690Z","level":"info","event":"http","id":"d04e9190-057e-44a9-b349-31c44649d4b8","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":0}
+{"ts":"2026-10-18T05:33:38.699Z","level":"info","event":"http","id":"6da0a81a-347c-4dd4-a786-6dc61d7b3cf7","method":"GET","path":"/api/cms/media","status":200,"ms":22}
+{"ts":"2026-10-18T05:33:38.699Z","level":"info","event":"http","id":"28a306fb-4f92-422d-ac83-708e971428bb","method":"GET","path":"/api/cms/outbox","status":200,"ms":22}
+{"ts":"2026-10-18T05:33:38.702Z","level":"info","event":"http","id":"e127dba4-6bae-4df0-96c6-6980de830357","method":"GET","path":"/api/cms/announcements","status":200,"ms":21}
+{"ts":"2026-10-18T05:33:38.704Z","level":"info","event":"http","id":"6499c2db-d5fc-4582-b015-ed5f3e7c6a3e","method":"GET","path":"/api/cms/testimonials","status":200,"ms":22}
+{"ts":"2026-10-18T05:33:38.706Z","level":"info","event":"http","id":"a00adef6-8f73-457c-b062-924a2aa85278","method":"GET","path":"/api/cms/brands","status":200,"ms":17}
+{"ts":"2026-10-18T05:33:38.716Z","level":"info","event":"http","id":"dc84f74f-c1b3-4be8-877b-8fbf458d40a6","method":"GET","path":"/api/cms/telemetry/publish","status":200,"ms":6}
+cms.html (authenticated, pg store): 0 violation rule(s) [0 serious/critical]
+reflow /: 320:ok 901:ok 1024:ok 1280:ok
+reflow /products/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /products/dell-15-laptop-14th-gen-intel-core-3/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /solutions/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /about/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/products/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/solutions/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/about/: 320:ok 901:ok 1024:ok 1280:ok
+
+=== GATE a11y (WCAG 2.1/2.2 A/AA + authenticated CMS, Phase 6 + rm(9.2-3)) ===
+PASS — 0 violations

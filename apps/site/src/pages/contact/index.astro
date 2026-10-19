@@ -1,0 +1,124 @@
+---
+// contact/index.astro — contact page. VISUAL CONTRACT: Prototype contact.html ported —
+// hero, 4 office cards (CONTENT.offices via site/offices block: HQ, JAFZA warehouse,
+// retail store, Dhaka dev center), reconciled-hours note, and the message form
+// island → /api/contact (routed to the accounts inbox per FRS-CT).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const r = await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'offices' AND lang = 'en'`;
+const offices = r[0] ? (typeof r[0].payload === 'string' ? JSON.parse(r[0].payload) : r[0].payload) : [];
+
+const contactPageSchema = {
+  '@type': 'ContactPage',
+  '@id': 'https://simalme.com/contact/#contactpage',
+  'name': 'Contact Simal Technologies Middle East',
+  'description': 'Direct office, warehouse and store directory with verified phones, emails, and operating hours.',
+  'url': 'https://simalme.com/contact/',
+  'mainEntity': {
+    '@id': 'https://simalme.com/#organization'
+  }
+};
+
+const contactBreadcrumbs = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/contact/#breadcrumb',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://simalme.com/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Contact',
+      'item': 'https://simalme.com/contact/'
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title="Contact — Simal Technologies Middle East" 
+  description="Reach Simal Technologies: office, warehouse and store directory with phones, emails, hours — or send a message straight to the team."
+  schemas={[contactPageSchema, contactBreadcrumbs]}
+>
+  <section class="hero" style="padding:0"><div class="wrap" style="padding:46px 28px 40px;grid-template-columns:1fr">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">talk to the right desk, first time</span>
+      <h1 style="font-size:34px">Contact</h1>
+      <p class="lead">Four locations, one team. Sales, support and accounts are reachable directly — or leave a message and we will route it.</p>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">The directory</span><h2>Offices, warehouse &amp; store</h2></div></div>
+    <div class="grid g2">
+      {offices.map((o: any) => (
+        <div class="card card-p" style="border-top:4px solid var(--blue)">
+          <b style="font-size:15px">{o[0]}</b>
+          <p style="font-size:13.5px;color:var(--slate);margin:8px 0 0;line-height:1.7">{o[1]}</p>
+          {o[2] && <p style="font-size:13px;margin:8px 0 0;color:var(--blue);font-weight:600">{o[2]}</p>}
+          {o[3] && <p style="font-size:12.5px;color:var(--slate-500);margin:6px 0 0">{o[3]}</p>}
+        </div>
+      ))}
+    </div>
+
+    <div class="alert al-info" style="margin-top:18px">
+      <span><b>Working hours:</b> Customer and partner desks operate <b>Sunday–Thursday, 09:00–18:00 GST</b>. Inquiries submitted outside business hours are logged and addressed next business morning.</span>
+    </div>
+
+    <div class="sec-head" style="margin-top:38px"><div><span class="eyebrow">Send a message</span><h2>Routed to the responsible desk with an SLA</h2></div></div>
+    <div class="split" style="grid-template-columns:1.1fr .9fr">
+      <div class="card card-p">
+        <form id="contactForm" style="display:grid;gap:14px">
+          <div class="frow">
+            <div class="field"><label for="c-name">Name <span class="req">*</span></label><input class="in" id="c-name" name="name" required minlength="2" maxlength="80" autocomplete="name"></div>
+            <div class="field"><label for="c-email">Work email <span class="req">*</span></label><input class="in" id="c-email" name="email" type="email" required maxlength="120" autocomplete="email"></div>
+          </div>
+          <div class="frow">
+            <div class="field"><label for="c-phone">Phone (optional)</label><input class="in" id="c-phone" name="phone" type="tel" maxlength="30"></div>
+            <div class="field"><label for="c-topic">Topic</label>
+              <select class="in" id="c-topic" name="topic">
+                <option value="Sales enquiry">Sales enquiry</option>
+                <option value="IT Solutions">IT Solutions consultation</option>
+                <option value="Software">Software / UniERP</option>
+                <option value="Support">Support (existing customer)</option>
+                <option value="Careers">Careers</option>
+                <option value="general">Something else</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="c-message">Message <span class="req">*</span></label>
+            <textarea class="in" id="c-message" name="message" required minlength="10" maxlength="2000" rows="5" placeholder="What do you need? Include product or reference numbers if you have them."></textarea></div>
+          <button type="submit" class="btn btn-p btn-lg">Send message →</button>
+          <p class="hint" id="formNote" hidden></p>
+        </form>
+      </div>
+      <div>
+        <div class="card card-p" style="border-top:4px solid var(--g3)">
+          <b style="font-size:14px">⚡ Fast paths</b>
+          <div style="display:flex;flex-direction:column;gap:9px;margin-top:10px;font-size:13.5px">
+            <a href="/rfq/">🧾 Build an RFQ — reference issued instantly →</a>
+            <a href="https://kyc.simalme.com/login.html">🛡 Partner portal — KYC &amp; invoices →</a>
+            <a href="/insights/">📰 Read the desks — insights &amp; guides →</a>
+          </div>
+        </div>
+        <div class="card card-p" style="border-top:4px solid var(--blue);margin-top:14px">
+          <b style="font-size:14px">📬 Direct desks</b>
+          <p style="font-size:13px;color:var(--slate);margin-top:8px;line-height:1.8">
+            Sales &amp; general — info@simalme.com<br>
+            Accounts — accounts@simalme.com<br>
+            Logistics &amp; RMA — logistics@simalme.com<br>
+            Store — store@simalme.com
+          </p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  
+  <script src="/assets/js/contact-page.js?v=1" defer></script>
+</BaseLayout>

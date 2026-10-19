@@ -1,0 +1,4 @@
+4. SSG worker: processed in 8.054s
+5. MARKER ON LIVE SITE: true
+6. restore PUT: 200
+7. restore publish: 200 -> processed | marker gone from site: true | original back: true

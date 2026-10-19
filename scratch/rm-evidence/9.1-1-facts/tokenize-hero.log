@@ -1,0 +1,7 @@
+PASS admin session — super_admin
+PASS reference facts — years=24 brands=21
+PASS PUT slide 5 — kick "Authorized IT Distribution · 24 Years in MEA" -> "Authorized IT Distribution · {years} Years in MEA"
+slides tokenized: 1
+pending approval apr_mvcjddk40qug: hero_slides/5 requested by admin@simalme.com
+PASS served hero has no raw token
+TOKENIZE HERO: ALL PASS

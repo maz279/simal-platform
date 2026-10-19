@@ -1,0 +1,5 @@
+=== drill 1: test-error -> sink (rig, node client) ===
+drill1 status: 500 | requestId: 96c2a851-15a3-49bb-9c9a-8a825b93824b
+sink lines before/after: 4 / 5
+sink payload: {"text":"[simal] 500 POST /api/admin/observability/test-error req=96c2a851-15a3-49bb-9c9a-8a825b93824b","requestId":"96c2a851-15a3-49bb-9c9a-8a825b93824b","path":"/api/admin/observability/test-error","status":500,"message":"Synthetic test error for observability verification (NFR-3)","ts":1792304351438}
+DRILL1-EXIT=0

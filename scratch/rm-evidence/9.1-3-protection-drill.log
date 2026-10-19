@@ -1,0 +1,16 @@
+rm(9.1-3) platform branch-protection drill — 2026-10-17T13:26Z
+platform: http://localhost:3000/simal-ci/simal-platform (Gitea 28.1.0, gitea-runner v5.1.1)
+
+$ node infra/ci-platform/bootstrap.mjs --protect
+[ci-platform] main protected: 21 required CI contexts, force-push blocked
+rule: main | enable_force_push=false | push whitelist=[simal-ci] | enable_status_check=true | contexts=21 ('CI / lint (*)' .. 'CI / gate-a11y (*)')
+
+$ git push --force platform HEAD~1:refs/heads/main      # rewind main by one commit
+remote: error:        
+To http://localhost:3000/simal-ci/simal-platform.git
+ ! [remote rejected] HEAD~1 -> main (pre-receive hook declined)
+error: failed to push some refs to 'http://localhost:3000/simal-ci/simal-platform.git'
+platform main after drill: 7be627b4fa521657c861fd43175306b2625a318f (= local HEAD, unchanged)
+
+$ git push platform :refs/heads/main                    # delete main
+remote: error: Branch main is the default branch and cannot be deleted  -> rejected

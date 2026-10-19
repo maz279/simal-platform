@@ -1,0 +1,112 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Admin — Application Review — SIMAL-KYC-0107</title><link rel="stylesheet" href="../assets/styles.css"></head>
+<body class="panel">
+<div class="panel-shell">
+  <aside class="side">
+    <div class="s-brand"><span class="lg-mark">S</span><div><b>Simal Admin</b><small>KYC · Compliance</small></div></div>
+    <nav class="s-nav">
+      <div class="grp">Review</div>
+      <a class="on" href="admin-queue.html"><span class="ic">📋</span> Applications queue <span class="n-badge">7</span></a>
+      <a href="#"><span class="ic">🗂</span> Organizations</a>
+      <a href="#"><span class="ic">📄</span> Document vault audit</a>
+      <a href="#"><span class="ic">⏰</span> Expiring documents</a>
+      <div class="grp">Data quality</div>
+      <a href="#"><span class="ic">🧾</span> TRN / Peppol report</a>
+      <div class="grp">System</div>
+      <a href="#"><span class="ic">👥</span> Users & roles</a>
+      <a href="#"><span class="ic">📊</span> SLA dashboards</a>
+    </nav>
+    <div class="s-foot">🔒 Reviewer: Sana N. · actions audit-logged</div>
+  </aside>
+
+  <main class="p-main">
+    <div class="p-top">
+      <div><span class="crumb">Admin / Queue / <b>SIMAL-KYC-0107</b></span><h1>Emirates Component Trading LLC</h1></div>
+      <div class="sp"></div>
+      <span class="badge b-err" style="background:var(--danger-050);color:var(--danger)">⚠ SLA 1.6 bd — breach imminent</span>
+      <span class="badge b-line">Customer track</span>
+      <div class="avatar">SN</div>
+    </div>
+
+    <div class="p-body">
+      <div style="display:flex;gap:12px;flex-wrap:wrap">
+        <span class="badge b-blue">Submitted: Sun 28 Sep, 09:14</span>
+        <span class="badge b-warn">Under review since Mon 09:02</span>
+        <span class="badge b-ok">Fix-only-flagged resubmission ×1 honored</span>
+        <span class="badge b-line">Assignee: Sana N.</span>
+      </div>
+
+      <div class="split" style="grid-template-columns:1fr 400px;align-items:start;gap:20px">
+        <div style="display:flex;flex-direction:column;gap:18px">
+          <div class="card">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center">
+              <b style="font-size:15px">Application — field-by-field verification</b>
+              <span class="note">Approve ✓ or Flag ⚑ per field · flags reopen only that field</span>
+            </div>
+            <table class="tbl">
+              <tr><th style="width:34%">Field</th><th>Submitted value</th><th style="width:130px">Check</th><th style="width:190px">Reviewer action</th></tr>
+              <tr><td>Legal name</td><td><b>Emirates Component Trading LLC</b></td><td><span class="badge b-ok">matches licence</span></td><td><span class="chip" style="padding:4px 10px;font-size:12px">✓ Approve</span></td></tr>
+              <tr><td>Trade licence №</td><td class="mono">DED-784-2019-0044123</td><td><span class="badge b-ok">format ✓</span></td><td><span class="chip" style="padding:4px 10px;font-size:12px">✓ Approve</span></td></tr>
+              <tr style="background:var(--warn-050)"><td>TRN</td><td class="mono">1002345612000<b style="color:var(--danger)">07</b></td><td><span class="badge b-warn">checksum mismatch ⚑</span></td><td><span class="chip on" style="padding:4px 10px;font-size:12px">⚑ Flag — note below</span></td></tr>
+              <tr><td>Peppol ID</td><td class="mono">0235:100234561200007</td><td><span class="badge b-warn">built from TRN ⚑</span></td><td><span class="chip" style="padding:4px 10px;font-size:12px">follows TRN fix</span></td></tr>
+              <tr><td>Signatory</td><td>A. Al Mansoori · Partner</td><td><span class="badge b-ok">ID verified</span></td><td><span class="chip" style="padding:4px 10px;font-size:12px">✓ Approve</span></td></tr>
+              <tr><td>IBAN (AE)</td><td class="mono">AE07 0331 2345 6789 0123 456</td><td><span class="badge b-ok">23-char ✓</span></td><td><span class="chip" style="padding:4px 10px;font-size:12px">✓ Approve</span></td></tr>
+            </table>
+            <div style="padding:14px 18px;background:var(--bg);border-top:1px solid var(--line)">
+              <div class="field" style="margin:0"><label>Flag note to applicant <span class="note">(visible)</span> <span class="req">*</span></label>
+              <textarea class="in" style="min-height:56px">TRN fails the MOD-97 checksum — please re-check digits 12–15 against your TRN certificate; Peppol ID will auto-correct once saved.</textarea></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center"><b style="font-size:15px">Documents — side-by-side viewer</b><span class="note">🔒 every view/download logged</span></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0">
+              <div style="padding:16px 18px;border-right:1px solid var(--line)">
+                <div style="height:150px;border:1.5px dashed var(--line-2);border-radius:12px;display:grid;place-items:center;background:var(--bg);text-align:center"><div><b style="font-size:13px">trade-licence-2026.pdf</b><p class="note" style="margin-top:4px">v2 · replaces v1 · scan ✓ clean<br><a href="#" style="font-weight:650">Open viewer ↗</a></p></div></div>
+                <div style="display:flex;gap:8px;margin-top:10px;justify-content:center"><span class="badge b-ok">VERIFIED</span><span class="badge b-warn">EXPIRES 27 OCT (T-9)</span></div>
+              </div>
+              <div style="padding:16px 18px">
+                <div style="height:150px;border:1.5px dashed var(--line-2);border-radius:12px;display:grid;place-items:center;background:var(--bg);text-align:center"><div><b style="font-size:13px">eid-signatory.jpg</b><p class="note" style="margin-top:4px">v1 · scan ✓ clean<br><a href="#" style="font-weight:650">Open viewer ↗</a></p></div></div>
+                <div style="display:flex;gap:8px;margin-top:10px;justify-content:center"><span class="badge b-ok">VERIFIED</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <aside style="display:flex;flex-direction:column;gap:16px;position:sticky;top:80px">
+          <div class="card card-p" style="border-top:4px solid var(--blue)">
+            <b style="font-size:15px">Decision</b>
+            <div style="display:flex;flex-direction:column;gap:9px;margin-top:12px">
+              <a class="btn btn-wa btn-block" href="#">✓ Approve & activate partner</a>
+              <a class="btn btn-a btn-block" href="#">⚑ Request info — reopen flagged only</a>
+              <a class="btn btn-g btn-block" href="#">✕ Reject (reason required)</a>
+            </div>
+            <p class="note" style="margin-top:11px">Decision notifies applicant instantly · SLA clock stops on decision · partner record (incl. Peppol ID) becomes master data on approval.</p>
+          </div>
+          <div class="card card-p">
+            <b style="font-size:14px">Verification checklist</b>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:11px;font-size:13px">
+              <label style="display:flex;gap:8px"><input type="checkbox" checked> Licence validity (registry)</label>
+              <label style="display:flex;gap:8px"><input type="checkbox"> TRN registry match</label>
+              <label style="display:flex;gap:8px"><input type="checkbox" checked> Peppol ID format</label>
+              <label style="display:flex;gap:8px"><input type="checkbox" checked> Signatory ID</label>
+              <label style="display:flex;gap:8px"><input type="checkbox" checked> Bank details</label>
+            </div>
+          </div>
+          <div class="card card-p">
+            <b style="font-size:14px">Audit trail</b>
+            <div style="display:flex;flex-direction:column;gap:8px;margin-top:10px;font-size:12px" class="note">
+              <div>Sun 09:14 — submitted by applicant</div>
+              <div>Sun 09:15 — email kyc.received sent ✓</div>
+              <div>Mon 09:02 — opened by Sana N. (logged)</div>
+              <div>Mon 11:20 — TRN flagged, note added</div>
+              <div>Mon 11:21 — status → INFO_REQUIRED</div>
+              <div>Tue 08:40 — resubmission (TRN fixed) received</div>
+            </div>
+          </div>
+          <div class="alert al-err"><b>⚠ SLA note:</b> decision due today — manager alerted at 1.5 bd threshold.</div>
+        </aside>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

@@ -1,0 +1,143 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const categories = [
+  { slug: 'internal-ssd', name: 'Internal SSDs' },
+  { slug: 'portable-ssd', name: 'Portable SSDs' },
+  { slug: 'memory', name: 'Memory (RAM)' },
+  { slug: 'monitors', name: 'Monitors & Displays' },
+  { slug: 'gaming', name: 'Gaming' },
+  { slug: 'accessories', name: 'Accessories & Power' },
+  { slug: 'laptops', name: 'Laptops' }
+];
+
+const catCounts = await db`SELECT cat, count(*)::int as n FROM products GROUP BY cat`;
+const countMap = new Map();
+catCounts.forEach((r: any) => countMap.set(r.cat, r.n));
+
+const sections = [
+  {
+    title: '🛍 Products & Catalog',
+    desc: 'Live SKUs from the distribution inventory — 7 categories, faceted listing, specs and RFQ basket',
+    links: [
+      { name: 'Catalog home', href: '/products', note: 'All SKUs · facets · sort' },
+      { name: 'Product detail (Crucial T705)', href: '/products/crucial-t705-ssd-2', note: 'Gallery · specs · RFQ' },
+      { name: 'Site search', href: '/search/?q=ssd', note: 'Instant search, ranked' },
+      { name: 'Brand directory', href: '/brands', note: '21 authorized lines' },
+      ...categories.map(c => ({
+        name: `${c.name} (${countMap.get(c.slug) || 0})`,
+        href: `/products?cat=${c.slug}`,
+        note: 'Category listing'
+      }))
+    ]
+  },
+  {
+    title: '🏢 Company',
+    desc: 'About, leadership, values, CSR, careers, contact',
+    links: [
+      { name: 'About / overview & entities', href: '/about', note: 'Independent since 2002' },
+      { name: 'Mission, vision & values', href: '/about#mission', note: 'Corporate charter' },
+      { name: 'Leadership (board)', href: '/about#leadership', note: '3 board members listed' },
+      { name: 'Why choose Simal', href: '/about#why', note: 'Channel advantages' },
+      { name: 'CSR', href: '/about#csr', note: 'Digital literacy · sustainability' },
+      { name: 'Careers', href: '/careers', note: '8 departments · Dubai + Dhaka' },
+      { name: 'Contact', href: '/contact', note: '3 entities · routed enquiries' },
+      { name: 'العربية (RTL home)', href: '/ar', note: 'Arabic demonstration', lang: 'ar' }
+    ]
+  },
+  {
+    title: '🛠 IT Solutions',
+    desc: '5 flagship practices + 12 service lines directory — comprehensive infrastructure support',
+    links: [
+      { name: 'Annual Maintenance Contract (AMC)', href: '/solutions/amc/', note: 'Keep infrastructure at peak performance' },
+      { name: 'AV & Meeting Room Solutions', href: '/solutions/av/', note: 'Nearity conferencing systems' },
+      { name: 'Cloud Security Solutions', href: '/solutions/cloud-security/', note: 'Threat detection, IAM & encryption' },
+      { name: 'Data Recovery & Storage', href: '/solutions/data-recovery/', note: 'Enterprise data recovery + storage' },
+      { name: 'Firewall Solutions', href: '/solutions/firewall/', note: 'Sophos XG Series perimeter security' },
+      { name: 'AMC — SLA tiers table', href: '/solutions/#amc-table', note: '1h / 4h / NBD response table' },
+      { name: 'All 12 service lines', href: '/solutions/#lines', note: 'Directory hub · full practices' }
+    ]
+  },
+  {
+    title: '💻 Software Services — Simal + Unisoft',
+    desc: 'Full portfolio delivered with Unisoft Systems Limited (Dhaka delivery center)',
+    links: [
+      { name: 'Software home — portfolio map', href: '/software', note: 'Pricing · ROI · demo · roadmap' },
+      { name: 'UniERP flagship ERP', href: '/software/products/distribution-erp/', note: 'Odoo 19 CE · TCO table · 7 modules' },
+      { name: 'ERP module library (7)', href: '/software#modules', note: 'Tabbed detail per module' },
+      { name: 'All products & platforms (20)', href: '/software#products', note: '10 ERPs + 10 specialized systems' },
+      { name: 'UniPOS — multi-sector POS', href: '/software/products/unipos/', note: 'Retail · fashion · food service' },
+      { name: 'UniVAT — NBR-approved VAT', href: '/software/solutions/univat/', note: 'Tax automation · Peppol-ready UAE' },
+      { name: 'Engineering services (12)', href: '/software#services', note: 'Custom dev → data & BI' },
+      { name: 'AI & machine learning', href: '/software/services/aiml/', note: 'ML · BI · predictive analytics' },
+      { name: 'Industries & sectors (9)', href: '/software#industries', note: 'Directory of 9 vertical cards' },
+      { name: 'ERP demo request', href: '/software#demo', note: 'Book 30-min live demo' }
+    ]
+  },
+  {
+    title: '🤝 Partners & Portal',
+    desc: 'Partner program tiers + KYC lifecycle',
+    links: [
+      { name: 'Program & tiers', href: '/onboarding#tiers', note: 'Authorized · Premier · Elite' },
+      { name: 'Become a reseller — KYC wizard', href: '/onboarding', note: 'Enterprise KYC portal gateway' },
+      { name: 'B2B KYC Portal — Sign in', href: 'https://kyc.simalme.com/login.html', note: 'Secure partner portal · MFA' },
+      { name: 'RFQ — request a quote', href: '/rfq', note: 'Basket → SIMAL-RFQ reference' },
+      { name: 'Product comparison matrix', href: '/compare', note: 'Compare 4 SKUs side-by-side' }
+    ]
+  },
+  {
+    title: '📚 Insights & Resources',
+    desc: 'Blog articles · case studies · white papers · FAQ',
+    links: [
+      { name: 'Blog & newsroom', href: '/insights', note: 'Channel analysis & tech talk' },
+      { name: 'Case studies (8)', href: '/resources#cases', note: '3× revenue · ERP wins' },
+      { name: 'White papers (3)', href: '/resources#papers', note: 'Gated technical downloads' },
+      { name: 'FAQ', href: '/resources#faq', note: 'Partner questions answered' },
+      { name: 'Press room & media kit', href: '/resources#press', note: 'Brand assets & press contacts' }
+    ]
+  },
+  {
+    title: '⚙️ Legal & Compliance',
+    desc: 'Policies, terms, accessibility and data privacy standards',
+    links: [
+      { name: 'Privacy Notice', href: '/legal/privacy-policy', note: 'UAE PDPL compliant' },
+      { name: 'Terms of Use', href: '/legal/terms-conditions', note: 'Trade terms & B2B agreements' },
+      { name: 'Cookie Policy', href: '/legal/cookie-policy', note: 'Zero non-essential tracker standard' },
+      { name: 'Return Policy', href: '/legal/return-policy', note: 'Warranty & RMA instructions' },
+      { name: 'Shipping Policy', href: '/legal/shipping-policy', note: 'JAFZA & GCC freight guidelines' },
+      { name: 'Accessibility Statement', href: '/legal/accessibility-statement', note: 'WCAG 2.1 AA benchmarks' }
+    ]
+  }
+];
+---
+
+<BaseLayout title="Site Map — Simal Digital Platform" description="Comprehensive site map of Simal Technologies corporate platform.">
+  <div class="wrap" style="padding-top:14px">
+    <div class="crumbs"><a href="/">Home</a> › <b>Site map</b></div>
+  </div>
+
+  <section style="padding:14px 0 80px"><div class="wrap">
+    <span class="eyebrow">Navigation</span>
+    <h1 style="font-size:32px;font-weight:800;margin:6px 0 8px">Platform Site Map</h1>
+    <p style="color:var(--slate);max-width:760px;font-size:15px">Every page of the Simal Technologies digital platform, organized by information architecture. Direct links open live production pages.</p>
+
+    {sections.map(sec => (
+      <div class="sm-sec" style="margin-top:36px">
+        <h3 style="font-size:19px;color:var(--blue);margin-bottom:4px;border-bottom:1px solid var(--line);padding-bottom:8px">{sec.title}</h3>
+        <p style="color:var(--slate);font-size:13.5px;margin-bottom:16px">{sec.desc}</p>
+        <div class="sm-grid" style="display:grid;grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));gap:12px">
+          {sec.links.map(l => (
+            <div class="sm-card" style="border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:#fff;display:flex;flex-direction:column;justify-content:space-between">
+              <div>
+                <b style="font-size:14px;color:var(--ink);display:block;margin-bottom:4px" lang={(l as any).lang}>{l.name}</b>
+                <a href={l.href} style="display:block;font-size:12.5px;color:var(--blue);text-decoration:none;word-break:break-all">{l.href}</a>
+              </div>
+              <span style="font-size:12px;color:var(--slate);margin-top:8px;display:block">{l.note}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div></section>
+</BaseLayout>

@@ -1,0 +1,36 @@
+=== ROADMAP v1.1 FINAL VERIFICATION — Fri Oct 16 15:21:01 MPST 2026 ===
+
+--- 1. STRUCTURE ---
+phases: 10 (required 10)
+  total milestones: 36 | total tasks: 98
+milestones with <2 tasks:
+  (none listed above = PASS)
+duplicate task headers: 0
+
+--- 2. DOC = CSV SYNC ---
+doc tasks: 98 | csv rows: 98 | doc-only: 0 | csv-only: 0
+
+--- 3. FINDINGS COVERAGE (matrix + tasks) ---
+  all 17 new + 25 partial/open findings referenced: PASS
+re-inspection defects logged: 9 (required 9)
+
+--- 4. SNIPPET GROUNDING SPOT-CHECKS (v1.1 fixes present) ---
+unix platform branch in 1.1-1: 1
+simal_build role task: 8
+hmacSign corrected arity: 1 (no payload-only calls: 0)
+no config.root in media snippet: 1
+deterministic deploy rm+cp: 2
+client CSRF task with api.js funnel: 2
+legal sensitive classification: 0
+lang-aware routes task: 1
+db.ts fallback removal: 1
+
+--- CORRECTED CHECKS (re-run after fixing test-harness quoting) ---
+milestones with <2 tasks: NONE (36/36 milestones have 2-5 tasks) — PASS
+config.root residue in Task 4.4-1 section: none — PASS
+legal_policies sensitive-classification snippet present (line 852) — PASS
+
+=== VERDICT: ROADMAP v1.1 COMPLETE & CONSISTENT ===
+10 phases | 36 milestones (all >=2 tasks) | 98 tasks | doc==CSV (98/98) | 0 duplicate headers
+All 17 new findings + 25 partial/open findings + 5 programme gaps + 9 re-inspection defects (R-1..R-9) mapped.
+All 9 v1.0 defects fixed and grounded against live code (db.ts, api.js, security.js, cms.service.js, isSensitiveEntity, routes lang params).

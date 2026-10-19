@@ -1,0 +1,78 @@
+[1] home + hero carousel
+  PASS home 200 — 200
+  PASS 5 hero slides, slide 1 active
+  PASS every slide has a background
+  PASS Tajawal stylesheet NOT requested on EN home
+  PASS home: 0 JS exceptions
+  PASS home: 0 CSP violations
+  PASS home: 0 console errors
+  PASS tab 2 click -> slide 2 active, counter 2 / 5
+  PASS tab 2 aria-selected
+  PASS next arrow -> slide 3
+  PASS prev arrow wraps 3 -> 2 -> 1 -> 5
+  PASS pause button toggles to Play
+  PASS paused: no auto-advance after 7s
+  PASS play resumes (label back to Pause)
+  PASS ?slide=3 deep link opens slide 4
+  PASS hero CTA navigates to its target — /products#internal-ssd -> /products/#internal-ssd
+[2] cookie consent banner
+  PASS banner visible on first visit
+  PASS reject: banner hidden
+  PASS reject: consent cookie analytics=false
+  PASS banner stays hidden on the next page
+  PASS footer "cookie settings" opens the preferences dialog
+  PASS dialog reflects the recorded choice (analytics off)
+  PASS dialog closes
+  PASS consent flow: 0 JS exceptions
+  PASS consent flow: 0 CSP violations
+  PASS consent flow: 0 console errors
+[3] add to RFQ -> basket
+  PASS /products/ 200
+  PASS Add to RFQ acknowledges — aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black
+  PASS basket on /rfq/ lists the product
+  PASS rfq: 0 JS exceptions
+  PASS rfq: 0 CSP violations
+  PASS rfq: 0 console errors
+[4] key pages
+  PASS /products/ 200, h1 present, clean — All products
+  PASS /products/crucial-t705-ssd-2/ 200, h1 present, clean — Crucial T705 1TB PCIe Gen5 NVMe SSD (Enterprise Ha
+  PASS /brands/ 200, h1 present, clean — 22 Global Technology Brands
+  PASS /solutions/ 200, h1 present, clean — IT solutions,delivered and maintainedacross the UA
+  PASS /software/ 200, h1 present, clean — Enterprise software,delivered by the team thatruns
+  PASS /insights/ 200, h1 present, clean — Field notes from the channel.
+  PASS /about/ 200, h1 present, clean — The turnkey IT infrastructure distributor behind t
+  PASS /careers/ 200, h1 present, clean — Build the channel'snext decade with us.
+  PASS /contact/ 200, h1 present, clean — Contact
+  PASS /legal/privacy-policy/ 200, h1 present, clean — Privacy Policy
+  PASS /ar/ 200, h1 present, clean — شريك توزيع تقنيةفي الشرق الأوسط —ونبني البرمجيات أ
+  PASS /ar/ is RTL and loads Tajawal
+  PASS /ar/about/ 200, h1 present, clean — موزع البنية التحتية التقنية المتكاملة خلف رواد الأ
+  PASS /ar/about/ is RTL and loads Tajawal
+  PASS /ar/solutions/ 200, h1 present, clean — حلول تقنية المعلومات،تنفيذ وصيانة احترافيةفي كافة 
+  PASS /ar/solutions/ is RTL and loads Tajawal
+  PASS sitemap.xml has multiple real lastmod dates (rm 8.3) — 232 urls, 6 dates
+[5] search + compare
+  PASS header search lands on /search/?q=crucial (query intact, no stray slash) — /search/?q=crucial
+  PASS search results rendered for "crucial" — 105 result links; 35 results for “crucial”
+  PASS typing a new query re-renders results
+  PASS search: 0 JS exceptions
+  PASS search: 0 CSP violations
+  PASS search: 0 console errors
+  PASS compare renders a 2-product table — aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black vs aiwa-mf2203-v-21-5-inch-fhd-black-slim-led-display-hdmi-vga-monitor
+  PASS compare slot note says 2 of 4
+  PASS clear resets the comparison
+  PASS compare: 0 JS exceptions
+  PASS compare: 0 CSP violations
+  PASS compare: 0 console errors
+[6] mobile 390x844
+  PASS mobile: no horizontal overflow — 390 vs 390
+  PASS mobile: hero slide visible
+  PASS mobile home: 0 JS exceptions
+  PASS mobile home: 0 CSP violations
+  PASS mobile home: 0 console errors
+[7] home link sweep
+  PASS all 99 home links: 200, 0 exceptions, 0 CSP
+[8] full sitemap sweep
+  PASS all 234 sitemap + search/compare pages: 200, 0 exceptions, 0 CSP
+
+SITE E2E iteration 3: 68 pass, 0 fail

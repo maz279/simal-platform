@@ -1,0 +1,13 @@
+run-gates: crawl  (GATE_ADMIN_URL host: 127.0.0.1:5433)
+
+
+>>>>>>>> crawl — PUB-3 internal link crawl of dist
+crawled 449 internal URLs; 0 non-2xx/3xx; 0 missing anchors (enforced)
+
+=== GATE link-crawl (PUB-3) ===
+PASS — 0 broken internal URLs, 0 missing anchors
+
+================ GATE SUMMARY ================
+  PASS  crawl
+==============================================
+All selected gates GREEN.

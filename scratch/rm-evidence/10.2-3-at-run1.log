@@ -1,0 +1,297 @@
+site /: lang=null main=1 h1=1 interactive=147 unnamed=0
+site /products/: lang=null main=1 h1=1 interactive=322 unnamed=0
+site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: lang=null main=1 h1=1 interactive=122 unnamed=0
+site /rfq/: lang=null main=1 h1=1 interactive=93 unnamed=0
+portal wizard: lang=null main=1 unnamed=0
+{"ts":"2026-10-18T10:43:46.801Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_at_mvdp6pfx"}
+{"ts":"2026-10-18T10:43:46.803Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T10:43:47.009Z","level":"info","event":"http","id":"91310a5c-0ae6-419b-a63f-6e312042b027","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+{"ts":"2026-10-18T10:43:47.018Z","level":"info","event":"http","id":"3040e7ae-a573-4724-832c-0a658585dc6f","method":"POST","path":"/api/auth/mfa","status":200,"ms":4}
+{"ts":"2026-10-18T10:43:47.036Z","level":"info","event":"http","id":"a1bdb9e7-62c2-46d8-8c5a-ac79c2cc91d0","method":"GET","path":"/cms.html","status":200,"ms":2}
+{"ts":"2026-10-18T10:43:47.050Z","level":"info","event":"http","id":"feb8e278-3b92-44bc-a1f0-5b7278e6301e","method":"GET","path":"/assets/css/base.css","status":200,"ms":1}
+{"ts":"2026-10-18T10:43:47.051Z","level":"info","event":"http","id":"357cc476-1af9-4ebc-a5fe-003c8aee8900","method":"GET","path":"/assets/css/admin.css","status":200,"ms":1}
+{"ts":"2026-10-18T10:43:47.053Z","level":"info","event":"http","id":"3e2e0067-c4a6-4c03-94ac-9d39ea251b2e","method":"GET","path":"/assets/js/ui.js","status":200,"ms":1}
+{"ts":"2026-10-18T10:43:47.054Z","level":"info","event":"http","id":"f1b566d1-085b-400b-9d47-f22a288c49fb","method":"GET","path":"/assets/css/d365-cms.css","status":200,"ms":1}
+{"ts":"2026-10-18T10:43:47.055Z","level":"info","event":"http","id":"a06b8ab2-f1d0-499e-b180-10f448266445","method":"GET","path":"/assets/js/api.js","status":200,"ms":0}
+{"ts":"2026-10-18T10:43:47.059Z","level":"info","event":"http","id":"7196515c-a990-41e9-ac5e-72d3dbfbb110","method":"GET","path":"/assets/js/icon-loader.js","status":200,"ms":1}
+{"ts":"2026-10-18T10:43:47.062Z","level":"info","event":"http","id":"7c0ee167-cecf-4494-b95d-dcdd9a5e5c76","method":"GET","path":"/assets/js/cms.js","status":200,"ms":1}
+{"ts":"2026-10-18T10:43:47.063Z","level":"info","event":"http","id":"576249e7-7ef7-4144-a584-a554bf651706","method":"GET","path":"/assets/img/logo-lockup-white.png","status":200,"ms":0}
+{"ts":"2026-10-18T10:43:47.097Z","level":"info","event":"http","id":"f7423ed8-f7cd-436f-a81e-603de0d95a1e","method":"GET","path":"/api/auth/me","status":200,"ms":5}
+(node:19028) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"ts":"2026-10-18T10:43:47.117Z","level":"info","event":"http","id":"3b0aacc7-62ce-4aeb-bee8-7d34648ea30d","method":"GET","path":"/api/cms/blocks","status":200,"ms":16}
+{"ts":"2026-10-18T10:43:47.120Z","level":"info","event":"http","id":"65f11d6d-5946-42a1-b2c8-1b9b7873cb6a","method":"GET","path":"/api/cms/slides","status":200,"ms":18}
+{"ts":"2026-10-18T10:43:47.122Z","level":"info","event":"http","id":"6d992747-42a8-4b3a-993e-9aa0054f4011","method":"GET","path":"/api/cms/policies","status":200,"ms":19}
+{"ts":"2026-10-18T10:43:47.125Z","level":"info","event":"http","id":"f2cf4dba-cf23-4249-83c6-aba400615563","method":"GET","path":"/api/admin/audit","status":200,"ms":21}
+{"ts":"2026-10-18T10:43:47.129Z","level":"info","event":"http","id":"31676326-58e4-42d7-bc51-0f3fe69bc82b","method":"GET","path":"/api/admin/users","status":200,"ms":25}
+{"ts":"2026-10-18T10:43:47.129Z","level":"info","event":"http","id":"0d3d3508-1289-43a1-868c-6a98de6a3444","method":"GET","path":"/api/admin/sessions","status":200,"ms":25}
+{"ts":"2026-10-18T10:43:47.141Z","level":"info","event":"http","id":"3dea66e7-7c5f-4175-baa9-6708d9534d9d","method":"GET","path":"/api/cms/telemetry","status":200,"ms":21}
+{"ts":"2026-10-18T10:43:47.143Z","level":"info","event":"http","id":"28b13ed6-a4ff-479f-84ec-12ee24af4879","method":"GET","path":"/api/cms/products","status":200,"ms":20}
+{"ts":"2026-10-18T10:43:47.145Z","level":"info","event":"http","id":"a08bb5c1-5c1f-41cf-a0b9-89ac459b8a56","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":0}
+{"ts":"2026-10-18T10:43:47.146Z","level":"info","event":"http","id":"4e2d895f-8d46-4f99-b6ea-ac1d7e739fba","method":"GET","path":"/api/cms/media","status":200,"ms":20}
+{"ts":"2026-10-18T10:43:47.148Z","level":"info","event":"http","id":"d9124c6a-6fbf-4c09-94d2-199c0b2e4e21","method":"GET","path":"/api/cms/outbox","status":200,"ms":20}
+{"ts":"2026-10-18T10:43:47.151Z","level":"info","event":"http","id":"aed6e2df-e1bf-45c8-bc88-55c6989cd28b","method":"GET","path":"/api/cms/announcements","status":200,"ms":21}
+{"ts":"2026-10-18T10:43:47.153Z","level":"info","event":"http","id":"3049a7ab-955f-42e5-a41b-7071a948aab7","method":"GET","path":"/api/cms/testimonials","status":200,"ms":21}
+{"ts":"2026-10-18T10:43:47.156Z","level":"info","event":"http","id":"266df24b-1a05-460c-9a1b-5590bbde4976","method":"GET","path":"/api/cms/brands","status":200,"ms":12}
+{"ts":"2026-10-18T10:43:47.165Z","level":"info","event":"http","id":"c46a8ac6-b2cc-4cdc-978f-2e6dec59d401","method":"GET","path":"/api/cms/telemetry/publish","status":200,"ms":4}
+CMS: lang=null main=1 unnamed=0
+
+=== AT WALKTHROUGH (PRD NFR-6 / URD ACC) ===
+{
+  "ranAt": "2026-10-18T10:43:50.012Z",
+  "siteDist": "apps/site/dist",
+  "pages": [
+    {
+      "page": "site /",
+      "lang": null,
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "banner": 1,
+        "contentinfo": 1,
+        "search": 0,
+        "region": 3
+      },
+      "h1": 1,
+      "headings": 34,
+      "interactive": 147,
+      "unnamed": 0,
+      "images": 15,
+      "imagesWithoutName": 0,
+      "tabStops": 8,
+      "announced": {
+        "firstHeading": "Stay ahead of the Middle East IT channel",
+        "navLinks": [
+          "Skip to main content",
+          "Aiwa",
+          "Arktek"
+        ],
+        "buttons": [
+          "Subscribe",
+          "Cookie Settings",
+          "Accept All"
+        ],
+        "textboxes": [
+          "Work email address for newsletter updates",
+          "Search catalog SKUs, brands, solutions",
+          "Search products, brands, SKUs"
+        ]
+      }
+    },
+    {
+      "page": "site /products/",
+      "lang": null,
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "banner": 1,
+        "contentinfo": 1,
+        "search": 0,
+        "region": 2
+      },
+      "h1": 1,
+      "headings": 90,
+      "interactive": 322,
+      "unnamed": 0,
+      "images": 74,
+      "imagesWithoutName": 0,
+      "tabStops": 8,
+      "announced": {
+        "firstHeading": "Stay ahead of the Middle East IT channel",
+        "navLinks": [
+          "Skip to main content",
+          "Aiwa",
+          "Arktek"
+        ],
+        "buttons": [
+          "Subscribe",
+          "Cookie Settings",
+          "Accept All"
+        ],
+        "textboxes": [
+          "Work email address for newsletter updates",
+          "Search catalog SKUs, brands, solutions"
+        ]
+      }
+    },
+    {
+      "page": "site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2",
+      "lang": null,
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "banner": 1,
+        "contentinfo": 1,
+        "search": 0,
+        "region": 2
+      },
+      "h1": 1,
+      "headings": 16,
+      "interactive": 122,
+      "unnamed": 0,
+      "images": 10,
+      "imagesWithoutName": 0,
+      "tabStops": 8,
+      "announced": {
+        "firstHeading": "Stay ahead of the Middle East IT channel",
+        "navLinks": [
+          "Skip to main content",
+          "Aiwa",
+          "Arktek"
+        ],
+        "buttons": [
+          "Subscribe",
+          "Cookie Settings",
+          "Accept All"
+        ],
+        "textboxes": [
+          "Work email address for newsletter updates",
+          "Search catalog SKUs, brands, solutions",
+          "Product quantity"
+        ]
+      }
+    },
+    {
+      "page": "site /rfq/",
+      "lang": null,
+      "landmarks": {
+        "main": 1,
+        "nav": 1,
+        "banner": 1,
+        "contentinfo": 1,
+        "search": 0,
+        "region": 2
+      },
+      "h1": 1,
+      "headings": 7,
+      "interactive": 93,
+      "unnamed": 0,
+      "images": 2,
+      "imagesWithoutName": 0,
+      "tabStops": 8,
+      "announced": {
+        "firstHeading": "Stay ahead of the Middle East IT channel",
+        "navLinks": [
+          "Skip to main content",
+          "Aiwa",
+          "Arktek"
+        ],
+        "buttons": [
+          "Subscribe",
+          "Cookie Settings",
+          "Accept All"
+        ],
+        "textboxes": [
+          "Work email address for newsletter updates",
+          "Search catalog SKUs, brands, solutions",
+          "Company name *",
+          "Contact person *"
+        ]
+      }
+    },
+    {
+      "page": "portal wizard (step gate)",
+      "lang": null,
+      "landmarks": {
+        "main": 1,
+        "nav": 0,
+        "banner": 1,
+        "contentinfo": 0,
+        "search": 0,
+        "region": 1
+      },
+      "h1": 1,
+      "headings": 1,
+      "interactive": 7,
+      "unnamed": 0,
+      "images": 1,
+      "imagesWithoutName": 0,
+      "tabStops": 7,
+      "announced": {
+        "firstHeading": "Let’s get started",
+        "navLinks": [
+          "Skip to main content",
+          "Simal Technologies Partner Onboarding & KYC Portal",
+          "Exit & save"
+        ],
+        "buttons": [
+          "Continue"
+        ],
+        "textboxes": [
+          "Your contact email *"
+        ]
+      }
+    },
+    {
+      "page": "CMS console (authenticated)",
+      "lang": null,
+      "landmarks": {
+        "main": 1,
+        "nav": 2,
+        "banner": 1,
+        "contentinfo": 0,
+        "search": 0,
+        "region": 2
+      },
+      "h1": 1,
+      "headings": 7,
+      "interactive": 59,
+      "unnamed": 0,
+      "images": 2,
+      "imagesWithoutName": 1,
+      "tabStops": 8,
+      "announced": {
+        "firstHeading": "Executive Dashboard",
+        "navLinks": [
+          "Simal CMS Content Studio (Fluent UI)",
+          "Executive Dashboard",
+          "Editorial Desk 14"
+        ],
+        "buttons": [
+          "Open App Launcher and Mega Menu",
+          "Quick Create",
+          "Notifications"
+        ],
+        "textboxes": [
+          "Search content studio",
+          "Filter entity distribution"
+        ]
+      }
+    }
+  ],
+  "findings": [
+    "site /: document has no language",
+    "site /: 7 keyboard stop(s) without a visible focus ring",
+    "site /products/: document has no language",
+    "site /products/: 7 keyboard stop(s) without a visible focus ring",
+    "site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: heading level skip(s) 2→4",
+    "site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: document has no language",
+    "site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: 7 keyboard stop(s) without a visible focus ring",
+    "site /rfq/: document has no language",
+    "site /rfq/: 7 keyboard stop(s) without a visible focus ring",
+    "portal wizard (step gate): no navigation landmark",
+    "portal wizard (step gate): document has no language",
+    "portal wizard (step gate): 6 keyboard stop(s) without a visible focus ring",
+    "CMS console (authenticated): 1 image(s) with no accessible name and not marked decorative",
+    "CMS console (authenticated): document has no language",
+    "CMS console (authenticated): 8 keyboard stop(s) without a visible focus ring"
+  ]
+}
+
+FAIL — 15 blocking AT finding(s):
+ - site /: document has no language
+ - site /: 7 keyboard stop(s) without a visible focus ring
+ - site /products/: document has no language
+ - site /products/: 7 keyboard stop(s) without a visible focus ring
+ - site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: heading level skip(s) 2→4
+ - site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: document has no language
+ - site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: 7 keyboard stop(s) without a visible focus ring
+ - site /rfq/: document has no language
+ - site /rfq/: 7 keyboard stop(s) without a visible focus ring
+ - portal wizard (step gate): no navigation landmark
+ - portal wizard (step gate): document has no language
+ - portal wizard (step gate): 6 keyboard stop(s) without a visible focus ring
+ - CMS console (authenticated): 1 image(s) with no accessible name and not marked decorative
+ - CMS console (authenticated): document has no language
+ - CMS console (authenticated): 8 keyboard stop(s) without a visible focus ring

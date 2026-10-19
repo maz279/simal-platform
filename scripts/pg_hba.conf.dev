@@ -1,0 +1,14 @@
+# rm(7.1-2)/DAT-9: scram-only client auth — zero trust lines.
+# Versioned source: scripts/pg_hba.conf.dev (recovery: restore backup at
+# scratch/rm-evidence/7.1-pg_hba-backup.conf, then pg_ctl reload).
+host  all    simal        127.0.0.1/32  scram-sha-256
+host  all    simal        ::1/128       scram-sha-256
+host  simal  simal_app    127.0.0.1/32  scram-sha-256
+host  simal  simal_app    ::1/128       scram-sha-256
+# rm(7.1-3): the least-privilege CI step runs pg-integration/pg-mode-journey as
+# simal_app on the CI databases (mirrors the containerized ci.yml step).
+host  simal_ci,simal_pgjourney  simal_app  127.0.0.1/32  scram-sha-256
+host  simal_ci,simal_pgjourney  simal_app  ::1/128       scram-sha-256
+host  simal  simal_build  127.0.0.1/32  scram-sha-256
+host  simal  simal_build  ::1/128       scram-sha-256
+host  all    all          all           reject

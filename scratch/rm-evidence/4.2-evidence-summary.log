@@ -1,0 +1,7 @@
+=== rm(4.2) SEO/STATS/AWARDS EDITORS — EVIDENCE Sat Oct 17 10:57:07 MPST 2026 ===
+1. SEEDED: site/seo-defaults (title/description/ogImage — Props defaults now CMS-driven, destructuring moved below the fetch); site/counters (object shape; old array-shaped seed row retired); site/awards (2 ratified entries)
+2. CONSUMED: BaseLayout seo/counters/awards; home awards cards + slide badge from live brand count; about awards from block; careers/insights/onboarding literals -> live count
+3. PUB-8 ONE-NUMBER PROOF: dist grep across 5 pages -> every brand-count string is 21 (the live non-other brands query); GOV baseline a2 reconciled (22 rows / 21 vendor lines excl 'other')
+4. BLOCK-DRIVEN PROOF: awards mutated to 'CMS Award 4.2 Proof' -> rebuild -> present on home+about -> restored
+5. CMS VIEWS: #/seo-defaults #/stats(counters) #/awards registered (cms.js v=13)
+6. GATE: gate-chrome-blocks extended (seo block + awards render + PUB-8 one-number assertion) — PASS; lint+crawl PASS

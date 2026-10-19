@@ -1,0 +1,230 @@
+---
+// resources/index.astro — Resources hub. VISUAL CONTRACT: Prototype resources.html ported 1:1.
+// Restores 8 Case Studies grid, 3 Gated White Papers cards, Split FAQ with all 6 channel questions,
+// 7 Category Datasheet cards (Internal SSD, Portable SSD, Memory, Monitors, Accessories, Gaming, Laptops),
+// and Press Room (Press releases, Media kit, Product datasheets).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const DEFAULT_CASE_STUDIES = [
+  { t: 'IT Reseller Growth', res: '3× revenue in 18 months', cat: 'Distribution' },
+  { t: 'System Integrator', res: 'Enterprise project won with Simal support', cat: 'Distribution' },
+  { t: 'Government Entity', res: 'Transparent IT procurement', cat: 'Distribution' },
+  { t: 'Manufacturing (RMG)', res: 'Group ERP transformation', cat: 'Software / UniERP' },
+  { t: 'Retail Chain', res: 'POS & inventory integration', cat: 'Software / UniERP' },
+  { t: 'Healthcare', res: 'Hospital management system', cat: 'Software / UniERP' },
+  { t: 'Education', res: 'K-12 digital campus', cat: 'Software / UniERP' },
+  { t: 'Logistics', res: 'Fleet & 3PL optimization', cat: 'Software / UniERP' }
+];
+
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const [casesRow] = await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'cases' AND lang = 'en'`;
+let caseStudies = DEFAULT_CASE_STUDIES;
+if (casesRow) {
+  const raw = parse(casesRow);
+  if (Array.isArray(raw) && raw.length) {
+    caseStudies = raw.map((item: any, idx: number) => {
+      if (Array.isArray(item)) {
+        return { t: item[0], res: item[1], cat: idx < 3 ? 'Distribution' : 'Software / UniERP' };
+      }
+      return item;
+    });
+  }
+}
+
+const datasheets = [
+  { cat: 'internal-ssd', label: 'Internal SSD', icon: '💾', skus: 14 },
+  { cat: 'portable-ssd', label: 'Portable SSD', icon: '🔌', skus: 8 },
+  { cat: 'memory', label: 'Memory', icon: '🧠', skus: 12 },
+  { cat: 'monitors', label: 'Monitors', icon: '🖥', skus: 9 },
+  { cat: 'accessories', label: 'Accessories', icon: '🔌', skus: 18 },
+  { cat: 'gaming', label: 'Gaming', icon: '🎮', skus: 11 },
+  { cat: 'laptops', label: 'Laptops', icon: '💻', skus: 6 }
+];
+
+const faqSchema = {
+  '@type': 'FAQPage',
+  '@id': 'https://simalme.com/resources/#faq',
+  'mainEntity': [
+    {
+      '@type': 'Question',
+      'name': 'Do you sell to end users?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'The channel model serves resellers, integrators and retailers. End users are routed to our partner network.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'How fast are quotes?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'RFQs are answered within one business day (Sun–Thu) with volume-tiered pricing.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'What warranty applies?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Full manufacturer warranty on all 21 authorized lines, handled locally through the Simal RMA desk.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Do you support Peppol e-invoicing?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Yes — TRN and Peppol ID are captured at onboarding ahead of the 2027 mandate.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Can we resell UniERP?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'Partners can earn UniERP (Odoo 19 CE) territory rights with implementation support from UniSoft.'
+      }
+    },
+    {
+      '@type': 'Question',
+      'name': 'Which regions do you serve?',
+      'acceptedAnswer': {
+        '@type': 'Answer',
+        'text': 'UAE, GCC, MEA and CIS — fulfilled from JAFZA, with Dhaka covering South Asia.'
+      }
+    }
+  ]
+};
+
+const resourcesBreadcrumbs = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/resources/#breadcrumb',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://simalme.com/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Resources',
+      'item': 'https://simalme.com/resources/'
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title="Resources — Case Studies, White Papers & FAQ — Simal" 
+  description="Proof from the field — 8 case studies, research white papers, product datasheets and the answers partners ask for."
+  schemas={[faqSchema, resourcesBreadcrumbs]}
+>
+  <section class="hero"><div class="wrap" style="padding:52px 28px 48px;grid-template-columns:1fr">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">case studies · white papers · datasheets · faq · press</span>
+      <h1 style="font-size:34px;margin:12px 0 8px">Resources for the channel.</h1>
+      <p class="lead" style="color:#DAE5F0;max-width:760px">Proof from the field — 8 case studies, research white papers, product datasheets and the answers partners ask for.</p>
+    </div>
+  </div></section>
+
+  <!-- ===== 8 Case Studies Grid ===== -->
+  <section class="sec" id="cases"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Case studies</span><h2>Our clients' success, in their numbers</h2></div></div>
+    <div class="grid g4" id="case-grid">
+      {caseStudies.map((c, i) => (
+        <div class="card card-p">
+          <span class={`badge ${i < 3 ? 'b-blue' : 'b-line'}`}>{c.cat}</span>
+          <h4 style="font-size:15.5px;margin:10px 0 4px">{c.t}</h4>
+          <p style="color:var(--slate);font-size:13px">{c.res}</p>
+          <a class="btn btn-o btn-sm gate-trigger" style="margin-top:10px" href="/contact/?topic=Case+Study" data-gate={c.t}>Read case study →</a>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- ===== White Papers (3 Gated Cards) ===== -->
+  <section class="sec" id="papers" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">White papers</span><h2>Research for IT &amp; business leaders</h2></div></div>
+    <div class="grid g3">
+      <div class="card card-p" style="border-top:4px solid var(--blue)">
+        <b style="font-size:15px">The True Cost of Grey-Market IT</b>
+        <p style="color:var(--slate);font-size:13px;margin-top:6px">Warranty, RMA and security externalities quantified for UAE buyers.</p>
+        <a class="btn btn-o btn-sm gate-trigger" style="margin-top:10px" href="/contact/?topic=White+Paper" data-gate="The True Cost of Grey-Market IT">Download PDF →</a>
+      </div>
+      <div class="card card-p" style="border-top:4px solid var(--blue)">
+        <b style="font-size:15px">ERP Selection for SMEs — 2026 Edition</b>
+        <p style="color:var(--slate);font-size:13px;margin-top:6px">Odoo CE vs proprietary stacks: TCO over five years.</p>
+        <a class="btn btn-o btn-sm gate-trigger" style="margin-top:10px" href="/contact/?topic=White+Paper" data-gate="ERP Selection for SMEs">Download PDF →</a>
+      </div>
+      <div class="card card-p" style="border-top:4px solid var(--blue)">
+        <b style="font-size:15px">Peppol Readiness Checklist</b>
+        <p style="color:var(--slate);font-size:13px;margin-top:6px">Phase-by-phase preparation for the 1 Jan 2027 UAE mandate.</p>
+        <a class="btn btn-o btn-sm gate-trigger" style="margin-top:10px" href="/contact/?topic=White+Paper" data-gate="Peppol Readiness Checklist">Download PDF →</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="sec" id="faq"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">FAQ</span><h2>What partners ask most</h2></div></div>
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:28px">
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card card-p"><b style="font-size:14.5px">Do you sell to end users?</b><p class="note" style="color:var(--slate);font-size:13px;margin-top:6px;line-height:1.6">The channel model serves resellers, integrators and retailers. End users are routed to our partner network.</p></div>
+        <div class="card card-p"><b style="font-size:14.5px">How fast are quotes?</b><p class="note" style="color:var(--slate);font-size:13px;margin-top:6px;line-height:1.6">RFQs are answered within one business day (Sun–Thu) with volume-tiered pricing.</p></div>
+        <div class="card card-p"><b style="font-size:14.5px">What warranty applies?</b><p class="note" style="color:var(--slate);font-size:13px;margin-top:6px;line-height:1.6">Full manufacturer warranty on all 21 authorized lines, handled locally through the Simal RMA desk.</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="card card-p"><b style="font-size:14.5px">Do you support Peppol e-invoicing?</b><p class="note" style="color:var(--slate);font-size:13px;margin-top:6px;line-height:1.6">Yes — TRN and Peppol ID are captured at onboarding ahead of the 2027 mandate.</p></div>
+        <div class="card card-p"><b style="font-size:14.5px">Can we resell UniERP?</b><p class="note" style="color:var(--slate);font-size:13px;margin-top:6px;line-height:1.6">Partners can earn UniERP (Odoo 19 CE) territory rights with implementation support from UniSoft.</p></div>
+        <div class="card card-p"><b style="font-size:14.5px">Which regions do you serve?</b><p class="note" style="color:var(--slate);font-size:13px;margin-top:6px;line-height:1.6">UAE, GCC, MEA and CIS — fulfilled from JAFZA, with Dhaka covering South Asia.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Product Datasheets Library ===== -->
+  <section class="sec" id="datasheets" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Product datasheets</span><h2>Per-category PDF library</h2></div></div>
+    <div class="grid g4" id="ds-grid">
+      {datasheets.map((d) => (
+        <div class="card card-p">
+          <div style="font-size:24px">{d.icon}</div>
+          <b style="display:block;margin-top:8px;font-size:14.5px">{d.label}</b>
+          <p class="note" style="color:var(--slate);font-size:12.5px;margin:4px 0 8px">{d.skus} SKUs · specs &amp; compliance</p>
+          <a class="btn btn-o btn-sm gate-trigger" href={`/contact/?topic=Datasheet+${encodeURIComponent(d.label)}`} data-gate={d.label}>Download PDF →</a>
+        </div>
+      ))}
+    </div>
+    <p class="hint" style="margin-top:14px;color:var(--slate);font-size:12.5px">Full per-SKU datasheets generate from the catalog — PDFs are sent to your verified business email.</p>
+  </div></section>
+
+  <!-- ===== Press Room ===== -->
+  <section class="sec" id="press" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Press room</span><h2>Media kit &amp; newsroom</h2></div></div>
+    <div class="grid g3">
+      <div class="card card-p">
+        <b style="font-size:15px">📰 Press releases</b>
+        <p class="note" style="color:var(--slate);font-size:13px;margin-top:6px">Company announcements and product launches via the Insights newsroom.</p>
+        <a class="btn btn-o btn-sm" style="margin-top:10px" href="/insights/">Open newsroom →</a>
+      </div>
+      <div class="card card-p">
+        <b style="font-size:15px">🖼 Media kit</b>
+        <p class="note" style="color:var(--slate);font-size:13px;margin-top:6px">Logos, boilerplate, executive bios and brand guidelines for media use.</p>
+        <a class="btn btn-o btn-sm" style="margin-top:10px" href="/contact/?topic=Media+Kit">Request kit →</a>
+      </div>
+      <div class="card card-p">
+        <b style="font-size:15px">📄 Product datasheets</b>
+        <p class="note" style="color:var(--slate);font-size:13px;margin-top:6px">Per-SKU datasheets across the live catalog, in PDF.</p>
+        <a class="btn btn-o btn-sm" style="margin-top:10px" href="/products/">Browse catalog →</a>
+      </div>
+    </div>
+  </div></section>
+</BaseLayout>
+
+<style>
+  @media(max-width:900px){
+    .split { grid-template-columns: 1fr!important; }
+  }
+</style>

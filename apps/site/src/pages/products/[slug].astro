@@ -1,0 +1,392 @@
+---
+// products/[slug].astro — PDP. VISUAL CONTRACT: Prototype product.html ported 1:1 —
+// gallery + thumbs, At-a-glance + assurance cards, badge row, price box with qty
+// selector and Add-to-RFQ (server basket) + WhatsApp handoff, trust row, 5 mini-tabs
+// (Specifications / Overview / Features / In the box / Documentation), prev/next in
+// category, same-brand related, accessories pairing, cookie-carried recently viewed.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+export async function getStaticPaths() {
+  const rows = await db`SELECT slug FROM products`;
+  return rows.map(r => ({ params: { slug: r.slug } }));
+}
+
+const { slug } = Astro.params;
+const products = await db`SELECT slug, sku, name, brand, cat, cat_label, descr, short, specs, imgs, stock, is_new FROM products WHERE slug = ${slug}`;
+const deep = await db`SELECT hero, specs, feats, use_cases, box, docs FROM product_deep WHERE slug = ${slug}`;
+const p = products[0];
+if (!p) return Astro.redirect('/products');
+const isStock = p.stock === true;
+const d = deep[0] || {};
+const specDetailsParsed = p.specs ? (typeof p.specs === 'string' ? JSON.parse(p.specs) : p.specs) : [];
+const specDetails = Array.isArray(specDetailsParsed) ? specDetailsParsed : (typeof specDetailsParsed === 'object' && specDetailsParsed !== null ? Object.entries(specDetailsParsed) : []);
+const dSpecsParsed = d.specs ? (typeof d.specs === 'string' ? JSON.parse(d.specs) : d.specs) : [];
+const dSpecs = Array.isArray(dSpecsParsed) ? dSpecsParsed : (typeof dSpecsParsed === 'object' && dSpecsParsed !== null ? Object.entries(dSpecsParsed) : []);
+const feats = d.feats ? (typeof d.feats === 'string' ? JSON.parse(d.feats) : d.feats) : [];
+const useCases = d.use_cases ? (typeof d.use_cases === 'string' ? JSON.parse(d.use_cases) : d.use_cases) : [];
+const boxRaw = d.box ?? (d as any).in_the_box;
+const boxItems: string[] = boxRaw ? (typeof boxRaw === 'string' ? JSON.parse(boxRaw) : boxRaw) : [];
+/* deploy-audit D05: product_deep.docs is { items: [...], datasheet_url, warranty_months } (the
+ * CMS writes that shape); a legacy bare array is still accepted. The datasheet the CMS stores
+ * in datasheet_url never rendered before, because the page only understood an array. */
+const docsRaw = d.docs;
+const docsVal: any = docsRaw ? (typeof docsRaw === 'string' ? JSON.parse(docsRaw) : docsRaw) : null;
+const docItems: any[] = [
+  ...(Array.isArray(docsVal) ? docsVal : (Array.isArray(docsVal?.items) ? docsVal.items : [])),
+  ...(docsVal && !Array.isArray(docsVal) && docsVal.datasheet_url ? [{ title: 'Manufacturer datasheet', desc: `Official ${p.brand} datasheet for ${p.sku || p.name}.`, url: docsVal.datasheet_url, label: 'Open the datasheet →' }] : []),
+];
+const warrantyMonths: number | null = docsVal && !Array.isArray(docsVal) && Number.isInteger(docsVal.warranty_months) ? docsVal.warranty_months : null;
+const imgsRaw = p.imgs ? (typeof p.imgs === 'string' ? JSON.parse(p.imgs) : p.imgs) : [];
+const imgs = imgsRaw.map((x: string) => (x && !x.startsWith('/') ? '/' + x : x));
+/* related: same brand first, then same category (prototype rule) */
+const relBrand = await db`SELECT slug, name, brand, cat, cat_label, short, sku, imgs, stock, is_new FROM products WHERE brand = ${p.brand} AND slug != ${slug} LIMIT 4`;
+let related = relBrand;
+if (related.length < 4) {
+  const relCat = await db`SELECT slug, name, brand, cat, cat_label, short, sku, imgs, stock, is_new FROM products WHERE cat = ${p.cat} AND slug != ${slug} LIMIT ${4 - related.length}`;
+  related = [...related, ...relCat.filter((r: any) => !related.some((x: any) => x.slug === r.slug))];
+}
+/* accessories pairing: category accessories, same brand first */
+const acc = await db`SELECT slug, name, brand, cat, cat_label, short, sku, imgs, stock, is_new FROM products WHERE cat = 'accessories' AND slug != ${slug} ORDER BY (brand = ${p.brand}) DESC, name LIMIT 4`;
+/* prev/next within category */
+const inCat = await db`SELECT slug, name FROM products WHERE cat = ${p.cat} ORDER BY name`;
+const ix = inCat.findIndex((r: any) => r.slug === slug);
+const prev = inCat.length > 1 ? inCat[(ix - 1 + inCat.length) % inCat.length] : null;
+const next = inCat.length > 1 ? inCat[(ix + 1) % inCat.length] : null;
+/* brand line (content §04 via brands table B12) + category guide */
+const brandRow = await db`SELECT line, note FROM brands WHERE lower(name) = lower(${p.brand})`;
+const bInfo = brandRow[0]?.line ? [brandRow[0].line, brandRow[0].note || ''] : null;
+const GUIDE: Record<string, { intro: string; points: string[] }> = {
+  'internal-ssd': { intro: 'From next-generation NVMe SSDs to proven SATA drives — the building blocks of modern computing, sourced directly from authorized manufacturers.', points: ['PCIe Gen3 → Gen5 NVMe, up to 12,400 MB/s read', 'Genuine manufacturer stock with local UAE warranty', 'Volume channel pricing via RFQ — tiers for resellers'] },
+  'portable-ssd': { intro: 'Rugged, pocket-sized external drives — USB-C speed for creators, field teams and backups.', points: ['Up to 2TB pocket storage, USB 3.2 / Gen2 speeds', 'IP-rated rugged models for site work', 'Bundle options with UGREEN hubs and cables'] },
+  memory: { intro: 'DDR4 and DDR5 UDIMM/SO-DIMM modules — plug-and-play upgrades tested across Intel and AMD platforms.', points: ['DDR5 up to 5,600+ MT/s · DDR4 up to 3,200 MT/s', 'XMP 2.0/3.0 profiles, non-ECC desktop and laptop', 'Micron manufacturing behind every Crucial module'] },
+  monitors: { intro: 'Displays covering gaming, professional and everyday productivity — color-accurate panels up to 280 Hz refresh.', points: ['FHD → QHD, 75–280 Hz, FreeSync support', 'VESA-mount ready slim designs', 'Fleet pricing for office rollouts'] },
+  accessories: { intro: 'Docks, cables and adapters plus surge protection — the reliable layer between systems and the wall.', points: ['USB-C hubs and docking stations to 13-in-1', 'Cat6/7 networking and certified video cables', 'Surge-protected power for office and retail'] },
+};
+const guide = GUIDE[p.cat] || { intro: '', points: [] };
+const card = (r: any) => ({ ...r, img: (Array.isArray(r.imgs) ? r.imgs[0] : (typeof r.imgs === 'string' && r.imgs !== 'null' ? JSON.parse(r.imgs)[0] : '')) });
+const imgAbs = (v: string) => (v && !v.startsWith('/') ? '/' + v : v);
+const skuOf = (r: any) => r.sku || ''; /* deploy-audit: no SKU is invented — 31 products have none, and the slug prefix used to be shown as one */
+
+const allProductsList = await db`SELECT slug, name, brand, imgs FROM products`;
+const allProductsMap: Record<string, any> = {};
+for (const it of allProductsList as any[]) {
+  const v = Array.isArray(it.imgs) ? it.imgs[0] : (typeof it.imgs === 'string' && it.imgs !== 'null' ? JSON.parse(it.imgs)[0] : '');
+  allProductsMap[it.slug] = { slug: it.slug, name: it.name, brand: it.brand, img: v && !v.startsWith('/') ? '/' + v : v };
+}
+const productImg = imgs[0] ? (imgs[0].startsWith('http') ? imgs[0] : `https://simalme.com${imgs[0]}`) : 'https://simalme.com/assets/img/brand/simal-logo-1200w.png';
+const productUrl = `https://simalme.com/products/${p.slug}/`;
+
+const productSchema = {
+  '@type': 'Product',
+  '@id': `${productUrl}#product`,
+  'name': p.name,
+  'description': p.short || p.descr || `${p.name} by ${p.brand}`,
+  'image': productImg,
+  ...(p.sku ? { 'sku': p.sku } : {}), /* deploy-audit: structured data never claims the slug as a SKU */
+  'brand': {
+    '@type': 'Brand',
+    'name': p.brand
+  },
+  'category': p.cat_label || p.cat,
+  'offers': {
+    '@type': 'Offer',
+    'url': productUrl,
+    'priceCurrency': 'AED',
+    'availability': isStock ? 'https://schema.org/InStock' : 'https://schema.org/PreOrder',
+    'itemCondition': 'https://schema.org/NewCondition',
+    'seller': {
+      '@id': 'https://simalme.com/#organization'
+    }
+  }
+};
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': `${productUrl}#breadcrumb`,
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://simalme.com/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Products',
+      'item': 'https://simalme.com/products/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': p.cat_label || p.cat,
+      'item': `https://simalme.com/products/#${p.cat}`
+    },
+    {
+      '@type': 'ListItem',
+      'position': 4,
+      'name': p.name,
+      'item': productUrl
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title={`${p.name} — ${p.brand} — Simal Technologies`} 
+  description={p.short} 
+  ogImage={productImg}
+  schemas={[productSchema, breadcrumbSchema]}
+>
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> › <a href="/products/">Products</a> › <a href={`/products/#${p.cat}`}>{p.cat_label || p.cat}</a> › <b>{p.name.slice(0, 40)}</b></div></div>
+
+  <section style="padding:8px 0 56px"><div class="wrap">
+    <div class="split" style="grid-template-columns:.9fr 1.1fr;align-items:start">
+      <div>
+        <div class="pgal" id="gal">
+          {imgs[0] ? <img src={imgs[0]} alt={p.name} /> : <div style="color:var(--slate);font-size:13px">Photo on request</div>}
+          {p.is_new && <span class="badge b-red" style="position:absolute;top:14px;left:14px">NEW</span>}
+        </div>
+        {imgs.length > 1 && (
+          <div class="pthumbs" id="thumbs">
+            {imgs.slice(0, 6).map((src: string, i: number) => (
+              <img src={src} class={i === 0 ? 'on' : ''} data-i={i} alt={`${p.name} photo view ${i + 1}`} tabindex="0" role="button" aria-label={`View photo ${i + 1}`} />
+            ))}
+          </div>
+        )}
+        <div class="card card-p" id="glance" style="margin-top:16px;border-top:4px solid var(--blue)">
+          <b style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500)">At a glance</b>
+          <div style="margin-top:10px">
+            {dSpecs.slice(0, 4).map(([k, v]: [string, string]) => (
+              <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:7px 0;border-bottom:1px dashed var(--line-2)">
+                <span style="color:var(--slate-500);font-size:12.5px;font-weight:600">{k}</span>
+                <b style="font-size:12.5px;text-align:right;max-width:60%">{v}</b>
+              </div>
+            ))}
+            <div style="display:flex;justify-content:space-between;gap:12px;align-items:baseline;padding:7px 0">
+              <span style="color:var(--slate-500);font-size:12.5px;font-weight:600">Availability</span>
+              <b style={`font-size:12.5px;color:${isStock ? 'var(--ok)' : 'var(--warn)'}`}>{isStock ? 'In stock — JAFZA' : 'Out of stock'}</b>
+            </div>
+          </div>
+        </div>
+        <div class="card card-p" id="assurance" style="margin-top:14px;border-top:4px solid var(--g3)">
+          <b style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-500)">The Simal assurance</b>
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+            {[['✓', '100% genuine — authorized channel, no gray stock'],
+              ['🛡', 'Local UAE warranty — RMA via the Dubai desk'],
+              ['🚚', 'JAFZA fulfillment — typical 1–3 day UAE delivery'],
+              ['🧾', 'Peppol-ready e-invoicing for B2B buyers'],
+              ['💬', 'Volume tiers — quote within 1 business day']].map(([ic, tx]) => (
+              <div style="display:flex;gap:10px;align-items:flex-start"><span style="font-size:15px;width:20px;text-align:center">{ic}</span><span style="font-size:12.5px;color:var(--slate)">{tx}</span></div>
+            ))}
+          </div>
+          <a class="btn btn-o btn-sm btn-block" style="margin-top:12px" href={`/contact/`}>Talk to the desk about volume →</a>
+        </div>
+      </div>
+
+      <div>
+        <div style="display:flex;gap:9px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
+          <span class="badge b-ok">✓ Authorized distribution — UAE</span>
+          <span class="tag-ar" lang="ar">تحقق أصلي</span>
+          <span class="badge b-line">SKU: {p.sku || '—'}</span>
+          <span class={`badge ${isStock ? 'b-ok' : 'b-warn'}`}>{isStock ? 'In stock' : 'Out of stock'}</span>
+        </div>
+        <h1 style="font-size:29px;font-weight:800;line-height:1.25" id="p-name">{p.name}</h1>
+        <p style="color:var(--slate);margin:10px 0 16px;font-size:14.5px" id="p-desc">
+          {d.hero && <><b style="color:var(--ink)">{d.hero}</b><br /></>}
+          {p.descr || p.short}
+        </p>
+
+        <div style="display:flex;gap:10px;align-items:center;background:var(--bg);border:1px dashed var(--line-2);border-radius:12px;padding:14px 16px;margin-bottom:18px;flex-wrap:wrap">
+          <div>
+            <div style="font-size:12px;color:var(--slate)">Channel price</div>
+            <div style="font-size:20px;font-weight:800;color:var(--blue)">RFQ — no list price</div>
+            <div style="font-size:12px;color:var(--slate)">Quote within 1 business day · volume tiers</div>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <div class="qty">
+              <button id="q-dec" aria-label="Decrease quantity">−</button>
+              <input id="q-n" value="1" inputmode="numeric" aria-label="Product quantity">
+              <button id="q-inc" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="btn btn-p" id="add">🧾 Add to RFQ</button>
+            <a class="btn btn-wa" id="wa" href={`https://wa.me/971508487861?text=${encodeURIComponent(`Simal RFQ — ${p.name} (${p.sku ? 'SKU ' + p.sku : 'ref ' + p.slug}), qty 1`)}`} target="_blank" rel="noopener noreferrer" aria-label="Inquire about this product on WhatsApp">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="hero-trust trust" style="margin-bottom:20px">
+          <div>✓ Genuine · local UAE warranty</div><div>🚚 JAFZA fulfillment</div><div>↩ RMA via Simal desk</div>
+        </div>
+
+        <div class="card card-p" style="padding:0">
+          <div class="mini-tabs-wrap">
+            <div class="mini-tabs" role="tablist" aria-label="Product details tabs">
+              <button class="on" role="tab" id="btn-tab-specs" aria-selected="true" aria-controls="tab-specs" data-t="specs">Specifications</button>
+              <button role="tab" id="btn-tab-desc" aria-selected="false" aria-controls="tab-desc" data-t="desc">Overview</button>
+              <button role="tab" id="btn-tab-feat" aria-selected="false" aria-controls="tab-feat" data-t="feat">Features &amp; use cases</button>
+              <button role="tab" id="btn-tab-box" aria-selected="false" aria-controls="tab-box" data-t="box">In the box &amp; accessories</button>
+              <button role="tab" id="btn-tab-docs" aria-selected="false" aria-controls="tab-docs" data-t="docs">Documentation</button>
+            </div>
+          </div>
+          <div style="padding:4px 18px 18px">
+            <table class="tbl" id="tab-specs" role="tabpanel" aria-labelledby="btn-tab-specs" tabindex="0">
+              {dSpecs.map(([k, v]: [string, string]) => <tr class="specrow"><td><b>{k}</b></td><td>{v}</td></tr>)}
+              <tr class="specrow"><td><b>Brand</b></td><td>{p.brand}</td></tr>
+              <tr class="specrow"><td><b>SKU</b></td><td>{p.sku || '—'}</td></tr>
+              <tr class="specrow"><td><b>Category</b></td><td>{p.cat_label || p.cat}</td></tr>
+              <tr class="specrow"><td><b>Warranty</b></td><td>{warrantyMonths ? `${warrantyMonths} months local UAE warranty via Simal` : 'Local UAE warranty via Simal'} — RMA handled by the Dubai desk</td></tr>
+              <tr class="specrow"><td><b>Availability</b></td><td style={`color:${isStock ? 'var(--ok)' : 'var(--warn)'}`}>{isStock ? 'In stock — JAFZA fulfillment' : 'Out of stock — Backorder available'}</td></tr>
+              <tr class="specrow"><td><b>Pricing</b></td><td>Channel RFQ — volume tiers, quote ≤ 1 business day</td></tr>
+              {specDetails.map((sp: string) => <tr class="specrow"><td>Detail</td><td>{sp}</td></tr>)}
+            </table>
+            <div id="tab-desc" role="tabpanel" aria-labelledby="btn-tab-desc" tabindex="0" style="display:none;font-size:14px;color:var(--slate);line-height:1.7">
+              <p style="margin:0 0 10px">{p.descr || p.short}</p>
+              <p style="margin:0;color:var(--slate-500);font-size:12.5px">A full datasheet is available in the Documentation tab.</p>
+            </div>
+            <div id="tab-feat" role="tabpanel" aria-labelledby="btn-tab-feat" tabindex="0" style="display:none">
+              {bInfo && (
+                <div style="border-left:3px solid var(--g3);padding:2px 0 2px 14px;margin-bottom:14px">
+                  <b style="color:var(--blue)">{p.brand} line:</b> {bInfo[0]}<br />
+                  <span style="font-size:12.5px;color:var(--slate-500)">{bInfo[1]}</span>
+                </div>
+              )}
+              {(feats.length > 0 || useCases.length > 0) && (
+                <div class="split" style="grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+                  {feats.length > 0 && (
+                    <div><b style="font-size:14px">Key features</b>
+                      <ul style="margin:8px 0 0;padding-left:20px">{feats.map((f: string) => <li style="font-size:13.5px;color:var(--slate);margin:6px 0">{f}</li>)}</ul>
+                    </div>
+                  )}
+                  {useCases.length > 0 && (
+                    <div><b style="font-size:14px">Best for</b>
+                      <ul style="margin:8px 0 0;padding-left:20px">{useCases.map((u: string) => <li style="font-size:13.5px;color:var(--slate);margin:6px 0">{u}</li>)}</ul>
+                    </div>
+                  )}
+                </div>
+              )}
+              {guide.intro && (
+                <>
+                  <div style="border-top:1px dashed var(--line-2);margin:16px 0"></div>
+                  <p style="font-size:13.5px;color:var(--slate-500);line-height:1.7;margin:0 0 8px"><b style="color:var(--slate)">About the {p.cat_label || p.cat} line:</b> {guide.intro}</p>
+                  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+                    {guide.points.map((x: string) => <span class="chip" style="font-size:12px;padding:5px 12px">✓ {x}</span>)}
+                  </div>
+                </>
+              )}
+              <div style="display:flex;gap:10px;flex-wrap:wrap">
+                <a class="btn btn-o btn-sm" href="/products/">Compare with the category →</a>
+                <a class="btn btn-o btn-sm" href="/products/">All {p.brand} →</a>
+              </div>
+            </div>
+            <div id="tab-box" role="tabpanel" aria-labelledby="btn-tab-box" tabindex="0" style="display:none">
+              <div class="split" style="grid-template-columns:.9fr 1.1fr;gap:18px;align-items:start">
+                <div><b style="font-size:14px">In the box</b>
+                  <ul style="margin:8px 0 0;padding-left:20px">
+                    {(boxItems.length ? boxItems : [`Genuine ${p.brand} product, factory sealed`, 'Simal invoice with local UAE warranty terms', 'RMA instructions for the Dubai service desk']).map((x: string) => <li style="font-size:13.5px;color:var(--slate);margin:5px 0">{x}</li>)}
+                  </ul>
+                </div>
+                <div><b style="font-size:14px">Frequently paired</b>
+                  <div class="grid g2" style="margin-top:8px">
+                    {acc.length ? acc.map((a: any) => (
+                      <a href={`/products/${a.slug}`} style="text-decoration:none;color:inherit">
+                        <div class="card card-p" style="padding:12px 14px;height:100%">
+                          <span style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--slate-500);text-transform:uppercase">{a.brand}</span>
+                          <div style="font-size:13px;font-weight:600;margin-top:3px">{a.name.slice(0, 64)}</div>
+                          <span style="font-size:12px;font-weight:700;color:var(--blue)">View details →</span>
+                        </div>
+                      </a>
+                    )) : <p style="font-size:13px;color:var(--slate)">Ask the desk for pairings.</p>}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="tab-docs" role="tabpanel" aria-labelledby="btn-tab-docs" tabindex="0" style="display:none">
+              <div class="grid g2">
+                {docItems.length > 0 && docItems.map((doc: any) => (
+                  <div class="card card-p">
+                    <b style="font-size:14px">📄 {doc.title || doc.name || 'Product Documentation'}</b>
+                    <p style="font-size:13px;color:var(--slate);margin:8px 0 10px">{doc.desc || doc.description || 'Official product documentation and technical specifications.'}</p>
+                    <a class="btn btn-p btn-sm" href={doc.url || '/contact/'} target={doc.url ? '_blank' : undefined}>{doc.label || 'View Document →'}</a>
+                  </div>
+                ))}
+                <div class="card card-p"><b style="font-size:14px">📄 Datasheets &amp; spec sheets</b><p style="font-size:13px;color:var(--slate);margin:8px 0 10px">Per-category PDF library — request the sheet for this SKU and we email it the same working day.</p><a class="btn btn-p btn-sm" href="/contact/">Request the datasheet →</a></div>
+                <div class="card card-p"><b style="font-size:14px">⚖ Warranty &amp; RMA</b><p style="font-size:13px;color:var(--slate);margin:8px 0 10px">Local UAE warranty terms, genuineness policy and the RMA process through the Dubai desk.</p><a class="btn btn-o btn-sm" href="/legal/terms-conditions/">Read the terms →</a></div>
+                <div class="card card-p"><b style="font-size:14px">🧾 How channel buying works</b><p style="font-size:13px;color:var(--slate);margin:8px 0 10px">RFQ basket → quote within one business day → PO → JAFZA fulfillment. No account needed to start.</p><a class="btn btn-o btn-sm" href="/rfq/">Build an RFQ →</a></div>
+                <div class="card card-p"><b style="font-size:14px">📦 Bulk &amp; project pricing</b><p style="font-size:13px;color:var(--slate);margin:8px 0 10px">50+ unit deployments, imaging and asset tagging — talk to the distribution desk.</p><a class="btn btn-o btn-sm" href={`/contact/`}>Talk to the desk →</a></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    {prev && next && (
+      <div style="display:flex;gap:12px;margin:26px 0 6px;flex-wrap:wrap;justify-content:space-between">
+        <a class="btn btn-o" href={`/products/${prev.slug}`}>← {prev.name.slice(0, 44)}</a>
+        <a class="btn btn-o" href="/products/">{p.cat_label || p.cat} listing</a>
+        <a class="btn btn-o" href={`/products/${next.slug}`}>{next.name.slice(0, 44)} →</a>
+      </div>
+    )}
+
+    <div class="sec-head" style="margin-top:34px"><div><span class="eyebrow">Same brand</span><h2>Related from this line</h2></div><a class="btn btn-o" href="/products/">All from {p.brand} →</a></div>
+    <div class="grid g4" id="related">
+      {related.map((r: any) => {
+        const rc = card(r); const im = imgAbs(rc.img);
+        return (
+          <div class="prod">
+            <a class="go" href={`/products/${r.slug}`} aria-label={r.name}></a>
+            <div class={`ph${im ? ' has-img' : ''}`}>{im && <img src={im} alt={r.name} loading="lazy" />}{skuOf(r) && <span class="sk">{skuOf(r)}</span>}</div>
+            <div class="pb"><span class="cat">{r.brand} · {r.cat_label || r.cat}</span>
+              <h4><a href={`/products/${r.slug}`} style="color:inherit;text-decoration:none">{r.name}</a></h4>
+              <span class="meta">{r.short || ''}</span><span class="vd">View details →</span>
+              <div class="pr"><span class="price">RFQ</span><button class="btn btn-sm btn-p add-rfq" data-slug={r.slug}>Add to RFQ</button></div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="sec-head" style="margin-top:40px" id="acc-head"><div><span class="eyebrow">Frequently paired</span><h2>Accessories &amp; companions</h2></div></div>
+    <div class="grid g4" id="accessories">
+      {acc.map((a: any) => {
+        const ac = card(a); const im = imgAbs(ac.img);
+        return (
+          <div class="prod">
+            <a class="go" href={`/products/${a.slug}`} aria-label={a.name}></a>
+            <div class={`ph${im ? ' has-img' : ''}`}>{im && <img src={im} alt={a.name} loading="lazy" />}{skuOf(a) && <span class="sk">{skuOf(a)}</span>}</div>
+            <div class="pb"><span class="cat">{a.brand} · {a.cat_label || a.cat}</span>
+              <h4><a href={`/products/${a.slug}`} style="color:inherit;text-decoration:none">{a.name}</a></h4>
+              <span class="meta">{a.short || ''}</span><span class="vd">View details →</span>
+              <div class="pr"><span class="price">RFQ</span><button class="btn btn-sm btn-p add-rfq" data-slug={a.slug}>Add to RFQ</button></div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+
+    <div class="sec-head" style="margin-top:40px" id="recent-head" style="display:none"><div><span class="eyebrow">Where you have been</span><h2>Recently viewed</h2></div></div>
+    <div class="grid g4" id="recent"></div>
+  </div></section>
+
+  <script type="application/json" id="pdp-island-data" set:html={JSON.stringify({ slug, name: p.name, waName: p.name, waRef: p.sku ? 'SKU ' + p.sku : 'ref ' + p.slug, allProductsMap })}></script>
+<script src="/assets/js/pdp-island.js?v=2" defer></script>
+
+  <style>
+    .mini-tabs-wrap {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none;
+      padding: 12px 14px 4px;
+      border-bottom: 1px solid var(--line);
+    }
+    .mini-tabs-wrap::-webkit-scrollbar { display: none; }
+    .mini-tabs { min-width: max-content; margin-bottom: 0; }
+    .pthumbs img { cursor: pointer; }
+    .pthumbs img:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+    @media (max-width: 900px) {
+      .split { grid-template-columns: minmax(0, 1fr) !important; }
+      .split > * { min-width: 0 !important; max-width: 100% !important; }
+    }
+  </style>
+</BaseLayout>

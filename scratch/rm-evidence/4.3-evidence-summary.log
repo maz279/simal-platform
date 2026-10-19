@@ -1,0 +1,6 @@
+=== rm(4.3) CMS CORRECTNESS RESIDUES — EVIDENCE Sat Oct 17 11:04:22 MPST 2026 ===
+4.3-1 (CMS-4): stock BOOLEAN end-to-end — migrate.sql DDL+idempotent ALTER applied live (data_type=boolean, 78 TRUE); cms.service.js writers coerce; site readers strict ===true; PROBE: stock=false via CMS PUT -> API returns false -> built PDP renders 'Out of stock' -> restored
+4.3-2 (CMS-3): amc/tiers decoy retired — seed row removed, live row deleted (amc rows=0; site/amc-tiers=1), cms.js fallback removed; /solutions/amc renders the 1-hour tier from the single block
+4.3-3 (CMS-7): Quick Create generic block option REMOVED from cms.html + JS guard (null entity -> toast, never writes custom)
+4.3-4 (F-2026-N13 + CMS-8): profile chip reads state.me directly (browser: real identity 'System Administrator' shown); '7 Regulatory Policies'/'13 Staff Accounts' hardcoded chips -> live counts (state.policies.length / state.users.length)
+SUITES: 83/83 (unit+api+workspace); CI spot lint+chrome-blocks+link-crawl 3/3; browser: products stock states render, AMC view single-source (chip 'Single-Source Block: site/amc-tiers')

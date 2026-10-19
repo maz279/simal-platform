@@ -1,0 +1,53 @@
+{
+  "exportedAt": "2026-10-06T00:00:00Z",
+  "source": "kyc.simalme.com legacy export — REPRESENTATIVE FIXTURE for ETL verification (synthetic records; the real export lands at cutover per E7)",
+  "applications": [
+    {
+      "id": "KYC-2024-0001",
+      "company": { "name": "  Alpha   Components Trading LLC ", "trn": "100548172900015", "country": "AE" },
+      "contact": { "name": "Alya Rahman", "email": "alya@alpha-components.example", "phone": "+971501110001" },
+      "status": "approved",
+      "reviewer_notes": "Licence verified against DED registry.",
+      "submitted_at": "2025-03-14T09:00:00Z",
+      "documents": [
+        { "type": "trade_license", "name": "license.pdf", "mime": "application/pdf", "dataB64": "JVBERi0xLjQKJWZpeHR1cmUgdHJhZGUgbGljZW5zZQo=" }
+      ]
+    },
+    {
+      "id": "KYC-2024-0002",
+      "company": { "name": "Beta Networks FZE", "trn": "TRN-100123456700090-X", "country": "AE" },
+      "contact": { "name": "Bilal Haq", "email": "bilal@beta-networks.example", "phone": "+971501110002" },
+      "status": "pending",
+      "reviewer_notes": "",
+      "submitted_at": "2026-09-28T14:30:00Z",
+      "documents": []
+    },
+    {
+      "id": "KYC-2024-0003",
+      "company": { "name": "Gamma Supplies", "trn": "GB1234567890123", "country": "GB" },
+      "contact": { "name": "Gita Rao", "email": "gita@gamma-supplies.example", "phone": "+442071110003" },
+      "status": "rejected",
+      "reviewer_notes": "Expired trade licence at submission.",
+      "submitted_at": "2025-11-02T11:15:00Z",
+      "documents": []
+    },
+    {
+      "id": "KYC-2024-0004",
+      "company": { "name": "Delta Enterprises", "trn": "12345", "country": "AE" },
+      "contact": { "name": "Danish Iqbal", "email": "danish@delta.example", "phone": "+971501110004" },
+      "status": "approved",
+      "reviewer_notes": "",
+      "submitted_at": "2026-01-20T08:00:00Z",
+      "documents": []
+    },
+    {
+      "id": "KYC-2024-0005",
+      "company": { "name": "Epsilon Trading", "trn": "100548172900015", "country": "AE" },
+      "contact": { "name": "Esra Karim", "email": "esra@epsilon.example", "phone": "+971501110005" },
+      "status": "mystery-state",
+      "reviewer_notes": "",
+      "submitted_at": "2026-02-11T16:45:00Z",
+      "documents": []
+    }
+  ]
+}

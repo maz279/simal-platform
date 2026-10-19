@@ -1,0 +1,35 @@
+/* Simal design tokens — Navy & Gold Executive (UX spec v2.2) */
+:root {
+  --navy-900: #0A1628;
+  --navy-800: #12233A;
+  --navy-700: #1A3552;
+  --navy-600: #234A73;
+  --navy-500: #2E5E8C;
+  --navy-100: #D4E4F5;
+  --navy-050: #EDF3FA;
+  --blue: #0050A0;
+  --blue-050: #E3F0FF;
+  --red: #E01020;
+  --yellow: #F0F000;
+  --gold: #8B6210;
+  --gold-accessible: #875F0F;
+  --gold-light: #E7D9B8;
+  --ink: #0E1B2C;
+  --ink-2: #364A63;
+  --slate: #47586B;
+  --slate-500: #52647A;
+  --muted-on-dark: #CBD5E1;
+  --line: #DFE6EE;
+  --bg: #F7FAFD;
+  --white: #FFFFFF;
+  --green-700: #0E5A47;
+  --green-050: #E2F5EC;
+  --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-mono: 'Cascadia Code', 'Fira Code', monospace;
+  --grad-blue-gold: linear-gradient(135deg, var(--navy-800) 0%, var(--navy-600) 40%, var(--gold) 160%);
+  --shadow-sm: 0 1px 3px rgba(14,27,44,.08);
+  --shadow-md: 0 4px 12px rgba(14,27,44,.12);
+  --shadow-lg: 0 8px 28px rgba(14,27,44,.16);
+  --radius: 12px;
+  --radius-sm: 8px;
+}

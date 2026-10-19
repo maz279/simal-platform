@@ -1,0 +1,6 @@
+run #10 (32f8f52) LHCI, Linux runner, mobile profile, 3 runs per URL — all assertions pass
+/            perf 0.98/0.99/0.99  LCP 2271/2189/2192ms  CLS 0.000/0.000/0.000  TBT 0/30/0ms
+/products/   perf 1/1/1  LCP 1163/1162/1165ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms
+/solutions/  perf 1/1/1  LCP 1162/1178/1180ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms
+/software/   perf 1/1/1  LCP 1367/1364/1368ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms
+/rfq/        perf 1/1/1  LCP 1434/1409/1432ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms

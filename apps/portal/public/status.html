@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track your application — Simal KYC Portal</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/base.css?v=8">
+  <link rel="stylesheet" href="assets/css/portal.css?v=8">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="portal-header compact">
+    <div class="inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/logo-lockup-color.png" alt="Simal Technologies" width="166" height="36">
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span class="brand-title"><b>Partner Onboarding</b>&amp; KYC Portal</span>
+      </a>
+      <a class="btn btn-ghost btn-sm" href="index.html">Back to portal</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-narrow">
+
+    <!-- ============ Lookup (simulated magic link, FR-P-030) ============ -->
+    <section id="lookup" class="card card-pad" style="max-width:520px;margin-inline:auto" aria-labelledby="lookup-title">
+      <div class="stack mt-2">
+        <h1 id="lookup-title" style="font-size:var(--fs-2xl)">Track your application</h1>
+        <p class="muted mb-0">Enter your reference number and contact email — this simulates the single-use
+          magic link you'd receive by email in production.</p>
+        <div class="field">
+          <label for="lk-ref">Reference number</label>
+          <input class="input mono" id="lk-ref" placeholder="SIM-KYC-2026-XXXXX">
+          <span class="error" id="lk-ref-err" hidden>Reference not found.</span>
+        </div>
+        <div class="field">
+          <label for="lk-email">Contact email used at submission</label>
+          <input class="input" id="lk-email" type="email" placeholder="you@company.ae">
+          <span class="error" id="lk-email-err" hidden>Email does not match this reference.</span>
+        </div>
+        <button class="btn btn-primary btn-lg" id="lk-go">View status</button>
+        <p class="small muted mb-0">Both fields are required. Your reference number is in the
+        confirmation email and receipt (format <code>SIM-KYC-YYYY-NNNNN</code>).</p>
+      </div>
+    </section>
+
+    <!-- ============ Status view ============ -->
+    <section id="status-view" hidden>
+      <div class="card card-pad">
+        <div class="review-head">
+          <div>
+            <h1 id="sv-company" style="font-size:var(--fs-xl)">…</h1>
+            <p class="muted small mb-0">
+              <span class="ref-pill" style="padding:2px 12px;font-size:var(--fs-xs)" id="sv-ref">…</span>
+              <span id="sv-role" class="muted"></span>
+            </p>
+          </div>
+          <div id="sv-badge"></div>
+        </div>
+
+        <div class="divider"></div>
+        <div class="grid" style="grid-template-columns: 280px minmax(0,1fr); gap:32px" id="sv-grid">
+          <div>
+            <h2 style="font-size:var(--fs-sm);text-transform:uppercase;letter-spacing:.05em;color:var(--gray-500)">Progress</h2>
+            <ul class="timeline mt-4" id="sv-timeline"></ul>
+          </div>
+          <div>
+            <div id="sv-queries"></div>
+            <div id="sv-details" class="kv-grid mt-6"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="assets/js/ui.js?v=1"></script>
+  <script src="assets/js/api.js?v=6"></script>
+  <script src="assets/js/status.js?v=1"></script>
+</body>
+</html>

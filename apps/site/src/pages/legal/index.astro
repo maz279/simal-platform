@@ -1,0 +1,71 @@
+---
+// legal/index.astro — Legal center. VISUAL CONTRACT: Prototype legal.html ported 1:1.
+// In-place tabbed policy viewer (.mini-tabs#legal-tabs + #legal-body) with direct
+// hash navigation support and full legal text linking.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const policies = [
+  { slug: 'privacy-policy', title: 'Privacy Policy', sub: 'Who we are and what this covers', desc: 'Simal Technologies Middle East LLC (Bur Dubai, PO 49740) is the data controller for this platform.' },
+  { slug: 'terms-conditions', title: 'Terms & Conditions', sub: 'Using the platform', desc: 'RFQ submissions, account use and content licensing; quotes are valid 7 days unless stated otherwise.' },
+  { slug: 'cookie-policy', title: 'Cookie Policy', sub: 'Cookies we set', desc: 'Session (sign-in), preference (language, dismissed announcements) and analytics cookies with consent gating.' },
+  { slug: 'return-policy', title: 'Return Policy', sub: 'Returns & RMA', desc: 'Authorized-line products carry manufacturer warranty; RMA handled locally with the Simal desk (see product page).' },
+  { slug: 'shipping-policy', title: 'Shipping Policy', sub: 'Delivery', desc: 'UAE same/next business day from JAFZA; GCC same week; tracking issued per consignment.' },
+  { slug: 'refund-policy', title: 'Refund Policy', sub: 'Refunds', desc: 'Pre-payment refunds processed within 10 business days to the original instrument after RMA acceptance.' },
+  { slug: 'accessibility-statement', title: 'Accessibility Statement', sub: 'Our commitment', desc: 'Target WCAG 2.1 AA: contrast-verified palette, keyboard operability, RTL parity — issues welcome via contact.' }
+];
+---
+
+<BaseLayout title="Legal — Simal Technologies" description="The documents governing use of this platform: privacy, terms, cookies, returns, shipping, refunds, and accessibility.">
+  <div class="wrap" style="padding-top:16px">
+    <div class="crumbs" style="font-size:13px"><a href="/" style="color:var(--slate)">Home</a> › <b>Legal</b></div>
+  </div>
+
+  <section style="padding:10px 0 70px"><div class="wrap">
+    <span class="eyebrow">Legal center</span>
+    <h1 style="font-size:28px;font-weight:800;margin:6px 0 4px">Policies</h1>
+    <p style="color:var(--slate);max-width:760px;margin-bottom:20px">The documents below govern use of this platform. These are operational summaries aligned with UAE Federal Decree-Law 45/2021 (PDPL) — select any policy to view details or read the full text.</p>
+
+    <!-- In-place Mini Tabs -->
+    <div class="mini-tabs" id="legal-tabs" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:18px">
+      {policies.map((p, i) => (
+        <button class={`btn btn-sm ${i === 0 ? 'btn-p' : 'btn-o'} leg-tab`} data-i={i} data-slug={p.slug} style="white-space:nowrap">
+          {p.title}
+        </button>
+      ))}
+    </div>
+
+    <!-- Active Policy Body Container -->
+    <div class="card card-p" style="padding:28px" id="legal-body">
+      {policies.map((p, i) => (
+        <div class="leg-pane" id={`pane-${p.slug}`} style={i === 0 ? '' : 'display:none'}>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div>
+              <h2 style="font-size:22px;margin:0 0 6px">{p.title}</h2>
+              <p style="font-size:12.5px;color:var(--slate)">Summary — Simal Technologies Middle East LLC · PDPL Aligned · v2026-10</p>
+            </div>
+            <a class="btn btn-o btn-sm" href={`/legal/${p.slug}/`}>Read full policy document →</a>
+          </div>
+
+          <div class="timeline" style="margin-top:20px">
+            <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)">
+              <b style="color:var(--blue)">{p.sub}</b>
+              <span style="display:block;font-size:13.5px;color:var(--ink);margin-top:4px">{p.desc}</span>
+            </div>
+            <div class="tl" style="padding:10px 0;border-bottom:1px solid var(--line)">
+              <b>PDPL alignment</b>
+              <span style="display:block;font-size:13px;color:var(--slate);margin-top:4px">Processed under UAE Federal Decree-Law 45/2021; data subjects may exercise access, correction and deletion rights via the contact page.</span>
+            </div>
+            <div class="tl" style="padding:10px 0">
+              <b>Updates</b>
+              <span style="display:block;font-size:13px;color:var(--slate);margin-top:4px">Material changes are announced on-platform 30 days before taking effect.</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  
+  <script src="/assets/js/legal-page.js?v=1" defer></script>
+</BaseLayout>

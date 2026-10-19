@@ -1,0 +1,15 @@
+=== CMS control-loop test (2026-10-15) ===
+1 LOGIN 200 role: super_admin csrf: f15678a6…
+2 GET announcements 200 first: 1 "AUDIT2-MV9PF03D — forensic control-loop probe"
+3 PUT announcement 200 "AUDIT2-MV9PQRP1 — forensic control-loop probe"
+4 PUBLISH 200 outboxId: pub_1792079297579
+5 SSG WORKER status: queued
+6 SITE home 200 marker on page: false
+7 RESTORE PUT 200
+8 RESTORE PUBLISH 200
+MARKER=AUDIT2-MV9PQRP1
+
+=== spawn EINVAL repro ===
+SYNC THROW: EINVAL
+
+v24.21.0

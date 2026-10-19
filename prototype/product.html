@@ -1,0 +1,70 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Product — Simal Technologies</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script><script src="data/product-deep.js?v=131"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="catalog">
+<div id="chrome-top"></div>
+
+<div class="wrap"><div class="crumbs"><a href="index.html">Home</a> › <a href="category.html">Products</a> › <a href="#" id="crumb-cat">Category</a> › <b id="crumb-name">Product</b></div></div>
+
+<section style="padding:8px 0 56px"><div class="wrap">
+  <div class="split" style="grid-template-columns:.9fr 1.1fr;align-items:start">
+    <div>
+      <div class="pgal" id="gal"></div>
+      <div class="pthumbs" id="thumbs"></div>
+      <div class="card card-p" id="glance" style="margin-top:16px;border-top:4px solid var(--blue)"></div>
+      <div class="card card-p" id="assurance" style="margin-top:14px;border-top:4px solid var(--g3)"></div>
+    </div>
+    <div>
+      <div style="display:flex;gap:9px;align-items:center;margin-bottom:10px;flex-wrap:wrap">
+        <span class="badge b-ok" id="auth-badge">✓ Authorized distribution — UAE</span>
+        <span class="tag-ar">تحقق أصلي</span>
+        <span class="badge b-line" id="sku-badge">SKU</span>
+        <span class="badge b-gold" id="stock-badge">In stock</span>
+      </div>
+      <h1 style="font-size:29px;font-weight:800;line-height:1.25" id="p-name">Product</h1>
+      <p style="color:var(--slate);margin:10px 0 16px;font-size:14.5px" id="p-desc"></p>
+      <div style="display:flex;gap:10px;align-items:center;background:var(--bg);border:1px dashed var(--line-2);border-radius:12px;padding:14px 16px;margin-bottom:18px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:12px;color:var(--slate)">Channel price</div>
+          <div style="font-size:20px;font-weight:800;color:var(--blue)">RFQ — no list price</div>
+          <div style="font-size:12px;color:var(--slate)">Quote within 1 business day · volume tiers</div>
+        </div>
+        <div style="margin-left:auto;display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+          <div class="qty"><button id="q-dec">−</button><input id="q-n" value="1" inputmode="numeric"><button id="q-inc">+</button></div>
+          <button class="btn btn-p" id="add">🧾 Add to RFQ</button>
+          <a class="btn btn-wa" id="wa" href="#">WhatsApp</a>
+        </div>
+      </div>
+      <div class="trust" style="margin-bottom:20px"><div>✓ Genuine · local UAE warranty</div><div>🚚 JAFZA fulfillment</div><div>↩ RMA via Simal desk</div></div>
+      <div class="card card-p" style="padding:0">
+        <div class="mini-tabs"><button class="on" data-t="specs">Specifications</button><button data-t="desc">Overview</button><button data-t="feat">Features &amp; use cases</button><button data-t="box">In the box &amp; accessories</button><button data-t="docs">Documentation</button></div>
+        <div style="padding:4px 18px 18px">
+          <table class="tbl" id="tab-specs"></table>
+          <div id="tab-desc" style="display:none;font-size:14px;color:var(--slate);line-height:1.7"></div>
+          <div id="tab-feat" style="display:none"></div>
+          <div id="tab-box" style="display:none"></div>
+          <div id="tab-docs" style="display:none"></div>
+          <div id="tab-ar" style="display:none;margin-top:16px;border-top:1px dashed var(--line-2);padding-top:12px" dir="rtl"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex;gap:12px;margin:26px 0 6px;flex-wrap:wrap;justify-content:space-between" id="pn-row"></div>
+
+  <div class="sec-head" style="margin-top:34px"><div><span class="eyebrow">Same brand</span><h2>Related from this line</h2></div><a class="btn btn-o" href="#" id="more-brand">All from brand →</a></div>
+  <div class="grid g4" id="related"></div>
+
+  <div class="sec-head" style="margin-top:40px" id="acc-head"><div><span class="eyebrow">Frequently paired</span><h2>Accessories &amp; companions</h2></div></div>
+  <div class="grid g4" id="accessories"></div>
+
+  <div class="sec-head" style="margin-top:40px"><div><span class="eyebrow">Where you have been</span><h2>Recently viewed</h2></div></div>
+  <div class="grid g4" id="recent"></div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/product.js?v=131"></script>
+</body></html>

@@ -1,0 +1,43 @@
+=== clean-DB bring-up (fresh simal_staging, owner role) ===
+[bringup pg] already accepting connections on :5433
+[bringup fresh] applied scripts/migrate.sql
+[bringup fresh] applied scripts/seed.sql
+[bringup fresh] database "simal_staging" recreated from migrate.sql + seed.sql
+[bringup portal] already running on :8090
+[bringup site] building SSG from PG (forced)…
+[bringup site] built
+[bringup edge] already running on :8100
+
+[bringup] rig is up:
+  portal API      http://127.0.0.1:8090/cms.html
+  public site     http://127.0.0.1:8100/
+  site→portal API http://127.0.0.1:8100/api/settings  (reverse proxy)
+(node:33788) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+
+exit: 0
+
+=== SELECT current_user with the app role URL ===
+current_user=simal_app db=simal_staging can_ddl=false
+
+=== backends on simal_staging ===
+
+=== built pages ===
+index.html pages: 234
+
+=== portal :8091 booted against simal_staging as the app role ===
+
+
+=== grants re-applied AFTER the fresh database recreate (bringup --fresh drops them) ===
+psql -f scripts/prod-db-roles.sql exit=0
+
+=== portal :8091 booted against simal_staging as the app role ===
+simal_app | backends=1
+
+=== staging portal functional proof (fresh DB) ===
+staging login: 200 | role=super_admin
+admin submissions on the fresh staging DB: total=0
+public settings readable: tin=True
+
+=== rehearsal teardown (staging portal stopped, simal_staging dropped) ===
+after_drop: simal,simal_ci,simal_gate_pgr_mvdpe64c

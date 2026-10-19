@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>e-Invoices — Simal Partner Portal</title>
+<link rel="stylesheet" href="assets/css/base.css">
+<style>
+body{background:var(--gray-50)}
+.topbar{background:var(--brand-900);color:#fff;padding:14px 0}
+.topbar .in{max-width:1240px;margin:0 auto;padding:0 20px;display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+.topbar b{font-size:15px}
+.topbar .who{margin-left:auto;font-size:13px;color:rgba(255,255,255,.75)}
+.topbar a{color:#fff;font-size:13px}
+.wrap{max-width:1240px;margin:0 auto;padding:26px 20px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px}
+.stat .n{font-size:26px;font-weight:800;color:var(--brand-700)}
+.stat .l{font-size:12px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase;margin-top:2px}
+table.tbl{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.tbl th{background:var(--gray-100);text-align:left;font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;padding:10px 14px;color:var(--ink-3)}
+.tbl td{padding:11px 14px;border-top:1px solid var(--line);font-size:13.5px}
+.badge{display:inline-block;font-size:11px;font-weight:700;border-radius:999px;padding:3px 10px}
+.st-draft{background:#EEF1F5;color:#3D4A5C}.st-submitted{background:#FFF4E0;color:#8A5A00}
+.st-validated{background:#E3F0FF;color:#0F4C9C}.st-delivered{background:#E2F5EC;color:#0E5A47}
+.st-rejected{background:#FDECEC;color:#8C2F2A}
+.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:24px;margin-top:20px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.f label{display:block;font-size:11.5px;font-weight:700;letter-spacing:.06em;margin:12px 0 5px;color:var(--ink-2)}
+.f input,.f select{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:10px 13px;font:inherit}
+.line-row{display:grid;grid-template-columns:1fr 90px 130px 110px 34px;gap:10px;align-items:end;margin-bottom:2px}
+.line-row input{width:100%;border:1.5px solid var(--line);border-radius:9px;padding:9px 12px;font:inherit}
+.tot{display:flex;justify-content:space-between;max-width:320px;margin-left:auto;padding:6px 0;font-size:14px}
+.tot.grand{font-weight:800;font-size:17px;border-top:2px solid var(--line);padding-top:10px}
+.btn{border:none;border-radius:10px;padding:11px 20px;font:inherit;font-weight:700;cursor:pointer}
+.btn-p{background:var(--brand-700);color:#fff}.btn-o{background:#fff;border:1.5px solid var(--line);color:var(--ink-2)}
+.btn-r{background:#B3261E;color:#fff}.btn-d{background:#0E5A47;color:#fff}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.tl{list-style:none;padding:0;margin:0}
+.tl li{padding:8px 0 8px 18px;border-left:2px solid var(--line);position:relative;font-size:13px}
+.tl li:before{content:'';position:absolute;left:-6px;top:14px;width:10px;height:10px;border-radius:50%;background:var(--brand-700)}
+pre.ubl{background:var(--gray-900);color:#CFE3D8;padding:16px;border-radius:12px;overflow:auto;font-size:12px;max-height:360px}
+.chk{display:flex;gap:8px;align-items:center;font-size:13px;padding:5px 0}
+.chk .ok{color:#0E5A47;font-weight:800}.chk .no{color:#B3261E;font-weight:800}
+.err-box{background:#FDECEC;border:1px solid #F2B8B5;color:#8C2F2A;border-radius:10px;padding:10px 14px;font-size:13.5px;margin:12px 0}
+.ok-box{background:#E2F5EC;border:1px solid #A9DCC7;color:#0E5A47;border-radius:10px;padding:10px 14px;font-size:13.5px;margin:12px 0}
+.tabs{display:flex;gap:10px;margin-bottom:18px}
+.tab{padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font:inherit;font-weight:600}
+.tab.on{background:var(--brand-700);color:#fff;border-color:var(--brand-700)}
+.mono{font-family:var(--font-mono,monospace)}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}.line-row{grid-template-columns:1fr 70px 100px 90px 30px}}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="in">
+  <b>Simal — Partner Portal</b>
+  <span>e-Invoicing (UAE Peppol · Phase 1)</span>
+  <span class="who" id="who"></span>
+  <a href="#" id="out">Sign out</a>
+</div></div>
+<div class="wrap">
+  <div class="cards" id="stats"></div>
+  <div class="tabs">
+    <button class="tab on" id="tab-list">My invoices</button>
+    <button class="tab" id="tab-new">New invoice</button>
+  </div>
+
+  <div id="view-list">
+    <table class="tbl"><thead><tr>
+      <th>Reference</th><th>Buyer</th><th>TRN</th><th>Issue</th><th>Due</th><th style="text-align:right">Total (AED)</th><th>Status</th><th></th>
+    </tr></thead><tbody id="rows"></tbody></table>
+  </div>
+
+  <div id="view-new" hidden>
+    <div class="panel">
+      <h2 style="margin:0 0 4px;font-size:19px">New invoice</h2>
+      <p style="color:var(--ink-3);font-size:13px;margin:0">Buyer TRN must belong to a KYC-approved company to pass validation. All amounts in AED, VAT 5% applied per line.</p>
+      <div class="err-box" id="nerr" hidden></div>
+      <div class="grid2">
+        <div class="f"><label>Buyer legal name</label><input id="b-name" placeholder="Acme Trading LLC"></div>
+        <div class="f"><label>Buyer TRN (15 digits)</label><input id="b-trn" class="mono" maxlength="15" placeholder="100123456700003"></div>
+        <div class="f"><label>PO reference (optional)</label><input id="b-po" placeholder="PO-2026-014"></div>
+        <div class="f"><label>Currency</label><select id="b-cur"><option>AED</option></select></div>
+        <div class="f"><label>Issue date</label><input id="b-issue" type="date"></div>
+        <div class="f"><label>Due date</label><input id="b-due" type="date"></div>
+      </div>
+      <div class="f"><label>Line items</label><div id="lines"></div></div>
+      <button class="btn btn-o" id="add-line">+ Add line</button>
+      <div class="tot"><span>Net</span><b id="t-net">0.00</b></div>
+      <div class="tot"><span>VAT 5%</span><b id="t-vat">0.00</b></div>
+      <div class="tot grand"><span>Total payable</span><b id="t-tot">0.00</b></div>
+      <div style="display:flex;gap:10px;margin-top:16px">
+        <button class="btn btn-o" id="save-draft">Save draft</button>
+        <button class="btn btn-p" id="create-submit">Create &amp; submit</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" id="detail" hidden></div>
+</div>
+<script src="assets/js/api.js?v=6"></script>
+<script src="assets/js/invoices.js"></script>
+</body>
+</html>

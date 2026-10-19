@@ -1,0 +1,6 @@
+=== rm(2.1) CSRF VERIFICATION — EVIDENCE Fri Oct 16 22:02:55 MPST 2026 ===
+1. LIVE PROOF (iteration2_live_proofs §1): A evil-origin/no-token -> 403 | B evil-origin/BOGUS-token -> 403 (BYPASS CLOSED; was 200 pre-fix) | C same-origin -> 200
+2. Regression test: api.test.js 'CSRF: bogus token cannot bypass' — 20/20 suite pass
+3. Browser: mutations carry x-csrf-token (PUT /api/cms/announcements/1, POST /api/cms/publish — csrf=SENT via interceptor); token auto-captured from me() on session restore (64ch); marker reached live site end-to-end; original restored
+4. Suites: 80/80 (unit+integration incl. CSRF test); CI spot lint+security+authz+clean-db 4/4
+5. Extra hardening: hermetic worker build (dist-worker + verified swap) — completed job 10.2s; api.js cache-buster v=6

@@ -1,0 +1,851 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simal Content Studio & Governance (Fluent UI Theme)</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/base.css?v=8">
+  <link rel="stylesheet" href="assets/css/admin.css?v=8">
+  <link rel="stylesheet" href="assets/css/d365-cms.css?v=9">
+</head>
+<body class="d365-body">
+
+  <!-- ==================== AUTH GATE (Staff Sign-In) ==================== -->
+  <div id="auth" class="auth-wrap">
+    <aside class="auth-side" style="background: linear-gradient(160deg, #0B2341 0%, #104993 60%, #0369A1 100%);">
+      <div>
+        <div style="margin-bottom:36px">
+          <img class="auth-logo" src="assets/img/logo-lockup-white.png" alt="Simal Technologies" width="160" height="35">
+          <div class="auth-logo-caption">Simal Content Studio · Fluent Design System</div>
+        </div>
+        <h2>Enterprise Content Governance.<br>Unified Publishing.</h2>
+        <p class="fp mt-4">Command bar operations, interactive mega menu, revision snapshotted rollbacks, multi-tenant RBAC, and public SSG synchronization for all Middle East digital properties.</p>
+      </div>
+      <div class="stack">
+        <span class="id-chip">⚡ Role-Based Access Control · ISO 27001 &amp; UAE PDPL Aligned · Micro-Revisions Engine</span>
+        <span class="small" style="color:rgba(255,255,255,.65)">Authorized Simal Enterprise Staff &amp; Editorial Officers only.</span>
+      </div>
+    </aside>
+    <div class="auth-main" role="region" aria-label="Sign In Gate">
+      <div class="auth-card card card-pad" id="cms-login-card" style="box-shadow:var(--d365-shadow-lg);border-radius:var(--d365-radius-lg);">
+        <div class="stack">
+          <div>
+            <div style="display:inline-block;padding:3px 10px;background:#EFF6FC;border:1px solid #C7E0F4;border-radius:999px;font-size:11px;font-weight:600;color:#0078D4;margin-bottom:8px">
+              SIMAL CMS PLATFORM · FLUENT DESIGN THEME
+            </div>
+            <h2 style="font-size:var(--fs-2xl);color:var(--d365-navy)">Sign in to Content Studio</h2>
+            <p class="muted small mb-0">Authorized Simal Enterprise Staff & Editorial Officers only.</p>
+          </div>
+          <div class="field">
+            <label for="cms-email" style="font-size:12px;font-weight:600">Work email</label>
+            <input class="input" id="cms-email" type="email" autocomplete="username" placeholder="officer@simalme.com">
+            <span class="error" id="cms-email-err" hidden>Enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="cms-pass" style="font-size:12px;font-weight:600">Password</label>
+            <input class="input" id="cms-pass" type="password" autocomplete="current-password" placeholder="••••••••">
+            <span class="error" id="cms-pass-err" hidden>Enter your password.</span>
+          </div>
+          <span class="error" id="cms-auth-err" hidden></span>
+          <button class="btn btn-primary btn-lg btn-block" id="cms-submit" style="background:var(--d365-primary);border-color:var(--d365-primary)">Sign in to Simal Content Studio</button>
+          
+          <div style="display:flex;justify-content:space-between;font-size:12px;padding-top:4px">
+            <a href="index.html" style="color:var(--d365-primary)">← Public Portal</a>
+            <a href="admin.html" style="color:var(--d365-primary)">KYC Staff Console →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== SIMAL CMS ENTERPRISE APPLICATION (FLUENT DESIGN THEME) ==================== -->
+  <div id="app" hidden>
+    
+    <!-- 1. Simal CMS Global Header (Fluent Design) -->
+    <header class="d365-global-header" role="banner">
+      <div class="d365-header-left">
+        <button class="d365-waffle-btn" id="btn-mega-toggle" aria-label="Open App Launcher and Mega Menu" title="App Launcher (Alt+M)">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor" aria-hidden="true" focusable="false">
+            <circle cx="3" cy="3" r="1.6"/><circle cx="9" cy="3" r="1.6"/><circle cx="15" cy="3" r="1.6"/>
+            <circle cx="3" cy="9" r="1.6"/><circle cx="9" cy="9" r="1.6"/><circle cx="15" cy="9" r="1.6"/>
+            <circle cx="3" cy="15" r="1.6"/><circle cx="9" cy="15" r="1.6"/><circle cx="15" cy="15" r="1.6"/>
+          </svg>
+        </button>
+        
+        <a href="#/dashboard" class="d365-app-brand">
+          <span class="d365-brand-prefix">Simal CMS</span>
+          <span>Content Studio (Fluent UI)</span>
+        </a>
+
+        <div class="d365-tenant-badge" title="Production Region: UAE / Dubai Primary Datacenter">
+          <span>UAE Hub · Production</span>
+        </div>
+      </div>
+
+      <div class="d365-header-center">
+        <div class="d365-search-box">
+          <input type="text" id="global-search-input" placeholder="Search records, entities, slides, policies, users..." aria-label="Search content studio" autocomplete="off">
+          <span class="d365-search-icon" data-icon="search"></span>
+          <kbd class="d365-search-kbd">Ctrl+K</kbd>
+        </div>
+      </div>
+
+      <div class="d365-header-right">
+        <!-- Quick Create Button -->
+        <button class="d365-h-action-btn" id="btn-quick-create" title="Quick Create (New Record)" aria-label="Quick Create">
+          <span style="font-size:18px;font-weight:700">＋</span>
+        </button>
+        
+        <!-- Notifications Bell -->
+        <button class="d365-h-action-btn" id="btn-notifications" title="System Notifications & Alerts" aria-label="Notifications">
+          <span data-icon="bell"></span>
+          <span class="d365-badge-dot"></span>
+        </button>
+
+        <!-- Settings Gear -->
+        <button class="d365-h-action-btn" id="btn-quick-settings" title="Content Studio Settings" aria-label="Settings">
+          <span data-icon="gear"></span>
+        </button>
+
+        <!-- User Profile Chip -->
+        <div class="d365-user-profile-btn" id="btn-user-profile" title="View Profile & Roles">
+          <div class="d365-avatar-circle" id="d365-avatar-initials">EA</div>
+          <div class="d365-user-meta">
+            <span class="d365-user-name" id="d365-user-name">Executive Admin</span>
+            <span class="d365-user-role" id="d365-user-role">Super Admin</span>
+          </div>
+        </div>
+
+        <!-- Sign Out -->
+        <button class="d365-cmd-btn btn-danger-action" id="btn-logout" style="margin-left:6px;font-size:12px;padding:4px 8px;border-radius:4px" title="Sign out of Content Studio">
+          Sign out
+        </button>
+      </div>
+    </header>
+
+    <!-- 2. Simal CMS Mega Menu Overlay -->
+    <div class="d365-megamenu-overlay" id="megamenu-overlay" role="dialog" aria-modal="true" aria-label="Simal CMS Navigation Mega Menu">
+      <div class="d365-megamenu">
+        <div class="d365-mega-top">
+          <div class="d365-mega-title-group">
+            <h2>Simal Content Studio · Omni-Navigation (Fluent Theme)</h2>
+            <p>Direct lateral access across all 4 operational work areas, submodules, workspaces, and system settings.</p>
+          </div>
+          <button class="d365-mega-close" id="btn-mega-close" aria-label="Close Mega Menu">✕</button>
+        </div>
+
+        <div class="d365-mega-grid">
+          <!-- Column 1: Area 1 - Content Studio -->
+          <div class="d365-mega-col">
+            <div class="d365-mega-col-header">
+              <span><span data-icon="layers"></span> Content Studio</span>
+            </div>
+            <ul class="d365-mega-links">
+              <li>
+                <a href="#/dashboard" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📊</span>
+                  <div>
+                    <span class="d365-mega-link-title">Executive Dashboard</span>
+                    <span class="d365-mega-link-desc">Real-time content health, KPIs, and status metrics</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/workspace-editorial" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">✍️</span>
+                  <div>
+                    <span class="d365-mega-link-title">Editorial Desk Workspace</span>
+                    <span class="d365-mega-link-desc">Article drafts, review queues, and publishing schedule</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/slides" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🖼️</span>
+                  <div>
+                    <span class="d365-mega-link-title">Hero Carousel & Banners</span>
+                    <span class="d365-mega-link-desc">Homepage hero carousel with live simulator</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/insights" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📰</span>
+                  <div>
+                    <span class="d365-mega-link-title">News & Insights (14 Articles)</span>
+                    <span class="d365-mega-link-desc">Enterprise SSD, AI in ERP, Peppol, PDPL guides</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/media-library" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📷</span>
+                  <div>
+                    <span class="d365-mega-link-title">Media & Photo Assets</span>
+                    <span class="d365-mega-link-desc">Product photographs, brand marks, and CDN links</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/blocks" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🧱</span>
+                  <div>
+                    <span class="d365-mega-link-title">Content Blocks Explorer</span>
+                    <span class="d365-mega-link-desc">Structured data blocks across all website entities</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/announcements" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📢</span>
+                  <div>
+                    <span class="d365-mega-link-title">Top Announcement Bar</span>
+                    <span class="d365-mega-link-desc">Live promotional banner, CTA link, and scheduling</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/testimonials" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">⭐</span>
+                  <div>
+                    <span class="d365-mega-link-title">Testimonials &amp; Awards</span>
+                    <span class="d365-mega-link-desc">Client endorsements, verified quotes, and company credits</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 2: Area 2 - Commercial & Solutions -->
+          <div class="d365-mega-col">
+            <div class="d365-mega-col-header">
+              <span><span data-icon="briefcase"></span> Commercial &amp; Solutions</span>
+            </div>
+            <ul class="d365-mega-links">
+              <li>
+                <a href="#/it-solutions" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">💻</span>
+                  <div>
+                    <span class="d365-mega-link-title">IT Solutions Catalog</span>
+                    <span class="d365-mega-link-desc">Enterprise lines: Cloud, Cyber, Network, Storage</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/amc-tiers" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🛠️</span>
+                  <div>
+                    <span class="d365-mega-link-title">AMC SLA Service Tiers</span>
+                    <span class="d365-mega-link-desc">Basic, Standard, Premium SLA matrix & on-site visits</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/software-suites" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📦</span>
+                  <div>
+                    <span class="d365-mega-link-title">Software: UniERP & UniVAT</span>
+                    <span class="d365-mega-link-desc">Modules, Peppol e-invoicing engine, and vertical specs</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/products-catalog" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🏷️</span>
+                  <div>
+                    <span class="d365-mega-link-title">Hardware Catalog</span>
+                    <span class="d365-mega-link-desc">Crucial, AIWA, KOORUI, Honeywell, UGREEN inventory</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/claims-register" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📋</span>
+                  <div>
+                    <span class="d365-mega-link-title">Claims & Warranties Register</span>
+                    <span class="d365-mega-link-desc">Single-source business hours, addresses, contact cards</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 3: Area 3 - Governance & Compliance -->
+          <div class="d365-mega-col">
+            <div class="d365-mega-col-header">
+              <span><span data-icon="shield"></span> Governance &amp; Publishing</span>
+            </div>
+            <ul class="d365-mega-links">
+              <li>
+                <a href="#/policies" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">⚖️</span>
+                  <div>
+                    <span class="d365-mega-link-title">Legal & Compliance Policies</span>
+                    <span class="d365-mega-link-desc">Regulatory documents: PDPL, Privacy, Terms, Cookies</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/revisions" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">⏪</span>
+                  <div>
+                    <span class="d365-mega-link-title">Audit Snapshots & Rollbacks</span>
+                    <span class="d365-mega-link-desc">Historical version comparisons with 1-click rollback</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/publish-pipeline" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🚀</span>
+                  <div>
+                    <span class="d365-mega-link-title">Publish & Purge Pipeline</span>
+                    <span class="d365-mega-link-desc">ADR-13 SSG cache purging and live build triggers</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/audit-trail" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📜</span>
+                  <div>
+                    <span class="d365-mega-link-title">Enterprise Audit Logs</span>
+                    <span class="d365-mega-link-desc">Security events, logins, and change records</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/loc-audit" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🌐</span>
+                  <div>
+                    <span class="d365-mega-link-title">AR vs. EN Localization Audit</span>
+                    <span class="d365-mega-link-desc">Arabic translation parity and RTL visual review</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Column 4: Area 4 - Administration & Security -->
+          <div class="d365-mega-col">
+            <div class="d365-mega-col-header">
+              <span><span data-icon="gear"></span> Administration &amp; Security</span>
+            </div>
+            <ul class="d365-mega-links">
+              <li>
+                <a href="#/users-management" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">👥</span>
+                  <div>
+                    <span class="d365-mega-link-title">User & Role Management</span>
+                    <span class="d365-mega-link-desc">Staff accounts, role assignments, and password resets</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/rbac-matrix" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🔐</span>
+                  <div>
+                    <span class="d365-mega-link-title">RBAC Permission Matrix</span>
+                    <span class="d365-mega-link-desc">Granular privileges: Decide, Notes, Audit, PII, Export</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/active-sessions" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">🖥️</span>
+                  <div>
+                    <span class="d365-mega-link-title">Active Security Sessions</span>
+                    <span class="d365-mega-link-desc">Live staff sessions, idle countdown, and force-logout</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="#/system-telemetry" class="d365-mega-link-item">
+                  <span class="d365-mega-ic">📈</span>
+                  <div>
+                    <span class="d365-mega-link-title">System Health & Telemetry</span>
+                    <span class="d365-mega-link-desc">API latency, rate limiting, and database status</span>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="admin.html" class="d365-mega-link-item" target="_blank">
+                  <span class="d365-mega-ic">↗️</span>
+                  <div>
+                    <span class="d365-mega-link-title">KYC & Invoicing Admin ↗</span>
+                    <span class="d365-mega-link-desc">Partner onboarding approvals and e-invoicing queue</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="d365-mega-footer">
+          <div class="d365-mega-quick-actions">
+            <span style="font-size:12px;font-weight:600;color:var(--d365-text-muted)">Quick Shortcuts:</span>
+            <button class="d365-cmd-btn" id="mega-quick-article">＋ New Article</button>
+            <button class="d365-cmd-btn" id="mega-quick-slide">＋ New Slide</button>
+            <button class="d365-cmd-btn" id="mega-quick-user">＋ Provision User</button>
+            <button class="d365-cmd-btn btn-primary-action" id="mega-quick-publish"><span data-icon="rocket"></span> Push Site Build</button>
+          </div>
+          <div style="font-size:11.5px;color:var(--d365-text-muted)">
+            Simal Corporate Web Platform · Architecture Spec v3.0 (Fluent UI) · Pre-Cutover Release Candidate
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. Fluent UI Core Shell (Sitemap Rail + Workspace Main) -->
+    <div class="d365-app-container" id="app-container">
+      
+      <!-- Sitemap Sidebar -->
+      <nav class="d365-sitemap-rail" id="sitemap-rail" aria-label="Sitemap Navigation">
+        <div class="d365-sitemap-top">
+          <span class="d365-sitemap-title" id="sitemap-current-area-title">Content Studio</span>
+          <button class="d365-collapse-btn" id="btn-toggle-sitemap" title="Collapse/Expand Sitemap" aria-label="Toggle Sitemap">
+            ◀
+          </button>
+        </div>
+
+        <!-- Sitemap Nav Tree (Dynamically rendered based on active Area) -->
+        <div class="d365-sitemap-nav" id="sitemap-nav-tree">
+          <!-- Rendered by JS according to selected Area -->
+        </div>
+
+        <!-- Fluent Design Area Switcher (Standard Footer Component) -->
+        <div class="d365-area-switcher-wrap">
+          <button class="d365-area-switcher-btn" id="btn-area-switcher" aria-haspopup="true" aria-expanded="false" aria-label="Content Studio — select work area">
+            <span id="area-current-icon" data-icon="layers"></span>
+            <span id="area-current-label">Content Studio</span>
+            <span class="d365-area-arrow">▲</span>
+          </button>
+
+          <div class="d365-area-menu" id="area-menu" role="menu">
+            <div class="d365-area-menu-header">Change Work Area</div>
+            <div class="d365-area-option current" data-area="content" role="menuitem">
+              <span data-icon="layers"></span> <b>Content Studio</b>
+            </div>
+            <div class="d365-area-option" data-area="solutions" role="menuitem">
+              <span data-icon="briefcase"></span> Commercial &amp; Solutions
+            </div>
+            <div class="d365-area-option" data-area="governance" role="menuitem">
+              <span data-icon="shield"></span> Governance &amp; Publishing
+            </div>
+            <div class="d365-area-option" data-area="admin" role="menuitem">
+              <span data-icon="gear"></span> Administration &amp; Security
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Main Operational Area -->
+      <main class="d365-workspace-main" id="workspace-main">
+        
+        <!-- Command Bar Ribbon -->
+        <div class="d365-command-bar" id="command-bar" role="toolbar" aria-label="Command Bar Actions">
+          <div class="d365-cmd-left" id="cmd-left-actions">
+            <!-- Populated dynamically per view -->
+          </div>
+          <div class="d365-cmd-right" id="cmd-right-actions">
+            <!-- View selector, refresh, search filters -->
+          </div>
+        </div>
+
+        <!-- Subheader: Breadcrumb & Business Process Flow -->
+        <div class="d365-sub-header" id="sub-header">
+          <nav class="d365-breadcrumb" id="breadcrumb" aria-label="Breadcrumb">
+            <a href="#/dashboard">Content Studio</a>
+            <span class="sep">/</span>
+            <span class="current" id="bc-current">Executive Dashboard</span>
+          </nav>
+
+          <!-- Business Process Flow Ribbon (Shown on record forms) -->
+          <div class="d365-bpf-container" id="bpf-container" style="display:none" role="region" aria-label="Business Process Flow">
+            <div class="d365-bpf-stage completed" data-stage="draft">
+              <span class="d365-stage-num">1</span>
+              <span>Draft & Author</span>
+            </div>
+            <div class="d365-bpf-stage active" data-stage="review">
+              <span class="d365-stage-num">2</span>
+              <span>Editorial Review</span>
+            </div>
+            <div class="d365-bpf-stage" data-stage="compliance">
+              <span class="d365-stage-num">3</span>
+              <span>Legal & AR Parity</span>
+            </div>
+            <div class="d365-bpf-stage" data-stage="published">
+              <span class="d365-stage-num">4</span>
+              <span>Approved & Published</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Dynamic Main Content Canvas -->
+        <div class="d365-stage-content" id="content">
+          <!-- Views rendered by cms.js -->
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- ==================== MODALS & FLYOUTS ==================== -->
+
+  <!-- Quick Create Modal -->
+  <div class="d365-modal-backdrop" id="modal-quick-create" role="dialog" aria-modal="true" aria-labelledby="qc-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog">
+      <div class="d365-modal-header">
+        <h3 id="qc-title">Quick Create · New Digital Asset</h3>
+        <button class="d365-mega-close" data-close-modal="modal-quick-create" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <div class="d365-form-field">
+          <label for="qc-type">Asset Type</label>
+          <select id="qc-type">
+            <option value="slide">Hero Slide (Homepage Carousel)</option>
+            <option value="insight">News / Insights Article</option>
+            <option value="policy">Legal Policy Document</option>
+            <option value="it_solution">IT Solution Record</option>
+            <option value="block">Content Block (entity = Category field, default site)</option>
+                      </select>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="qc-id">Identifier / Slug <span class="req">*</span></label>
+            <input type="text" id="qc-id" placeholder="e.g. cloud-migration-2026">
+          </div>
+          <div class="d365-form-field">
+            <label for="qc-cat">Category / Family</label>
+            <input type="text" id="qc-cat" placeholder="e.g. Infrastructure, Storage">
+          </div>
+        </div>
+        <div class="d365-form-field">
+          <label for="qc-title-field">Headline / Title <span class="req">*</span></label>
+          <input type="text" id="qc-title-field" placeholder="e.g. Next-Generation Enterprise Storage Solutions">
+        </div>
+        <div class="d365-form-field">
+          <label for="qc-desc">Description / Subtitle / Excerpt</label>
+          <textarea id="qc-desc" rows="3" placeholder="Enter introductory overview or excerpt..."></textarea>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-quick-create">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-qc-submit">Create & Open in Studio →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revisions Diff & Rollback Modal -->
+  <div class="d365-modal-backdrop" id="modal-revision-diff" role="dialog" aria-modal="true" aria-labelledby="diff-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog" style="width:min(900px, 100%)">
+      <div class="d365-modal-header">
+        <h3 id="diff-title">Revision History & Rollback Inspector</h3>
+        <button class="d365-mega-close" data-close-modal="modal-revision-diff" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body" id="diff-modal-body">
+        <div style="padding:20px;text-align:center;color:var(--d365-text-muted)">Loading revision audit snapshots...</div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-revision-diff">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- User Provisioning / Edit Modal -->
+  <div class="d365-modal-backdrop" id="modal-user-edit" role="dialog" aria-modal="true" aria-labelledby="user-modal-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog">
+      <div class="d365-modal-header">
+        <h3 id="user-modal-title">Staff Account & Role Provisioning</h3>
+        <button class="d365-mega-close" data-close-modal="modal-user-edit" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <input type="hidden" id="user-edit-id">
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="user-edit-name">Full Name <span class="req">*</span></label>
+            <input type="text" id="user-edit-name" placeholder="e.g. Tariq Al-Hashimi">
+          </div>
+          <div class="d365-form-field">
+            <label for="user-edit-email">Corporate Work Email <span class="req">*</span></label>
+            <input type="email" id="user-edit-email" placeholder="name@simalme.com">
+          </div>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="user-edit-role">Assigned CMS Security Role <span class="req">*</span></label>
+            <select id="user-edit-role">
+              <option value="super_admin">Super Administrator (Full Privileges & User Management)</option>
+              <option value="reviewer">Content Author & Reviewer (Publish & Edit Permissions)</option>
+              <option value="viewer">Auditor & Read-Only Viewer (Export & View Only)</option>
+            </select>
+          </div>
+          <div class="d365-form-field" id="user-password-container">
+            <label for="user-edit-pass">Initial Temporary Password <span class="req">*</span></label>
+            <input type="password" id="user-edit-pass" placeholder="At least 6 characters">
+          </div>
+        </div>
+        <div class="d365-form-field">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+            <input type="checkbox" id="user-edit-active" checked style="width:auto">
+            <span>Account Active & Permitted to Sign In</span>
+          </label>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-user-edit">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-user-save">Save Staff Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Publish Confirmation Modal -->
+  <div class="d365-modal-backdrop" id="modal-publish-confirm" role="dialog" aria-modal="true" aria-labelledby="pub-modal-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog">
+      <div class="d365-modal-header">
+        <h3 id="pub-modal-title">🚀 Synchronize & Publish to Public Site</h3>
+        <button class="d365-mega-close" data-close-modal="modal-publish-confirm" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <p style="font-size:13.5px;color:var(--d365-text-main);line-height:1.6">
+          This operation issues an official <b>ADR-13 SSG Purge & Rebuild Event</b> to the outbox queue.
+          All content block updates, hero slides, and legal policy changes currently in PostgreSQL will be baked into the static build.
+        </p>
+        <div style="background:#F1F5F9;padding:12px;border-radius:6px;font-size:12px;color:var(--d365-navy)">
+          <b>Target Environments:</b><br>
+          • Local Static Build Preview: <code>http://127.0.0.1:8100/</code><br>
+          • Production CDN Edge: <code>https://simalme.com/</code>
+        </div>
+        <div class="d365-form-field" style="margin-top:14px">
+          <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+            <input type="checkbox" id="pub-purge-all" checked style="width:auto">
+            <span>Purge entire static HTML cache (recommended for global hero or header edits)</span>
+          </label>
+        </div>
+        <div class="d365-card" style="margin-top:16px;padding:12px;background:#FFFBEB;border:1px solid #FDE68A" id="emergency-pub-card">
+          <div style="font-weight:600;font-size:12.5px;color:#92400E;margin-bottom:6px">⚡ Dual Approval Emergency Publish (SEC-11)</div>
+          <div style="font-size:11.5px;color:#78350F;margin-bottom:8px">For out-of-band urgent releases bypassing normal queue. Reviewers require distinct second approver email.</div>
+          <div class="d365-field-row">
+            <div class="d365-form-field">
+              <label for="em-reason" style="font-size:11px">Business Reason (min 10 chars)</label>
+              <input type="text" id="em-reason" placeholder="e.g. Critical legal disclaimer update" style="font-size:12px">
+            </div>
+            <div class="d365-form-field">
+              <label for="em-second-approver" style="font-size:11px">Second Approver Email (if Reviewer)</label>
+              <input type="email" id="em-second-approver" placeholder="approver@simalme.com" style="font-size:12px">
+            </div>
+          </div>
+          <button class="d365-cmd-btn btn-danger-action" id="btn-emergency-pub-execute" style="font-size:11.5px;margin-top:4px">Execute Emergency Publish ⚡</button>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-publish-confirm">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-pub-execute">Confirm & Trigger Publish</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Edit Modal / Drawer -->
+  <div class="d365-modal-backdrop" id="modal-product-edit" role="dialog" aria-modal="true" aria-labelledby="product-modal-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog" style="width:min(820px, 100%)">
+      <div class="d365-modal-header">
+        <h3 id="product-modal-title">📦 Product SKU & Inventory Editor</h3>
+        <button class="d365-mega-close" data-close-modal="modal-product-edit" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <input type="hidden" id="prod-edit-slug">
+        <div style="display:flex;gap:18px;margin-bottom:16px;align-items:center;background:#F8FAFC;padding:12px;border-radius:6px;border:1px solid #E2E8F0">
+          <div id="prod-edit-img-wrap" style="width:72px;height:72px;background:#fff;border-radius:6px;border:1px solid #CBD5E1;display:flex;align-items:center;justify-content:center;overflow:hidden">
+            <img id="prod-edit-img" src="" alt="Product Preview" style="max-height:64px;max-width:64px;object-fit:contain">
+          </div>
+          <div>
+            <div id="prod-edit-slug-display" style="font-size:12px;font-family:monospace;font-weight:600;color:var(--d365-navy)">slug</div>
+            <div id="prod-edit-brand-badge" class="entity-tag" style="background:#EFF6FC;color:#0078D4;margin-top:4px">Brand</div>
+          </div>
+        </div>
+        <div class="d365-form-field">
+          <label for="prod-edit-name">Product Name <span class="req">*</span></label>
+          <input type="text" id="prod-edit-name" placeholder="Official marketing product title">
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="prod-edit-sku">MPN / SKU Code</label>
+            <input type="text" id="prod-edit-sku" placeholder="e.g. CT1000T705SSD3">
+          </div>
+          <div class="d365-form-field">
+            <label for="prod-edit-brand">Brand</label>
+            <input type="text" id="prod-edit-brand" placeholder="e.g. Crucial, Honeywell, UGREEN">
+          </div>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="prod-edit-cat">Category Code</label>
+            <input type="text" id="prod-edit-cat" placeholder="e.g. storage, memory, accessories">
+          </div>
+          <div class="d365-form-field">
+            <label for="prod-edit-cat-label">Display Category Label</label>
+            <input type="text" id="prod-edit-cat-label" placeholder="e.g. Gen5 NVMe SSDs, Surge Protectors">
+          </div>
+        </div>
+        <div class="d365-form-field">
+          <label for="prod-edit-short">Short Description / Subtitle</label>
+          <textarea id="prod-edit-short" rows="2" placeholder="Brief technical summary..."></textarea>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="prod-edit-stock">Stock Availability Status</label>
+            <select id="prod-edit-stock">
+              <option value="true">In Stock (Available for RFQ & Dispatch)</option>
+              <option value="false">Out of Stock (Lead Time / Backorder)</option>
+            </select>
+          </div>
+          <div class="d365-form-field" style="display:flex;align-items:flex-end">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:8px">
+              <input type="checkbox" id="prod-edit-is-new" style="width:auto">
+              <span>Flag as "New Arrival" (Featured on Homepage)</span>
+            </label>
+          </div>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="prod-edit-warranty">Warranty (months)</label>
+            <input type="number" id="prod-edit-warranty" min="0" max="240" step="1" inputmode="numeric" placeholder="e.g. 60 (blank = standard local warranty)">
+          </div>
+          <div class="d365-form-field">
+            <label for="prod-edit-datasheet">Datasheet PDF URL</label>
+            <input type="text" id="prod-edit-datasheet" placeholder="e.g. assets/docs/crucial-t705-ds.pdf">
+          </div>
+        </div>
+        <div class="d365-form-field">
+          <label for="prod-edit-specs-json">Technical Specifications (JSON Key-Value)</label>
+          <textarea id="prod-edit-specs-json" rows="3" placeholder='{"Form Factor": "M.2 2280", "Interface": "PCIe 5.0 x4", "Read Speed": "14,500 MB/s"}' style="font-family:monospace;font-size:11.5px"></textarea>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-product-edit">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-prod-save">Save Product & Snapshot Revision</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand Edit Modal -->
+  <div class="d365-modal-backdrop" id="modal-brand-edit" role="dialog" aria-modal="true" aria-labelledby="brand-modal-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog" style="width:min(680px, 100%)">
+      <div class="d365-modal-header">
+        <h3 id="brand-modal-title">⭐ Authorized Brand Partner</h3>
+        <button class="d365-mega-close" data-close-modal="modal-brand-edit" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <input type="hidden" id="brand-edit-is-new" value="0">
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="brand-edit-slug">Brand Slug <span class="req">*</span></label>
+            <input type="text" id="brand-edit-slug" placeholder="e.g. crucial, honeywell, ugreen">
+          </div>
+          <div class="d365-form-field">
+            <label for="brand-edit-name">Display Brand Name <span class="req">*</span></label>
+            <input type="text" id="brand-edit-name" placeholder="e.g. Crucial by Micron">
+          </div>
+        </div>
+        <!-- deploy-audit D08: tier, country, logo, website and categories were shown but never
+             saved (no columns; the site reads none of them). Tagline + overview are what the
+             brand page renders. -->
+        <div class="d365-form-field">
+          <label for="brand-edit-line">Tagline (shown under the brand name)</label>
+          <input type="text" id="brand-edit-line" maxlength="120" placeholder="e.g. Fuel Your System Performance.">
+        </div>
+        <div class="d365-form-field">
+          <label for="brand-edit-descr">Brand overview (lead paragraph)</label>
+          <textarea id="brand-edit-descr" rows="2" placeholder="Official partnership description..."></textarea>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-brand-edit">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-brand-save">Save Brand Partner</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Media Upload Modal -->
+  <div class="d365-modal-backdrop" id="modal-media-upload" role="dialog" aria-modal="true" aria-labelledby="media-upload-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog" style="width:min(580px, 100%)">
+      <div class="d365-modal-header">
+        <h3 id="media-upload-title">📤 Upload Product & Brand Media Asset</h3>
+        <button class="d365-mega-close" data-close-modal="modal-media-upload" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <div class="d365-form-field">
+          <!-- rm(4.4): single canonical store (data/uploads/media) — target selector removed -->
+        </div>
+        <div class="d365-form-field">
+          <label for="media-file-input">Select Image File (PNG, JPG, WEBP — Max 5MB) <span class="req">*</span></label>
+          <input type="file" id="media-file-input" accept="image/png,image/jpeg,image/webp">
+        </div>
+        <div class="d365-form-field">
+          <label for="media-custom-filename">Destination Filename (Optional)</label>
+          <input type="text" id="media-custom-filename" placeholder="Leave empty to use original filename">
+        </div>
+        <div id="media-preview-container" style="display:none;margin-top:12px;padding:12px;background:#F8FAFC;border:1px solid #CBD5E1;border-radius:6px;text-align:center">
+          <img id="media-upload-preview" src="" alt="Upload Preview" style="max-height:120px;max-width:100%;object-fit:contain">
+          <div id="media-preview-meta" style="font-size:11px;color:#64748B;margin-top:6px"></div>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-media-upload">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-media-upload-submit">Upload & Register Asset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonial Edit Modal / Drawer -->
+  <div class="d365-modal-backdrop" id="modal-testimonial-edit" role="dialog" aria-modal="true" aria-labelledby="testimonial-modal-title" hidden inert aria-hidden="true">
+    <div class="d365-modal-dialog" style="width:min(680px, 100%)">
+      <div class="d365-modal-header">
+        <h3 id="testimonial-modal-title">⭐ Testimonial & Client Endorsement</h3>
+        <button class="d365-mega-close" data-close-modal="modal-testimonial-edit" aria-label="Close dialog">✕</button>
+      </div>
+      <div class="d365-modal-body">
+        <input type="hidden" id="test-edit-id">
+        <div class="d365-form-field">
+          <label for="test-edit-quote">Client Quote / Endorsement <span class="req">*</span></label>
+          <textarea id="test-edit-quote" rows="4" placeholder="Client quote text..."></textarea>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="test-edit-name">Client Representative Name <span class="req">*</span></label>
+            <input type="text" id="test-edit-name" placeholder="e.g. Jasper Guevarra">
+          </div>
+          <div class="d365-form-field">
+            <label for="test-edit-role">Professional Title / Organization</label>
+            <input type="text" id="test-edit-role" placeholder="e.g. Technical Support Manager, Mercans">
+          </div>
+        </div>
+        <div class="d365-field-row">
+          <div class="d365-form-field">
+            <label for="test-edit-company">Company Name (Optional)</label>
+            <input type="text" id="test-edit-company" placeholder="e.g. Mercans, Microtrans LLC">
+          </div>
+          <div class="d365-form-field" style="display:flex;align-items:flex-end">
+            <label style="display:flex;align-items:center;gap:8px;cursor:pointer;margin-bottom:8px">
+              <input type="checkbox" id="test-edit-active" checked style="width:auto">
+              <span>Active (Displayed on Homepage &amp; About Page)</span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <div class="d365-modal-footer">
+        <button class="d365-cmd-btn" data-close-modal="modal-testimonial-edit">Cancel</button>
+        <button class="d365-cmd-btn btn-primary-action" id="btn-test-save">Save Testimonial &amp; Snapshot Revision</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast Container -->
+  <div id="d365-toast-container" role="region" aria-label="Notifications" aria-live="polite" aria-atomic="true" style="position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;gap:8px;pointer-events:none"></div>
+
+  <!-- Scripts -->
+  <script src="assets/js/api.js?v=6"></script>
+  <script src="assets/js/ui.js?v=2"></script>
+  <script src="assets/js/icon-loader.js?v=1"></script>
+  <script src="assets/js/cms.js?v=34"></script>
+</body>
+</html>

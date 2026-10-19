@@ -1,0 +1,21 @@
+{
+  "name": "simal-kyc-system",
+  "version": "1.0.0",
+  "description": "Simal Technologies KYC Portal — vendor & customer onboarding system (UAE e-invoicing ready)",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "seed": "node tools/seed.js",
+    "test": "node --test \"test/unit/*.test.js\" \"test/integration/*.test.js\"",
+    "test:unit": "node --test \"test/unit/*.test.js\"",
+    "test:integration": "node --test \"test/integration/*.test.js\""
+  },
+  "dependencies": {
+    "pg": "^8.23.1"
+  }
+}

@@ -1,0 +1,6 @@
+PASS clean copy (control): gate exit 0 (want 0)  PASS facts-consistency: every published brand count, catalogue size and company-age figure equals the reference
+PASS stray "23 brands" on /careers/: gate exit 1 (want 1)  FAIL facts-consistency: 1 divergence(s)
+PASS AR years "أكثر من 25 عاماً" on /careers/: gate exit 1 (want 1)  FAIL facts-consistency: 1 divergence(s)
+PASS page meta simal:brand-count=23 on /about/: gate exit 1 (want 1)  FAIL facts-consistency: 1 divergence(s)
+PASS award title changed on /about/ only: gate exit 1 (want 1)  FAIL facts-consistency: 1 divergence(s)
+NEGATIVE TEST: ALL PASS (the gate bites on every planted divergence)

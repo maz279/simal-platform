@@ -1,0 +1,66 @@
+[
+ {
+  "n": "submit application",
+  "p": true,
+  "d": "201 ref=SIM-KYC-2026-10088"
+ },
+ {
+  "n": "public status (ref+email)",
+  "p": true,
+  "d": "200 status=submitted historyEvents=0"
+ },
+ {
+  "n": "status blocked with wrong email",
+  "p": true,
+  "d": ""
+ },
+ {
+  "n": "reviewer login",
+  "p": false,
+  "d": "401"
+ },
+ {
+  "n": "approve from submitted blocked (409)",
+  "p": false,
+  "d": "401 Authentication required"
+ },
+ {
+  "n": "start review",
+  "p": false,
+  "d": "401 -> undefined"
+ },
+ {
+  "n": "raise query",
+  "p": false,
+  "d": "401 -> undefined"
+ },
+ {
+  "n": "applicant responds",
+  "p": false,
+  "d": "409 -> undefined"
+ },
+ {
+  "n": "approve",
+  "p": false,
+  "d": "401 -> undefined"
+ },
+ {
+  "n": "reviewer name stored on record",
+  "d": "reviewer=undefined"
+ },
+ {
+  "n": "audit actor is a real identity",
+  "p": false,
+  "d": "actors=[] events=0"
+ },
+ {
+  "n": "applicant notifications queued",
+  "p": true,
+  "d": "1 mails: Simal KYC — submission received (SIM-KYC-2026-10088)"
+ },
+ {
+  "n": "mails actually transmitted?",
+  "p": null,
+  "d": "all marked \"sent\" — no SMTP configured, so nothing leaves the box"
+ }
+]

@@ -1,0 +1,35 @@
+EDGE vs http://127.0.0.1:8443:
+  #01 401 server=nginx/1.26.2 retry-after=-
+  #02 401 server=nginx/1.26.2 retry-after=-
+  #03 401 server=nginx/1.26.2 retry-after=-
+  #04 401 server=nginx/1.26.2 retry-after=-
+  #05 401 server=nginx/1.26.2 retry-after=-
+  #06 401 server=nginx/1.26.2 retry-after=-
+  #07 401 server=nginx/1.26.2 retry-after=-
+  #08 401 server=nginx/1.26.2 retry-after=-
+  #09 401 server=nginx/1.26.2 retry-after=-
+  #10 401 server=nginx/1.26.2 retry-after=-
+  #11 401 server=nginx/1.26.2 retry-after=-
+  #12 429 server=nginx/1.26.2 retry-after=-
+  #13 429 server=nginx/1.26.2 retry-after=-
+  #14 429 server=nginx/1.26.2 retry-after=-
+  #15 429 server=nginx/1.26.2 retry-after=-
+APP  vs http://127.0.0.1:8090:
+  #01 401 server=- retry-after=-
+  #02 401 server=- retry-after=-
+  #03 401 server=- retry-after=-
+  #04 401 server=- retry-after=-
+  #05 401 server=- retry-after=-
+  #06 401 server=- retry-after=-
+  #07 401 server=- retry-after=-
+  #08 401 server=- retry-after=-
+  #09 401 server=- retry-after=-
+  #10 401 server=- retry-after=-
+  #11 401 server=- retry-after=-
+  #12 401 server=- retry-after=-
+  #13 401 server=- retry-after=-
+  #14 401 server=- retry-after=-
+  #15 401 server=- retry-after=-
+edge: 11/11 app-401s then 4/4 edge-limited (429/503)
+app : 15/15 401s (direct loop never limited)
+PASS — nginx login_zone burst=10 nodelay proven: 11 immediate then 1/30s; the app layer never fired, so every 429 is edge-attributed

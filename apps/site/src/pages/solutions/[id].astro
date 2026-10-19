@@ -1,0 +1,168 @@
+---
+// solutions/[id].astro — IT solution detail. VISUAL CONTRACT: Prototype
+// it-solution.js ported 1:1 — sw-tabs rail, hero with side hero-card, what +
+// scope cards (5-icon rotation), AMC tier table (tiers lines), process timeline +
+// delivery side card + catalog chips, cross-nav band with software chips and
+// pairs-well-with, FAQ, prev/next in the 12-line chain.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+export async function getStaticPaths() {
+  const rows = await db`SELECT entity_id FROM content_blocks WHERE entity = 'it_solution' AND lang = 'en'`;
+  return rows.map(r => ({ params: { id: r.entity_id } }));
+}
+
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const { id } = Astro.params;
+const rows = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'it_solution' AND lang = 'en' ORDER BY entity_id`;
+const all = rows.map((r: any) => ({ id: r.entity_id, ...parse(r) }));
+const [{ n: productTotal }] = await db`SELECT count(*)::int AS n FROM products`; // deploy-audit: was a literal 78
+const s = all.find((x: any) => x.id === id);
+if (!s) return Astro.redirect('/solutions');
+const ix = all.findIndex((x: any) => x.id === id);
+const prev = all[(ix - 1 + all.length) % all.length];
+const next = all[(ix + 1) % all.length];
+const rel = all.filter((x: any) => x.id !== id && s.related?.includes(x.id)).slice(0, 3);
+const relCards = rel.length ? rel : all.filter((x: any) => x.id !== id).slice(0, 3);
+const tiers = (await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'amc-tiers' AND lang = 'en'`)[0];
+const T = tiers ? parse(tiers) : null;
+const ICONS = ['🎯', '⚙️', '📊', '🔗', '🧭'];
+const cats = s.cats || [];
+const CAT_LABELS: Record<string, string> = { 'internal-ssd': 'Internal SSDs', 'portable-ssd': 'Portable SSDs', memory: 'Memory', monitors: 'Monitors', accessories: 'Accessories', laptops: 'Laptops', 'power-supplies': 'Power supplies', motherboards: 'Motherboards', 'graphic-cards': 'Graphics cards', gaming: 'Gaming' };
+---
+
+<BaseLayout title={`${s.t} — IT Solutions — Simal`} description={s.d}>
+  <div class="sw-tabs"><div class="wrap">
+    <a href="/solutions/" class="on">IT solutions ({all.length})</a>
+    <a href="/software/">Software services</a>
+    <a href="/products/">Products ({productTotal})</a>
+    <a href="/rfq/">RFQ</a>
+  </div></div>
+
+  <section class="hero hero-green"><div class="wrap" style="padding:50px 28px 46px;grid-template-columns:1fr .75fr">
+    <div>
+      <div class="crumbs" style="color:#9FB1C6;padding:0 0 12px"><a href="/" style="color:#CFE0F3">Home</a> › <a href="/solutions/" style="color:#CFE0F3">IT solutions ({all.length})</a> › <b style="color:#fff">{s.t.split(' (')[0]}</b></div>
+      <span class="badge" style="background:rgba(255,255,255,.14);color:#fff">{s.icon} solution line {ix + 1} of {all.length}</span>
+      <h1 style="font-size:clamp(26px,3vw,38px);margin-top:12px">{s.t}</h1>
+      <p class="lead" style="color:#CFE8DA;margin-top:12px;max-width:660px">{s.d}</p>
+      <div class="cta"><a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="/contact/">Request this solution →</a>
+        {s.tiers && <a class="btn btn-lg btn-o" style="background:transparent;color:#fff;border-color:#2A4A3E" href="#sla">See the SLA tiers ↓</a>}
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>{s.icon} {s.t.split(' (')[0]}</h3>
+      <div class="row"><span>Family</span><b>IT solutions line</b></div>
+      <div class="row"><span>Scope areas</span><b>{s.scope?.length || 0}</b></div>
+      <div class="row"><span>Delivery</span><b>Dubai desk · JAFZA logistics</b></div>
+      <div class="row"><span>Engagement</span><b>Assess → Stage → Deploy</b></div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">solution overview</span><h2 style="font-size:24px">What this solution is</h2></div></div>
+    <p style="font-size:15.5px;line-height:1.8;color:var(--slate);max-width:900px">{s.what}</p>
+
+    <div class="sec-head" style="margin-top:32px"><div><span class="eyebrow">what it covers</span><h2 style="font-size:24px">Scope &amp; deliverables</h2></div>
+      <span class="chip on" style="font-size:12px">{s.scope?.length || 0} areas</span></div>
+    <div class="grid g3">
+      {s.scope?.map((c: any, ci: number) => (
+        <div class="card card-p" style="height:100%;border-top:4px solid var(--blue)">
+          <b style="font-size:15px">{ICONS[ci % 5]} {c[0]}</b>
+          <ul style="margin:10px 0 0;padding-left:18px">
+            {c[1].map((b: string) => <li style="font-size:13px;color:var(--slate);margin:5px 0;line-height:1.55">{b}</li>)}
+          </ul>
+        </div>
+      ))}
+    </div>
+
+    {s.tiers && T && (
+      <div id="sla" style="margin-top:34px">
+        <div class="sec-head"><div><span class="eyebrow">SLA tiers</span><h2 style="font-size:22px">Pick the response tier that matches the asset</h2></div></div>
+        <div class="card" style="padding:0;overflow:auto">
+          <table class="tbl" style="min-width:640px">
+            <tr>{T.head.map((h: string, i: number) => <th style={i > 0 ? 'text-align:center' : ''}>{h}</th>)}</tr>
+            {T.rows.map((r: string[]) => (
+              <tr><td><b>{r[0]}</b></td>
+                {r.slice(1).map((cell: string, j: number) => <td style={`text-align:center;${j === 2 ? 'background:var(--blue-050);font-weight:700;color:var(--blue)' : ''}`}>{cell}</td>)}
+              </tr>
+            ))}
+          </table>
+        </div>
+      </div>
+    )}
+
+    <div class="split" style="grid-template-columns:1.15fr .85fr;align-items:start;margin-top:34px">
+      <div><h2 style="font-size:22px">How an engagement runs</h2>
+        <div class="timeline" style="margin-top:10px">
+          {s.process?.map((h: any) => <div class="tl"><b>{h[0]}</b><span>{h[1]}</span></div>)}
+        </div>
+      </div>
+      <div>
+        <div class="card card-p" style="border-top:4px solid var(--g3)">
+          <b style="font-size:14px">🏗️ Delivery model</b>
+          <p style="font-size:13px;color:var(--slate);margin:9px 0 0;line-height:1.65">Specified from the authorized portfolio, staged and fulfilled from JAFZA, supported by the Dubai service desk — with Unisoft engineering behind the software layer when the solution needs it.</p>
+          <a class="btn btn-p btn-sm" style="margin-top:10px" href="/contact/">Request pricing →</a>
+        </div>
+        {cats && cats.length > 0 && (
+          <div class="card card-p" style="border-top:4px solid var(--blue);margin-top:14px">
+            <b style="font-size:14px">📦 Related catalog categories</b>
+            <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+              {cats.filter(Boolean).map((c: string) => (
+                <a href="/products/" class="chip" style="font-size:12px;padding:5px 12px;text-decoration:none">
+                  📦 {CAT_LABELS[c] || c}
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+
+    <div style="background:#F4F7FB;border:1px solid var(--line);border-radius:14px;padding:22px 24px;margin-top:34px">
+      <div class="sec-head" style="margin:0 0 4px"><div><span class="eyebrow">multi-point navigation</span><h2 style="font-size:21px">Explore from every angle — no dead ends</h2></div></div>
+      <div class="grid g2" style="margin-top:12px">
+        <div class="card card-p"><b style="font-size:13.5px">🛠 Software side of the house</b>
+          <p style="font-size:12.5px;color:var(--slate);margin:9px 0 0">Where this line needs software engineering, the Unisoft-backed practice takes it further.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <a class="chip" style="font-size:12px;padding:5px 12px;text-decoration:none" href="/software/services/custom-dev/">🛠 Custom development</a>
+            <a class="chip" style="font-size:12px;padding:5px 12px;text-decoration:none" href="/software/services/cloud/">☁️ Cloud services</a>
+            <a class="chip" style="font-size:12px;padding:5px 12px;text-decoration:none" href="/software/">🗂 Software portfolio</a>
+          </div>
+        </div>
+        <div class="card card-p"><b style="font-size:13.5px">🧭 Where this sits</b>
+          <p style="font-size:12.5px;color:var(--slate);margin:9px 0 0;line-height:1.7">One of 12 solution lines delivered by the Simal desk. Walk the chain with the arrows below or browse the full directory.</p>
+          <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px">
+            <a class="chip" style="font-size:12px;text-decoration:none" href="/solutions/">🗂 All 12 solution lines</a>
+            <a class="chip" style="font-size:12px;text-decoration:none" href="/products/">📦 Full product catalog</a>
+          </div>
+        </div>
+      </div>
+      <h3 style="font-size:16px;margin:22px 0 10px">Pairs well with</h3>
+      <div class="grid g3">
+        {relCards.map((r: any) => (
+          <a href={`/solutions/${r.id}/`} style="text-decoration:none;color:inherit">
+            <div class="card card-p" style="height:100%;border-top:4px solid var(--g3)">
+              <span style="font-size:11px;font-weight:700;letter-spacing:.08em;color:var(--slate-500);text-transform:uppercase">{r.icon} solution line</span>
+              <div style="font-size:14.5px;font-weight:650;margin-top:4px">{r.t}</div>
+              <span style="font-size:12px;font-weight:700;color:var(--blue)">Open the line →</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <h2 style="font-size:22px;margin-top:36px">Common questions</h2>
+    <div class="grid g2" style="margin-top:14px">
+      {s.faq?.map((f: any) => (
+        <div class="card card-p"><b style="color:var(--blue);font-size:14px">Q · {f[0]}</b>
+          <p style="font-size:13.5px;color:var(--slate);margin:8px 0 0;line-height:1.7">{f[1]}</p></div>
+      ))}
+    </div>
+
+    <div style="display:flex;gap:12px;justify-content:space-between;flex-wrap:wrap;margin-top:36px">
+      <a class="btn btn-o" href={`/solutions/${prev.id}/`}>← {prev.t.split(' (')[0]}</a>
+      <a class="btn btn-o" href="/solutions/">All 12 lines</a>
+      <a class="btn btn-o" href={`/solutions/${next.id}/`}>{next.t.split(' (')[0]} →</a>
+    </div>
+  </div></section>
+</BaseLayout>

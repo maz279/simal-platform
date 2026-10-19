@@ -1,0 +1,7 @@
+=== rm(5.3) PIPELINE OPERABILITY — EVIDENCE Sat Oct 17 12:14:10 MPST 2026 ===
+5.3-1: POST /api/cms/outbox/:id/retry (cmsAuth; failed-only 404 guard; sets meta.retriedBy; cms_outbox_retried audit)
+5.3-2: pipeline console renders a Retry button on every FAILED row (6/6 in browser) w/ Retrying… state + toast + refresh
+5.3-3: drill — browser click on a real failed job (pub_1792208616022 from the L51 era) -> re-queued -> worker processed it (also DEPLOYED: remaining failed count dropped)
+PROBES: retry non-failed 404 / retry missing 404 / retry failed 200->queued->processed / anonymous 401
+GATE FIX: chrome-blocks gate ECONNRESET after the blocking astro build (undici keep-alive socket stale while the event loop is frozen — server never died; next request 200) -> fetchRetry one-retry guard; gate GREEN again
+SUITES: 83/83; CI lint+chrome-blocks+link-crawl 3/3

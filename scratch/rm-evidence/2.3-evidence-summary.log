@@ -1,0 +1,5 @@
+=== rm(2.3-1) BOUNCE WEBHOOK AUTH — EVIDENCE Fri Oct 16 22:18:40 MPST 2026 ===
+LIVE: unsigned -> 403 | wrong sig -> 403 | valid sig -> 200 processed
+DB: exactly ONE email_bounce probe row (from the signed call only; rejected calls wrote nothing)
+TEST: api.test.js bounce-webhook regression (22/22); suites 108/108; CI spot lint+security+authz 3/3
+CONFIG: WEBHOOK_SECRET generated in .env; .env.example documents the sig contract; fails CLOSED (503) when unconfigured

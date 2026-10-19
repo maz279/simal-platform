@@ -1,0 +1,13 @@
+PASS admin session — super_admin
+PASS insight/simal-two-decades: divergent text present — an authorized 23-brand distribution house
+PASS insight/authorized-it-distributors-uae: divergent text present — authorized distribution across a 23-brand portfolio
+PASS it_solution/infra: divergent text present — The portfolio spans 23 authorized brands
+PASS it_solution/infra: divergent text present — specified from our 81-SKU authorized portfolio
+PASS it_solution/data-recovery: divergent text present — SSD and memory tiers from the 81-SKU portfolio
+PASS PUT insight/simal-two-decades — HTTP 200
+PASS PUT insight/authorized-it-distributors-uae — HTTP 200
+PASS PUT it_solution/infra — HTTP 200
+PASS PUT it_solution/data-recovery — HTTP 200
+PASS publish accepted — HTTP 200 outbox=pub_1792248367989 
+PASS SSG worker processed the publish — processed in 15s
+FIX CONTENT: ALL PASS

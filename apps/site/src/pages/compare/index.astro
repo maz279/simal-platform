@@ -1,0 +1,105 @@
+---
+// compare/index.astro — Product Comparison tool. VISUAL CONTRACT: Prototype compare.html ported 1:1.
+// Restores breadcrumbs, 4-slot dynamic comparison picker with highlights & RFQ action,
+// and the popular Crucial SSD Performance Tiers benchmark table preset (#tier-tbl).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const rows = await db`
+  SELECT p.slug, p.name, p.brand, p.cat, p.cat_label, p.short, p.sku, p.imgs, p.stock,
+         d.specs AS deep_specs
+  FROM products p LEFT JOIN product_deep d ON d.slug = p.slug
+  ORDER BY p.name`;
+
+const imgOf = (imgs: unknown): string => {
+  const v = Array.isArray(imgs) ? imgs[0] : (typeof imgs === 'string' && imgs !== 'null' ? JSON.parse(imgs)[0] : '');
+  return v && !v.startsWith('/') ? '/' + v : v;
+};
+
+const catalog = rows.map((p: any) => ({
+  slug: p.slug, name: p.name, brand: p.brand, cat: p.cat, catLabel: p.cat_label || p.cat,
+  short: p.short, sku: p.sku, img: imgOf(p.imgs), stock: !!p.stock,
+  specs: (p.deep_specs && (typeof p.deep_specs === 'string' ? JSON.parse(p.deep_specs) : p.deep_specs)) || [],
+}));
+
+const ssdTiers = {
+  head: ['Feature', 'Crucial P3', 'Crucial P3 Plus', 'Crucial T500', 'Crucial T700'],
+  rows: [
+    ['Interface', 'PCIe Gen3', 'PCIe Gen4', 'PCIe Gen4', 'PCIe Gen5'],
+    ['Max read', '3,500 MB/s', '5,000 MB/s', '7,400 MB/s', '12,400 MB/s'],
+    ['Max write', '3,000 MB/s', '4,200 MB/s', '7,000 MB/s', '10,000 MB/s'],
+    ['NAND type', 'QLC', 'QLC', 'TLC', 'TLC'],
+    ['Best for', 'Everyday upgrades', 'Value gaming builds', 'Performance mainstream', 'Enthusiast / pro workloads']
+  ],
+  links: [
+    { name: 'Crucial P3', slug: 'crucial-p3' },
+    { name: 'Crucial P3 Plus', slug: 'crucial-p3-plus' },
+    { name: 'Crucial T500', slug: 'crucial-t500-heatsink' },
+    { name: 'Crucial T700', slug: 'crucial-t705-ssd-2' }
+  ]
+};
+---
+
+<BaseLayout title="Compare Products — Simal Technologies" description="Pick up to four SKUs and compare specs side by side — SSDs, memory, monitors and accessories.">
+  <div class="wrap" style="padding-top:16px">
+    <div class="crumbs" style="font-size:13px"><a href="/" style="color:var(--slate)">Home</a> › <a href="/products" style="color:var(--slate)">Products</a> › <b>Compare</b></div>
+  </div>
+
+  <section style="padding:12px 0 64px"><div class="wrap">
+    <span class="eyebrow">Side by side — up to 4 SKUs</span>
+    <h1 style="font-size:28px;font-weight:800;margin:6px 0 6px">Compare products</h1>
+    <p style="color:var(--slate);max-width:720px;margin-bottom:20px">Pick up to four SKUs and compare specs side by side — whether it's SSDs for a server upgrade or monitors for an office deployment.</p>
+
+    <!-- Dynamic 4-Slot Picker -->
+    <div class="card card-p" style="padding:18px;margin-bottom:32px">
+      <b style="font-size:14px">Build your comparison</b>
+      <div class="grid g4" style="gap:12px;margin-top:12px">
+        {Array.from({ length: 4 }).map((_, i: number) => (
+          <select class="in cmp-sel" data-slot={i} style="width:100%" aria-label={`Select product for comparison slot ${i + 1}`}>
+            <option value="">— Slot {i + 1} —</option>
+            {catalog.map(p => <option value={p.slug}>{p.name.slice(0, 50)} ({p.brand})</option>)}
+          </select>
+        ))}
+      </div>
+      <div style="display:flex;gap:12px;align-items:center;margin-top:14px">
+        <button class="btn btn-o btn-sm" id="clear-cmp">Clear all</button>
+        <span class="note" id="cmp-note" style="color:var(--slate);font-size:12.5px"></span>
+      </div>
+    </div>
+
+    <!-- SSD Performance Tiers Benchmark Table Preset -->
+    <div class="sec-head"><div><span class="eyebrow">Popular comparison</span><h2>SSD performance tiers — choose your Crucial NVMe</h2></div></div>
+    <div class="card card-p" style="padding:0;overflow-x:auto;margin-bottom:40px">
+      <table class="tbl" id="tier-tbl">
+        <tr>
+          {ssdTiers.head.map((h, i) => (
+            <th style={i > 0 ? 'text-align:center' : ''}>{h}</th>
+          ))}
+        </tr>
+        {ssdTiers.rows.map((r) => (
+          <tr>
+            <td><b>{r[0]}</b></td>
+            {r.slice(1).map((cell, i) => (
+              <td style={`text-align:center;${i === 3 ? 'background:var(--blue-050);font-weight:700;color:var(--blue)' : ''}`}>{cell}</td>
+            ))}
+          </tr>
+        ))}
+        <tr>
+          <td><b>Open SKU</b></td>
+          {ssdTiers.links.map((link) => (
+            <td style="text-align:center">
+              <a class="btn btn-o btn-sm" href={`/products/${link.slug}/`}>View →</a>
+            </td>
+          ))}
+        </tr>
+      </table>
+    </div>
+
+    <!-- Dynamic Comparison Result -->
+    <div class="sec-head"><div><span class="eyebrow">Your comparison</span><h2>Selected SKUs</h2></div></div>
+    <div id="cmp-table"></div>
+  </div></section>
+
+  <script type="application/json" id="compare-island-data" set:html={JSON.stringify({ catalog })}></script>
+<script src="/assets/js/compare-island.js" defer></script>
+</BaseLayout>

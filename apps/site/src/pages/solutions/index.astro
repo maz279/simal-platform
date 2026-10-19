@@ -1,0 +1,152 @@
+---
+// solutions/index.astro — IT Solutions hub. VISUAL CONTRACT: Prototype solutions.html ported 1:1.
+// Restores .hero.hero-green with Services at a glance card & WhatsApp CTA,
+// Five Flagship Practices (content §05), The 12 Service Lines directory grid,
+// and the AMC 3-Tier SLA Table.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+import { siteFacts } from '../../lib/facts';
+
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const rows = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'it_solution' AND lang = 'en' ORDER BY entity_id`;
+const sols = rows.map((r: any) => ({ id: r.entity_id, ...parse(r) }));
+const { years } = await siteFacts(); // rm(6.1-2/9.1-1, PUB-8): years from site/counters
+const icons: Record<string, string> = {
+  infra: '🖧', amc: '📅', managed: '📦', 'network-security': '🔐', firewall: '🧱',
+  'cloud-security': '☁️', cabling: '🪛', av: '🎥', telephony: '☎', 'data-recovery': '💾',
+  licensing: '🧾', support: '🔧'
+};
+
+const DEFAULT_SOLUTIONS5 = [
+  { slug: 'amc', targetId: 'amc', t: 'Annual Maintenance Contract (AMC)', tag: 'Keep infrastructure at peak performance',
+    d: 'Comprehensive maintenance covering hardware, software and network infrastructure with defined SLA tiers, proactive monitoring and 24/7 support options.', icon: '📅' },
+  { slug: 'av', targetId: 'av', t: 'AV & Meeting Room Solutions', tag: 'Transform how teams collaborate',
+    d: 'Nearity all-in-one conferencing systems, professional displays, audio and control — designed and installed for huddle rooms, boardrooms and conference halls.', icon: '🎥' },
+  { slug: 'cloud', targetId: 'cloud-security', t: 'Cloud Security Solutions', tag: 'Protect business data',
+    d: 'Threat detection, identity & access management, encryption and compliance management with 24/7 security operations against ransomware, phishing and DDoS.', icon: '☁️' },
+  { slug: 'storage', targetId: 'data-recovery', t: 'Data Recovery & Storage', tag: 'Your most valuable asset, protected',
+    d: 'Enterprise data recovery plus storage architecture — NAS, SAN, cloud storage and backup strategy design. Recover data from failed drives and corrupted systems.', icon: '💾' },
+  { slug: 'firewall', targetId: 'firewall', t: 'Firewall Solutions', tag: 'Safeguard the network perimeter',
+    d: 'Next-generation firewalls built on Sophos XG Series — web filtering, application control, IPS, VPN and user-based policies, with managed 24/7 monitoring.', icon: '🛡️' }
+];
+
+const solutions5Row = (await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'solutions5' AND lang = 'en'`)[0];
+const rawSolutions5 = solutions5Row ? parse(solutions5Row) : null;
+const solutions5 = Array.isArray(rawSolutions5) && rawSolutions5.length ? rawSolutions5 : DEFAULT_SOLUTIONS5;
+
+const tiers = (await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'amc-tiers' AND lang = 'en'`)[0];
+const T = tiers ? parse(tiers) : null;
+---
+
+<BaseLayout title="IT Solutions & Services — Simal Technologies" description={`${years} years of infrastructure projects across UAE — 12 professional service lines, 5 flagship practices, and AMC SLA tiers written into the contract.`}>
+  <!-- ===== Hero Green with Services At A Glance Card ===== -->
+  <section class="hero hero-green"><div class="wrap" style="padding:54px 28px 50px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:start">
+    <div>
+      <span class="badge" style="background:rgba(255,255,255,.14);color:#fff">the existing 12-line services business</span>
+      <h1 style="font-size:38px;line-height:1.2;margin:12px 0">IT solutions,<br><em style="color:#E9F5CE;font-style:normal">delivered and maintained</em><br>across the UAE.</h1>
+      <p class="lead" style="color:#CFE8DA;margin-bottom:24px">{years} years of infrastructure projects for offices, retail, warehouses and government — now quoted and contracted through the same platform as your hardware.</p>
+      <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="#lines">Explore the 12 lines</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/971508487861" target="_blank" rel="noopener">WhatsApp the services desk</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>🛠 Services at a glance</h3>
+      <div class="row"><span>Service lines</span><b>12</b></div>
+      <div class="row"><span>AMC renewal rate</span><b>90%+ target</b></div>
+      <div class="row"><span>Coverage</span><b>UAE · GCC</b></div>
+      <div class="row"><span>Response SLA (AMC)</span><b>4h metro</b></div>
+    </div>
+  </div></section>
+
+  <!-- ===== Flagship Practices (Five solution areas) ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Flagship practices</span><h2>Five solution areas, engineered end-to-end</h2></div></div>
+    <div class="grid g3" id="flag-grid">
+      {solutions5.map((s, i) => {
+        const rawSlug = s.targetId || (s.slug === 'cloud' ? 'cloud-security' : s.slug === 'storage' ? 'data-recovery' : s.slug);
+        const targetSlug = rawSlug === 'av-solutions' ? 'av' : rawSlug;
+        return (
+          <div class="card card-p sol-card" id={s.slug} style={`${i === 0 ? 'border-top:4px solid var(--blue);' : ''}position:relative;scroll-margin-top:96px`}>
+            <a class="go2" href={`/solutions/${targetSlug}/`} aria-label={`Open the ${s.t} solution page`}></a>
+            <div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">{s.icon}</div>
+            <h4 style="font-size:16.5px;margin:12px 0 4px">{s.t}</h4>
+            <p style="font-size:12.5px;font-weight:700;color:var(--blue);margin:0 0 6px">{s.tag}</p>
+            <p style="font-size:13px;color:var(--slate)">{s.d}</p>
+            <span class="btn btn-o btn-sm" style="margin-top:12px;pointer-events:none">Solution detail →</span>
+          </div>
+        );
+      })}
+    </div>
+  </div></section>
+
+  <!-- ===== The 12 Service Lines ===== -->
+  <section class="sec" id="lines" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Live from simalme.com/solutions</span><h2>The 12 service lines</h2></div></div>
+    <div class="grid g3" id="lines-grid">
+      {sols.map((s: any, i: number) => (
+        <div class="card card-p sol-card" id={s.id} style="position:relative;scroll-margin-top:96px">
+          <a class="go2" href={`/solutions/${s.id}/`} aria-label={`Open the ${s.t} solution page`}></a>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;justify-content:space-between">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <div style="width:44px;height:44px;border-radius:12px;background:var(--blue-050);display:grid;place-items:center;font-size:20px">{icons[s.id] || '🛠'}</div>
+              <div><span class="eyebrow" style="margin:0">Line {i + 1} of 12</span>
+                <h4 style="font-size:16px;margin:2px 0 5px">{s.t}</h4></div>
+            </div>
+            <span class="btn btn-o btn-sm" style="pointer-events:none">Detail →</span>
+          </div>
+          <p style="font-size:13px;color:var(--slate)">{s.d}</p>
+          {s.scope && s.scope.length > 0 && (
+            <div style="display:flex;gap:7px;flex-wrap:wrap;margin-top:8px">
+              {s.scope.slice(0, 3).map((c: any) => <span class="chip" style="font-size:11.5px;padding:4px 10px;pointer-events:none">{c[0]}</span>)}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- ===== AMC Service Levels Table ===== -->
+  {T && (
+    <section class="sec" id="amc-table" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+      <div class="sec-head" id="amc-tiers"><div><span class="eyebrow">AMC service levels</span><h2>Three AMC tiers, defined SLAs</h2></div></div>
+      <div class="card card-p" style="padding:0;overflow:auto">
+        <table class="tbl" id="amc-tbl">
+          <tr>{T.head.map((h: string, i: number) => <th style={i > 0 ? 'text-align:center' : ''}>{h}</th>)}</tr>
+          {T.rows.map((r: string[]) => (
+            <tr><td><b>{r[0]}</b></td>
+              {r.slice(1).map((cell: string, j: number) => (
+                <td style={`text-align:center;${j === 2 ? 'background:var(--blue-050);font-weight:700;color:var(--blue)' : ''}`}>{cell}</td>
+              ))}
+            </tr>
+          ))}
+        </table>
+      </div>
+      <p class="hint" style="margin-top:12px;color:var(--slate);font-size:13px">Coverage spans computing, storage, networking, peripherals, AV and physical security — plus OS/AV patching, backup verification and SolarWinds-based network monitoring.</p>
+
+      <div class="card card-p card-g" style="margin-top:44px;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+        <div><b style="font-size:17px">Not sure which line you need?</b>
+          <p style="font-size:13.5px;color:var(--slate);margin:6px 0 0">Describe the problem — the desk maps it to the right line and quotes within one business day.</p></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <a class="btn btn-gold" href="/contact/">Book a consultation →</a>
+          <a class="btn btn-o" href="/rfq/">Request a quote</a>
+        </div>
+      </div>
+    </div></section>
+  )}
+</BaseLayout>
+
+<style>
+  .hero-green {
+    background: radial-gradient(80% 110% at 16% 36%,#0C4A34 0%,rgba(12,74,52,0) 60%),linear-gradient(118deg,#03150F 0%,#062819 55%,#0A3D2A 100%);
+    color: #fff;
+  }
+  .sol-card { transition: .18s; }
+  .sol-card:hover { border-color: var(--blue); box-shadow: 0 10px 26px rgba(0,64,128,.14); }
+  .sol-card:hover .btn-o { border-color: var(--blue); }
+  .go2 { position: absolute; inset: 0; border-radius: inherit; z-index: 1; }
+  .sol-card > * { position: relative; z-index: 2; }
+  @media(max-width:900px){
+    .hero-green .wrap { grid-template-columns: 1fr!important; padding: 36px 20px 32px!important; }
+  }
+</style>

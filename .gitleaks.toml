@@ -1,0 +1,41 @@
+# gitleaks config — the CI secrets-scan job runs `gitleaks git` over full history with
+# this file plus .gitleaksignore (rm 9.1-3). Default rules stay on; allowlists are
+# narrow and explain themselves.
+title = "simal-platform"
+
+[extend]
+useDefault = true
+
+# FREEZE_MANIFEST.json maps file paths to SHA-256 hashes. Paths containing "token"
+# or "auth" (tokens.css, auth.service.js, ...) make generic-api-key read the hash as
+# a key. Allow only 64-char hex values, only in that file, only for that rule.
+# Scoped to the rule on purpose: in gitleaks 8.28 a global [[allowlists]] entry with
+# `paths` exempts the whole file from every rule even with condition = "AND"
+# (verified: a Stripe key and a GitHub PAT placed in the manifest went undetected).
+[[rules]]
+id = "generic-api-key"
+[[rules.allowlists]]
+description = "FREEZE_MANIFEST.json SHA-256 file hashes"
+condition = "AND"
+paths = ['''^FREEZE_MANIFEST\.json$''']
+regexes = ['''^[0-9a-f]{64}$''']
+
+# rm(security, 2026-10): DSN credential guard — catches postgres://user:PASSWORD@ in
+# source and docs (gitleaks default rules miss simal_dev-style dev passwords).
+# The match ends at '@', so the allowlist regexes below use the matched form.
+[[rules]]
+id = "simal-dsn-credential"
+description = "PostgreSQL DSN with an embedded password"
+# password must not start with '*' (log-masked ***), '[' (redaction markers) or '$' (compose interpolation)
+regex = '(?i)postgres(?:ql)?://[^:/\s@]+:[^@\s*\[$][^@\s]*@'
+keywords = ["postgres"]
+tags = ["secret", "dsn"]
+
+[[rules.allowlists]]
+description = "Inert forms: CI service-container convention (postgres:16 image, ephemeral per-runner), unit-test placeholders, env-var interpolation"
+regexes = [
+  'postgres://simal:test@',
+  ':(pw|CHANGE_ME|…|<[^>]+>)@',
+  ':\$\{?[A-Z_]+\}?@',
+  'postgres://user:pw@',
+]

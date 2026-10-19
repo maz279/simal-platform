@@ -1,0 +1,27 @@
+=== AT session: Windows Narrator (EN + AR) + keyboard-only pass ===
+Narrator process running during the walkthrough:
+
+
+Id          : 26376
+ProcessName : Narrator
+StartTime   : 10/18/2026 6:45:26 PM
+
+
+
+
+Verifiable record: Chrome platform accessibility tree (the exact data Narrator/NVDA consume) + real Tab key traversal.
+NVDA is not installed on this machine; Narrator is the built-in screen reader. Speech output cannot be captured programmatically in this session, so the AX-tree checkpoints below are the audit evidence.
+
+AX-tree session log:
+site /: lang=en|ltr main=1 h1=1 interactive=147 unnamed=0
+site /products/: lang=en|ltr main=1 h1=1 interactive=322 unnamed=0
+site /products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2: lang=en|ltr main=1 h1=1 interactive=122 unnamed=0
+site /rfq/: lang=en|ltr main=1 h1=1 interactive=93 unnamed=0
+site /ar/: lang=ar|rtl main=1 h1=1 interactive=96 unnamed=0
+portal wizard: lang=en|ltr main=1 unnamed=0
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+(node:1168) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+CMS: lang=en|ltr main=1 unnamed=0
+
+=== AT WALKTHROUGH (PRD NFR-6 / URD ACC) ===

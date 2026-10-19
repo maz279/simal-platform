@@ -1,0 +1,38 @@
+RM-9.1-3 — Green platform run captured
+
+First run with every ci.yml job green (21/21):
+  http://localhost:3000/simal-ci/simal-platform/actions/runs/5
+  commit 7be627b4fa521657c861fd43175306b2625a318f, 2026-10-17 13:04–13:23 UTC (19m05s)
+
+Platform: Gitea 28.1.0 + gitea-runner v5.1.1 on the rig (infra/ci-platform), running
+.github/workflows/ci.yml unchanged on ghcr.io/catthehacker/ubuntu:act-24.04 with
+postgres:16 service containers. The URL resolves on the rig only (127.0.0.1-bound).
+
+Jobs (all success): lint, secrets-scan, unit, integration, security, parity, build,
+gate-clean-db-build, gate-authz, gate-pg-reporting, gate-sequences, gate-ga4-consent,
+gate-sitemap-lastmod, gate-link-crawl, gate-placeholders, gate-perf, gate-csp-inline,
+gate-facts-consistency, gate-cms-e2e, lighthouse, gate-a11y.
+
+Run history (per-job detail: 9.1-3-platform-runs.log; UI capture: 9.1-3-platform-run5-green.png):
+  #1  2d20b1c  4/13   baseline: committed main before 9.1 (runner network fix mid-run)
+  #2  92ad9cb  12/21  unit, integration failed; 7 skipped behind build
+  #3  95ffc42  13/21  unit failed (git-ignored watchlist); 7 skipped
+  #4  ced742c  19/21  gate-link-crawl (pg import), gate-a11y (no dist artifact)
+  #5  7be627b  21/21  GREEN
+  #6  df10575  21/21  GREEN (LHCI reports artifact uploaded; scores: 9.1-2-platform-lighthouse.log)
+
+Later commits keep running on push. Their results are recorded in the roadmap task tracker.
+
+Re-verification after the rm 9.1 completion (2026-10-17/18, details: 9.1-1-facts/README.md)
+  The facts-consistency gate (6.1-3) was rewired to read the build job's dist, and the
+  page-language, reflow, literal-escape and raw-token checks were added. Platform runs:
+  #8   9bccdab  20/21  gate-a11y: the new reflow sweep failed on the Linux runner (wider
+                       DejaVu Sans metrics) -> layouts made font-robust; sweep adds a
+                       wide-font pass. Lighthouse green (run8-lighthouse-scores.log).
+  #9   8974c9a  20/21  gate-a11y: archive.ubuntu.com unreachable during the Chrome
+                       install (infrastructure) -> one install retry in the Chrome jobs
+  #10  32f8f52  21/21  GREEN — http://localhost:3000/simal-ci/simal-platform/actions/runs/10
+                       2026-10-18 04:22–04:42 UTC (19m46s); UI capture:
+                       9.1-1-facts/9.1-3-platform-run10-green.png; Lighthouse:
+                       9.1-1-facts/run10-lighthouse-scores.log (home 0.98–0.99, LCP
+                       2189–2271ms; others 1.00; CLS 0 everywhere)

@@ -1,0 +1,6 @@
+=== rm(5.2) REAL DEPLOY STEP — EVIDENCE Sat Oct 17 11:56:36 MPST 2026 ===
+WORKER: after ssg_build_completed -> DEPLOY_DIR gets deterministic replace (rm + mkdir + cpSync + index.html verify); ssg_deployed audit row + log; failure path ssg_deploy_failed audit; production w/o DEPLOY_DIR logs ssg_deploy_missing
+ENV: DEPLOY_DIR set (.env → apps/site/deploy-docroot; .env.example documented); dev-edge restarted w/ SITE_DIST=deploy-docroot (serves the deploy target, 404 before first deploy)
+PROBES: P1 build processed; P2 deploy-docroot/index.html mtime 03:54:32Z (fresh); P3 marker RM52 AT SERVED ORIGIN ✓; P4 audit ssg_deployed 11:54:34; P5 restore republish processed + served shows original (no marker); deploy-docroot lint-ignored + gitignored
+BROWSER: served-from-deploy-target site fully renders (h1, announcement bar, footer) — screenshot archived
+SUITES: 83/83; CI lint+chrome-blocks+link-crawl 3/3

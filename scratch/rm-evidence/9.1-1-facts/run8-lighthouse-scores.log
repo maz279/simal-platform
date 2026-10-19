@@ -1,0 +1,6 @@
+run #8 (9bccdab) LHCI, Linux runner, mobile profile, 3 runs per URL
+/            perf 0.99/0.99/0.99  LCP 2196/2111/2189ms  CLS 0.000/0.000/0.000  TBT 6/0/0ms
+/products/   perf 1/1/1  LCP 1585/1163/1161ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms
+/solutions/  perf 1/1/1  LCP 1181/1306/1175ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms
+/software/   perf 1/1/1  LCP 1437/1434/1328ms  CLS 0.000/0.000/0.000  TBT 0/0/0ms
+/rfq/        perf 1/1/1  LCP 1401/1407/1400ms  CLS 0.014/0.014/0.014  TBT 0/0/0ms

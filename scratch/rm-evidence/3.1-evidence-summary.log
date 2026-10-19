@@ -1,0 +1,8 @@
+=== rm(3.1) PUBLIC-SITE XSS SINKS CLOSED — EVIDENCE Fri Oct 16 23:11:40 MPST 2026 ===
+3.1-1: safeHeroHref in frontmatter (javascript:/data:/vbscript: → '#') + esc(sl.href) in the client stage renderer
+3.1-2: escMini on name/img/qty in the RFQ mini-cart (all interpolations escaped)
+PROBE 1 (hero CTA): stored javascript:alert(1) href → data-slides carries '#', dist grep 0 javascript:alert; live DOM href='#'
+PROBE 2 (mini-cart): DB product name <img src=x onerror=alert(2)> delivered via basket API → live DOM: injectedImgInDOM=false, anyOnerrorImg=false, textHasTag=false (escaped)
+CLEAN REBUILD: slide-1 href=/products; browser: hero rendered (h1 Gen5 Era), CTA click → /products/ (functional), mini-cart 1 item with clean Aiwa name text
+CI spot: lint PASS + gate-link-crawl PASS (457 URLs, 0 broken)
+Cleanup: malicious DB values restored, probe basket cleared (0 items)

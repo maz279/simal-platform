@@ -1,0 +1,46 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Simal Technologies</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script><script src="data/solutions.js?v=134"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="about">
+<div id="chrome-top"></div>
+
+<section class="hero"><div class="wrap" style="padding:52px 28px 48px;grid-template-columns:1fr">
+  <div><span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">one phone tree · three entities · routed enquiries</span>
+  <h1 style="font-size:34px">Talk to the right desk, first time.</h1>
+  <p class="lead">Enquiries route by type — quotes, support, software, careers — with an SLA per queue.</p></div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="split" style="grid-template-columns:.9fr 1.1fr">
+    <div>
+      <div id="office-cards" style="display:flex;flex-direction:column;gap:12px"></div>
+      <div class="card card-p"><b>🕘 Working hours</b>
+        <p class="note" style="margin-top:6px">Sun–Thu 9:00–18:00 GST<br><span style="color:var(--red)">⚠ Hours reconciliation pending management sign-off (Contact page vs KYC portal discrepancy)</span></p></div>
+      <a class="btn btn-wa btn-block" style="margin-top:14px" href="https://wa.me/971508487861">💬 WhatsApp us</a>
+    </div>
+    <div class="card card-p" style="padding:24px">
+      <h3 style="font-size:19px;margin-bottom:4px">Send an enquiry</h3>
+      <p class="note" style="margin-bottom:16px">Routed to the responsible desk with an SLA.</p>
+      <div class="grid g2" style="gap:14px">
+        <div class="field"><label>I am a *</label><select class="in" id="c-role"><option value="">Select…</option><option>Reseller / distributor</option><option>System integrator</option><option>Retailer</option><option>Enterprise buyer</option><option>Job applicant</option><option>Vendor / principal</option></select></div>
+        <div class="field"><label>Enquiry type *</label><select class="in" id="c-type"><option value="">Select…</option><option>Quote / RFQ</option><option>Order support</option><option>Warranty / RMA</option><option>Software services</option><option>IT solutions / AMC</option><option>Partnership</option><option>Careers</option></select></div>
+        <div class="field"><label>Name *</label><input class="in" id="c-name"></div>
+        <div class="field"><label>Work email *</label><input class="in" id="c-email" type="email"></div>
+        <div class="field"><label>Phone</label><input class="in" id="c-phone"></div>
+        <div class="field"><label>Company</label><input class="in" id="c-co"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label>Message *</label><textarea class="in" id="c-msg" rows="4" style="resize:vertical"></textarea></div>
+      <label class="consent" style="margin-top:14px"><input type="checkbox" id="c-ok"><span>Process this enquiry under the UAE PDPL privacy notice. *</span></label>
+      <button class="btn btn-p" id="c-go" style="margin-top:18px">Send enquiry →</button>
+      <p class="hint" id="c-err" hidden style="color:var(--red)"></p>
+      <div id="c-done" hidden class="alert al-ok" style="margin-top:16px"></div>
+    </div>
+  </div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/contact.js?v=131"></script>
+</body></html>

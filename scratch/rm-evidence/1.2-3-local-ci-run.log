@@ -1,0 +1,2117 @@
+
+================ JOB lint ================
+
+>>>>>>>> JOB eslint . --ext .js,.mjs: node eslint . --ext .js,.mjs
+node:internal/modules/cjs/loader:1568
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\software_project\Simal_Corporate_website\Codebase\eslint'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+    at Module._load (node:internal/modules/cjs/loader:1341:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.21.0
+
+>>>>>>>> JOB eslint: npx eslint . --ext .js,.mjs
+
+================ JOB secrets-scan ================
+[ci] secrets-scan (grep stand-in): clean
+
+================ JOB unit ================
+
+>>>>>>>> JOB unit+json-integration: node --test
+{"ts":"2026-10-16T12:48:22.739Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-it-qwnyDE"}
+{"ts":"2026-10-16T12:48:22.739Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-16T12:48:22.890Z","level":"info","event":"http","id":"453f9bbf-0cee-4c62-9aa3-85b78971001a","method":"GET","path":"/api/health","status":200,"ms":2}
+{"ts":"2026-10-16T12:48:22.901Z","level":"info","event":"http","id":"5c797709-0e07-45e8-887d-232253e9c841","method":"GET","path":"/api/health","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:22.903Z","level":"info","event":"http","id":"3fe6c418-189d-4762-98c9-6994e997e476","method":"GET","path":"/api/settings","status":200,"ms":0}
+✔ health + settings + security headers (29.3807ms)
+✔ 404 for unknown API + unknown page (4.9902ms)
+{"ts":"2026-10-16T12:48:22.998Z","level":"info","event":"http","id":"daf59f1d-0434-4ec3-bd8d-5eb23c3c5f61","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+{"ts":"2026-10-16T12:48:23.008Z","level":"info","event":"http","id":"c668a7bf-1f22-424c-b46f-f56cda05a596","method":"POST","path":"/api/auth/mfa","status":200,"ms":7}
+{"ts":"2026-10-16T12:48:23.012Z","level":"info","event":"http","id":"1febda85-79d0-4917-a962-646f5cc1c195","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:23.018Z","level":"info","event":"http","id":"275433d3-27ff-4033-bc55-00eb7ca3e666","method":"POST","path":"/api/auth/logout","status":200,"ms":4}
+✔ auth: wrong password 401; admin MFA flow; me; logout (110.3863ms)
+{"ts":"2026-10-16T12:48:23.058Z","level":"info","event":"http","id":"6d42a030-e474-4ead-a29b-6bdf180e4d40","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+✔ auth: bad MFA code rejected (47.2053ms)
+✔ admin endpoints require auth (401 without session) (4.4476ms)
+✔ rate limiter: 429 after repeated login failures (11.4704ms)
+{"ts":"2026-10-16T12:48:23.088Z","level":"info","event":"http","id":"6015d51e-9224-48d7-9c92-624f843c9ed1","method":"POST","path":"/api/public/drafts","status":201,"ms":4}
+{"ts":"2026-10-16T12:48:23.094Z","level":"info","event":"http","id":"7ea7adfd-6f5f-4e33-9a7b-e87e0fb8498a","method":"PUT","path":"/api/public/drafts/dft_f8398ec8ca7eae6ff2fc","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:23.096Z","level":"info","event":"http","id":"8c580d70-6e28-434c-b019-c4ea3e1ba281","method":"GET","path":"/api/public/drafts/dft_f8398ec8ca7eae6ff2fc","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:23.138Z","level":"info","event":"http","id":"0659c865-6885-4d98-83c9-2c16f115c555","method":"POST","path":"/api/public/drafts/dft_f8398ec8ca7eae6ff2fc/documents","status":200,"ms":39}
+{"ts":"2026-10-16T12:48:23.394Z","level":"info","event":"http","id":"ce2fc515-d78a-46dc-ba90-b4627c2129c3","method":"POST","path":"/api/public/drafts/dft_f8398ec8ca7eae6ff2fc/documents","status":200,"ms":255}
+{"ts":"2026-10-16T12:48:23.699Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:23.699Z","level":"info","event":"http","id":"373bf2a2-ccc7-4a41-a1d8-ea95ad07762b","method":"POST","path":"/api/public/applications","status":201,"ms":300}
+{"ts":"2026-10-16T12:48:23.956Z","level":"info","event":"http","id":"6728270f-d8b6-4b15-a799-ffb588d35073","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:23.997Z","level":"info","event":"http","id":"e2f06c14-d6fd-43ea-803b-b9117fda5eb4","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+{"ts":"2026-10-16T12:48:24.002Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"start","by":"Review Staff"}
+{"ts":"2026-10-16T12:48:24.002Z","level":"info","event":"http","id":"3248ed23-1e46-4e4d-b571-1021d744f7d3","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:24.015Z","level":"info","event":"http","id":"d00872df-d43c-4c2f-9152-a38d5b47b201","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/query","status":200,"ms":12}
+{"ts":"2026-10-16T12:48:24.025Z","level":"info","event":"http","id":"b424a105-ec2d-42b4-ad1f-0d346378eee0","method":"POST","path":"/api/public/applications/SIM-KYC-2026-10061/respond","status":200,"ms":9}
+{"ts":"2026-10-16T12:48:24.076Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"approve","by":"Review Staff"}
+{"ts":"2026-10-16T12:48:24.080Z","level":"info","event":"http","id":"624792f6-2a0a-46ab-a042-03e9ddc87a96","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":53}
+{"ts":"2026-10-16T12:48:24.086Z","level":"info","event":"http","id":"b1e5aae1-a7ba-4593-82bc-ef268c8ca40d","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:24.087Z","level":"info","event":"http","id":"9c38f723-dc49-44f7-812a-370b24bcfa5a","method":"GET","path":"/api/admin/audit","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:24.088Z","level":"info","event":"http","id":"177a4af6-980d-45af-850f-8daa6cc03595","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":0}
+✔ full partner journey: draft → submit → status → query → respond → approve (1004.9015ms)
+{"ts":"2026-10-16T12:48:24.093Z","level":"info","event":"http","id":"ca24911f-11e5-4d64-8984-495b8fb0d615","method":"POST","path":"/api/public/drafts","status":201,"ms":4}
+{"ts":"2026-10-16T12:48:24.099Z","level":"info","event":"http","id":"6b795765-b1c1-49dc-a4fe-f1b887b5099c","method":"PUT","path":"/api/public/drafts/dft_90f9a1f0cf64db19f6f0","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:24.140Z","level":"info","event":"http","id":"ea3cabb1-e674-478c-90f7-1341b51ea7a8","method":"POST","path":"/api/public/drafts/dft_90f9a1f0cf64db19f6f0/documents","status":200,"ms":40}
+{"ts":"2026-10-16T12:48:24.142Z","level":"info","event":"http","id":"29bc73f2-3fb3-41ec-8abf-8c1cfe6fe1ef","method":"POST","path":"/api/public/drafts","status":201,"ms":0}
+{"ts":"2026-10-16T12:48:24.149Z","level":"info","event":"http","id":"a3657969-bba8-43d0-af11-58d3c51c7c42","method":"POST","path":"/api/public/drafts","status":201,"ms":5}
+✔ draft resume: existing draft returned with data/documents/step (61.6875ms)
+{"ts":"2026-10-16T12:48:24.346Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10062","role":"customer","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:24.347Z","level":"info","event":"http","id":"eb831618-a81b-4af0-ab30-0a69d1b2658d","method":"POST","path":"/api/public/applications","status":201,"ms":194}
+{"ts":"2026-10-16T12:48:24.352Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"start","by":"Review Staff"}
+{"ts":"2026-10-16T12:48:24.352Z","level":"info","event":"http","id":"c566c74d-73e2-4537-86ed-cc669fef2de4","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:24.402Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"approve","by":"Review Staff"}
+{"ts":"2026-10-16T12:48:24.405Z","level":"info","event":"http","id":"52c0e956-e016-4034-9d16-5ef4e6bf53c4","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":52}
+{"ts":"2026-10-16T12:48:24.447Z","level":"info","event":"http","id":"c411aab6-a161-4781-bae8-1c51d4bc89b6","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+{"ts":"2026-10-16T12:48:24.454Z","level":"info","event":"http","id":"4b230345-f1e1-4b9a-aefe-955dc23ecd28","method":"POST","path":"/api/auth/mfa","status":200,"ms":6}
+{"ts":"2026-10-16T12:48:24.458Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"reopen","by":"System Administrator"}
+{"ts":"2026-10-16T12:48:24.459Z","level":"info","event":"http","id":"43d37599-c3b8-49f8-a6a8-083f476abc54","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":4}
+✔ RBAC: reviewer cannot reopen; admin can (309.2245ms)
+{"ts":"2026-10-16T12:48:24.699Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10063","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:24.700Z","level":"info","event":"http","id":"d31e7c72-142a-4e17-a0db-f08a6ee7fc22","method":"POST","path":"/api/public/applications","status":201,"ms":238}
+{"ts":"2026-10-16T12:48:24.701Z","level":"info","event":"http","id":"db8af5e7-d83a-4b7b-adc1-0b6782e39889","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10063","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:24.702Z","level":"info","event":"http","id":"70a66f45-14a9-48b5-9f24-14e84b590dbc","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10063","status":200,"ms":1}
+✔ review details mask PII; super admin can unmask (242.7338ms)
+{"ts":"2026-10-16T12:48:24.703Z","level":"info","event":"http","id":"b471bb49-4a43-4dc8-9baa-988a621ede56","method":"GET","path":"/api/admin/export.csv","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:24.704Z","level":"info","event":"http","id":"a1b55d43-4063-422f-a0c6-68f00706814d","method":"GET","path":"/api/admin/export.csv","status":200,"ms":0}
+✔ export.csv is PII-safe by default and full for super admin (2.208ms)
+{"ts":"2026-10-16T12:48:24.709Z","level":"info","event":"http","id":"da02f3c3-5968-405b-9b23-61e9fe31422b","method":"POST","path":"/api/admin/invites/bulk","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:24.710Z","level":"info","event":"http","id":"909342da-a6bd-404b-bd43-ccd65de519f1","method":"GET","path":"/api/public/invites/INV-69A25A1A","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:24.712Z","level":"info","event":"http","id":"506d7272-b8d6-472f-ab0d-4e3ed00df2a9","method":"GET","path":"/api/public/invites/INV-NOPE","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:24.885Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10064","role":"customer","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:24.886Z","level":"info","event":"http","id":"6e9e5c2c-496e-42bb-bf98-8d56891d08b9","method":"POST","path":"/api/public/applications","status":201,"ms":173}
+{"ts":"2026-10-16T12:48:24.887Z","level":"info","event":"http","id":"addf2aaf-f832-461a-a307-5c4f841c3e47","method":"GET","path":"/api/admin/invites","status":200,"ms":1}
+✔ invite closed loop: bulk import → link redeem → submission converts (182.8023ms)
+{"ts":"2026-10-16T12:48:25.126Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10065","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:25.126Z","level":"info","event":"http","id":"e7364587-0462-4190-9516-8e33bc52f696","method":"POST","path":"/api/public/applications","status":201,"ms":238}
+{"ts":"2026-10-16T12:48:25.360Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10066","role":"vendor","screeningHits":0,"duplicateTin":true}
+{"ts":"2026-10-16T12:48:25.360Z","level":"info","event":"http","id":"5c4d881b-cc0c-47a8-ae82-f08047ffb3d4","method":"POST","path":"/api/public/applications","status":201,"ms":231}
+{"ts":"2026-10-16T12:48:25.362Z","level":"info","event":"http","id":"9c9bbf82-9d92-42b1-93c5-6015d10c3370","method":"GET","path":"/api/public/tin-check","status":200,"ms":0}
+✔ duplicate TRN detection surfaces on submission + live tin-check (475.1363ms)
+{"ts":"2026-10-16T12:48:25.609Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10067","role":"vendor","screeningHits":1,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:25.609Z","level":"info","event":"http","id":"8a6d0840-19c4-45c8-abb5-877896d17d7e","method":"POST","path":"/api/public/applications","status":201,"ms":246}
+{"ts":"2026-10-16T12:48:25.613Z","level":"info","event":"http","id":"3d548cfb-f865-460c-b541-f6b38bbeb633","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10067","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:25.846Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10068","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:25.846Z","level":"info","event":"http","id":"32198f7a-20d6-4d53-8662-80485b0ab8e5","method":"POST","path":"/api/public/applications","status":201,"ms":232}
+✔ screening: suspicious name flagged, clean name clears (484.0401ms)
+{"ts":"2026-10-16T12:48:26.081Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10069","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:26.082Z","level":"info","event":"http","id":"b27ab68f-0a5f-4710-9f81-69d34cc1b552","method":"POST","path":"/api/public/applications","status":201,"ms":234}
+{"ts":"2026-10-16T12:48:26.095Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10069","action":"reject","by":"Review Staff"}
+{"ts":"2026-10-16T12:48:26.095Z","level":"info","event":"http","id":"020c32c1-c8f1-41b7-80eb-c6d5a65f8438","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10069/actions","status":200,"ms":11}
+✔ workflow guards: approve from submitted is 409; reject requires reason (249.396ms)
+{"ts":"2026-10-16T12:48:26.098Z","level":"info","event":"http","id":"11709ce4-e264-4759-8de0-f56c08c06d8a","method":"GET","path":"/api/admin/analytics","status":200,"ms":1}
+✔ analytics: stats reflect submissions; aging + expiries shaped (1.9252ms)
+{"ts":"2026-10-16T12:48:26.099Z","level":"info","event":"http","id":"830cee16-b686-4424-a6bc-ba32f9499bba","method":"GET","path":"/api/integration/master","status":200,"ms":0}
+✔ integration master endpoint: token-gated counterparty feed (1.7499ms)
+{"ts":"2026-10-16T12:48:26.101Z","level":"info","event":"http","id":"20d67930-5286-4ad5-b5b1-eb57e06a241e","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:26.102Z","level":"info","event":"http","id":"672560f5-16d1-42c2-92b4-38c8b2675bbb","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:26.103Z","level":"info","event":"http","id":"4a7444c1-2b92-41dd-a74d-6b0d4f89426e","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:26.103Z","level":"info","event":"http","id":"a15b523c-c876-4cd1-8799-f0c9e8ce98af","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+✔ list endpoint: filters, pagination, search (3.9302ms)
+{"ts":"2026-10-16T12:48:26.338Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10070","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:26.338Z","level":"info","event":"http","id":"2082bca0-c761-4a21-ac92-3d2b6f5269bf","method":"POST","path":"/api/public/applications","status":201,"ms":234}
+{"ts":"2026-10-16T12:48:26.343Z","level":"info","event":"http","id":"a6a912a1-1b2a-4eba-926d-1988628ffaa8","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10070/checklist","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:26.350Z","level":"info","event":"http","id":"efd13ec6-69ef-442b-bc2a-bf43af795548","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10070/notes","status":200,"ms":5}
+✔ checklist + notes endpoints persist (246.3459ms)
+{"ts":"2026-10-16T12:48:22.739Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-ws-PKviyi"}
+{"ts":"2026-10-16T12:48:22.739Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-16T12:48:22.936Z","level":"info","event":"http","id":"887c9ece-5ea7-4da1-acd6-13ee28c91da8","method":"POST","path":"/api/auth/login","status":200,"ms":45}
+{"ts":"2026-10-16T12:48:22.961Z","level":"info","event":"http","id":"bb8c4fed-2941-49c9-8a07-5bdcd728017d","method":"POST","path":"/api/auth/mfa","status":200,"ms":13}
+{"ts":"2026-10-16T12:48:22.965Z","level":"info","event":"http","id":"7ef1dde3-6b8b-41fb-9dfc-609fba14ed60","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:23.009Z","level":"info","event":"http","id":"f37616a3-52e8-4668-80e4-e3ea77efc37a","method":"POST","path":"/api/auth/login","status":200,"ms":42}
+✔ users list: super admin OK, reviewer forbidden (RBAC) (130.293ms)
+{"ts":"2026-10-16T12:48:23.053Z","level":"info","event":"http","id":"c8b405d3-8815-42c7-9a18-4bcc8c6d4a8b","method":"POST","path":"/api/admin/users","status":201,"ms":37}
+{"ts":"2026-10-16T12:48:23.096Z","level":"info","event":"http","id":"43b34dc9-241f-4042-9cb8-0f3734bc0c64","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+✔ user create: happy path + validation + duplicate email (89.7274ms)
+{"ts":"2026-10-16T12:48:23.104Z","level":"info","event":"http","id":"3ef2d55f-5ef7-495d-bd86-0544f2afcd28","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:23.109Z","level":"info","event":"http","id":"c921fb57-1673-46bb-9154-8a6936f4816c","method":"PUT","path":"/api/admin/users/usr_f7798defe51ec62af403","status":200,"ms":4}
+✔ user update: role change OK; bootstrap admin protected (11.2624ms)
+{"ts":"2026-10-16T12:48:23.116Z","level":"info","event":"http","id":"1a9de540-3dcb-4319-8aeb-8b996f9e755c","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:23.154Z","level":"info","event":"http","id":"ea788547-1045-46db-a757-a867b55a3718","method":"POST","path":"/api/admin/users/usr_f7798defe51ec62af403/reset-password","status":200,"ms":38}
+{"ts":"2026-10-16T12:48:23.193Z","level":"info","event":"http","id":"223e5cda-5385-4d15-8fac-5b8e1f38b53e","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+✔ reset password: issues one-time credential and it works (79.2939ms)
+{"ts":"2026-10-16T12:48:23.195Z","level":"info","event":"http","id":"69183e8e-3f38-4611-88c7-3417133dda0f","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:23.200Z","level":"info","event":"http","id":"0609db92-8695-414b-bdaf-602dc9a7c04c","method":"POST","path":"/api/admin/users/usr_f7798defe51ec62af403/deactivate","status":200,"ms":3}
+{"ts":"2026-10-16T12:48:23.237Z","level":"info","event":"http","id":"f345c13d-6db0-4a85-8365-12c0a6a95859","method":"POST","path":"/api/admin/users/usr_f7798defe51ec62af403/reset-password","status":200,"ms":36}
+✔ deactivate: self blocked; other OK and login refused (44.8579ms)
+{"ts":"2026-10-16T12:48:23.278Z","level":"info","event":"http","id":"2aab8b85-08e3-476c-ade6-1dde8d89b1c2","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T12:48:23.287Z","level":"info","event":"http","id":"e501da20-5072-460f-892a-1a7fb415e0f8","method":"POST","path":"/api/auth/mfa","status":200,"ms":6}
+{"ts":"2026-10-16T12:48:23.288Z","level":"info","event":"http","id":"59e6fbc2-a7d6-4f17-b16d-6328a86c61c2","method":"GET","path":"/api/admin/sessions","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:23.292Z","level":"info","event":"http","id":"1fa96528-d5f7-4855-9f4a-0ce4e5fcb1d3","method":"POST","path":"/api/admin/sessions/603dac6c/force-logout","status":200,"ms":3}
+{"ts":"2026-10-16T12:48:23.295Z","level":"info","event":"http","id":"a38e040f-86cc-4cff-8c93-7c4945d3612d","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+✔ active sessions + force logout terminates a live session (57.687ms)
+{"ts":"2026-10-16T12:48:23.336Z","level":"info","event":"http","id":"30aab37e-d1cf-4b7e-bd1b-abd7ac0a872b","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T12:48:23.338Z","level":"info","event":"http","id":"6edd7f81-fe06-4dc9-9e5e-ef49d054ba44","method":"GET","path":"/api/admin/settings","status":200,"ms":0}
+{"ts":"2026-10-16T12:48:23.344Z","level":"info","event":"http","id":"18aecfa8-255b-4ee0-828f-fc5e27eedf23","method":"PUT","path":"/api/admin/settings","status":200,"ms":5}
+{"ts":"2026-10-16T12:48:23.351Z","level":"info","event":"http","id":"043b600d-4c71-471b-9dda-447162326c69","method":"PUT","path":"/api/admin/settings","status":200,"ms":4}
+✔ settings: read + write round-trip, reviewer forbidden (55.2373ms)
+{"ts":"2026-10-16T12:48:23.650Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T12:48:23.650Z","level":"info","event":"http","id":"14c46747-088b-495c-bb39-daa78581802c","method":"POST","path":"/api/public/applications","status":201,"ms":296}
+✔ seed: one submitted application exists for reports (298.9262ms)
+{"ts":"2026-10-16T12:48:23.653Z","level":"info","event":"http","id":"5bdc582d-5973-48f8-9bad-1af5f0544de1","method":"GET","path":"/api/admin/reports","status":200,"ms":1}
+✔ report catalog exposes built-ins and field dictionary (1.7123ms)
+{"ts":"2026-10-16T12:48:23.655Z","level":"info","event":"http","id":"caa303ca-c5d4-42d5-9ab4-3f8db7594c59","method":"POST","path":"/api/admin/reports/build","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:23.657Z","level":"info","event":"http","id":"7be29353-80ea-41a7-837a-a5c3cfaf4b08","method":"POST","path":"/api/admin/reports/build","status":200,"ms":0}
+✔ custom report: field selection, status filter, sorting (4.578ms)
+{"ts":"2026-10-16T12:48:23.660Z","level":"info","event":"http","id":"03780f62-607b-4a31-8692-11498d85c2b6","method":"POST","path":"/api/admin/reports/build","status":200,"ms":1}
+{"ts":"2026-10-16T12:48:23.662Z","level":"info","event":"http","id":"a08e5a9c-6e65-49f2-ad01-c095731a7d47","method":"POST","path":"/api/admin/reports/build","status":200,"ms":1}
+✔ built-in reports resolve their advertised defaults (4.7011ms)
+{"ts":"2026-10-16T12:48:23.664Z","level":"info","event":"http","id":"d4b1c9f0-6436-4e86-a4c1-edb3b6ce5a9f","method":"POST","path":"/api/admin/reports/export.csv","status":200,"ms":1}
+✔ CSV export: correct content type, quoted header, CRLF rows (2.0221ms)
+node:internal/modules/cjs/loader:1568
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\unit'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+    at Module._load (node:internal/modules/cjs/loader:1341:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.21.0
+✖ test\unit (66.8407ms)
+ℹ tests 32
+ℹ suites 0
+ℹ pass 31
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3811.0199
+
+✖ failing tests:
+
+test at test\unit:1:1
+✖ test\unit (66.8407ms)
+  'test failed'
+
+================ JOB integration ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> JOB pg-integration: node test/pg-integration-test.js
+connected to postgres:***@127.0.0.1:5433/simal_ci
+
+PASS schema: 26 tables exist (incl. one_time_tokens, B7 immutability triggers)
+PASS schema: pg_trgm extension active
+PASS schema: citext extension active
+PASS schema: invoices.net_fils is BIGINT (not float)
+PASS schema: invoices.buyer_peppol is generated ALWAYS
+PASS schema: sequences ref_seq and inv_seq exist
+PASS seed: 78 products (81 prototype rows − 3 U+2010 duplicate slugs)
+PASS seed: 78 product_deep records
+PASS seed: 20 brands
+FAIL seed: 107 content_blocks (97 + 10 site blocks for the visual-fidelity port): Expected values to be strictly equal:
+
+'121' !== '107'
+
+PASS seed: 5 hero_slides
+FAIL seed: 7 legal_policies: Expected values to be strictly equal:
+
+'14' !== '7'
+
+PASS seed: settings has simalTin
+PASS search: exact substring finds T705
+PASS search: typo tolerance finds "crucail t705"
+PASS search: garbage returns 0
+PASS search: brand search finds Crucial
+PASS content: software_product blocks exist (20)
+FAIL content: it_solution blocks exist (12): Expected values to be strictly equal:
+
+'17' !== '12'
+
+PASS content: insight blocks exist (14)
+PASS invoice: CHECK constraint currency=AED
+PASS invoice: CHECK constraint due_date >= issue_date
+FAIL invoice: buyer_peppol auto-generated as 0235:buyer_tin: Expected values to be strictly equal:
++ actual - expected
+
++ '0235:1001234567'
+- '0235:100123456700003'
+                  ^
+
+PASS backup: pg_dump produces valid SQL
+PASS b5: drafts lifecycle (create → save → find → remove)
+PASS b5: invites widened columns (company/created_by/conversion) round-trip
+PASS b5: screening_results upsert keeps latest
+
+4 FAILED: 23 passed, 4 failed
+
+================ JOB security ================
+
+>>>>>>>> JOB scripts/security-audit.js: node scripts/security-audit.js
+
+=== 1. Response headers (ASVS V5) ===
+{"ts":"2026-10-16T12:48:27.637Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-16T12:48:27.638Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T12:48:27.821Z","level":"info","event":"http","id":"af7b0e75-9708-4b45-b0a1-f4b027c05643","method":"GET","path":"/api/health","status":200,"ms":3}
+PASS X-Content-Type-Options: nosniff
+PASS X-Frame-Options denies framing
+PASS Referrer-Policy set
+PASS Content-Security-Policy set
+PASS Permissions-Policy set
+PASS Strict-Transport-Security set (HSTS)
+PASS no X-Powered-By / server banner
+PASS 404 is JSON (no stack trace)
+
+=== 2. Secrets scan ===
+PASS no hard-coded secrets in 128 source files
+
+=== 3. Dependencies (npm audit --omit=dev) =====
+PASS no high/critical vulns in RUNTIME deps (found: ) — {"info":0,"low":1,"moderate":0,"high":1,"critical":1,"total":3} | runtime: [] build-only: [astro, esbuild, sharp]
+INFO build-toolchain advisories (not shipped; assessed in SECURITY_AUDIT.md): astro, esbuild, sharp
+
+=== 4. Runtime security evidence (suites re-run this phase) ===
+PASS SSRF guard unit tests (7) green
+PASS RBAC/PII/rate-limit integration tests green
+PASS SQL parameterisation: every client.query uses a literal SQL string (67/67)
+PASS uploads path traversal guard present
+
+============================================================
+SECURITY AUDIT (local): 14 PASS, 0 FAIL
+Remaining T6.6 rig: ZAP baseline scan + external pen-test (ASVS L2 full)
+============================================================
+
+================ JOB parity ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> JOB ssg-build-for-parity: node node_modules/astro/astro.js build
+node:internal/modules/cjs/loader:1568
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\software_project\Simal_Corporate_website\Codebase\apps\site\node_modules\astro\astro.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+    at Module._load (node:internal/modules/cjs/loader:1341:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.21.0
+
+================ JOB build ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> JOB ssg-build: node node_modules/astro/astro.js build
+node:internal/modules/cjs/loader:1568
+  throw err;
+  ^
+
+Error: Cannot find module 'C:\software_project\Simal_Corporate_website\Codebase\apps\site\node_modules\astro\astro.js'
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1564:15)
+    at wrapResolveFilename (node:internal/modules/cjs/loader:1118:27)
+    at defaultResolveImplForCJSLoading (node:internal/modules/cjs/loader:1142:10)
+    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1169:12)
+    at Module._load (node:internal/modules/cjs/loader:1341:5)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:261:19)
+    at Module.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:154:5)
+    at node:internal/main/run_main_module:33:47 {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: []
+}
+
+Node.js v24.21.0
+
+================ JOB gate-clean-db-build ================
+
+>>>>>>>> JOB scripts/ci/clean-db-build.mjs: node scripts/ci/clean-db-build.mjs
+[clean-db-build] scratch db ready — building SSG site into dist-gate/ …
+(node:9928) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2m20:48:40[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+7ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+6ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+8ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/telephony/index.html[22m [2m(+7ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+7ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+4ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m   [34m├─[39m [2m/solutions/support/index.html[22m [2m(+6ms)[22m 
+[2m20:48:40[22m   [34m└─[39m [2m/solutions/av/index.html[22m [2m(+5ms)[22m 
+[2m20:48:40[22m [32m▶[39m src/pages/solutions/index.astro
+[2m20:48:40[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+6ms)[22m 
+[2m20:48:40[22m [32m✓ Completed in 1.92s.
+[39m
+[2m20:48:40[22m [34m[build][39m 241 page(s) built in [1m3.90s[22m
+[2m20:48:40[22m [34m[build][39m [1mComplete![22m
+
+
+=== GATE clean-db-build (DAT-1) ===
+PASS — 0 violations
+
+================ JOB gate-authz ================
+
+>>>>>>>> JOB scripts/ci/authz-matrix.mjs: node scripts/ci/authz-matrix.mjs
+{"ts":"2026-10-16T12:48:41.723Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\simal-gate-2Uch8s"}
+{"ts":"2026-10-16T12:48:41.723Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-16T12:48:41.904Z","level":"info","event":"http","id":"a1d8e0d3-1a14-4dbd-ba01-bb11bee4356a","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+{"ts":"2026-10-16T12:48:41.924Z","level":"info","event":"http","id":"9c879036-db6c-4e02-8042-7167b0144dc9","method":"POST","path":"/api/auth/mfa","status":200,"ms":11}
+{"ts":"2026-10-16T12:48:41.969Z","level":"info","event":"http","id":"cdb22aa8-cafd-449b-a515-76ad7fe20c24","method":"POST","path":"/api/auth/login","status":200,"ms":43}
+{"ts":"2026-10-16T12:48:42.006Z","level":"info","event":"http","id":"ae75665b-4730-4880-9c13-05282cefc6d5","method":"POST","path":"/api/auth/login","status":200,"ms":35}
+{"ts":"2026-10-16T12:48:42.079Z","level":"info","event":"http","id":"302e7976-2934-4eff-8e34-43a51a362dab","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+
+=== GATE authz-matrix (SEC-3/SEC-5) ===
+PASS — 0 violations
+
+================ JOB gate-pg-reporting ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> JOB scripts/ci/pg-reporting.mjs: node scripts/ci/pg-reporting.mjs
+{"ts":"2026-10-16T12:48:43.848Z","level":"info","event":"store","engine":"postgresql","url":"postgres:***@127.0.0.1:5433/simal_gate_pgr_mvayrox4"}
+{"ts":"2026-10-16T12:48:43.850Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T12:48:44.143Z","level":"info","event":"http","id":"eca4b256-f6aa-45e3-ae16-586a29c53800","method":"POST","path":"/api/auth/login","status":200,"ms":43}
+{"ts":"2026-10-16T12:48:44.156Z","level":"info","event":"http","id":"5aa42aa7-3014-4af1-8c06-a044d0831ebc","method":"GET","path":"/api/admin/submissions","status":200,"ms":7}
+{"ts":"2026-10-16T12:48:44.164Z","level":"info","event":"http","id":"a7aeacd2-422c-429d-8e65-3b8d0a39567e","method":"POST","path":"/api/admin/reports/build","status":200,"ms":4}
+{"ts":"2026-10-16T12:48:44.171Z","level":"info","event":"http","id":"d03223ec-7f19-404e-8502-09c07835d46d","method":"GET","path":"/api/admin/export.csv","status":200,"ms":6}
+
+=== GATE pg-reporting (DAT-3) ===
+PASS — 0 violations
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+================ JOB gate-link-crawl ================
+
+>>>>>>>> JOB scripts/ci/link-crawl.mjs: node scripts/ci/link-crawl.mjs
+crawled 1 internal URLs; 1 non-2xx/3xx; 0 missing anchors (P3-9 scope)
+
+=== GATE link-crawl (PUB-3) ===
+FAIL — 1 broken/unresolvable internal URL(s):
+  1. 404 /   (linked from: —)
+
+================ JOB gate-a11y ================
+
+>>>>>>>> JOB scripts/ci/a11y.mjs: node scripts/ci/a11y.mjs
+page /: 0 violation rule(s) [0 serious/critical]
+page /products/: 0 violation rule(s) [0 serious/critical]
+page /brands/: 0 violation rule(s) [0 serious/critical]
+page /insights/: 0 violation rule(s) [0 serious/critical]
+page /software/: 0 violation rule(s) [0 serious/critical]
+page /contact/: 0 violation rule(s) [0 serious/critical]
+page /about/: 0 violation rule(s) [0 serious/critical]
+
+=== GATE a11y (WCAG 2.x A/AA, Phase 6 target) ===
+PASS — 0 violations
+
+================ CI SUMMARY ================
+  PASS  lint
+  PASS  secrets-scan
+  FAIL  unit
+  FAIL  integration
+  PASS  security
+  FAIL  parity
+  FAIL  build
+  PASS  gate-clean-db-build
+  PASS  gate-authz
+  PASS  gate-pg-reporting
+  FAIL  gate-link-crawl
+  PASS  gate-a11y
+7/12 jobs green

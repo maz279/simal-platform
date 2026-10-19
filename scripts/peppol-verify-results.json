@@ -1,0 +1,16 @@
+{
+  "ts": "2026-10-13T18:57:36.312Z",
+  "mode": "sandbox (real service code, temp store)",
+  "pass": 21,
+  "fail": 0,
+  "invoiceRef": "SIM-INV-2026-5017",
+  "buyerTrn": "100123456700090",
+  "sellerTrn": "100476400747800",
+  "kycBuyerRef": "SIM-KYC-2026-10140",
+  "kycSellerRef": "SIM-KYC-2026-10139",
+  "pendingLiveItems": [
+    "ASP production credentials (T5.2, 20 Nov gate)",
+    "live transmission to ≥2 real counterparties",
+    "MLR + transmission receipt IDs from production ASP"
+  ]
+}

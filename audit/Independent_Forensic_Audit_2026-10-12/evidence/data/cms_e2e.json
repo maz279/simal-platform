@@ -1,0 +1,202 @@
+{
+ "RUN": "AUDMV4OEUOE",
+ "pub": {
+  "type": "cms_publish",
+  "entities": [
+   {
+    "entity": "site",
+    "entity_id": "all"
+   }
+  ],
+  "actor": "system",
+  "ts": 1791774731324,
+  "purge": [
+   "dist/site/all"
+  ],
+  "outboxId": "pub_1791774731324"
+ },
+ "status": "processed",
+ "tests": [
+  {
+   "name": "Announcement bar text",
+   "page": "/index.html",
+   "marker": "AUDMV4OEUOEX1",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Hero slide #1 headline",
+   "page": "/index.html",
+   "marker": "AUDMV4OEUOEX2",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Product name + stock=false (crucial-t500)",
+   "page": "/products/crucial-t500/index.html",
+   "marker": "AUDMV4OEUOEX3",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Testimonial (create)",
+   "page": "/index.html",
+   "marker": "AUDMV4OEUOEX4",
+   "note": "also expected on /about/",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Legal policy body (privacy-policy)",
+   "page": "/legal/privacy-policy/index.html",
+   "marker": "AUDMV4OEUOEX5",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block site/offices",
+   "page": "/contact/index.html",
+   "marker": "AUDMV4OEUOEX6",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block site/careers-roles",
+   "page": "/careers/index.html",
+   "marker": "AUDMV4OEUOEX7",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block site/cases",
+   "page": "/resources/index.html",
+   "marker": "AUDMV4OEUOEX8",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block amc/tiers",
+   "page": "/solutions/index.html",
+   "marker": "AUDMV4OEUOEX9",
+   "note": "the block the CMS \"AMC Tiers\" view edits",
+   "before": false,
+   "edited": true,
+   "after": false
+  },
+  {
+   "name": "Block site/amc-tiers",
+   "page": "/solutions/index.html",
+   "marker": "AUDMV4OEUOEX10",
+   "note": "the block the site reads",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block site/solutions5",
+   "page": "/solutions/index.html",
+   "marker": "AUDMV4OEUOEX11",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block erp/pricing",
+   "page": "/software/index.html",
+   "marker": "AUDMV4OEUOEX12",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block site/impl-phases",
+   "page": "/software/index.html",
+   "marker": "AUDMV4OEUOEX13",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block insight/ddr4-vs-ddr5",
+   "page": "/insights/ddr4-vs-ddr5/index.html",
+   "marker": "AUDMV4OEUOEX14",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block it_solution/amc",
+   "page": "/solutions/amc/index.html",
+   "marker": "AUDMV4OEUOEX15",
+   "note": "",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block software_module/finance",
+   "page": "/software/modules/finance/index.html",
+   "marker": "AUDMV4OEUOEX16",
+   "note": "detail page",
+   "before": false,
+   "edited": true,
+   "after": true
+  },
+  {
+   "name": "Block software_module/crm",
+   "page": "/software/index.html",
+   "marker": "AUDMV4OEUOEX17",
+   "note": "software hub grid",
+   "before": false,
+   "edited": true,
+   "after": false
+  },
+  {
+   "name": "Block site/counters",
+   "page": "/index.html",
+   "marker": "AUDMV4OEUOEX18",
+   "note": "home stats strip",
+   "before": false,
+   "edited": true,
+   "after": false
+  },
+  {
+   "name": "Block site/mission",
+   "page": "/about/index.html",
+   "marker": "AUDMV4OEUOEX19",
+   "note": "",
+   "before": false,
+   "edited": false,
+   "err": "PUT /api/cms/blocks/site/mission -> 422 {\"error\":\"payload must be an object\"}",
+   "after": false
+  },
+  {
+   "name": "Block site/featured-products (reorder)",
+   "page": "/index.html",
+   "marker": "href=\"/products/crucial-p3-plus\"",
+   "note": "expects a crucial-p3-plus card on home",
+   "before": false,
+   "edited": true,
+   "after": true
+  }
+ ]
+}

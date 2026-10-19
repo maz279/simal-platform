@@ -1,0 +1,20 @@
+rm(9.1-2) Lighthouse CI measured ON THE CI PLATFORM — run #6 job 'lighthouse' (http://localhost:3000/simal-ci/simal-platform/actions/runs/6)
+@lhci/cli 0.15.1, mobile profile (simulated throttling), 3 runs/URL, Chrome/158 via browser-actions/setup-chrome, ubuntu 24.04 runner
+Assertions (lighthouserc.json): categories:performance >= 0.85, largest-contentful-paint <= 2500ms  ->  assertion-results.json = [] (no failures)
+Full reports: artifact 'lhci-reports' (30.2 MB) on the run page.
+
+/              performance 0.99  LCP  2190ms FCP  1107ms TBT 0ms CLS 0.000
+/              performance 0.99  LCP  2189ms FCP  1110ms TBT 0ms CLS 0.000
+/              performance 0.99  LCP  2187ms FCP  1062ms TBT 0ms CLS 0.000
+/products/     performance 1     LCP  1163ms FCP  1059ms TBT 0ms CLS 0.000
+/products/     performance 1     LCP  1340ms FCP  1162ms TBT 0ms CLS 0.000
+/products/     performance 1     LCP  1164ms FCP  1058ms TBT 0ms CLS 0.000
+/solutions/    performance 1     LCP  1176ms FCP   946ms TBT 0ms CLS 0.000
+/solutions/    performance 1     LCP  1183ms FCP   953ms TBT 0ms CLS 0.000
+/solutions/    performance 1     LCP  1178ms FCP   948ms TBT 0ms CLS 0.000
+/software/     performance 1     LCP  1436ms FCP  1101ms TBT 0ms CLS 0.000
+/software/     performance 1     LCP  1368ms FCP  1062ms TBT 0ms CLS 0.000
+/software/     performance 1     LCP  1367ms FCP  1061ms TBT 0ms CLS 0.000
+/rfq/          performance 1     LCP  1368ms FCP  1060ms TBT 0ms CLS 0.014
+/rfq/          performance 1     LCP  1400ms FCP  1093ms TBT 0ms CLS 0.014
+/rfq/          performance 1     LCP  1398ms FCP  1092ms TBT 0ms CLS 0.014

@@ -1,0 +1,529 @@
+
+================ JOB integration ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> pg-integration: node test/pg-integration-test.js
+connected to postgres:***@127.0.0.1:5433/simal_ci
+
+PASS schema: 26 tables exist (incl. one_time_tokens, B7 immutability triggers)
+PASS schema: pg_trgm extension active
+PASS schema: citext extension active
+PASS schema: invoices.net_fils is BIGINT (not float)
+PASS schema: invoices.buyer_peppol is generated ALWAYS
+PASS schema: sequences ref_seq and inv_seq exist
+PASS seed: 78 products (81 prototype rows − 3 U+2010 duplicate slugs)
+PASS seed: 78 product_deep records
+PASS seed: 22 brands (ratified catalogue incl. zotac/pny)
+PASS seed: 121 content_blocks (107 + 14 AR localization blocks)
+PASS seed: 5 hero_slides
+PASS seed: 14 legal_policies (7 EN + 7 AR)
+PASS seed: settings has simalTin
+PASS search: exact substring finds T705
+PASS search: typo tolerance finds "crucail t705"
+PASS search: garbage returns 0
+PASS search: brand search finds Crucial
+PASS content: software_product blocks exist (20)
+PASS content: it_solution blocks exist (17)
+PASS content: insight blocks exist (14)
+PASS invoice: CHECK constraint currency=AED
+PASS invoice: CHECK constraint due_date >= issue_date
+PASS invoice: buyer_peppol auto-generated as 0235:buyer_tin
+PASS backup: pg_dump produces valid SQL
+PASS b5: drafts lifecycle (create → save → find → remove)
+PASS b5: invites widened columns (company/created_by/conversion) round-trip
+PASS b5: screening_results upsert keeps latest
+
+ALL PASS: 27 passed, 0 failed
+
+>>>>>>>> einvoice-immutability: node test/einvoice-immutability.test.js
+PASS draft invoice is editable (control)
+PASS delivered invoice rejects UPDATE (any column)
+PASS delivered invoice rejects UPDATE that keeps values identical (strict read-only)
+PASS delivered invoice rejects DELETE
+PASS delivered invoice rejects new line INSERT
+PASS delivered invoice rejects line UPDATE and line DELETE
+PASS status transition away from delivered is also blocked (trigger fires on UPDATE)
+
+ALL PASS: 7 passed, 0 failed
+
+>>>>>>>> pg-mode-journey: node test/pg-mode-journey.test.js
+psql:scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+psql:scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+psql:scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+scratch database simal_pgjourney provisioned (migrate + seed)
+{"ts":"2026-10-16T13:34:17.108Z","level":"info","event":"store","engine":"postgresql","url":"postgres:***@127.0.0.1:5433/simal_pgjourney"}
+{"ts":"2026-10-16T13:34:17.110Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\test\\fixtures\\watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+portal booted on PG scratch @ http://127.0.0.1:53948
+
+{"ts":"2026-10-16T13:34:17.316Z","level":"info","event":"http","id":"aaf9ca48-7a0e-4861-a7a4-322531f3b44a","method":"POST","path":"/api/auth/login","status":200,"ms":45}
+{"ts":"2026-10-16T13:34:17.332Z","level":"info","event":"http","id":"a877f9ba-e5a8-4c6d-b62d-1081da39cd56","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":7}
+{"ts":"2026-10-16T13:34:17.337Z","level":"info","event":"http","id":"6d6520a2-c9b4-46de-9160-0ac2d6cd5710","method":"GET","path":"/api/admin/outbox","status":200,"ms":3}
+{"ts":"2026-10-16T13:34:17.380Z","level":"info","event":"http","id":"7a2c88da-4730-4dcd-a711-c706bf108608","method":"POST","path":"/api/auth/password-reset/confirm","status":200,"ms":39}
+{"ts":"2026-10-16T13:34:17.451Z","level":"info","event":"http","id":"383d70c2-4ec4-491b-8ba7-d4891bceae10","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-16T13:34:17.457Z","level":"info","event":"http","id":"978d2c47-87a8-4931-9aa3-8d466bd9b3f7","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":5}
+{"ts":"2026-10-16T13:34:17.460Z","level":"info","event":"http","id":"5bf5cd12-806b-4d1f-aeb3-44a6e9885f8b","method":"GET","path":"/api/admin/outbox","status":200,"ms":2}
+{"ts":"2026-10-16T13:34:17.498Z","level":"info","event":"http","id":"eb5edad5-fe3d-4ed5-ae13-012c61f760ab","method":"POST","path":"/api/auth/password-reset/confirm","status":200,"ms":36}
+{"ts":"2026-10-16T13:34:17.533Z","level":"info","event":"http","id":"3c8adc04-91c0-4359-b30e-6ce792715a92","method":"POST","path":"/api/auth/login","status":200,"ms":34}
+PASS PG: password reset round-trip persists (password_hash write)
+{"ts":"2026-10-16T13:34:17.537Z","level":"info","event":"http","id":"6542ffac-3a41-480c-94e9-2871e32dbcd4","method":"POST","path":"/api/auth/mfa/begin","status":200,"ms":3}
+{"ts":"2026-10-16T13:34:17.542Z","level":"info","event":"http","id":"49382b23-af53-4f78-ab47-325f7ad996cf","method":"POST","path":"/api/auth/mfa/confirm","status":200,"ms":4}
+{"ts":"2026-10-16T13:34:17.577Z","level":"info","event":"http","id":"b3f00e2d-e1a4-46a6-80f6-c9a57d140848","method":"POST","path":"/api/auth/login","status":200,"ms":34}
+{"ts":"2026-10-16T13:34:17.582Z","level":"info","event":"http","id":"145722ec-0f49-44bf-bf7c-4be5701d387c","method":"POST","path":"/api/auth/mfa","status":200,"ms":4}
+{"ts":"2026-10-16T13:34:17.586Z","level":"info","event":"http","id":"5c1e0064-603b-40cc-8b59-7dafd961b9d9","method":"POST","path":"/api/auth/mfa/disable","status":200,"ms":4}
+PASS PG: MFA enrolment persists (pending_totp_secret + totp_secret writes)
+{"ts":"2026-10-16T13:34:17.596Z","level":"info","event":"http","id":"73dc9813-411f-41f1-b7c0-f937db8b69b1","method":"POST","path":"/api/auth/email/change","status":200,"ms":10}
+{"ts":"2026-10-16T13:34:17.600Z","level":"info","event":"http","id":"c7e7d7c5-c3dd-4826-934c-98e90e9ff6a5","method":"GET","path":"/api/admin/outbox","status":200,"ms":3}
+{"ts":"2026-10-16T13:34:17.606Z","level":"info","event":"http","id":"ff5bb5d8-48b2-4f63-a9cb-0a5eb3c59a6c","method":"POST","path":"/api/auth/email/verify","status":200,"ms":5}
+{"ts":"2026-10-16T13:34:17.643Z","level":"info","event":"http","id":"c96db86c-c986-4fa2-9d18-86b6ade50ce2","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-16T13:34:17.678Z","level":"info","event":"http","id":"26170916-ec45-45e7-8725-75534ce59d7f","method":"POST","path":"/api/auth/login","status":200,"ms":34}
+PASS PG: email change + verify persists (pending_email + email writes)
+{"ts":"2026-10-16T13:34:17.932Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-16T13:34:17.932Z","level":"info","event":"http","id":"8917fe2e-6a3d-47a7-9714-6914ef821ecb","method":"POST","path":"/api/public/applications","status":201,"ms":253}
+{"ts":"2026-10-16T13:34:17.936Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"start","by":"System Administrator"}
+{"ts":"2026-10-16T13:34:17.936Z","level":"info","event":"http","id":"54ebb39d-9269-4139-8ef3-491bba5b0b85","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":3}
+{"ts":"2026-10-16T13:34:17.941Z","level":"info","event":"http","id":"32aa737c-36b5-4a71-bf1b-696eb685a9de","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/checklist","status":200,"ms":4}
+{"ts":"2026-10-16T13:34:17.946Z","level":"info","event":"http","id":"dab91e45-9465-472b-8499-fdad34b26247","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/notes","status":200,"ms":4}
+{"ts":"2026-10-16T13:34:17.949Z","level":"info","event":"http","id":"566e6e59-62f6-48c5-9209-0d0236068580","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10061","status":200,"ms":2}
+PASS PG: review checklist + notes persist across reads (review JSONB)
+{"ts":"2026-10-16T13:34:17.951Z","level":"info","event":"http","id":"4096a028-cc98-4b9b-9b51-363e1ce50cad","method":"GET","path":"/api/admin/submissions","status":200,"ms":2}
+{"ts":"2026-10-16T13:34:17.959Z","level":"info","event":"http","id":"3a1d574f-4996-4476-9c13-a828b780a28d","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/query","status":200,"ms":7}
+{"ts":"2026-10-16T13:34:17.961Z","level":"info","event":"http","id":"63d6079d-64a4-4345-92e1-8e692375dc1d","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":1}
+{"ts":"2026-10-16T13:34:17.967Z","level":"info","event":"http","id":"9a36de27-b165-4889-88dd-413a9de6f2b6","method":"POST","path":"/api/public/applications/SIM-KYC-2026-10061/respond","status":200,"ms":5}
+{"ts":"2026-10-16T13:34:17.968Z","level":"info","event":"http","id":"e6c9e985-c3c2-4480-8c41-19ab48281084","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":1}
+PASS PG: query raise + partner respond persist (queries JSONB)
+{"ts":"2026-10-16T13:34:17.970Z","level":"info","event":"http","id":"1781d28b-3335-42a7-97b7-2638be0e3de4","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-16T13:34:17.982Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261016-1001","lines":1}
+{"ts":"2026-10-16T13:34:17.982Z","level":"info","event":"http","id":"addd3769-f791-40ec-ba87-a0a3698ef34f","method":"POST","path":"/api/rfq","status":201,"ms":10}
+{"ts":"2026-10-16T13:34:18.023Z","level":"info","event":"http","id":"0ffe9c9b-d191-43a0-b267-7eacdf3506b7","method":"GET","path":"/api/rfq/SIMAL-RFQ-20261016-1001","status":200,"ms":3}
+PASS PG: RFQ engine persists header + items with notes (B11 fidelity)
+PASS PG: legacy ETL import carries documents fidelity
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+PG-MODE JOURNEY: 7 PASS, 0 FAIL
+
+================ CI SUMMARY ================
+  PASS  integration
+1/1 jobs green

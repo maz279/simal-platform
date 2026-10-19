@@ -1,0 +1,95 @@
+name: Deploy (Production)
+
+# T7.2 — production deployment pipeline. Manual dispatch only, gated on the
+# full CI suite plus the freeze verifier: no deploy is possible from a tree
+# with any drift against FREEZE_MANIFEST.json.
+#
+# Required repository secrets/vars (configured by OPS at vendor handover):
+#   vars.DEPLOY_HOST        — UAE cluster jump host
+#   secrets.DEPLOY_SSH_KEY  — deploy bot key
+#   vars.DEPLOY_TARGET_DIR  — e.g. /srv/simal
+#   secrets.PROD_DATABASE_URL — managed PostgreSQL 16
+# The remote execution block is executed by the self-hosted runner; until the
+# runner is registered this workflow dispatches and stops at the gate check.
+
+on:
+  workflow_dispatch:
+    inputs:
+      release:
+        description: 'Release manifest version (must exist in FREEZE_MANIFEST.json)'
+        required: true
+        default: 'v1.0.0-rc1'
+      window:
+        description: 'Maintenance window confirmation (Y)'
+        required: true
+        default: 'N'
+
+concurrency:
+  group: production-deploy
+  cancel-in-progress: false
+
+env:
+  NODE_ENV: production
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      authorized: ${{ steps.check.outputs.authorized }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: block dispatch outside the agreed maintenance window
+        id: check
+        run: |
+          if [ "${{ github.event.inputs.window }}" != "Y" ]; then
+            echo "authorized=false" >> "$GITHUB_OUTPUT"
+            echo "::error::Maintenance window not confirmed — dispatch aborted (E6: window 22:00–02:00 GST)"
+            exit 1
+          fi
+          echo "authorized=true" >> "$GITHUB_OUTPUT"
+      # CI ordering is enforced by branch protection: the deployed ref must
+      # have a green CI run (all 7 jobs) before this workflow can be dispatched
+      # on it — documented here because it is an ordering dependency, not a
+      # step GitHub can compose.
+
+  deploy:
+    needs: gate
+    if: needs.gate.outputs.authorized == 'true'
+    runs-on: [self-hosted, production-uae]
+    # deploy-audit: this job used to apply migrate.sql + seed.sql to a throwaway postgres:16
+    # service and build the site from THAT — a deploy would have published seed content, not the
+    # CMS content (and DATABASE_URL was never set, so the step could not run). The site is built
+    # by the portal's SSG worker from the production database; this job ships the image.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: freeze verifier — deploy blocked on any drift
+        run: |
+          npm install --no-save pg
+          node scripts/freeze-manifest.js verify
+
+      - name: build the release image (portal + SSG worker, repo-root context)
+        run: docker build -t "simal-portal:${{ github.event.inputs.release }}" -f apps/portal/Dockerfile .
+
+      - name: pre-traffic rehearsal of this exact build (production mode, TLS edge, CMS → site)
+        run: node scripts/deploy-rehearsal.mjs
+
+      - name: deploy to cluster (runner-executed)
+        run: |
+          echo "deploying ${{ github.event.inputs.release }} to ${{ vars.DEPLOY_TARGET_DIR }}"
+          # OPS fills (handover checklist, docs: infra/docker/compose.yml header):
+          #   1. push simal-portal:<release> to the registry the cluster pulls from
+          #   2. on the target: PORTAL_IMAGE=<registry>/simal-portal:<release> \
+          #        docker compose -f infra/docker/compose.yml --env-file /srv/simal/compose.env up -d --wait
+          #      (first start of an empty volume runs migrate + seed + roles; later starts never re-seed)
+          #   3. append every command to infra/logs/deploy-prod-rc.log (E1 v2.0 §deploy-log)
+          # Intentionally not pre-filled: untested remote commands are worse than an explicit
+          # handover checklist.
+
+      - name: post-deploy synthetic smoke against PROD URL
+        run: |
+          echo "PROD_BASE_URL=${{ vars.PROD_BASE_URL }}"
+          # OPS fills: same smoke probes against the live URL once DNS lands.

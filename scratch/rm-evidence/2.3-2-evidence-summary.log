@@ -1,0 +1,5 @@
+=== rm(2.3-2) GATED ENDPOINTS — EVIDENCE Fri Oct 16 22:25:27 MPST 2026 ===
+LIVE role matrix: viewer errors=403 test-error=403 test-sign=403 | reviewer errors=403 test-error=403 test-sign=403 | super_admin errors=200 test-error=500(synthetic-by-design) test-sign=200
+RULES: manage_users permission added (super_admin-only) — no role had it before (roadmap assumption corrected)
+TEST: api.test.js gating regression (23/23); suites 109/109; CI spot lint+security+authz 3/3 (authz matrix re-verifies viewer denials)
+NOTE: gated endpoints are API-only (no frontend consumer breaks); CMS telemetry view renders normally for admin

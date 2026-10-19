@@ -1,0 +1,80 @@
+[
+  {
+    "date": "2026-10-06",
+    "ts": "2026-10-06T13:14:59.358Z",
+    "verdict": "ATTENTION",
+    "attention": [
+      "automated gates"
+    ],
+    "probes": [
+      {
+        "name": "automated gates",
+        "ok": false,
+        "detail": "RED    PG integration 27 tests (0.2s) — PASS b5: screening_results upsert keeps latest |  | 1 FAILED: 26 passed, 1 failed"
+      },
+      {
+        "name": "health probe 3/3",
+        "ok": true,
+        "detail": "3/3 healthy"
+      },
+      {
+        "name": "outbox draining (queued < 1 h old)",
+        "ok": true,
+        "detail": "0 stale queued entries"
+      },
+      {
+        "name": "KYC queue",
+        "ok": true,
+        "detail": "0 pending · 0 new in 24 h (informational)"
+      },
+      {
+        "name": "invoice SLA (nothing submitted > 1 d unvalidated)",
+        "ok": true,
+        "detail": "0 overdue"
+      },
+      {
+        "name": "lockout anomalies (informational threshold < 50)",
+        "ok": true,
+        "detail": "36 login_failed in 24 h"
+      }
+    ]
+  },
+  {
+    "date": "2026-10-07",
+    "ts": "2026-10-07T02:46:27.470Z",
+    "verdict": "CLEAN",
+    "attention": [],
+    "probes": [
+      {
+        "name": "automated gates",
+        "ok": true,
+        "detail": "6/6 green"
+      },
+      {
+        "name": "health probe 3/3",
+        "ok": true,
+        "detail": "3/3 healthy"
+      },
+      {
+        "name": "outbox draining (queued < 1 h old)",
+        "ok": true,
+        "detail": "0 stale queued entries"
+      },
+      {
+        "name": "KYC queue",
+        "ok": true,
+        "detail": "0 pending · 0 new in 24 h (informational)"
+      },
+      {
+        "name": "invoice SLA (nothing submitted > 1 d unvalidated)",
+        "ok": true,
+        "detail": "0 overdue"
+      },
+      {
+        "name": "lockout anomalies (informational threshold < 50)",
+        "ok": true,
+        "detail": "43 login_failed in 24 h"
+      }
+    ]
+  }
+]

@@ -1,0 +1,62 @@
+# gitleaks baseline — findings in commits that are already pushed. main rejects
+# force-push (rm 1.2-2), so history is append-only: a leaked value is closed by
+# ROTATING it and removing it from HEAD, then recording the fingerprint here.
+# New findings are fixed in the code, never added to this file.
+# (The previous `tools/` entry was not a fingerprint and excluded nothing; untracked
+#  vendored trees under tools/ are not in history, which is all CI scans.)
+#
+# rm(9.1-3) triage, 2026-10-17. HEAD no longer contains any of these values
+# (the scripts now read credentials from the environment / git-ignored .env).
+#
+# Dead: legacy dev-seed TOTP secret (account purged; not the live ADMIN_TOTP_SECRET).
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/src/services/auth.service.js:generic-api-key:45
+# ROTATION PENDING (owner action): rig VIEWER_PASSWORD / REVIEWER_PASSWORD.
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/test/audit-iterations-1-3.mjs:generic-api-key:20
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/test/audit-iterations-1-3.mjs:generic-api-key:21
+ce8d0728c997d545ff0e772955b8f5674162835f:scripts/manual-e2e-audit.mjs:generic-api-key:122
+ce8d0728c997d545ff0e772955b8f5674162835f:scripts/manual-e2e-audit.mjs:generic-api-key:125
+# rm(10.4-1): an expired scratch-instance signed-URL token captured in the pen
+# evidence (generic-api-key rule). The token hash exists only in a dropped scratch
+# DB and grants nothing; the working copy is redacted going forward.
+81ccf665e42385b81b2e23cf28e4c14d460036b8:scratch/rm-evidence/10.3-pentest/kyc/findings.json:generic-api-key:79
+
+# rm(security, 2026-10): baseline of the 35 PRE-ROTATION DSN credentials that live in
+# immutable git history (33 simal_dev + 2 simal123). The working tree is scrubbed
+# (fail-loudly env reads / [REDACTED-ROTATED-2026-10] markers); history is preserved
+# by decision (audit evidence cites commit hashes) and both passwords were rotated
+on 2026-10 (see ARCHITECTURE_STATE.md). New occurrences of this rule FAIL CI.
+c2d7ad2899108768587680ceb44b908b67637df6:scripts/ci/sequences.mjs:simal-dsn-credential:16
+59e092f8e818be71d7454cc828906c1a156e549c:scratch/rm-evidence/7.1-milestone-evidence.md:simal-dsn-credential:21
+59e092f8e818be71d7454cc828906c1a156e549c:scripts/ci/test-chrome-blocks-e2e.mjs:simal-dsn-credential:22
+59e092f8e818be71d7454cc828906c1a156e549c:scripts/ci/test-cms-e2e.mjs:simal-dsn-credential:28
+b3ad5c9e2f62d1c9b32d7a45f3bcee2f26066a20:scratch/rm-evidence/6.3-1-purge.mjs:simal-dsn-credential:22
+b3ad5c9e2f62d1c9b32d7a45f3bcee2f26066a20:scripts/ci/test-cms-e2e.mjs:simal-dsn-credential:26
+b3ad5c9e2f62d1c9b32d7a45f3bcee2f26066a20:scripts/ci/test-chrome-blocks-e2e.mjs:simal-dsn-credential:22
+4bae7d0d7dbc00c0fe99677764fbff5ac019bf52:scripts/ci/test-chrome-blocks-e2e.mjs:simal-dsn-credential:14
+ce8d0728c997d545ff0e772955b8f5674162835f:apps/portal/scripts/inspect-db.mjs:simal-dsn-credential:3
+ce8d0728c997d545ff0e772955b8f5674162835f:apps/portal/tools/sync-sequences.mjs:simal-dsn-credential:4
+ce8d0728c997d545ff0e772955b8f5674162835f:scripts/cleanup-legacy.mjs:simal-dsn-credential:5
+ce8d0728c997d545ff0e772955b8f5674162835f:scripts/cleanup-test-fixtures.mjs:simal-dsn-credential:48
+ce8d0728c997d545ff0e772955b8f5674162835f:scripts/scratch_check_db.mjs:simal-dsn-credential:3
+ce8d0728c997d545ff0e772955b8f5674162835f:scripts/seed_arabic_content.mjs:simal-dsn-credential:6
+5d7218e2672f659f13623b0afb85a9519fefa439:apps/site/src/lib/db.ts:simal-dsn-credential:15
+8011ab0702bb5f8fd9f52fa70961c52d6996295b:scripts/ci/test-cms-e2e.mjs:simal-dsn-credential:18
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/test/einvoice-immutability.test.js:simal-dsn-credential:11
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/test/pg-integration-test.js:simal-dsn-credential:15
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/test/pg-mode-journey.test.js:simal-dsn-credential:38
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/tools/cleanup-test-pollution.js:simal-dsn-credential:10
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/tools/probe-db.mjs:simal-dsn-credential:3
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/tools/sync-sequences.mjs:simal-dsn-credential:4
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/portal/tools/seed_cms_blocks.mjs:simal-dsn-credential:6
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:apps/site/src/lib/db.ts:simal-dsn-credential:8
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/check-pngs.cjs:simal-dsn-credential:3
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/cutover-rehearsal.js:simal-dsn-credential:33
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/freeze-manifest.js:simal-dsn-credential:23
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/go-nogo-gate.js:simal-dsn-credential:24
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/golive-execute.js:simal-dsn-credential:30
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/hypercare-daily.js:simal-dsn-credential:31
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/parity-checklist.js:simal-dsn-credential:22
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/perf-baseline.js:simal-dsn-credential:14
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/postlive-review.js:simal-dsn-credential:19
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/smoke-test.js:simal-dsn-credential:53
+cbdcde5253e3f14ae8b0c297e81af678c1dbeb6e:scripts/update-slides.cjs:simal-dsn-credential:4

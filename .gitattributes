@@ -1,0 +1,24 @@
+* text=auto
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.woff2 binary
+# shell scripts run inside Linux containers (postgres initdb): never CRLF
+*.sh text eol=lf
+# unify(2026-10-19): binary types carried by the imported corpora
+# (prototype/ux imagery, fonts, content-pack & audit artifacts)
+*.gif binary
+*.ttf binary
+*.woff binary
+*.eot binary
+*.otf binary
+*.pdf binary
+*.zip binary
+*.7z binary
+*.mp4 binary
+*.webm binary
+*.xlsx binary
+*.docx binary
+*.pptx binary
+*.cvd binary

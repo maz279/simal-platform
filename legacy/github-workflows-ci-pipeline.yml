@@ -1,0 +1,64 @@
+name: Simal Corporate Platform CI/CD
+
+on:
+  push:
+    branches: [ main, 'release/*' ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  level-1-hygiene:
+    name: "L1: Code Hygiene & Secrets Scan"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Secrets Detection (Gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  level-2-unit-tests:
+    name: "L2: Portal & Site Unit Tests"
+    needs: level-1-hygiene
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run Portal Unit Tests
+        run: |
+          cd portal || exit 0
+          node --test test/unit/*.test.js
+
+  level-3-integration:
+    name: "L3: e-Invoicing & KYC e2e Tests"
+    needs: level-2-unit-tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run e-Invoicing Lifecycle e2e
+        run: |
+          cd portal || exit 0
+          node test/e2e-einvoice.mjs
+          node test/audit-iterations-1-3.mjs

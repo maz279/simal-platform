@@ -1,0 +1,6 @@
+=== rm(4.1) SITE CHROME BECOMES CMS DATA — EVIDENCE Sat Oct 17 10:46:13 MPST 2026 ===
+1. SEEDED: site/nav-menus (utility contacts + 8 menu labels), site/footer (3 link columns + 3 addresses), site/newsletter (heading/blurb/button/placeholder) — values = pre-4.1 literals so first build is pixel-identical (verified: all markers present, counts match)
+2. CONSUMED: BaseLayout reads the 3 blocks with DEFAULT_* fallbacks (nav labels via menuLabel(), utility strip, newsletter copy, footer columns map with hardcoded AR fallback); BLOCK-DRIVEN PROOF: DB label mutation 'Shop Products' -> rebuilt site shows it -> restored
+3. EDITORS: #/navigation #/footer #/newsletter registered in cms.js (v=12) — pre-targeted block editors with Save/Format/Push-Live/View-Site command bar (browser-verified: editor loads with JSON payload; label edit saved to DB 200)
+4. LIVE LOOP: label edited via CMS -> publish -> SSG worker -> 'Nav From CMS 4.1' ON LIVE SITE ✓; restored -> 'Products & Brands' back ✓ (ENOTEMPTY swap race found+fixed with retry)
+5. GATE: new scripts/ci/test-chrome-blocks-e2e.mjs wired as gate-chrome-blocks in run-local-ci (edit->build->assert on scratch DB) — PASS; lint+crawl PASS; unit 48/48

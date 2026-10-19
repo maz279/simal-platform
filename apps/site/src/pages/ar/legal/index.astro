@@ -1,0 +1,84 @@
+---
+// apps/site/src/pages/ar/legal/index.astro — Arabic Legal Center (SEO-1)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+
+const policiesAr = [
+  { slug: 'privacy-policy', title: 'سياسة الخصوصية وحماية البيانات', sub: 'من نحن ونطاق سريان السياسة', desc: 'تعد شركة سيمال للتقنيات الشرق الأوسط ش.ذ.م.م مسؤولة معالجة البيانات لهذه المنصة بموجب القانون الاتحادي رقم 45 لسنة 2021.' },
+  { slug: 'terms-conditions', title: 'الشروط والأحكام العامة', sub: 'شروط استخدام المنصة', desc: 'تقديم طلبات الأسعار، حسابات بوابة الشركاء، وحقوق المحتوى؛ عروض الأسعار صالحة لمدة 7 أيام ما لم ينص على خلاف ذلك.' },
+  { slug: 'cookie-policy', title: 'سياسة ملفات تعريف الارتباط', sub: 'الملفات والتقنيات المستخدمة', desc: 'ملفات الجلسة الأساسية، حفظ تفضيلات اللغة، وملفات التحليلات والتسويق الخاضعة للموافقة الصريحة المسبقة.' },
+  { slug: 'return-policy', title: 'سياسة الإرجاع والضمان', sub: 'الضمان وخدمات RMA', desc: 'تخضع كافة المنتجات الأصلية لضمان المصنع المعتمد؛ تتم معالجة طلبات RMA محلياً عبر مكتب سيمال المعتمد.' },
+  { slug: 'shipping-policy', title: 'سياسة الشحن والتسليم', sub: 'الخدمات اللوجستية', desc: 'تسليم في نفس اليوم أو اليوم التالي بالإمارات من جبل علي؛ وخلال نفس الأسبوع لدول الخليج مع توفير أرقام التتبع.' },
+  { slug: 'refund-policy', title: 'سياسة الاسترداد المالي', sub: 'إعادة المبالغ المدفوعة', desc: 'تتم معالجة المبالغ المستردة خلال 10 أيام عمل إلى نفس وسيلة الدفع الأصلية بعد فحص وقبول مرتجع RMA.' },
+  { slug: 'accessibility-statement', title: 'بيان إمكانية الوصول الرقمي', sub: 'التزامنا بالشمولية', desc: 'نستهدف معايير WCAG 2.2 AA: تباين الألوان المعتمد، التصفح الكامل بلوحة المفاتيح، والتوافق التام مع اللغة العربية (RTL).' }
+];
+
+const breadcrumbsSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/ar/legal/#breadcrumb',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'الرئيسية', 'item': 'https://simalme.com/ar/' },
+    { '@type': 'ListItem', 'position': 2, 'name': 'الشؤون القانونية والسياسات', 'item': 'https://simalme.com/ar/legal/' }
+  ]
+};
+---
+
+<BaseLayout
+  lang="ar"
+  dir="rtl"
+  title="السياسات والشؤون القانونية — سيمال للتقنيات"
+  description="الوثائق والسياسات المنظمة لاستخدام منصة سيمال للتقنيات: الخصوصية، الشروط والأحكام، ملفات تعريف الارتباط، الإرجاع، الشحن، وإمكانية الوصول وفق القوانين الإماراتية."
+  schemas={[breadcrumbsSchema]}
+>
+  <div class="wrap" style="padding-top:16px">
+    <div class="crumbs" style="font-size:13px"><a href="/ar/" style="color:var(--slate)">الرئيسية</a> › <b>السياسات والشؤون القانونية</b></div>
+  </div>
+
+  <section style="padding:10px 0 70px"><div class="wrap">
+    <span class="eyebrow">المركز القانوني والامتثال</span>
+    <h1 style="font-size:28px;font-weight:800;margin:6px 0 4px">السياسات واللوائح التنظيمية</h1>
+    <p style="color:var(--slate);max-width:760px;margin-bottom:20px">توضح الوثائق أدناه القواعد الحاكمة لاستخدام منصة سيمال للتقنيات وبوابة الشركاء. تتوافق هذه الملخصات التشغيلية بالكامل مع المرسوم بقانون اتحادي رقم 45 لسنة 2021 في شأن حماية البيانات الشخصية بدولة الإمارات — اختر أي سياسة للاطلاع على ملخصها أو قراءة النص الرسمي الكامل.</p>
+
+    <!-- Mini Tabs -->
+    <div class="mini-tabs" id="legal-tabs" style="display:flex;gap:8px;overflow-x:auto;padding-bottom:12px;margin-bottom:18px">
+      {policiesAr.map((p, i) => (
+        <button class={`btn btn-sm ${i === 0 ? 'btn-p' : 'btn-o'} leg-tab`} data-i={i} data-slug={p.slug} style="white-space:nowrap">
+          {p.title}
+        </button>
+      ))}
+    </div>
+
+    <!-- Active Policy Body Container -->
+    <div class="card card-p" style="padding:28px" id="legal-body">
+      {policiesAr.map((p, i) => (
+        <div class="leg-pane" id={`pane-${p.slug}`} style={i === 0 ? '' : 'display:none'}>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px">
+            <div>
+              <h2 style="font-size:22px;margin:0 0 6px">{p.title}</h2>
+              <p style="font-size:12.5px;color:var(--slate)">ملخص تشغيلي — سيمال للتقنيات الشرق الأوسط ش.ذ.م.م · متوافق مع PDPL · إصدار 2026-10</p>
+            </div>
+            <a class="btn btn-o btn-sm" href={`/ar/legal/${p.slug}/`}>قراءة وثيقة السياسة الكاملة ←</a>
+          </div>
+
+          <div style="margin-top:20px;display:flex;flex-direction:column;gap:16px">
+            <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+              <b style="color:var(--blue)">{p.sub}</b>
+              <span style="display:block;font-size:13.5px;color:var(--ink);margin-top:4px">{p.desc}</span>
+            </div>
+            <div style="padding:10px 0;border-bottom:1px solid var(--line)">
+              <b>الامتثال لقانون حماية البيانات الإماراتي (PDPL)</b>
+              <span style="display:block;font-size:13px;color:var(--slate);margin-top:4px">تتم معالجة كافة البيانات وفقاً للمرسوم بقانون اتحادي رقم 45 لسنة 2021؛ يحق لأصحاب البيانات ممارسة حقوق الوصول والتصحيح والحذف وسحب الموافقة عبر التواصل المباشر معنا أو ضبط تفضيلات الكوكيز.</span>
+            </div>
+            <div style="padding:10px 0">
+              <b>التحديثات والشفافية</b>
+              <span style="display:block;font-size:13px;color:var(--slate);margin-top:4px">تخضع هذه السياسات للمراجعة القانونية الدورية. يتم نشر أي تعديلات جوهرية على هذه الصفحة وإشعار الشركاء المسجلين عبر بوابة KYC.</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  
+  <script src="/assets/js/ar-legal-page.js?v=1" defer></script>
+</BaseLayout>

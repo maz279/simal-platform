@@ -1,0 +1,295 @@
+---
+// software/index.astro — the Software Services hub. VISUAL CONTRACT: Prototype software.html ported 1:1.
+// Restores .hero.hero-rose with Why Simal+Unisoft stats card, sticky .sw-tabs subnavigation,
+// The Portfolio Map (4 doors), UniERP vs SAP/Oracle/Dynamics comparison table,
+// 7 Modules grid, 9 Industry chips, 12 Engineering services grid,
+// Demo Booking form with 3 Engagement models, 3 Pricing packages,
+// 7-Phase implementation methodology, and the interactive ROI Calculator island.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+import { siteFacts } from '../../lib/facts';
+
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const [modsRows, svcsRows, indsRows, pricingRows, implRows] = await Promise.all([
+  db`SELECT payload FROM content_blocks WHERE entity = 'software_module' AND lang = 'en' ORDER BY entity_id`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'software_service' AND lang = 'en' ORDER BY entity_id`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'software_industry' AND lang = 'en' ORDER BY entity_id`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'erp' AND entity_id = 'pricing' AND lang = 'en'`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'impl-phases' AND lang = 'en'`,
+]);
+const { years } = await siteFacts(); // rm(6.1-2/9.1-1, PUB-8): years from site/counters
+
+const modules = modsRows.map(parse);
+const services = svcsRows.map(parse);
+const industries = indsRows.map(parse);
+
+const erpModules = [
+  ['💰', 'Finance & Accounting', 'GL, AP/AR, multi-currency, P&L and cash-flow in one ledger.', 'finance'],
+  ['👥', 'HR & Payroll', 'Employee records, contracts, WPS-compliant payroll, leave.', 'hr'],
+  ['📈', 'Sales & CRM', 'Pipeline, quotations, win/loss and customer 360.', 'crm'],
+  ['📦', 'Inventory & Supply Chain', 'Multi-warehouse stock, replenishment, barcode.', 'inventory'],
+  ['🏭', 'Manufacturing', 'BOM, work orders, MRP and shop-floor control.', 'manufacturing'],
+  ['✅', 'Project Management', 'Tasks, timesheets, billing and profitability per project.', 'projects'],
+  ['🧾', 'UniVAT & e-invoicing', 'NBR-approved VAT module, UAE Peppol-ready.', 'univat']
+];
+
+const DEFAULT_ERP_PRICING = [
+  { t: 'Starter', best: 'Small businesses (11–50 staff) moving off spreadsheets', impl: '8–10 weeks', users: 'Unlimited' },
+  { t: 'Professional', best: 'Growing companies (51–500 staff) needing full ERP', impl: '12–16 weeks', users: 'Unlimited' },
+  { t: 'Enterprise', best: 'Large organizations (500+) with complex needs', impl: '18–24 weeks', users: 'Unlimited' }
+];
+
+const DEFAULT_IMPL_PHASES = [
+  ['1 · Discovery', 'Weeks 1–2'], ['2 · Solution design', 'Week 3'], ['3 · Configuration & development', 'Weeks 4–6'],
+  ['4 · Testing', 'Weeks 7–8'], ['5 · Training', 'Weeks 9–10'], ['6 · Go-live', 'Week 11'], ['7 · Ongoing support', 'Week 12+']
+];
+
+const erpPricing = pricingRows[0] ? parse(pricingRows[0]) : DEFAULT_ERP_PRICING;
+const implPhases = implRows[0] ? parse(implRows[0]) : DEFAULT_IMPL_PHASES;
+---
+
+<BaseLayout title="Software Services — Simal + Unisoft Systems" description="Enterprise software by the joint Simal + Unisoft practice: UniERP on Odoo 19 CE ($0 licensing), 20 products, 12 engineering services, 9 industry verticals. 40+ engineers, ISO 27001.">
+  <!-- ===== Hero Rose with Why Simal + Unisoft Card ===== -->
+  <section class="hero hero-rose"><div class="wrap" style="padding:60px 28px 54px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:start">
+    <div>
+      <span class="badge" style="background:rgba(240,240,0,.14);color:var(--yellow)">★ NEW BUSINESS LINE · 2026</span>
+      <h1 style="font-size:40px;line-height:1.15;margin-top:12px">Enterprise software,<br>delivered by the team that<br><em style="color:var(--yellow);font-style:normal">runs distribution daily.</em></h1>
+      <p class="lead" style="color:#B9C6D6;margin:18px 0 24px">Simal Software Services — engineered by our software partner <b style="color:#fff">Unisoft Systems Ltd</b> (Dhaka): 40+ engineers, ISO 9001/27001, SOC 2, 150+ projects, 24/7 support. Sold and supported regionally by Simal.</p>
+      <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-lg btn-a" href="#demo">Book a demo</a>
+        <a class="btn btn-lg btn-o" style="background:transparent;color:#fff;border-color:#2A3B4E" href="#portfolio">Explore the portfolio</a>
+      </div>
+      <div class="trust" style="margin-top:28px;display:flex;gap:20px;font-size:12px;color:#9AB0C6;flex-wrap:wrap">
+        <div>✓ ISO 9001 · ISO 27001 · SOC 2</div>
+        <div>✓ 44-technology stack</div>
+        <div>✓ 24/7 support (BST + GST)</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>🧭 Why Simal + Unisoft</h3>
+      <div class="row"><span>Distribution DNA</span><b>{years}+ years</b></div>
+      <div class="row"><span>Products &amp; platforms</span><b>20</b></div>
+      <div class="row"><span>Engineering services</span><b>12</b></div>
+      <div class="row"><span>Industry verticals</span><b>9</b></div>
+      <div class="row"><span>Projects delivered · on-time</span><b>150+ · 98%</b></div>
+    </div>
+  </div></section>
+
+  <!-- ===== Sticky Sub-navigation Strip ===== -->
+  <div class="sw-tabs"><div class="wrap" style="display:flex;gap:18px;overflow-x:auto;padding:12px 24px">
+    <a class="on" href="/software">Software home</a>
+    <a href="/software/products/distribution-erp/">UniERP flagship</a>
+    <a href="/software/#products">Products (20)</a>
+    <a href="/software/#services">Services (12)</a>
+    <a href="/software/#industries">Industries (9)</a>
+  </div></div>
+
+  <!-- ===== The Portfolio Map: Four Doors ===== -->
+  <section class="sec" style="background:#fff;border-bottom:1px solid var(--line)" id="portfolio"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">The portfolio map</span><h2>Four doors into the software practice</h2>
+    <p>Every section of the Software Services menu lands on its own detail page — start wherever your question is.</p></div></div>
+    <div class="grid g4">
+      <a href="/software/products/distribution-erp/" style="text-decoration:none;color:inherit"><div class="card card-p" style="height:100%;border-top:4px solid var(--blue)"><div style="font-size:26px">🧩</div><h3 style="font-size:17px;margin:10px 0 6px">UniERP flagship</h3><p style="font-size:12.5px;color:var(--slate)">The Odoo 19 CE platform — $0 licensing, 7 modules, TCO vs SAP/Oracle/Dynamics, implementation &amp; pricing.</p><span style="font-size:12.5px;font-weight:700;color:var(--blue)">Open the ERP detail →</span></div></a>
+      <a href="#products" style="text-decoration:none;color:inherit"><div class="card card-p" style="height:100%;border-top:4px solid var(--blue)"><div style="font-size:26px">📦</div><h3 style="font-size:17px;margin:10px 0 6px">All 20 products</h3><p style="font-size:12.5px;color:var(--slate)">10 industry ERPs + 10 specialized systems — Distribution ERP, UniPOS, UniVAT, hospital, hotel, banking and more.</p><span style="font-size:12.5px;font-weight:700;color:var(--blue)">Browse the catalog →</span></div></a>
+      <a href="#services" style="text-decoration:none;color:inherit"><div class="card card-p" style="height:100%;border-top:4px solid var(--blue)"><div style="font-size:26px">🛠</div><h3 style="font-size:17px;margin:10px 0 6px">Engineering services</h3><p style="font-size:12.5px;color:var(--slate)">12 practices — custom development, cloud, cybersecurity, AI/ML, DevOps, QA, UI/UX, mobile, data &amp; BI.</p><span style="font-size:12.5px;font-weight:700;color:var(--blue)">See the practices →</span></div></a>
+      <a href="#industries" style="text-decoration:none;color:inherit"><div class="card card-p" style="height:100%;border-top:4px solid var(--blue)"><div style="font-size:26px">🏭</div><h3 style="font-size:17px;margin:10px 0 6px">Industries &amp; sectors</h3><p style="font-size:12.5px;color:var(--slate)">9 verticals from healthcare to logistics — each mapped to the products that serve it, with sector consultants.</p><span style="font-size:12.5px;font-weight:700;color:var(--blue)">Pick your sector →</span></div></a>
+    </div>
+  </div></section>
+
+  <!-- ===== UniERP Platform at $0 License Cost ===== -->
+  <section class="sec"><div class="wrap" id="products">
+    <div class="sec-head"><div><span class="eyebrow">UniERP — built on Odoo 19 Community Edition</span><h2>Enterprise ERP at $0 license cost</h2></div></div>
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
+      <div>
+        <p style="color:var(--slate);font-size:14.5px;line-height:1.75"><b style="color:var(--ink)">UniERP</b> is a modular ERP built on <b style="color:var(--ink)">Odoo 19 CE</b> — the open-source platform with 12M+ users — delivered by the Simal (Dubai) + UniSoft Systems (Dhaka, 40+ engineers, Odoo-certified) partnership. Enterprise-grade function, localized compliance via the NBR-approved <b style="color:var(--ink)">UniVAT</b> module, UAE Peppol-ready.</p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px"><span class="chip on">No license fees</span><span class="chip">4–12 week implementation</span><span class="chip">Open source — your code</span><span class="chip">UniVAT · NBR approved</span></div>
+      </div>
+      <div class="card card-p" style="padding:0;overflow:hidden">
+        <table class="tbl">
+          <tr><th></th><th>SAP / Oracle</th><th>Dynamics</th><th style="color:var(--blue)">UniERP</th></tr>
+          <tr><td><b>License / user / mo</b></td><td>$100–500</td><td>$70–200</td><td style="color:var(--blue);font-weight:800">$0</td></tr>
+          <tr><td><b>Implementation</b></td><td>6–18 mo</td><td>4–12 mo</td><td style="color:var(--blue);font-weight:800">4–12 wks</td></tr>
+          <tr><td><b>Source code</b></td><td>✕</td><td>✕</td><td style="color:var(--blue);font-weight:800">✓ open</td></tr>
+          <tr><td><b>Local VAT</b></td><td>Custom build</td><td>Custom build</td><td style="color:var(--blue);font-weight:800">UniVAT</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modules Grid -->
+    <div class="sec-head" style="margin-top:40px" id="modules"><div><span class="eyebrow">Modular by design</span><h2>Start with one module, grow to the full suite</h2></div></div>
+    <div class="grid g4" id="mod-grid">
+      {erpModules.map((m) => (
+        <a href={`/software/modules/${m[3]}/`} style="text-decoration:none;color:inherit">
+          <div class="card card-p" style="padding:16px 18px;height:100%">
+            <div style="width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#FDECEC,#fff);display:grid;place-items:center;font-size:20px">{m[0]}</div>
+            <h4 style="font-size:15px;margin:10px 0 5px">{m[1]}</h4>
+            <p style="font-size:12.5px;color:var(--slate)">{m[2]}</p>
+            <span style="display:block;margin-top:9px;font-size:12px;font-weight:700;color:var(--blue)">Module detail →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- Industries -->
+    <div class="sec-head" style="margin-top:40px" id="industries">
+      <div><span class="eyebrow" id="solutions">Industry solutions</span><h2>Nine verticals, pre-configured</h2></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap" id="ind-chips">
+      {industries.map((ind: any) => (
+        <a class="chip" href={`/software/industries/${ind.id}/`} style="font-size:13px;padding:8px 16px;text-decoration:none">{ind.icon || '🏭'} {ind.name}</a>
+      ))}
+      <a class="chip on" href="#demo" style="font-size:13px;padding:8px 16px;text-decoration:none">All 9 verticals →</a>
+    </div>
+  </div></section>
+
+  <!-- ===== Engineering Services (12 Practices) ===== -->
+  <section class="sec" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap" id="services">
+    <div class="sec-head"><div><span class="eyebrow">Engineering services</span><h2>12 practices, one accountable desk in Dubai</h2></div></div>
+    <div class="grid g4" id="svc-grid">
+      {services.map((s: any) => (
+        <a href={`/software/services/${s.id}/`} style="text-decoration:none;color:inherit">
+          <div class="card card-p" style="padding:16px 18px;height:100%">
+            <div style="font-size:22px">{s.icon || '🛠'}</div>
+            <h4 style="font-size:15px;margin:8px 0 5px">{s.name || s.id}</h4>
+            <p style="font-size:12.5px;color:var(--slate)">{s.tag || (s.overview || '').slice(0, 75)}</p>
+            <span style="display:block;margin-top:9px;font-size:12px;font-weight:700;color:var(--blue)">Detail →</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- ===== Demo Form & Engagement Models ===== -->
+  <section class="sec"><div class="wrap" id="demo">
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
+      <div class="card card-p" style="border-top:4px solid var(--blue)">
+        <span class="eyebrow">Book a demo</span><h3 style="margin:8px 0 6px">30 minutes, no slideware</h3>
+        <p style="color:var(--slate);font-size:14px">Tell us your line of business — we show the matching product running on realistic data.</p>
+        <div class="field" style="margin-top:12px"><label for="d-mail">Work email *</label><input class="in" id="d-mail" type="email" placeholder="you@company.ae"></div>
+        <div class="field"><label for="d-what">What should we demo? *</label>
+          <select class="in" id="d-what">
+            <option value="">Select…</option>
+            <option>Distribution ERP</option>
+            <option>UniPOS</option>
+            <option>UniVAT / e-invoicing</option>
+            <option>Custom build</option>
+            <option>Not sure — advise me</option>
+          </select>
+        </div>
+        <label class="consent" for="d-ok" style="margin:12px 0;display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" id="d-ok" aria-label="Contact me under the PDPL privacy notice"><span>Contact me under the PDPL privacy notice.</span></label>
+        <button class="btn btn-p" id="d-go" style="width:100%">Request demo slot →</button>
+        <p class="hint" id="d-err" hidden style="color:var(--red);margin-top:8px"></p>
+      </div>
+      <div>
+        <h3 style="font-size:20px;margin-bottom:10px">Engagement models</h3>
+        <div class="card card-p" style="margin-bottom:12px"><b>1 · Licensed product</b><p style="color:var(--slate);font-size:13.5px;margin-top:5px">Annual license + support — fastest path, live in weeks.</p></div>
+        <div class="card card-p" style="margin-bottom:12px"><b>2 · Configure + extend</b><p style="color:var(--slate);font-size:13.5px;margin-top:5px">Product baseline with configured workflows and your integrations.</p></div>
+        <div class="card card-p"><b>3 · Dedicated build</b><p style="color:var(--slate);font-size:13.5px;margin-top:5px">Scoped custom platform with a named delivery manager.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Pricing & Implementation Timeline ===== -->
+  <section class="sec" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head" id="pricing"><div><span class="eyebrow">Pricing &amp; packages</span><h2>Three packages. One platform. No per-user fees.</h2></div></div>
+    <div class="grid g3" id="price-grid">
+      {erpPricing.map((p, i) => (
+        <div class="card card-p" style={i === 1 ? 'border-top:4px solid var(--blue);' : ''}>
+          <span class={`badge ${i === 1 ? 'b-blue' : 'b-line'}`}>{p.t}{i === 1 ? ' — most chosen' : ''}</span>
+          <p style="font-size:13px;color:var(--slate);margin-top:10px"><b>Best for:</b> {p.best}</p>
+          <div class="timeline" style="margin-top:8px">
+            <div class="tl" style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line)"><b>Implementation</b><span>{p.impl}</span></div>
+            <div class="tl" style="display:flex;justify-content:space-between;padding:6px 0"><b>Users</b><span>{p.users} — $0 per user</span></div>
+          </div>
+          <a class={`btn ${i === 1 ? 'btn-p' : 'btn-o'} btn-sm`} style="margin-top:12px" href="#demo">Request {p.t} proposal →</a>
+        </div>
+      ))}
+    </div>
+    <p class="hint" style="margin-top:12px;color:var(--slate);font-size:13px">Transparent implementation-based pricing — you pay for scope and support, not seats.</p>
+
+    <div class="sec-head" style="margin-top:40px" id="impl"><div><span class="eyebrow">Implementation</span><h2>The 7-phase UniERP methodology</h2></div></div>
+    <div class="timeline" id="impl-tl" style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:12px">
+      {implPhases.map((ph) => (
+        <div class="card card-p" style="padding:12px">
+          <b style="font-size:13.5px;color:var(--blue)">{ph[0]}</b>
+          <div style="font-size:12px;color:var(--slate);margin-top:4px">{ph[1]}</div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- ===== ROI Calculator ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="sec-head" id="roi"><div><span class="eyebrow">ROI calculator</span><h2>How much could UniERP save your business?</h2></div></div>
+    <div class="split" style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start">
+      <div class="card card-p" style="padding:22px">
+        <div class="grid g2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field"><label for="r-ind">Industry</label><select class="in" id="r-ind"><option>Retail &amp; Distribution</option><option>Manufacturing (RMG)</option><option>Healthcare</option><option>Education</option><option>Banking &amp; Finance</option><option>Government</option><option>Logistics</option><option>Professional Services</option><option>Other</option></select></div>
+          <div class="field"><label for="r-size">Employees</label><select class="in" id="r-size"><option>11–50</option><option selected>51–200</option><option>201–500</option><option>501–2,000</option><option>2,000+</option></select></div>
+          <div class="field"><label for="r-lic">Current license cost / user / month ($)</label><input class="in" id="r-lic" type="number" value="90" min="0"></div>
+          <div class="field"><label for="r-users">ERP-seats (users)</label><input class="in" id="r-users" type="number" value="60" min="1"></div>
+          <div class="field"><label for="r-it">IT admin hours / month</label><input class="in" id="r-it" type="number" value="80" min="0"></div>
+          <div class="field"><label for="r-man">Manual process hours / month</label><input class="in" id="r-man" type="number" value="160" min="0"></div>
+        </div>
+        <button class="btn btn-p" id="r-go" style="margin-top:16px;width:100%">Calculate savings →</button>
+        <p class="hint" style="margin-top:8px;font-size:12px;color:var(--slate)">Estimates based on regional implementations across key industry verticals. Indicative — a scoped assessment follows the demo.</p>
+      </div>
+      <div>
+        <div class="card card-p" style="border-top:4px solid var(--blue)">
+          <b>Estimated annual savings</b>
+          <div style="font-size:34px;font-weight:800;color:var(--blue);margin:6px 0" id="r-total">$94,800</div>
+          <div class="timeline" style="margin-top:12px" id="r-break">
+            <div class="tl" style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px"><b>License elimination</b><span>$64,800 / yr</span></div>
+            <div class="tl" style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--line);font-size:13px"><b>IT admin automation (35%)</b><span>$8,400 / yr</span></div>
+            <div class="tl" style="display:flex;justify-content:space-between;padding:6px 0;font-size:13px"><b>Process automation (45%)</b><span>$21,600 / yr</span></div>
+          </div>
+        </div>
+        <div class="card card-p" style="margin-top:12px;display:flex;gap:14px;align-items:center;flex-wrap:wrap">
+          <div><b id="r-3yr" style="font-size:22px;color:var(--ok)">$284,400</b><div class="note" style="font-size:12px;color:var(--slate)">3-year savings</div></div>
+          <a class="btn btn-gold" style="margin-left:auto" href="#demo">Get a scoped assessment →</a>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <script src="/assets/js/software-page.js?v=1" defer></script>
+</BaseLayout>
+
+<style>
+  .hero-rose {
+    background: radial-gradient(70% 100% at 84% 12%,rgba(198,146,41,.34) 0%,rgba(198,146,41,0) 55%),radial-gradient(80% 110% at 14% 30%,#54203A 0%,rgba(84,32,58,0) 60%),linear-gradient(118deg,#1B0A16 0%,#351227 52%,#4A1E33 100%);
+    color: #fff;
+  }
+  .sw-tabs {
+    background: #0D1B2A;
+    border-bottom: 1px solid #1E2D3D;
+    position: sticky;
+    top: 60px;
+    z-index: 20;
+  }
+  .sw-tabs a {
+    color: #9FB2C8;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 8px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+    transition: .15s;
+  }
+  .sw-tabs a:hover {
+    color: #fff;
+    background: rgba(255,255,255,.06);
+  }
+  .sw-tabs a.on {
+    color: #fff;
+    background: var(--blue);
+  }
+  @media(max-width:900px){
+    .hero-rose .wrap { grid-template-columns: 1fr!important; padding: 36px 20px 32px!important; }
+    .split { grid-template-columns: 1fr!important; }
+    .grid.g2 { grid-template-columns: 1fr!important; }
+  }
+</style>
+
+

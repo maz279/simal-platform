@@ -1,0 +1,889 @@
+
+================ JOB lint ================
+
+>>>>>>>> eslint: node node_modules/eslint/bin/eslint.js . --ext .js,.mjs
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\admin.js
+     9:3   warning  Unexpected var, use let or const instead      no-var
+    10:3   warning  Unexpected var, use let or const instead      no-var
+    11:3   warning  Unexpected var, use let or const instead      no-var
+    17:5   warning  Unexpected var, use let or const instead      no-var
+    20:7   warning  Unexpected var, use let or const instead      no-var
+    27:9   warning  Unexpected var, use let or const instead      no-var
+    28:9   warning  Unexpected var, use let or const instead      no-var
+    42:5   warning  Unexpected var, use let or const instead      no-var
+    43:5   warning  Unexpected var, use let or const instead      no-var
+    45:3   warning  Unexpected var, use let or const instead      no-var
+    47:5   warning  Unexpected var, use let or const instead      no-var
+    48:5   warning  Unexpected var, use let or const instead      no-var
+    65:5   warning  Unexpected var, use let or const instead      no-var
+    81:7   warning  Unexpected var, use let or const instead      no-var
+    93:5   warning  Unexpected var, use let or const instead      no-var
+   125:3   warning  Unexpected var, use let or const instead      no-var
+   137:5   warning  Unexpected var, use let or const instead      no-var
+   138:5   warning  Unexpected var, use let or const instead      no-var
+   140:7   warning  Unexpected var, use let or const instead      no-var
+   146:7   warning  Unexpected var, use let or const instead      no-var
+   158:5   warning  Unexpected var, use let or const instead      no-var
+   170:7   warning  Unexpected var, use let or const instead      no-var
+   171:7   warning  Unexpected var, use let or const instead      no-var
+   220:7   warning  Unexpected var, use let or const instead      no-var
+   221:7   warning  Unexpected var, use let or const instead      no-var
+   222:7   warning  Unexpected var, use let or const instead      no-var
+   223:7   warning  Unexpected var, use let or const instead      no-var
+   227:9   warning  Unexpected var, use let or const instead      no-var
+   239:3   warning  Unexpected var, use let or const instead      no-var
+   253:7   warning  Unexpected var, use let or const instead      no-var
+   253:11  warning  'counts' is assigned a value but never used   no-unused-vars
+   254:7   warning  Unexpected var, use let or const instead      no-var
+   265:7   warning  Unexpected var, use let or const instead      no-var
+   274:9   warning  Unexpected var, use let or const instead      no-var
+   274:13  warning  'pending' is assigned a value but never used  no-unused-vars
+   276:11  warning  Unexpected var, use let or const instead      no-var
+   287:13  warning  Unexpected var, use let or const instead      no-var
+   293:9   warning  Unexpected var, use let or const instead      no-var
+   299:7   warning  Unexpected var, use let or const instead      no-var
+   300:9   warning  Unexpected var, use let or const instead      no-var
+   303:7   warning  Unexpected var, use let or const instead      no-var
+   324:5   warning  Unexpected var, use let or const instead      no-var
+   329:5   warning  Unexpected var, use let or const instead      no-var
+   339:11  warning  Unexpected var, use let or const instead      no-var
+   340:11  warning  Unexpected var, use let or const instead      no-var
+   373:5   warning  Unexpected var, use let or const instead      no-var
+   375:7   warning  Unexpected var, use let or const instead      no-var
+   399:9   warning  Unexpected var, use let or const instead      no-var
+   414:5   warning  Unexpected var, use let or const instead      no-var
+   415:5   warning  Unexpected var, use let or const instead      no-var
+   462:5   warning  Unexpected var, use let or const instead      no-var
+   468:9   warning  Unexpected var, use let or const instead      no-var
+   469:19  warning  Unexpected var, use let or const instead      no-var
+   469:78  warning  Unexpected var, use let or const instead      no-var
+   475:5   warning  Unexpected var, use let or const instead      no-var
+   476:5   warning  Unexpected var, use let or const instead      no-var
+   485:9   warning  Unexpected var, use let or const instead      no-var
+   486:21  warning  Unexpected var, use let or const instead      no-var
+   486:80  warning  Unexpected var, use let or const instead      no-var
+   494:3   warning  Unexpected var, use let or const instead      no-var
+   502:5   warning  Unexpected var, use let or const instead      no-var
+   503:5   warning  Unexpected var, use let or const instead      no-var
+   518:5   warning  Unexpected var, use let or const instead      no-var
+   522:5   warning  Unexpected var, use let or const instead      no-var
+   530:5   warning  Unexpected var, use let or const instead      no-var
+   559:5   warning  Unexpected var, use let or const instead      no-var
+   572:5   warning  Unexpected var, use let or const instead      no-var
+   580:5   warning  Unexpected var, use let or const instead      no-var
+   581:5   warning  Unexpected var, use let or const instead      no-var
+   582:5   warning  Unexpected var, use let or const instead      no-var
+   601:5   warning  Unexpected var, use let or const instead      no-var
+   603:7   warning  Unexpected var, use let or const instead      no-var
+   610:5   warning  Unexpected var, use let or const instead      no-var
+   635:7   warning  Unexpected var, use let or const instead      no-var
+   636:7   warning  Unexpected var, use let or const instead      no-var
+   636:11  warning  'buckets' is assigned a value but never used  no-unused-vars
+   651:5   warning  Unexpected var, use let or const instead      no-var
+   652:5   warning  Unexpected var, use let or const instead      no-var
+   653:5   warning  Unexpected var, use let or const instead      no-var
+   654:5   warning  Unexpected var, use let or const instead      no-var
+   655:5   warning  Unexpected var, use let or const instead      no-var
+   657:7   warning  Unexpected var, use let or const instead      no-var
+   670:22  warning  Unexpected var, use let or const instead      no-var
+   683:5   warning  Unexpected var, use let or const instead      no-var
+   711:5   warning  Unexpected var, use let or const instead      no-var
+   743:7   warning  Unexpected var, use let or const instead      no-var
+   777:7   warning  Unexpected var, use let or const instead      no-var
+   781:11  warning  Unexpected var, use let or const instead      no-var
+   787:11  warning  Unexpected var, use let or const instead      no-var
+   803:11  warning  Unexpected var, use let or const instead      no-var
+   821:5   warning  Unexpected var, use let or const instead      no-var
+   836:11  warning  Unexpected var, use let or const instead      no-var
+   856:5   warning  Unexpected var, use let or const instead      no-var
+   929:7   warning  Unexpected var, use let or const instead      no-var
+   931:9   warning  Unexpected var, use let or const instead      no-var
+   932:9   warning  Unexpected var, use let or const instead      no-var
+   942:7   warning  Unexpected var, use let or const instead      no-var
+   995:11  warning  Unexpected var, use let or const instead      no-var
+  1004:9   warning  Unexpected var, use let or const instead      no-var
+  1018:9   warning  Unexpected var, use let or const instead      no-var
+  1039:9   warning  Unexpected var, use let or const instead      no-var
+  1047:13  warning  Unexpected var, use let or const instead      no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\cms.js
+    17:3   warning  Unexpected var, use let or const instead  no-var
+    18:3   warning  Unexpected var, use let or const instead  no-var
+    20:3   warning  Unexpected var, use let or const instead  no-var
+    63:5   warning  Unexpected var, use let or const instead  no-var
+    69:5   warning  Unexpected var, use let or const instead  no-var
+    71:5   warning  Unexpected var, use let or const instead  no-var
+    72:5   warning  Unexpected var, use let or const instead  no-var
+    73:5   warning  Unexpected var, use let or const instead  no-var
+    75:5   warning  Unexpected var, use let or const instead  no-var
+    77:5   warning  Unexpected var, use let or const instead  no-var
+   102:5   warning  Unexpected var, use let or const instead  no-var
+   103:5   warning  Unexpected var, use let or const instead  no-var
+   104:5   warning  Unexpected var, use let or const instead  no-var
+   105:5   warning  Unexpected var, use let or const instead  no-var
+   108:7   warning  Unexpected var, use let or const instead  no-var
+   109:7   warning  Unexpected var, use let or const instead  no-var
+   110:7   warning  Unexpected var, use let or const instead  no-var
+   111:7   warning  Unexpected var, use let or const instead  no-var
+   122:11  warning  Unexpected var, use let or const instead  no-var
+   149:5   warning  Unexpected var, use let or const instead  no-var
+   153:5   warning  Unexpected var, use let or const instead  no-var
+   202:3   warning  Unexpected var, use let or const instead  no-var
+   296:5   warning  Unexpected var, use let or const instead  no-var
+   312:5   warning  Unexpected var, use let or const instead  no-var
+   313:5   warning  Unexpected var, use let or const instead  no-var
+   316:5   warning  Unexpected var, use let or const instead  no-var
+   321:9   warning  Unexpected var, use let or const instead  no-var
+   325:9   warning  Unexpected var, use let or const instead  no-var
+   353:9   warning  Unexpected var, use let or const instead  no-var
+   356:9   warning  Unexpected var, use let or const instead  no-var
+   372:7   warning  Unexpected var, use let or const instead  no-var
+   380:9   warning  Unexpected var, use let or const instead  no-var
+   381:9   warning  Unexpected var, use let or const instead  no-var
+   382:9   warning  Unexpected var, use let or const instead  no-var
+   422:7   warning  Unexpected var, use let or const instead  no-var
+   423:7   warning  Unexpected var, use let or const instead  no-var
+   424:7   warning  Unexpected var, use let or const instead  no-var
+   441:7   warning  Unexpected var, use let or const instead  no-var
+   454:5   warning  Unexpected var, use let or const instead  no-var
+   457:9   warning  Unexpected var, use let or const instead  no-var
+   523:3   warning  Unexpected var, use let or const instead  no-var
+   532:5   warning  Unexpected var, use let or const instead  no-var
+   540:9   warning  Unexpected var, use let or const instead  no-var
+   542:9   warning  Unexpected var, use let or const instead  no-var
+   543:9   warning  Unexpected var, use let or const instead  no-var
+   581:16  warning  'err' is defined but never used           no-unused-vars
+   589:3   warning  Unexpected var, use let or const instead  no-var
+   628:5   warning  Unexpected var, use let or const instead  no-var
+   632:10  warning  Unexpected var, use let or const instead  no-var
+   633:7   warning  Unexpected var, use let or const instead  no-var
+   634:12  warning  Unexpected var, use let or const instead  no-var
+   635:9   warning  Unexpected var, use let or const instead  no-var
+   644:5   warning  Unexpected var, use let or const instead  no-var
+   658:5   warning  Unexpected var, use let or const instead  no-var
+   659:5   warning  Unexpected var, use let or const instead  no-var
+   668:5   warning  Unexpected var, use let or const instead  no-var
+   681:3   warning  Unexpected var, use let or const instead  no-var
+   683:5   warning  Unexpected var, use let or const instead  no-var
+   684:5   warning  Unexpected var, use let or const instead  no-var
+   698:7   warning  Unexpected var, use let or const instead  no-var
+   708:9   warning  Unexpected var, use let or const instead  no-var
+   719:5   warning  Unexpected var, use let or const instead  no-var
+   724:11  warning  Unexpected var, use let or const instead  no-var
+   726:11  warning  Unexpected var, use let or const instead  no-var
+   729:13  warning  Unexpected var, use let or const instead  no-var
+   745:5   warning  Unexpected var, use let or const instead  no-var
+   752:5   warning  Unexpected var, use let or const instead  no-var
+   759:5   warning  Unexpected var, use let or const instead  no-var
+   760:5   warning  Unexpected var, use let or const instead  no-var
+   770:5   warning  Unexpected var, use let or const instead  no-var
+   771:5   warning  Unexpected var, use let or const instead  no-var
+   772:5   warning  Unexpected var, use let or const instead  no-var
+   773:5   warning  Unexpected var, use let or const instead  no-var
+   775:7   warning  Unexpected var, use let or const instead  no-var
+   777:7   warning  Unexpected var, use let or const instead  no-var
+   779:7   warning  Unexpected var, use let or const instead  no-var
+   783:5   warning  Unexpected var, use let or const instead  no-var
+   784:7   warning  Unexpected var, use let or const instead  no-var
+   787:5   warning  Unexpected var, use let or const instead  no-var
+   791:5   warning  Unexpected var, use let or const instead  no-var
+   822:5   warning  Unexpected var, use let or const instead  no-var
+   823:5   warning  Unexpected var, use let or const instead  no-var
+   828:5   warning  Unexpected var, use let or const instead  no-var
+   829:5   warning  Unexpected var, use let or const instead  no-var
+   830:5   warning  Unexpected var, use let or const instead  no-var
+   831:5   warning  Unexpected var, use let or const instead  no-var
+   832:5   warning  Unexpected var, use let or const instead  no-var
+   834:5   warning  Unexpected var, use let or const instead  no-var
+   835:5   warning  Unexpected var, use let or const instead  no-var
+   836:5   warning  Unexpected var, use let or const instead  no-var
+   837:5   warning  Unexpected var, use let or const instead  no-var
+   838:5   warning  Unexpected var, use let or const instead  no-var
+   840:5   warning  Unexpected var, use let or const instead  no-var
+   841:5   warning  Unexpected var, use let or const instead  no-var
+   842:5   warning  Unexpected var, use let or const instead  no-var
+   846:5   warning  Unexpected var, use let or const instead  no-var
+   847:5   warning  Unexpected var, use let or const instead  no-var
+   848:5   warning  Unexpected var, use let or const instead  no-var
+   851:5   warning  Unexpected var, use let or const instead  no-var
+   853:5   warning  Unexpected var, use let or const instead  no-var
+   869:9   warning  Unexpected var, use let or const instead  no-var
+  1039:19  warning  Unexpected var, use let or const instead  no-var
+  1040:19  warning  Unexpected var, use let or const instead  no-var
+  1100:7   warning  Unexpected var, use let or const instead  no-var
+  1125:9   warning  Unexpected var, use let or const instead  no-var
+  1137:7   warning  Unexpected var, use let or const instead  no-var
+  1138:7   warning  Unexpected var, use let or const instead  no-var
+  1139:7   warning  Unexpected var, use let or const instead  no-var
+  1154:7   warning  Unexpected var, use let or const instead  no-var
+  1162:7   warning  Unexpected var, use let or const instead  no-var
+  1163:7   warning  Unexpected var, use let or const instead  no-var
+  1165:9   warning  Unexpected var, use let or const instead  no-var
+  1186:5   warning  Unexpected var, use let or const instead  no-var
+  1188:7   warning  Unexpected var, use let or const instead  no-var
+  1199:5   warning  Unexpected var, use let or const instead  no-var
+  1202:9   warning  Unexpected var, use let or const instead  no-var
+  1203:9   warning  Unexpected var, use let or const instead  no-var
+  1212:9   warning  Unexpected var, use let or const instead  no-var
+  1214:11  warning  Unexpected var, use let or const instead  no-var
+  1224:5   warning  Unexpected var, use let or const instead  no-var
+  1237:5   warning  Unexpected var, use let or const instead  no-var
+  1238:5   warning  Unexpected var, use let or const instead  no-var
+  1243:5   warning  Unexpected var, use let or const instead  no-var
+  1244:5   warning  Unexpected var, use let or const instead  no-var
+  1245:5   warning  Unexpected var, use let or const instead  no-var
+  1246:7   warning  Unexpected var, use let or const instead  no-var
+  1247:7   warning  Unexpected var, use let or const instead  no-var
+  1248:7   warning  Unexpected var, use let or const instead  no-var
+  1283:5   warning  Unexpected var, use let or const instead  no-var
+  1284:5   warning  Unexpected var, use let or const instead  no-var
+  1298:15  warning  Unexpected var, use let or const instead  no-var
+  1329:5   warning  Unexpected var, use let or const instead  no-var
+  1405:9   warning  Unexpected var, use let or const instead  no-var
+  1412:9   warning  Unexpected var, use let or const instead  no-var
+  1413:9   warning  Unexpected var, use let or const instead  no-var
+  1429:5   warning  Unexpected var, use let or const instead  no-var
+  1431:5   warning  Unexpected var, use let or const instead  no-var
+  1432:5   warning  Unexpected var, use let or const instead  no-var
+  1433:5   warning  Unexpected var, use let or const instead  no-var
+  1456:5   warning  Unexpected var, use let or const instead  no-var
+  1457:5   warning  Unexpected var, use let or const instead  no-var
+  1472:5   warning  Unexpected var, use let or const instead  no-var
+  1493:5   warning  Unexpected var, use let or const instead  no-var
+  1494:5   warning  Unexpected var, use let or const instead  no-var
+  1497:7   warning  Unexpected var, use let or const instead  no-var
+  1499:7   warning  Unexpected var, use let or const instead  no-var
+  1500:9   warning  Unexpected var, use let or const instead  no-var
+  1501:9   warning  Unexpected var, use let or const instead  no-var
+  1530:11  warning  Unexpected var, use let or const instead  no-var
+  1539:11  warning  Unexpected var, use let or const instead  no-var
+  1546:11  warning  Unexpected var, use let or const instead  no-var
+  1578:5   warning  Unexpected var, use let or const instead  no-var
+  1580:5   warning  Unexpected var, use let or const instead  no-var
+  1582:5   warning  Unexpected var, use let or const instead  no-var
+  1584:5   warning  Unexpected var, use let or const instead  no-var
+  1590:5   warning  Unexpected var, use let or const instead  no-var
+  1592:7   warning  Unexpected var, use let or const instead  no-var
+  1594:7   warning  Unexpected var, use let or const instead  no-var
+  1596:7   warning  Unexpected var, use let or const instead  no-var
+  1597:7   warning  Unexpected var, use let or const instead  no-var
+  1598:7   warning  Unexpected var, use let or const instead  no-var
+  1600:9   warning  Unexpected var, use let or const instead  no-var
+  1612:5   warning  Unexpected var, use let or const instead  no-var
+  1613:5   warning  Unexpected var, use let or const instead  no-var
+  1616:5   warning  Unexpected var, use let or const instead  no-var
+  1617:5   warning  Unexpected var, use let or const instead  no-var
+  1620:5   warning  Unexpected var, use let or const instead  no-var
+  1622:7   warning  Unexpected var, use let or const instead  no-var
+  1623:7   warning  Unexpected var, use let or const instead  no-var
+  1646:5   warning  Unexpected var, use let or const instead  no-var
+  1647:5   warning  Unexpected var, use let or const instead  no-var
+  1648:5   warning  Unexpected var, use let or const instead  no-var
+  1668:5   warning  Unexpected var, use let or const instead  no-var
+  1687:5   warning  Unexpected var, use let or const instead  no-var
+  1688:5   warning  Unexpected var, use let or const instead  no-var
+  1690:5   warning  Unexpected var, use let or const instead  no-var
+  1700:13  warning  Unexpected var, use let or const instead  no-var
+  1701:13  warning  Unexpected var, use let or const instead  no-var
+  1719:5   warning  Unexpected var, use let or const instead  no-var
+  1722:7   warning  Unexpected var, use let or const instead  no-var
+  1723:7   warning  Unexpected var, use let or const instead  no-var
+  1724:9   warning  Unexpected var, use let or const instead  no-var
+  1725:9   warning  Unexpected var, use let or const instead  no-var
+  1726:9   warning  Unexpected var, use let or const instead  no-var
+  1727:9   warning  Unexpected var, use let or const instead  no-var
+  1728:9   warning  Unexpected var, use let or const instead  no-var
+  1732:7   warning  Unexpected var, use let or const instead  no-var
+  1736:9   warning  Unexpected var, use let or const instead  no-var
+  1737:9   warning  Unexpected var, use let or const instead  no-var
+  1738:9   warning  Unexpected var, use let or const instead  no-var
+  1774:9   warning  Unexpected var, use let or const instead  no-var
+  1793:7   warning  Unexpected var, use let or const instead  no-var
+  1797:7   warning  Unexpected var, use let or const instead  no-var
+  1798:7   warning  Unexpected var, use let or const instead  no-var
+  1885:9   warning  Unexpected var, use let or const instead  no-var
+  1886:9   warning  Unexpected var, use let or const instead  no-var
+  1888:9   warning  Unexpected var, use let or const instead  no-var
+  1897:9   warning  Unexpected var, use let or const instead  no-var
+  1916:11  warning  Unexpected var, use let or const instead  no-var
+  1961:5   warning  Unexpected var, use let or const instead  no-var
+  1993:9   warning  Unexpected var, use let or const instead  no-var
+  1994:9   warning  Unexpected var, use let or const instead  no-var
+  1996:9   warning  Unexpected var, use let or const instead  no-var
+  1997:9   warning  Unexpected var, use let or const instead  no-var
+  2009:9   warning  Unexpected var, use let or const instead  no-var
+  2023:5   warning  Unexpected var, use let or const instead  no-var
+  2024:5   warning  Unexpected var, use let or const instead  no-var
+  2035:15  warning  Unexpected var, use let or const instead  no-var
+  2051:5   warning  Unexpected var, use let or const instead  no-var
+  2053:5   warning  Unexpected var, use let or const instead  no-var
+  2070:5   warning  Unexpected var, use let or const instead  no-var
+  2107:5   warning  Unexpected var, use let or const instead  no-var
+  2108:5   warning  Unexpected var, use let or const instead  no-var
+  2119:15  warning  Unexpected var, use let or const instead  no-var
+  2135:5   warning  Unexpected var, use let or const instead  no-var
+  2136:5   warning  Unexpected var, use let or const instead  no-var
+  2141:5   warning  Unexpected var, use let or const instead  no-var
+  2142:5   warning  Unexpected var, use let or const instead  no-var
+  2143:5   warning  Unexpected var, use let or const instead  no-var
+  2158:5   warning  Unexpected var, use let or const instead  no-var
+  2206:5   warning  Unexpected var, use let or const instead  no-var
+  2207:5   warning  Unexpected var, use let or const instead  no-var
+  2208:5   warning  Unexpected var, use let or const instead  no-var
+  2211:7   warning  Unexpected var, use let or const instead  no-var
+  2214:7   warning  Unexpected var, use let or const instead  no-var
+  2215:9   warning  Unexpected var, use let or const instead  no-var
+  2216:9   warning  Unexpected var, use let or const instead  no-var
+  2217:9   warning  Unexpected var, use let or const instead  no-var
+  2218:9   warning  Unexpected var, use let or const instead  no-var
+  2232:9   warning  Unexpected var, use let or const instead  no-var
+  2233:9   warning  Unexpected var, use let or const instead  no-var
+  2234:9   warning  Unexpected var, use let or const instead  no-var
+  2235:9   warning  Unexpected var, use let or const instead  no-var
+  2268:11  warning  Unexpected var, use let or const instead  no-var
+  2275:11  warning  Unexpected var, use let or const instead  no-var
+  2282:11  warning  Unexpected var, use let or const instead  no-var
+  2319:5   warning  Unexpected var, use let or const instead  no-var
+  2321:5   warning  Unexpected var, use let or const instead  no-var
+  2322:5   warning  Unexpected var, use let or const instead  no-var
+  2323:5   warning  Unexpected var, use let or const instead  no-var
+  2324:5   warning  Unexpected var, use let or const instead  no-var
+  2325:5   warning  Unexpected var, use let or const instead  no-var
+  2349:5   warning  Unexpected var, use let or const instead  no-var
+  2369:5   warning  Unexpected var, use let or const instead  no-var
+  2389:5   warning  Unexpected var, use let or const instead  no-var
+  2391:5   warning  Unexpected var, use let or const instead  no-var
+  2392:5   warning  Unexpected var, use let or const instead  no-var
+  2395:5   warning  Unexpected var, use let or const instead  no-var
+  2397:5   warning  Unexpected var, use let or const instead  no-var
+  2409:5   warning  Unexpected var, use let or const instead  no-var
+  2410:5   warning  Unexpected var, use let or const instead  no-var
+  2417:5   warning  Unexpected var, use let or const instead  no-var
+  2426:5   warning  Unexpected var, use let or const instead  no-var
+  2454:5   warning  Unexpected var, use let or const instead  no-var
+  2455:5   warning  Unexpected var, use let or const instead  no-var
+  2467:5   warning  Unexpected var, use let or const instead  no-var
+  2468:5   warning  Unexpected var, use let or const instead  no-var
+  2469:5   warning  Unexpected var, use let or const instead  no-var
+  2470:5   warning  Unexpected var, use let or const instead  no-var
+  2480:5   warning  Unexpected var, use let or const instead  no-var
+  2495:5   warning  Unexpected var, use let or const instead  no-var
+  2526:7   warning  Unexpected var, use let or const instead  no-var
+  2527:7   warning  Unexpected var, use let or const instead  no-var
+  2535:7   warning  Unexpected var, use let or const instead  no-var
+  2544:9   warning  Unexpected var, use let or const instead  no-var
+  2548:9   warning  Unexpected var, use let or const instead  no-var
+  2549:9   warning  Unexpected var, use let or const instead  no-var
+  2567:11  warning  Unexpected var, use let or const instead  no-var
+  2568:11  warning  Unexpected var, use let or const instead  no-var
+  2575:11  warning  Unexpected var, use let or const instead  no-var
+  2582:11  warning  Unexpected var, use let or const instead  no-var
+  2601:5   warning  Unexpected var, use let or const instead  no-var
+  2603:5   warning  Unexpected var, use let or const instead  no-var
+  2605:5   warning  Unexpected var, use let or const instead  no-var
+  2622:5   warning  Unexpected var, use let or const instead  no-var
+  2623:5   warning  Unexpected var, use let or const instead  no-var
+  2626:5   warning  Unexpected var, use let or const instead  no-var
+  2627:5   warning  Unexpected var, use let or const instead  no-var
+  2628:5   warning  Unexpected var, use let or const instead  no-var
+  2636:5   warning  Unexpected var, use let or const instead  no-var
+  2639:5   warning  Unexpected var, use let or const instead  no-var
+  2666:5   warning  Unexpected var, use let or const instead  no-var
+  2667:5   warning  Unexpected var, use let or const instead  no-var
+  2702:5   warning  Unexpected var, use let or const instead  no-var
+  2703:5   warning  Unexpected var, use let or const instead  no-var
+  2704:5   warning  Unexpected var, use let or const instead  no-var
+  2706:5   warning  Unexpected var, use let or const instead  no-var
+  2736:7   warning  Unexpected var, use let or const instead  no-var
+  2737:7   warning  Unexpected var, use let or const instead  no-var
+  2741:9   warning  Unexpected var, use let or const instead  no-var
+  2742:9   warning  Unexpected var, use let or const instead  no-var
+  2785:5   warning  Unexpected var, use let or const instead  no-var
+  2786:5   warning  Unexpected var, use let or const instead  no-var
+  2793:7   warning  Unexpected var, use let or const instead  no-var
+  2834:5   warning  Unexpected var, use let or const instead  no-var
+  2835:5   warning  Unexpected var, use let or const instead  no-var
+  2836:5   warning  Unexpected var, use let or const instead  no-var
+  2837:5   warning  Unexpected var, use let or const instead  no-var
+  2849:5   warning  Unexpected var, use let or const instead  no-var
+  2901:17  warning  Unexpected var, use let or const instead  no-var
+  2902:17  warning  Unexpected var, use let or const instead  no-var
+  2929:5   warning  Unexpected var, use let or const instead  no-var
+  2935:5   warning  Unexpected var, use let or const instead  no-var
+  2938:5   warning  Unexpected var, use let or const instead  no-var
+  2959:5   warning  Unexpected var, use let or const instead  no-var
+  2960:5   warning  Unexpected var, use let or const instead  no-var
+  2964:5   warning  Unexpected var, use let or const instead  no-var
+  2990:5   warning  Unexpected var, use let or const instead  no-var
+  3027:5   warning  Unexpected var, use let or const instead  no-var
+  3036:7   warning  Unexpected var, use let or const instead  no-var
+  3038:7   warning  Unexpected var, use let or const instead  no-var
+  3039:7   warning  Unexpected var, use let or const instead  no-var
+  3040:7   warning  Unexpected var, use let or const instead  no-var
+  3071:7   warning  Unexpected var, use let or const instead  no-var
+  3088:5   warning  Unexpected var, use let or const instead  no-var
+  3100:15  warning  Unexpected var, use let or const instead  no-var
+  3124:9   warning  Unexpected var, use let or const instead  no-var
+  3125:9   warning  Unexpected var, use let or const instead  no-var
+  3132:9   warning  Unexpected var, use let or const instead  no-var
+  3144:9   warning  Unexpected var, use let or const instead  no-var
+  3156:5   warning  Unexpected var, use let or const instead  no-var
+  3171:5   warning  Unexpected var, use let or const instead  no-var
+  3172:5   warning  Unexpected var, use let or const instead  no-var
+  3173:5   warning  Unexpected var, use let or const instead  no-var
+  3174:5   warning  Unexpected var, use let or const instead  no-var
+  3175:5   warning  Unexpected var, use let or const instead  no-var
+  3176:5   warning  Unexpected var, use let or const instead  no-var
+  3212:5   warning  Unexpected var, use let or const instead  no-var
+  3221:7   warning  Unexpected var, use let or const instead  no-var
+  3222:7   warning  Unexpected var, use let or const instead  no-var
+  3233:7   warning  Unexpected var, use let or const instead  no-var
+  3244:17  warning  Unexpected var, use let or const instead  no-var
+  3245:17  warning  Unexpected var, use let or const instead  no-var
+  3246:17  warning  Unexpected var, use let or const instead  no-var
+  3258:7   warning  Unexpected var, use let or const instead  no-var
+  3274:5   warning  Unexpected var, use let or const instead  no-var
+  3285:15  warning  Unexpected var, use let or const instead  no-var
+  3301:9   warning  Unexpected var, use let or const instead  no-var
+  3320:5   warning  Unexpected var, use let or const instead  no-var
+  3321:5   warning  Unexpected var, use let or const instead  no-var
+  3322:5   warning  Unexpected var, use let or const instead  no-var
+  3323:5   warning  Unexpected var, use let or const instead  no-var
+  3380:5   warning  Unexpected var, use let or const instead  no-var
+  3390:5   warning  Unexpected var, use let or const instead  no-var
+  3391:5   warning  Unexpected var, use let or const instead  no-var
+  3392:5   warning  Unexpected var, use let or const instead  no-var
+  3393:5   warning  Unexpected var, use let or const instead  no-var
+  3394:5   warning  Unexpected var, use let or const instead  no-var
+  3399:7   warning  Unexpected var, use let or const instead  no-var
+  3421:7   warning  Unexpected var, use let or const instead  no-var
+  3422:7   warning  Unexpected var, use let or const instead  no-var
+  3447:7   warning  Unexpected var, use let or const instead  no-var
+  3448:7   warning  Unexpected var, use let or const instead  no-var
+  3463:5   warning  Unexpected var, use let or const instead  no-var
+  3466:5   warning  Unexpected var, use let or const instead  no-var
+  3477:9   warning  Unexpected var, use let or const instead  no-var
+  3487:5   warning  Unexpected var, use let or const instead  no-var
+  3499:7   warning  Unexpected var, use let or const instead  no-var
+  3520:5   warning  Unexpected var, use let or const instead  no-var
+  3528:5   warning  Unexpected var, use let or const instead  no-var
+  3593:7   warning  Unexpected var, use let or const instead  no-var
+  3594:7   warning  Unexpected var, use let or const instead  no-var
+  3595:7   warning  Unexpected var, use let or const instead  no-var
+  3596:7   warning  Unexpected var, use let or const instead  no-var
+  3620:5   warning  Unexpected var, use let or const instead  no-var
+  3622:5   warning  Unexpected var, use let or const instead  no-var
+  3623:5   warning  Unexpected var, use let or const instead  no-var
+  3624:5   warning  Unexpected var, use let or const instead  no-var
+  3626:5   warning  Unexpected var, use let or const instead  no-var
+  3646:5   warning  Unexpected var, use let or const instead  no-var
+  3649:7   warning  Unexpected var, use let or const instead  no-var
+  3654:7   warning  Unexpected var, use let or const instead  no-var
+  3658:9   warning  Unexpected var, use let or const instead  no-var
+  3699:5   warning  Unexpected var, use let or const instead  no-var
+  3700:5   warning  Unexpected var, use let or const instead  no-var
+  3737:9   warning  Unexpected var, use let or const instead  no-var
+  3738:9   warning  Unexpected var, use let or const instead  no-var
+  3745:9   warning  Unexpected var, use let or const instead  no-var
+  3752:5   warning  Unexpected var, use let or const instead  no-var
+  3764:5   warning  Unexpected var, use let or const instead  no-var
+  3765:5   warning  Unexpected var, use let or const instead  no-var
+  3766:5   warning  Unexpected var, use let or const instead  no-var
+  3767:5   warning  Unexpected var, use let or const instead  no-var
+  3768:5   warning  Unexpected var, use let or const instead  no-var
+  3769:5   warning  Unexpected var, use let or const instead  no-var
+  3774:5   warning  Unexpected var, use let or const instead  no-var
+  3777:5   warning  Unexpected var, use let or const instead  no-var
+  3778:5   warning  Unexpected var, use let or const instead  no-var
+  3808:5   warning  Unexpected var, use let or const instead  no-var
+  3809:5   warning  Unexpected var, use let or const instead  no-var
+  3810:7   warning  Unexpected var, use let or const instead  no-var
+  3811:7   warning  Unexpected var, use let or const instead  no-var
+  3814:5   warning  Unexpected var, use let or const instead  no-var
+  3815:5   warning  Unexpected var, use let or const instead  no-var
+  3816:5   warning  Unexpected var, use let or const instead  no-var
+  3817:5   warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\confirmation.js
+   5:3  warning  Unexpected var, use let or const instead  no-var
+  21:7  warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\form.js
+    9:3   warning  Unexpected var, use let or const instead  no-var
+   12:3   warning  Unexpected var, use let or const instead  no-var
+   13:3   warning  Unexpected var, use let or const instead  no-var
+   14:3   warning  Unexpected var, use let or const instead  no-var
+   16:3   warning  Unexpected var, use let or const instead  no-var
+   17:3   warning  Unexpected var, use let or const instead  no-var
+  579:14  warning  'e' is defined but never used             no-unused-vars
+  587:14  warning  'e' is defined but never used             no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\invoices-admin.js
+    4:3   warning  Unexpected var, use let or const instead  no-var
+    5:3   warning  Unexpected var, use let or const instead  no-var
+    6:3   warning  Unexpected var, use let or const instead  no-var
+    7:3   warning  Unexpected var, use let or const instead  no-var
+    7:31  warning  Unexpected var, use let or const instead  no-var
+    8:3   warning  Unexpected var, use let or const instead  no-var
+    9:3   warning  Unexpected var, use let or const instead  no-var
+   11:3   warning  Unexpected var, use let or const instead  no-var
+   14:7   warning  Unexpected var, use let or const instead  no-var
+   17:14  warning  'e' is defined but never used             no-unused-vars
+   32:7   warning  Unexpected var, use let or const instead  no-var
+   33:7   warning  Unexpected var, use let or const instead  no-var
+   33:11  warning  'all' is assigned a value but never used  no-unused-vars
+   35:7   warning  Unexpected var, use let or const instead  no-var
+   37:9   warning  Unexpected var, use let or const instead  no-var
+   64:7   warning  Unexpected var, use let or const instead  no-var
+  105:7   warning  Unexpected var, use let or const instead  no-var
+  106:7   warning  Unexpected var, use let or const instead  no-var
+  107:7   warning  Unexpected var, use let or const instead  no-var
+  108:7   warning  Unexpected var, use let or const instead  no-var
+  109:9   warning  Unexpected var, use let or const instead  no-var
+  113:7   warning  Unexpected var, use let or const instead  no-var
+  114:7   warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\invoices.js
+    5:3   warning  Unexpected var, use let or const instead                             no-var
+    6:3   warning  Unexpected var, use let or const instead                             no-var
+    7:3   warning  Unexpected var, use let or const instead                             no-var
+    7:31  warning  Unexpected var, use let or const instead                             no-var
+    8:3   warning  Unexpected var, use let or const instead                             no-var
+    9:3   warning  Unexpected var, use let or const instead                             no-var
+   10:3   warning  Unexpected var, use let or const instead                             no-var
+   11:3   warning  Unexpected var, use let or const instead                             no-var
+   11:31  warning  Unexpected var, use let or const instead                             no-var
+   13:3   warning  Unexpected var, use let or const instead                             no-var
+   16:7   warning  Unexpected var, use let or const instead                             no-var
+   19:14  warning  'e' is defined but never used                                        no-unused-vars
+   22:3   warning  Unexpected var, use let or const instead                             no-var
+   23:3   warning  Unexpected var, use let or const instead                             no-var
+   37:7   warning  Unexpected var, use let or const instead                             no-var
+   38:7   warning  Unexpected var, use let or const instead                             no-var
+   57:3   warning  Unexpected var, use let or const instead                             no-var
+   60:5   warning  Unexpected var, use let or const instead                             no-var
+   72:5   warning  Unexpected var, use let or const instead                             no-var
+   82:5   warning  Unexpected var, use let or const instead                             no-var
+   84:7   warning  Unexpected var, use let or const instead                             no-var
+   85:7   warning  Unexpected var, use let or const instead                             no-var
+   86:7   warning  Unexpected var, use let or const instead                             no-var
+   93:5   warning  Unexpected var, use let or const instead                             no-var
+   98:5   warning  Unexpected var, use let or const instead                             no-var
+  102:5   warning  Unexpected var, use let or const instead                             no-var
+  107:25  warning  'r' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+  124:7   warning  Unexpected var, use let or const instead                             no-var
+  132:5   warning  Unexpected var, use let or const instead                             no-var
+  144:7   warning  Unexpected var, use let or const instead                             no-var
+  176:7   warning  Unexpected var, use let or const instead                             no-var
+  180:7   warning  Unexpected var, use let or const instead                             no-var
+  182:7   warning  Unexpected var, use let or const instead                             no-var
+  186:7   warning  Unexpected var, use let or const instead                             no-var
+  198:5   warning  Unexpected var, use let or const instead                             no-var
+  203:7   warning  Unexpected var, use let or const instead                             no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\landing.js
+  17:5  warning  Unexpected var, use let or const instead  no-var
+  24:5  warning  Unexpected var, use let or const instead  no-var
+  30:5  warning  Unexpected var, use let or const instead  no-var
+  34:7  warning  Unexpected var, use let or const instead  no-var
+  40:7  warning  Unexpected var, use let or const instead  no-var
+  49:5  warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\login.js
+   17:3  warning  Unexpected var, use let or const instead            no-var
+   18:3  warning  Unexpected var, use let or const instead            no-var
+   21:3  warning  Unexpected var, use let or const instead            no-var
+   22:3  warning  Unexpected var, use let or const instead            no-var
+   23:3  warning  Unexpected var, use let or const instead            no-var
+   24:3  warning  Unexpected var, use let or const instead            no-var
+   25:3  warning  Unexpected var, use let or const instead            no-var
+   26:3  warning  Unexpected var, use let or const instead            no-var
+   27:3  warning  Unexpected var, use let or const instead            no-var
+   28:3  warning  Unexpected var, use let or const instead            no-var
+   29:3  warning  Unexpected var, use let or const instead            no-var
+   30:3  warning  Unexpected var, use let or const instead            no-var
+   31:3  warning  Unexpected var, use let or const instead            no-var
+   33:3  warning  Unexpected var, use let or const instead            no-var
+   34:3  warning  Unexpected var, use let or const instead            no-var
+   35:3  warning  Unexpected var, use let or const instead            no-var
+   38:3  warning  Unexpected var, use let or const instead            no-var
+   41:3  warning  Unexpected var, use let or const instead            no-var
+   42:3  warning  Unexpected var, use let or const instead            no-var
+   43:3  warning  Unexpected var, use let or const instead            no-var
+   44:3  warning  Unexpected var, use let or const instead            no-var
+   45:3  warning  Unexpected var, use let or const instead            no-var
+   46:3  warning  Unexpected var, use let or const instead            no-var
+   47:3  warning  Unexpected var, use let or const instead            no-var
+   48:3  warning  Unexpected var, use let or const instead            no-var
+   49:3  warning  Unexpected var, use let or const instead            no-var
+   50:3  warning  Unexpected var, use let or const instead            no-var
+   51:3  warning  Unexpected var, use let or const instead            no-var
+   51:7  warning  'btnQuickToken' is assigned a value but never used  no-unused-vars
+   52:3  warning  Unexpected var, use let or const instead            no-var
+   53:3  warning  Unexpected var, use let or const instead            no-var
+   56:3  warning  Unexpected var, use let or const instead            no-var
+   57:3  warning  Unexpected var, use let or const instead            no-var
+   58:3  warning  Unexpected var, use let or const instead            no-var
+   59:3  warning  Unexpected var, use let or const instead            no-var
+   60:3  warning  Unexpected var, use let or const instead            no-var
+   61:3  warning  Unexpected var, use let or const instead            no-var
+   62:3  warning  Unexpected var, use let or const instead            no-var
+   63:3  warning  Unexpected var, use let or const instead            no-var
+   64:3  warning  Unexpected var, use let or const instead            no-var
+   65:3  warning  Unexpected var, use let or const instead            no-var
+   66:3  warning  Unexpected var, use let or const instead            no-var
+   69:3  warning  Unexpected var, use let or const instead            no-var
+   70:3  warning  Unexpected var, use let or const instead            no-var
+   71:3  warning  Unexpected var, use let or const instead            no-var
+   72:3  warning  Unexpected var, use let or const instead            no-var
+   73:3  warning  Unexpected var, use let or const instead            no-var
+   74:3  warning  Unexpected var, use let or const instead            no-var
+   75:3  warning  Unexpected var, use let or const instead            no-var
+   76:3  warning  Unexpected var, use let or const instead            no-var
+   77:3  warning  Unexpected var, use let or const instead            no-var
+   78:3  warning  Unexpected var, use let or const instead            no-var
+   79:3  warning  Unexpected var, use let or const instead            no-var
+   82:3  warning  Unexpected var, use let or const instead            no-var
+   83:3  warning  Unexpected var, use let or const instead            no-var
+   83:7  warning  'currentEmail' is assigned a value but never used   no-unused-vars
+   84:3  warning  Unexpected var, use let or const instead            no-var
+   90:5  warning  Unexpected var, use let or const instead            no-var
+   91:5  warning  Unexpected var, use let or const instead            no-var
+   92:5  warning  Unexpected var, use let or const instead            no-var
+  106:7  warning  Unexpected var, use let or const instead            no-var
+  107:7  warning  Unexpected var, use let or const instead            no-var
+  238:7  warning  Unexpected var, use let or const instead            no-var
+  252:5  warning  Unexpected var, use let or const instead            no-var
+  253:5  warning  Unexpected var, use let or const instead            no-var
+  277:9  warning  Unexpected var, use let or const instead            no-var
+  299:3  warning  Unexpected var, use let or const instead            no-var
+  300:3  warning  Unexpected var, use let or const instead            no-var
+  301:3  warning  Unexpected var, use let or const instead            no-var
+  302:3  warning  Unexpected var, use let or const instead            no-var
+  303:3  warning  Unexpected var, use let or const instead            no-var
+  304:3  warning  Unexpected var, use let or const instead            no-var
+  305:3  warning  Unexpected var, use let or const instead            no-var
+  306:3  warning  Unexpected var, use let or const instead            no-var
+  307:3  warning  Unexpected var, use let or const instead            no-var
+  308:3  warning  Unexpected var, use let or const instead            no-var
+  309:3  warning  Unexpected var, use let or const instead            no-var
+  323:7  warning  Unexpected var, use let or const instead            no-var
+  340:7  warning  Unexpected var, use let or const instead            no-var
+  356:5  warning  Unexpected var, use let or const instead            no-var
+  357:5  warning  Unexpected var, use let or const instead            no-var
+  358:5  warning  Unexpected var, use let or const instead            no-var
+  359:5  warning  Unexpected var, use let or const instead            no-var
+  442:5  warning  Unexpected var, use let or const instead            no-var
+  460:7  warning  Unexpected var, use let or const instead            no-var
+  506:7  warning  Unexpected var, use let or const instead            no-var
+  516:5  warning  Unexpected var, use let or const instead            no-var
+  534:9  warning  Unexpected var, use let or const instead            no-var
+  577:5  warning  Unexpected var, use let or const instead            no-var
+  592:9  warning  Unexpected var, use let or const instead            no-var
+  612:5  warning  Unexpected var, use let or const instead            no-var
+  613:5  warning  Unexpected var, use let or const instead            no-var
+  640:9  warning  Unexpected var, use let or const instead            no-var
+  676:3  warning  Unexpected var, use let or const instead            no-var
+  677:3  warning  Unexpected var, use let or const instead            no-var
+  678:3  warning  Unexpected var, use let or const instead            no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\status.js
+    4:3  warning  Unexpected var, use let or const instead  no-var
+    6:3  warning  Unexpected var, use let or const instead  no-var
+    7:3  warning  Unexpected var, use let or const instead  no-var
+   18:5  warning  Unexpected var, use let or const instead  no-var
+   19:5  warning  Unexpected var, use let or const instead  no-var
+   31:5  warning  Unexpected var, use let or const instead  no-var
+   33:5  warning  Unexpected var, use let or const instead  no-var
+   45:5  warning  Unexpected var, use let or const instead  no-var
+   46:5  warning  Unexpected var, use let or const instead  no-var
+   47:7  warning  Unexpected var, use let or const instead  no-var
+   52:5  warning  Unexpected var, use let or const instead  no-var
+   59:5  warning  Unexpected var, use let or const instead  no-var
+   79:5  warning  Unexpected var, use let or const instead  no-var
+   81:7  warning  Unexpected var, use let or const instead  no-var
+   94:5  warning  Unexpected var, use let or const instead  no-var
+  103:3  warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\ui.js
+   16:5   warning  Unexpected var, use let or const instead  no-var
+   22:5   warning  Unexpected var, use let or const instead  no-var
+   35:5   warning  Unexpected var, use let or const instead  no-var
+   40:5   warning  Unexpected var, use let or const instead  no-var
+   49:5   warning  Unexpected var, use let or const instead  no-var
+   54:5   warning  Unexpected var, use let or const instead  no-var
+   67:3   warning  Unexpected var, use let or const instead  no-var
+   70:5   warning  Unexpected var, use let or const instead  no-var
+   71:5   warning  Unexpected var, use let or const instead  no-var
+   79:5   warning  Unexpected var, use let or const instead  no-var
+   81:5   warning  Unexpected var, use let or const instead  no-var
+   91:68  warning  'e' is defined but never used             no-unused-vars
+   96:9   warning  Unexpected var, use let or const instead  no-var
+   98:9   warning  Unexpected var, use let or const instead  no-var
+  108:7   warning  Unexpected var, use let or const instead  no-var
+  113:9   warning  Unexpected var, use let or const instead  no-var
+  121:5   warning  Unexpected var, use let or const instead  no-var
+  140:3   warning  Unexpected var, use let or const instead  no-var
+  191:5   warning  Unexpected var, use let or const instead  no-var
+  198:3   warning  Unexpected var, use let or const instead  no-var
+  209:5   warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\lib\http.js
+  122:64  warning  'onError' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\lib\security.js
+  41:18  warning  'bytes' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\cms.service.js
+  460:9  warning  'specsObj' is never reassigned. Use 'const' instead        prefer-const
+  461:9  warning  'docsObj' is never reassigned. Use 'const' instead         prefer-const
+  596:9  warning  'productImgsMap' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\integration.service.js
+  9:10  warning  'log' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\kyc.service.js
+  16:55  warning  'webhooks' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\notify.service.js
+  19:11  warning  'C' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\review.service.js
+  77:67  warning  'note' is assigned a value but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\routes.js
+     4:31   warning  'fail' is defined but never used                                       no-unused-vars
+     4:37   warning  'json' is defined but never used                                       no-unused-vars
+     5:148  warning  'verifyCsrfToken' is defined but never used                            no-unused-vars
+  1003:95   warning  'req' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+  1003:100  warning  'res' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\store\pg-repos.js
+  12:21  warning  'hashPassword' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\account-services.test.js
+  20:7  warning  'REVIEWER_PASSWORD' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\pg-integration-test.js
+   8:10  warning  'readFileSync' is defined but never used   no-unused-vars
+  14:7   warning  'ROOT' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\unit\security-rules-store.test.js
+  5:31  warning  'ACTIONS' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\tools\seed.js
+  15:10  warning  'hashPassword' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\site\src\pages\sitemap.xml.js
+  58:55  warning  'hasArTwin' is assigned a value but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\bringup.mjs
+  36:10  warning  'run' is defined but never used                                          no-unused-vars
+  53:41  warning  'label' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\a11y.mjs
+  86:16  warning  'e' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\authz-matrix.mjs
+  10:10  warning  'fileURLToPath' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\check-no-placeholders.mjs
+  25:7  warning  'files' is never reassigned. Use 'const' instead       prefer-const
+  44:5  warning  'violations' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\clean-db-build.mjs
+  10:47  warning  'REPO' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\lib.mjs
+  173:5  warning  'timer' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\link-crawl.mjs
+  33:5  warning  'queue' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\pg-reporting.mjs
+  9:55  warning  'rand' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\test-cms-buttons.mjs
+  15:7  warning  'CMS_HTML_PATH' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\test-cms-e2e.mjs
+  17:7  warning  'REPO' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\cleanup-test-fixtures.mjs
+  56:7  warning  'JSON_DB_PATH' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\dev-edge.mjs
+  63:7  warning  'st' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\golive-execute.js
+  18:37  warning  'existsSync' is defined but never used  no-unused-vars
+  56:12  warning  'e' is defined but never used           no-unused-vars
+  71:12  warning  'e' is defined but never used           no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\manual-e2e-audit.mjs
+  2:8  warning  'http' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\parity-checklist.js
+  108:7  warning  'htmlFiles' is never reassigned. Use 'const' instead   prefer-const
+  126:7  warning  'htmlFiles2' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\peppol-verify.js
+  89:7  warning  'r' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\postlive-review.js
+  12:39  warning  'existsSync' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\security-audit.js
+   7:10  warning  'createReadStream' is defined but never used         no-unused-vars
+  61:18  warning  'findings' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\test-phase1-verification.mjs
+  66:5  warning  'dotfileDenied' is assigned a value but never used        no-unused-vars
+  66:5  warning  'dotfileDenied' is never reassigned. Use 'const' instead  prefer-const
+  73:7  warning  'allowedPublic' is assigned a value but never used        no-unused-vars
+
+✖ 754 problems (0 errors, 754 warnings)
+  0 errors and 704 warnings potentially fixable with the `--fix` option.
+
+
+================ JOB security ================
+
+>>>>>>>> security-audit: node scripts/security-audit.js
+
+=== 1. Response headers (ASVS V5) ===
+{"ts":"2026-10-16T14:32:47.321Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-16T14:32:47.322Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T14:32:47.497Z","level":"info","event":"http","id":"fbcc2464-7ffb-4f78-8a9e-e4f35ebffd16","method":"GET","path":"/api/health","status":200,"ms":2}
+PASS X-Content-Type-Options: nosniff
+PASS X-Frame-Options denies framing
+PASS Referrer-Policy set
+PASS Content-Security-Policy set
+PASS Permissions-Policy set
+PASS Strict-Transport-Security set (HSTS)
+PASS no X-Powered-By / server banner
+PASS 404 is JSON (no stack trace)
+
+=== 2. Secrets scan ===
+PASS no hard-coded secrets in 136 source files
+
+=== 3. Dependencies (npm audit --omit=dev) =====
+PASS no high/critical vulns in RUNTIME deps (found: ) — {"info":0,"low":1,"moderate":0,"high":1,"critical":1,"total":3} | runtime: [] build-only: [astro, esbuild, sharp]
+INFO build-toolchain advisories (not shipped; assessed in SECURITY_AUDIT.md): astro, esbuild, sharp
+
+=== 4. Runtime security evidence (suites re-run this phase) ===
+PASS SSRF guard unit tests (7) green
+PASS RBAC/PII/rate-limit integration tests green
+PASS SQL parameterisation: every client.query uses a literal SQL string (67/67)
+PASS uploads path traversal guard present
+
+============================================================
+SECURITY AUDIT (local): 14 PASS, 0 FAIL
+Remaining T6.6 rig: ZAP baseline scan + external pen-test (ASVS L2 full)
+============================================================
+
+================ CI SUMMARY ================
+  PASS  lint
+  PASS  security
+2/2 jobs green

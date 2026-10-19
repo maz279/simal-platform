@@ -1,0 +1,15 @@
+RM-1.2-4 — First green platform run
+
+http://localhost:3000/simal-ci/simal-platform/actions/runs/5   (21/21 jobs, commit 7be627b)
+
+The CI platform is the rig's Gitea + gitea-runner (infra/ci-platform, rm 9.1-3). The run
+covers the 12 jobs this task named and the 9 gates added since. Details: 9.1-3.txt.
+
+Deviation from the task text: the task asked for a PR from rm/1.2-3-ci. The run came from
+a push to the platform's main, because the platform did not exist until rm 9.1-3. main's
+protection rule (required CI contexts for every job, no force-push or deletion) was
+applied right after the green run; see 9.1-3-protection-drill.log.
+
+The 1.2-3 fixes this task depended on (npm ci for unit/authz/link-crawl, the a11y dist
+artifact, Chrome provisioning) were applied in the rm(9.1-3) commits. 1.2-3's
+windows-latest + Node 24 smoke job is still not implemented.

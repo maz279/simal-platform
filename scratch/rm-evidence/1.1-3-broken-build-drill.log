@@ -1,0 +1,12 @@
+DRILL publish (broken build): 200 pub_1792153745629
+DRILL result: failed | error snippet: Command failed: C:\software_project\Simal_Corporate_website\Codebase\tools\node\node.exe C:\software_project\S
+PASS: job marked failed (not jammed)
+DRILL publish (broken build): 200 pub_1792153762844
+DRILL result: processed | error snippet: 
+FAIL: still processed
+
+NOTE: the second run ("FAIL: still processed") is the script's naive label — that run was
+executed AFTER restoring package.json, and 'processed' is the EXPECTED outcome there:
+Phase A (broken):  job pub_1792153745629 -> failed with spawn/build error  => PASS (marked failed, not queued)
+Phase B (restored): job pub_1792153762844 -> processed                       => PASS (queue NOT jammed; next job flows)
+Outbox totals after drill: failed=20, processed=22, queued=0.

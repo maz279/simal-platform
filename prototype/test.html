@@ -1,0 +1,109 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Self-test — Simal Prototype</title>
+<link rel="icon" type="image/png" href="assets/img/brand/favicon-32.png"><link rel="stylesheet" href="assets/css/styles.css">
+<script src="data/catalog.js"></script><script src="data/brands.js"></script><script src="data/solutions.js"></script><script src="data/software.js"></script><script src="data/product-deep.js"></script><script src="data/content.js"></script><script src="data/insights.js"></script>
+<script src="assets/js/core.js"></script>
+</head>
+<body style="padding:40px;font-family:Segoe UI,sans-serif">
+<h1>Prototype self-test</h1>
+<p class="note">Runs assertions against the runtime (validators, search, basket, references). Result lines appear below.</p>
+<div id="out" style="margin-top:16px;display:flex;flex-direction:column;gap:6px"></div>
+<script>
+(function () {
+  var out = document.getElementById('out');
+  var pass = 0, fail = 0;
+  function T(name, cond) {
+    var d = document.createElement('div');
+    d.textContent = (cond ? 'PASS ' : 'FAIL ') + name;
+    d.style.color = cond ? '#0E7A3C' : '#B3121F';
+    d.style.fontWeight = cond ? '600' : '800';
+    out.appendChild(d);
+    cond ? pass++ : fail++;
+  }
+  T('catalog loaded: 81 products', CATALOG.length === 81);
+  T('catalog images: 75 products with photos', CATALOG.filter(function (p) { return p.img.length; }).length === 75);
+  T('brands loaded: 18+ entries', BRANDS.length >= 18);
+  T('solutions loaded: 12 lines', SOLUTIONS.length === 12);
+  T('software portfolio: 20 products', window.SOFTWARE && SOFTWARE.products.length === 20);
+  T('software portfolio: 10 ERP + 10 specialized', window.SOFTWARE && SOFTWARE.products.filter(function (p) { return p.grp === 'erp'; }).length === 10 && SOFTWARE.products.filter(function (p) { return p.grp === 'spec'; }).length === 10);
+  T('software portfolio: 12 services', window.SOFTWARE && SOFTWARE.services.length === 12);
+  T('software portfolio: 9 industries, ids unique', window.SOFTWARE && SOFTWARE.industries.length === 9 && new Set(SOFTWARE.industries.map(function (i) { return i.id; })).size === 9);
+  T('software portfolio: product ids unique', window.SOFTWARE && new Set(SOFTWARE.products.map(function (p) { return p.id; })).size === 20);
+  T('software portfolio: flagship anchors exist (unipos/univat/distribution-erp)', window.SOFTWARE && ['unipos', 'univat', 'distribution-erp'].every(function (id) { return SOFTWARE.products.some(function (p) { return p.id === id; }); }));
+  T('module library: 7 detail entries, ids unique', window.SOFTWARE && SOFTWARE.moduleDetail.length === 7 && new Set(SOFTWARE.moduleDetail.map(function (m) { return m.id; })).size === 7);
+  T('module library: every erpModules card maps to a detail page', window.SOFTWARE && CONTENT.erpModules.every(function (m) { return SOFTWARE.moduleDetail.some(function (d) { return d.name === m[1]; }); }));
+  T('module library: no dead ends — every related id resolves', window.SOFTWARE && SOFTWARE.moduleDetail.every(function (m) { return m.related.every(function (r) { return SOFTWARE.moduleDetail.some(function (d) { return d.id === r; }); }); }));
+  T('product cards: full-card navigation overlay present', S.card(CATALOG[0]).indexOf('class="go"') > -1 && S.card(CATALOG[0]).indexOf('View details') > -1);
+  T('recently viewed: tracks and caps at 8', (function () { localStorage.removeItem('simal.recent'); CATALOG.slice(0, 10).forEach(function (p) { S.recent(p.slug); }); var r = S.recent(); return r.length === 8 && r[0] === CATALOG[9].slug; })());
+  T('category guides: all 7 categories have depth content', ['internal-ssd', 'portable-ssd', 'memory', 'monitors', 'gaming', 'accessories', 'laptops'].every(function (c) { return S.catGuide && S.catGuide[c] && S.catGuide[c].points.length === 3; }));
+  T('product deep pages: 81/81 SKUs have a dedicated record', window.PRODUCT_DEEP && CATALOG.every(function (p) { return PRODUCT_DEEP[p.slug] && PRODUCT_DEEP[p.slug].hero && PRODUCT_DEEP[p.slug].specs.length >= 2 && PRODUCT_DEEP[p.slug].feats.length >= 2 && PRODUCT_DEEP[p.slug].use.length >= 1; }));
+  T('service drill-down: 12 child pages, each with 3 sub-services', window.SOFTWARE && SOFTWARE.serviceDetail.length === 12 && SOFTWARE.serviceDetail.every(function (d) { return d.overview.length > 40 && d.how.length === 3 && d.subs.length === 3; }));
+  T('service drill-down: 36 grandchild ids unique and complete', window.SOFTWARE && (function () { var ids = []; SOFTWARE.serviceDetail.forEach(function (d) { d.subs.forEach(function (s) { ids.push(s.id); }); }); return ids.length === 36 && new Set(ids).size === 36 && SOFTWARE.serviceDetail.every(function (d) { return d.subs.every(function (s) { return s.what.length > 40 && s.gives.length === 3 && s.stack.length === 3; }); }); })());
+  T('service drill-down: 12/12 services carry a 2-question FAQ', window.SOFTWARE && SOFTWARE.serviceDetail.every(function (d) { return d.faq && d.faq.length === 2 && d.faq.every(function (f) { return f[0].length > 10 && f[1].length > 30; }); }));
+  T('solution deep-dive: 20 records, one per product, complete fields', window.SOFTWARE && SOFTWARE.solutionDetail.length === 20 && (function () { var pm = {}; SOFTWARE.products.forEach(function (p) { pm[p.id] = 1; }); return SOFTWARE.solutionDetail.every(function (d) { return pm[d.id] && d.what.length > 80 && d.caps.length >= 4 && d.caps.every(function (c) { return c[0].length > 3 && c[1].length >= 2; }) && d.flow.length === 3 && d.deploy.length > 30 && d.why.length === 3 && d.faq.length === 2; }); })());
+  T('solution deep-dive: cross-nav ids all resolve (related/services/modules)', window.SOFTWARE && (function () { var P = {}, Sv = {}, M = {}; SOFTWARE.products.forEach(function (p) { P[p.id] = 1; }); SOFTWARE.services.forEach(function (s) { Sv[s.id] = 1; }); SOFTWARE.moduleDetail.forEach(function (m) { M[m.id] = 1; }); return SOFTWARE.solutionDetail.every(function (d) { return (d.related || []).length >= 1 && d.related.every(function (r) { return P[r] && r !== d.id; }) && (d.services || []).length >= 1 && d.services.every(function (s) { return Sv[s]; }) && (d.modules || []).every(function (m) { return M[m]; }); }); })());
+  T('industry deep-dive: 9 records, one per vertical, complete fields', window.SOFTWARE && SOFTWARE.industryDetail.length === 9 && (function () { var im = {}; SOFTWARE.industries.forEach(function (i) { im[i.id] = 1; }); return SOFTWARE.industryDetail.every(function (d) { return im[d.id] && d.what.length > 80 && d.pains.length === 3 && d.plays.length === 3 && d.faq.length === 2; }); })());
+  T('industry deep-dive: cross-nav ids resolve (services, related industries)', window.SOFTWARE && (function () { var Sv = {}, I = {}; SOFTWARE.services.forEach(function (s) { Sv[s.id] = 1; }); SOFTWARE.industries.forEach(function (i) { I[i.id] = 1; }); return SOFTWARE.industryDetail.every(function (d) { return (d.services || []).length >= 2 && d.services.every(function (s) { return Sv[s]; }) && (d.related || []).length >= 1 && d.related.every(function (r) { return I[r] && r !== d.id; }); }); })());
+  T('IT-solution deep-dive: 12 records, one per line, complete fields', window.ITSOL && ITSOL.length === 12 && (function () { return ITSOL.every(function (d) { return d.id && d.what.length > 80 && d.scope.length >= 4 && d.scope.every(function (c) { return c[0].length > 3 && c[1].length >= 2; }) && d.process.length === 3 && d.faq.length === 2; }); })());
+  T('IT-solution deep-dive: cross-nav ids resolve (related→ITSOL, cats→catalog)', window.ITSOL && (function () { var M = {}, C = {}; ITSOL.forEach(function (d) { M[d.id] = 1; }); (window.CATALOG || []).forEach(function (p) { C[p.cat] = 1; }); return ITSOL.every(function (d) { return (d.related || []).length >= 2 && d.related.every(function (r) { return M[r] && r !== d.id; }) && (d.cats || []).every(function (c) { return C[c]; }); }); })());
+  T('insights library: 14 articles, full bodies, complete fields', window.INSIGHTS && INSIGHTS.length === 14 && (function () { return INSIGHTS.every(function (a) { return a.slug && a.cat && a.mins && a.at && a.author && a.x.length > 40 && a.body.length >= 3 && a.body.every(function (s) { return s[0].length > 5 && s[1].length >= 1 && s[1].every(function (p) { return typeof p === 'string' && p.length > 30; }); }); }); })());
+  T('insights library: related slugs resolve, slugs unique', window.INSIGHTS && (function () { var S2 = {}; INSIGHTS.forEach(function (a) { S2[a.slug] = 1; }); var uniq = new Set(INSIGHTS.map(function (a) { return a.slug; })).size === INSIGHTS.length; return uniq && INSIGHTS.every(function (a) { return (a.rel || []).length >= 2 && a.rel.every(function (r) { return S2[r] && r !== a.slug; }) && a.cta && a.cta.length === 2; }); })());
+
+  T('email valid', S.v.email('a@b.ae') === true);
+  T('email invalid', S.v.email('nope') === false);
+  T('TRN 15 digits valid', S.v.trn('100123456700003') === true);
+  T('TRN 14 digits invalid', S.v.trn('10012345670000') === false);
+  T('Peppol preview 0235: prefix', S.v.peppol('100123456700003') === '0235:100123456700003');
+  T('IBAN valid (MOD-97 passes)', S.v.iban('AE07 0331 2345 6789 0123 456') === true);
+  T('IBAN wrong checksum rejected', S.v.iban('AE07 0331 2345 6789 0123 457') === false);
+  T('IBAN length 22 rejected', S.v.iban('AE07 0331 2345 6789 0123 45') === false);
+
+  T('search "t705" finds Crucial T705', S.search('t705').length >= 2);
+  T('search "crucial" finds ≥10', S.search('crucial').length >= 10);
+  T('search "monitor" finds monitors', S.search('monitor').some(function (p) { return p.cat === 'monitors' || p.cat === 'gaming'; }));
+  T('search typo "crucail" tolerated', S.search('crucail').length >= 1);
+  T('search garbage returns 0', S.search('zzzzqqq').length === 0);
+
+  localStorage.removeItem('simal.basket');
+  S.addToBasket('crucial-t705-ssd-2', 5);
+  S.addToBasket('koorui-27-inch-gaming-monitor', 2);
+  T('basket: 2 lines', S.basket().length === 2);
+  T('basket: qty total 7', S.basketCount() === 7);
+  S.setQty('koorui-27-inch-gaming-monitor', 0);
+  T('basket: remove on qty 0', S.basket().length === 1);
+
+  var r1 = S.rfqRef(), r2 = S.rfqRef();
+  T('RFQ reference format', /^SIMAL-RFQ-\d{8}-\d+$/.test(r1));
+  T('RFQ references increment', r2 !== r1);
+
+  var apps = S.apps();
+  T('applications seeded: ≥6', apps.length >= 6);
+  T('app refs KYC- format', /^KYC-\d{4}-\d{4}$/.test(apps[0].ref));
+
+  S.cmsSave('crucial-t705-ssd-2', { name_ar: 'كروشيال T705', desc_ar: 'قرص حالة صلبة' });
+  T('CMS override saves + reads', (S.cmsFor('crucial-t705-ssd-2') || {}).name_ar === 'كروشيال T705');
+  var c = S.cms(); delete c.products['crucial-t705-ssd-2']; S.save('cms', c);
+
+  // integration: RFQ end-to-end
+  localStorage.removeItem('simal.basket');
+  S.addToBasket('crucial-t705-ssd-2', 3);
+  var rfq = S.submitRfq({ company: 'Test Trading LLC', contact: 'Tester', email: 't@t.ae', phone: '+971500000000', items: S.basket() });
+  T('RFQ e2e: reference issued', /^SIMAL-RFQ-\d{8}-\d+$/.test(rfq.ref));
+  T('RFQ e2e: history records it', S.rfqs().some(function (r) { return r.ref === rfq.ref; }));
+  T('RFQ e2e: basket cleared after submit', S.basket().length === 0);
+
+  // integration: KYC application lands in admin queue
+  var ref = 'KYC-TEST-0001';
+  S.saveApp({ ref: ref, company: 'Test Trading LLC', email: 't@t.ae', status: 'In review', at: new Date().toISOString(), sla: 0, trn: '100123456700003', peppol: '0235:100123456700003', docs: { licence: true, passport: false, bank: false }, flagged: [], notes: '', draft: {} });
+  T('KYC e2e: submission visible in queue', S.apps().some(function (a) { return a.ref === ref && a.status === 'In review'; }));
+  var apps2 = S.apps().map(function (a) { return a.ref === ref ? Object.assign({}, a, { status: 'Approved' }) : a; });
+  S.save('apps', apps2);
+  T('KYC e2e: reviewer decision persists', S.apps().filter(function (a) { return a.ref === ref; })[0].status === 'Approved');
+
+  var sum = document.createElement('div');
+  sum.style.cssText = 'margin-top:18px;font-size:18px;font-weight:800;color:' + (fail ? '#B3121F' : '#0E7A3C');
+  sum.textContent = fail ? ('FAILED: ' + fail + ' of ' + (pass + fail)) : ('ALL ' + pass + ' ASSERTIONS PASSED');
+  out.appendChild(sum);
+  document.title = fail ? 'SELF-TEST FAILED' : 'SELF-TEST PASSED';
+})();
+</script>
+</body></html>

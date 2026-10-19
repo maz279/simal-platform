@@ -1,0 +1,1621 @@
+---
+// index.astro — Home page. VISUAL CONTRACT: 100% Parity with Prototype index.html + home.js.
+// Preserves Redington-grade Hero v2 carousel + below-hero RFQ card, credibility strip,
+// "One company, two engines" split cards, Featured Products horizontal scroll strip,
+// 4-row Brand Showcase, Software Spotlight, "Proof, not promises" Testimonials & Awards,
+// and Tech Talk Latest Insights.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { db } from '../lib/db';
+
+const slides = await db`SELECT idx, kick, headline, sub, cta_label, cta_href, photo_slug, motif, bg FROM hero_slides WHERE active = true ORDER BY idx`;
+const [total] = await db`SELECT count(*)::int AS n FROM products`;
+const [brandCount] = await db`SELECT count(*)::int AS n FROM brands WHERE slug != 'other'`;
+const [countersRow] = await db`SELECT payload FROM content_blocks WHERE entity='site' AND entity_id='counters' AND lang='en'`;
+const DEFAULT_COUNTERS = { brands: 22, skus: 78, years: 24, since: 2002 };
+const counters: any = { ...DEFAULT_COUNTERS, ...(countersRow?.payload || {}) };
+const [awardsRow] = await db`SELECT payload FROM content_blocks WHERE entity='site' AND entity_id='awards' AND lang='en'`;
+const DEFAULT_AWARDS = [{ year: '2025', title: 'Hikvision — Best Distributor Partner', issuer: 'Hikvision' }, { year: '2025', title: 'TeamGroup — Best Partner 2025', issuer: 'TeamGroup' }];
+const awards: any[] = Array.isArray(awardsRow?.payload) ? awardsRow.payload : DEFAULT_AWARDS;
+/* rm(6.1-2/9.1-1, PUB-8): CMS-stored hero slide text may carry {years} / {brands} / {skus}
+ * tokens (seed slide 5: "… · {years} Years in MEA"), so a site/counters edit reaches the hero. */
+const withFacts = (t: unknown) => String(t ?? '').replace(/\{years\}/g, String(counters.years))
+  .replace(/\{brands\}/g, String(brandCount.n)).replace(/\{skus\}/g, String(total.n));
+
+const getImg = (imgs: unknown): string => {
+  const v = Array.isArray(imgs) ? imgs[0] : (typeof imgs === 'string' ? JSON.parse(imgs)[0] : '');
+  return v && !v.startsWith('/') ? '/' + v : v;
+};
+
+/* photos for hero slides that carry one */
+const photoRows = await db`SELECT slug, imgs FROM products WHERE slug = ANY(${slides.map((s: { photo_slug: string | null }) => s.photo_slug).filter(Boolean)})`;
+const photoOf: Record<string, string> = {};
+for (const r of photoRows) photoOf[r.slug] = getImg(r.imgs);
+
+const SLIDE_METADATA = [
+  {
+    tab: 'Gen5 NVMe',
+    accent: '#00D2FF',
+    badges: ['⚡ 14,500 MB/s Read', 'Micron 232-Layer 3D TLC', 'PCIe Gen5 ×4'],
+    calloutVal: '14.5 GB/s',
+    calloutLbl: 'Peak Read Speed'
+  },
+  {
+    tab: 'DDR5 Memory',
+    accent: '#38BDF8',
+    badges: ['⚡ Up to 6000 MT/s', 'DDR5 Pro & ECC RDIMM', 'Lifetime Warranty'],
+    calloutVal: '6000 MT/s',
+    calloutLbl: 'Low Latency CL36'
+  },
+  {
+    tab: 'Extreme SSD',
+    accent: '#F59E0B',
+    badges: ['⚡ 2,100 MB/s Read', 'Anodized Aluminum IP55', 'USB 3.2 Gen 2×2'],
+    calloutVal: '2,100 MB/s',
+    calloutLbl: 'Fastest Portable SSD'
+  },
+  {
+    tab: 'Pro Gen4 SSD',
+    accent: '#10B981',
+    badges: ['⚡ 7,400 MB/s Read', 'Low-Profile Heatsink', 'Micron 232-Layer NAND'],
+    calloutVal: '7,400 MB/s',
+    calloutLbl: 'Pro Gen4 Speed'
+  },
+  {
+    tab: 'Channel Hub',
+    accent: '#EAB308',
+    badges: ['🏢 ' + brandCount.n + ' Global Leaders', 'Dubai JAFZA Bonded Hub', 'Same-Day Dispatch'],
+    calloutVal: `${counters.years} Years`,
+    calloutLbl: 'Authorized MEA Hub'
+  }
+];
+
+// rm(3.1-1) / F-2026-N10: hero CTA hrefs are CMS-stored — sanitize at the source
+  // (same policy as BaseLayout's announcement safeHref) so a stored javascript:/data:/vbscript:
+  // URL can never reach the client stage renderer.
+  const safeHeroHref = (raw?: string) => {
+    const clean = String(raw || '').trim();
+    if (/^(?:javascript|data|vbscript):/i.test(clean)) return '#';
+    return clean || '#';
+  };
+  /* rm(6.3-2)/F-2026-N16: hero_slides.bg is now RENDERED, but only after this strict
+   * whitelist — a relative image path becomes a url(...) cover background; a hex color
+   * or a simple linear/radial gradient passes as-is; anything else (absolute URLs,
+   * javascript:, "image asset path" prose) falls back to the canned BG gradient. */
+  const bgOf = (v: unknown): string => {
+    const s = String(v || '').trim();
+    if (/^\/[\w\/.-]+\.(?:jpe?g|png|webp|avif)$/i.test(s)) return `url("${s}") center/cover no-repeat`;
+    return /^(?:#[0-9a-f]{3,8}|(?:linear|radial)-gradient\([#\w\s.,%()-]+\))$/i.test(s) ? s : '';
+  };
+  const heroData = slides.map((s: any, i: number) => {
+  const meta = SLIDE_METADATA[i] || {
+    tab: `0${i + 1}`,
+    accent: '#00D2FF',
+    badges: ['Authorized Stock', 'Local Warranty'],
+    calloutVal: '100%',
+    calloutLbl: 'Genuine Stock'
+  };
+  return {
+    idx: s.idx,
+    kick: withFacts(s.kick),
+    h: withFacts(s.headline),
+    s: withFacts(s.sub),
+    cta: s.cta_label,
+    href: safeHeroHref(s.cta_href),
+    motif: s.motif || '',
+    bg: s.bg || '',
+    bgCss: bgOf(s.bg),
+    photo: s.photo_slug ? (photoOf[s.photo_slug] || '') : '',
+    ...meta
+  };
+});
+
+/* rm(9.1-3): hero slide decoration constants — single source in the
+ * frontmatter. The island used to re-render the whole stage from these
+ * (discarding the server render and forcing a second layout); the server
+ * now emits the final markup and the island only wires the controls. */
+const BG_GRADIENTS = [
+  'radial-gradient(ellipse 70% 85% at 75% 50%, rgba(0, 114, 206, 0.38) 0%, transparent 70%), radial-gradient(circle at 18% 25%, rgba(14, 42, 77, 0.85) 0%, transparent 60%), linear-gradient(135deg, #040A14 0%, #07172E 50%, #0B2240 100%)',
+  'radial-gradient(ellipse 70% 85% at 75% 50%, rgba(30, 90, 170, 0.40) 0%, transparent 70%), radial-gradient(circle at 18% 30%, rgba(20, 48, 85, 0.75) 0%, transparent 60%), linear-gradient(135deg, #050B16 0%, #091932 50%, #0E294D 100%)',
+  'radial-gradient(ellipse 70% 85% at 75% 50%, rgba(214, 168, 68, 0.32) 0%, transparent 70%), radial-gradient(circle at 20% 30%, rgba(45, 30, 52, 0.75) 0%, transparent 60%), linear-gradient(135deg, #0B0B14 0%, #171526 50%, #241E30 100%)',
+  'radial-gradient(ellipse 70% 85% at 75% 50%, rgba(13, 148, 136, 0.35) 0%, transparent 70%), radial-gradient(circle at 18% 28%, rgba(8, 52, 44, 0.75) 0%, transparent 60%), linear-gradient(135deg, #030E0B 0%, #06221B 50%, #0A362B 100%)',
+  'radial-gradient(ellipse 70% 85% at 75% 50%, rgba(234, 179, 8, 0.30) 0%, transparent 70%), radial-gradient(circle at 16% 25%, rgba(18, 38, 70, 0.85) 0%, transparent 60%), linear-gradient(135deg, #060D1A 0%, #0C1E38 50%, #162E52 100%)',
+];
+const GLOW_COLORS = [
+  'rgba(0, 210, 255, 0.45)',
+  'rgba(56, 189, 248, 0.45)',
+  'rgba(245, 158, 11, 0.42)',
+  'rgba(16, 185, 129, 0.42)',
+  'rgba(234, 179, 8, 0.42)',
+];
+const MOTIF_STYLES: Record<string, string> = {
+  grid: "background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='72'><path d='M72 0H0V72' fill='none' stroke='rgba(255,255,255,0.08)' stroke-width='1'/></svg>\")",
+  arcs: "background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='420' height='420'><g fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='1'><circle cx='210' cy='210' r='90'/><circle cx='210' cy='210' r='140'/><circle cx='210' cy='210' r='190'/></g></svg>\");background-size:420px;background-position:82% 120%",
+  rings: "background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='520' height='260'><g fill='none' stroke='rgba(255,255,255,0.07)' stroke-width='1'><circle cx='130' cy='130' r='40'/><circle cx='130' cy='130' r='70'/><circle cx='130' cy='130' r='100'/><circle cx='390' cy='130' r='55'/><circle cx='390' cy='130' r='95'/></g></svg>\");background-size:520px;background-position:78% 82%",
+  dots: "background-image:url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='46' height='46'><circle cx='4' cy='4' r='1.6' fill='rgba(233,216,170,0.18)'/><circle cx='27' cy='4' r='1.6' fill='rgba(233,216,170,0.10)'/><circle cx='4' cy='27' r='1.6' fill='rgba(233,216,170,0.10)'/><circle cx='27' cy='27' r='1.6' fill='rgba(233,216,170,0.18)'/></svg>\");background-size:46px;background-position:80% 30%",
+};
+
+/* duo business card thumbnails */
+const duoSlugs = ['crucial-t705-ssd-2', 'koorui-27-inch-gaming-monitor', 'ugreen-5-in-1-usb-c-hub'];
+const duoRows = await db`SELECT slug, imgs FROM products WHERE slug = ANY(${duoSlugs})`;
+const duoImgs: Record<string, string> = {};
+for (const r of duoRows) duoImgs[r.slug] = getImg(r.imgs);
+
+/* featured 12 products strip — dynamic via CMS content block with safe fallback */
+const DEFAULT_FEATURED_SLUGS = [
+  'crucial-t500-heatsink',
+  'ugreen-5-in-1-usb-c-hub',
+  'koorui-27-inch-gaming-monitor',
+  'gtx1030-2gb-gddr5-64-bit-hdmi-dvi-vga',
+  'arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2',
+  '1672',
+  'samsung-t7-shield-portable-ssd-1tb',
+  'dell-15-laptop-14th-gen-intel-core-3',
+  'crucial-ddr4-pro-memory',
+  'aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black',
+  'kingston-xs1000-1tb-portable-ssd-red',
+  'crucial-t705-ssd-2'
+];
+const [featuredBlockRow] = await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'featured-products' AND lang = 'en'`;
+const rawSlugs = featuredBlockRow?.payload?.slugs;
+const featuredSlugs: string[] = Array.isArray(rawSlugs) && rawSlugs.length ? rawSlugs : DEFAULT_FEATURED_SLUGS;
+
+const featuredRows = await db`SELECT slug, name, brand, short, imgs FROM products WHERE slug = ANY(${featuredSlugs})`;
+const featuredMap = new Map(featuredRows.map((r: any) => [r.slug, r]));
+const featuredProducts = featuredSlugs.map((s: string) => featuredMap.get(s)).filter(Boolean);
+
+/* brand rows configuration matching Prototype/data/content.js */
+const brandRows = [
+  ['Storage & Memory', ['Crucial', 'Hikvision', 'Samsung', 'Kingston', 'SanDisk', 'WD', 'TeamGroup', 'Toshiba']],
+  ['Graphics & Components', ['Arktek', 'MSI', 'Zotac', 'PNY']],
+  ['Computing', ['Dell', 'HP', 'Lenovo']],
+  ['Accessories & Displays', ['UGREEN', 'Honeywell', 'KOORUI', 'Aiwa', 'Nearity']]
+];
+const slugOf: Record<string, string> = {
+  Crucial: 'crucial', Hikvision: 'hikvision', Samsung: 'samsung', Kingston: 'kingston',
+  SanDisk: 'sandisk', WD: 'wd', TeamGroup: 'teamgroup', Toshiba: 'toshiba',
+  Arktek: 'arktek', MSI: 'msi', Zotac: 'zotac', PNY: 'pny',
+  Dell: 'dell', HP: 'hp', Lenovo: 'lenovo', UGREEN: 'ugreen',
+  Honeywell: 'honeywell', KOORUI: 'koorui', Aiwa: 'aiwa', Nearity: 'nearity'
+};
+
+/* testimonials */
+const testimonialsRows = await db`SELECT name, role, company, quote FROM testimonials WHERE active = true ORDER BY id`;
+const testimonialsData = testimonialsRows.map((t: any) => ({
+  name: t.name,
+  role: t.company ? `${t.role}, ${t.company}` : t.role,
+  q: t.quote
+}));
+
+/* insights (top 3) with covers */
+const insightBlocks = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'insight' AND lang = 'en' ORDER BY payload->>'at' DESC NULLS LAST LIMIT 3`;
+const COVERS: Record<string, string> = {
+  'top-ssds-for-resellers-2025': duoImgs['crucial-t705-ssd-2'] || '',
+  'crucial-p510-launch': duoImgs['crucial-t705-ssd-2'] || '',
+  'ugreen-authorized-distributor-in-uae': duoImgs['ugreen-5-in-1-usb-c-hub'] || ''
+};
+const insights = insightBlocks.map(({ entity_id, payload }: any) => {
+  const p = typeof payload === 'string' ? JSON.parse(payload) : payload;
+  return {
+    slug: entity_id,
+    t: p.t || entity_id,
+    cat: p.cat || 'MARKET INTELLIGENCE',
+    mins: p.mins || 5,
+    x: p.x || '',
+    cover: COVERS[entity_id] || ''
+  };
+});
+---
+
+<BaseLayout title="Simal Technologies ME — IT Distribution & Software Services, Dubai">
+  <!-- ===== hero semiconductor showcase: framed stage reduced 1 inch horizontally, 5 memory slides ===== -->
+  <section class="hero-semiconductor" id="hero5-sec">
+    <div class="hero-wrap">
+      <div id="hero5-stage" role="region" aria-roledescription="carousel" aria-label="Featured memory and storage products" data-slides={JSON.stringify(heroData)}>
+        {heroData.map((sl: any, i: number) => (
+          <div class={`h5-slide${i === 0 ? ' on' : ''}`} data-i={i} role="tabpanel" aria-roledescription="slide" aria-label={`Slide ${i + 1} of ${heroData.length}: ${sl.h}`} style={`background:${sl.bgCss || BG_GRADIENTS[i % BG_GRADIENTS.length]};--tag-accent:${sl.accent || '#00D2FF'}`}>
+            {sl.motif && MOTIF_STYLES[sl.motif] ? <div class="h5-motif" style={MOTIF_STYLES[sl.motif]}></div> : null}<div class="h5-grain"></div><div class="h5-vignette"></div>
+            <div class="h5-copy">
+              <div class="h5-tag">
+                <span class="h5-tag-pulse"></span>
+                <span>{sl.kick}</span>
+              </div>
+              {i === 0 ? (
+                <h1 class="h5-head">{sl.h}</h1>
+              ) : (
+                <h2 class="h5-head">{sl.h}</h2>
+              )}
+              <p class="h5-desc">{sl.s}</p>
+              {sl.badges && sl.badges.length > 0 && (
+                <div class="h5-specs">
+                  {sl.badges.map((b: string) => <span class="h5-spec-pill">{b}</span>)}
+                </div>
+              )}
+              <div class="h5-actions">
+                <a class="btn btn-gold btn-lg" href={sl.href}>{sl.cta} →</a>
+                <a class="btn btn-o btn-lg h5-btn-rfq" href="/rfq" aria-label="Request channel quote">Request Channel Quote</a>
+              </div>
+            </div>
+            {sl.photo && (
+              <div class="h5-visual" aria-hidden="true" style={`--slide-glow:${GLOW_COLORS[i % GLOW_COLORS.length]};--slide-accent:${sl.accent || '#00D2FF'}`}>
+                <div class="h5-glow"></div>
+                <div class="h5-prod-frame">
+                  <img class="h5-prod-img" src={sl.photo} alt={sl.h} loading={i === 0 ? 'eager' : 'lazy'} fetchpriority={i === 0 ? 'high' : 'auto'} />
+                  <div class="h5-card-float">
+                    <div class="h5-card-val"><span>⚡</span> {sl.calloutVal}</div>
+                    <div class="h5-card-lbl">{sl.calloutLbl}</div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+        <button class="h5-arrow l" aria-label="Previous slide" title="Previous slide">‹</button>
+        <button class="h5-arrow r" aria-label="Next slide" title="Next slide">›</button>
+        <div class="h5-bar">
+          <div class="h5-tabs" role="tablist" aria-label="Featured slides">
+            {heroData.map((sl: any, i: number) => (
+              <button class={`h5-tab${i === 0 ? ' on' : ''}`} data-i={i} role="tab" aria-selected={i === 0 ? 'true' : 'false'} aria-label={`0${i + 1} ${sl.tab || 'Overview'}`}>
+                <span class="h5-tab-num">0{i + 1}</span>
+                <span>{sl.tab || 'Overview'}</span>
+              </button>
+            ))}
+          </div>
+          <button class="h5-pause" id="h5-pause-btn" aria-label="Pause slide rotation" title="Pause slide rotation">❚❚</button>
+          <div class="h5-count" aria-live="polite">1 / {heroData.length}</div>
+        </div>
+        <div class="h5-prog"><i aria-hidden="true"></i></div>
+      </div>
+      <!-- ===== Executive B2B Action Consoles ===== -->
+      <div id="hero5-below">
+        <!-- Console Left: Channel Procurement & Direct SKU Hub -->
+        <div class="hero-card hero-procure-card">
+          <div class="h-card-head">
+            <div class="h-card-title">
+              <span class="h-card-icon">🔍</span>
+              <div>
+                <h3>Channel Procurement &amp; SKU Lookup</h3>
+                <p class="h-card-sub">Instant catalog access for authorized resellers &amp; system builders</p>
+              </div>
+            </div>
+            <span class="h-live-badge"><span class="h-pulse-dot"></span> Dubai Hub Live</span>
+          </div>
+
+          <div class="hero-search-box">
+            <div class="hero-input-wrap">
+              <svg class="h-search-ico" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd" />
+              </svg>
+              <input id="hq" type="search" placeholder="Search by MPN, SKU, brand, or model (e.g. T705, DDR5, UGREEN)..." aria-label="Search products, brands, SKUs" />
+            </div>
+            <button class="btn btn-gold h-search-btn" id="hqb">Search Catalog</button>
+          </div>
+
+          <div class="hero-quick-filters">
+            <span class="h-filter-lbl">Quick Jumps:</span>
+            <div class="h-chips-row">
+              <a href="/products?cat=storage" class="h-qchip"><span>⚡</span> Gen5 NVMe</a>
+              <a href="/products?cat=memory" class="h-qchip"><span>💾</span> DDR5 Memory</a>
+              <a href="/products?q=ssd" class="h-qchip"><span>💽</span> Enterprise SSD</a>
+              <a href="/products?cat=monitors" class="h-qchip"><span>🖥️</span> Displays</a>
+              <a href="/products?cat=accessories" class="h-qchip"><span>🔌</span> USB-C Docks</a>
+            </div>
+          </div>
+
+          <div class="hero-pillars-grid">
+            <div class="h-pillar-item">
+              <span class="h-p-icon">🛡️</span>
+              <div>
+                <strong>100% Genuine Serialized</strong>
+                <span>Official local warranty &amp; batch tracing</span>
+              </div>
+            </div>
+            <div class="h-pillar-item">
+              <span class="h-p-icon">🚚</span>
+              <div>
+                <strong>Dubai JAFZA Hub</strong>
+                <span>Same-day UAE &amp; rapid GCC freight</span>
+              </div>
+            </div>
+            <div class="h-pillar-item">
+              <span class="h-p-icon">📋</span>
+              <div>
+                <strong>Peppol &amp; FTA Tax Ready</strong>
+                <span>Instant compliant digital e-invoicing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Console Right: Active B2B RFQ Quotation Console -->
+        <div class="hero-card hero-rfq-card">
+          <div class="h-card-head">
+            <div class="h-card-title">
+              <span class="h-card-icon">📦</span>
+              <div>
+                <h3>B2B RFQ Basket &amp; Rapid Quote</h3>
+                <p class="h-card-sub">Tiered wholesale channel pricing with guaranteed SLA</p>
+              </div>
+            </div>
+            <span class="badge b-ok" id="mini-count">0 items</span>
+          </div>
+
+          <div class="h-basket-container" id="mini-basket"></div>
+
+          <a class="btn h-rfq-submit-btn" href="/rfq">
+            <span>Submit RFQ for Channel Pricing</span>
+            <svg viewBox="0 0 20 20" fill="currentColor" style="width:18px;height:18px" aria-hidden="true"><path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>
+          </a>
+
+          <div class="h-rfq-footer">
+            <span class="h-rfq-pill">⚡ Guaranteed response &le; 1 business day</span>
+            <span class="h-rfq-note">No upfront payment · Dedicated account manager assigned</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Executive Credibility & Scale Metric Bar ===== -->
+  <div class="cred-executive" id="cred-sec">
+    <div class="cred-wrap" id="cred-strip">
+      <div class="cred-tile">
+        <div class="cred-icon-box">📅</div>
+        <div class="cred-content">
+          <div class="cred-num-row">
+            <span class="cred-num">{counters.years}</span>
+            <span class="cred-unit">Years</span>
+          </div>
+          <span class="cred-label">Regional Channel Leadership</span>
+          <span class="cred-sub">Established Dubai, 2002</span>
+        </div>
+      </div>
+
+      <div class="cred-tile">
+        <div class="cred-icon-box">🏢</div>
+        <div class="cred-content">
+          <div class="cred-num-row">
+            <span class="cred-num">{brandCount.n}</span>
+            <span class="cred-unit">Brands</span>
+          </div>
+          <span class="cred-label">Direct Authorized Lines</span>
+          <span class="cred-sub">Tier-1 Micron, Crucial, UGREEN &amp; more</span>
+        </div>
+      </div>
+
+      <div class="cred-tile">
+        <div class="cred-icon-box">📦</div>
+        <div class="cred-content">
+          <div class="cred-num-row">
+            <span class="cred-num">{total.n}</span>
+            <span class="cred-unit">SKUs</span>
+          </div>
+          <span class="cred-label">Stocked &amp; Bonded Inventory</span>
+          <span class="cred-sub">JAFZA duty-free warehouse</span>
+        </div>
+      </div>
+
+      <div class="cred-tile">
+        <div class="cred-icon-box">💻</div>
+        <div class="cred-content">
+          <div class="cred-num-row">
+            <span class="cred-num">40<span class="cred-plus">+</span></span>
+            <span class="cred-unit">Engineers</span>
+          </div>
+          <span class="cred-label">Software &amp; System Architects</span>
+          <span class="cred-sub">Custom ERP, AI &amp; Regional Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== One Company, Two Engines ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">One company, two engines</span><h2>Distribute with us. Build with us.</h2>
+    <p>Hardware at wholesale scale — and, new for 2026, enterprise software &amp; AI delivered by Simal + Unisoft Systems Ltd.</p></div></div>
+    <div class="split">
+      <div class="card card-p" style="border-top:4px solid var(--blue)">
+        <span class="badge b-blue">Distribution · Hardware</span>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 4px">
+          <img id="duo-img-1" src={duoImgs['crucial-t705-ssd-2']} alt="Crucial T705 SSD" style="width:96px;height:76px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px" />
+          <img id="duo-img-2" src={duoImgs['koorui-27-inch-gaming-monitor']} alt="KOORUI gaming monitor" style="width:96px;height:76px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px" />
+          <img id="duo-img-3" src={duoImgs['ugreen-5-in-1-usb-c-hub']} alt="UGREEN USB-C hub" style="width:96px;height:76px;object-fit:contain;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px" />
+        </div>
+        <h3 style="font-size:21px;margin:10px 0 8px">{total.n} SKUs live · {brandCount.n} brands · channel pricing</h3>
+        <p style="color:var(--slate);font-size:14px">Browse specs &amp; datasheets, build a multi-item RFQ basket, get a quote within one business day. Authorized stock with genuineness badges on every product.</p>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><span class="chip on">Storage</span><span class="chip">Memory</span><span class="chip">Monitors</span><span class="chip">GPU</span><span class="chip">Accessories</span></div>
+        <a class="btn btn-p" style="margin-top:18px" href="/products">Shop by category</a>
+      </div>
+      <div class="card card-p" style="border-top:4px solid var(--red)">
+        <span class="badge b-red">★ New — Software Services</span>
+        <div style="margin:14px 0 4px;border:1px solid var(--line);border-radius:12px;background:#0E1F33;padding:12px 14px;color:#CFE0F3;font-family:Consolas,monospace;font-size:11.5px;line-height:1.9">
+          <div style="color:#8CA2BC">DISTRIBUTION ERP · LIVE</div>
+          <div>SKU stock &nbsp;<span style="display:inline-block;width:120px;height:7px;border-radius:4px;background:linear-gradient(90deg,var(--g3),var(--g1) 70%,#1D2E42)"></span> <span style="color:var(--g2)">92%</span></div>
+          <div>Quotes SLA &nbsp;<span style="display:inline-block;width:88px;height:7px;border-radius:4px;background:linear-gradient(90deg,#16A34A,#4ADE80 70%,#1D2E42)"></span> <span style="color:#4ADE80">98%</span></div>
+          <div>Peppol &nbsp;✓ ready · UniVAT · UniPOS · AI forecasts</div>
+        </div>
+        <h3 style="font-size:21px;margin:10px 0 8px">ERPs, POS, custom builds &amp; AI — powered by Unisoft</h3>
+        <p style="color:var(--slate);font-size:14px">Distribution ERP, UniPOS, UniVAT + 12 engineering services. 40+ engineers, ISO 9001/27001, SOC 2, 24/7 support — delivered regionally by Simal.</p>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap"><span class="chip">Distribution ERP</span><span class="chip">UniPOS</span><span class="chip">AI &amp; ML</span><span class="chip">Cloud</span></div>
+        <a class="btn btn-a" style="margin-top:18px" href="/software">Explore software services</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Featured Products Strip ===== -->
+  <section class="sec" style="background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Featured products</span><h2>Top products from the catalog</h2></div><a class="btn btn-o" href="/products">View all {total.n} SKUs →</a></div>
+    <div style="display:flex;gap:16px;overflow-x:auto;padding:4px 2px 12px;scroll-snap-type:x mandatory" id="featured-strip">
+      {featuredProducts.map((p: any) => (
+        <div style="flex:0 0 258px;scroll-snap-align:start" class="prod">
+          <a class="go" href={`/products/${p.slug}`} aria-label={p.name}></a>
+          <div class={`ph${getImg(p.imgs) ? ' has-img' : ''}`}>
+            {getImg(p.imgs) ? <img src={getImg(p.imgs)} alt={p.name} loading="lazy" /> : <span class="sk">{p.brand}</span>}
+          </div>
+          <div class="pb">
+            <span class="cat">{p.brand}</span>
+            <h4 style="font-size:14px;line-height:1.3;margin:6px 0;height:38px;overflow:hidden">{p.name}</h4>
+            <div class="meta" style="height:34px;overflow:hidden;font-size:12px;color:var(--slate)">{(p.short || '').slice(0, 60)}…</div>
+            <div class="pr" style="margin-top:10px;display:flex;justify-content:space-between;align-items:center"><span class="price" style="font-size:12px">RFQ · channel pricing</span><span class="vd" style="font-size:12px">View details →</span></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- ===== Brand Showcase ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Brand showcase</span><h2>Authorized distributor for {brandCount.n} global IT brands</h2></div><a class="btn btn-o" href="/products">Browse by brand →</a></div>
+    <div id="brand-rows">
+      {brandRows.map((row) => (
+        <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;flex-wrap:wrap">
+          <span style="width:172px;font-size:11.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--slate)">{row[0]}</span>
+          <div style="display:flex;gap:9px;flex-wrap:wrap">
+            {row[1].map((b) => (
+              <a href={`/brands/${slugOf[b] || b.toLowerCase()}`} class="chip" style="font-size:13px;padding:8px 16px;background:#fff;border:1px solid var(--line);text-decoration:none;color:inherit">{b}</a>
+            ))}
+          </div>
+        </div>
+      ))}
+      <span class="note" style="display:block;margin-top:8px">+ Inno3D and more lines on request — <a href="/contact" style="color:var(--blue);text-decoration:underline">ask the brand desk</a></span>
+    </div>
+  </div></section>
+
+  <!-- ===== Software Spotlight ===== -->
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Software spotlight</span><h2>Ship your ERP with the people who distribute hardware</h2></div><a class="btn btn-o" href="/software">All software products →</a></div>
+    <div class="grid g3">
+      <div class="card card-p"><div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">📦</div><span class="badge b-blue" style="margin-top:12px">Flagship ERP</span><h3 style="margin:10px 0 6px">Distribution ERP</h3><p style="color:var(--slate);font-size:13.5px">AI-powered supply-chain &amp; inventory built for distributors — by a partner that runs distribution daily.</p><a class="btn btn-o btn-sm" style="margin-top:14px" href="/software/products/distribution-erp/">Explore the flagship →</a></div>
+      <div class="card card-p"><div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">🛒</div><span class="badge b-blue" style="margin-top:12px">Retail</span><h3 style="margin:10px 0 6px">UniPOS</h3><p style="color:var(--slate);font-size:13.5px">Multi-location point-of-sale with real-time inventory — pair with our POS hardware line.</p><a class="btn btn-o btn-sm" style="margin-top:14px" href="/software/#products">See UniPOS detail →</a></div>
+      <div class="card card-p"><div style="width:52px;height:52px;border-radius:14px;background:linear-gradient(135deg,var(--blue-050),#fff);display:grid;place-items:center;font-size:24px;border:1px solid var(--line)">🧾</div><span class="badge b-blue" style="margin-top:12px">Compliance</span><h3 style="margin:10px 0 6px">UniVAT &amp; e-invoicing</h3><p style="color:var(--slate);font-size:13.5px">NBR-approved VAT automation and UAE Peppol-ready invoicing tooling ahead of the 1 Jan 2027 mandate.</p><a class="btn btn-o btn-sm" style="margin-top:14px" href="/software/#products">See UniVAT detail →</a></div>
+    </div>
+  </div></section>
+
+  <!-- ===== Proof, Not Promises ===== -->
+  <section class="sec" style="background:var(--ink);color:#fff"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow" style="color:var(--yellow)">Proof, not promises</span><h2 style="color:#fff">Trusted by the channel — recognized by the brands</h2></div></div>
+    {/* deploy-audit: rm(4.2) (a3859e2) rewrote this grid for CMS awards and dropped the testimonial
+       * card, so the CMS testimonials never rendered (the rotator below found no #tst-card), and it
+       * left an unbalanced </div>. Testimonial card left, awards column right, as before. */}
+    <div class="proof-grid" style="display:grid;grid-template-columns:1.3fr .7fr;gap:24px">
+      {testimonialsData.length > 0 && (
+        <div class="card card-p" style="background:#12233A;border-color:#1D2E42" id="tst-card" data-testimonials={JSON.stringify(testimonialsData)}>
+          <div style="display:flex;gap:12px;align-items:center;margin-bottom:12px">
+            <div id="tst-av" style="width:42px;height:42px;border-radius:50%;background:#1D2E42;border:2px solid var(--g3);color:var(--g1);display:grid;place-items:center;font-weight:800;font-size:14px;flex:none">
+              {(testimonialsData[0].name || '').split(/\s+/).map((w: string) => w[0]).join('').slice(0, 2).toUpperCase()}
+            </div>
+            <div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><span style="color:var(--yellow)" aria-hidden="true">★★★★★</span><span class="sr-only">5 out of 5 stars</span><b id="tst-name">{testimonialsData[0].name} · {testimonialsData[0].role}</b></div></div>
+          </div>
+          <p style="color:#C6D2E0;font-size:14.5px" id="tst-quote">“{testimonialsData[0].q}”</p>
+          <div style="display:flex;gap:12px;align-items:center;margin-top:14px">
+            <div style="display:flex;gap:8px;align-items:center" id="tst-dots"></div>
+            <button class="tst-pause" id="tst-pause-btn" aria-label="Pause testimonial rotation" title="Pause testimonial rotation" style="min-width:24px;min-height:24px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:4px;cursor:pointer;font-size:10px;padding:2px 6px">❚❚</button>
+          </div>
+        </div>
+      )}
+      <div style="display:flex;flex-direction:column;gap:14px">
+        {awards.map((a: any) => (
+          <div class="card card-p" style="background:#12233A;border-color:#1D2E42;display:flex;gap:14px;align-items:center"><div style="width:46px;height:46px;border-radius:12px;background:var(--grad-gold-btn);display:grid;place-items:center;font-size:21px;flex:none">🏆</div><div><span class="badge b-red">Award {a.year}</span><p style="color:#fff;font-weight:700;margin-top:6px;font-size:13.5px">{a.title}</p></div></div>
+        ))}
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Tech Talk Latest Insights ===== -->
+  <section class="sec" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Tech Talk by Simal</span><h2>Latest insights</h2></div><a class="btn btn-o" href="/insights">Visit Insights →</a></div>
+    <div class="grid g3" id="home-insights">
+      {insights.map((a: any) => (
+        <div class="card" style="overflow:hidden">
+          {a.cover ? (
+            <div style="height:120px;background:#fff;display:grid;place-items:center;border-bottom:1px solid var(--line)">
+              <img src={a.cover} alt="" style="max-height:104px;max-width:86%;object-fit:contain" />
+            </div>
+          ) : null}
+          <div class="card-p" style="padding:14px 16px">
+            <span class="badge b-line">{a.cat} · {a.mins} MIN</span>
+            <h4 style="font-size:15px;margin:9px 0 6px"><a href={`/insights/${a.slug}`} style="color:inherit;text-decoration:none">{a.t}</a></h4>
+            <p style="font-size:12.5px;color:var(--slate)">{a.x}</p>
+            <a href={`/insights/${a.slug}`} style="font-size:12.5px;font-weight:700;color:var(--blue)">Read the article →</a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div></section>
+</BaseLayout>
+
+<style is:global>
+  /* ---- hero framed semiconductor container (reduced 1 inch horizontally = 48px left & right) ---- */
+  .hero-semiconductor {
+    padding: 16px 0 4px;
+    background: var(--ink);
+    position: relative;
+  }
+  .hero-wrap {
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 0 20px; /* Reduced outer gutter to expand horizontal width comfortably */
+  }
+  #hero5-stage {
+    position: relative;
+    height: 480px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    box-shadow: 0 24px 64px -16px rgba(2, 8, 20, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+    background: #060E1A;
+  }
+  /* ---- executive below-hero action consoles ---- */
+  #hero5-below {
+    padding: 24px 0 28px;
+    display: grid;
+    grid-template-columns: 1.04fr 0.96fr;
+    gap: 24px;
+    align-items: stretch;
+  }
+  .hero-procure-card,
+  .hero-rfq-card {
+    background: rgba(10, 22, 39, 0.72) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(14px) !important;
+    border-radius: 18px !important;
+    padding: 22px 24px !important;
+    box-shadow: 0 16px 44px -10px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.04) inset !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* card header */
+  .h-card-head {
+    display: flex;
+    flex-wrap: wrap; /* rm(9.1-3): the "Dubai Hub Live" badge overflowed at 320px with wider fonts */
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .h-card-title {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .h-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: rgba(0, 210, 255, 0.10);
+    border: 1px solid rgba(0, 210, 255, 0.25);
+    font-size: 17px;
+    flex-shrink: 0;
+    color: #FFFFFF;
+  }
+  .h5-pause {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+    border-radius: 6px;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 11px;
+    transition: 0.15s;
+    margin-left: 6px;
+  }
+  .h5-pause:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+  .h-card-title h3 {
+    font-size: 16px;
+    font-weight: 750;
+    color: #F8FAFC;
+    margin: 0 0 3px;
+    letter-spacing: -0.01em;
+  }
+  .h-card-sub {
+    font-size: 12px;
+    color: #94A3B8;
+    margin: 0;
+    line-height: 1.35;
+  }
+  .h-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #4ADE80;
+    background: rgba(74, 222, 128, 0.12);
+    border: 1px solid rgba(74, 222, 128, 0.3);
+    border-radius: 999px;
+    padding: 3px 9px;
+    white-space: nowrap;
+  }
+  .h-pulse-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ADE80;
+    box-shadow: 0 0 8px #4ADE80;
+    animation: hpulse 2s infinite ease-in-out;
+  }
+  @keyframes hpulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  /* search console */
+  .hero-search-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .hero-input-wrap {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+  .h-search-ico {
+    position: absolute;
+    left: 12px;
+    width: 17px;
+    height: 17px;
+    color: #64748B;
+    pointer-events: none;
+  }
+  .hero-input-wrap input {
+    width: 100%;
+    border: 1.5px solid rgba(255, 255, 255, 0.16);
+    background: rgba(15, 23, 42, 0.65);
+    color: #F8FAFC;
+    border-radius: 11px;
+    padding: 10px 14px 10px 38px;
+    font-size: 13.5px;
+    font-family: inherit;
+    outline: none;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .hero-input-wrap input:focus {
+    border-color: #00D2FF;
+    box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.15);
+  }
+  .hero-input-wrap input::placeholder {
+    color: #64748B;
+  }
+  .h-search-btn {
+    padding: 10px 18px;
+    font-weight: 700;
+    font-size: 13.5px;
+    border-radius: 11px;
+    white-space: nowrap;
+  }
+
+  /* category quick jumps */
+  .hero-quick-filters {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .h-filter-lbl {
+    font-size: 11px;
+    font-weight: 700;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .h-chips-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .h-qchip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #CBD5E1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 3px 8px;
+    text-decoration: none;
+    transition: all .16s ease;
+  }
+  .h-qchip:hover {
+    background: rgba(0, 210, 255, 0.12);
+    border-color: rgba(0, 210, 255, 0.35);
+    color: #00D2FF;
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+
+  /* assurance pillars */
+  .hero-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .h-pillar-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 9px;
+    padding: 8px 9px;
+  }
+  .h-pillar-item .h-p-icon {
+    font-size: 15px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .h-pillar-item strong {
+    display: block;
+    color: #F1F5F9;
+    font-size: 11px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+  .h-pillar-item span {
+    display: block;
+    color: #94A3B8;
+    font-size: 10px;
+    line-height: 1.2;
+    margin-top: 2px;
+  }
+
+  /* RFQ basket container & rows */
+  .h-basket-container {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 12px;
+    min-height: 140px;
+  }
+  .h-basket-container .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 9px;
+    font-size: 12.5px;
+    color: #E2E8F0;
+    transition: background .15s ease, border-color .15s ease;
+  }
+  .h-basket-container .row:hover {
+    background: rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .h-basket-container .row:last-child {
+    background: rgba(14, 138, 95, 0.10);
+    border-color: rgba(14, 138, 95, 0.28);
+    color: #4ADE80;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .h-basket-container .row:last-child b {
+    color: #4ADE80;
+  }
+  .h-basket-container .row b {
+    color: #F59E0B;
+    font-weight: 800;
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    padding-left: 8px;
+    white-space: nowrap;
+  }
+
+  /* RFQ submit button */
+  .h-rfq-submit-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%) !important;
+    color: #060E1A !important;
+    font-weight: 750 !important;
+    font-size: 14px !important;
+    padding: 12px 18px !important;
+    border-radius: 11px !important;
+    text-decoration: none !important;
+    box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35) !important;
+    transition: all .18s ease !important;
+    margin-top: auto;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    width: 100%;
+  }
+  .h-rfq-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(245, 158, 11, 0.5) !important;
+    filter: brightness(1.06);
+    text-decoration: none !important;
+  }
+  .h-rfq-footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    margin-top: 9px;
+    text-align: center;
+  }
+  .h-rfq-pill {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #4ADE80;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .h-rfq-note {
+    font-size: 11px;
+    color: #94A3B8;
+  }
+
+  /* ---- executive credibility metrics bar ---- */
+  .cred-executive {
+    background: #060E1A;
+    color: #fff;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 28px 0 32px;
+  }
+  .cred-wrap {
+    max-width: 1560px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+  .cred-tile {
+    min-width: 0; /* rm(9.1-3): lets the nowrap labels ellipsize instead of widening the grid (19px overflow at 1280px with DejaVu Sans) */
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(14, 28, 48, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    padding: 16px 18px;
+    transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .cred-tile:hover {
+    transform: translateY(-2px);
+    border-color: rgba(0, 210, 255, 0.3);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4), 0 0 14px rgba(0, 210, 255, 0.1);
+  }
+  .cred-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .cred-content {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .cred-num-row {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+  }
+  .cred-num {
+    font-size: 30px;
+    font-weight: 850;
+    letter-spacing: -0.03em;
+    color: #F8FAFC;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+  .cred-plus {
+    color: #F59E0B;
+  }
+  .cred-unit {
+    font-size: 13px;
+    font-weight: 700;
+    color: #00D2FF;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .cred-label {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #E2E8F0;
+    margin-top: 4px;
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .cred-sub {
+    font-size: 11px;
+    color: #94A3B8;
+    margin-top: 2px;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* ---- executive semiconductor slides: 2-column balanced layout ---- */
+  .h5-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity .75s cubic-bezier(0.16, 1, 0.3, 1), visibility .75s;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: 1.16fr 0.84fr;
+    align-items: center;
+    padding: 0 76px; /* Generous 76px horizontal padding ensures arrows never overlap copy */
+    overflow: hidden;
+  }
+  .h5-slide.on {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .h5-bgimg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .h5-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: .05;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/></filter><rect width='160' height='160' filter='url(%23n)' opacity='0.6'/></svg>");
+  }
+  .h5-vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(120% 90% at 50% 40%, transparent 55%, rgba(3, 10, 20, .45) 100%);
+  }
+  .h5-motif {
+    position: absolute;
+    inset: 0;
+    opacity: .35;
+    pointer-events: none;
+  }
+
+  /* ---- left copy column ---- */
+  .h5-copy {
+    position: relative;
+    z-index: 3;
+    max-width: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .h5-slide.on .h5-tag { animation: h5rise .6s .04s cubic-bezier(.16, 1, .3, 1) both; }
+  .h5-slide.on .h5-head { animation: h5rise .7s .12s cubic-bezier(.16, 1, .3, 1) both; }
+  .h5-slide.on .h5-desc { animation: h5rise .7s .20s cubic-bezier(.16, 1, .3, 1) both; }
+  .h5-slide.on .h5-specs { animation: h5rise .7s .28s cubic-bezier(.16, 1, .3, 1) both; }
+  .h5-slide.on .h5-actions { animation: h5rise .7s .36s cubic-bezier(.16, 1, .3, 1) both; }
+  @keyframes h5rise {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  .h5-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 13px 5px 10px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    backdrop-filter: blur(8px);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #F1F5F9;
+    margin-bottom: 14px;
+  }
+  .h5-tag-pulse {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--tag-accent, #00D2FF);
+    box-shadow: 0 0 10px var(--tag-accent, #00D2FF);
+    display: inline-block;
+    animation: h5pulse 2.2s infinite;
+  }
+  @keyframes h5pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.85); }
+  }
+
+  .h5-head {
+    font-size: clamp(23px, 2.3vw, 36px);
+    line-height: 1.16;
+    color: #ffffff;
+    font-weight: 750;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+  .h5-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #C6D8EC;
+    margin: 0 0 16px;
+    max-width: 570px;
+  }
+  .h5-specs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 22px;
+  }
+  .h5-spec-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11.5px;
+    font-family: Consolas, monospace;
+    font-weight: 600;
+    color: #E2E8F0;
+    background: rgba(12, 22, 38, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    padding: 3.5px 10px;
+    border-radius: 6px;
+  }
+  .h5-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .h5-btn-rfq {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #ffffff !important;
+    transition: all 0.25s;
+  }
+  .h5-btn-rfq:hover {
+    background: rgba(255, 255, 255, 0.16) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    transform: translateY(-1px);
+  }
+
+  /* ---- right hardware visual column ---- */
+  .h5-visual {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 20px 0 20px 10px;
+  }
+  .h5-glow {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--slide-glow, rgba(0, 210, 255, 0.35)) 0%, transparent 70%);
+    filter: blur(44px);
+    pointer-events: none;
+    z-index: 1;
+    animation: h5glowpulse 4s ease-in-out infinite alternate;
+  }
+  @keyframes h5glowpulse {
+    from { transform: scale(0.9); opacity: 0.6; }
+    to { transform: scale(1.15); opacity: 0.9; }
+  }
+  .h5-prod-frame {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 360px;
+    max-height: 310px;
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .h5-slide.on .h5-prod-frame {
+    animation: h5float 5s ease-in-out infinite alternate;
+  }
+  @keyframes h5float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(0.6deg); }
+  }
+  .h5-prod-img {
+    max-width: 100%;
+    max-height: 290px;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 36px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 20px var(--slide-rim, rgba(0, 210, 255, 0.15)));
+  }
+  .h5-card-float {
+    position: absolute;
+    bottom: 24px;
+    right: 0px;
+    z-index: 4;
+    background: rgba(8, 18, 34, 0.88);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(12px);
+    padding: 9px 13px;
+    border-radius: 12px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+    pointer-events: none;
+    animation: h5floatreverse 5s ease-in-out infinite alternate;
+  }
+  @keyframes h5floatreverse {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(6px); }
+  }
+  .h5-card-val {
+    font-family: Consolas, monospace;
+    font-size: 15px;
+    font-weight: 800;
+    color: #F8FAFC;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    line-height: 1.2;
+  }
+  .h5-card-val span {
+    color: var(--slide-accent, #00D2FF);
+  }
+  .h5-card-lbl {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #94A3B8;
+    margin-top: 3px;
+    line-height: 1.2;
+  }
+
+  /* ---- bottom navigation tabs & controls ---- */
+  .h5-bar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 32px 14px;
+    background: linear-gradient(180deg, transparent 0%, rgba(4, 10, 20, 0.88) 100%);
+  }
+  .h5-tabs {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-x: auto;
+  }
+  .h5-tab {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #94A3B8;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .h5-tab:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #F8FAFC;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .h5-tab.on {
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    border-color: var(--g2, #F59E0B);
+    box-shadow: 0 0 14px rgba(245, 158, 11, 0.2);
+  }
+  .h5-tab-num {
+    font-family: Consolas, monospace;
+    font-weight: 800;
+    color: var(--g2, #F59E0B);
+    font-size: 11px;
+  }
+  .h5-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(6, 14, 28, 0.55);
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    transition: all 0.25s;
+    backdrop-filter: blur(8px);
+  }
+  .h5-arrow:hover {
+    background: rgba(6, 14, 28, 0.85);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-50%) scale(1.06);
+  }
+  .h5-arrow.l { left: 16px; }
+  .h5-arrow.r { right: 16px; }
+  .h5-prog {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    z-index: 12;
+    background: rgba(255, 255, 255, 0.08);
+  }
+  .h5-prog i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: linear-gradient(90deg, #F59E0B, #00D2FF);
+  }
+  .h5-count {
+    margin-left: auto;
+    font-size: 12px;
+    font-family: Consolas, monospace;
+    font-weight: 700;
+    color: #94A3B8;
+    white-space: nowrap;
+  }
+
+  /* ---- trust strip enhancement ---- */
+  .hero-trust {
+    display: flex;
+    gap: 16px;
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: #CBD5E1;
+  }
+  .hero-trust div {
+    color: #CBD5E1 !important;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  @media(max-width:1080px){
+    #hero5-below{grid-template-columns:1fr!important;gap:20px}
+    #hero5-below>*{min-width:0}
+    .hero-procure-card, .hero-rfq-card{min-height:auto}
+    .cred-wrap{grid-template-columns:repeat(2,1fr)!important;gap:14px!important}
+    .proof-grid{grid-template-columns:1fr!important}
+  }
+  @media(max-width:900px){
+    .hero-wrap{padding:0 16px}
+    #hero5-stage{height:auto;min-height:490px}
+    .h5-slide{grid-template-columns:1fr;padding:32px 28px 68px}
+    .h5-visual{display:none}
+    .h5-copy{max-width:100%}
+    .h5-bar{padding:0 20px 14px;gap:8px}
+    .h5-arrow{display:none}
+    .split{grid-template-columns:1fr!important}
+  }
+  @media(max-width:768px){
+    .hero-pillars-grid{grid-template-columns:1fr!important;gap:8px!important}
+    .hero-search-box{flex-direction:column!important}
+    .h-search-btn{width:100%!important}
+    .cred-wrap{grid-template-columns:1fr!important;gap:10px!important}
+    .cred-tile{padding:14px 16px!important}
+    .cred-num{font-size:26px!important}
+  }
+  @media(max-width:600px){
+    .hero-wrap{padding:0 10px}
+    .h5-slide{padding:24px 16px 56px}
+    .h5-head{font-size:20.5px;line-height:1.22}
+    .h5-desc{font-size:13.5px;margin-bottom:12px}
+    .h5-tag{font-size:10px;padding:4px 10px;margin-bottom:10px}
+    .h5-specs{gap:6px;margin-bottom:16px}
+    .h5-spec-pill{font-size:10.5px;padding:2px 7px}
+    .h5-actions{flex-direction:column;align-items:stretch;gap:10px}
+    .h5-actions .btn{width:100%;text-align:center;justify-content:center}
+    .grid.g3{grid-template-columns:1fr}
+    .h5-tab span:last-child{display:none}
+  }
+</style>
+
+<script>
+  /* Hero island — 5 top-class memory & semiconductor slides */
+  const stage = document.getElementById('hero5-stage') as HTMLElement | null;
+
+  if (stage) {
+    const slides: any[] = JSON.parse(stage.dataset.slides || '[]');
+
+    /* rm(9.1-3): no client re-render — the server emits the final slide
+     * markup (motif, background, glow included); wiring below binds to it. */
+    const els = stage.querySelectorAll<HTMLElement>('.h5-slide');
+    const tabs = stage.querySelectorAll<HTMLElement>('.h5-tab');
+    const count = stage.querySelector<HTMLElement>('.h5-count');
+    const prog = stage.querySelector<HTMLElement>('.h5-prog i')!;
+    const MS = 6500;
+    let cur = 0, timer: ReturnType<typeof setInterval> | null = null;
+
+    // Check for explicit slide query param (e.g. ?slide=2) for testing/direct navigation
+    const urlParams = new URLSearchParams(window.location.search);
+    const startSlideParam = urlParams.get('slide');
+    if (startSlideParam !== null) {
+      const parsed = parseInt(startSlideParam, 10);
+      if (!isNaN(parsed) && parsed >= 0 && parsed < slides.length) {
+        cur = parsed;
+      }
+    }
+
+    function paint(i: number) {
+      cur = (i + slides.length) % slides.length;
+      els.forEach((el, j) => {
+        const on = j === cur;
+        el.classList.toggle('on', on);
+        el.setAttribute('aria-hidden', on ? 'false' : 'true');
+      });
+      tabs.forEach((t, j) => {
+        const on = j === cur;
+        t.classList.toggle('on', on);
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+      });
+      if (count) count.textContent = `${cur + 1} / ${slides.length}`;
+      prog.style.transition = 'none';
+      prog.style.width = '0';
+      requestAnimationFrame(() => {
+        prog.style.transition = `width ${MS}ms linear`;
+        prog.style.width = '100%';
+      });
+    }
+
+    const pauseBtn = stage.querySelector('#h5-pause-btn') as HTMLButtonElement | null;
+    let isPaused = false;
+    function updatePauseBtn() {
+      if (!pauseBtn) return;
+      pauseBtn.setAttribute('aria-label', isPaused ? 'Play slide rotation' : 'Pause slide rotation');
+      pauseBtn.setAttribute('title', isPaused ? 'Play slide rotation' : 'Pause slide rotation');
+      pauseBtn.textContent = isPaused ? '►' : '❚❚';
+    }
+    pauseBtn?.addEventListener('click', () => {
+      isPaused = !isPaused;
+      if (isPaused) {
+        stop();
+      } else {
+        play();
+      }
+      updatePauseBtn();
+    });
+
+    (window as any).heroGotoSlide = (idx: number) => {
+      stop();
+      paint(idx);
+    };
+
+    function play() {
+      stop();
+      if (!isPaused && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timer = setInterval(() => paint(cur + 1), MS);
+      }
+      paint(cur);
+    }
+
+    function stop() {
+      if (timer) {
+        clearInterval(timer);
+        timer = null;
+      }
+    }
+
+    tabs.forEach(t => t.addEventListener('click', () => {
+      paint(+(t.dataset.i || 0));
+      play();
+    }));
+
+    stage.querySelector('.h5-arrow.l')?.addEventListener('click', () => { paint(cur - 1); play(); });
+    stage.querySelector('.h5-arrow.r')?.addEventListener('click', () => { paint(cur + 1); play(); });
+
+    // Keyboard navigation (ArrowLeft, ArrowRight)
+    stage.setAttribute('tabindex', '0');
+    stage.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        paint(cur - 1);
+        play();
+      } else if (e.key === 'ArrowRight') {
+        paint(cur + 1);
+        play();
+      }
+    });
+
+    // Pause on hover or focus for a11y compliance
+    stage.addEventListener('mouseenter', stop);
+    stage.addEventListener('mouseleave', play);
+    stage.addEventListener('focusin', stop);
+    stage.addEventListener('focusout', play);
+
+    // Touch swipe gestures
+    let sx = 0;
+    stage.addEventListener('touchstart', (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    stage.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) {
+        paint(cur + (dx < 0 ? 1 : -1));
+        play();
+      }
+    }, { passive: true });
+
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      isPaused = true;
+      updatePauseBtn();
+      paint(0);
+    } else {
+      play();
+    }
+  }
+
+  /* mini basket — the real server basket (ADR-2: cookie-carried) */
+  async function renderMini() {
+    const box = document.getElementById('mini-basket');
+    const mc = document.getElementById('mini-count');
+    try {
+      let b: any[] = [];
+      let totalQty = 0;
+      try {
+        const j = await fetch('/api/rfq-basket').then(r => r.json());
+        if (j && Array.isArray(j.basket) && j.basket.length > 0) {
+          b = j.basket;
+          totalQty = j.totalQty ?? 0;
+        }
+      } catch {}
+
+      if (b.length === 0) {
+        if (mc) mc.textContent = '0 items';
+        if (!box) return;
+        box.innerHTML = `
+          <div class="row" style="color:var(--muted-on-dark, #CBD5E1);font-size:13px"><span>Your RFQ basket is empty</span><b>0</b></div>
+          <div class="row"><span>Response SLA</span><b>≤ 1 business day</b></div>
+          <div style="margin-top:10px;text-align:center"><a href="/products" class="btn btn-sm btn-o" style="width:100%">Browse catalog to add items →</a></div>
+        `;
+        return;
+      }
+
+      if (mc) mc.textContent = `${totalQty} item${totalQty === 1 ? '' : 's'}`;
+      if (!box) return;
+      // rm(3.1-2) / F-2026-N10: product names/imgs are DB-controlled — escape every interpolation.
+      const escMini = (v: any) => String(v ?? '')
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      box.innerHTML = b.slice(0, 4).map((i: any) => {
+        const th = i.img ? `<img src="${escMini(i.img)}" alt="" style="width:42px;height:34px;object-fit:contain;background:rgba(255,255,255,.9);border-radius:8px;padding:2px;flex:none">` : '';
+        return `<div class="row">${th}<span style="flex:1;padding-left:${th ? 10 : 0}px">${escMini(String(i.name || i.slug).slice(0, 44))}</span><b>× ${escMini(i.qty)}</b></div>`;
+      }).join('') +
+      (b.length > 4 ? `<div class="row"><span>+ ${b.length - 4} more…</span><b></b></div>` : '') +
+      '<div class="row"><span>Response SLA</span><b>≤ 1 business day</b></div>';
+    } catch {}
+  }
+  renderMini();
+
+  /* Testimonials Rotator */
+  const tstCard = document.getElementById('tst-card');
+  if (tstCard) {
+    const tsts = JSON.parse(tstCard.dataset.testimonials || '[]');
+    if (tsts.length > 0) {
+      let ti = 0;
+      const tstName = document.getElementById('tst-name');
+      const tstQuote = document.getElementById('tst-quote');
+      const tstAv = document.getElementById('tst-av');
+      const tstDots = document.getElementById('tst-dots');
+
+      function showT(idx: number) {
+        ti = (idx + tsts.length) % tsts.length;
+        const item = tsts[ti];
+        if (tstName) tstName.textContent = `${item.name} · ${item.role}`;
+        if (tstQuote) tstQuote.textContent = `“${item.q}”`;
+        if (tstAv) {
+          const initials = (item.name || '').split(/\s+/).map((w: string) => w[0]).join('').slice(0, 2).toUpperCase();
+          tstAv.textContent = initials || 'ST';
+        }
+        if (tstDots) {
+          tstDots.innerHTML = tsts.map((_: any, j: number) =>
+            `<button style="min-width:24px;min-height:24px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:0;padding:0;cursor:pointer" data-i="${j}" aria-label="Testimonial ${j+1}"><span style="width:9px;height:9px;border-radius:50%;display:inline-block;background:${j === ti ? 'var(--g2)' : '#2C4159'}"></span></button>`
+          ).join('');
+          tstDots.querySelectorAll('button').forEach((b: HTMLElement) => {
+            b.addEventListener('click', () => { showT(+(b.dataset.i || 0)); });
+          });
+        }
+      }
+      showT(0);
+      let isTstPaused = false;
+      let tstTimer: ReturnType<typeof setInterval> | null = null;
+      function startTstTimer() {
+        if (tstTimer) clearInterval(tstTimer);
+        if (!isTstPaused && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          tstTimer = setInterval(() => showT(ti + 1), 7000);
+        }
+      }
+      function stopTstTimer() {
+        if (tstTimer) { clearInterval(tstTimer); tstTimer = null; }
+      }
+      startTstTimer();
+
+      const tstPauseBtn = document.getElementById('tst-pause-btn') as HTMLButtonElement | null;
+      function updateTstPauseBtn() {
+        if (!tstPauseBtn) return;
+        tstPauseBtn.setAttribute('aria-label', isTstPaused ? 'Play testimonial rotation' : 'Pause testimonial rotation');
+        tstPauseBtn.setAttribute('title', isTstPaused ? 'Play testimonial rotation' : 'Pause testimonial rotation');
+        tstPauseBtn.textContent = isTstPaused ? '►' : '❚❚';
+      }
+      tstPauseBtn?.addEventListener('click', () => {
+        isTstPaused = !isTstPaused;
+        if (isTstPaused) stopTstTimer();
+        else startTstTimer();
+        updateTstPauseBtn();
+      });
+      tstCard.addEventListener('mouseenter', stopTstTimer);
+      tstCard.addEventListener('mouseleave', () => { if (!isTstPaused) startTstTimer(); });
+      tstCard.addEventListener('focusin', stopTstTimer);
+      tstCard.addEventListener('focusout', () => { if (!isTstPaused) startTstTimer(); });
+    }
+  }
+
+  /* hero search (prototype #hq) — routes to the catalog with the query */
+  const hq = document.getElementById('hq') as HTMLInputElement | null;
+  const goHero = () => { if (hq && hq.value.trim()) location.href = '/search/?q=' + encodeURIComponent(hq.value.trim()); };
+  document.getElementById('hqb')?.addEventListener('click', goHero);
+  hq?.addEventListener('keydown', (e) => { if (e.key === 'Enter') goHero(); });
+</script>

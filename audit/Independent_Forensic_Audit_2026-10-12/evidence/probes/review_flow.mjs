@@ -1,0 +1,42 @@
+import fs from 'node:fs';
+const API='http://127.0.0.1:18090'; const R=[];
+const rec=(n,p,d)=>{R.push({n,p,d});console.log(`${p===true?'PASS':p===false?'FAIL':'INFO'}  ${n}${d?' :: '+d:''}`);};
+function jar(){const c=new Map();return{hdr:()=>[...c].map(([k,v])=>`${k}=${v}`).join('; '),take:r=>{for(const sc of r.headers.getSetCookie?.()||[]){const kv=sc.split(';')[0],i=kv.indexOf('=');c.set(kv.slice(0,i).trim(),kv.slice(i+1).trim());}}};}
+async function call(m,p,b,j){const h={};if(j){const x=j.hdr();if(x)h.cookie=x;}if(b!==undefined)h['content-type']='application/json';const r=await fetch(API+p,{method:m,headers:h,body:b===undefined?undefined:JSON.stringify(b)});if(j)j.take(r);const t=await r.text();let d;try{d=JSON.parse(t);}catch{d=t;}return{status:r.status,d};}
+const login=async(e,p)=>{const j=jar();const r=await call('POST','/api/auth/login',{email:e,password:p},j);return{j,r};};
+const ref=process.argv[2]; const EMAIL=process.argv[3];
+let {j:rj,r:rl}=await login('reviewer@simalme.com','Sandbox-Probe-Pw-1');
+if(rl.status!==200){({j:rj,r:rl}=await login('reviewer@simalme.com','reviewer123'));}
+rec('reviewer login',rl.status===200,`${rl.status} role=${rl.d?.user?.role}`);
+const early=await call('POST',`/api/admin/submissions/${ref}/actions`,{action:'approve'},rj);
+rec('approve straight from submitted is blocked',early.status===409,`${early.status} ${String(early.d.error||'').slice(0,70)}`);
+const s1=await call('POST',`/api/admin/submissions/${ref}/actions`,{action:'start'},rj);
+rec('start review (submitted->under_review)',s1.status===200,`${s1.status} -> ${s1.d.status}`);
+const ck=await call('POST',`/api/admin/submissions/${ref}/checklist`,{item:'licence',checked:true},rj);
+rec('reviewer checklist item',ck.status===200,`${ck.status}`);
+const nt=await call('POST',`/api/admin/submissions/${ref}/notes`,{text:'Internal note from the audit probe.'},rj);
+rec('internal note',nt.status===200,`${nt.status}`);
+const q=await call('POST',`/api/admin/submissions/${ref}/query`,{section:'banking',message:'Please re-upload the bank letter.'},rj);
+rec('raise query to applicant',q.status===200,`${q.status} -> ${q.d.status}`);
+const stA=await call('GET',`/api/public/applications/${ref}?email=${encodeURIComponent(EMAIL)}`);
+rec('applicant sees the query on the status page',stA.status===200&&JSON.stringify(stA.d).includes('bank letter'),`status=${stA.d.status} history=${(stA.d.history||[]).length} queries=${(stA.d.queries||[]).length}`);
+const rp=await call('POST',`/api/public/applications/${ref}/respond`,{email:EMAIL,message:'Re-uploaded as requested.'});
+rec('applicant responds to query',rp.status===200,`${rp.status} -> ${rp.d.status}`);
+const ap=await call('POST',`/api/admin/submissions/${ref}/actions`,{action:'approve'},rj);
+rec('approve',ap.status===200,`${ap.status} -> ${ap.d.status}`);
+const det=await call('GET',`/api/admin/submissions/${ref}`,undefined,rj);
+rec('reviewer identity stored on the record',det.d.reviewer&&!/object|^\{\}$/.test(JSON.stringify(det.d.reviewer)),`reviewer=${JSON.stringify(det.d.reviewer)}`);
+const aud=await call('GET','/api/admin/audit?action=all',undefined,rj);
+const mine=(Array.isArray(aud.d)?aud.d:[]).filter(a=>String(a.target)===String(ref));
+rec('audit actor is a real identity',mine.length>0&&mine.every(a=>!/object|^\{\}$/.test(String(a.actor))),`events=${mine.length} actors=${JSON.stringify([...new Set(mine.map(a=>a.actor))])}`);
+const stB=await call('GET',`/api/public/applications/${ref}?email=${encodeURIComponent(EMAIL)}`);
+rec('final status visible to applicant',stB.status===200,`status=${stB.d.status} history=${(stB.d.history||[]).length}`);
+const {j:aj}=await login('admin@simalme.com','[REDACTED-ROTATED-2026-10]');
+const ob=await call('GET','/api/admin/outbox',undefined,aj);
+const mails=(Array.isArray(ob.d)?ob.d:[]).filter(o=>String(o.to||o.to_addr||'').includes(EMAIL));
+rec('decision notifications queued',mails.length>=2,`${mails.length}: ${mails.map(m=>m.subject).join(' | ').slice(0,200)}`);
+const partner=(await call('GET','/api/admin/users',undefined,aj)).d;
+const created=(Array.isArray(partner)?partner:partner.users||[]).find(u=>String(u.email).toLowerCase()===EMAIL.toLowerCase());
+rec('partner account provisioned on approval',!!created,created?`role=${created.role}`:'no account created for the applicant');
+fs.writeFileSync('out/review_flow.json',JSON.stringify(R,null,1));
+console.log(`\n${R.filter(x=>x.p===true).length} pass / ${R.filter(x=>x.p===false).length} fail`);

@@ -1,0 +1,344 @@
+[
+ {
+  "view": "workspace-editorial",
+  "button": "New Article",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "workspace-editorial",
+  "button": "Refresh Desk",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "workspace-editorial",
+  "button": "Filter: All Articles",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "slides",
+  "button": "Save All Slides",
+  "hasId": true,
+  "effect": "responds",
+  "api": [
+   "PUT /api/cms/slides/1",
+   "PUT /api/cms/slides/2"
+  ]
+ },
+ {
+  "view": "slides",
+  "button": "Add New Slide",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "slides",
+  "button": "Push Live",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "slides",
+  "button": "Preview Simulation 👁️",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "media-library",
+  "button": "Refresh Gallery",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "media-library",
+  "button": "85 Product Photographs · 18 ",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "New Block",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "Refresh Blocks",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "Export Block Catalog",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "Total: 109 Blocks",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "All Entities (109)",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "amc (1)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "erp (1)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "insight (14)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "it_solution (12)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "site (13)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "software_industry (9)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "software_module (7)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "software_product (20)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "software_service (12)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "blocks",
+  "button": "software_solution (20)",
+  "hasId": false,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "policies",
+  "button": "Refresh Policies",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "policies",
+  "button": "Push Live",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "policies",
+  "button": "7 Regulatory Policies",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "it-solutions",
+  "button": "New Solution Line",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "it-solutions",
+  "button": "Refresh Solutions",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "products-catalog",
+  "button": "Refresh Inventory",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "products-catalog",
+  "button": "Export Catalog CSV",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "products-catalog",
+  "button": "View Photo Assets 📷",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "products-catalog",
+  "button": "78 Active Products · 20 Bran",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "publish-pipeline",
+  "button": "Trigger Build & Purge",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "publish-pipeline",
+  "button": "Refresh Outbox",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "publish-pipeline",
+  "button": "50 Total Pipeline Events",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "audit-trail",
+  "button": "Refresh Audit Stream",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "users-management",
+  "button": "Provision Staff User",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "users-management",
+  "button": "Refresh Directory",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "users-management",
+  "button": "13 Staff Accounts",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "announcements",
+  "button": "Save Announcement",
+  "hasId": true,
+  "effect": "responds",
+  "api": [
+   "PUT /api/cms/announcements/1",
+   "GET /api/cms/revisions/announcements/1"
+  ]
+ },
+ {
+  "view": "announcements",
+  "button": "Push Live",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "announcements",
+  "button": "Refresh Data",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "announcements",
+  "button": "View Public Site",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "testimonials",
+  "button": "New Testimonial",
+  "hasId": true,
+  "effect": "responds",
+  "api": []
+ },
+ {
+  "view": "testimonials",
+  "button": "Push Live",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "testimonials",
+  "button": "Refresh Data",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ },
+ {
+  "view": "testimonials",
+  "button": "View Public Site",
+  "hasId": false,
+  "effect": "NO EFFECT",
+  "api": []
+ }
+]

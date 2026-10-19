@@ -1,0 +1,213 @@
+---
+// apps/site/src/pages/ar/software/index.astro — Arabic Software Services Hub (SEO-1)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+
+const parse = (r: any) => (typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload);
+const [modsRows, svcsRows, indsRows, pricingRows, implRows] = await Promise.all([
+  db`SELECT payload FROM content_blocks WHERE entity = 'software_module' ORDER BY entity_id`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'software_service' ORDER BY entity_id`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'software_industry' ORDER BY entity_id`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'erp' AND entity_id = 'pricing'`,
+  db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'impl-phases'`,
+]);
+
+const erpModulesAr = [
+  ['💰', 'الإدارة المالية والمحاسبة', 'دفتر الأستاذ العام، المدينون والدائنون، تعدد العملات، وقوائم الأرباح والسيولة في سجل موحد.', 'finance'],
+  ['👥', 'الموارد البشرية والرواتب', 'سجلات الموظفين، العقود، كشوف الرواتب المتوافقة مع حماية الأجور WPS، والإجازات.', 'hr'],
+  ['📈', 'المبيعات وإدارة علاقات العملاء CRM', 'مسارات الفرص البيعية، عروض الأسعار، ونظرة شاملة 360 درجة لبيانات العملاء.', 'crm'],
+  ['📦', 'المستودعات وسلاسل الإمداد', 'مخازن متعددة، الجرد الآلي، التتبع بالباركود، ونقاط إعادة الطلب التلقائية.', 'inventory'],
+  ['🏭', 'إدارة التصنيع والإنتاج', 'شجرة المواد BOM، أوامر التشغيل والإنتاج، وتخطيط الاحتياجات الصناعية MRP.', 'manufacturing'],
+  ['✅', 'إدارة المشاريع والمهام', 'تتبع ساعات العمل، الفواتير المرحلية، وتحليلات ربحية كل مشروع بدقة.', 'projects'],
+  ['🧾', 'UniVAT والفوترة الإلكترونية', 'نظام الضرائب المعتمد مع جاهزية الفوترة الإلكترونية Peppol في دولة الإمارات.', 'univat']
+];
+
+const DEFAULT_ERP_PRICING_AR = [
+  { t: 'باقة الانطلاق (Starter)', best: 'الشركات الناشئة والصغيرة (11–50 موظفاً) للانتقال من الجداول اليدوية إلى نظام موحد', impl: '8–10 أسابيع', users: 'غير محدود' },
+  { t: 'باقة الاحتراف (Professional)', best: 'الشركات النامية والمتوسطة (51–500 موظف) التي تتطلب تشغيلاً شاملاً', impl: '12–16 أسبوعاً', users: 'غير محدود' },
+  { t: 'باقة المؤسسات الكبرى (Enterprise)', best: 'المجموعات والشركات الكبرى (500+ موظف) ذات المتطلبات المخصصة والتكامل المعقد', impl: '18–24 أسبوعاً', users: 'غير محدود' }
+];
+
+const DEFAULT_IMPL_PHASES_AR = [
+  ['1 · الاكتشاف والتقييم', 'الأسابيع 1–2'], ['2 · تصميم الحل والمعمارية', 'الأسبوع 3'], ['3 · التهيئة والتطوير المخصص', 'الأسابيع 4–6'],
+  ['4 · الاختبارات وضمان الجودة', 'الأسابيع 7–8'], ['5 · تدريب فرق العمل', 'الأسابيع 9–10'], ['6 · الإطلاق والتشغيل الفعلي', 'الأسبوع 11'], ['7 · الدعم الفني المستمر 24/7', 'الأسبوع 12 فما بعد']
+];
+
+/* deploy-audit: the Arabic software_product blocks (distribution-erp, unipos, univat) were
+ * editable in the CMS but the flagship cards below were fixed text; name/desc now come from
+ * them, the built-in copy is the fallback. */
+const arProdRows = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'software_product' AND lang = 'ar'`;
+const arProd: Record<string, any> = Object.fromEntries(arProdRows.map((r: any) => [r.entity_id, parse(r) || {}]));
+const prodText = (id: string, k: 'name' | 'desc', fallback: string) =>
+  (typeof arProd[id]?.[k] === 'string' && arProd[id][k].trim() ? arProd[id][k].trim() : fallback);
+
+const erpPricing = DEFAULT_ERP_PRICING_AR;
+const implPhases = DEFAULT_IMPL_PHASES_AR;
+
+const breadcrumbsSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/ar/software/#breadcrumb',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'الرئيسية', 'item': 'https://simalme.com/ar/' },
+    { '@type': 'ListItem', 'position': 2, 'name': 'خدمات البرمجيات', 'item': 'https://simalme.com/ar/software/' }
+  ]
+};
+---
+
+<BaseLayout
+  lang="ar"
+  dir="rtl"
+  title="خدمات البرمجيات المؤسسية — سيمال بالتعاون مع يونيسوفت سيستمز"
+  description="برمجيات المؤسسات عبر شراكة سيمال ويونيسوفت: نظام UniERP على Odoo 19 CE (ترخيص $0)، 20 منتجاً، 12 خدمة هندسية، و9 قطاعات صناعية مع أكثر من 40 مهندساً واعتمادات ISO 27001."
+  schemas={[breadcrumbsSchema]}
+>
+  <section class="hero hero-rose"><div class="wrap" style="padding:60px 28px 54px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:start">
+    <div>
+      <span class="badge" style="background:rgba(240,240,0,.14);color:var(--yellow)">★ خط أعمال استراتيجي متكامل · 2026</span>
+      <h1 style="font-size:40px;line-height:1.15;margin-top:12px">برمجيات مؤسسية متقدمة،<br>يقدمها الفريق الذي يدير<br><em style="color:var(--yellow);font-style:normal">عمليات التوزيع الحقيقية يومياً.</em></h1>
+      <p class="lead" style="color:#B9C6D6;margin:18px 0 24px">خدمات سيمال للبرمجيات — بالتعاون مع شريكنا البرمجي <b style="color:#fff">Unisoft Systems Ltd</b>: أكثر من 40 مهندساً برمجياً، شهادات ISO 9001/27001 وSOC 2، أكثر من 150 مشروعاً منجزاً، ودعم فني على مدار الساعة 24/7 عبر المنطقة.</p>
+      <div class="cta">
+        <a class="btn btn-lg btn-a" href="#demo">احجز عرضاً حياً</a>
+        <a class="btn btn-lg btn-o" style="background:transparent;color:#fff;border-color:#2A3B4E" href="#portfolio">استكشف المحفظة البرمجية</a>
+      </div>
+      <div class="trust" style="margin-top:28px;display:flex;gap:20px;font-size:12px;color:#9AB0C6;flex-wrap:wrap">
+        <div>✓ مبني على Odoo 19 Community Edition</div><div>✓ ترخيص $0 لكل مستخدم مدى الحياة</div><div>✓ جاهزية الفوترة الإلكترونية Peppol</div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3 style="font-size:16px;margin-bottom:16px">لماذا تختار شراكة سيمال + يونيسوفت؟</h3>
+      <div class="row"><span>فريق الهندسة</span><b>+40 مطوراً وخبيراً</b></div>
+      <div class="row"><span>المشاريع المنفذة</span><b>+150 مشروعاً ناجحاً</b></div>
+      <div class="row"><span>شهادات الجودة والأمن</span><b>ISO 9001 · 27001 · SOC 2</b></div>
+      <div class="row"><span>وفر التراخيص السنوية</span><b>$0 رسوم تراخيص مستخدمين</b></div>
+    </div>
+  </div></section>
+
+  <!-- Navigation Tabs -->
+  <div class="sw-tabs"><div class="wrap">
+    <a href="#portfolio" class="on">المحفظة (20 نظاماً)</a>
+    <a href="#modules">وحدات UniERP (7)</a>
+    <a href="#comparison">مقارنة التكلفة والترخيص</a>
+    <a href="#pricing">باقات التنفيذ</a>
+    <a href="#impl">مراحل التنفيذ السبع</a>
+    <a href="#demo">طلب العرض والتواصل</a>
+  </div></div>
+
+  <!-- Portfolio 4 Doors -->
+  <section class="sec" id="portfolio" style="background:#fff"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">خريطة المنظومة</span><h2>أربعة أبواب نحو التحول الرقمي</h2></div></div>
+    <div class="grid g4">
+      <div class="card card-p" style="border-top:4px solid var(--blue)">
+        <span class="badge b-blue">المنصة الرئيسية</span>
+        <h3 style="font-size:18px;margin:10px 0 6px">{prodText('distribution-erp', 'name', 'نظام UniERP المتكامل')}</h3>
+        <p style="font-size:13px;color:var(--slate);line-height:1.6">{prodText('distribution-erp', 'desc', 'نظام تخطيط موارد المؤسسات الشامل المبني على Odoo 19 CE بسبع وحدات رئيسية وترخيص $0 للأبد.')}</p>
+        <a class="btn btn-o btn-sm" style="margin-top:14px" href="/software/products/distribution-erp/">تفاصيل UniERP ←</a>
+      </div>
+      <div class="card card-p" style="border-top:4px solid #16A34A">
+        <span class="badge b-ok">الأنظمة التخصصية</span>
+        <h3 style="font-size:18px;margin:10px 0 6px">{prodText('unipos', 'name', 'UniPOS لنقاط البيع')}</h3>
+        <p style="font-size:13px;color:var(--slate);line-height:1.6">{prodText('unipos', 'desc', 'نقاط بيع سحابية متقدمة لقطاعات التجزئة والمطاعم والأزياء تعمل بدون اتصال بالإنترنت.')}</p>
+        <a class="btn btn-o btn-sm" style="margin-top:14px" href="/software/products/unipos/">تفاصيل UniPOS ←</a>
+      </div>
+      <div class="card card-p" style="border-top:4px solid #B45309">
+        <span class="badge b-warn">الامتثال الضريبي</span>
+        <h3 style="font-size:18px;margin:10px 0 6px">{prodText('univat', 'name', 'UniVAT والفوترة الإلكترونية')}</h3>
+        <p style="font-size:13px;color:var(--slate);line-height:1.6">{prodText('univat', 'desc', 'أتمتة ضريبة القيمة المضافة وإصدار الفواتير الإلكترونية المتوافقة مع معايير Peppol بالإمارات.')}</p>
+        <a class="btn btn-o btn-sm" style="margin-top:14px" href="/software/solutions/univat/">تفاصيل UniVAT ←</a>
+      </div>
+      <div class="card card-p" style="border-top:4px solid #6366F1">
+        <span class="badge b-dark">الهندسة المخصصة</span>
+        <h3 style="font-size:18px;margin:10px 0 6px">الخدمات الهندسية (12)</h3>
+        <p style="font-size:13px;color:var(--slate);line-height:1.6">تطوير البرمجيات المخصصة، الذكاء الاصطناعي، ترحيل السحابة، وضمان الجودة واختبارات الأمان.</p>
+        <a class="btn btn-o btn-sm" style="margin-top:14px" href="#demo">طلب استشارة ←</a>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- 7 Modules -->
+  <section class="sec" id="modules"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">وحدات النظام</span><h2>سبع وحدات تشغيلية في قاعدة بيانات واحدة</h2></div></div>
+    <div class="grid g4">
+      {erpModulesAr.map(m => (
+        <div class="card card-p">
+          <div style="font-size:28px">{m[0]}</div>
+          <h3 style="font-size:16px;margin:10px 0 6px">{m[1]}</h3>
+          <p style="font-size:12.5px;color:var(--slate);line-height:1.5">{m[2]}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- Pricing Packages -->
+  <section class="sec" id="comparison" data-also="pricing" style="background:#fff"><div class="wrap"><span id="pricing" hidden aria-hidden="true"></span>
+<!-- rm(6.2): dual anchors — tab links #comparison, EN deep-links #pricing -->
+    <div class="sec-head"><div><span class="eyebrow">الباقات الشفافة</span><h2>حزم تنفيذ واضحة بدون تكاليف خفية</h2></div></div>
+    <div class="grid g3">
+      {erpPricing.map((pkg, i) => (
+        <div class="card card-p" style={i === 1 ? 'border:2px solid var(--blue);position:relative' : ''}>
+          {i === 1 && <span class="badge b-blue" style="position:absolute;top:-12px;right:20px">الأكثر طلباً للمؤسسات النامية</span>}
+          <h3 style="font-size:20px;margin-bottom:8px">{pkg.t}</h3>
+          <p style="font-size:13px;color:var(--slate);line-height:1.5;min-height:40px">{pkg.best}</p>
+          <div style="border-top:1px solid var(--line);margin:16px 0;padding-top:14px;font-size:13px;display:flex;flex-direction:column;gap:8px">
+            <div>مدة التنفيذ المجدولة: <b>{pkg.impl}</b></div>
+            <div>تراخيص المستخدمين: <b style="color:var(--ok)">{pkg.users}</b> ($0 للأبد)</div>
+          </div>
+          <a class="btn btn-block btn-p" href="#demo">اطلب تفاصيل الباقة ←</a>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- 7-Phase Implementation -->
+  <section class="sec" id="impl"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">منهجية الانضباط</span><h2>مراحل التنفيذ السبع حتى الإطلاق الناجح</h2></div></div>
+    <div class="grid g4">
+      {implPhases.map(ph => (
+        <div class="card card-p">
+          <b style="font-size:14px;color:var(--blue)">{ph[0]}</b>
+          <p style="font-size:12px;color:var(--slate);margin-top:6px">{ph[1]}</p>
+        </div>
+      ))}
+    </div>
+  </div></section>
+
+  <!-- Demo Booking Form -->
+  <section class="sec" id="demo" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="split" style="grid-template-columns:1fr 1fr;align-items:start">
+      <div>
+        <span class="eyebrow">العرض الحي المباشر</span>
+        <h2 style="font-size:28px;margin:8px 0 12px">احجز عرضاً حياً لنظام UniERP</h2>
+        <p style="color:var(--slate);font-size:14px;line-height:1.6;margin-bottom:20px">30 دقيقة على منصة عمل حقيقية بدون عروض شرائح نظرية. سنوضح لك كيف يدير النظام دورة العمل والمبيعات والمخازن والفوترة الضريبية بدقة متناهية.</p>
+        <div style="display:flex;flex-direction:column;gap:10px;font-size:13px;color:var(--ink)">
+          <div>✓ إمكانية اختبار سيناريوهات شركتك الخاصة مباشرة</div>
+          <div>✓ تقدير فوري للتكلفة والجدول الزمني للتحول</div>
+          <div>✓ استشارة فنية مباشرة مع مهندسي البرمجيات</div>
+        </div>
+      </div>
+      <div class="card card-p">
+        <form id="arDemoForm" style="display:grid;gap:14px">
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;margin-bottom:4px" for="d-name">الاسم الكريم <span style="color:var(--red)">*</span></label>
+            <input class="in" id="d-name" name="name" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;margin-bottom:4px" for="d-email">البريد الإلكتروني المهني <span style="color:var(--red)">*</span></label>
+            <input class="in" id="d-email" dir="ltr" name="email" type="email" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;margin-bottom:4px" for="d-phone">رقم الهاتف أو الواتساب <span style="color:var(--red)">*</span></label>
+            <input class="in" id="d-phone" dir="ltr" name="phone" type="tel" required style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" />
+          </div>
+          <div>
+            <label style="display:block;font-size:13px;font-weight:700;margin-bottom:4px" for="d-company">اسم الشركة / المؤسسة</label>
+            <input class="in" id="d-company" name="company" style="width:100%;padding:10px;border:1px solid var(--line);border-radius:8px" />
+          </div>
+          <button type="submit" class="btn btn-p btn-block" style="margin-top:6px">تأكيد حجز موعد العرض ←</button>
+        </form>
+      </div>
+    </div>
+  </div></section>
+
+  
+  <script src="/assets/js/ar-software-page.js?v=1" defer></script>
+</BaseLayout>

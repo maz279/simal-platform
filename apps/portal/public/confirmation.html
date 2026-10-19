@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Submission received — Simal KYC Portal</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/base.css?v=8">
+  <link rel="stylesheet" href="assets/css/portal.css?v=8">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="portal-header compact no-print">
+    <div class="inner">
+      <a class="brand" href="index.html">
+        <img class="brand-logo" src="assets/img/logo-lockup-color.png" alt="Simal Technologies" width="166" height="36">
+        <span class="brand-sep" aria-hidden="true"></span>
+        <span class="brand-title"><b>Partner Onboarding</b>&amp; KYC Portal</span>
+      </a>
+      <a class="btn btn-ghost btn-sm" href="index.html">Back to portal</a>
+    </div>
+  </header>
+
+  <main id="main" class="page-narrow">
+    <div class="card">
+      <div class="confirm-hero">
+        <div class="big-check" aria-hidden="true"></div>
+        <h1>Submission received</h1>
+        <p class="muted" style="max-width:46ch;margin-inline:auto">
+          Thank you! Your onboarding details are now with our finance team for review.
+          Keep your reference number for tracking.
+        </p>
+        <p class="ref-pill mt-6" id="ref-pill">…</p>
+      </div>
+      <div class="divider" style="margin:0"></div>
+      <div class="card-pad">
+        <h2 style="font-size:var(--fs-lg)">What happens next</h2>
+        <ul class="timeline mt-4" id="next-steps">
+          <li class="current">
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-title">Received &amp; queued</div>
+            <div class="tl-sub">You'll get an acknowledgement email within minutes.</div>
+          </li>
+          <li>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-title">Review (≤ 2 business days)</div>
+            <div class="tl-sub">We verify your licence, TRN, signatories and banking against official records.</div>
+          </li>
+          <li>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-title">Queries — only if needed</div>
+            <div class="tl-sub">If something doesn't match we email you a precise, field-level query. No redoing the whole form.</div>
+          </li>
+          <li>
+            <span class="tl-dot" aria-hidden="true"></span>
+            <div class="tl-title">Approval</div>
+            <div class="tl-sub">Your verified data flows into our ERP &amp; e-invoicing routing — trading begins.</div>
+          </li>
+        </ul>
+
+        <div class="divider"></div>
+        <div id="summary" class="kv-grid"><!-- JS --></div>
+
+        <div class="row mt-8 no-print" style="justify-content:space-between">
+          <div class="row">
+            <button class="btn btn-secondary" id="btn-print">Print / save PDF</button>
+            <a class="btn btn-primary" id="btn-status" href="status.html">Track your application</a>
+          </div>
+          <a class="btn btn-ghost" href="index.html">Done</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/js/ui.js?v=1"></script>
+  <script src="assets/js/api.js?v=6"></script>
+  <script src="assets/js/confirmation.js?v=1"></script>
+</body>
+</html>

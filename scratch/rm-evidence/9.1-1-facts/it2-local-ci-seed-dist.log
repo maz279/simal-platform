@@ -1,0 +1,898 @@
+
+================ JOB build ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+UPDATE 0
+UPDATE 0
+UPDATE 0
+UPDATE 0
+DO
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+DO
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> ssg-build: node C:\software_project\Simal_Corporate_website\Codebase\node_modules\astro\astro.js build
+[2m23:26:46[22m [34m[content][39m Syncing content
+[2m23:26:46[22m [34m[content][39m Synced content
+[2m23:26:46[22m [34m[types][39m Generated [2m56ms[22m
+[2m23:26:46[22m [34m[build][39m output: [34m"static"[39m
+[2m23:26:46[22m [34m[build][39m mode: [34m"static"[39m
+[2m23:26:46[22m [34m[build][39m directory: [34mC:\software_project\Simal_Corporate_website\Codebase\apps\site\dist-ci-build\[39m
+[2m23:26:46[22m [34m[build][39m Collecting build info...
+[2m23:26:46[22m [34m[build][39m [32m✓ Completed in 95ms.[39m
+[2m23:26:47[22m [34m[build][39m Building static entrypoints...
+[2m23:26:48[22m [34m[vite][39m [32m✓ built in 1.71s[39m
+[2m23:26:48[22m [34m[build][39m [32m✓ Completed in 1.74s.[39m
+
+[42m[30m building client (vite) [39m[49m
+[2m23:26:48[22m [34m[vite][39m transforming...
+[2m23:26:48[22m [34m[vite][39m [32m✓[39m 3 modules transformed.
+[2m23:26:48[22m [34m[vite][39m rendering chunks...
+[2m23:26:48[22m [34m[vite][39m computing gzip size...
+[2m23:26:48[22m [34m[vite][39m [2mdist-ci-build/[22m[36m_astro/index.astro_astro_type_script_index_0_lang.BhthWDNp.js       [39m[1m[2m4.53 kB[22m[1m[22m[2m │ gzip: 1.71 kB[22m
+[2m23:26:48[22m [34m[vite][39m [2mdist-ci-build/[22m[36m_astro/index.astro_astro_type_script_index_0_lang.BbGytnos.js       [39m[1m[2m5.49 kB[22m[1m[22m[2m │ gzip: 2.28 kB[22m
+[2m23:26:48[22m [34m[vite][39m [2mdist-ci-build/[22m[36m_astro/BaseLayout.astro_astro_type_script_index_0_lang.DU-4udzU.js  [39m[1m[2m6.27 kB[22m[1m[22m[2m │ gzip: 2.32 kB[22m
+[2m23:26:48[22m [34m[vite][39m [32m✓ built in 49ms[39m
+
+[42m[30m generating static routes [39m[49m
+[2m23:26:48[22m [32m▶[39m src/pages/404.astro
+[2m23:26:48[22m   [34m└─[39m [2m/404.html[22m [2m(+61ms)[22m 
+[2m23:26:48[22m [32m▶[39m src/pages/about/index.astro
+[2m23:26:48[22m   [34m└─[39m [2m/about/index.html[22m [2m(+52ms)[22m 
+[2m23:26:48[22m [32m▶[39m src/pages/ar/about/index.astro
+[2m23:26:48[22m   [34m└─[39m [2m/ar/about/index.html[22m [2m(+9ms)[22m 
+[2m23:26:48[22m [32m▶[39m src/pages/ar/contact/index.astro
+[2m23:26:48[22m   [34m└─[39m [2m/ar/contact/index.html[22m [2m(+6ms)[22m 
+[2m23:26:48[22m [32m▶[39m src/pages/ar/index.astro
+[2m23:26:48[22m   [34m└─[39m [2m/ar/index.html[22m [2m(+50ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/insights/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/insights/index.html[22m [2m(+11ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/legal/[slug].astro
+[2m23:26:49[22m   [34m├─[39m [2m/ar/legal/privacy-policy/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/ar/legal/terms-conditions/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/ar/legal/cookie-policy/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/ar/legal/return-policy/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/ar/legal/shipping-policy/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/ar/legal/refund-policy/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m└─[39m [2m/ar/legal/accessibility-statement/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/legal/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/legal/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/onboarding/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/onboarding/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/products/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/products/index.html[22m [2m(+12ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/rfq/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/rfq/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/software/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/software/index.html[22m [2m(+45ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/ar/solutions/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/ar/solutions/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/brands/[slug].astro
+[2m23:26:49[22m   [34m├─[39m [2m/brands/aiwa/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/arktek/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/crucial/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/dell/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/hiksemi/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/hikvision/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/honeywell/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/hp/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/kingston/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/koorui/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/lenovo/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/other/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/msi/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/nearity/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/pny/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/samsung/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/sandisk/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/teamgroup/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/toshiba/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/ugreen/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/brands/wd/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m└─[39m [2m/brands/zotac/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/brands/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/brands/index.html[22m [2m(+13ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/careers/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/careers/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/compare/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/compare/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/contact/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/contact/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/index.html[22m [2m(+11ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/insights/[slug].astro
+[2m23:26:49[22m   [34m├─[39m [2m/insights/ai-in-erp-2026/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/authorized-it-distributors-uae/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/crucial-p510-launch/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/cybersecurity-best-practices-uae/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/ddr4-vs-ddr5/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/enterprise-ssd-buying-guide-2026/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/future-proof-it-infrastructure/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/industry-4-manufacturing-erp/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/peppol-in-90-days/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/simal-two-decades/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/top-ssds-for-resellers-2025/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/uae-data-protection-pdpl/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/insights/unierp-transforms-sme/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m└─[39m [2m/insights/why-gray-market-costs-more/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/insights/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/insights/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/legal/[slug].astro
+[2m23:26:49[22m   [34m├─[39m [2m/legal/privacy-policy/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/legal/terms-conditions/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/legal/cookie-policy/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/legal/return-policy/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/legal/shipping-policy/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/legal/refund-policy/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m   [34m└─[39m [2m/legal/accessibility-statement/index.html[22m [2m(+5ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/legal/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/legal/index.html[22m [2m(+6ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/onboarding/index.astro
+[2m23:26:49[22m   [34m└─[39m [2m/onboarding/index.html[22m [2m(+4ms)[22m 
+[2m23:26:49[22m [32m▶[39m src/pages/products/[slug].astro
+[2m23:26:49[22m   [34m├─[39m [2m/products/1672/index.html[22m [2m(+11ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/aiwa-mf2203-v-21-5-inch-fhd-black-slim-led-display-hdmi-vga-monitor/index.html[22m [2m(+10ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/aiwa-mf240e-v-flat-slim-monitor/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/arktek-geforce-gt610-2gb-ddr3-64-bit-hdmi-dvi-vga/index.html[22m [2m(+10ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/arktek-gt730-4gb-ddr3-128bit-low-profile/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-ddr4-pro-memory/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-ddr5-memory-desktop-and-laptop/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-ddr5-pro-memory/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-overlocking-ddr5-pro-memory/index.html[22m [2m(+10ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-p3/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-p3-plus/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hs-ssd-e100/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-p310-2230/index.html[22m [2m(+13ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-p310-2280/index.html[22m [2m(+10ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-p510-nvme-ssd/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-t500/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-t500-heatsink/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-t700-ssd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-t700-ssd-heatsink/index.html[22m [2m(+10ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-t705-ssd/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-t705-ssd-2/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-x10-pro-portable-ssd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-x9-portable-ssd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/crucial-x9-pro-portable-ssd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/dell-15-laptop-14th-gen-intel-core-3/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/elite-7s-portable-ssd/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/gtx1030-2gb-gddr5-64-bit-hdmi-dvi-vga/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hc000017-srg-1-5m-wht-6-uk/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-3-out-surge-cube-spike-guard/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-3-out-surge-protector-with-master-switch/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-4-out-surge-protector-with-master-switch/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-6-out-surge-protector-with-master-switch-spike-guard-ex_24b617a1/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-6-out-surge-protector-with-master-switch-spike-guard-extension-board/index.html[22m [2m(+10ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-8-out-surge-protector-with-master-switch/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-hc000016-srg-1-5m-wht-4-uk-platinum-series-4-extension-cord/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-surge-protector-4-universal-sockets/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-surge-protector-spike-guard-power-extension-board-4-uni_a13c0ee0/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-surge-protector-spike-guard-power-extension-board-4-universal-sockets/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-surge-protector-spike-guard-power-extension-power-strip-8-universal-sockets/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/honeywell-universal-world-travel-adapter/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hp-laptop/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hs-essd-t100i-portable-ssd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hs-ssd-e1000/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hs-ssd-e100n/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/hs-ssd-future/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/kingston-xs1000-1tb-portable-ssd-red/index.html[22m [2m(+7ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/koorui-27-inch-curved-gaming-monitor/index.html[22m [2m(+9ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/koorui-27-inch-gaming-monitor/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/koorui-34-inch-gaming-monitor/index.html[22m [2m(+11ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/lenovo-ideapad-slim-3-i5-13th-gen-15-3-inch/index.html[22m [2m(+8ms)[22m 
+[2m23:26:49[22m   [34m├─[39m [2m/products/msi-b450m-a-pro-max-ii-motherboard/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/nearity-c30r/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/rtx2060-6gb-gddr6-192-bit-dual-1dp-1hdmi-1dvi/index.html[22m [2m(+12ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/samsung-t7-shield-portable-ssd-1tb/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/sandisk-extreme-pro-256gb-microsdxc/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/teamgroup-ted34g1600c1101-4gb-ddr3/index.html[22m [2m(+14ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/toshiba-2tb-portable-external-hdd-2/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/toshiba-canvio-ready-2tb-portable-external-hdd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-5-in-1-usb-c-hub/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-cat-6-u-utp-lan-cable-black/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-cat-7-shielded-round-cable-with-braided-modular-plugs/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-cat-7-u-ftp-lan-cable-flat-design-10m-black/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-cat8-pure-copper-ethernet-cable-braided-black/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-dp-1-4-male-to-male-plastic-case-braided-cable/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-dp-male-to-male-cable/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-hdmi-cables-am-m-cable-with-braided/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-hdmi-cables-black/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-high-end-hdmi-cable-with-nylon-braid-black/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-209-9-in-1-4k-hdmi-universal-docking-station/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-210-10-in-1-usb-c-hub/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-312-12-in-1-4k-hdmi-universal-docking-station/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-313-13-in-1-usb-c-docking-station/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-usb-c-hub-10-in-1-usb-c-dongle-with-4k-hdmi-vga-dual-monitor/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/ugreen-vga-male-to-male/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/products/western-digital-sn7100-wd-nvme-ssd/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/products/wind-pro-portable-ssd/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/products/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/products/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/resources/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/resources/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/rfq/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/rfq/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/search/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/search/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m [35mλ[39m src/pages/sitemap.xml.js
+[2m23:26:50[22m   [34m└─[39m [2m/sitemap.xml[22m [2m(+68ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/sitemap/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/sitemap/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/software/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/software/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/software/industries/[slug].astro
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/agriculture/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/banking/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/education/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/government/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/healthcare/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/logistics/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/manufacturing/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/industries/realestate/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/software/industries/retail/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/software/modules/[slug].astro
+[2m23:26:50[22m   [34m├─[39m [2m/software/modules/crm/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/modules/finance/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/modules/hr/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/modules/inventory/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/modules/manufacturing/index.html[22m [2m(+10ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/modules/projects/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/software/modules/univat/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/software/products/[slug].astro
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/asset-management/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/cattle-management/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/collection-recovery/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/custodian-banking/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/distribution-erp/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/ecommerce-platform/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/education-erp/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/field-service-erp/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/garments-erp/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/hospital-erp/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/hotel-erp/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/i-portal/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/loan-management/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/merchant-banking/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/mps-erp/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/queue-management/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/retail-erp/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/unipos/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/products/univat/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/software/products/weather-systems/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/software/services/[slug].astro
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/aiml/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/cloud/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/consultancy/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/custom-dev/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/cybersecurity/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/data-bi/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/devops/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/digital-transform/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/mobile/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/pm/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/services/qa/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/software/services/uiux/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/software/solutions/[slug].astro
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/distribution-erp/index.html[22m [2m(+10ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/retail-erp/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/garments-erp/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/mps-erp/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/univat/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/unipos/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/education-erp/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/field-service-erp/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/hotel-erp/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/hospital-erp/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/ecommerce-platform/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/weather-systems/index.html[22m [2m(+9ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/cattle-management/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/queue-management/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/collection-recovery/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/loan-management/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/custodian-banking/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/i-portal/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/software/solutions/asset-management/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/software/solutions/merchant-banking/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+8ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/telephony/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+5ms)[22m 
+[2m23:26:50[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+7ms)[22m 
+[2m23:26:50[22m   [34m└─[39m [2m/solutions/support/index.html[22m [2m(+6ms)[22m 
+[2m23:26:50[22m [32m▶[39m src/pages/solutions/index.astro
+[2m23:26:50[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+10ms)[22m 
+[2m23:26:50[22m [32m✓ Completed in 2.06s.
+[39m
+[2m23:26:50[22m [34m[build][39m 235 page(s) built in [1m4.12s[22m
+[2m23:26:50[22m [34m[build][39m [1mComplete![22m
+[ci] pages: 234
+[ci] build artifact checks: clean
+
+================ JOB gate-facts-consistency ================
+
+>>>>>>>> gate-facts-consistency: node scripts/ci/facts-consistency.mjs
+=== GATE facts-consistency (PUB-8, rm 6.1-3) ===
+self-test: 14/14 planted divergences detected, clean sample passes
+reference (from BaseLayout meta): brands=21 skus=78 years=24 since=2002
+scanned 235 pages (235 with the reference meta); figures checked: brand-count 498, sku-count 698, years 28, since 698
+awards: home == about (2 entries: 2025 Hikvision — Best Distributor Partner | 2025 TeamGroup — Best Partner 2025)
+
+PASS facts-consistency: every published brand count, catalogue size and company-age figure equals the reference
+
+================ JOB gate-clean-db-build ================
+
+>>>>>>>> gate-clean-db: node scripts/ci/clean-db-build.mjs
+[clean-db-build] scratch db ready — building SSG site into dist-gate/ …
+(node:20556) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2m23:26:58[22m   [34m├─[39m [2m/software/solutions/queue-management/index.html[22m [2m(+6ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/software/solutions/retail-erp/index.html[22m [2m(+8ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/software/solutions/unipos/index.html[22m [2m(+5ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/software/solutions/univat/index.html[22m [2m(+6ms)[22m 
+[2m23:26:58[22m   [34m└─[39m [2m/software/solutions/weather-systems/index.html[22m [2m(+9ms)[22m 
+[2m23:26:58[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+7ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+6ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+5ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+6ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+6ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+5ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+7ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+5ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+5ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+7ms)[22m 
+[2m23:26:58[22m   [34m├─[39m [2m/solutions/support/index.html[22m [2m(+6ms)[22m 
+[2m23:26:58[22m   [34m└─[39m [2m/solutions/telephony/index.html[22m [2m(+5ms)[22m 
+[2m23:26:58[22m [32m▶[39m src/pages/solutions/index.astro
+[2m23:26:58[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+8ms)[22m 
+[2m23:26:58[22m [32m✓ Completed in 2.14s.
+[39m
+[2m23:26:58[22m [34m[build][39m 235 page(s) built in [1m4.07s[22m
+[2m23:26:58[22m [34m[build][39m [1mComplete![22m
+
+
+=== GATE clean-db-build (DAT-1) ===
+PASS — 0 violations
+
+================ JOB gate-link-crawl ================
+
+>>>>>>>> gate-link-crawl: node scripts/ci/link-crawl.mjs
+crawled 451 internal URLs; 0 non-2xx/3xx; 0 missing anchors (enforced)
+
+=== GATE link-crawl (PUB-3) ===
+PASS — 0 broken internal URLs, 0 missing anchors
+
+================ JOB gate-placeholders ================
+
+>>>>>>>> gate-placeholders: node scripts/ci/check-no-placeholders.mjs
+=== GATE check-no-placeholders (PUB-7) ===
+PASS — Scanned 235 HTML files in dist. 0 placeholder / internal strings found.
+
+================ JOB gate-perf ================
+
+>>>>>>>> gate-perf: node scripts/ci/perf-budget.mjs
+--- CI Performance & CWV Budget Gate (NFR-1 / P8-6) ---
+Inspecting build artifacts in: C:\software_project\Simal_Corporate_website\Codebase\apps\site\dist-ci-build
+
+1. Checking Asset & Bundle Budgets:
+  PASS: CSS chunk index.9q1LyLwM.css budget (raw <= 100KB, gzip <= 40KB) (raw: 14.7KB, gzip: 3.8KB)
+  PASS: CSS chunk index.hTHp3vC-.css budget (raw <= 100KB, gzip <= 40KB) (raw: 43.1KB, gzip: 9.8KB)
+  PASS: JS chunk BaseLayout.astro_astro_type_script_index_0_lang.DU-4udzU.js budget (raw <= 200KB, gzip <= 60KB) (raw: 6.1KB, gzip: 2.3KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BbGytnos.js budget (raw <= 200KB, gzip <= 60KB) (raw: 5.4KB, gzip: 2.2KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BhthWDNp.js budget (raw <= 200KB, gzip <= 60KB) (raw: 4.4KB, gzip: 1.7KB)
+
+2. Auditing Core Pages HTML Structure & Critical Hints:
+  PASS: Page index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 85.8KB, gzip: 18.6KB)
+  PASS: Page index.html includes font preconnect hints
+  PASS: Landing page has prioritized eager LCP hero element
+  PASS: Page index.html has responsive mobile viewport meta
+  PASS: Page products/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 159.0KB, gzip: 23.3KB)
+  PASS: Page products/index.html includes font preconnect hints
+  PASS: Page products/index.html has responsive mobile viewport meta
+  PASS: Page solutions/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 70.0KB, gzip: 13.9KB)
+  PASS: Page solutions/index.html includes font preconnect hints
+  PASS: Page solutions/index.html has responsive mobile viewport meta
+  PASS: Page rfq/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 61.4KB, gzip: 15.4KB)
+  PASS: Page rfq/index.html includes font preconnect hints
+  PASS: Page rfq/index.html has responsive mobile viewport meta
+  PASS: Page about/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 56.7KB, gzip: 13.0KB)
+  PASS: Page about/index.html includes font preconnect hints
+  PASS: Page about/index.html has responsive mobile viewport meta
+  PASS: Page contact/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 44.8KB, gzip: 11.1KB)
+  PASS: Page contact/index.html includes font preconnect hints
+  PASS: Page contact/index.html has responsive mobile viewport meta
+  PASS: Page ar/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 52.3KB, gzip: 12.7KB)
+  PASS: Page ar/index.html includes font preconnect hints
+  PASS: Page ar/index.html has responsive mobile viewport meta
+
+3. Synthetic CWV Benchmark (Simulated 4G Mobile: 150ms RTT, 1.6 Mbps):
+  PASS: Live Edge TTFB <= 200ms (measured: 35ms)
+  PASS: Simulated 4G Mobile LCP <= 2.5s (2500ms) (estimated: 1014ms (TTFB: 35ms + RTT: 150ms + HTML: 429ms))
+  PASS: Simulated Lighthouse Performance Score >= 85 (score: 95/100)
+
+================ PERF BUDGET SUMMARY ================
+Passed: 30 | Failed: 0
+ALL PERFORMANCE BUDGETS MET (PRD NFR-1 COMPLIANT).
+
+================ JOB gate-csp-inline ================
+
+>>>>>>>> gate-csp-inline: node scripts/ci/check-inline-scripts.mjs
+inline executable scripts: 0
+
+================ JOB gate-a11y ================
+
+>>>>>>>> gate-a11y: node scripts/ci/a11y.mjs
+page /: 0 violation rule(s) [0 serious/critical]
+page /products/: 0 violation rule(s) [0 serious/critical]
+page /brands/: 0 violation rule(s) [0 serious/critical]
+page /insights/: 0 violation rule(s) [0 serious/critical]
+page /software/: 0 violation rule(s) [0 serious/critical]
+page /contact/: 0 violation rule(s) [0 serious/critical]
+page /about/: 0 violation rule(s) [0 serious/critical]
+reflow /: 320:ok 901:ok 1024:ok 1280:ok
+reflow /products/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /products/dell-15-laptop-14th-gen-intel-core-3/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /solutions/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /about/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/products/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/solutions/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/about/: 320:ok 901:ok 1024:ok 1280:ok
+
+=== GATE a11y (WCAG 2.x A/AA, Phase 6 target) ===
+PASS — 0 violations
+
+>>>>>>>> gate-a11y/page-language: node scripts/ci/check-page-language.mjs
+=== GATE page-language (SEO-1, WCAG 3.1.2) ===
+self-test: 4/4 cases behave (unmarked Arabic caught, lang="ar" honoured)
+scanned 218 English pages
+
+PASS page-language: every English page renders English content; Arabic parts are marked lang="ar"
+
+================ CI SUMMARY ================
+  PASS  build
+  PASS  gate-facts-consistency
+  PASS  gate-clean-db-build
+  PASS  gate-link-crawl
+  PASS  gate-placeholders
+  PASS  gate-perf
+  PASS  gate-csp-inline
+  PASS  gate-a11y
+8/8 jobs green
+exit 0

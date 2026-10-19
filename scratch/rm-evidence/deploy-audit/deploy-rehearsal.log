@@ -1,0 +1,27 @@
+PASS rehearsal TLS certificate generated — -----
+PASS portal image builds from a clean context — 95 s
+PASS image holds no .env, keys or host data
+PASS production boot refuses a missing CSRF_SECRET
+PASS stack up (db, portal, edge healthy)
+PASS public site live after first deploy (bootstrap build) — HTTP 200
+PASS home page served from the CMS database — simal:years=24
+PASS portal health through the edge reports the database — {"status":"ok","db":"up","ts":1792332918175,"version":"1.0.0"}
+PASS portal responses carry exactly one CSP — default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' da
+PASS public vhost does not expose /api/admin/users — HTTP 404
+PASS public vhost does not expose /api/cms/blocks — HTTP 404
+PASS public vhost does not expose /api/auth/me — HTTP 404
+PASS unknown public path is a real 404 with the site 404 page — HTTP 404
+PASS hashed assets are cached immutable — /_astro/index.C4NVahd8.css max-age=31536000, public, immutable
+PASS http redirects to https — 301 https://simalme.com/x
+PASS contact form submits through the public vhost — HTTP 201 
+PASS 9 MB KYC document uploads through the edge — HTTP 200 
+PASS staff login asks for the second factor — HTTP 200
+PASS TOTP completes sign-in with a __Host- session cookie — HTTP 200
+PASS CMS edit saved (site/counters years → 37) — HTTP 200 
+PASS publish accepted — HTTP 200 pub_1792332923620
+PASS the CMS edit is live on https://simalme.com/ (build → DEPLOY_DIR → nginx)
+PASS portal recovers from a database restart without restarting — portal started 2026-10-18T14:14:59.336504393Z
+PASS staff session still valid after the database restart — HTTP 200
+PASS portal logs contain none of the generated secrets — 27 log lines
+DEPLOY REHEARSAL: ALL PASS
+exit=0

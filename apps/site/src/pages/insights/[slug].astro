@@ -1,0 +1,206 @@
+---
+// insights/[slug].astro — Article detail. VISUAL CONTRACT: Prototype insight.html ported 1:1.
+// Restores author avatar, tags, sticky TOC sidebar with desk CTA, scannable H2 body,
+// practice CTA box, Previous / Next article navigation chain, and related articles.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+export async function getStaticPaths() {
+  const rows = await db`SELECT entity_id FROM content_blocks WHERE entity = 'insight' AND lang = 'en'`;
+  return rows.map(r => ({ params: { slug: r.entity_id } }));
+}
+
+const { slug } = Astro.params;
+const allRows = await db`SELECT entity_id, payload FROM content_blocks WHERE entity = 'insight' AND lang = 'en' ORDER BY payload->>'at' DESC`;
+const allArts = allRows.map((r: any) => ({
+  slug: r.entity_id,
+  ...(typeof r.payload === 'string' ? JSON.parse(r.payload) : r.payload)
+}));
+
+const currentIndex = allArts.findIndex(x => x.slug === slug);
+const a = allArts[currentIndex];
+if (!a) return Astro.redirect('/insights');
+
+const prev = allArts[(currentIndex - 1 + allArts.length) % allArts.length];
+const next = allArts[(currentIndex + 1) % allArts.length];
+
+const sameCat = allArts.filter(x => x.cat === a.cat && x.slug !== a.slug);
+let rel = (a.rel || []).map((r: string) => allArts.find(x => x.slug === r)).filter(Boolean);
+while (rel.length < 3 && sameCat.length > 0) {
+  rel.push(sameCat.shift());
+}
+rel = rel.slice(0, 3);
+
+const slugify = (s: string) => 's' + s.toLowerCase().replace(/[^a-z0-9]+/g, '-').slice(0, 40).replace(/^-|-$/g, '');
+
+const normCtaUrl = (raw?: string) => {
+  if (!raw) return '/contact/';
+  let u = raw;
+  if (u.startsWith('contact.html')) return '/contact/' + u.slice('contact.html'.length);
+  if (u.startsWith('category.html#')) return '/products#' + u.slice('category.html#'.length);
+  if (u.startsWith('category.html')) return '/products';
+  if (u.startsWith('software-erp.html')) return '/software/products/distribution-erp/';
+  if (u.startsWith('software-service.html#aiml')) return '/software/services/aiml/';
+  if (u.startsWith('software-solution.html#univat')) return '/software/solutions/univat/';
+  if (u.startsWith('software-module.html#manufacturing')) return '/software/modules/manufacturing/';
+  if (u.startsWith('it-solution.html#cloud-security')) return '/solutions/cloud-security/';
+  if (u.startsWith('it-solution.html#infra')) return '/solutions/infra/';
+  if (u.startsWith('about.html')) return '/about/';
+  if (u.startsWith('product.html')) return '/products/';
+  return u;
+};
+
+const fmtDate = (iso: string) => {
+  if (!iso) return '';
+  const d = new Date(iso + 'T00:00:00');
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+};
+
+const articleUrl = `https://simalme.com/insights/${slug}/`;
+const articleImg = a.img ? (a.img.startsWith('http') ? a.img : `https://simalme.com${a.img}`) : 'https://simalme.com/assets/img/brand/simal-logo-1200w.png';
+
+const articleSchema = {
+  '@type': 'Article',
+  '@id': `${articleUrl}#article`,
+  'headline': a.t,
+  'description': a.x,
+  'image': articleImg,
+  'datePublished': a.at ? `${a.at}T09:00:00+04:00` : '2026-10-12T09:00:00+04:00',
+  'dateModified': a.at ? `${a.at}T09:00:00+04:00` : '2026-10-12T09:00:00+04:00',
+  'author': {
+    '@type': 'Person',
+    'name': a.auth || 'Simal Editorial Team'
+  },
+  'publisher': {
+    '@id': 'https://simalme.com/#organization'
+  },
+  'mainEntityOfPage': {
+    '@type': 'WebPage',
+    '@id': articleUrl
+  }
+};
+
+const breadcrumbSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': `${articleUrl}#breadcrumb`,
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://simalme.com/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Insights',
+      'item': 'https://simalme.com/insights/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 3,
+      'name': a.t,
+      'item': articleUrl
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title={`${a.t} — Simal Technologies`} 
+  description={a.x}
+  ogType="article"
+  ogImage={articleImg}
+  schemas={[articleSchema, breadcrumbSchema]}
+>
+  <!-- ===== Article Hero ===== -->
+  <section class="hero" style="padding:0"><div class="wrap" style="padding:44px 28px 38px;grid-template-columns:1fr">
+    <div style="max-width:860px">
+      <div class="crumbs" style="font-size:13px;color:#9FB1C6;padding-bottom:12px">
+        <a href="/" style="color:#CFE0F3">Home</a> › <a href="/insights/" style="color:#CFE0F3">Insights &amp; Newsroom</a>{a.cat && <> › <a href={`/insights/#cat-${a.cat}`} style="color:#CFE0F3">{a.cat}</a></>} › <b style="color:#fff">{a.t.slice(0, 40)}…</b>
+      </div>
+      {a.cat && <span class="chip" style="font-size:10.5px;font-weight:800;letter-spacing:.1em;background:rgba(255,255,255,.15);color:#fff">{a.cat}</span>}
+      <h1 style="font-size:clamp(26px,3.1vw,36px);margin-top:12px;line-height:1.25;color:#fff">{a.t}</h1>
+      <p class="lead" style="color:#DAE5F0;margin-top:12px;max-width:760px;line-height:1.6">{a.x}</p>
+      <div style="display:flex;gap:12px;align-items:center;margin-top:18px;flex-wrap:wrap">
+        <div class="avatar" style="width:34px;height:34px;font-size:13px;background:var(--blue-050);color:var(--blue);border-radius:50%;display:grid;place-items:center;font-weight:700">
+          {String(a.author || 'S')[0]}
+        </div>
+        <b style="font-size:13.5px;color:#fff">{a.author}</b>
+        <span style="font-size:12.5px;color:#9FB1C6">
+          {fmtDate(a.at)} · {a.mins} min read {a.tags && a.tags.length > 0 ? ` · ${a.tags.join(' · ')}` : ''}
+        </span>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- ===== Body + Sticky TOC ===== -->
+  <section class="sec" style="padding-top:26px"><div class="wrap">
+    <div style="display:grid;grid-template-columns:240px 1fr;gap:40px;align-items:start">
+      <aside class="art-toc" style="position:sticky;top:96px">
+        <b style="font-size:11.5px;letter-spacing:.1em;color:var(--slate)">ON THIS PAGE</b>
+        <div style="display:grid;gap:8px;margin-top:10px;border-left:2px solid var(--line);padding-left:12px">
+          {(a.body || []).map((sec: any) => (
+            <a href={`#${slugify(sec[0] || 'Section')}`} style="font-size:12.5px;color:var(--slate);text-decoration:none;line-height:1.45">{sec[0] || 'Section'}</a>
+          ))}
+        </div>
+        <div style="margin-top:16px;border-top:1px solid var(--line);padding-top:14px">
+          <a class="btn btn-p btn-sm" style="display:block;text-align:center" href={normCtaUrl(a.cta ? a.cta[1] : undefined)}>{a.cta ? a.cta[0] : 'Talk to the desk'} →</a>
+        </div>
+      </aside>
+
+      <article style="max-width:760px" id="art-body">
+        {(a.body || []).map((sec: any) => (
+          <div>
+            <h2 id={slugify(sec[0] || 'Section')} style="font-size:22px;margin:30px 0 12px;scroll-margin-top:92px">{sec[0] || 'Section'}</h2>
+            {(Array.isArray(sec[1]) ? sec[1] : [sec[1] || '']).map((p: string) => <p style="font-size:15px;line-height:1.8;color:var(--slate);margin:0 0 14px">{p}</p>)}
+          </div>
+        ))}
+
+        <!-- Inline CTA after body -->
+        <div style="background:#F4F7FB;border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:28px;display:flex;gap:16px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+          <div>
+            <b style="font-size:15px">Put this into practice.</b>
+            <p style="font-size:13px;color:var(--slate);margin:4px 0 0">The desk behind this article ships the stock, scopes the software and runs the SLAs.</p>
+          </div>
+          <a class="btn btn-p" href={normCtaUrl(a.cta ? a.cta[1] : undefined)}>{a.cta ? a.cta[0] : 'Contact the desk'} →</a>
+        </div>
+      </article>
+    </div>
+
+    <!-- ===== Prev / Next Article Navigation Chain ===== -->
+    <div style="display:flex;gap:12px;margin-top:40px;flex-wrap:wrap;justify-content:space-between;align-items:center;border-top:1px solid var(--line);padding-top:24px">
+      <a class="btn btn-o btn-sm" style="max-width:32%;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" href={`/insights/${prev.slug}/`}>
+        ← {prev.t.slice(0, 36)}…
+      </a>
+      <a class="btn btn-o btn-sm" href="/insights/">All articles</a>
+      <a class="btn btn-o btn-sm" style="max-width:32%;text-align:right;overflow:hidden;text-overflow:ellipsis;white-space:nowrap" href={`/insights/${next.slug}/`}>
+        {next.t.slice(0, 36)}… →
+      </a>
+    </div>
+    <p style="font-size:12px;color:var(--slate);margin-top:8px;text-align:center">Article {currentIndex + 1} of {allArts.length} in the library.</p>
+
+    <!-- ===== Related Articles ===== -->
+    {rel.length > 0 && (
+      <div style="margin-top:48px;border-top:1px solid var(--line);padding-top:32px">
+        <div class="sec-head"><div><span class="eyebrow">Keep reading</span><h2 style="font-size:22px">Related insights</h2></div><a class="btn btn-o btn-sm" href="/insights/">Browse all {allArts.length} →</a></div>
+        <div class="grid g3">
+          {rel.map((r: any) => (
+            <a href={`/insights/${r.slug}/`} class="card card-p" style="display:flex;flex-direction:column;gap:10px;text-decoration:none;color:inherit;border-top:4px solid var(--blue)">
+              <span class="chip" style="font-size:10.5px;font-weight:800;letter-spacing:.08em">{r.cat}</span>
+              <h4 style="font-size:15px;line-height:1.4;margin:4px 0 0">{r.t}</h4>
+              <p style="font-size:12.5px;color:var(--slate);line-height:1.55;margin:0">{(r.x || '').slice(0, 110)}…</p>
+              <span style="font-size:11.5px;color:var(--slate);margin-top:auto;padding-top:8px">{fmtDate(r.at)} · {r.mins} min read</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+  </div></section>
+</BaseLayout>
+
+<style>
+  .art-toc { display: none; }
+  @media (min-width: 1060px) { .art-toc { display: block; } }
+  @media (max-width: 1059px) { .wrap > div[style*="240px"] { grid-template-columns: 1fr !important; } }
+</style>

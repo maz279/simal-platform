@@ -1,0 +1,164 @@
+[
+ {
+  "area": "KYC",
+  "name": "create draft",
+  "pass": true,
+  "detail": "201 draftId=dft_63cae2e45eb0590bb1ca tokenLen=48"
+ },
+ {
+  "area": "KYC",
+  "name": "autosave draft (PUT)",
+  "pass": true,
+  "detail": "200"
+ },
+ {
+  "area": "KYC",
+  "name": "resume draft (GET with token)",
+  "pass": true,
+  "detail": "200 step=6"
+ },
+ {
+  "area": "KYC",
+  "name": "draft token is enforced",
+  "pass": true,
+  "detail": "404 Draft not found or token invalid"
+ },
+ {
+  "area": "KYC",
+  "name": "upload valid PDFs",
+  "pass": true,
+  "detail": "200 staged=2"
+ },
+ {
+  "area": "KYC",
+  "name": "rejects content/extension mismatch (magic bytes)",
+  "pass": true,
+  "detail": "400 Document \"evil.pdf\" rejected — content type unrecognised"
+ },
+ {
+  "area": "KYC",
+  "name": "EICAR virus test file is rejected (FRS IG-07/DV-03)",
+  "pass": true,
+  "detail": "400 Document \"eicar.pdf\" rejected — content type unrecognised — a 400 here is only the magic-byte check, not a virus scanner"
+ },
+ {
+  "area": "KYC",
+  "name": "submit application",
+  "pass": false,
+  "detail": "422 ref={\"error\":\"Application failed validation\",\"details\":[{\"field\":\"tax.einv_status\",\""
+ },
+ {
+  "area": "EINV",
+  "name": "partner login",
+  "pass": true,
+  "detail": "200"
+ },
+ {
+  "area": "EINV",
+  "name": "partner sees own invoices",
+  "pass": true,
+  "detail": "200 count=0"
+ },
+ {
+  "area": "EINV",
+  "name": "create invoice",
+  "pass": true,
+  "detail": "201 ref=SIM-INV-2026-5003 status=draft "
+ },
+ {
+  "area": "EINV",
+  "name": "VAT/total computed server-side",
+  "pass": true,
+  "detail": "total={\"net\":\"4500.00\",\"vat\":\"225.00\",\"total\":\"4725.00\"} lines=1"
+ },
+ {
+  "area": "EINV",
+  "name": "3-decimal price / tampered totals rejected (422)",
+  "pass": true,
+  "detail": "422 Amount must be a non-negative number with at most 2 decimals: 1.000"
+ },
+ {
+  "area": "EINV",
+  "name": "submit invoice",
+  "pass": true,
+  "detail": "200 -> submitted "
+ },
+ {
+  "area": "EINV",
+  "name": "UBL 2.1 generated",
+  "pass": true,
+  "detail": "200 {\"provisional\":true,\"ubl\":{\"ublVersion\":\"2.1\",\"customisationID\":\"urn:simal:invoice:phase1:"
+ },
+ {
+  "area": "EINV",
+  "name": "staff queue lists it",
+  "pass": true,
+  "detail": "200 rows=8"
+ },
+ {
+  "area": "EINV",
+  "name": "staff validate action",
+  "pass": false,
+  "detail": "422 -> undefined Validation failed: buyer_kyc_approved"
+ },
+ {
+  "area": "EINV",
+  "name": "staff deliver (Peppol)",
+  "pass": false,
+  "detail": "409 -> undefined Cannot deliver an invoice in status \"submitted\" (allowed from: validat"
+ },
+ {
+  "area": "EINV",
+  "name": "reopen a DELIVERED invoice (immutability)",
+  "pass": true,
+  "detail": "409 Cannot reopen an invoice in status \"submitted\" (allowed from: rejected, delivered) — expect a clean 409, a 500 means the DB trigger caught it"
+ },
+ {
+  "area": "EINV",
+  "name": "cross-partner invoice access blocked",
+  "pass": true,
+  "detail": "401 Authentication required"
+ },
+ {
+  "area": "AUTH",
+  "name": "reset request returns a constant response (no enumeration)",
+  "pass": true,
+  "detail": "200 {\"ok\":true,\"message\":\"If the address matches an account, a reset link "
+ },
+ {
+  "area": "AUTH",
+  "name": "same response for unknown address",
+  "pass": true,
+  "detail": "known==unknown body: true"
+ },
+ {
+  "area": "AUTH",
+  "name": "raw reset token readable via /api/cms/outbox (privilege escalation path)",
+  "pass": true,
+  "detail": "token prefix ef2ce1… (len 64) readable by any user with the \"notes\" permission"
+ },
+ {
+  "area": "AUTH",
+  "name": "token from the outbox completes the reset (account takeover)",
+  "pass": true,
+  "detail": "200 {\"ok\":true}"
+ },
+ {
+  "area": "AUTH",
+  "name": "login with the password set via the stolen token",
+  "pass": true,
+  "detail": "200 role=reviewer"
+ },
+ {
+  "area": "AUTH",
+  "name": "reset token is single-use",
+  "pass": true,
+  "detail": "409 Token already used"
+ },
+ {
+  "area": "AUTH",
+  "name": "shipped dev super-admin password still works",
+  "pass": true,
+  "detail": "admin@simalme.com/admin123 -> 200"
+ }
+]

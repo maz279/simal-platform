@@ -1,0 +1,99 @@
+---
+// rfq/index.astro — the RFQ page. VISUAL CONTRACT: Prototype rfq.html ported —
+// crumbs, basket card (table rows with qty steppers + remove), contact & delivery
+// card (field grid, PDPL consent, WhatsApp handoff), and the two-step flow with the
+// SIMAL-RFQ reference success panel. Basket state lives in the server cookie
+// (ADR-2: zero client storage) — add/remove/qty all go through /api/rfq-basket.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const rows = await db`SELECT slug, name, brand FROM products ORDER BY name`;
+const catalog = rows;
+---
+
+<BaseLayout title="Request a Quote — Simal" description="Build a request for quotation from any of our stocked products — anonymous, no account needed. Reference issued instantly, response within one business day.">
+  <div class="wrap"><div class="crumbs"><a href="/">Home</a> › <b>RFQ — Request a Quote</b></div></div>
+
+  <section style="padding:8px 0 64px"><div class="wrap">
+    <div class="split" style="grid-template-columns:1.25fr .75fr;align-items:start">
+      <div>
+        <span class="eyebrow">No checkout — the channel works on quotes</span>
+        <h1 style="font-size:30px;font-weight:800;margin:6px 0 8px">Your RFQ basket</h1>
+        <p style="color:var(--slate);margin-bottom:20px">Review quantities, add your contact details, submit — you receive a <b>SIMAL-RFQ reference</b> instantly and a quoted price within one business day. No account needed.</p>
+
+        <div id="rfq-step-1">
+          <div class="card card-p" style="padding:20px">
+            <form id="addForm" style="display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap">
+              <input class="in" list="products" id="slugInput" placeholder="Type a product name…" style="flex:1;min-width:200px" autocomplete="off" aria-label="Product SKU or name">
+              <datalist id="products">
+                {catalog.map(p => <option value={p.slug}>{p.name} — {p.brand}</option>)}
+              </datalist>
+              <input class="in" type="number" id="qtyInput" min="1" max="99999" value="1" style="width:90px" aria-label="Quantity">
+              <button class="btn btn-p" type="submit">+ Add SKU</button>
+            </form>
+            {/* rm(9.1-3): server-rendered empty state = what rfq-island.js renders for an empty basket,
+                 so the first render does not push the rows below down (CLS 0.014 on LHCI mobile) */}
+            <div id="basket-tbl"><div class="empty" style="padding:30px 16px">Basket is empty — add SKUs above, or add them from any product page.</div></div>
+            <div style="display:flex;justify-content:space-between;margin-top:16px;align-items:center;flex-wrap:wrap;gap:10px">
+              <a class="btn btn-o btn-sm" href="/products/">+ Add more SKUs</a>
+              <span class="note">Prices are quoted per RFQ — volume tiers apply</span>
+            </div>
+          </div>
+
+          <h2 style="font-size:19px;margin:30px 0 12px">Contact &amp; delivery</h2>
+          <div class="card card-p" style="padding:22px">
+            <div class="grid g2" style="gap:14px">
+              <div class="field"><label for="f-co">Company name *</label><input class="in" id="f-co" autocomplete="organization"></div>
+              <div class="field"><label for="f-name">Contact person *</label><input class="in" id="f-name" autocomplete="name"></div>
+              <div class="field"><label for="f-email">Work email *</label><input class="in" id="f-email" type="email" placeholder="you@company.ae" autocomplete="email"></div>
+              <div class="field"><label for="f-phone">Phone / WhatsApp *</label><input class="in" id="f-phone" placeholder="+971 …" autocomplete="tel"></div>
+              <!-- rm(10.3-1 pen KYC-43): honeypot for form bots; hidden from users and AT -->
+              <div style="position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden" aria-hidden="true">
+                <label for="f-website_url">Website</label>
+                <input class="in" id="f-website_url" name="website_url" tabindex="-1" autocomplete="off">
+              </div>
+            </div>
+            <label class="consent" for="f-consent" style="margin-top:14px"><input type="checkbox" id="f-consent" aria-label="I agree that Simal may process this enquiry under the UAE PDPL privacy notice"><span>I agree that Simal may process this enquiry under the UAE PDPL privacy notice. *</span></label>
+            <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
+              <button class="btn btn-p btn-lg" id="f-submit">Submit RFQ →</button>
+              <a class="btn btn-wa btn-lg" id="f-wa" href="https://wa.me/971508487861" target="_blank" rel="noopener noreferrer">Hand off to WhatsApp</a>
+            </div>
+            <p class="hint" style="margin-top:12px" id="f-err" hidden></p>
+          </div>
+        </div>
+
+        <div id="rfq-step-2" class="card card-p" style="padding:34px;text-align:center" hidden>
+          <div style="font-size:44px">✅</div>
+          <h2 style="font-size:22px;margin:10px 0 6px">RFQ received — reference issued</h2>
+          <p style="color:var(--slate);font-size:14px">Save this reference. A confirmation is on its way to <b id="done-mail"></b> — check status anytime with the reference and your email at the <a href="https://kyc.simalme.com/status.html" target="_blank" rel="noopener">status page</a>.</p>
+          <div style="font-family:Consolas,monospace;font-size:26px;font-weight:800;color:var(--blue);background:var(--blue-050);border:1px dashed var(--blue-100);border-radius:12px;padding:14px 22px;display:inline-block;margin:14px 0" id="done-ref"></div>
+          <p style="font-size:13px;color:var(--slate)">Pricing follows within one business day · quote validity 7 days (FRS)</p>
+          <div style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">
+            <a class="btn btn-o btn-sm" href="/products/">Keep browsing →</a>
+            <button class="btn btn-p btn-sm" id="again">Build another RFQ →</button>
+          </div>
+        </div>
+      </div>
+
+      <aside>
+        <div class="card card-p" style="border-top:4px solid var(--g3)">
+          <b style="font-size:14px">How the channel works</b>
+          <div class="timeline" style="margin-top:12px">
+            <div class="tl"><b>1 · RFQ</b><span>Build the basket, submit — reference issued instantly</span></div>
+            <div class="tl"><b>2 · Quote</b><span>Priced with volume tiers within one business day</span></div>
+            <div class="tl"><b>3 · PO</b><span>Accept the quote — PO and delivery scheduled</span></div>
+            <div class="tl"><b>4 · JAFZA</b><span>Fulfilled from bonded stock, UAE 1–3 days</span></div>
+          </div>
+        </div>
+        <div class="card card-p" style="border-top:4px solid var(--blue);margin-top:14px">
+          <b style="font-size:14px">Prefer to talk?</b>
+          <p style="font-size:13px;color:var(--slate);margin:8px 0 10px;line-height:1.6">The desk answers Sun–Thu 9:00–18:00 GST — or hand the basket to WhatsApp and continue there.</p>
+          <a class="btn btn-o btn-sm btn-block" href="/contact/">All contact routes →</a>
+        </div>
+      </aside>
+    </div>
+  </div></section>
+
+  <script type="application/json" id="rfq-island-data" set:html={JSON.stringify(catalog.map(p => ({ slug: p.slug, label: (p.name + ' — ' + p.brand).toLowerCase() })))}></script>
+<script src="/assets/js/rfq-island.js" defer></script>
+</BaseLayout>

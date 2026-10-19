@@ -1,0 +1,26 @@
+=== 1. CSRF synchronizer-token bypass (F-2026-N02) ===
+A. evil Origin, NO token      -> 403 {"error":"Cross-origin request blocked: untrusted origin","requestId":"474be159-e261-4402-
+B. evil Origin, BOGUS token   -> 403 (blocked — token IS verified)
+C. no Origin (same-site)      -> 200 (control: normal logout works)
+
+=== 2. Partner role RBAC (original SEC-3/F-3 critical) ===
+2.0 self-register partner: 201 {"user":{"id":"usr_ef75b55e07c25d95a63e","email":"audit2-partner-mvdo1mcr@simal.test","name":"Audit2
+2.1 partner session: OK
+2.2 partner on 12 privileged routes: leaks = 0 (ALL DENIED — SEC-3 verified live)
+2.3 partner /api/einvoice/mine -> 200 (expected 200: partner session valid)
+2.4 partner foreign document  -> 403 (expect 401/403: partner denied on admin route)
+2.5 cleanup probe users: 4 active probe user(s) | audit2-partner-mvdo1mcr@simal.test -> 200 | audit2-partner-mvdnzc84@simal.test -> 200 | audit2-partner-mvdnxxel@simal.test -> 200 | audit2-partner@simal.test -> 200
+
+=== 3. Rollback safety (DAT-4/5) ===
+3.0 current announcement text: "⚡ Gen5 is here — Crucial P510 now in Dubai stock."
+3.1 revisions held: 10 | latest: "⚡ Gen5 is here — Crucial P510 now in Dubai stock."
+3.2 rollback #1: 200 {"ok":true,"rolled_back":true,"to":"1792318034086"}
+3.3 text after rollback #1: "RM52 Deploy mvbv4fut"
+3.4 text after rollback #2: "⚡ Gen5 is here — Crucial P510 now in Dubai stock." (rollback-of-rollback exercised = yes)
+3.5 shared content_blocks untouched by announcement rollback: {"id":108,"entity":"site","entity_id":"featured-products","lang":"en","payload":
+
+=== 4. Reset-token redaction at write time (SEC-4) ===
+4.0 reset request: 200 {"ok":true,"message":"If the address matches an account, a reset link has been sent."}
+4.1 newest reset email body redacted: YES | rawTokenPresent: false
+    body snippet: 
+EXIT=0

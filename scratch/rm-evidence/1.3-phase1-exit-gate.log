@@ -1,0 +1,6 @@
+=== PHASE 1 EXIT GATE — Fri Oct 16 21:43:15 MPST 2026 ===
+1. gates all green: 12/12 (see 1.2-3-local-ci-ALLGREEN.log, CI_EXIT=0)
+2. control-loop probe: 1/1 (1.1-4-final-clean-control-loop.log)
+3. git status clean: 3 pending files (post-commit verify below)
+4. remote protected: update hook present + drills in 1.2-2-protection-drill.log
+5. board regenerated: 94 rows (77+17) — 56 closed / 23 partial / 15 open; generated, not hand-edited

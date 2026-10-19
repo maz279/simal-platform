@@ -1,0 +1,11 @@
+PASS admin login step 1 — HTTP 200
+PASS session is super_admin — super_admin
+PASS publish accepted — HTTP 200 outbox=pub_1792334382477
+PASS SSG worker processed the job — processed in 20s
+PASS deploy target rewritten — 2026-10-18T14:39:56.887Z
+PASS served home has 5 server-rendered hero slides
+PASS served home has server-rendered motifs
+PASS EN home does not load the Tajawal stylesheet
+PASS AR home loads the Tajawal stylesheet
+PASS telemetry lastBuild is this publish, processed — {"outboxId":"pub_1792334382477","status":"processed","durationMs":8545,"error":null,"ts":1792334382477}
+PUBLISH LOOP: ALL PASS

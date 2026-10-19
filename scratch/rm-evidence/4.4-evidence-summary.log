@@ -1,0 +1,7 @@
+=== rm(4.4) MEDIA LIBRARY HARDENED — EVIDENCE Sat Oct 17 11:13:53 MPST 2026 ===
+STORAGE: getMediaDir -> data/uploads/media (OUTSIDE webroot); 85 existing images migrated; new uploads write canonical store + site-asset copy (SSG build) only
+SERVING: GET /api/cms/media/file/:filename (cmsAuth, private cache) — grid previews + upload url rewired; P2 new-upload public webroot path 404; P3 authorized 200 / anonymous 401; browser: 85/85 grid imgs load via the authorized route
+SCAN: scanBuffer wired (same gate as careers CVs) — P6 EICAR-named upload 400 'Security check failed'
+POLICY: svg banned (P4 400); 5MB cap enforced server-side (P5 413) + UI label + accept attr; dead target-folder selector removed
+PROBES: png 201->cleanup 200; svg 400; >5MB 413; EICAR 400
+SUITES: 83/83; CI lint+chrome-blocks+link-crawl 3/3

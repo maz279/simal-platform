@@ -1,0 +1,5 @@
+=== rm(2.4-3) DOCUMENT RE-ENCRYPTION GUARD — EVIDENCE Fri Oct 16 23:03:17 MPST 2026 ===
+RESEARCH: PG documents=704 rows (orphaned fixture metadata, submission_id NULL), data/uploads=0 real files, db.json=0 — no live data at risk TODAY; guard is forward-looking for the key rotation
+DRILL: forged legacy-key file -> dry-run [current=1 legacy=1] -> APPLY [MIGRATED] -> re-audit [current=2 legacy=0 corrupt=0]; migrated file decrypts under CURRENT key with payload intact
+SELF-HEAL: fresh legacy file read via documents.readFile -> '[documents] self-healed' + payload returned; second read clean
+SUITES: 109/109; CI spot lint+secrets+security 3/3; drill files cleaned (uploads empty)

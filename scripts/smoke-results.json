@@ -1,0 +1,107 @@
+{
+  "ts": "2026-10-13T18:57:54.303Z",
+  "pass": 20,
+  "fail": 0,
+  "results": [
+    {
+      "name": "home / → 200",
+      "ok": true,
+      "detail": "86013 bytes"
+    },
+    {
+      "name": "home contains hero + brand strip markers",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "catalog /products/ → 200",
+      "ok": true,
+      "detail": "162600 bytes"
+    },
+    {
+      "name": "PDP /products/crucial-t705-ssd-2/ → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "solution /solutions/amc/ → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "solutions hub → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "software hub → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "software product page → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "about page → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "RFQ page → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "insight /insights/ai-in-erp-2026/ → 200",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "unknown page → 404",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dist carries hashed assets",
+      "ok": true,
+      "detail": "6 asset(s)"
+    },
+    {
+      "name": "asset served with immutable cache header",
+      "ok": true,
+      "detail": "public, max-age=31536000, immutable"
+    },
+    {
+      "name": "portal /api/health → 200 ok",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "portal /api/settings serves DB-backed TIN",
+      "ok": true,
+      "detail": "{\"simalTin\":100548172900015,\"simalPeppol\":\"0235:1001234567\"}"
+    },
+    {
+      "name": "portal login screen renders",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "invalid credentials rejected 401",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "security headers on portal response",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "brute-force rate limiting kicks in (429)",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

@@ -1,0 +1,125 @@
+---
+// apps/site/src/pages/ar/index.astro — Arabic Home Twin Page (SEO-1)
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+import { siteFacts } from '../../lib/facts';
+import { arSiteBlock, factText, field } from '../../lib/blocks';
+
+const picks = [
+  'crucial-t705-ssd-2',
+  'koorui-27-inch-gaming-monitor',
+  'samsung-t7-shield-portable-ssd-1tb',
+  'ugreen-5-in-1-usb-c-hub',
+  'kingston-xs1000-1tb-portable-ssd-red'
+];
+
+// rm(6.1-2/9.1-1, PUB-8): brand count and years from the single source (lib/facts.ts);
+// count(*) FROM brands included the 'other' catch-all and printed 22.
+const [facts, prodCountRow, trendingRows] = await Promise.all([
+  siteFacts(),
+  db`SELECT count(*)::int AS count FROM products`,
+  db`SELECT * FROM products WHERE slug = ANY(${picks})`
+]);
+const { brandCount, years, since } = facts;
+const prodCount = prodCountRow[0]?.count || 78;
+const trending = picks.map(slug => trendingRows.find((r: any) => r.slug === slug)).filter(Boolean);
+
+/* deploy-audit: the CMS block site/home (ar) was editable but never rendered — the hero now
+ * reads badge / title / lead / trustPoints from it; the built-in copy is the fallback. */
+const home = await arSiteBlock('home');
+const F = { years, brandCount, skus: prodCount };
+const heroBadge = factText(field(home, 'badge', 'موزّع معتمد · الإمارات · الخليج · أفريقيا · آسيا الوسطى'), F);
+const heroTitle = factText(field(home, 'title', ''), F);
+const titleParts = heroTitle ? heroTitle.split(/\s+—\s+/) : null;
+const heroLead = typeof home.lead === 'string' && home.lead.trim() ? factText(home.lead, F) : null;
+const trust: string[] = Array.isArray(home.trustPoints) && home.trustPoints.length
+  ? home.trustPoints.slice(0, 3).map((t: unknown) => factText(t, F))
+  : ['منتجات أصلية بضمان محلي', 'لوجستيات من جبل علي', 'جاهزية الفوترة الإلكترونية Peppol'];
+const TRUST_ICONS = ['✓', '🚚', '🛡'];
+
+function getImg(imgs: any) {
+  let v = '';
+  if (Array.isArray(imgs) && imgs[0]) v = imgs[0];
+  else if (typeof imgs === 'string') {
+    try {
+      const parsed = JSON.parse(imgs);
+      if (Array.isArray(parsed) && parsed[0]) v = parsed[0];
+    } catch {
+      v = imgs;
+    }
+  }
+  return v && !v.startsWith('/') ? '/' + v : v;
+}
+---
+
+<BaseLayout
+  lang="ar"
+  dir="rtl"
+  title="سيمال للتقنيات — شريك توزيع التقنية وحلول البرمجيات في الشرق الأوسط"
+  description={`أكثر من ${years} عاماً في توزيع معدات تقنية المعلومات الأصلية وحلول البرمجيات المؤسسية عبر الإمارات والخليج وأفريقيا وآسيا الوسطى.`}
+>
+  <section class="hero"><div class="wrap" style="padding:66px 28px 58px">
+    <div>
+      <span class="badge" style="background:rgba(255,255,255,.14);color:#fff">{heroBadge}</span>
+      <h1 style="font-size:42px;font-weight:800;margin:12px 0 10px">{titleParts && titleParts.length > 1
+        ? <Fragment>{titleParts[0]} —<br /><em>{titleParts.slice(1).join(' — ')}</em></Fragment>
+        : heroTitle ? heroTitle
+        : <Fragment>شريك توزيع تقنية<br />في الشرق الأوسط —<br /><em>ونبني البرمجيات أيضاً.</em></Fragment>}</h1>
+      <p class="lead" style="color:#D9E7F6">{heroLead ?? <Fragment>أكثر من {years} عاماً في توزيع منتجات Crucial وHikvision وTeamGroup وUGREEN و{brandCount} علامة عالمية أصيلة — مع خدمات تقنية وبرمجيات مؤسسية بالتعاون مع شريكنا Unisoft Systems.</Fragment>}</p>
+      <div class="cta">
+        <a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="/ar/products/">تصفح الكتالوج</a>
+        <a class="btn btn-lg btn-a" href="/ar/rfq/">اطلب عرض سعر</a>
+      </div>
+      <div class="trust" style="display:flex;gap:20px;margin-top:28px;font-size:13px;color:#CFE0F3">
+        {trust.map((t, i) => <div>{TRUST_ICONS[i] || '•'} {t}</div>)}
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3 style="font-size:16px;margin-bottom:16px;display:flex;align-items:center;gap:9px">📦 سلة طلبات الأسعار</h3>
+      <div id="mini-ar">
+        <div class="row"><span style="color:#9FB1C6">السلة فارغة — أضف منتجات من الكتالوج</span><b></b></div>
+      </div>
+      <a class="btn btn-block btn-lg" style="background:var(--yellow);color:var(--ink);margin-top:16px" href="/ar/rfq/">إرسال الطلب — الرد خلال يوم عمل</a>
+    </div>
+  </div></section>
+
+  <div class="cred"><div class="wrap">
+    <div class="c"><span class="n">{years}<b>+</b></span><span class="l">عاماً · منذ {since}</span></div>
+    <div class="c"><span class="n">{brandCount}</span><span class="l">علامة عالمية</span></div>
+    <div class="c"><span class="n">{prodCount}</span><span class="l">منتجاً متوفراً</span></div>
+    <div class="c"><span class="n">6</span><span class="l">أسواق نخدمها</span></div>
+  </div></div>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">الأكثر طلباً</span><h2>رائج في القناة</h2></div><a class="btn btn-o" href="/ar/products/">كل المنتجات ←</a></div>
+    <div class="grid g5" id="trending-ar">
+      {trending.map((p: any) => {
+        const img = getImg(p.imgs);
+        const sku = p.sku || ''; /* deploy-audit: no SKU is invented — 31 products have none, and the slug prefix used to be shown as one */
+        return (
+          <div class="prod">
+            <a class="go" href={`/products/${p.slug}/`} aria-label={p.name}></a>
+            <div class={`ph${img ? ' has-img' : ''}`}>
+              {img ? <img src={img} alt={p.name} loading="lazy" /> : <span class="sk">{sku || String(p.brand || '').toUpperCase()}</span>}
+              {p.is_new ? <span class="tag badge b-red">جديد</span> : null}
+            </div>
+            <div class="pb">
+              <span class="cat">{p.brand} · {p.cat_label || p.cat}</span>
+              <h4><a href={`/products/${p.slug}/`} style="color:inherit;text-decoration:none">{p.name}</a></h4>
+              <span class="meta">{p.short || ''}</span>
+              <span class="vd">عرض التفاصيل ←</span>
+              <div class="pr">
+                <span class="price">عرض سعر · جملة</span>
+                <button class="btn btn-sm btn-p add-rfq" data-slug={p.slug}>أضف للطلب</button>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div></section>
+
+  
+</BaseLayout>
+
+<script src="/assets/js/add-rfq.js" defer></script>

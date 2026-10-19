@@ -1,0 +1,224 @@
+run-gates: clean-db, authz, pg-reporting, sequences, sitemap, ga4, crawl, placeholders, csp-inline, a11y, perf  (GATE_ADMIN_URL host: 127.0.0.1:5433)
+
+
+>>>>>>>> clean-db — DAT-1 clean-DB SSG build
+[clean-db-build] scratch db ready — building SSG site into dist-gate/ …
+(node:2812) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2m21:37:41[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+10ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+9ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+12ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+9ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+9ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+10ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+12ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+8ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/telephony/index.html[22m [2m(+8ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+7ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+9ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/support/index.html[22m [2m(+8ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+7ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+8ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+8ms)[22m 
+[2m21:37:41[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+6ms)[22m 
+[2m21:37:41[22m   [34m└─[39m [2m/solutions/av/index.html[22m [2m(+6ms)[22m 
+[2m21:37:41[22m [32m▶[39m src/pages/solutions/index.astro
+[2m21:37:41[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+9ms)[22m 
+[2m21:37:41[22m [32m✓ Completed in 2.71s.
+[39m
+[2m21:37:41[22m [34m[build][39m 243 page(s) built in [1m5.36s[22m
+[2m21:37:41[22m [34m[build][39m [1mComplete![22m
+
+
+=== GATE clean-db-build (DAT-1) ===
+PASS — 0 violations
+
+>>>>>>>> authz — SEC-3/SEC-5 role matrix (deny by default)
+{"ts":"2026-10-17T13:37:42.657Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\simal-gate-6LcGAr"}
+{"ts":"2026-10-17T13:37:42.658Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-17T13:37:42.894Z","level":"info","event":"http","id":"252d4eff-6032-42cb-bd72-bf681a8d4ad0","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+{"ts":"2026-10-17T13:37:42.918Z","level":"info","event":"http","id":"151648aa-2fbe-49b1-9a67-e4faa8b17fb5","method":"POST","path":"/api/auth/mfa","status":200,"ms":11}
+{"ts":"2026-10-17T13:37:42.973Z","level":"info","event":"http","id":"94064ca2-033f-494a-9841-58f3794d8d8c","method":"POST","path":"/api/auth/login","status":200,"ms":51}
+{"ts":"2026-10-17T13:37:43.019Z","level":"info","event":"http","id":"9f70ba4f-ec87-403f-8556-73127298682a","method":"POST","path":"/api/auth/login","status":200,"ms":42}
+{"ts":"2026-10-17T13:37:43.126Z","level":"info","event":"http","id":"b2a320f7-af86-49d4-ae6a-fe6f301b01d0","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+
+=== GATE authz-matrix (SEC-3/SEC-5) ===
+PASS — 0 violations
+
+>>>>>>>> pg-reporting — DAT-3/APP-1 SLA age + reports on PG
+{"ts":"2026-10-17T13:37:44.522Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_pgr_mvcfyk8h"}
+{"ts":"2026-10-17T13:37:44.525Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-17T13:37:45.026Z","level":"info","event":"http","id":"1749766d-5c13-4f51-99b5-1059f03359ed","method":"POST","path":"/api/auth/login","status":200,"ms":74}
+{"ts":"2026-10-17T13:37:45.049Z","level":"info","event":"http","id":"68750176-7e53-4b9a-b495-4202c1797b6a","method":"GET","path":"/api/admin/submissions","status":200,"ms":9}
+{"ts":"2026-10-17T13:37:45.062Z","level":"info","event":"http","id":"b60667b1-470a-40dd-9c8f-7942d5dfe13b","method":"POST","path":"/api/admin/reports/build","status":200,"ms":8}
+{"ts":"2026-10-17T13:37:45.073Z","level":"info","event":"http","id":"e584a85b-e484-4cd0-a648-c78e36959607","method":"GET","path":"/api/admin/export.csv","status":200,"ms":9}
+
+=== GATE pg-reporting (DAT-3) ===
+PASS — 0 violations
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+>>>>>>>> sequences — DAT-6 sequence drift (check-only)
+sequences gate: checked 8 sequences on simal_gate_seq_mvcfylux (fresh scratch: migrate+seed)
+
+=== GATE sequences (DAT-6, check-only) ===
+PASS — 0 violations
+
+>>>>>>>> sitemap — SEO-2 sitemap lastmod from content timestamps (rm 8.3)
+[sitemap-lastmod] scratch db ready — verifying B14 schema…
+  ok B14 updated_at exists on products/brands/legal_policies/product_deep
+  ok seeded products start unstamped (fallback population exists)
+[sitemap-lastmod] booting portal on scratch db…
+{"ts":"2026-10-17T13:37:51.143Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_sitemap_mvcfyn1h"}
+{"ts":"2026-10-17T13:37:51.143Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-17T13:37:51.342Z","level":"info","event":"http","id":"3aa552dc-7eb6-478e-ad15-2e0619317825","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+[sitemap-lastmod] editing one entity of every sitemap type via CMS API…
+{"ts":"2026-10-17T13:37:51.353Z","level":"info","event":"http","id":"43119f28-2829-4f0c-9618-f34e4ec0f09c","method":"GET","path":"/api/cms/products/1672","status":200,"ms":4}
+{"ts":"2026-10-17T13:37:51.367Z","level":"info","event":"http","id":"bc458933-7dd6-4252-9b51-93350408ccc2","method":"PUT","path":"/api/cms/products/1672","status":200,"ms":11}
+  ok updateProduct stamps updated_at
+{"ts":"2026-10-17T13:37:51.374Z","level":"info","event":"http","id":"acd20bcd-a91c-419a-9baf-38b4e0a53c69","method":"PUT","path":"/api/cms/products/aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black/deep","status":200,"ms":5}
+  ok upsertProductDeep stamps updated_at
+{"ts":"2026-10-17T13:37:51.383Z","level":"info","event":"http","id":"20253b3e-50d7-4123-aea0-b05e1d902893","method":"PUT","path":"/api/cms/brands/aiwa","status":200,"ms":7}
+  ok upsertBrand stamps updated_at
+{"ts":"2026-10-17T13:37:51.394Z","level":"info","event":"http","id":"cb3736db-a748-4ef2-b12e-c53572770004","method":"PUT","path":"/api/cms/policies/accessibility-statement","status":200,"ms":7}
+  ok upsertPolicy stamps updated_at
+{"ts":"2026-10-17T13:37:51.403Z","level":"info","event":"http","id":"b973527a-1e92-49a1-8943-d2d95b6a7cbd","method":"GET","path":"/api/cms/blocks/insight/ai-in-erp-2026","status":200,"ms":6}
+{"ts":"2026-10-17T13:37:51.414Z","level":"info","event":"http","id":"50274d7c-597b-4619-89db-057bb833ea36","method":"PUT","path":"/api/cms/blocks/insight/ai-in-erp-2026","status":200,"ms":8}
+  ok upsertBlock keeps stamping updated_at
+{"ts":"2026-10-17T13:37:51.426Z","level":"info","event":"http","id":"f0cdf076-a1e4-47aa-b829-4f161d956abf","method":"POST","path":"/api/cms/revisions/products/1672/rollback","status":200,"ms":10}
+{"ts":"2026-10-17T13:37:51.430Z","level":"info","event":"http","id":"b7effb87-11fe-4d1a-995b-7b65db620c86","method":"GET","path":"/api/cms/products/1672","status":200,"ms":2}
+  ok products rollback restores content and re-stamps updated_at
+[sitemap-lastmod] building SSG against scratch db…
+(node:22208) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[sitemap-lastmod] parsed 232 urls, dates: 2026-10-12, 2026-10-17
+  ok sitemap inventory complete (>= 200 urls)
+  ok every lastmod is a valid YYYY-MM-DD date
+  ok multiple distinct lastmod dates (done-when)
+  ok static route keeps VERIFIED_BASE_DATE
+  ok edited product lastmod = today
+  ok product_deep edit moves product lastmod = today (GREATEST)
+  ok untouched product falls back to VERIFIED_BASE_DATE
+  ok edited brand lastmod = today
+  ok edited legal policy lastmod = today
+  ok edited insight lastmod = today
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+=== GATE sitemap-lastmod (SEO-2 residue, rm 8.3) ===
+PASS — 0 violations
+
+>>>>>>>> ga4 — SEO-5 GA4 behind consent (rm 8.4)
+[ga4-consent] building with GA4 ID…
+(node:26532) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[ga4-consent] building without GA4 ID…
+[ga4-consent] static checks…
+  ok ga4-id meta emitted only when ID set
+  ok loader is external + ordered after consent-defaults
+  ok no inline executable loader script in built HTML
+  ok meta CSP has GA4 hosts
+  ok dev-edge CSP has GA4 hosts
+  ok nginx site-vhost CSP has GA4 hosts
+  ok consent island dispatches event + withdrawal reload
+[ga4-consent] browser phase…
+  ok fresh profile: banner visible, zero GA4 requests, no #ga4-src
+  ok after Reject: still zero GA4 requests
+  ok after Save with analytics on: gtag/js requested, config queued
+  ok returning visitor: GA4 auto-loads with no click
+  ok withdrawal: reload into denied state, zero GA4 requests after
+  ok re-grant via Save loads GA4 again (event path repeatable)
+  ok Accept-all button grants and loads GA4 (fresh-visitor path)
+  ok zero CSP violations mentioning GA4 hosts
+
+=== GATE ga4-consent (SEO-5 residue, rm 8.4) ===
+PASS — 0 violations
+
+>>>>>>>> crawl — PUB-3 internal link crawl of dist
+crawled 449 internal URLs; 0 non-2xx/3xx; 0 missing anchors (enforced)
+
+=== GATE link-crawl (PUB-3) ===
+PASS — 0 broken internal URLs, 0 missing anchors
+
+>>>>>>>> placeholders — PUB-7 placeholder / internal strings scan
+=== GATE check-no-placeholders (PUB-7) ===
+PASS — Scanned 235 HTML files in dist. 0 placeholder / internal strings found.
+
+>>>>>>>> csp-inline — SEC-13 inline executable scripts in dist (rm 3.3-1)
+inline executable scripts: 0
+
+>>>>>>>> a11y — WCAG 2.x A/AA via axe-core
+page /: 0 violation rule(s) [0 serious/critical]
+page /products/: 0 violation rule(s) [0 serious/critical]
+page /brands/: 0 violation rule(s) [0 serious/critical]
+page /insights/: 0 violation rule(s) [0 serious/critical]
+page /software/: 0 violation rule(s) [0 serious/critical]
+page /contact/: 0 violation rule(s) [0 serious/critical]
+page /about/: 0 violation rule(s) [0 serious/critical]
+
+=== GATE a11y (WCAG 2.x A/AA, Phase 6 target) ===
+PASS — 0 violations
+
+>>>>>>>> perf — NFR-1 Lighthouse & CWV performance budgets
+--- CI Performance & CWV Budget Gate (NFR-1 / P8-6) ---
+Inspecting build artifacts in: C:\software_project\Simal_Corporate_website\Codebase\apps\site\dist
+
+1. Checking Asset & Bundle Budgets:
+  PASS: CSS chunk index.9q1LyLwM.css budget (raw <= 100KB, gzip <= 40KB) (raw: 14.7KB, gzip: 3.8KB)
+  PASS: CSS chunk index.Bt0qU5gi.css budget (raw <= 100KB, gzip <= 40KB) (raw: 42.1KB, gzip: 9.7KB)
+  PASS: JS chunk BaseLayout.astro_astro_type_script_index_0_lang.DU-4udzU.js budget (raw <= 200KB, gzip <= 60KB) (raw: 6.1KB, gzip: 2.3KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BbGytnos.js budget (raw <= 200KB, gzip <= 60KB) (raw: 5.4KB, gzip: 2.2KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BhthWDNp.js budget (raw <= 200KB, gzip <= 60KB) (raw: 4.4KB, gzip: 1.7KB)
+
+2. Auditing Core Pages HTML Structure & Critical Hints:
+  PASS: Page index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 85.6KB, gzip: 18.6KB)
+  PASS: Page index.html includes font preconnect hints
+  PASS: Landing page has prioritized eager LCP hero element
+  PASS: Page index.html has responsive mobile viewport meta
+  PASS: Page products/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 159.1KB, gzip: 23.4KB)
+  PASS: Page products/index.html includes font preconnect hints
+  PASS: Page products/index.html has responsive mobile viewport meta
+  PASS: Page solutions/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 75.6KB, gzip: 14.4KB)
+  PASS: Page solutions/index.html includes font preconnect hints
+  PASS: Page solutions/index.html has responsive mobile viewport meta
+  PASS: Page rfq/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 61.3KB, gzip: 15.4KB)
+  PASS: Page rfq/index.html includes font preconnect hints
+  PASS: Page rfq/index.html has responsive mobile viewport meta
+  PASS: Page about/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 56.5KB, gzip: 12.9KB)
+  PASS: Page about/index.html includes font preconnect hints
+  PASS: Page about/index.html has responsive mobile viewport meta
+  PASS: Page contact/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 44.6KB, gzip: 11.0KB)
+  PASS: Page contact/index.html includes font preconnect hints
+  PASS: Page contact/index.html has responsive mobile viewport meta
+  PASS: Page ar/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 52.2KB, gzip: 12.7KB)
+  PASS: Page ar/index.html includes font preconnect hints
+  PASS: Page ar/index.html has responsive mobile viewport meta
+
+3. Synthetic CWV Benchmark (Simulated 4G Mobile: 150ms RTT, 1.6 Mbps):
+  PASS: Live Edge TTFB <= 200ms (measured: 47ms)
+  PASS: Simulated 4G Mobile LCP <= 2.5s (2500ms) (estimated: 1025ms (TTFB: 47ms + RTT: 150ms + HTML: 428ms))
+  PASS: Simulated Lighthouse Performance Score >= 85 (score: 95/100)
+
+================ PERF BUDGET SUMMARY ================
+Passed: 30 | Failed: 0
+ALL PERFORMANCE BUDGETS MET (PRD NFR-1 COMPLIANT).
+
+================ GATE SUMMARY ================
+  PASS  clean-db
+  PASS  authz
+  PASS  pg-reporting
+  PASS  sequences
+  PASS  sitemap
+  PASS  ga4
+  PASS  crawl
+  PASS  placeholders
+  PASS  csp-inline
+  PASS  a11y
+  PASS  perf
+==============================================
+All selected gates GREEN.

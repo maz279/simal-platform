@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+import { siteFacts } from '../../lib/facts';
+
+const brands = await db`
+  SELECT b.*, COALESCE(p.cnt, 0)::int AS live_count 
+  FROM brands b
+  LEFT JOIN (
+    SELECT lower(brand) AS brand_lower, count(*)::int AS cnt 
+    FROM products 
+    GROUP BY lower(brand)
+  ) p ON p.brand_lower = lower(b.slug) OR p.brand_lower = lower(b.name)
+  ORDER BY b.name
+`;
+const productCount = await db`SELECT count(*)::int AS n FROM products`;
+// rm(6.1-2/9.1-1, PUB-8): brands.length counted the 'other' catch-all row (printed 22).
+const { brandCount } = await siteFacts();
+
+const brandRows = [
+  ['Storage & Memory', ['Crucial', 'Hikvision', 'Samsung', 'Kingston', 'Sandisk', 'WD', 'Teamgroup', 'Toshiba']],
+  ['Graphics & Components', ['Arktek', 'MSI', 'Zotac', 'PNY']],
+  ['Computing', ['Dell', 'HP', 'Lenovo']],
+  ['Accessories & Displays', ['UGREEN', 'Honeywell', 'KOORUI', 'Aiwa', 'Nearity']]
+];
+
+const brandMap = new Map();
+brands.forEach((b: any) => brandMap.set(b.name.toLowerCase(), b));
+---
+
+<BaseLayout title={`Authorized Brands — Simal Technologies Middle East`} description={`Authorized distributor for ${brandCount} global IT hardware brands in the UAE and GCC.`}>
+  <div class="wrap" style="padding-top:14px">
+    <div class="crumbs"><a href="/">Home</a> › <b>Brands</b></div>
+  </div>
+
+  <section class="hero"><div class="wrap" style="padding:48px 28px 44px">
+    <div>
+      <span class="badge" style="background:rgba(255,255,255,.14);color:#fff">Authorized Channel Portfolio</span>
+      <h1 style="font-size:36px;margin:8px 0 6px">{brandCount} Global Technology Brands</h1>
+      <p class="lead">Direct manufacturer partnerships, local UAE warranty, and JAFZA bonded logistics fulfillment across GCC, MEA, and CIS territories.</p>
+      <div class="cta">
+        <a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="/products">Browse All {productCount[0].n} SKUs</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/971508487861" target="_blank" rel="noopener">WhatsApp Brand Desk</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3>Distribution Guarantee</h3>
+      <div class="row"><span>Authenticity</span><b>100% genuine guaranteed</b></div>
+      <div class="row"><span>Warranty</span><b>Local UAE RMA support</b></div>
+      <div class="row"><span>Fulfilment</span><b>JAFZA dispatch same-week</b></div>
+      <div class="row"><span>RFQ SLA</span><b>≤ 24 hours turnaround</b></div>
+      <a class="btn btn-block btn-lg" style="background:var(--yellow);color:var(--ink);margin-top:16px" href="/rfq">Request Brand Line Card</a>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <div class="sec-head">
+      <div><span class="eyebrow">Directory</span><h2>Authorized Brand Showcase</h2></div>
+      <a class="btn btn-o" href="/products">View by Product Category →</a>
+    </div>
+
+    {brandRows.map((row) => (
+      <div style="margin-bottom:32px">
+        <h3 style="font-size:18px;color:var(--blue);margin-bottom:14px;border-bottom:1px solid var(--line);padding-bottom:8px">{row[0]}</h3>
+        <div class="grid g4">
+          {row[1].map((brandName) => {
+            const b = brandMap.get(brandName.toLowerCase()) || { slug: brandName.toLowerCase(), name: brandName, line: 'Authorized Distribution Line' };
+            const count = b.live_count ?? ((typeof b.counts === 'string' ? JSON.parse(b.counts)?.count : b.counts?.count) ?? 0);
+            return (
+              <a href={`/brands/${b.slug}`} class="card card-p" style="text-decoration:none;color:inherit;transition:transform .15s,box-shadow .15s;display:flex;flex-direction:column;justify-content:space-between">
+                <div>
+                  <span class="badge b-blue" style="font-size:11px">Authorized line</span>
+                  <h4 style="font-size:18px;margin:8px 0 4px">{b.name}</h4>
+                  <p style="font-size:12.5px;color:var(--slate);line-height:1.4">{b.line || 'Genuine manufacturer supply.'}</p>
+                </div>
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding-top:10px;border-top:1px solid var(--line);font-size:12px">
+                  <span style="color:var(--blue);font-weight:700">{count} SKUs listed</span>
+                  <span style="color:var(--slate)">Explore →</span>
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </div>
+    ))}
+  </div></section>
+</BaseLayout>

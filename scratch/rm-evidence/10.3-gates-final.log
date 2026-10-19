@@ -1,0 +1,380 @@
+run-gates: clean-db, authz, pg-reporting, sequences, sitemap, ga4, cms-e2e, chrome-blocks, crawl, placeholders, csp-inline, facts-consistency, a11y, page-language, perf  (GATE_ADMIN_URL host: 127.0.0.1:5433)
+
+
+>>>>>>>> clean-db — DAT-1 clean-DB SSG build
+[clean-db-build] scratch db ready — building SSG site into dist-gate/ …
+(node:28548) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2m19:04:09[22m   [34m├─[39m [2m/software/solutions/queue-management/index.html[22m [2m(+8ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/software/solutions/retail-erp/index.html[22m [2m(+6ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/software/solutions/unipos/index.html[22m [2m(+7ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/software/solutions/univat/index.html[22m [2m(+7ms)[22m 
+[2m19:04:09[22m   [34m└─[39m [2m/software/solutions/weather-systems/index.html[22m [2m(+6ms)[22m 
+[2m19:04:09[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+8ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+6ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+8ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+6ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+8ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+6ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+7ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+7ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+5ms)[22m 
+[2m19:04:09[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+7ms)[22m 
+[2m19:04:10[22m   [34m├─[39m [2m/solutions/support/index.html[22m [2m(+6ms)[22m 
+[2m19:04:10[22m   [34m└─[39m [2m/solutions/telephony/index.html[22m [2m(+6ms)[22m 
+[2m19:04:10[22m [32m▶[39m src/pages/solutions/index.astro
+[2m19:04:10[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+8ms)[22m 
+[2m19:04:10[22m [32m✓ Completed in 2.35s.
+[39m
+[2m19:04:10[22m [34m[build][39m 235 page(s) built in [1m4.63s[22m
+[2m19:04:10[22m [34m[build][39m [1mComplete![22m
+
+
+=== GATE clean-db-build (DAT-1) ===
+PASS — 0 violations
+
+>>>>>>>> authz — SEC-3/SEC-5 role matrix (deny by default)
+{"ts":"2026-10-18T11:04:10.541Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\simal-gate-3I3utf"}
+{"ts":"2026-10-18T11:04:10.542Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-18T11:04:10.723Z","level":"info","event":"http","id":"b7dac3ca-ab9d-4b58-a054-0c5cb7315d08","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+{"ts":"2026-10-18T11:04:10.777Z","level":"info","event":"http","id":"8c22ab65-8fdd-44aa-9784-a5e9836ea02d","method":"POST","path":"/api/auth/mfa","status":200,"ms":43}
+{"ts":"2026-10-18T11:04:10.817Z","level":"info","event":"http","id":"df18e862-2490-410c-bed7-8e0ab54e36f7","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-18T11:04:10.859Z","level":"info","event":"http","id":"da79f3dd-d8ab-42b5-a5d2-8fd32f40cc22","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+{"ts":"2026-10-18T11:04:10.934Z","level":"info","event":"http","id":"0d28a1e0-360c-4420-bd35-d5c370ff7bfc","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+
+=== GATE authz-matrix (SEC-3/SEC-5) ===
+PASS — 0 violations
+
+>>>>>>>> pg-reporting — DAT-3/APP-1 SLA age + reports on PG
+{"ts":"2026-10-18T11:04:12.001Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_pgr_mvdpwyp8"}
+{"ts":"2026-10-18T11:04:12.003Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T11:04:12.382Z","level":"info","event":"http","id":"9ac3373b-41ed-4fa7-bd0c-ee98a1fe5d16","method":"POST","path":"/api/auth/login","status":200,"ms":57}
+{"ts":"2026-10-18T11:04:12.407Z","level":"info","event":"http","id":"17f55743-877f-4969-8d6d-afef02a35d60","method":"GET","path":"/api/admin/submissions","status":200,"ms":9}
+{"ts":"2026-10-18T11:04:12.419Z","level":"info","event":"http","id":"63099aa0-49a1-4113-8ef3-3b58cd5de092","method":"POST","path":"/api/admin/reports/build","status":200,"ms":8}
+{"ts":"2026-10-18T11:04:12.428Z","level":"info","event":"http","id":"79701d81-95a7-4485-a1b1-3b338be7ecde","method":"GET","path":"/api/admin/export.csv","status":200,"ms":6}
+
+=== GATE pg-reporting (DAT-3) ===
+PASS — 0 violations
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+>>>>>>>> sequences — DAT-6 sequence drift (check-only)
+sequences gate: checked 8 sequences on simal_gate_seq_mvdpwzw2 (fresh scratch: migrate+seed)
+
+=== GATE sequences (DAT-6, check-only) ===
+PASS — 0 violations
+
+>>>>>>>> sitemap — SEO-2 sitemap lastmod from content timestamps (rm 8.3)
+[sitemap-lastmod] scratch db ready — verifying B14 schema…
+  ok B14 updated_at exists on products/brands/legal_policies/product_deep
+  ok seeded products start unstamped (fallback population exists)
+[sitemap-lastmod] booting portal on scratch db…
+{"ts":"2026-10-18T11:04:14.414Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_sitemap_mvdpx0n0"}
+{"ts":"2026-10-18T11:04:14.414Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T11:04:14.669Z","level":"info","event":"http","id":"30740d67-eb05-4baa-99e7-ee2532db73b9","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+[sitemap-lastmod] editing one entity of every sitemap type via CMS API…
+{"ts":"2026-10-18T11:04:14.681Z","level":"info","event":"http","id":"202e19b0-ecc7-4873-ba9d-8fa0e3aa55fa","method":"GET","path":"/api/cms/products/1672","status":200,"ms":4}
+{"ts":"2026-10-18T11:04:14.695Z","level":"info","event":"http","id":"6b5f12b9-27eb-4b06-b1a8-2ba70a620f04","method":"PUT","path":"/api/cms/products/1672","status":200,"ms":9}
+  ok updateProduct stamps updated_at
+{"ts":"2026-10-18T11:04:14.704Z","level":"info","event":"http","id":"3786b7d4-db18-4742-8feb-b21623a89412","method":"PUT","path":"/api/cms/products/aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black/deep","status":200,"ms":7}
+  ok upsertProductDeep stamps updated_at
+{"ts":"2026-10-18T11:04:14.711Z","level":"info","event":"http","id":"60d8567f-2cbb-4ac7-9603-70bc077a9208","method":"PUT","path":"/api/cms/brands/aiwa","status":200,"ms":6}
+  ok upsertBrand stamps updated_at
+{"ts":"2026-10-18T11:04:14.720Z","level":"info","event":"http","id":"80ac4b37-40b9-45f2-9b6f-e3c8ddd1324e","method":"PUT","path":"/api/cms/policies/accessibility-statement","status":200,"ms":8}
+  ok upsertPolicy stamps updated_at
+{"ts":"2026-10-18T11:04:14.725Z","level":"info","event":"http","id":"5f461b32-a6e4-4eb1-b2db-6ea162532ed4","method":"GET","path":"/api/cms/blocks/insight/ai-in-erp-2026","status":200,"ms":4}
+{"ts":"2026-10-18T11:04:14.734Z","level":"info","event":"http","id":"ffb333bd-843f-423a-a053-3d0a77954c9c","method":"PUT","path":"/api/cms/blocks/insight/ai-in-erp-2026","status":200,"ms":7}
+  ok upsertBlock keeps stamping updated_at
+{"ts":"2026-10-18T11:04:14.742Z","level":"info","event":"http","id":"99454d32-3a90-477c-8c82-af16103bd818","method":"POST","path":"/api/cms/revisions/products/1672/rollback","status":200,"ms":6}
+{"ts":"2026-10-18T11:04:14.745Z","level":"info","event":"http","id":"fdd6f5e5-714f-48b3-8a8c-f80cefbe85d1","method":"GET","path":"/api/cms/products/1672","status":200,"ms":2}
+  ok products rollback restores content and re-stamps updated_at
+[sitemap-lastmod] building SSG against scratch db…
+(node:21484) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[sitemap-lastmod] parsed 232 urls, dates: 2026-10-12, 2026-10-18
+  ok sitemap inventory complete (>= 200 urls)
+  ok every lastmod is a valid YYYY-MM-DD date
+  ok multiple distinct lastmod dates (done-when)
+  ok static route keeps VERIFIED_BASE_DATE
+  ok edited product lastmod = today
+  ok product_deep edit moves product lastmod = today (GREATEST)
+  ok untouched product falls back to VERIFIED_BASE_DATE
+  ok edited brand lastmod = today
+  ok edited legal policy lastmod = today
+  ok edited insight lastmod = today
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+=== GATE sitemap-lastmod (SEO-2 residue, rm 8.3) ===
+PASS — 0 violations
+
+>>>>>>>> ga4 — SEO-5 GA4 behind consent (rm 8.4)
+[ga4-consent] building with GA4 ID…
+(node:19320) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[ga4-consent] building without GA4 ID…
+[ga4-consent] static checks…
+  ok ga4-id meta emitted only when ID set
+  ok loader is external + ordered after consent-defaults
+  ok no inline executable loader script in built HTML
+  ok meta CSP has GA4 hosts
+  ok dev-edge CSP has GA4 hosts
+  ok nginx site-vhost CSP has GA4 hosts
+  ok consent island dispatches event + withdrawal reload
+[ga4-consent] browser phase…
+  ok fresh profile: banner visible, zero GA4 requests, no #ga4-src
+  ok after Reject: still zero GA4 requests
+  ok after Save with analytics on: gtag/js requested, config queued
+  ok returning visitor: GA4 auto-loads with no click
+  ok withdrawal: reloaded (denied) document makes zero GA4 requests
+  ok re-grant via Save loads GA4 again (event path repeatable)
+  ok Accept-all button grants and loads GA4 (fresh-visitor path)
+  ok zero CSP violations mentioning GA4 hosts
+
+=== GATE ga4-consent (SEO-5 residue, rm 8.4) ===
+PASS — 0 violations
+
+>>>>>>>> cms-e2e — CMS-2/3/4/9 editor→dist regression (rm 4.1-2)
+=== PHASE 4 CMS COMPLETENESS & CORRECTNESS E2E AUDIT ===
+Target Database: postgres://simal:***@127.0.0.1:5433/simal_gate_e2e_mvdpxrqv (scratch)
+{"ts":"2026-10-18T11:04:49.440Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_e2e_mvdpxrqv"}
+{"ts":"2026-10-18T11:04:49.441Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+
+[Setup] Authenticating staff roles...
+{"ts":"2026-10-18T11:04:49.704Z","level":"info","event":"http","id":"3275b8dc-2d8f-47e8-939a-5e6a47f8a748","method":"POST","path":"/api/auth/login","status":200,"ms":53}
+{"ts":"2026-10-18T11:04:49.768Z","level":"info","event":"http","id":"8a85c27e-7b2a-4057-a352-8b86e0f12431","method":"POST","path":"/api/auth/login","status":200,"ms":53}
+{"ts":"2026-10-18T11:04:49.815Z","level":"info","event":"http","id":"97963505-d93a-4f8d-aaf3-98ca6796d5b3","method":"POST","path":"/api/auth/login","status":200,"ms":44}
+  ✔ All staff sessions authenticated successfully.
+
+[1/8] Testing CMS-2: Single-Source AMC Tiers at site/amc-tiers...
+{"ts":"2026-10-18T11:04:49.829Z","level":"info","event":"http","id":"538f4d09-5adf-46ea-b3bb-d4876de29eee","method":"PUT","path":"/api/cms/blocks/site/amc-tiers","status":200,"ms":11}
+{"ts":"2026-10-18T11:04:49.835Z","level":"info","event":"http","id":"af26b6c2-c3d9-4ad3-84c5-01c1601070a5","method":"GET","path":"/api/cms/blocks/site/amc-tiers","status":200,"ms":3}
+  ✔ AMC SLA Tiers stored and verified at site/amc-tiers.
+
+[2/8] Testing CMS-3: Stock boolean end-to-end evaluation...
+{"ts":"2026-10-18T11:04:49.842Z","level":"info","event":"http","id":"62c0d20e-7c3f-403f-90a8-81d92037f815","method":"POST","path":"/api/cms/products","status":201,"ms":5}
+{"ts":"2026-10-18T11:04:49.848Z","level":"info","event":"http","id":"8ee8fc1c-5625-41e3-85e7-a33dcd744d07","method":"GET","path":"/api/cms/products/gate-test-stock-sku-1792321489836","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:49.855Z","level":"info","event":"http","id":"4dde4e6d-8ae4-4dc4-a370-a8cdfd7f4353","method":"PUT","path":"/api/cms/products/gate-test-stock-sku-1792321489836","status":200,"ms":5}
+{"ts":"2026-10-18T11:04:49.860Z","level":"info","event":"http","id":"e3577978-94db-4fb1-9708-a54a479f57dd","method":"GET","path":"/api/cms/products/gate-test-stock-sku-1792321489836","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:49.870Z","level":"info","event":"http","id":"eb856898-11f9-4cce-9a1f-7778bc5b749f","method":"DELETE","path":"/api/cms/products/gate-test-stock-sku-1792321489836","status":200,"ms":7}
+  ✔ Stock boolean parsed consistently end-to-end.
+
+[3/8] Testing CMS-4: Authorized Brands CRUD...
+{"ts":"2026-10-18T11:04:49.879Z","level":"info","event":"http","id":"31f2b0fc-1be4-4b6a-bb7d-afcd0292a52c","method":"POST","path":"/api/cms/brands","status":201,"ms":7}
+{"ts":"2026-10-18T11:04:49.883Z","level":"info","event":"http","id":"c10014e6-6738-4984-8e82-b8ccea03bd77","method":"GET","path":"/api/cms/brands/p4-gate-fortinet-1792321489871","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:49.889Z","level":"info","event":"http","id":"48a1bfd8-7950-4481-976c-350a6b2ed870","method":"PUT","path":"/api/cms/brands/p4-gate-fortinet-1792321489871","status":200,"ms":5}
+{"ts":"2026-10-18T11:04:49.895Z","level":"info","event":"http","id":"80c8ba6c-f4d0-4e69-981a-3c9f99fac167","method":"GET","path":"/api/cms/brands","status":200,"ms":5}
+{"ts":"2026-10-18T11:04:49.902Z","level":"info","event":"http","id":"c92f14b2-f537-4b72-b404-79e48a1de9ca","method":"DELETE","path":"/api/cms/brands/p4-gate-fortinet-1792321489871","status":200,"ms":6}
+  ✔ Authorized Brands catalog CRUD verified.
+
+[4/8] Testing CMS-6: Product deep specs...
+{"ts":"2026-10-18T11:04:49.908Z","level":"info","event":"http","id":"c7dd7773-9496-489e-bcd3-77815021b732","method":"POST","path":"/api/cms/products","status":201,"ms":3}
+{"ts":"2026-10-18T11:04:49.915Z","level":"info","event":"http","id":"f3eb475c-ff12-47f6-bdd5-ae799d4fee59","method":"PUT","path":"/api/cms/products/p4-deep-cisco-c9300-1792321489905/deep","status":200,"ms":6}
+{"ts":"2026-10-18T11:04:49.918Z","level":"info","event":"http","id":"c3ff4067-a632-4657-b252-8ba4a46cb558","method":"GET","path":"/api/cms/products/p4-deep-cisco-c9300-1792321489905/deep","status":200,"ms":2}
+{"ts":"2026-10-18T11:04:49.922Z","level":"info","event":"http","id":"2d5e3f6d-1ce2-4379-8f70-c3b623b6c678","method":"DELETE","path":"/api/cms/products/p4-deep-cisco-c9300-1792321489905","status":200,"ms":3}
+  ✔ Product deep specs round-trip verified.
+
+[5/8] Testing CMS-9: Media asset upload and deletion...
+{"ts":"2026-10-18T11:04:49.933Z","level":"info","event":"http","id":"bf3bcc92-f2d3-4718-bd1e-351c60f3d09c","method":"POST","path":"/api/cms/media/upload","status":201,"ms":10}
+{"ts":"2026-10-18T11:04:49.937Z","level":"info","event":"http","id":"d56050c2-3419-4374-8500-881b2cf3c5ea","method":"GET","path":"/api/cms/media","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:49.941Z","level":"info","event":"http","id":"82b35711-fabe-42a5-895b-8278a7e2f64f","method":"DELETE","path":"/api/cms/media/gate-audit-asset-1792321489923.png","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:49.949Z","level":"info","event":"http","id":"f23171a2-0a30-47c3-9d4e-64b6fee64a33","method":"GET","path":"/api/cms/media","status":200,"ms":6}
+  ✔ Media asset upload and deletion lifecycle verified.
+
+[6/8] Testing DAT-5: Reversible rollback with undo snapshots...
+{"ts":"2026-10-18T11:04:49.953Z","level":"info","event":"http","id":"985c11d4-1f51-47a7-bfcd-bb736ff852cd","method":"PUT","path":"/api/cms/blocks/insight/p4-rollback-article-1792321489950","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:49.956Z","level":"info","event":"http","id":"006ba7ff-efed-476f-af63-29e631ee9382","method":"PUT","path":"/api/cms/blocks/insight/p4-rollback-article-1792321489950","status":200,"ms":2}
+{"ts":"2026-10-18T11:04:49.971Z","level":"info","event":"http","id":"e3d61c74-9638-42df-a472-02e8db7aeaea","method":"PUT","path":"/api/cms/blocks/insight/p4-rollback-article-1792321489950","status":200,"ms":14}
+{"ts":"2026-10-18T11:04:49.974Z","level":"info","event":"http","id":"09c06068-ea11-4644-bee2-9a7d99b72d5c","method":"GET","path":"/api/cms/revisions/content_blocks/p4-rollback-article-1792321489950","status":200,"ms":2}
+{"ts":"2026-10-18T11:04:49.980Z","level":"info","event":"http","id":"fb6fcfbc-9a58-4b6b-b4a2-bdabbd2b618c","method":"POST","path":"/api/cms/revisions/content_blocks/p4-rollback-article-1792321489950/rollback","status":200,"ms":6}
+{"ts":"2026-10-18T11:04:49.982Z","level":"info","event":"http","id":"7cb75b06-8ddd-4f2a-8290-30bf32d38056","method":"GET","path":"/api/cms/blocks/insight/p4-rollback-article-1792321489950","status":200,"ms":2}
+{"ts":"2026-10-18T11:04:49.985Z","level":"info","event":"http","id":"570599d5-352c-440e-8cf5-7b9bc4590bf6","method":"GET","path":"/api/cms/revisions/content_blocks/p4-rollback-article-1792321489950","status":200,"ms":2}
+  ✔ Reversible rollback with undo snapshots verified.
+
+[7/8] Testing SEC-11: dual-approval publish + super_admin-only emergency override...
+{"ts":"2026-10-18T11:04:50.001Z","level":"info","event":"http","id":"c92ab127-e7e1-488e-8a01-741d9251382a","method":"POST","path":"/api/cms/emergency-publish","status":200,"ms":9}
+{"ts":"2026-10-18T11:04:50.003Z","level":"info","event":"http","id":"4d951e86-3b64-47f5-ae74-3330c7c4d758","method":"GET","path":"/api/cms/outbox","status":200,"ms":1}
+  ✔ Dual-approval publish + super_admin-only override enforced (SEC-11 / rm(7.3)).
+
+[8/8] Testing CMS-8 & CMS-10: Live localization audit, RBAC matrix & telemetry...
+(node:28188) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"ts":"2026-10-18T11:04:50.007Z","level":"info","event":"http","id":"88eed6ec-ca1b-456c-a58e-234bce456b99","method":"GET","path":"/api/cms/loc-audit","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:50.011Z","level":"info","event":"http","id":"81c91853-1a56-402f-b0a2-305caba49ca3","method":"GET","path":"/api/cms/rbac-matrix","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:50.016Z","level":"info","event":"http","id":"568a036a-8876-40d7-8122-ebd019d2e14e","method":"POST","path":"/api/cms/publish","status":200,"ms":4}
+{"ts":"2026-10-18T11:04:50.021Z","level":"info","event":"http","id":"76a5acb5-264f-4e36-bb47-c85c669fbdab","method":"GET","path":"/api/cms/telemetry/publish","status":200,"ms":4}
+  ✔ Localization parity audit, RBAC matrix, and publish telemetry verified.
+
+=============================================================
+ALL PHASE 4 END-TO-END VERIFICATION CHECKS PASSED (8/8).
+Findings CMS-2, CMS-3, CMS-4, CMS-6, CMS-8, CMS-9, CMS-10, SEC-11, and DAT-5: CLOSED.
+=============================================================
+
+>>>>>>>> chrome-blocks — CMS-2 chrome blocks reach the built site (rm 4.1-2)
+{"ts":"2026-10-18T11:04:50.912Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_blk_mvdpxsv8"}
+{"ts":"2026-10-18T11:04:50.913Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T11:04:51.129Z","level":"info","event":"http","id":"01fd0858-96b0-43dd-be06-ab1912a99339","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+{"ts":"2026-10-18T11:04:51.143Z","level":"info","event":"http","id":"2326df31-faf8-44e4-afe8-bdfcb6232588","method":"POST","path":"/api/auth/mfa","status":200,"ms":5}
+{"ts":"2026-10-18T11:04:51.147Z","level":"info","event":"http","id":"972736b0-d0f3-4425-98f6-e81d9b7ae58d","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:51.153Z","level":"info","event":"http","id":"202d2377-0872-48e5-a9af-39d7178fd200","method":"GET","path":"/api/cms/blocks/site/nav-menus","status":200,"ms":3}
+{"ts":"2026-10-18T11:04:51.162Z","level":"info","event":"http","id":"53987861-6541-4873-bac1-ec87986d2502","method":"PUT","path":"/api/cms/blocks/site/nav-menus","status":200,"ms":7}
+{"ts":"2026-10-18T11:04:57.690Z","level":"info","event":"http","id":"03355b26-1d96-4a99-8fe8-bb67052d544d","method":"GET","path":"/api/cms/blocks/site/seo-defaults","status":200,"ms":2}
+PASS rm(4.1): chrome blocks are CMS data and reach the site
+{"ts":"2026-10-18T11:04:57.702Z","level":"info","event":"http","id":"3e0051d7-579c-4786-8f8e-5c5571655be8","method":"PUT","path":"/api/cms/blocks/site/nav-menus","status":200,"ms":7}
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+>>>>>>>> crawl — PUB-3 internal link crawl of dist
+crawled 449 internal URLs; 0 non-2xx/3xx; 0 missing anchors (enforced)
+
+=== GATE link-crawl (PUB-3) ===
+PASS — 0 broken internal URLs, 0 missing anchors
+
+>>>>>>>> placeholders — PUB-7 placeholder / internal strings scan
+=== GATE check-no-placeholders (PUB-7) ===
+PASS — Scanned 235 HTML files in dist. 0 placeholder / internal strings found.
+
+>>>>>>>> csp-inline — SEC-13 inline executable scripts in dist (rm 3.3-1)
+inline executable scripts: 0
+
+>>>>>>>> facts-consistency — PUB-8 one value per published fact, every page (rm 6.1-3)
+=== GATE facts-consistency (PUB-8, rm 6.1-3) ===
+self-test: 14/14 planted divergences detected, clean sample passes
+reference (from BaseLayout meta): brands=21 skus=78 years=24 since=2002
+scanned 235 pages (235 with the reference meta); figures checked: brand-count 498, sku-count 698, years 28, since 698
+awards: home == about (2 entries: 2025 Hikvision — Best Distributor Partner | 2025 TeamGroup — Best Partner 2025)
+
+PASS facts-consistency: every published brand count, catalogue size and company-age figure equals the reference
+
+>>>>>>>> a11y — WCAG 2.x A/AA via axe-core
+page /: 0 violation rule(s) [0 serious/critical]
+page /products/: 0 violation rule(s) [0 serious/critical]
+page /brands/: 0 violation rule(s) [0 serious/critical]
+page /insights/: 0 violation rule(s) [0 serious/critical]
+page /software/: 0 violation rule(s) [0 serious/critical]
+page /contact/: 0 violation rule(s) [0 serious/critical]
+page /about/: 0 violation rule(s) [0 serious/critical]
+{"ts":"2026-10-18T11:05:12.090Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_a11y_mvdpy98m"}
+{"ts":"2026-10-18T11:05:12.092Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T11:05:12.305Z","level":"info","event":"http","id":"a903930c-5ebf-4e40-af03-3dd8b0bbb709","method":"POST","path":"/api/auth/login","status":200,"ms":47}
+{"ts":"2026-10-18T11:05:12.314Z","level":"info","event":"http","id":"ac176feb-d591-42bd-9925-c7da7093c1de","method":"POST","path":"/api/auth/mfa","status":200,"ms":4}
+{"ts":"2026-10-18T11:05:12.330Z","level":"info","event":"http","id":"f1a92ffa-b248-4f24-9fad-f6519063a736","method":"GET","path":"/cms.html","status":200,"ms":2}
+{"ts":"2026-10-18T11:05:12.345Z","level":"info","event":"http","id":"91611c99-9129-4409-bc12-7ef174cbe81e","method":"GET","path":"/assets/css/base.css","status":200,"ms":1}
+{"ts":"2026-10-18T11:05:12.346Z","level":"info","event":"http","id":"57a62b9d-7c3b-4f95-95a1-1a1b6bea2129","method":"GET","path":"/assets/css/admin.css","status":200,"ms":0}
+{"ts":"2026-10-18T11:05:12.348Z","level":"info","event":"http","id":"8e7a5b65-8525-4129-9005-1de81949a8b8","method":"GET","path":"/assets/css/d365-cms.css","status":200,"ms":1}
+{"ts":"2026-10-18T11:05:12.348Z","level":"info","event":"http","id":"978bce71-1041-4732-9004-865f4fdf244b","method":"GET","path":"/assets/js/api.js","status":200,"ms":0}
+{"ts":"2026-10-18T11:05:12.350Z","level":"info","event":"http","id":"1f922834-2623-4fd7-a1e4-0a2913c22c89","method":"GET","path":"/assets/js/ui.js","status":200,"ms":1}
+{"ts":"2026-10-18T11:05:12.350Z","level":"info","event":"http","id":"1e699fe4-592f-4967-9f80-328567030f50","method":"GET","path":"/assets/js/icon-loader.js","status":200,"ms":0}
+{"ts":"2026-10-18T11:05:12.353Z","level":"info","event":"http","id":"17327de1-a12f-4685-91e4-ce86292823a9","method":"GET","path":"/assets/js/cms.js","status":200,"ms":1}
+{"ts":"2026-10-18T11:05:12.354Z","level":"info","event":"http","id":"d05f738b-86ef-4ad6-a705-2478eecc4129","method":"GET","path":"/assets/img/logo-lockup-white.png","status":200,"ms":0}
+{"ts":"2026-10-18T11:05:12.389Z","level":"info","event":"http","id":"d3f5ac35-09e5-4c89-b55d-184e31c58ee7","method":"GET","path":"/api/auth/me","status":200,"ms":7}
+{"ts":"2026-10-18T11:05:12.391Z","level":"info","event":"http","id":"51d360a6-672d-493b-bc41-39e271f90ddc","method":"GET","path":"/assets/img/favicon.png","status":200,"ms":1}
+(node:27848) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"ts":"2026-10-18T11:05:12.412Z","level":"info","event":"http","id":"563c5ed1-72fc-46c2-86d3-6fea12c83868","method":"GET","path":"/api/cms/blocks","status":200,"ms":17}
+{"ts":"2026-10-18T11:05:12.413Z","level":"info","event":"http","id":"a5364bfa-b14e-432e-a3e3-08ce5748e740","method":"GET","path":"/api/cms/slides","status":200,"ms":18}
+{"ts":"2026-10-18T11:05:12.414Z","level":"info","event":"http","id":"56583978-dafa-420f-8edd-0b648ce12aaf","method":"GET","path":"/api/cms/policies","status":200,"ms":19}
+{"ts":"2026-10-18T11:05:12.416Z","level":"info","event":"http","id":"9b924d1e-8eca-4dad-9899-a80c547b4831","method":"GET","path":"/api/admin/audit","status":200,"ms":20}
+{"ts":"2026-10-18T11:05:12.418Z","level":"info","event":"http","id":"dceda59c-f940-4568-aac4-4326e7420f7d","method":"GET","path":"/api/admin/users","status":200,"ms":22}
+{"ts":"2026-10-18T11:05:12.418Z","level":"info","event":"http","id":"5d8a53e0-0c0b-40a3-bd81-c7a44741b6ed","method":"GET","path":"/api/admin/sessions","status":200,"ms":22}
+{"ts":"2026-10-18T11:05:12.429Z","level":"info","event":"http","id":"211b8096-0717-4b83-9457-181a13c7d072","method":"GET","path":"/api/cms/telemetry","status":200,"ms":15}
+{"ts":"2026-10-18T11:05:12.432Z","level":"info","event":"http","id":"5a51bf41-b75b-433d-aa83-ee5ffa1256b0","method":"GET","path":"/api/cms/products","status":200,"ms":17}
+{"ts":"2026-10-18T11:05:12.437Z","level":"info","event":"http","id":"cd699408-f66b-4b30-96e9-75e28c8119ed","method":"GET","path":"/api/cms/media","status":200,"ms":18}
+{"ts":"2026-10-18T11:05:12.440Z","level":"info","event":"http","id":"f94b3a87-3b05-4854-82c9-865c9f0e5eb7","method":"GET","path":"/api/cms/outbox","status":200,"ms":21}
+{"ts":"2026-10-18T11:05:12.441Z","level":"info","event":"http","id":"c979d7b3-8146-44e2-b95e-a380270ced00","method":"GET","path":"/api/cms/announcements","status":200,"ms":19}
+{"ts":"2026-10-18T11:05:12.443Z","level":"info","event":"http","id":"f8f5802f-612f-49cb-b90d-e77b4c7d59af","method":"GET","path":"/api/cms/testimonials","status":200,"ms":19}
+{"ts":"2026-10-18T11:05:12.445Z","level":"info","event":"http","id":"5f4ec6ca-9350-45d1-a819-7fc3893a257d","method":"GET","path":"/api/cms/brands","status":200,"ms":13}
+{"ts":"2026-10-18T11:05:12.452Z","level":"info","event":"http","id":"70d4040c-1517-4e43-8726-751c6a0f514e","method":"GET","path":"/api/cms/telemetry/publish","status":200,"ms":4}
+cms.html (authenticated, pg store): 0 violation rule(s) [0 serious/critical]
+reflow /: 320:ok 901:ok 1024:ok 1280:ok
+reflow /products/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /products/dell-15-laptop-14th-gen-intel-core-3/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /solutions/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /about/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/products/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/solutions/: 320:ok 901:ok 1024:ok 1280:ok
+reflow /ar/about/: 320:ok 901:ok 1024:ok 1280:ok
+
+=== GATE a11y (WCAG 2.1/2.2 A/AA + authenticated CMS, Phase 6 + rm(9.2-3)) ===
+PASS — 0 violations
+
+>>>>>>>> page-language — SEO-1/WCAG 3.1.2 English pages render English; Arabic parts marked lang="ar"
+=== GATE page-language (SEO-1, WCAG 3.1.2) ===
+self-test: 4/4 cases behave (unmarked Arabic caught, lang="ar" honoured)
+scanned 218 English pages
+
+PASS page-language: every English page renders English content; Arabic parts are marked lang="ar"
+
+>>>>>>>> perf — NFR-1 Lighthouse & CWV performance budgets
+--- CI Performance & CWV Budget Gate (NFR-1 / P8-6) ---
+Inspecting build artifacts in: C:\software_project\Simal_Corporate_website\Codebase\apps\site\dist
+
+1. Checking Asset & Bundle Budgets:
+  PASS: CSS chunk index.C4NVahd8.css budget (raw <= 100KB, gzip <= 40KB) (raw: 43.2KB, gzip: 9.8KB)
+  PASS: CSS chunk index.D6buModE.css budget (raw <= 100KB, gzip <= 40KB) (raw: 14.7KB, gzip: 3.8KB)
+  PASS: JS chunk BaseLayout.astro_astro_type_script_index_0_lang.DU-4udzU.js budget (raw <= 200KB, gzip <= 60KB) (raw: 6.1KB, gzip: 2.3KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BbGytnos.js budget (raw <= 200KB, gzip <= 60KB) (raw: 5.4KB, gzip: 2.2KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BhthWDNp.js budget (raw <= 200KB, gzip <= 60KB) (raw: 4.4KB, gzip: 1.7KB)
+
+2. Auditing Core Pages HTML Structure & Critical Hints:
+  PASS: Page index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 85.9KB, gzip: 18.6KB)
+  PASS: Page index.html includes font preconnect hints
+  PASS: Landing page has prioritized eager LCP hero element
+  PASS: Page index.html has responsive mobile viewport meta
+  PASS: Page products/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 159.1KB, gzip: 23.4KB)
+  PASS: Page products/index.html includes font preconnect hints
+  PASS: Page products/index.html has responsive mobile viewport meta
+  PASS: Page solutions/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 70.2KB, gzip: 13.9KB)
+  PASS: Page solutions/index.html includes font preconnect hints
+  PASS: Page solutions/index.html has responsive mobile viewport meta
+  PASS: Page rfq/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 61.5KB, gzip: 15.5KB)
+  PASS: Page rfq/index.html includes font preconnect hints
+  PASS: Page rfq/index.html has responsive mobile viewport meta
+  PASS: Page about/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 56.7KB, gzip: 13.0KB)
+  PASS: Page about/index.html includes font preconnect hints
+  PASS: Page about/index.html has responsive mobile viewport meta
+  PASS: Page contact/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 44.8KB, gzip: 11.1KB)
+  PASS: Page contact/index.html includes font preconnect hints
+  PASS: Page contact/index.html has responsive mobile viewport meta
+  PASS: Page ar/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 52.4KB, gzip: 12.7KB)
+  PASS: Page ar/index.html includes font preconnect hints
+  PASS: Page ar/index.html has responsive mobile viewport meta
+
+3. Synthetic CWV Benchmark (Simulated 4G Mobile: 150ms RTT, 1.6 Mbps):
+  PASS: Live Edge TTFB <= 200ms (measured: 41ms)
+  PASS: Simulated 4G Mobile LCP <= 2.5s (2500ms) (estimated: 1020ms (TTFB: 41ms + RTT: 150ms + HTML: 429ms))
+  PASS: Simulated Lighthouse Performance Score >= 85 (score: 95/100)
+
+================ PERF BUDGET SUMMARY ================
+Passed: 30 | Failed: 0
+ALL PERFORMANCE BUDGETS MET (PRD NFR-1 COMPLIANT).
+
+================ GATE SUMMARY ================
+  PASS  clean-db
+  PASS  authz
+  PASS  pg-reporting
+  PASS  sequences
+  PASS  sitemap
+  PASS  ga4
+  PASS  cms-e2e
+  PASS  chrome-blocks
+  PASS  crawl
+  PASS  placeholders
+  PASS  csp-inline
+  PASS  facts-consistency
+  PASS  a11y
+  PASS  page-language
+  PASS  perf
+==============================================
+All selected gates GREEN.
+EXIT=0

@@ -1,0 +1,394 @@
+
+> simal-kyc-system@1.0.0 test
+> node --test "test/unit/*.test.js" "test/integration/*.test.js"
+
+{"ts":"2026-10-18T09:25:16.587Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-it-LOy2lg"}
+{"ts":"2026-10-18T09:25:16.593Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\test\\fixtures\\watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:25:16.957Z","level":"info","event":"http","id":"d1a488e3-fc50-4640-97b2-0a34de5b600c","method":"GET","path":"/api/health","status":200,"ms":8}
+{"ts":"2026-10-18T09:25:16.980Z","level":"info","event":"http","id":"87ee846c-b993-4218-ae83-8417d2654911","method":"GET","path":"/api/health","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:16.989Z","level":"info","event":"http","id":"0778285b-0d75-495d-a22b-276d059b2393","method":"GET","path":"/api/settings","status":200,"ms":1}
+✔ health + settings + security headers (86.5792ms)
+✔ 404 for unknown API + unknown page (11.1755ms)
+{"ts":"2026-10-18T09:25:17.145Z","level":"info","event":"http","id":"fb6b6296-22d0-483a-9d40-a0782deda78d","method":"POST","path":"/api/auth/login","status":200,"ms":69}
+{"ts":"2026-10-18T09:25:17.165Z","level":"info","event":"http","id":"72be557c-ab95-4016-b945-3c6f3739d1ff","method":"POST","path":"/api/auth/mfa","status":200,"ms":13}
+{"ts":"2026-10-18T09:25:17.172Z","level":"info","event":"http","id":"dff17e75-b91d-4580-81fd-ea9fec3a87c4","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:17.183Z","level":"info","event":"http","id":"04fddad3-9729-4903-bc43-d62ac44ed42d","method":"POST","path":"/api/auth/logout","status":200,"ms":7}
+✔ auth: wrong password 401; admin MFA flow; me; logout (187.9314ms)
+{"ts":"2026-10-18T09:25:17.281Z","level":"info","event":"http","id":"5ee36b8f-1c27-4c56-800e-8f615b5b9e42","method":"POST","path":"/api/auth/login","status":200,"ms":84}
+✔ auth: bad MFA code rejected (103.6826ms)
+✔ admin endpoints require auth (401 without session) (13.0497ms)
+✔ rate limiter: 429 after repeated login failures (42.0504ms)
+{"ts":"2026-10-18T09:25:17.360Z","level":"info","event":"http","id":"efb17347-bb10-4cdb-8ee1-2930186e3d4a","method":"POST","path":"/api/public/drafts","status":201,"ms":5}
+{"ts":"2026-10-18T09:25:17.371Z","level":"info","event":"http","id":"dfabc466-0c5b-4755-9025-8f4830bd0902","method":"PUT","path":"/api/public/drafts/dft_73d362af1f9da72024f3","status":200,"ms":8}
+{"ts":"2026-10-18T09:25:17.375Z","level":"info","event":"http","id":"cf574d6d-52fc-4d71-8bdf-80f226ed11ef","method":"GET","path":"/api/public/drafts/dft_73d362af1f9da72024f3","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:17.458Z","level":"info","event":"http","id":"8572a6fb-77e4-4d1f-a32f-d84e9bc5298a","method":"POST","path":"/api/public/drafts/dft_73d362af1f9da72024f3/documents","status":200,"ms":77}
+{"ts":"2026-10-18T09:25:17.938Z","level":"info","event":"http","id":"c4b92830-eb3d-4f3a-8af9-cfe95a3fcae7","method":"POST","path":"/api/public/drafts/dft_73d362af1f9da72024f3/documents","status":200,"ms":476}
+{"ts":"2026-10-18T09:25:18.445Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:18.446Z","level":"info","event":"http","id":"b2cfa63e-a483-4f4b-9fb2-56eb675d562e","method":"POST","path":"/api/public/applications","status":201,"ms":496}
+{"ts":"2026-10-18T09:25:18.897Z","level":"info","event":"http","id":"d3519bda-0597-40c0-98b1-96949cb1fcbc","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:18.953Z","level":"info","event":"http","id":"04dbf9b5-f555-44f4-aa68-7e53128c3818","method":"POST","path":"/api/auth/login","status":200,"ms":54}
+{"ts":"2026-10-18T09:25:18.962Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"start","by":"Review Staff"}
+{"ts":"2026-10-18T09:25:18.962Z","level":"info","event":"http","id":"4952e7ae-8136-4b9d-9a5b-e6035fc86fb6","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":6}
+{"ts":"2026-10-18T09:25:18.984Z","level":"info","event":"http","id":"9a8c197a-9a57-4b03-bd98-f5c65f37c0dc","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/query","status":200,"ms":19}
+{"ts":"2026-10-18T09:25:19.004Z","level":"info","event":"http","id":"4457d618-664e-4227-bc0c-20912d0bd2ac","method":"POST","path":"/api/public/applications/SIM-KYC-2026-10061/respond","status":200,"ms":18}
+{"ts":"2026-10-18T09:25:19.069Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"approve","by":"Review Staff"}
+{"ts":"2026-10-18T09:25:19.074Z","level":"info","event":"http","id":"2b654bda-6a3e-4dfd-ae70-f275cd0f1512","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":66}
+{"ts":"2026-10-18T09:25:19.079Z","level":"info","event":"http","id":"1d3bf222-4a95-4f69-9777-50ba9454f602","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:19.083Z","level":"info","event":"http","id":"81531ebb-72d4-499a-a83d-1812fdbcfa50","method":"GET","path":"/api/admin/audit","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:19.087Z","level":"info","event":"http","id":"e727f6b7-375a-4109-9cb1-997fb729a625","method":"GET","path":"/api/public/applications/SIM-KYC-2026-10061","status":200,"ms":1}
+✔ full partner journey: draft → submit → status → query → respond → approve (1735.6499ms)
+{"ts":"2026-10-18T09:25:19.096Z","level":"info","event":"http","id":"162e15b9-4ed8-4028-b86e-76910a37c5bc","method":"POST","path":"/api/public/drafts","status":201,"ms":5}
+{"ts":"2026-10-18T09:25:19.103Z","level":"info","event":"http","id":"f82c0bc3-58e4-4a92-9085-70b9bb6b96f0","method":"PUT","path":"/api/public/drafts/dft_2b0e0c329b9e9902dddd","status":200,"ms":5}
+{"ts":"2026-10-18T09:25:19.158Z","level":"info","event":"http","id":"f3d30f76-4c3f-440b-8c4e-f82baeb00500","method":"POST","path":"/api/public/drafts/dft_2b0e0c329b9e9902dddd/documents","status":200,"ms":54}
+{"ts":"2026-10-18T09:25:19.160Z","level":"info","event":"http","id":"bc6724f8-bad8-46dc-b7ca-1f78fb539a63","method":"POST","path":"/api/public/drafts","status":201,"ms":1}
+{"ts":"2026-10-18T09:25:19.164Z","level":"info","event":"http","id":"5ecd370d-37dd-4663-9f4f-cae985bae7fe","method":"POST","path":"/api/public/drafts","status":201,"ms":4}
+✔ draft resume: existing draft returned with data/documents/step (77.3573ms)
+{"ts":"2026-10-18T09:25:19.441Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10062","role":"customer","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:19.442Z","level":"info","event":"http","id":"6ca441ce-2b9a-4154-b3c0-ca2d118e06f4","method":"POST","path":"/api/public/applications","status":201,"ms":274}
+{"ts":"2026-10-18T09:25:19.446Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"start","by":"Review Staff"}
+{"ts":"2026-10-18T09:25:19.446Z","level":"info","event":"http","id":"68be8078-7ba3-4794-b359-9280a73e4553","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:19.502Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"approve","by":"Review Staff"}
+{"ts":"2026-10-18T09:25:19.506Z","level":"info","event":"http","id":"81946607-d50e-4728-9719-d0760eeb18c6","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":58}
+{"ts":"2026-10-18T09:25:19.559Z","level":"info","event":"http","id":"181d53d5-ca6e-41af-aeb3-924a55591470","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+{"ts":"2026-10-18T09:25:19.568Z","level":"info","event":"http","id":"c453c8f3-e6cd-4592-8c84-45fa477478c5","method":"POST","path":"/api/auth/mfa","status":200,"ms":7}
+{"ts":"2026-10-18T09:25:19.573Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"reopen","by":"System Administrator"}
+{"ts":"2026-10-18T09:25:19.573Z","level":"info","event":"http","id":"d50c3011-fd45-4871-8ef9-256dcc6181a7","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":4}
+✔ RBAC: reviewer cannot reopen; admin can (408.3841ms)
+{"ts":"2026-10-18T09:25:19.973Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10063","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:19.974Z","level":"info","event":"http","id":"df952da1-1d2c-4e2c-a09e-e7b661ea498e","method":"POST","path":"/api/public/applications","status":201,"ms":399}
+{"ts":"2026-10-18T09:25:19.977Z","level":"info","event":"http","id":"7a96dfad-b1b3-4bcc-85f2-eb64ff2784ac","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10063","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:19.979Z","level":"info","event":"http","id":"d1d41329-fc96-4b3e-bc40-1de4a4c496f2","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10063","status":200,"ms":0}
+✔ review details mask PII; super admin can unmask (406.6551ms)
+{"ts":"2026-10-18T09:25:19.986Z","level":"info","event":"http","id":"76a2f470-690a-4182-b143-862d2d23688d","method":"GET","path":"/api/admin/export.csv","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:19.989Z","level":"info","event":"http","id":"095e7a1b-5fe0-4f1f-a4da-da7da930c019","method":"GET","path":"/api/admin/export.csv","status":200,"ms":1}
+✔ export.csv is PII-safe by default and full for super admin (9.9775ms)
+{"ts":"2026-10-18T09:25:20.000Z","level":"info","event":"http","id":"02824120-e961-4617-8cb5-5f93b7bc12d1","method":"POST","path":"/api/admin/invites/bulk","status":200,"ms":7}
+{"ts":"2026-10-18T09:25:20.003Z","level":"info","event":"http","id":"e439cb47-4116-43aa-948e-03a0f79a505a","method":"GET","path":"/api/public/invites/INV-0D99D258","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:20.004Z","level":"info","event":"http","id":"cc599c2e-c106-4c0c-8048-9ddc56474c35","method":"GET","path":"/api/public/invites/INV-NOPE","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:20.336Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10064","role":"customer","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:20.337Z","level":"info","event":"http","id":"668c0710-4b43-40df-bd73-0ce82c6f04e9","method":"POST","path":"/api/public/applications","status":201,"ms":331}
+{"ts":"2026-10-18T09:25:20.340Z","level":"info","event":"http","id":"d7d3f254-4c75-4551-b142-53bd6bebbbd3","method":"GET","path":"/api/admin/invites","status":200,"ms":1}
+✔ invite closed loop: bulk import → link redeem → submission converts (349.9913ms)
+{"ts":"2026-10-18T09:25:20.747Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10065","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:20.747Z","level":"info","event":"http","id":"ed598bcf-5945-4eac-bfed-0f0642a7b9f1","method":"POST","path":"/api/public/applications","status":201,"ms":405}
+{"ts":"2026-10-18T09:25:21.156Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10066","role":"vendor","screeningHits":0,"duplicateTin":true}
+{"ts":"2026-10-18T09:25:21.157Z","level":"info","event":"http","id":"1f96e2ab-d189-4dcd-a29a-e5c91f935d79","method":"POST","path":"/api/public/applications","status":201,"ms":404}
+{"ts":"2026-10-18T09:25:21.158Z","level":"info","event":"http","id":"2863d3b1-7d27-4a37-bea0-067f060a7e55","method":"GET","path":"/api/public/tin-check","status":200,"ms":0}
+✔ duplicate TRN detection surfaces on submission + live tin-check (817.8156ms)
+{"ts":"2026-10-18T09:25:21.488Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10067","role":"vendor","screeningHits":1,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:21.488Z","level":"info","event":"http","id":"38efe7e1-c3f4-4804-889b-dc1c78464688","method":"POST","path":"/api/public/applications","status":201,"ms":328}
+{"ts":"2026-10-18T09:25:21.489Z","level":"info","event":"http","id":"26e71638-2d9a-4c3c-bcfc-ba112aee21e5","method":"GET","path":"/api/admin/submissions/SIM-KYC-2026-10067","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:21.813Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10068","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:21.813Z","level":"info","event":"http","id":"cf46e9ec-d49c-4e8d-b03b-876b064a88a7","method":"POST","path":"/api/public/applications","status":201,"ms":323}
+✔ screening: suspicious name flagged, clean name clears (654.9482ms)
+{"ts":"2026-10-18T09:25:22.128Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10069","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:22.128Z","level":"info","event":"http","id":"342ff9c9-a352-4dac-95eb-e80f54e7efaf","method":"POST","path":"/api/public/applications","status":201,"ms":313}
+{"ts":"2026-10-18T09:25:22.153Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10069","action":"reject","by":"Review Staff"}
+{"ts":"2026-10-18T09:25:22.153Z","level":"info","event":"http","id":"627aa395-90ce-4d60-8874-6c71300a3c5a","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10069/actions","status":200,"ms":22}
+✔ workflow guards: approve from submitted is 409; reject requires reason (339.8254ms)
+{"ts":"2026-10-18T09:25:22.155Z","level":"info","event":"http","id":"5c55bf24-7e1e-4eae-9592-a1441f055ad3","method":"GET","path":"/api/admin/analytics","status":200,"ms":1}
+✔ analytics: stats reflect submissions; aging + expiries shaped (1.5624ms)
+{"ts":"2026-10-18T09:25:22.157Z","level":"info","event":"http","id":"0665315c-7f4e-4e8a-87f7-6a13582fa7bc","method":"GET","path":"/api/integration/master","status":200,"ms":0}
+✔ integration master endpoint: token-gated counterparty feed (1.7558ms)
+{"ts":"2026-10-18T09:25:22.159Z","level":"info","event":"http","id":"ef68ebc2-572d-4e61-9bb4-7373b4f63154","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:22.160Z","level":"info","event":"http","id":"ed467ed8-edbe-4194-ae02-db7cc25da195","method":"GET","path":"/api/admin/submissions","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:22.160Z","level":"info","event":"http","id":"1ee5358c-814d-4d26-9e20-5a737a9c12ff","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:22.161Z","level":"info","event":"http","id":"f65b67f5-a59e-4d51-88d5-115dfb9852ee","method":"GET","path":"/api/admin/submissions","status":200,"ms":0}
+✔ list endpoint: filters, pagination, search (4.4484ms)
+{"ts":"2026-10-18T09:25:22.474Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10070","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:22.474Z","level":"info","event":"http","id":"77ed22d7-d968-4436-b161-6a36b0cfa794","method":"POST","path":"/api/public/applications","status":201,"ms":312}
+{"ts":"2026-10-18T09:25:22.483Z","level":"info","event":"http","id":"ca5f3a26-0e7d-47ce-b06d-dce68508de14","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10070/checklist","status":200,"ms":5}
+{"ts":"2026-10-18T09:25:22.489Z","level":"info","event":"http","id":"6e0c3f6f-2343-4bdb-b1fd-7ed5ae1a9491","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10070/notes","status":200,"ms":5}
+✔ checklist + notes endpoints persist (328.2425ms)
+{"ts":"2026-10-18T09:25:22.531Z","level":"info","event":"http","id":"042e22d8-1df3-4cce-bea7-dae1890843cb","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+{"ts":"2026-10-18T09:25:22.541Z","level":"info","event":"http","id":"c39ade3c-df8f-4921-82df-21904aa6c20c","method":"POST","path":"/api/auth/mfa","status":200,"ms":9}
+{"ts":"2026-10-18T09:25:22.542Z","level":"info","event":"http","id":"bae78cdf-a063-4255-811a-96bc2b84cebb","method":"GET","path":"/api/auth/me","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:22.579Z","level":"info","event":"http","id":"ff254fc7-c906-4711-9a98-ef03663be5bd","method":"POST","path":"/api/auth/login","status":200,"ms":35}
+{"ts":"2026-10-18T09:25:22.588Z","level":"info","event":"http","id":"a13859f5-2639-458f-beca-0c4fe927c37f","method":"POST","path":"/api/auth/mfa","status":200,"ms":8}
+{"ts":"2026-10-18T09:25:22.589Z","level":"info","event":"http","id":"f6cc0ce0-6e12-4f02-a138-d3f44e1a54bf","method":"GET","path":"/api/auth/me","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:22.593Z","level":"info","event":"http","id":"8ed09f48-8552-4e89-981c-53dc62d8025f","method":"POST","path":"/api/auth/logout","status":200,"ms":3}
+✔ CSRF: bogus token cannot bypass cross-origin blocking (F-2026-N02) (103.5716ms)
+{"ts":"2026-10-18T09:25:22.596Z","level":"info","event":"http","id":"e6cf0b3d-3cb5-48e4-8852-37bd5a771e2e","method":"POST","path":"/api/admin/reports/build","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:22.597Z","level":"info","event":"http","id":"697df456-ad68-4e01-b8fd-b8451587ab91","method":"POST","path":"/api/admin/reports/build","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:22.598Z","level":"info","event":"http","id":"fc94eb88-cf80-4e12-b220-f5abac3bf7f0","method":"GET","path":"/api/admin/export.csv","status":200,"ms":0}
+✔ PII masking: reviewer sees masked TRN/email/mobile/licence; admin (view_pii) sees full (6.6286ms)
+{"ts":"2026-10-18T09:25:22.604Z","level":"info","event":"http","id":"9f620e69-5629-43d3-a454-7a60d4a4340f","method":"POST","path":"/api/integrations/email/bounce","status":200,"ms":0}
+✔ bounce webhook: unsigned/invalid signatures rejected; valid signature processed (F-2026-N08) (3.9698ms)
+{"ts":"2026-10-18T09:25:22.606Z","level":"info","event":"http","id":"1edbae12-078e-4059-b0ff-f446804d6916","method":"GET","path":"/api/admin/observability/errors","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:22.607Z","level":"info","event":"http","id":"fb21df3e-d495-472f-a4fd-a937b069292e","method":"POST","path":"/api/integrations/webhook/test-sign","status":200,"ms":0}
+✔ observability + test-sign gated: reviewer 403; super_admin only (F-2026-N09) (2.8728ms)
+{"ts":"2026-10-18T09:25:18.037Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_job_mvdmdrm5"}
+{"ts":"2026-10-18T09:25:18.041Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+✔ NFR-6 / rm(7.2-2): escalateSlaBreaches emails once, audits once, dedupes; query_raised paused (2654.4334ms)
+[scratch] swept stale gate database simal_gate_urlguard_mvdmdrno
+[scratch] swept stale gate database simal_gate_apr_mvdmdrnx
+{"ts":"2026-10-18T09:25:20.121Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_job2_mvdmdtnb"}
+{"ts":"2026-10-18T09:25:20.121Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+✔ NFR-6 / rm(7.2-3): remindExpiries — approved-only ladder 30d/14d, deduped per partner+threshold (1974.2782ms)
+{"ts":"2026-10-18T09:25:18.038Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_urlguard_mvdmdrno"}
+{"ts":"2026-10-18T09:25:18.041Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T09:25:18.389Z","level":"info","event":"http","id":"81081465-3cb8-40ea-84be-5eadf1e7670e","method":"POST","path":"/api/auth/login","status":200,"ms":79}
+{"ts":"2026-10-18T09:25:18.404Z","level":"info","event":"http","id":"301b828d-8d44-4b2d-adb2-f4fc075c3025","method":"GET","path":"/api/auth/me","status":200,"ms":6}
+{"ts":"2026-10-18T09:25:18.423Z","level":"info","event":"http","id":"1d17d5a0-0dd3-4aa4-aeba-3afbcc6969e1","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.440Z","level":"info","event":"http","id":"40dda5ba-6963-4109-8fd4-bf3c7f297831","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.456Z","level":"info","event":"http","id":"73b4158a-a395-45ed-b729-ccc1f9df7d7b","method":"GET","path":"/api/auth/me","status":200,"ms":5}
+{"ts":"2026-10-18T09:25:18.471Z","level":"info","event":"http","id":"7bb09c7a-04d3-4f4a-8747-1279699d763f","method":"GET","path":"/api/auth/me","status":200,"ms":6}
+{"ts":"2026-10-18T09:25:18.487Z","level":"info","event":"http","id":"58cf4d6e-afb6-4a38-b4c6-0c9365c1c907","method":"GET","path":"/api/auth/me","status":200,"ms":7}
+{"ts":"2026-10-18T09:25:18.500Z","level":"info","event":"http","id":"e81787b3-a658-4035-bb91-149df0e8c616","method":"PUT","path":"/api/cms/announcements/1","status":200,"ms":10}
+{"ts":"2026-10-18T09:25:18.508Z","level":"info","event":"http","id":"63bf871b-5050-45d9-a052-f6532939682f","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.521Z","level":"info","event":"http","id":"647c3ebd-7964-4210-9765-9886152c9b21","method":"PUT","path":"/api/cms/announcements/1","status":200,"ms":10}
+▶ F-2026-N10: stored-URL guard rejects dangerous schemes on every CMS write path (3.2-2)
+  ✔ announcements: javascript:, //host and control-char hrefs are 422; relative path is 200 (128.8073ms)
+{"ts":"2026-10-18T09:25:18.532Z","level":"info","event":"http","id":"24b5f87f-765c-4d36-9e32-acdf3db36941","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+  ✔ hero slides: upsert refuses javascript: cta_href (422 before persistence) (19.5714ms)
+{"ts":"2026-10-18T09:25:18.551Z","level":"info","event":"http","id":"3f84c65d-42e5-4828-a582-92d722dcab51","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.563Z","level":"info","event":"http","id":"6e3acda9-b241-47a4-ad91-68ca61e1d7f3","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.576Z","level":"info","event":"http","id":"d768928a-f8a1-472a-aaf0-cca066fee5e1","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.595Z","level":"info","event":"http","id":"6bb3d981-28f8-4318-a931-f86ac55c9e06","method":"GET","path":"/api/auth/me","status":200,"ms":8}
+{"ts":"2026-10-18T09:25:18.607Z","level":"info","event":"http","id":"7af0dfdc-f8c4-4a16-a608-4d33e452c4c8","method":"PUT","path":"/api/cms/blocks/rmtest/guard","status":200,"ms":10}
+  ✔ content blocks: recursive guard over href|url|link keys and insight cta[1] (63.868ms)
+{"ts":"2026-10-18T09:25:18.613Z","level":"info","event":"http","id":"78de5ddc-861d-47ad-868e-4569d76e7a89","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.629Z","level":"info","event":"http","id":"6f1e609b-4b0a-49e0-9cc6-1d776864de8e","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.640Z","level":"info","event":"http","id":"a67c49e8-0674-4e12-ad5c-614124b0a6ed","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.646Z","level":"info","event":"http","id":"49ebc757-1b9a-4571-867d-1fe2a0b348b4","method":"PUT","path":"/api/cms/products/dell-15-laptop-14th-gen-intel-core-3/deep","status":200,"ms":5}
+  ✔ product deep docs: docs[].url and datasheet_url validated (38.2522ms)
+{"ts":"2026-10-18T09:25:18.651Z","level":"info","event":"http","id":"b0b19498-e214-4307-b718-863034fff61b","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.663Z","level":"info","event":"http","id":"4d70c6e0-7be8-40bc-ac20-652c9b3f16b4","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+  ✔ rollback: a revision carrying a hostile cta_href is refused, not restored (25.5178ms)
+✔ F-2026-N10: stored-URL guard rejects dangerous schemes on every CMS write path (3.2-2) (2710.5194ms)
+{"ts":"2026-10-18T09:25:16.802Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\simal-gate-moDaSL"}
+{"ts":"2026-10-18T09:25:16.804Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:25:17.159Z","level":"info","event":"http","id":"7311d88c-6b23-4660-952d-e03a7797e61f","method":"POST","path":"/api/auth/login","status":200,"ms":84}
+{"ts":"2026-10-18T09:25:17.178Z","level":"info","event":"http","id":"742c1bfa-7082-40e2-9cb3-3101e1a8bc02","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:17.347Z","level":"info","event":"http","id":"c23e3129-758d-4bfd-8708-5f1aa2fb7c55","method":"POST","path":"/api/admin/documents/doc_dc75f6f195c351932701/sign","status":200,"ms":7}
+{"ts":"2026-10-18T09:25:17.424Z","level":"info","event":"http","id":"70dab7f6-2e4b-41f2-8a9b-3ffeb8c73974","method":"GET","path":"/api/admin/documents/doc_dc75f6f195c351932701","status":200,"ms":71}
+▶ APP-3 / rm(8.1-2): signed-URL drills — JSON store (sequential consume)
+  ✔ single use: first fetch 200 with bytes; immediate reuse 409 (93.4223ms)
+{"ts":"2026-10-18T09:25:17.449Z","level":"info","event":"http","id":"b417db4b-7c17-49d2-8bc4-d352e4e4757b","method":"POST","path":"/api/admin/documents/doc_dc75f6f195c351932701/sign","status":200,"ms":14}
+  ✔ expiry: fetch after the TTL window is 401 (889.8541ms)
+{"ts":"2026-10-18T09:25:18.333Z","level":"info","event":"http","id":"c30c4aed-bb5c-4eeb-9fcc-7baeb68c2482","method":"POST","path":"/api/admin/documents/doc_dc75f6f195c351932701/sign","status":200,"ms":10}
+  ✔ mismatch: a token for another document is 403 (22.4047ms)
+{"ts":"2026-10-18T09:25:18.352Z","level":"info","event":"http","id":"3e038c93-b571-44e1-a34e-1e651b4d0154","method":"POST","path":"/api/admin/documents/doc_259f13135db21196afe0/sign","status":200,"ms":6}
+{"ts":"2026-10-18T09:25:18.433Z","level":"info","event":"http","id":"1d561edc-a84f-4d1c-aa4b-7a082191b975","method":"GET","path":"/api/admin/documents/doc_259f13135db21196afe0","status":200,"ms":67}
+  ✔ atomicity: 10 PARALLEL fetches of one fresh token → exactly one 200 (100.2879ms)
+✔ APP-3 / rm(8.1-2): signed-URL drills — JSON store (sequential consume) (1823.0395ms)
+[scratch] swept stale gate database simal_gate_job_mvdmdrm5
+[scratch] swept stale gate database simal_gate_urlguard_mvdmdrno
+[scratch] swept stale gate database simal_gate_apr_mvdmdrnx
+{"ts":"2026-10-18T09:25:20.121Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_docurl_mvdmdtna"}
+{"ts":"2026-10-18T09:25:20.122Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T09:25:20.406Z","level":"info","event":"http","id":"f9f3df38-6c59-42d0-94df-1f3110e01a31","method":"POST","path":"/api/auth/login","status":200,"ms":53}
+{"ts":"2026-10-18T09:25:20.411Z","level":"info","event":"http","id":"3aba9cd8-b3d3-44b5-bad5-d110c8cd7265","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:20.529Z","level":"info","event":"http","id":"08715e8a-c2af-455a-83b4-06fbda2acd87","method":"POST","path":"/api/admin/documents/doc_01328d66fc1a3e6c915b/sign","status":200,"ms":15}
+{"ts":"2026-10-18T09:25:20.578Z","level":"info","event":"http","id":"7ce81c97-db8f-47bf-a2d9-2d60cce64540","method":"GET","path":"/api/admin/documents/doc_01328d66fc1a3e6c915b","status":200,"ms":47}
+▶ APP-3 / rm(8.1-2): signed-URL drills — PostgreSQL (atomic UPDATE ... RETURNING consume)
+  ✔ single use: first fetch 200 with bytes; immediate reuse 409 (68.6589ms)
+{"ts":"2026-10-18T09:25:20.597Z","level":"info","event":"http","id":"79d800f1-72f3-463e-aca2-a34c94ee4ce4","method":"POST","path":"/api/admin/documents/doc_01328d66fc1a3e6c915b/sign","status":200,"ms":14}
+  ✔ expiry: fetch after the TTL window is 401 (870.0689ms)
+{"ts":"2026-10-18T09:25:21.456Z","level":"info","event":"http","id":"2f2de289-cdbe-4ae9-8202-df542f630c44","method":"POST","path":"/api/admin/documents/doc_01328d66fc1a3e6c915b/sign","status":200,"ms":3}
+  ✔ mismatch: a token for another document is 403 (6.1024ms)
+{"ts":"2026-10-18T09:25:21.462Z","level":"info","event":"http","id":"b2d8ba39-3480-4b91-8f88-6da7e22a9ffc","method":"POST","path":"/api/admin/documents/doc_d527d86c3f7ef08f82fb/sign","status":200,"ms":3}
+(node:25368) DeprecationWarning: Calling client.query() when the client is already executing a query is deprecated and will be removed in pg@9.0. Use async/await or an external async flow control mechanism instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+{"ts":"2026-10-18T09:25:21.518Z","level":"info","event":"http","id":"0ce3d8a8-191c-439a-aed2-cd80311cd973","method":"GET","path":"/api/admin/documents/doc_d527d86c3f7ef08f82fb","status":200,"ms":47}
+  ✔ atomicity: 10 PARALLEL fetches of one fresh token → exactly one 200 (60.0225ms)
+✔ APP-3 / rm(8.1-2): signed-URL drills — PostgreSQL (atomic UPDATE ... RETURNING consume) (3149.5658ms)
+{"ts":"2026-10-18T09:25:18.131Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_apr_mvdmdrnx"}
+{"ts":"2026-10-18T09:25:18.135Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-18T09:25:18.496Z","level":"info","event":"http","id":"4dd2b704-7b9e-4e8f-a2ad-32d413b82c00","method":"POST","path":"/api/auth/login","status":200,"ms":72}
+{"ts":"2026-10-18T09:25:18.574Z","level":"info","event":"http","id":"a29fba3b-5236-4f16-9387-a13eb54af0d3","method":"POST","path":"/api/auth/login","status":200,"ms":66}
+{"ts":"2026-10-18T09:25:18.636Z","level":"info","event":"http","id":"1e143baa-3b30-4e0d-8414-662d44af2924","method":"POST","path":"/api/auth/login","status":200,"ms":59}
+{"ts":"2026-10-18T09:25:18.687Z","level":"info","event":"http","id":"7d4e53e8-e545-40a2-8c6f-4e3a33442d0f","method":"POST","path":"/api/auth/login","status":200,"ms":49}
+{"ts":"2026-10-18T09:25:18.705Z","level":"info","event":"http","id":"4ac2e064-aec9-44a4-84ba-403bed78baac","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.725Z","level":"info","event":"http","id":"90ee8ca5-86ff-4ca5-aeb9-687829728d81","method":"PUT","path":"/api/cms/blocks/erp/pricing","status":200,"ms":16}
+{"ts":"2026-10-18T09:25:18.729Z","level":"info","event":"http","id":"de7d851e-496b-4362-97cf-556256701146","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.747Z","level":"info","event":"http","id":"eac0732a-f4b5-43c0-8dd4-7d8f22fb3fcd","method":"POST","path":"/api/cms/publish","status":202,"ms":17}
+▶ SEC-11 / rm(7.3-4): dual-approval matrix on PostgreSQL (server-derived dirty set)
+  ✔ 1: reviewer pricing edit + site/all publish → 202 + 0 ssg-builder rows (54.1733ms)
+{"ts":"2026-10-18T09:25:18.757Z","level":"info","event":"http","id":"3b4cce69-5f9b-49f3-82b5-106bd4e54892","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.764Z","level":"info","event":"http","id":"0578714f-31f3-4ebc-9986-02cb30001a11","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+  ✔ 2: self-approval and same-user-second-session → 403 (20.7252ms)
+{"ts":"2026-10-18T09:25:18.777Z","level":"info","event":"http","id":"09517329-95fb-4741-82b1-bf3e2e4e4d61","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.784Z","level":"info","event":"http","id":"c39e16ff-f392-4cff-a2dd-a3866fe6c5ac","method":"POST","path":"/api/cms/publish","status":202,"ms":5}
+{"ts":"2026-10-18T09:25:18.787Z","level":"info","event":"http","id":"e085c76f-409f-4735-a909-3be57c1d6edb","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.800Z","level":"info","event":"http","id":"c1a36ce0-b1f5-4618-a8f9-24a5b66ac4a4","method":"POST","path":"/api/cms/publish-approvals/apr_mvdmdt75o1hp/reject","status":200,"ms":11}
+  ✔ 4: reject → 200, no outbox row, status=rejected (29.2597ms)
+{"ts":"2026-10-18T09:25:18.806Z","level":"info","event":"http","id":"b9e09640-a4a7-44ea-86ef-dd1d8e3dcb89","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.818Z","level":"info","event":"http","id":"58a84ff2-1725-4b95-b217-5361cfbcab00","method":"POST","path":"/api/cms/publish","status":202,"ms":11}
+{"ts":"2026-10-18T09:25:18.823Z","level":"info","event":"http","id":"7fe72c4b-7b80-4bf4-97fb-79759a018619","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.842Z","level":"info","event":"http","id":"3de7332e-c5bd-466e-8a25-8c19624dfbe5","method":"POST","path":"/api/cms/publish-approvals/apr_mvdmdt96696z/approve","status":200,"ms":17}
+  ✔ 3: fresh request, distinct approver → 200 + exactly one ssg row (41.9169ms)
+{"ts":"2026-10-18T09:25:18.851Z","level":"info","event":"http","id":"e285e43e-7fee-41da-a576-45722842d33b","method":"GET","path":"/api/auth/me","status":200,"ms":5}
+  ✔ 5: reviewer emergency-publish WITH attested approver → 403 (10.7711ms)
+{"ts":"2026-10-18T09:25:18.860Z","level":"info","event":"http","id":"13c080f1-3c62-4a1e-b700-c1c1d0d7d09c","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.874Z","level":"info","event":"http","id":"9073a0e1-7ea1-41db-b561-29c114bb21f5","method":"POST","path":"/api/cms/emergency-publish","status":200,"ms":13}
+  ✔ 6: super_admin emergency override → enqueued + audited + notified (20.2191ms)
+{"ts":"2026-10-18T09:25:18.879Z","level":"info","event":"http","id":"61765b9e-d0be-470a-9126-1817ef7603af","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.889Z","level":"info","event":"http","id":"6096bd5c-3148-48d7-83e1-8fb405b8914d","method":"PUT","path":"/api/cms/policies/gate-7-3-policy","status":200,"ms":9}
+{"ts":"2026-10-18T09:25:18.894Z","level":"info","event":"http","id":"06a53235-cf96-472f-af78-e8aa03522f9a","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.906Z","level":"info","event":"http","id":"ef5ff6e5-0a3e-44df-b5d5-cb3fc0c58cdd","method":"PUT","path":"/api/cms/announcements/1","status":200,"ms":11}
+{"ts":"2026-10-18T09:25:18.909Z","level":"info","event":"http","id":"ae250da1-2acb-4fee-8043-65ce55ffcf7f","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.922Z","level":"info","event":"http","id":"b5757648-090e-4596-bc76-e92f31f9994e","method":"POST","path":"/api/cms/publish","status":202,"ms":12}
+{"ts":"2026-10-18T09:25:18.926Z","level":"info","event":"http","id":"2bbccb37-42f9-45db-8370-78a929378d55","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:18.937Z","level":"info","event":"http","id":"27ab8adb-8564-4abb-afc1-881b9dcab176","method":"POST","path":"/api/cms/publish-approvals/apr_mvdmdtc1jvoy/approve","status":200,"ms":10}
+  ✔ 7: legal policy + announcement edits route through the same matrix (61.6798ms)
+{"ts":"2026-10-18T09:25:18.945Z","level":"info","event":"http","id":"6f9bbf1b-f657-4713-a03b-36019442bb1c","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.958Z","level":"info","event":"http","id":"61070ef8-d6e2-4223-b212-ebbc8805cad5","method":"PUT","path":"/api/cms/blocks/erp/pricing","status":200,"ms":9}
+{"ts":"2026-10-18T09:25:18.964Z","level":"info","event":"http","id":"6d709722-1dfd-4bfd-af19-ccba9f7fa27b","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:18.987Z","level":"info","event":"http","id":"95cfe311-762b-474d-8637-10cdf19bd86d","method":"POST","path":"/api/cms/publish","status":202,"ms":19}
+{"ts":"2026-10-18T09:25:18.996Z","level":"info","event":"http","id":"59047341-8070-443c-b68b-f15705d18483","method":"GET","path":"/api/auth/me","status":200,"ms":4}
+  ✔ 8: expired approval → 409 (72.1939ms)
+{"ts":"2026-10-18T09:25:19.016Z","level":"info","event":"http","id":"25fb8cef-7480-436b-8779-79c6bf22beb3","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:19.028Z","level":"info","event":"http","id":"816a8af1-2c74-4864-a869-a91c22b44e1b","method":"POST","path":"/api/cms/publish","status":202,"ms":9}
+{"ts":"2026-10-18T09:25:19.032Z","level":"info","event":"http","id":"ca62e01d-7232-48d5-a9b7-b360ea1bb287","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:19.042Z","level":"info","event":"http","id":"1350c72d-7b70-42bc-9513-e53e3b28fc85","method":"PUT","path":"/api/cms/blocks/site/footer","status":200,"ms":8}
+{"ts":"2026-10-18T09:25:19.044Z","level":"info","event":"http","id":"1b184bad-9526-409b-89dd-5f8be741b592","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+  ✔ 9: dirty set changed after request → 409 (39.7175ms)
+{"ts":"2026-10-18T09:25:19.055Z","level":"info","event":"http","id":"7b9edc19-a395-4661-aa5b-7cb21651708b","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:19.068Z","level":"info","event":"http","id":"84c66a48-609c-4197-b178-a859e69e7c71","method":"POST","path":"/api/cms/publish","status":202,"ms":12}
+{"ts":"2026-10-18T09:25:19.075Z","level":"info","event":"http","id":"7e02975d-d0e5-4bfc-acd2-c80669a9b2e0","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+  ✔ 10: viewer blocked from the approval endpoints (deny-by-default) (28.0776ms)
+✔ SEC-11 / rm(7.3-4): dual-approval matrix on PostgreSQL (server-derived dirty set) (2672.1521ms)
+{"ts":"2026-10-18T09:25:16.744Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\simal-gate-S24oys"}
+{"ts":"2026-10-18T09:25:16.746Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:25:17.101Z","level":"info","event":"http","id":"d9ae9c05-eca1-4a26-839d-743b86529698","method":"POST","path":"/api/auth/login","status":200,"ms":72}
+{"ts":"2026-10-18T09:25:17.119Z","level":"info","event":"http","id":"4aa5b03f-bcff-404f-918e-899c49f7803f","method":"GET","path":"/api/auth/me","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:17.139Z","level":"error","event":"http_error","id":"7e088105-c00c-42e2-a6ba-130b8cf1b3c8","path":"/api/admin/observability/test-error","error":"Synthetic test error for observability verification (NFR-3)","stack":"Error: Synthetic test error for observability verification (NFR-3)\n    at file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/services/routes.js:1057:11\n    at dispatch (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/lib/http.js:177:13)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async Server.<anonymous> (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/server.js:101:7"}
+{"ts":"2026-10-18T09:25:17.261Z","level":"info","event":"http","id":"f59c73f1-e90b-4330-8898-fac72db87a79","method":"GET","path":"/api/admin/observability/errors","status":200,"ms":2}
+▶ NFR-3 / rm(9.3-1)+rm(9.3-2): outbound error sink + uptime probe with alerting
+  ✔ 5xx reaches the outbound sink carrying the request id (PDPL-redacted) (139.1839ms)
+{"ts":"2026-10-18T09:25:17.455Z","level":"info","event":"http","id":"17358acb-be43-4ea1-9ffa-0ccc207930e6","method":"GET","path":"/api/health","status":200,"ms":1}
+  ✔ uptime probe: exit 0 healthy / exit 1 + webhook alert down (508.2689ms)
+✔ NFR-3 / rm(9.3-1)+rm(9.3-2): outbound error sink + uptime probe with alerting (1276.5751ms)
+✔ F-2026-N12: CMS publish is processed by the SSG worker (rig e2e) (15281.3885ms)
+{"ts":"2026-10-18T09:25:16.707Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-ws-TQZtNX"}
+{"ts":"2026-10-18T09:25:16.710Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:25:17.105Z","level":"info","event":"http","id":"39678cb5-eecc-46bb-939a-05a65b4eb957","method":"POST","path":"/api/auth/login","status":200,"ms":75}
+{"ts":"2026-10-18T09:25:17.146Z","level":"info","event":"http","id":"cc94f51d-4adb-4dae-95d1-2d63bcb9ba4a","method":"POST","path":"/api/auth/mfa","status":200,"ms":18}
+{"ts":"2026-10-18T09:25:17.156Z","level":"info","event":"http","id":"8215bad7-8d21-4a6f-8aaf-f4f904d54e6e","method":"GET","path":"/api/admin/users","status":200,"ms":3}
+{"ts":"2026-10-18T09:25:17.243Z","level":"info","event":"http","id":"448ab97a-6bfb-4bb3-bb4c-44b46c770f04","method":"POST","path":"/api/auth/login","status":200,"ms":82}
+✔ users list: super admin OK, reviewer forbidden (RBAC) (248.1431ms)
+{"ts":"2026-10-18T09:25:17.332Z","level":"info","event":"http","id":"eb2987b0-5752-4af9-b3e3-1a84cb16ffac","method":"POST","path":"/api/admin/users","status":201,"ms":70}
+{"ts":"2026-10-18T09:25:17.408Z","level":"info","event":"http","id":"1bfeb4f8-13ae-48d4-842f-08b473647e04","method":"POST","path":"/api/auth/login","status":200,"ms":72}
+✔ user create: happy path + validation + duplicate email (172.5651ms)
+{"ts":"2026-10-18T09:25:17.431Z","level":"info","event":"http","id":"3afea522-6370-4d0f-be3a-6a80949c79cc","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:17.440Z","level":"info","event":"http","id":"12eb8cdd-e611-49e4-bd41-6a24e49ad7e0","method":"PUT","path":"/api/admin/users/usr_08dc5de7a9685f485f8e","status":200,"ms":5}
+✔ user update: role change OK; bootstrap admin protected (24.3612ms)
+{"ts":"2026-10-18T09:25:17.455Z","level":"info","event":"http","id":"b5c76d23-ddee-411e-8558-55355582b507","method":"GET","path":"/api/admin/users","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:17.521Z","level":"info","event":"http","id":"ed7bef61-56d4-46a7-b4f5-54ed490f55d2","method":"POST","path":"/api/admin/users/usr_08dc5de7a9685f485f8e/reset-password","status":200,"ms":64}
+{"ts":"2026-10-18T09:25:17.585Z","level":"info","event":"http","id":"b6aa01e0-df79-4ce1-8aa5-abd9c79e3be5","method":"POST","path":"/api/auth/login","status":200,"ms":61}
+✔ reset password: issues one-time credential and it works (132.9677ms)
+{"ts":"2026-10-18T09:25:17.589Z","level":"info","event":"http","id":"5aa44c47-7cd1-4ef0-9c1b-0d15c70dab6e","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:17.596Z","level":"info","event":"http","id":"b85a2ea5-9aa3-4454-8c43-3ac7555bc557","method":"POST","path":"/api/admin/users/usr_08dc5de7a9685f485f8e/deactivate","status":200,"ms":4}
+{"ts":"2026-10-18T09:25:17.658Z","level":"info","event":"http","id":"926a1b46-7b44-4c83-a8dd-742852893480","method":"POST","path":"/api/admin/users/usr_08dc5de7a9685f485f8e/reset-password","status":200,"ms":59}
+✔ deactivate: self blocked; other OK and login refused (75.8768ms)
+{"ts":"2026-10-18T09:25:17.728Z","level":"info","event":"http","id":"d94f69d6-d6da-463f-ad70-0f88207fdbea","method":"POST","path":"/api/auth/login","status":200,"ms":63}
+{"ts":"2026-10-18T09:25:17.741Z","level":"info","event":"http","id":"da97c6bf-9ed9-4be3-a2d7-48f0d2f20b76","method":"POST","path":"/api/auth/mfa","status":200,"ms":10}
+{"ts":"2026-10-18T09:25:17.744Z","level":"info","event":"http","id":"59cf9747-ff8c-4bc7-b21a-60f7a6db7412","method":"GET","path":"/api/admin/sessions","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:17.753Z","level":"info","event":"http","id":"4d9043ed-1797-43e6-88ca-77a5850ac9d1","method":"POST","path":"/api/admin/sessions/91b67a44/force-logout","status":200,"ms":6}
+{"ts":"2026-10-18T09:25:17.757Z","level":"info","event":"http","id":"7b3f3b8f-e043-49c9-aa52-720ac60713e4","method":"GET","path":"/api/admin/users","status":200,"ms":1}
+✔ active sessions + force logout terminates a live session (97.5683ms)
+{"ts":"2026-10-18T09:25:17.820Z","level":"info","event":"http","id":"0d709d10-c66a-4f6e-a285-08475a00960b","method":"POST","path":"/api/auth/login","status":200,"ms":59}
+{"ts":"2026-10-18T09:25:17.824Z","level":"info","event":"http","id":"5b1baddf-3b2b-46f8-ba3e-b5409153219a","method":"GET","path":"/api/admin/settings","status":200,"ms":0}
+{"ts":"2026-10-18T09:25:17.834Z","level":"info","event":"http","id":"7080b7b4-7667-451c-90fd-eb114109f1e6","method":"PUT","path":"/api/admin/settings","status":200,"ms":6}
+{"ts":"2026-10-18T09:25:17.844Z","level":"info","event":"http","id":"6ac3289c-6fa6-48e7-89de-e1fafaa82af1","method":"PUT","path":"/api/admin/settings","status":200,"ms":5}
+✔ settings: read + write round-trip, reviewer forbidden (84.6532ms)
+{"ts":"2026-10-18T09:25:18.331Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:25:18.331Z","level":"info","event":"http","id":"03528ca9-6dc6-444f-a890-9e71be5e83c6","method":"POST","path":"/api/public/applications","status":201,"ms":484}
+✔ seed: one submitted application exists for reports (488.1805ms)
+{"ts":"2026-10-18T09:25:18.338Z","level":"info","event":"http","id":"dcbba4a7-f5d6-4bce-be3b-56819b3e68eb","method":"GET","path":"/api/admin/reports","status":200,"ms":1}
+✔ report catalog exposes built-ins and field dictionary (6.4417ms)
+{"ts":"2026-10-18T09:25:18.343Z","level":"info","event":"http","id":"f2bb773b-a0fe-43ec-9c9d-718241709c74","method":"POST","path":"/api/admin/reports/build","status":200,"ms":1}
+{"ts":"2026-10-18T09:25:18.346Z","level":"info","event":"http","id":"a4ea1370-58d2-429f-82eb-254dba21bb2c","method":"POST","path":"/api/admin/reports/build","status":200,"ms":1}
+✔ custom report: field selection, status filter, sorting (6.8895ms)
+{"ts":"2026-10-18T09:25:18.350Z","level":"info","event":"http","id":"13a30378-eed6-4af1-b1f3-24678da04c14","method":"POST","path":"/api/admin/reports/build","status":200,"ms":2}
+{"ts":"2026-10-18T09:25:18.354Z","level":"info","event":"http","id":"29792ba6-d814-4b9b-853b-7dbc313a6d78","method":"POST","path":"/api/admin/reports/build","status":200,"ms":2}
+✔ built-in reports resolve their advertised defaults (7.8381ms)
+{"ts":"2026-10-18T09:25:18.356Z","level":"info","event":"http","id":"cf064d3f-5ec6-42d2-b8dc-3eb13dc8c27e","method":"POST","path":"/api/admin/reports/export.csv","status":200,"ms":0}
+✔ CSV export: correct content type, quoted header, CRLF rows (2.3318ms)
+✔ changeKey maps the audit vocabulary onto normalized domains (2.2935ms)
+✔ isSensitiveChange covers legal/marketing domains plus the legacy rules (0.8027ms)
+✔ publish() classifies the server-derived dirty set, never the declared entities (7.0307ms)
+✔ non-sensitive dirty set publishes directly (1.6096ms)
+✔ re-publish while pending returns the SAME approval, still no outbox row (1.7179ms)
+✔ decideApproval enforces distinct user, TTL and dirty-set drift (2.7534ms)
+✔ approve by a distinct reviewer enqueues exactly one build and records the decision (1.5264ms)
+✔ reject leaves no outbox row and is audited (1.6743ms)
+✔ emergencyPublish is a super_admin override — reviewers are 403 with or without attestation (2.3424ms)
+✔ NFR-3 redaction: 15-digit TRNs and 21-digit IBAN bodies become [n] (1.7211ms)
+✔ NFR-3 redaction: phone-length runs are stripped, short numbers survive (0.4106ms)
+✔ NFR-3 redaction: null/undefined become empty, message capped at 200 chars (0.4752ms)
+{"ts":"2026-10-18T09:25:16.896Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-0DbwRY\\db.json.tmp'"}
+{"ts":"2026-10-18T09:25:16.898Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-0DbwRY\\db.json.tmp'"}
+{"ts":"2026-10-18T09:25:16.898Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-0DbwRY\\db.json.tmp'"}
+{"ts":"2026-10-18T09:25:16.898Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-0DbwRY\\db.json.tmp'"}
+{"ts":"2026-10-18T09:25:16.898Z","level":"error","event":"db_write_failed","error":"ENOENT: no such file or directory, open 'C:\\Users\\maz_2\\AppData\\Local\\Temp\\kyc-repo-0DbwRY\\db.json.tmp'"}
+✔ scrypt hash verifies round-trip (265.025ms)
+✔ TOTP verify accepts current code, rejects others (4.1474ms)
+✔ TOTP accepts previous step (drift ±1), rejects far codes (1.1821ms)
+✔ timingSafeEqual basics (0.3605ms)
+✔ rate limiter blocks after max within window (0.6694ms)
+✔ content sniffing detects real types and rejects garbage (0.5781ms)
+✔ RBAC: viewer read/export only; reviewer decides; super_admin reopens (0.339ms)
+✔ workflow: full happy path transitions allowed (0.4181ms)
+✔ workflow: approve blocked from submitted; reject requires reason (0.3747ms)
+✔ workflow: rejected is terminal (reapply = new submission) (1.8512ms)
+✔ partner-editable states exclude review states (0.1977ms)
+✔ store: persists and reloads; versioned migration adds missing collections (12.6111ms)
+✔ repos: users, drafts, submissions, invites lifecycle (8.2499ms)
+✔ businessDaysBetween is fractional, not floored (3.0621ms)
+✔ a span crossing a Sunday counts the Sunday as 0 (0.4576ms)
+✔ 1.6 business days pending (submitted status) breaches the 2bd SLA? no — 1.6 < 2 (0.427ms)
+✔ 2.4 business days pending breaches; 1.4 does not (0.2962ms)
+✔ query_raised pauses the SLA timer (a11) (0.258ms)
+✔ partner_updated restarts the clock (a11) (0.2844ms)
+✔ the LATEST partner_updated wins (0.2698ms)
+✔ non-pending statuses never breach (0.3191ms)
+✔ boundary: exactly 2 business days breaches (0.375ms)
+✔ fractional boundary: 1.9 bd does not breach, 2.0 bd does (the v1.1 floor bug) (0.4928ms)
+{"ts":"2026-10-18T09:25:16.729Z","level":"info","event":"watchlist_loaded","path":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\scr-Z1dmTt\\watchlist.csv","entries":2}
+✔ SSRF guard refuses loopback, private and reserved targets (106.1723ms)
+✔ SSRF guard accepts a public http/https URL (14.3193ms)
+✔ screening loads the watchlist (0.6892ms)
+✔ exact match after legal-token normalisation (LLC/FZE/TRADING stripped) (7.4864ms)
+✔ clean name clears (7.9769ms)
+✔ signatory and UBO names are screened too (5.8469ms)
+✔ results persist per reference (0.7178ms)
+✔ TIN generator produces checksum-valid 15-digit numbers (2.8167ms)
+✔ tampered TIN still passes — validation is structural only (OQ-9 resolved) (0.3652ms)
+✔ real FTA TRNs observed in production are accepted (0.3048ms)
+✔ 10-digit TRN rejected (0.2167ms)
+✔ IBAN generator passes mod-97; wrong check digits rejected (0.8907ms)
+✔ Emirates ID structure validated (1.273ms)
+✔ Peppol pattern (0.8116ms)
+✔ complete valid application passes (2.2769ms)
+✔ bad TRN blocks submission with field error (1.0069ms)
+✔ foreign entity swaps TRN for foreign tax id (1.2379ms)
+✔ UAE Peppol must equal 0235:TIN (0.6324ms)
+✔ expired licence rejected (0.4574ms)
+✔ missing required vendor documents rejected (0.3558ms)
+✔ POA signatory requires POA document (3.1295ms)
+✔ expired signatory ID rejected (0.84ms)
+✔ ownership over 100 rejected (0.5328ms)
+✔ unaccepted declarations rejected (1.5632ms)
+✔ invalid IBAN rejected (0.5369ms)
+✔ customer role requires fewer documents (0.4556ms)
+{"ts":"2026-10-18T09:25:16.704Z","level":"warn","event":"virus_detected_signature","filename":"eicar.pdf","virus":"Eicar-Test-Signature"}
+✔ scanBuffer: signature engine decides when no CLAMAV_HOST (dev/CI default) (35.449ms)
+{"ts":"2026-10-18T09:25:16.719Z","level":"error","event":"clamav_scan_failed_required","filename":"x.pdf","error":"connect ECONNREFUSED 127.0.0.1:1"}
+✔ scanBuffer: CLAMAV_REQUIRED + unreachable clamd fails CLOSED with 503 (12.0342ms)
+✔ token TTL guard: document_download under 60s refused in production (7.1361ms)
+ℹ tests 132
+ℹ suites 0
+ℹ pass 132
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15517.203
+NPMTEST-EXIT=0

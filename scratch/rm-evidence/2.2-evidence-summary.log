@@ -1,0 +1,5 @@
+=== rm(2.2) PII MASKING — EVIDENCE Fri Oct 16 22:11:13 MPST 2026 ===
+1. LIVE: reviewer reports/build -> TRN 1001•••••090, email buy•••, mobile +971•••67, licence CN-•••EN, IBAN masked — ZERO raw PII; master export.csv masked too
+2. LIVE: admin (view_pii) -> full values; anonymous -> 401
+3. UI: reviewer report table fully masked (2.2-visual-reviewer-masked.png); admin same report shows full values (2.2-visual-admin-full.png)
+4. Tests: api.test.js PII regression (21/21); all suites 107/107; CI spot lint+security+authz+pg-reporting 4/4

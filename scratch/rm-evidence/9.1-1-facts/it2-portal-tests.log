@@ -1,0 +1,22 @@
+✔ scanBuffer: signature engine decides when no CLAMAV_HOST (dev/CI default) (30.1684ms)
+{"ts":"2026-10-17T15:23:02.486Z","level":"error","event":"clamav_scan_failed_required","filename":"x.pdf","error":"connect ECONNREFUSED 127.0.0.1:1"}
+✔ scanBuffer: CLAMAV_REQUIRED + unreachable clamd fails CLOSED with 503 (13.3056ms)
+✔ token TTL guard: document_download under 60s refused in production (9.1967ms)
+ℹ tests 96
+ℹ suites 0
+ℹ pass 96
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 5468.5427
+✔ unknown legacy account → structured no_account, no session (12.8774ms)
+✔ garbage shapes → 401 without detail (19.4885ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1955.5604

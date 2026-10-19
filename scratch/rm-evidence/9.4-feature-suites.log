@@ -1,0 +1,188 @@
+{"ts":"2026-10-18T09:28:06.638Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\acct-u5B9v3"}
+{"ts":"2026-10-18T09:28:06.641Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\test\\fixtures\\watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:28:06.895Z","level":"info","event":"http","id":"830ddd4a-6ee3-45fe-ad4d-d02b656d30ab","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":3}
+{"ts":"2026-10-18T09:28:06.934Z","level":"info","event":"http","id":"d4d79c77-5cbb-44a4-b760-8351dd17c458","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":22}
+✔ reset request: unknown email gets the identical response (no enumeration) (79.5446ms)
+{"ts":"2026-10-18T09:28:07.032Z","level":"info","event":"http","id":"39a22e66-c627-4471-a08f-c080375f1f1d","method":"POST","path":"/api/auth/login","status":200,"ms":86}
+{"ts":"2026-10-18T09:28:07.046Z","level":"info","event":"http","id":"d5218e15-e409-410d-98ee-2f152b9710a2","method":"GET","path":"/api/admin/outbox","status":200,"ms":3}
+{"ts":"2026-10-18T09:28:07.076Z","level":"info","event":"http","id":"142222b5-2463-440b-a596-a1b196afbf8b","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":23}
+{"ts":"2026-10-18T09:28:07.081Z","level":"info","event":"http","id":"02368a22-2d9b-4c8a-9c32-7fe89f2f428b","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+✔ reset request for real user emails a single-use link (token only in email) (143.2042ms)
+{"ts":"2026-10-18T09:28:07.163Z","level":"info","event":"http","id":"3aa339e2-3f7a-4d24-a327-e39dac16c404","method":"POST","path":"/api/auth/login","status":200,"ms":72}
+{"ts":"2026-10-18T09:28:07.165Z","level":"info","event":"http","id":"5890f36b-865a-4936-b36a-69b3493676f4","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.183Z","level":"info","event":"http","id":"b51c132c-a3da-40bc-a2df-b6e235a36eea","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":11}
+{"ts":"2026-10-18T09:28:07.191Z","level":"info","event":"http","id":"897fc8cd-fe32-4fcc-a7e6-a5aec8a1cb56","method":"GET","path":"/api/admin/outbox","status":200,"ms":3}
+{"ts":"2026-10-18T09:28:07.263Z","level":"info","event":"http","id":"3cda2856-70b0-4eb4-bef2-c4f56ad0a068","method":"POST","path":"/api/auth/login","status":200,"ms":68}
+{"ts":"2026-10-18T09:28:07.343Z","level":"info","event":"http","id":"e9275592-74b0-48cf-a58d-9f97a40961a3","method":"POST","path":"/api/auth/password-reset/confirm","status":200,"ms":78}
+{"ts":"2026-10-18T09:28:07.444Z","level":"info","event":"http","id":"9ff328ae-2ccd-4a45-b45e-39725b952b59","method":"POST","path":"/api/auth/login","status":200,"ms":49}
+{"ts":"2026-10-18T09:28:07.494Z","level":"info","event":"http","id":"b14dacee-5f82-4481-b6d7-19e01104d7ff","method":"POST","path":"/api/auth/login","status":200,"ms":48}
+{"ts":"2026-10-18T09:28:07.496Z","level":"info","event":"http","id":"b1974a22-47ca-4b38-8c24-5b242b0774bd","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.511Z","level":"info","event":"http","id":"6878a704-cc6d-41db-9837-367caf516249","method":"POST","path":"/api/auth/password-reset/request","status":200,"ms":14}
+{"ts":"2026-10-18T09:28:07.513Z","level":"info","event":"http","id":"fa7766f2-3f02-49b8-8107-fe89f8730a14","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.579Z","level":"info","event":"http","id":"57114b4f-3e8f-4252-a7b0-a7572afb8cd2","method":"POST","path":"/api/auth/password-reset/confirm","status":200,"ms":65}
+✔ reset confirm: weak password rejected, then full happy path + session kill + replay block (496.1186ms)
+✔ reset with an EXPIRED token is rejected (direct service, ttl 1ms) (38.9624ms)
+{"ts":"2026-10-18T09:28:07.667Z","level":"info","event":"http","id":"99503e45-1442-4692-8e1a-e98d182b927a","method":"POST","path":"/api/auth/login","status":200,"ms":43}
+✔ session cookie carries HttpOnly + SameSite=Strict (Secure only in production) (50.0317ms)
+{"ts":"2026-10-18T09:28:07.721Z","level":"info","event":"http","id":"80424a22-f1a3-407d-87c7-fe53f2d6c49e","method":"POST","path":"/api/auth/login","status":200,"ms":47}
+{"ts":"2026-10-18T09:28:07.725Z","level":"info","event":"http","id":"ca5d8ade-81b4-401a-b26e-1e5230f7350f","method":"GET","path":"/api/auth/profile","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.730Z","level":"info","event":"http","id":"611e2dcc-4f83-48f3-a8c5-4bf8953d3608","method":"PUT","path":"/api/auth/profile","status":200,"ms":4}
+✔ profile: sessions listed; name update works; password change demands current (107.1677ms)
+{"ts":"2026-10-18T09:28:07.824Z","level":"info","event":"http","id":"679a3b76-3276-4e47-b11e-4bdca6ab81f8","method":"POST","path":"/api/auth/login","status":200,"ms":46}
+{"ts":"2026-10-18T09:28:07.830Z","level":"info","event":"http","id":"bdb2b9fa-90e5-4003-a93f-3828349e9772","method":"POST","path":"/api/auth/mfa/begin","status":200,"ms":5}
+{"ts":"2026-10-18T09:28:07.846Z","level":"info","event":"http","id":"3f6ac818-98ca-472a-b38a-b2688c0a9635","method":"POST","path":"/api/auth/mfa/confirm","status":200,"ms":4}
+{"ts":"2026-10-18T09:28:07.895Z","level":"info","event":"http","id":"4d3f87df-07ef-4dcf-b170-dd44de4d9518","method":"POST","path":"/api/auth/login","status":200,"ms":49}
+{"ts":"2026-10-18T09:28:07.909Z","level":"info","event":"http","id":"7ab666e2-50dd-4804-a056-a10c03386b4d","method":"POST","path":"/api/auth/mfa","status":200,"ms":13}
+{"ts":"2026-10-18T09:28:07.913Z","level":"info","event":"http","id":"a4b25cf9-5ac4-436b-a667-c9b231c3e33c","method":"POST","path":"/api/auth/mfa/disable","status":200,"ms":3}
+{"ts":"2026-10-18T09:28:07.963Z","level":"info","event":"http","id":"18803e43-22f1-4a20-84fb-3dcd40ca54a2","method":"POST","path":"/api/auth/login","status":200,"ms":49}
+✔ MFA enrolment: begin → confirm activates; login requires TOTP; disable with code (187.0956ms)
+{"ts":"2026-10-18T09:28:08.012Z","level":"info","event":"http","id":"898f6c93-8366-4d9c-aee3-c31be3538596","method":"POST","path":"/api/auth/login","status":200,"ms":46}
+{"ts":"2026-10-18T09:28:08.063Z","level":"info","event":"http","id":"51be8e53-a34d-433f-abfc-621b1a664c28","method":"POST","path":"/api/auth/login","status":200,"ms":50}
+{"ts":"2026-10-18T09:28:08.068Z","level":"info","event":"http","id":"ecbf56bd-05c1-48e1-aeb9-98a55daa9fe0","method":"POST","path":"/api/auth/sessions/revoke-others","status":200,"ms":4}
+{"ts":"2026-10-18T09:28:08.073Z","level":"info","event":"http","id":"18ff6259-655c-4ebb-a547-fc60e574c862","method":"GET","path":"/api/auth/me","status":200,"ms":1}
+✔ revoke-others keeps the current session and kills the rest (110.6038ms)
+{"ts":"2026-10-18T09:28:08.125Z","level":"info","event":"http","id":"c8aba942-d17d-4c04-9346-551cadff743e","method":"POST","path":"/api/auth/login","status":200,"ms":49}
+{"ts":"2026-10-18T09:28:08.179Z","level":"info","event":"http","id":"a70f599f-d534-4047-9d52-4b7650fbe0f7","method":"POST","path":"/api/auth/login","status":200,"ms":52}
+{"ts":"2026-10-18T09:28:08.181Z","level":"info","event":"http","id":"32dcf22b-f434-4457-8efb-0b67d87fe256","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:08.211Z","level":"info","event":"http","id":"5f6d5fff-d0ad-47c1-bb87-13afcdbec4aa","method":"POST","path":"/api/auth/email/change","status":200,"ms":28}
+{"ts":"2026-10-18T09:28:08.214Z","level":"info","event":"http","id":"43df36e1-6c98-4b8c-ba58-978d838470e4","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:08.219Z","level":"info","event":"http","id":"f05a7ef3-2908-451b-aac8-2b7c1103df04","method":"GET","path":"/api/auth/profile","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:08.240Z","level":"info","event":"http","id":"59f5ff3f-58e8-4f5c-b3b8-d954827baace","method":"POST","path":"/api/auth/email/verify","status":200,"ms":14}
+{"ts":"2026-10-18T09:28:08.284Z","level":"info","event":"http","id":"9b463aa5-6e00-4518-895f-722570a95836","method":"POST","path":"/api/auth/login","status":200,"ms":39}
+{"ts":"2026-10-18T09:28:08.327Z","level":"info","event":"http","id":"2befdc18-e8ae-4f64-b082-d4614be8e5cb","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+{"ts":"2026-10-18T09:28:08.328Z","level":"info","event":"http","id":"f1f88b16-d805-428f-a2eb-4621f6d0bb05","method":"GET","path":"/api/admin/outbox","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:08.351Z","level":"info","event":"http","id":"b706274d-544d-47e2-b899-c8f8e809e64e","method":"POST","path":"/api/auth/email/change","status":200,"ms":22}
+{"ts":"2026-10-18T09:28:08.354Z","level":"info","event":"http","id":"70f298a8-5f3f-4493-8eca-babcb269f416","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:08.365Z","level":"info","event":"http","id":"9ab57e22-6905-49e7-9af9-40307cd308a7","method":"POST","path":"/api/auth/email/verify","status":200,"ms":9}
+✔ email change: link to new + alert to old; verify applies; replay blocked (290.4993ms)
+{"ts":"2026-10-18T09:28:06.666Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\asp-kFJtGx"}
+{"ts":"2026-10-18T09:28:06.668Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\test\\fixtures\\watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:28:06.998Z","level":"info","event":"http","id":"00555f31-67cd-4926-90bb-092d24ce3900","method":"POST","path":"/api/auth/login","status":200,"ms":83}
+{"ts":"2026-10-18T09:28:07.496Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10061","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:28:07.497Z","level":"info","event":"http","id":"1f344cf6-f45a-4365-8dc4-6555045bd699","method":"POST","path":"/api/public/applications","status":201,"ms":462}
+{"ts":"2026-10-18T09:28:07.508Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"start","by":"System Administrator"}
+{"ts":"2026-10-18T09:28:07.509Z","level":"info","event":"http","id":"46148260-95bd-4aca-a4b0-6fd218def733","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":9}
+{"ts":"2026-10-18T09:28:07.571Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10061","action":"approve","by":"System Administrator"}
+{"ts":"2026-10-18T09:28:07.579Z","level":"info","event":"http","id":"2343e4f9-0002-45b6-b62e-1c7d0405982a","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10061/actions","status":200,"ms":68}
+{"ts":"2026-10-18T09:28:07.952Z","level":"info","event":"submission_received","ref":"SIM-KYC-2026-10062","role":"vendor","screeningHits":0,"duplicateTin":false}
+{"ts":"2026-10-18T09:28:07.953Z","level":"info","event":"http","id":"38170e5d-888f-4265-87ed-19556cc90891","method":"POST","path":"/api/public/applications","status":201,"ms":367}
+{"ts":"2026-10-18T09:28:07.962Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"start","by":"System Administrator"}
+{"ts":"2026-10-18T09:28:07.963Z","level":"info","event":"http","id":"9d960bc2-5e55-492d-8a00-f3aff4645e8d","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":5}
+{"ts":"2026-10-18T09:28:08.024Z","level":"info","event":"review_action","ref":"SIM-KYC-2026-10062","action":"approve","by":"System Administrator"}
+{"ts":"2026-10-18T09:28:08.029Z","level":"info","event":"http","id":"f295e3fd-a6de-4955-bf9d-c65ba9650885","method":"POST","path":"/api/admin/submissions/SIM-KYC-2026-10062/actions","status":200,"ms":65}
+{"ts":"2026-10-18T09:28:08.037Z","level":"info","event":"http","id":"7277b538-354a-4a75-b6df-a596b51634e6","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:08.088Z","level":"info","event":"http","id":"88119568-fc60-4f77-b464-88bd51a9245d","method":"POST","path":"/api/auth/login","status":200,"ms":46}
+{"ts":"2026-10-18T09:28:08.096Z","level":"info","event":"http","id":"1e3a112d-f771-4ec4-85fc-ac757f65455d","method":"POST","path":"/api/einvoice","status":201,"ms":4}
+{"ts":"2026-10-18T09:28:08.112Z","level":"info","event":"http","id":"a4e1448f-b143-4399-9a40-f42604f9617f","method":"POST","path":"/api/einvoice/inv_9f0d86492c8501a9571c/submit","status":200,"ms":14}
+{"ts":"2026-10-18T09:28:08.117Z","level":"info","event":"http","id":"614209e4-de13-484c-87dc-331a6f19ccbd","method":"POST","path":"/api/einvoice/admin/inv_9f0d86492c8501a9571c/actions","status":200,"ms":4}
+{"ts":"2026-10-18T09:28:08.142Z","level":"info","event":"http","id":"88b51ebe-dbb8-43cd-a1b7-1bcda511cafa","method":"POST","path":"/api/einvoice/admin/inv_9f0d86492c8501a9571c/actions","status":200,"ms":20}
+{"ts":"2026-10-18T09:28:08.144Z","level":"info","event":"http","id":"3d637f3b-d07a-4f81-a572-eb47e301f117","method":"GET","path":"/api/einvoice/inv_9f0d86492c8501a9571c","status":200,"ms":1}
+✔ full round-trip: KYC approvals → invoice → validate → ASP transmit → ACK + transmissionId on delivered UBL (1254.6146ms)
+{"ts":"2026-10-18T09:28:08.150Z","level":"info","event":"http","id":"1f70e710-b9c5-4c18-8eac-67cffa376f94","method":"POST","path":"/api/einvoice","status":201,"ms":4}
+{"ts":"2026-10-18T09:28:08.164Z","level":"info","event":"http","id":"f0b87782-ee00-4fd1-a621-d92a5a12e5c3","method":"POST","path":"/api/einvoice/inv_453a6495dd572a4759bd/submit","status":200,"ms":12}
+{"ts":"2026-10-18T09:28:08.173Z","level":"info","event":"http","id":"c246a06c-218c-4a21-8bdd-fbdd301390fd","method":"POST","path":"/api/einvoice/admin/inv_453a6495dd572a4759bd/actions","status":200,"ms":7}
+{"ts":"2026-10-18T09:28:08.186Z","level":"error","event":"http_error","id":"c3c168cd-98e1-479e-b06a-c7df24aba07d","path":"/api/einvoice/admin/inv_453a6495dd572a4759bd/actions","error":"ASP transmission failed: schema violation: cac:LegalMonetaryTotal mismatch","stack":"Error: ASP transmission failed: schema violation: cac:LegalMonetaryTotal mismatch\n    at deliver (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/services/einvoice.service.js:270:15)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async file:///C:/software_project/Simal_Corporate_website/Codebase/apps/portal/src/services/routes.js:454:13\n    at async dispatch (file:///C:/software_project/Simal_Corporate_website/Codebase/apps/"}
+{"ts":"2026-10-18T09:28:08.192Z","level":"info","event":"http","id":"66b0a3b4-6ed2-47d1-a02a-f7c532dc585e","method":"GET","path":"/api/einvoice/inv_453a6495dd572a4759bd","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:08.211Z","level":"info","event":"http","id":"ec2248d1-6e81-40f4-b981-580e2b8fbe4e","method":"POST","path":"/api/einvoice/admin/inv_453a6495dd572a4759bd/actions","status":200,"ms":16}
+✔ NACK path: invoice stays validated for staff retry (66.8066ms)
+{"ts":"2026-10-18T09:28:06.650Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\rfq-MHfGFQ"}
+{"ts":"2026-10-18T09:28:06.651Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\test\\fixtures\\watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:28:06.904Z","level":"info","event":"http","id":"b72fa845-9b59-4e19-aab1-99980ad8b95a","method":"POST","path":"/api/rfq-basket","status":200,"ms":4}
+{"ts":"2026-10-18T09:28:06.928Z","level":"info","event":"http","id":"68b256c7-cdb3-4bda-bd25-3da625a41472","method":"POST","path":"/api/rfq-basket","status":200,"ms":2}
+{"ts":"2026-10-18T09:28:06.934Z","level":"info","event":"http","id":"5628846d-b2c2-4754-96dd-d5a7a0a0c319","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:06.938Z","level":"info","event":"http","id":"a31a664b-b6f1-4787-b313-adf0386f557c","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+✔ basket: add, merge, and view via httpOnly cookie (67.8434ms)
+✔ basket: unknown slug 404, bad qty 400, slug injection rejected (19.4407ms)
+{"ts":"2026-10-18T09:28:06.968Z","level":"info","event":"http","id":"f3612447-7fe6-4802-bdf6-565d57c5649b","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+✔ basket: accepts catalogue slug containing underscore (PUB-6) (6.2857ms)
+{"ts":"2026-10-18T09:28:06.978Z","level":"info","event":"http","id":"63ee9880-0952-41fe-84f4-6de085b100f8","method":"POST","path":"/api/rfq-basket","status":200,"ms":2}
+{"ts":"2026-10-18T09:28:06.984Z","level":"info","event":"http","id":"8a542062-0d7e-4cd7-a9ec-937bdcc3744c","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:06.987Z","level":"info","event":"http","id":"2ab9b3c7-4c9b-46c6-8b08-4f12754845a1","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:06.992Z","level":"info","event":"http","id":"48c1fcc9-cbc7-4a94-9ea4-b88d89d28dae","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+✔ basket: negative delta decrements, past-zero removes (the UI remove button) (23.6547ms)
+{"ts":"2026-10-18T09:28:07.037Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261018-0001","lines":2}
+{"ts":"2026-10-18T09:28:07.038Z","level":"info","event":"http","id":"2cbe2926-00c1-4bf9-8f8d-d39675a23a11","method":"POST","path":"/api/rfq","status":201,"ms":40}
+{"ts":"2026-10-18T09:28:07.048Z","level":"info","event":"http","id":"48f25eb7-3e17-4972-9b95-fd788513b3bb","method":"GET","path":"/api/rfq-basket","status":200,"ms":3}
+{"ts":"2026-10-18T09:28:07.128Z","level":"info","event":"http","id":"2808bf7f-2eca-43c2-a6df-9eba13242215","method":"POST","path":"/api/auth/login","status":200,"ms":74}
+{"ts":"2026-10-18T09:28:07.131Z","level":"info","event":"http","id":"10cd1d37-230b-46cf-8966-3f75ab535045","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.132Z","level":"info","event":"http","id":"66df53fe-d3d3-47fe-89f2-781dfcc2af7d","method":"GET","path":"/api/rfq/SIMAL-RFQ-20261018-0001","status":200,"ms":0}
+✔ submit: reference format, emails both ways, basket cleared (138.7189ms)
+{"ts":"2026-10-18T09:28:07.139Z","level":"info","event":"http","id":"ed9d1a23-4916-48f5-ad1e-f3aaf25f52d3","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.168Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261018-0002","lines":1}
+{"ts":"2026-10-18T09:28:07.168Z","level":"info","event":"http","id":"63202f44-0f9b-4133-87a8-5dcf70ac5b4b","method":"POST","path":"/api/rfq","status":201,"ms":19}
+{"ts":"2026-10-18T09:28:07.170Z","level":"info","event":"http","id":"8a8f5c03-47e7-4f92-aa67-04043b7a7542","method":"POST","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.196Z","level":"info","event":"rfq_submitted","ref":"SIMAL-RFQ-20261018-0003","lines":1}
+{"ts":"2026-10-18T09:28:07.196Z","level":"info","event":"http","id":"ab7a9e71-cf46-455d-909a-59066f29cde1","method":"POST","path":"/api/rfq","status":201,"ms":23}
+✔ submit: empty basket 400, missing company 400, second RFQ increments ref (62.9476ms)
+{"ts":"2026-10-18T09:28:07.201Z","level":"info","event":"http","id":"7ccf87de-e895-4f4d-a4f5-744e5daae818","method":"GET","path":"/api/admin/rfqs","status":200,"ms":2}
+{"ts":"2026-10-18T09:28:07.209Z","level":"info","event":"http","id":"92fb3ab3-7a53-4c62-884e-5beb14558286","method":"POST","path":"/api/admin/rfqs/SIMAL-RFQ-20261018-0003/actions","status":200,"ms":7}
+{"ts":"2026-10-18T09:28:07.215Z","level":"info","event":"http","id":"398929dc-5094-483f-a114-7dd6ebea2163","method":"POST","path":"/api/admin/rfqs/SIMAL-RFQ-20261018-0003/actions","status":200,"ms":3}
+{"ts":"2026-10-18T09:28:07.217Z","level":"info","event":"http","id":"d2f64784-1451-427f-b3d2-9efcc961144a","method":"GET","path":"/api/rfq/SIMAL-RFQ-20261018-0003","status":200,"ms":0}
+✔ admin: list + transitions with guards (20.7062ms)
+{"ts":"2026-10-18T09:28:07.231Z","level":"info","event":"http","id":"181309f9-d426-469e-986d-8e392519e76c","method":"POST","path":"/api/contact","status":201,"ms":9}
+{"ts":"2026-10-18T09:28:07.234Z","level":"info","event":"http","id":"103b10cf-c714-4f8c-b056-f8952f16d85d","method":"GET","path":"/api/admin/outbox","status":200,"ms":1}
+✔ contact endpoint (FRS-CT): validation + inbox routing (16.3946ms)
+✔ unauthenticated admin RFQ endpoints are gated (1.4238ms)
+{"ts":"2026-10-18T09:28:07.239Z","level":"info","event":"http","id":"3914e64b-93e6-4ed4-8c78-85ca61ebf58c","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.243Z","level":"info","event":"http","id":"058ea749-3da3-4aca-8539-d7311a2d5851","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.247Z","level":"info","event":"http","id":"81309ef7-df42-4df9-8610-9d23f1ad7ac2","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.250Z","level":"info","event":"http","id":"02ac564e-78df-4113-afa4-7414c8c4beb7","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.252Z","level":"info","event":"http","id":"315ec538-6d9d-4683-9bf4-5838e22c26e8","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.253Z","level":"info","event":"http","id":"965f3711-a44d-48cc-a103-ea5fad64baaa","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.257Z","level":"info","event":"http","id":"a6dc438a-af79-464c-a7ea-7dc11ab66ecf","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.262Z","level":"info","event":"http","id":"6a62f387-6f3b-47d8-982a-e33382165bf8","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.264Z","level":"info","event":"http","id":"b283529f-a88e-406c-b672-6664bab63938","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.265Z","level":"info","event":"http","id":"73845c5a-a176-4148-9ddc-dedb19f8bd16","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.265Z","level":"info","event":"http","id":"e46a9f36-c1fc-4e91-b170-57f6d8fc0ec3","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.266Z","level":"info","event":"http","id":"d9897cc7-384b-4bef-bc5d-7c42d47eed45","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.267Z","level":"info","event":"http","id":"b7926895-5468-43fe-a871-ad7a568e021b","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.267Z","level":"info","event":"http","id":"bf5b0f73-dbe5-4a4c-8a22-d7986a59dcad","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.268Z","level":"info","event":"http","id":"2ca441a6-5694-43b1-9dc3-de74c0ea1484","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.268Z","level":"info","event":"http","id":"7e9b4441-0a5b-4e62-9329-0f52ed3e087b","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.269Z","level":"info","event":"http","id":"9e332508-4662-47c2-8d82-f3dc44cc895d","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.270Z","level":"info","event":"http","id":"ea41354c-3bbf-46f7-8ac0-707706619803","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.270Z","level":"info","event":"http","id":"4041f0af-ff30-4315-9b6b-7f5e1248d350","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.272Z","level":"info","event":"http","id":"4cda7e9c-2d4a-4f1c-8779-b38da511a399","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.273Z","level":"info","event":"http","id":"cd3a5254-8e9d-493f-a273-2b2dfa11b8ab","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.275Z","level":"info","event":"http","id":"fb4a725a-22d4-4223-94ea-f48c0e4beb07","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.278Z","level":"info","event":"http","id":"179645bf-c73f-40b7-a10f-82fc46a97394","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.279Z","level":"info","event":"http","id":"2c0e0f81-258c-42ff-b2ba-6ef4d0c49ca2","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.279Z","level":"info","event":"http","id":"e6037250-6598-4594-96a7-71e08a16282a","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.280Z","level":"info","event":"http","id":"1dbf43d4-b9aa-494a-b8d9-82ad6d2661ce","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.280Z","level":"info","event":"http","id":"b53e62a9-d834-4ad8-b3ce-a87974dc40b6","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.281Z","level":"info","event":"http","id":"53762fc1-416f-4fa2-96bf-a3489acf4ebd","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.284Z","level":"info","event":"http","id":"80ae228e-f1a4-429a-b9b1-49a42ed5763e","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.284Z","level":"info","event":"http","id":"67e09736-a43e-4b28-a6c9-0c19cc962009","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.285Z","level":"info","event":"http","id":"244f7978-a288-41ac-84cb-15d2f2a29db5","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.286Z","level":"info","event":"http","id":"a15892ad-7ff9-4e40-8a8b-ca8db2f788de","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.295Z","level":"info","event":"http","id":"034823c8-96de-4c58-a07a-fac83f909047","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.296Z","level":"info","event":"http","id":"d95e97db-5479-4a88-b74d-66677846c0c3","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.297Z","level":"info","event":"http","id":"acb79da6-d098-49b5-b212-e7646133f313","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.298Z","level":"info","event":"http","id":"6d0bb797-b965-48dd-8dfa-b7ea4ea45670","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.298Z","level":"info","event":"http","id":"f27bc970-28a9-4b42-9784-b32166ce4c60","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.299Z","level":"info","event":"http","id":"69390bb8-2049-4d63-94bd-c758a9b6a46f","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.300Z","level":"info","event":"http","id":"a782e129-f849-48ad-961a-414943441399","method":"GET","path":"/api/rfq-basket","status":200,"ms":1}
+{"ts":"2026-10-18T09:28:07.300Z","level":"info","event":"http","id":"f6698e1e-d4a1-47ec-bba1-d3f0620a2562","method":"GET","path":"/api/rfq-basket","status":200,"ms":0}
+{"ts":"2026-10-18T09:28:07.315Z","level":"info","event":"http","id":"b3d44d21-dbf1-4441-a2dd-a4503197b11c","method":"POST","path":"/api/contact","status":201,"ms":14}
+✔ basket views do not spend the RFQ/contact submission budget (rm 9.1-3) (80.1402ms)
+{"ts":"2026-10-18T09:28:06.694Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\tokx-KuJLbY"}
+{"ts":"2026-10-18T09:28:06.695Z","level":"info","event":"watchlist_loaded","path":"C:\\software_project\\Simal_Corporate_website\\Codebase\\apps\\portal\\test\\fixtures\\watchlist.csv","entries":5}
+{"ts":"2026-10-18T09:28:06.989Z","level":"info","event":"http","id":"37395f9c-e7bf-47c4-be86-7d1b33e8c0ba","method":"POST","path":"/api/migration/exchange-token","status":200,"ms":24}
+{"ts":"2026-10-18T09:28:07.014Z","level":"info","event":"http","id":"7d8c8add-5e38-4724-8d0b-7b6a74b84f41","method":"GET","path":"/api/auth/me","status":200,"ms":2}
+✔ valid legacy token → session cookie + redirect to status (99.7955ms)
+{"ts":"2026-10-18T09:28:07.049Z","level":"info","event":"http","id":"bb667f0b-2650-48c1-9627-81acdaa931af","method":"POST","path":"/api/migration/exchange-token","status":200,"ms":18}
+✔ replayed token → 409 (single use, permanently consumed) (43.5244ms)
+✔ tampered signature → 401 (11.2575ms)
+✔ expired token → 401 (8.757ms)
+{"ts":"2026-10-18T09:28:07.096Z","level":"info","event":"http","id":"f0cd05bd-9d45-4ff6-b3c3-1c6b6af30b3e","method":"POST","path":"/api/migration/exchange-token","status":200,"ms":6}
+✔ unknown legacy account → structured no_account, no session (12.6859ms)
+✔ garbage shapes → 401 without detail (18.2911ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1997.8238
+SUITES-EXIT=0

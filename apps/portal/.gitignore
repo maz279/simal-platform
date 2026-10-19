@@ -1,0 +1,11 @@
+# Simal KYC System — runtime secrets & state (never commit)
+.env
+data/
+*.log
+
+# Dependencies (none today — future-proof)
+node_modules/
+
+# OS artifacts
+Thumbs.db
+.Desktop.ini

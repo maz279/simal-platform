@@ -1,0 +1,68 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CMS — Product Editor — Simal</title>
+<link rel="icon" type="image/png" href="assets/img/brand/favicon-32.png"><link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="assets/js/core.js?v=131"></script>
+</head>
+<body>
+<div class="panel-shell" style="display:grid;grid-template-columns:248px 1fr;min-height:100vh">
+  <aside class="side">
+    <div style="padding:18px 16px;display:flex;gap:12px;align-items:center">
+      <img src="assets/img/brand/simal-logo-white-360w.png" alt="Simal" style="height:30px;width:auto;display:block">
+      <div><b style="color:#fff;font-size:13.5px">Simal CMS</b><div style="font-size:11px;color:#8CA2BC">Bilingual Product Editor</div></div>
+    </div>
+    <nav class="s-nav">
+      <a href="cms.html">📊 Dashboard</a>
+      <a class="on" href="cms-editor.html">✏️ Product editor</a>
+      <a href="index.html">↩ Public site</a>
+      <a href="admin-queue.html">🛡 Admin panel</a>
+    </nav>
+    <div style="padding:14px 16px">
+      <input class="in" id="pick" placeholder="Filter 81 SKUs…" style="background:#0D1F38;border-color:#1C3149;color:#DCE9F7">
+      <div class="list-scroll" id="pick-list" style="margin-top:10px;font-size:12.5px"></div>
+    </div>
+  </aside>
+  <div class="p-main">
+    <div class="p-top"><b id="ed-title">Product editor</b><span class="note" id="ed-sub">—</span></div>
+    <div class="p-body" style="padding:22px">
+      <div class="split" style="grid-template-columns:1.2fr .8fr;align-items:start">
+        <div>
+          <div class="mini-tabs">
+            <button class="on" data-lang="en">English</button>
+            <button data-lang="ar">العربية</button>
+          </div>
+          <div class="card card-p" style="padding:20px">
+            <div class="field"><label>Product name (EN)</label><input class="in" id="f-name-en"></div>
+            <div class="field" style="margin-top:12px"><label>Description (EN)</label><textarea class="in" id="f-desc-en" rows="5" style="resize:vertical"></textarea></div>
+            <div class="field" style="margin-top:12px"><label>SKU (locked)</label><input class="in" id="f-sku" readonly style="background:#F4F8FC"></div>
+            <div id="pane-ar" hidden dir="rtl">
+              <div class="field"><label>اسم المنتج (AR)</label><input class="in" id="f-name-ar" dir="rtl"></div>
+              <div class="field" style="margin-top:12px"><label>الوصف (AR)</label><textarea class="in" id="f-desc-ar" rows="5" dir="rtl" style="resize:vertical"></textarea></div>
+            </div>
+            <div style="display:flex;gap:10px;margin-top:18px">
+              <button class="btn btn-p" id="ed-save">💾 Save changes</button>
+              <button class="btn btn-o" id="ed-revert">↩ Revert to mirror original</button>
+            </div>
+            <p class="hint" style="margin-top:10px">Saves become live overrides — the public product page reads them immediately (same browser).</p>
+          </div>
+        </div>
+        <aside>
+          <div class="card card-p" style="padding:18px">
+            <b style="font-size:14px">RTL live preview</b>
+            <div dir="rtl" style="margin-top:12px;border:1px dashed var(--line-2);border-radius:14px;padding:16px;background:#FDFBF5">
+              <div style="font-weight:800;font-size:15px" id="pv-name-ar">—</div>
+              <p style="font-size:13px;color:var(--slate);margin-top:6px;line-height:1.8" id="pv-desc-ar">—</p>
+            </div>
+            <div style="margin-top:14px;border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center">
+              <img id="pv-img" src="" alt="" style="width:74px;height:58px;object-fit:contain">
+              <div><b style="font-size:13px" id="pv-name-en">—</b><div class="note" id="pv-sku">—</div></div>
+            </div>
+            <a class="btn btn-o btn-block btn-sm" style="margin-top:12px" id="pv-open" href="#">Open public page ↗</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="assets/js/pages/cms-editor.js?v=131"></script>
+</body></html>

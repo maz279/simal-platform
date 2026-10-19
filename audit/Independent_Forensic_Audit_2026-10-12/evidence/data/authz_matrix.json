@@ -1,0 +1,205 @@
+{
+ "GET /api/admin/submissions?per=50": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 rows[26]",
+  "viewer": "200 rows[26]",
+  "reviewer": "200 rows[26]",
+  "super_admin": "200 rows[26]"
+ },
+ "GET /api/admin/submissions/SIM-KYC-2026-10061": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN",
+  "viewer": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN",
+  "reviewer": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN",
+  "super_admin": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN"
+ },
+ "GET /api/admin/submissions/SIM-KYC-2026-10061?pii=full": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN",
+  "viewer": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN",
+  "reviewer": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN",
+  "super_admin": "200 signatories[1] ubos[1] history[5] documents[14] queries[1] UNMASKED_IBAN"
+ },
+ "GET /api/admin/documents/doc_74b13e3cacac620a4a2c": {
+  "anonymous": "401 Authentication required",
+  "partner": "500 ENOENT: no such file or directory, open 'C:\\Users\\",
+  "viewer": "500 ENOENT: no such file or directory, open 'C:\\Users\\",
+  "reviewer": "500 ENOENT: no such file or directory, open 'C:\\Users\\",
+  "super_admin": "500 ENOENT: no such file or directory, open 'C:\\Users\\"
+ },
+ "GET /api/admin/analytics": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 aging[10] expiries[0]",
+  "viewer": "200 aging[10] expiries[0]",
+  "reviewer": "200 aging[10] expiries[0]",
+  "super_admin": "200 aging[10] expiries[0]"
+ },
+ "GET /api/admin/audit": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 [200]",
+  "super_admin": "200 [200]"
+ },
+ "GET /api/admin/export.csv": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "500 Invalid time value",
+  "reviewer": "500 Invalid time value",
+  "super_admin": "500 Invalid time value"
+ },
+ "GET /api/admin/invites": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 [1]",
+  "super_admin": "200 [1]"
+ },
+ "GET /api/admin/rfqs": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 rows[4]",
+  "super_admin": "200 rows[4]"
+ },
+ "GET /api/admin/outbox": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 [58]",
+  "super_admin": "200 [58]"
+ },
+ "GET /api/admin/users": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "403 Insufficient permissions for this action",
+  "super_admin": "200 [17]"
+ },
+ "GET /api/admin/sessions": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "403 Insufficient permissions for this action",
+  "super_admin": "200 [4]"
+ },
+ "GET /api/admin/settings": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "403 Insufficient permissions for this action",
+  "super_admin": "200 {\"simalTin\":100548172900015,\"simalPeppol\":\"0235:100548172900"
+ },
+ "GET /api/admin/reports": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 builtIn[6] availableFields[27]",
+  "viewer": "200 builtIn[6] availableFields[27]",
+  "reviewer": "200 builtIn[6] availableFields[27]",
+  "super_admin": "200 builtIn[6] availableFields[27]"
+ },
+ "POST /api/admin/reports/build": {
+  "anonymous": "401 Authentication required",
+  "partner": "500 Invalid time value",
+  "viewer": "500 Invalid time value",
+  "reviewer": "500 Invalid time value",
+  "super_admin": "500 Invalid time value"
+ },
+ "POST /api/admin/reports/export.csv": {
+  "anonymous": "401 Authentication required",
+  "partner": "500 Invalid time value",
+  "viewer": "500 Invalid time value",
+  "reviewer": "500 Invalid time value",
+  "super_admin": "500 Invalid time value"
+ },
+ "GET /api/einvoice/admin/queue": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 rows[7]",
+  "viewer": "200 rows[7]",
+  "reviewer": "200 rows[7]",
+  "super_admin": "200 rows[7]"
+ },
+ "GET /api/einvoice/admin/inv_3cb9fc4fc1f9776512e9": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Partners may only access their own invoices",
+  "viewer": "200 lines[0] timeline[1]",
+  "reviewer": "200 lines[0] timeline[1]",
+  "super_admin": "200 lines[0] timeline[1]"
+ },
+ "GET /api/einvoice/mine": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 invoices[0]",
+  "viewer": "200 invoices[0]",
+  "reviewer": "200 invoices[0]",
+  "super_admin": "200 invoices[0]"
+ },
+ "GET /api/einvoice/inv_3cb9fc4fc1f9776512e9": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Partners may only access their own invoices",
+  "viewer": "200 lines[0] timeline[1]",
+  "reviewer": "200 lines[0] timeline[1]",
+  "super_admin": "200 lines[0] timeline[1]"
+ },
+ "GET /api/integrations/health": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 {\"version\":\"v1\",\"timestamp\":\"2026-10-12T03:09:40.034Z\",\"inte",
+  "viewer": "200 {\"version\":\"v1\",\"timestamp\":\"2026-10-12T03:09:40.044Z\",\"inte",
+  "reviewer": "200 {\"version\":\"v1\",\"timestamp\":\"2026-10-12T03:09:40.051Z\",\"inte",
+  "super_admin": "200 {\"version\":\"v1\",\"timestamp\":\"2026-10-12T03:09:40.058Z\",\"inte"
+ },
+ "GET /api/integrations/email/dns": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 {\"spf\":{\"type\":\"TXT\",\"name\":\"simalme.com\",\"value\":\"v=spf1 in",
+  "viewer": "200 {\"spf\":{\"type\":\"TXT\",\"name\":\"simalme.com\",\"value\":\"v=spf1 in",
+  "reviewer": "200 {\"spf\":{\"type\":\"TXT\",\"name\":\"simalme.com\",\"value\":\"v=spf1 in",
+  "super_admin": "200 {\"spf\":{\"type\":\"TXT\",\"name\":\"simalme.com\",\"value\":\"v=spf1 in"
+ },
+ "GET /api/integrations/analytics/events": {
+  "anonymous": "401 Authentication required",
+  "partner": "200 events[17]",
+  "viewer": "200 events[17]",
+  "reviewer": "200 events[17]",
+  "super_admin": "200 events[17]"
+ },
+ "POST /api/integrations/webhook/test-sign": {
+  "anonymous": "401 Authentication required",
+  "partner": "500 WEBHOOK_SECRET not configured",
+  "viewer": "500 WEBHOOK_SECRET not configured",
+  "reviewer": "500 WEBHOOK_SECRET not configured",
+  "super_admin": "500 WEBHOOK_SECRET not configured"
+ },
+ "POST /api/integrations/email/send": {
+  "anonymous": "401 Authentication required",
+  "partner": "422 Unknown template: kyc.approved",
+  "viewer": "422 Unknown template: kyc.approved",
+  "reviewer": "422 Unknown template: kyc.approved",
+  "super_admin": "422 Unknown template: kyc.approved"
+ },
+ "GET /api/cms/blocks": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 blocks[109]",
+  "super_admin": "200 blocks[109]"
+ },
+ "GET /api/cms/outbox": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 outbox[50]",
+  "super_admin": "200 outbox[50]"
+ },
+ "GET /api/cms/telemetry": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 {\"productCount\":78,\"publicSiteUrl\":\"http://127.0.0.1:8100\",\"",
+  "super_admin": "200 {\"productCount\":78,\"publicSiteUrl\":\"http://127.0.0.1:8100\",\""
+ },
+ "PUT /api/cms/blocks/site/zz-authz-probe": {
+  "anonymous": "401 Authentication required",
+  "partner": "403 Insufficient permissions for this action",
+  "viewer": "403 Insufficient permissions for this action",
+  "reviewer": "200 {\"id\":110,\"entity\":\"site\",\"entity_id\":\"zz-authz-probe\",\"lang",
+  "super_admin": "200 {\"id\":110,\"entity\":\"site\",\"entity_id\":\"zz-authz-probe\",\"lang"
+ }
+}

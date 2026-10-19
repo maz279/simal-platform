@@ -1,0 +1,7 @@
+=== rm(3.2) CMS-SIDE HARDENING — EVIDENCE Fri Oct 16 23:29:02 MPST 2026 ===
+3.2-1: cms.js esc() escapes single quotes (served file verified: replace(/'/g,'&#39;')); full innerHTML sweep (3 methods: template-literal, concatenation, multi-line) = 0 unescaped value interpolations (only code constants/DB integers/counts); cache-buster bumped cms.js?v=10
+3.2-2: assertSafePublicUrl guards the REAL routed write paths (upsertAnnouncement L739, upsertSlide L111, rollback announcement path L251): javascript: -> 422 (both probed live), /products + https -> 200
+BONUS FIX (L50): admin@simalme.com removed from legacyDevEmails purge list — the L49 vanish recurred (2nd time) after a restart; guard simulated OK in isolation but failed live; stability verified (2x consecutive 200 logins post-fix)
+PROBE HYGIENE: slide 1 restored from its original Oct-11 revision (pre-probe state clobbered by the pre-guard probe); announcement cta_href restored; site rebuilt clean
+SUITES: 109/109; CI spot lint+security+secrets-scan 3/3
+BROWSER: announcements view renders with textbox (quote-safe), screenshot archived

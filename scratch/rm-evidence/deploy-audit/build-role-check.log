@@ -1,0 +1,19 @@
+PASS prod-db-roles.sql applied
+PASS build role reads products — 78
+PASS build role reads product_deep — 78
+PASS build role reads brands — 22
+PASS build role reads content_blocks — 125
+PASS build role reads hero_slides — 5
+PASS build role reads testimonials — 3
+PASS build role reads category_guides — 7
+PASS build role reads legal_policies — 14
+PASS build role reads announcements — 1
+PASS build role cannot read users — 42501
+PASS build role cannot read sessions — 42501
+PASS build role cannot read one_time_tokens — 42501
+PASS build role cannot read submissions — 42501
+PASS build role cannot read documents — 42501
+PASS build role cannot read audit_log — 42501
+PASS build role cannot read settings — 42501
+PASS astro build as simal_build — 23 entries
+BUILD ROLE CHECK: ALL PASS

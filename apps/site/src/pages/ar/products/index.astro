@@ -1,0 +1,140 @@
+---
+// apps/site/src/pages/ar/products/index.astro — Arabic Products Catalog (SEO-1)
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { db } from '../../../lib/db';
+import { siteFacts } from '../../../lib/facts';
+
+const products = await db`SELECT slug, name, brand, cat, cat_label, short, sku, imgs, stock, is_new FROM products ORDER BY brand, name`;
+
+const AR_CAT_LABELS: Record<string, string> = {
+  'internal-ssd': 'أقراص SSD داخلية',
+  'portable-ssd': 'أقراص SSD محمولة',
+  'memory': 'الذاكرة العشوائية (RAM)',
+  'monitors': 'الشاشات ووحدات العرض',
+  'accessories': 'الملحقات ووحدات الطاقة',
+  'gaming': 'الألعاب الإلكترونية',
+  'laptops': 'الحواسيب المحمولة'
+};
+
+const cats = [...new Map(products.map((p: any) => [p.cat, { cat: p.cat, label: AR_CAT_LABELS[p.cat] || p.cat_label || p.cat }])).values()];
+const catCounts: Record<string, number> = {};
+const brandCounts: Record<string, number> = {};
+for (const p of products as any[]) {
+  catCounts[p.cat] = (catCounts[p.cat] || 0) + 1;
+  brandCounts[p.brand] = (brandCounts[p.brand] || 0) + 1;
+}
+const brands = Object.keys(brandCounts).sort((a, b) => a.localeCompare(b));
+// rm(6.1-2/9.1-1, PUB-8): published brand count from the single source, not the facet list.
+const { brandCount } = await siteFacts();
+const imgOf = (imgs: unknown): string => {
+  const v = Array.isArray(imgs) ? imgs[0] : (typeof imgs === 'string' && imgs !== 'null' ? JSON.parse(imgs)[0] : '');
+  return v && !v.startsWith('/') ? '/' + v : v;
+};
+
+const breadcrumbsSchema = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/ar/products/#breadcrumb',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': 'الرئيسية', 'item': 'https://simalme.com/ar/' },
+    { '@type': 'ListItem', 'position': 2, 'name': 'المنتجات', 'item': 'https://simalme.com/ar/products/' }
+  ]
+};
+---
+
+<BaseLayout
+  lang="ar"
+  dir="rtl"
+  title={`كتالوج المنتجات — ${products.length} منتجاً أصلياً — سيمال للتقنيات`}
+  description={`تصفح كتالوج سيمال للتقنيات: ${products.length} منتجاً أصلياً · ${brandCount} علامة تجارية عالمية معتمدة، بضمان محلي وتوريد مباشر من جبل علي.`}
+  schemas={[breadcrumbsSchema]}
+>
+<!-- rm(6.2): deep-link anchor targets for category fragments -->
+<span id="internal-ssd" hidden aria-hidden="true"></span>
+<span id="portable-ssd" hidden aria-hidden="true"></span>
+<span id="memory" hidden aria-hidden="true"></span>
+<span id="monitors" hidden aria-hidden="true"></span>
+<span id="gaming" hidden aria-hidden="true"></span>
+<span id="accessories" hidden aria-hidden="true"></span>
+<span id="laptops" hidden aria-hidden="true"></span>
+
+  <section class="hero" style="padding:0"><div class="wrap" style="padding:46px 28px 40px;grid-template-columns:1fr">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">كتالوج المنتجات المباشر · توريد جبل علي</span>
+      <h1 style="font-size:34px" id="cat-title">كافة المنتجات والقطع</h1>
+      <p class="lead" id="cat-sub">منتجات أصلية 100% معتمدة مع ضمان محلي وأسعار خاصة للموزعين والشركاء عبر طلبات الأسعار.</p>
+    </div>
+  </div></section>
+
+  <div class="wrap"><div class="crumbs"><a href="/ar/">الرئيسية</a> › <a href="/ar/products/">المنتجات</a> › <b id="crumb">كافة المنتجات</b></div></div>
+
+  <section class="sec" style="padding-top:24px"><div class="wrap">
+    <div class="split" style="grid-template-columns:260px 1fr;align-items:start;gap:32px">
+      <!-- Facets Sidebar -->
+      <aside class="card card-p" style="position:sticky;top:88px">
+        <h3 style="font-size:16px;margin-bottom:14px">تصفية المنتجات</h3>
+        <div style="margin-bottom:20px">
+          <b style="font-size:13px;display:block;margin-bottom:8px;color:var(--slate)">الفئات</b>
+          <div style="display:flex;flex-direction:column;gap:6px">
+            <button class="btn btn-sm btn-p cat-btn" data-cat="" style="text-align:right;justify-content:flex-start">كافة الفئات ({products.length})</button>
+            {cats.map(c => (
+              <button class="btn btn-sm btn-o cat-btn" data-cat={c.cat} style="text-align:right;justify-content:space-between">
+                <span>{c.label}</span>
+                <span class="badge b-blue" style="font-size:11px">{catCounts[c.cat]}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <b style="font-size:13px;display:block;margin-bottom:8px;color:var(--slate)">العلامات التجارية</b>
+          <div style="display:flex;flex-wrap:wrap;gap:4px;max-height:240px;overflow-y:auto">
+            {brands.map(b => (
+              <button class="chip brand-btn" data-brand={b} style="font-size:12px;padding:4px 8px">
+                {b} ({brandCounts[b]})
+              </button>
+            ))}
+          </div>
+        </div>
+      </aside>
+
+      <!-- Products Grid -->
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:12px">
+          <div style="font-size:14px;color:var(--slate)">
+            عرض <b id="count-visible" style="color:var(--ink)">{products.length}</b> من أصل {products.length} منتجاً
+          </div>
+        </div>
+
+        <div class="grid g4" id="pgrid">
+          {products.map((p: any) => {
+            const img = imgOf(p.imgs);
+            const isStock = p.stock === true || p.stock === 'true' || p.stock === '1' || (typeof p.stock === 'string' && p.stock.toLowerCase() === 'in stock');
+            return (
+              <div class="prod" data-cat={p.cat} data-brand={p.brand} style="background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column">
+                <a class="go" href={`/products/${p.slug}/`} aria-label={p.name}></a>
+                <div class="ph has-img" style="height:180px;position:relative;background:#fff;display:flex;align-items:center;justify-content:center;padding:12px">
+                  {img ? <img src={img} alt={p.name} loading="lazy" style="max-height:100%;object-fit:contain" /> : <span class="sk">{p.sku}</span>}
+                  {p.is_new && <span class="badge b-red" style="position:absolute;top:8px;right:8px">جديد</span>}
+                </div>
+                <div class="pb" style="padding:14px;display:flex;flex-direction:column;flex:1">
+                  <span class="cat" style="font-size:11px;color:var(--slate);text-transform:uppercase;font-weight:700">{p.brand} · {AR_CAT_LABELS[p.cat] || p.cat_label || p.cat}</span>
+                  <h4 style="font-size:14px;margin:6px 0;line-height:1.4"><a href={`/products/${p.slug}/`} style="color:var(--ink);text-decoration:none">{p.name}</a></h4>
+                  <span class="meta" style="font-size:12px;color:var(--slate);margin-bottom:12px;flex:1">{p.short || ''}</span>
+                  <div class="pr" style="display:flex;align-items:center;justify-content:space-between;margin-top:auto">
+                    <span class="badge b-ok">{isStock ? 'متوفر' : 'حسب الطلب'}</span>
+                    <button class="btn btn-sm btn-p add-rfq" data-slug={p.slug} aria-label={`أضف ${p.name} إلى سلة طلب الأسعار`}>أضف للطلب</button>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  
+</BaseLayout>
+
+<script src="/assets/js/ar-products-page.js" defer></script>
+<script src="/assets/js/add-rfq.js" defer></script>

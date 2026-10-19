@@ -1,0 +1,5 @@
+=== live batch-job wiring (SLA escalation + expiry reminders) ===
+{"ts":"2026-10-18T12:00:23.534Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal_app:***@127.0.0.1:5433/simal"}
+{"ts":"2026-10-18T12:00:23.537Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+escalateSlaBreaches -> 0 | remindExpiries -> 0

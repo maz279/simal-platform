@@ -1,0 +1,1792 @@
+
+================ JOB lint ================
+
+>>>>>>>> eslint: node node_modules/eslint/bin/eslint.js . --ext .js,.mjs
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\admin.js
+     9:3   warning  Unexpected var, use let or const instead      no-var
+    10:3   warning  Unexpected var, use let or const instead      no-var
+    11:3   warning  Unexpected var, use let or const instead      no-var
+    17:5   warning  Unexpected var, use let or const instead      no-var
+    20:7   warning  Unexpected var, use let or const instead      no-var
+    27:9   warning  Unexpected var, use let or const instead      no-var
+    28:9   warning  Unexpected var, use let or const instead      no-var
+    42:5   warning  Unexpected var, use let or const instead      no-var
+    43:5   warning  Unexpected var, use let or const instead      no-var
+    45:3   warning  Unexpected var, use let or const instead      no-var
+    47:5   warning  Unexpected var, use let or const instead      no-var
+    48:5   warning  Unexpected var, use let or const instead      no-var
+    65:5   warning  Unexpected var, use let or const instead      no-var
+    81:7   warning  Unexpected var, use let or const instead      no-var
+    93:5   warning  Unexpected var, use let or const instead      no-var
+   125:3   warning  Unexpected var, use let or const instead      no-var
+   137:5   warning  Unexpected var, use let or const instead      no-var
+   138:5   warning  Unexpected var, use let or const instead      no-var
+   140:7   warning  Unexpected var, use let or const instead      no-var
+   146:7   warning  Unexpected var, use let or const instead      no-var
+   158:5   warning  Unexpected var, use let or const instead      no-var
+   170:7   warning  Unexpected var, use let or const instead      no-var
+   171:7   warning  Unexpected var, use let or const instead      no-var
+   220:7   warning  Unexpected var, use let or const instead      no-var
+   221:7   warning  Unexpected var, use let or const instead      no-var
+   222:7   warning  Unexpected var, use let or const instead      no-var
+   223:7   warning  Unexpected var, use let or const instead      no-var
+   227:9   warning  Unexpected var, use let or const instead      no-var
+   229:20  error    'requestAnimationFrame' is not defined        no-undef
+   232:7   error    'requestAnimationFrame' is not defined        no-undef
+   239:3   warning  Unexpected var, use let or const instead      no-var
+   253:7   warning  Unexpected var, use let or const instead      no-var
+   253:11  warning  'counts' is assigned a value but never used   no-unused-vars
+   254:7   warning  Unexpected var, use let or const instead      no-var
+   265:7   warning  Unexpected var, use let or const instead      no-var
+   274:9   warning  Unexpected var, use let or const instead      no-var
+   274:13  warning  'pending' is assigned a value but never used  no-unused-vars
+   276:11  warning  Unexpected var, use let or const instead      no-var
+   287:13  warning  Unexpected var, use let or const instead      no-var
+   293:9   warning  Unexpected var, use let or const instead      no-var
+   299:7   warning  Unexpected var, use let or const instead      no-var
+   300:9   warning  Unexpected var, use let or const instead      no-var
+   303:7   warning  Unexpected var, use let or const instead      no-var
+   324:5   warning  Unexpected var, use let or const instead      no-var
+   329:5   warning  Unexpected var, use let or const instead      no-var
+   339:11  warning  Unexpected var, use let or const instead      no-var
+   340:11  warning  Unexpected var, use let or const instead      no-var
+   353:21  error    'navigator' is not defined                    no-undef
+   353:42  error    'navigator' is not defined                    no-undef
+   373:5   warning  Unexpected var, use let or const instead      no-var
+   375:7   warning  Unexpected var, use let or const instead      no-var
+   399:9   warning  Unexpected var, use let or const instead      no-var
+   414:5   warning  Unexpected var, use let or const instead      no-var
+   415:5   warning  Unexpected var, use let or const instead      no-var
+   462:5   warning  Unexpected var, use let or const instead      no-var
+   468:9   warning  Unexpected var, use let or const instead      no-var
+   469:19  warning  Unexpected var, use let or const instead      no-var
+   469:78  warning  Unexpected var, use let or const instead      no-var
+   475:5   warning  Unexpected var, use let or const instead      no-var
+   476:5   warning  Unexpected var, use let or const instead      no-var
+   485:9   warning  Unexpected var, use let or const instead      no-var
+   486:21  warning  Unexpected var, use let or const instead      no-var
+   486:80  warning  Unexpected var, use let or const instead      no-var
+   494:3   warning  Unexpected var, use let or const instead      no-var
+   502:5   warning  Unexpected var, use let or const instead      no-var
+   503:5   warning  Unexpected var, use let or const instead      no-var
+   518:5   warning  Unexpected var, use let or const instead      no-var
+   522:5   warning  Unexpected var, use let or const instead      no-var
+   530:5   warning  Unexpected var, use let or const instead      no-var
+   559:5   warning  Unexpected var, use let or const instead      no-var
+   572:5   warning  Unexpected var, use let or const instead      no-var
+   580:5   warning  Unexpected var, use let or const instead      no-var
+   581:5   warning  Unexpected var, use let or const instead      no-var
+   582:5   warning  Unexpected var, use let or const instead      no-var
+   601:5   warning  Unexpected var, use let or const instead      no-var
+   603:7   warning  Unexpected var, use let or const instead      no-var
+   610:5   warning  Unexpected var, use let or const instead      no-var
+   635:7   warning  Unexpected var, use let or const instead      no-var
+   636:7   warning  Unexpected var, use let or const instead      no-var
+   636:11  warning  'buckets' is assigned a value but never used  no-unused-vars
+   651:5   warning  Unexpected var, use let or const instead      no-var
+   652:5   warning  Unexpected var, use let or const instead      no-var
+   653:5   warning  Unexpected var, use let or const instead      no-var
+   654:5   warning  Unexpected var, use let or const instead      no-var
+   655:5   warning  Unexpected var, use let or const instead      no-var
+   657:7   warning  Unexpected var, use let or const instead      no-var
+   670:22  warning  Unexpected var, use let or const instead      no-var
+   683:5   warning  Unexpected var, use let or const instead      no-var
+   711:5   warning  Unexpected var, use let or const instead      no-var
+   743:7   warning  Unexpected var, use let or const instead      no-var
+   777:7   warning  Unexpected var, use let or const instead      no-var
+   781:11  warning  Unexpected var, use let or const instead      no-var
+   787:11  warning  Unexpected var, use let or const instead      no-var
+   803:11  warning  Unexpected var, use let or const instead      no-var
+   821:5   warning  Unexpected var, use let or const instead      no-var
+   836:11  warning  Unexpected var, use let or const instead      no-var
+   856:5   warning  Unexpected var, use let or const instead      no-var
+   929:7   warning  Unexpected var, use let or const instead      no-var
+   931:9   warning  Unexpected var, use let or const instead      no-var
+   932:9   warning  Unexpected var, use let or const instead      no-var
+   942:7   warning  Unexpected var, use let or const instead      no-var
+   995:11  warning  Unexpected var, use let or const instead      no-var
+  1004:9   warning  Unexpected var, use let or const instead      no-var
+  1018:9   warning  Unexpected var, use let or const instead      no-var
+  1039:9   warning  Unexpected var, use let or const instead      no-var
+  1047:13  warning  Unexpected var, use let or const instead      no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\cms.js
+    17:3   warning  Unexpected var, use let or const instead  no-var
+    18:3   warning  Unexpected var, use let or const instead  no-var
+    20:3   warning  Unexpected var, use let or const instead  no-var
+    63:5   warning  Unexpected var, use let or const instead  no-var
+    69:5   warning  Unexpected var, use let or const instead  no-var
+    71:5   warning  Unexpected var, use let or const instead  no-var
+    72:5   warning  Unexpected var, use let or const instead  no-var
+    73:5   warning  Unexpected var, use let or const instead  no-var
+    75:5   warning  Unexpected var, use let or const instead  no-var
+    77:5   warning  Unexpected var, use let or const instead  no-var
+   102:5   warning  Unexpected var, use let or const instead  no-var
+   103:5   warning  Unexpected var, use let or const instead  no-var
+   104:5   warning  Unexpected var, use let or const instead  no-var
+   105:5   warning  Unexpected var, use let or const instead  no-var
+   108:7   warning  Unexpected var, use let or const instead  no-var
+   109:7   warning  Unexpected var, use let or const instead  no-var
+   110:7   warning  Unexpected var, use let or const instead  no-var
+   111:7   warning  Unexpected var, use let or const instead  no-var
+   122:11  warning  Unexpected var, use let or const instead  no-var
+   149:5   warning  Unexpected var, use let or const instead  no-var
+   153:5   warning  Unexpected var, use let or const instead  no-var
+   202:3   warning  Unexpected var, use let or const instead  no-var
+   296:5   warning  Unexpected var, use let or const instead  no-var
+   312:5   warning  Unexpected var, use let or const instead  no-var
+   313:5   warning  Unexpected var, use let or const instead  no-var
+   316:5   warning  Unexpected var, use let or const instead  no-var
+   321:9   warning  Unexpected var, use let or const instead  no-var
+   325:9   warning  Unexpected var, use let or const instead  no-var
+   353:9   warning  Unexpected var, use let or const instead  no-var
+   356:9   warning  Unexpected var, use let or const instead  no-var
+   372:7   warning  Unexpected var, use let or const instead  no-var
+   380:9   warning  Unexpected var, use let or const instead  no-var
+   381:9   warning  Unexpected var, use let or const instead  no-var
+   382:9   warning  Unexpected var, use let or const instead  no-var
+   422:7   warning  Unexpected var, use let or const instead  no-var
+   423:7   warning  Unexpected var, use let or const instead  no-var
+   424:7   warning  Unexpected var, use let or const instead  no-var
+   429:11  error    'confirm' is not defined                  no-undef
+   441:7   warning  Unexpected var, use let or const instead  no-var
+   454:5   warning  Unexpected var, use let or const instead  no-var
+   457:9   warning  Unexpected var, use let or const instead  no-var
+   523:3   warning  Unexpected var, use let or const instead  no-var
+   532:5   warning  Unexpected var, use let or const instead  no-var
+   540:9   warning  Unexpected var, use let or const instead  no-var
+   542:9   warning  Unexpected var, use let or const instead  no-var
+   543:9   warning  Unexpected var, use let or const instead  no-var
+   581:16  warning  'err' is defined but never used           no-unused-vars
+   589:3   warning  Unexpected var, use let or const instead  no-var
+   628:5   warning  Unexpected var, use let or const instead  no-var
+   632:10  warning  Unexpected var, use let or const instead  no-var
+   633:7   warning  Unexpected var, use let or const instead  no-var
+   634:12  warning  Unexpected var, use let or const instead  no-var
+   635:9   warning  Unexpected var, use let or const instead  no-var
+   644:5   warning  Unexpected var, use let or const instead  no-var
+   658:5   warning  Unexpected var, use let or const instead  no-var
+   659:5   warning  Unexpected var, use let or const instead  no-var
+   668:5   warning  Unexpected var, use let or const instead  no-var
+   681:3   warning  Unexpected var, use let or const instead  no-var
+   683:5   warning  Unexpected var, use let or const instead  no-var
+   684:5   warning  Unexpected var, use let or const instead  no-var
+   698:7   warning  Unexpected var, use let or const instead  no-var
+   708:9   warning  Unexpected var, use let or const instead  no-var
+   719:5   warning  Unexpected var, use let or const instead  no-var
+   724:11  warning  Unexpected var, use let or const instead  no-var
+   726:11  warning  Unexpected var, use let or const instead  no-var
+   729:13  warning  Unexpected var, use let or const instead  no-var
+   745:5   warning  Unexpected var, use let or const instead  no-var
+   752:5   warning  Unexpected var, use let or const instead  no-var
+   759:5   warning  Unexpected var, use let or const instead  no-var
+   760:5   warning  Unexpected var, use let or const instead  no-var
+   770:5   warning  Unexpected var, use let or const instead  no-var
+   771:5   warning  Unexpected var, use let or const instead  no-var
+   772:5   warning  Unexpected var, use let or const instead  no-var
+   773:5   warning  Unexpected var, use let or const instead  no-var
+   775:7   warning  Unexpected var, use let or const instead  no-var
+   777:7   warning  Unexpected var, use let or const instead  no-var
+   779:7   warning  Unexpected var, use let or const instead  no-var
+   783:5   warning  Unexpected var, use let or const instead  no-var
+   784:7   warning  Unexpected var, use let or const instead  no-var
+   787:5   warning  Unexpected var, use let or const instead  no-var
+   791:5   warning  Unexpected var, use let or const instead  no-var
+   822:5   warning  Unexpected var, use let or const instead  no-var
+   823:5   warning  Unexpected var, use let or const instead  no-var
+   828:5   warning  Unexpected var, use let or const instead  no-var
+   829:5   warning  Unexpected var, use let or const instead  no-var
+   830:5   warning  Unexpected var, use let or const instead  no-var
+   831:5   warning  Unexpected var, use let or const instead  no-var
+   832:5   warning  Unexpected var, use let or const instead  no-var
+   834:5   warning  Unexpected var, use let or const instead  no-var
+   835:5   warning  Unexpected var, use let or const instead  no-var
+   836:5   warning  Unexpected var, use let or const instead  no-var
+   837:5   warning  Unexpected var, use let or const instead  no-var
+   838:5   warning  Unexpected var, use let or const instead  no-var
+   840:5   warning  Unexpected var, use let or const instead  no-var
+   841:5   warning  Unexpected var, use let or const instead  no-var
+   842:5   warning  Unexpected var, use let or const instead  no-var
+   846:5   warning  Unexpected var, use let or const instead  no-var
+   847:5   warning  Unexpected var, use let or const instead  no-var
+   848:5   warning  Unexpected var, use let or const instead  no-var
+   851:5   warning  Unexpected var, use let or const instead  no-var
+   853:5   warning  Unexpected var, use let or const instead  no-var
+   869:9   warning  Unexpected var, use let or const instead  no-var
+  1039:19  warning  Unexpected var, use let or const instead  no-var
+  1040:19  warning  Unexpected var, use let or const instead  no-var
+  1100:7   warning  Unexpected var, use let or const instead  no-var
+  1125:9   warning  Unexpected var, use let or const instead  no-var
+  1137:7   warning  Unexpected var, use let or const instead  no-var
+  1138:7   warning  Unexpected var, use let or const instead  no-var
+  1139:7   warning  Unexpected var, use let or const instead  no-var
+  1154:7   warning  Unexpected var, use let or const instead  no-var
+  1162:7   warning  Unexpected var, use let or const instead  no-var
+  1163:7   warning  Unexpected var, use let or const instead  no-var
+  1165:9   warning  Unexpected var, use let or const instead  no-var
+  1186:5   warning  Unexpected var, use let or const instead  no-var
+  1188:7   warning  Unexpected var, use let or const instead  no-var
+  1199:5   warning  Unexpected var, use let or const instead  no-var
+  1202:9   warning  Unexpected var, use let or const instead  no-var
+  1203:9   warning  Unexpected var, use let or const instead  no-var
+  1212:9   warning  Unexpected var, use let or const instead  no-var
+  1214:11  warning  Unexpected var, use let or const instead  no-var
+  1224:5   warning  Unexpected var, use let or const instead  no-var
+  1237:5   warning  Unexpected var, use let or const instead  no-var
+  1238:5   warning  Unexpected var, use let or const instead  no-var
+  1243:5   warning  Unexpected var, use let or const instead  no-var
+  1244:5   warning  Unexpected var, use let or const instead  no-var
+  1245:5   warning  Unexpected var, use let or const instead  no-var
+  1246:7   warning  Unexpected var, use let or const instead  no-var
+  1247:7   warning  Unexpected var, use let or const instead  no-var
+  1248:7   warning  Unexpected var, use let or const instead  no-var
+  1283:5   warning  Unexpected var, use let or const instead  no-var
+  1284:5   warning  Unexpected var, use let or const instead  no-var
+  1298:15  warning  Unexpected var, use let or const instead  no-var
+  1329:5   warning  Unexpected var, use let or const instead  no-var
+  1405:9   warning  Unexpected var, use let or const instead  no-var
+  1412:9   warning  Unexpected var, use let or const instead  no-var
+  1413:9   warning  Unexpected var, use let or const instead  no-var
+  1429:5   warning  Unexpected var, use let or const instead  no-var
+  1431:5   warning  Unexpected var, use let or const instead  no-var
+  1432:5   warning  Unexpected var, use let or const instead  no-var
+  1433:5   warning  Unexpected var, use let or const instead  no-var
+  1456:5   warning  Unexpected var, use let or const instead  no-var
+  1457:5   warning  Unexpected var, use let or const instead  no-var
+  1472:5   warning  Unexpected var, use let or const instead  no-var
+  1493:5   warning  Unexpected var, use let or const instead  no-var
+  1494:5   warning  Unexpected var, use let or const instead  no-var
+  1497:7   warning  Unexpected var, use let or const instead  no-var
+  1499:7   warning  Unexpected var, use let or const instead  no-var
+  1500:9   warning  Unexpected var, use let or const instead  no-var
+  1501:9   warning  Unexpected var, use let or const instead  no-var
+  1530:11  warning  Unexpected var, use let or const instead  no-var
+  1531:11  error    'navigator' is not defined                no-undef
+  1539:11  warning  Unexpected var, use let or const instead  no-var
+  1546:11  warning  Unexpected var, use let or const instead  no-var
+  1547:16  error    'confirm' is not defined                  no-undef
+  1578:5   warning  Unexpected var, use let or const instead  no-var
+  1580:5   warning  Unexpected var, use let or const instead  no-var
+  1582:5   warning  Unexpected var, use let or const instead  no-var
+  1584:5   warning  Unexpected var, use let or const instead  no-var
+  1590:5   warning  Unexpected var, use let or const instead  no-var
+  1592:7   warning  Unexpected var, use let or const instead  no-var
+  1594:7   warning  Unexpected var, use let or const instead  no-var
+  1596:7   warning  Unexpected var, use let or const instead  no-var
+  1597:7   warning  Unexpected var, use let or const instead  no-var
+  1598:7   warning  Unexpected var, use let or const instead  no-var
+  1600:9   warning  Unexpected var, use let or const instead  no-var
+  1600:26  error    'FileReader' is not defined               no-undef
+  1612:5   warning  Unexpected var, use let or const instead  no-var
+  1613:5   warning  Unexpected var, use let or const instead  no-var
+  1616:5   warning  Unexpected var, use let or const instead  no-var
+  1617:5   warning  Unexpected var, use let or const instead  no-var
+  1620:5   warning  Unexpected var, use let or const instead  no-var
+  1620:22  error    'FileReader' is not defined               no-undef
+  1622:7   warning  Unexpected var, use let or const instead  no-var
+  1623:7   warning  Unexpected var, use let or const instead  no-var
+  1646:5   warning  Unexpected var, use let or const instead  no-var
+  1647:5   warning  Unexpected var, use let or const instead  no-var
+  1648:5   warning  Unexpected var, use let or const instead  no-var
+  1668:5   warning  Unexpected var, use let or const instead  no-var
+  1687:5   warning  Unexpected var, use let or const instead  no-var
+  1688:5   warning  Unexpected var, use let or const instead  no-var
+  1690:5   warning  Unexpected var, use let or const instead  no-var
+  1700:13  warning  Unexpected var, use let or const instead  no-var
+  1701:13  warning  Unexpected var, use let or const instead  no-var
+  1719:5   warning  Unexpected var, use let or const instead  no-var
+  1722:7   warning  Unexpected var, use let or const instead  no-var
+  1723:7   warning  Unexpected var, use let or const instead  no-var
+  1724:9   warning  Unexpected var, use let or const instead  no-var
+  1725:9   warning  Unexpected var, use let or const instead  no-var
+  1726:9   warning  Unexpected var, use let or const instead  no-var
+  1727:9   warning  Unexpected var, use let or const instead  no-var
+  1728:9   warning  Unexpected var, use let or const instead  no-var
+  1732:7   warning  Unexpected var, use let or const instead  no-var
+  1736:9   warning  Unexpected var, use let or const instead  no-var
+  1737:9   warning  Unexpected var, use let or const instead  no-var
+  1738:9   warning  Unexpected var, use let or const instead  no-var
+  1774:9   warning  Unexpected var, use let or const instead  no-var
+  1793:7   warning  Unexpected var, use let or const instead  no-var
+  1797:7   warning  Unexpected var, use let or const instead  no-var
+  1798:7   warning  Unexpected var, use let or const instead  no-var
+  1885:9   warning  Unexpected var, use let or const instead  no-var
+  1886:9   warning  Unexpected var, use let or const instead  no-var
+  1888:9   warning  Unexpected var, use let or const instead  no-var
+  1897:9   warning  Unexpected var, use let or const instead  no-var
+  1916:11  warning  Unexpected var, use let or const instead  no-var
+  1932:13  error    'confirm' is not defined                  no-undef
+  1961:5   warning  Unexpected var, use let or const instead  no-var
+  1993:9   warning  Unexpected var, use let or const instead  no-var
+  1994:9   warning  Unexpected var, use let or const instead  no-var
+  1996:9   warning  Unexpected var, use let or const instead  no-var
+  1997:9   warning  Unexpected var, use let or const instead  no-var
+  2009:9   warning  Unexpected var, use let or const instead  no-var
+  2023:5   warning  Unexpected var, use let or const instead  no-var
+  2024:5   warning  Unexpected var, use let or const instead  no-var
+  2035:15  warning  Unexpected var, use let or const instead  no-var
+  2051:5   warning  Unexpected var, use let or const instead  no-var
+  2053:5   warning  Unexpected var, use let or const instead  no-var
+  2070:5   warning  Unexpected var, use let or const instead  no-var
+  2107:5   warning  Unexpected var, use let or const instead  no-var
+  2108:5   warning  Unexpected var, use let or const instead  no-var
+  2119:15  warning  Unexpected var, use let or const instead  no-var
+  2135:5   warning  Unexpected var, use let or const instead  no-var
+  2136:5   warning  Unexpected var, use let or const instead  no-var
+  2141:5   warning  Unexpected var, use let or const instead  no-var
+  2142:5   warning  Unexpected var, use let or const instead  no-var
+  2143:5   warning  Unexpected var, use let or const instead  no-var
+  2158:5   warning  Unexpected var, use let or const instead  no-var
+  2206:5   warning  Unexpected var, use let or const instead  no-var
+  2207:5   warning  Unexpected var, use let or const instead  no-var
+  2208:5   warning  Unexpected var, use let or const instead  no-var
+  2211:7   warning  Unexpected var, use let or const instead  no-var
+  2214:7   warning  Unexpected var, use let or const instead  no-var
+  2215:9   warning  Unexpected var, use let or const instead  no-var
+  2216:9   warning  Unexpected var, use let or const instead  no-var
+  2217:9   warning  Unexpected var, use let or const instead  no-var
+  2218:9   warning  Unexpected var, use let or const instead  no-var
+  2232:9   warning  Unexpected var, use let or const instead  no-var
+  2233:9   warning  Unexpected var, use let or const instead  no-var
+  2234:9   warning  Unexpected var, use let or const instead  no-var
+  2235:9   warning  Unexpected var, use let or const instead  no-var
+  2268:11  warning  Unexpected var, use let or const instead  no-var
+  2275:11  warning  Unexpected var, use let or const instead  no-var
+  2282:11  warning  Unexpected var, use let or const instead  no-var
+  2283:16  error    'confirm' is not defined                  no-undef
+  2319:5   warning  Unexpected var, use let or const instead  no-var
+  2321:5   warning  Unexpected var, use let or const instead  no-var
+  2322:5   warning  Unexpected var, use let or const instead  no-var
+  2323:5   warning  Unexpected var, use let or const instead  no-var
+  2324:5   warning  Unexpected var, use let or const instead  no-var
+  2325:5   warning  Unexpected var, use let or const instead  no-var
+  2349:5   warning  Unexpected var, use let or const instead  no-var
+  2369:5   warning  Unexpected var, use let or const instead  no-var
+  2389:5   warning  Unexpected var, use let or const instead  no-var
+  2391:5   warning  Unexpected var, use let or const instead  no-var
+  2392:5   warning  Unexpected var, use let or const instead  no-var
+  2395:5   warning  Unexpected var, use let or const instead  no-var
+  2397:5   warning  Unexpected var, use let or const instead  no-var
+  2409:5   warning  Unexpected var, use let or const instead  no-var
+  2410:5   warning  Unexpected var, use let or const instead  no-var
+  2417:5   warning  Unexpected var, use let or const instead  no-var
+  2426:5   warning  Unexpected var, use let or const instead  no-var
+  2454:5   warning  Unexpected var, use let or const instead  no-var
+  2455:5   warning  Unexpected var, use let or const instead  no-var
+  2467:5   warning  Unexpected var, use let or const instead  no-var
+  2468:5   warning  Unexpected var, use let or const instead  no-var
+  2468:20  error    'Blob' is not defined                     no-undef
+  2469:5   warning  Unexpected var, use let or const instead  no-var
+  2470:5   warning  Unexpected var, use let or const instead  no-var
+  2480:5   warning  Unexpected var, use let or const instead  no-var
+  2495:5   warning  Unexpected var, use let or const instead  no-var
+  2526:7   warning  Unexpected var, use let or const instead  no-var
+  2527:7   warning  Unexpected var, use let or const instead  no-var
+  2535:7   warning  Unexpected var, use let or const instead  no-var
+  2544:9   warning  Unexpected var, use let or const instead  no-var
+  2548:9   warning  Unexpected var, use let or const instead  no-var
+  2549:9   warning  Unexpected var, use let or const instead  no-var
+  2567:11  warning  Unexpected var, use let or const instead  no-var
+  2568:11  warning  Unexpected var, use let or const instead  no-var
+  2575:11  warning  Unexpected var, use let or const instead  no-var
+  2582:11  warning  Unexpected var, use let or const instead  no-var
+  2583:16  error    'confirm' is not defined                  no-undef
+  2601:5   warning  Unexpected var, use let or const instead  no-var
+  2603:5   warning  Unexpected var, use let or const instead  no-var
+  2605:5   warning  Unexpected var, use let or const instead  no-var
+  2622:5   warning  Unexpected var, use let or const instead  no-var
+  2623:5   warning  Unexpected var, use let or const instead  no-var
+  2626:5   warning  Unexpected var, use let or const instead  no-var
+  2627:5   warning  Unexpected var, use let or const instead  no-var
+  2628:5   warning  Unexpected var, use let or const instead  no-var
+  2636:5   warning  Unexpected var, use let or const instead  no-var
+  2639:5   warning  Unexpected var, use let or const instead  no-var
+  2666:5   warning  Unexpected var, use let or const instead  no-var
+  2667:5   warning  Unexpected var, use let or const instead  no-var
+  2702:5   warning  Unexpected var, use let or const instead  no-var
+  2703:5   warning  Unexpected var, use let or const instead  no-var
+  2704:5   warning  Unexpected var, use let or const instead  no-var
+  2706:5   warning  Unexpected var, use let or const instead  no-var
+  2736:7   warning  Unexpected var, use let or const instead  no-var
+  2737:7   warning  Unexpected var, use let or const instead  no-var
+  2741:9   warning  Unexpected var, use let or const instead  no-var
+  2742:9   warning  Unexpected var, use let or const instead  no-var
+  2767:17  error    'confirm' is not defined                  no-undef
+  2785:5   warning  Unexpected var, use let or const instead  no-var
+  2786:5   warning  Unexpected var, use let or const instead  no-var
+  2793:7   warning  Unexpected var, use let or const instead  no-var
+  2816:15  error    'confirm' is not defined                  no-undef
+  2834:5   warning  Unexpected var, use let or const instead  no-var
+  2835:5   warning  Unexpected var, use let or const instead  no-var
+  2836:5   warning  Unexpected var, use let or const instead  no-var
+  2837:5   warning  Unexpected var, use let or const instead  no-var
+  2849:5   warning  Unexpected var, use let or const instead  no-var
+  2901:17  warning  Unexpected var, use let or const instead  no-var
+  2902:17  warning  Unexpected var, use let or const instead  no-var
+  2929:5   warning  Unexpected var, use let or const instead  no-var
+  2935:5   warning  Unexpected var, use let or const instead  no-var
+  2938:5   warning  Unexpected var, use let or const instead  no-var
+  2959:5   warning  Unexpected var, use let or const instead  no-var
+  2960:5   warning  Unexpected var, use let or const instead  no-var
+  2964:5   warning  Unexpected var, use let or const instead  no-var
+  2990:5   warning  Unexpected var, use let or const instead  no-var
+  3027:5   warning  Unexpected var, use let or const instead  no-var
+  3036:7   warning  Unexpected var, use let or const instead  no-var
+  3038:7   warning  Unexpected var, use let or const instead  no-var
+  3039:7   warning  Unexpected var, use let or const instead  no-var
+  3040:7   warning  Unexpected var, use let or const instead  no-var
+  3071:7   warning  Unexpected var, use let or const instead  no-var
+  3088:5   warning  Unexpected var, use let or const instead  no-var
+  3100:15  warning  Unexpected var, use let or const instead  no-var
+  3124:9   warning  Unexpected var, use let or const instead  no-var
+  3125:9   warning  Unexpected var, use let or const instead  no-var
+  3132:9   warning  Unexpected var, use let or const instead  no-var
+  3133:13  error    'confirm' is not defined                  no-undef
+  3135:13  error    'alert' is not defined                    no-undef
+  3144:9   warning  Unexpected var, use let or const instead  no-var
+  3145:13  error    'confirm' is not defined                  no-undef
+  3156:5   warning  Unexpected var, use let or const instead  no-var
+  3171:5   warning  Unexpected var, use let or const instead  no-var
+  3172:5   warning  Unexpected var, use let or const instead  no-var
+  3173:5   warning  Unexpected var, use let or const instead  no-var
+  3174:5   warning  Unexpected var, use let or const instead  no-var
+  3175:5   warning  Unexpected var, use let or const instead  no-var
+  3176:5   warning  Unexpected var, use let or const instead  no-var
+  3212:5   warning  Unexpected var, use let or const instead  no-var
+  3221:7   warning  Unexpected var, use let or const instead  no-var
+  3222:7   warning  Unexpected var, use let or const instead  no-var
+  3233:7   warning  Unexpected var, use let or const instead  no-var
+  3244:17  warning  Unexpected var, use let or const instead  no-var
+  3245:17  warning  Unexpected var, use let or const instead  no-var
+  3246:17  warning  Unexpected var, use let or const instead  no-var
+  3258:7   warning  Unexpected var, use let or const instead  no-var
+  3274:5   warning  Unexpected var, use let or const instead  no-var
+  3285:15  warning  Unexpected var, use let or const instead  no-var
+  3301:9   warning  Unexpected var, use let or const instead  no-var
+  3302:13  error    'confirm' is not defined                  no-undef
+  3320:5   warning  Unexpected var, use let or const instead  no-var
+  3321:5   warning  Unexpected var, use let or const instead  no-var
+  3322:5   warning  Unexpected var, use let or const instead  no-var
+  3323:5   warning  Unexpected var, use let or const instead  no-var
+  3380:5   warning  Unexpected var, use let or const instead  no-var
+  3390:5   warning  Unexpected var, use let or const instead  no-var
+  3391:5   warning  Unexpected var, use let or const instead  no-var
+  3392:5   warning  Unexpected var, use let or const instead  no-var
+  3393:5   warning  Unexpected var, use let or const instead  no-var
+  3394:5   warning  Unexpected var, use let or const instead  no-var
+  3399:7   warning  Unexpected var, use let or const instead  no-var
+  3421:7   warning  Unexpected var, use let or const instead  no-var
+  3422:7   warning  Unexpected var, use let or const instead  no-var
+  3447:7   warning  Unexpected var, use let or const instead  no-var
+  3448:7   warning  Unexpected var, use let or const instead  no-var
+  3448:11  error    'payload' is already defined              no-redeclare
+  3463:5   warning  Unexpected var, use let or const instead  no-var
+  3466:5   warning  Unexpected var, use let or const instead  no-var
+  3477:9   warning  Unexpected var, use let or const instead  no-var
+  3480:37  error    'Event' is not defined                    no-undef
+  3487:5   warning  Unexpected var, use let or const instead  no-var
+  3499:7   warning  Unexpected var, use let or const instead  no-var
+  3502:39  error    'Event' is not defined                    no-undef
+  3520:5   warning  Unexpected var, use let or const instead  no-var
+  3528:5   warning  Unexpected var, use let or const instead  no-var
+  3593:7   warning  Unexpected var, use let or const instead  no-var
+  3594:7   warning  Unexpected var, use let or const instead  no-var
+  3595:7   warning  Unexpected var, use let or const instead  no-var
+  3596:7   warning  Unexpected var, use let or const instead  no-var
+  3620:5   warning  Unexpected var, use let or const instead  no-var
+  3622:5   warning  Unexpected var, use let or const instead  no-var
+  3623:5   warning  Unexpected var, use let or const instead  no-var
+  3624:5   warning  Unexpected var, use let or const instead  no-var
+  3626:5   warning  Unexpected var, use let or const instead  no-var
+  3646:5   warning  Unexpected var, use let or const instead  no-var
+  3649:7   warning  Unexpected var, use let or const instead  no-var
+  3654:7   warning  Unexpected var, use let or const instead  no-var
+  3658:9   warning  Unexpected var, use let or const instead  no-var
+  3672:16  error    'confirm' is not defined                  no-undef
+  3699:5   warning  Unexpected var, use let or const instead  no-var
+  3700:5   warning  Unexpected var, use let or const instead  no-var
+  3737:9   warning  Unexpected var, use let or const instead  no-var
+  3738:9   warning  Unexpected var, use let or const instead  no-var
+  3745:9   warning  Unexpected var, use let or const instead  no-var
+  3752:5   warning  Unexpected var, use let or const instead  no-var
+  3764:5   warning  Unexpected var, use let or const instead  no-var
+  3765:5   warning  Unexpected var, use let or const instead  no-var
+  3766:5   warning  Unexpected var, use let or const instead  no-var
+  3767:5   warning  Unexpected var, use let or const instead  no-var
+  3768:5   warning  Unexpected var, use let or const instead  no-var
+  3769:5   warning  Unexpected var, use let or const instead  no-var
+  3774:5   warning  Unexpected var, use let or const instead  no-var
+  3777:5   warning  Unexpected var, use let or const instead  no-var
+  3778:5   warning  Unexpected var, use let or const instead  no-var
+  3796:10  error    'confirm' is not defined                  no-undef
+  3808:5   warning  Unexpected var, use let or const instead  no-var
+  3809:5   warning  Unexpected var, use let or const instead  no-var
+  3810:7   warning  Unexpected var, use let or const instead  no-var
+  3811:7   warning  Unexpected var, use let or const instead  no-var
+  3814:5   warning  Unexpected var, use let or const instead  no-var
+  3815:5   warning  Unexpected var, use let or const instead  no-var
+  3815:20  error    'Blob' is not defined                     no-undef
+  3816:5   warning  Unexpected var, use let or const instead  no-var
+  3817:5   warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\confirmation.js
+   5:3  warning  Unexpected var, use let or const instead  no-var
+  21:7  warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\form.js
+    9:3    warning  Unexpected var, use let or const instead  no-var
+   12:3    warning  Unexpected var, use let or const instead  no-var
+   13:3    warning  Unexpected var, use let or const instead  no-var
+   14:3    warning  Unexpected var, use let or const instead  no-var
+   16:3    warning  Unexpected var, use let or const instead  no-var
+   17:3    warning  Unexpected var, use let or const instead  no-var
+  311:21   error    'FileReader' is not defined               no-undef
+  312:112  error    'btoa' is not defined                     no-undef
+  579:14   warning  'e' is defined but never used             no-unused-vars
+  587:14   warning  'e' is defined but never used             no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\invoices-admin.js
+    4:3   warning  Unexpected var, use let or const instead  no-var
+    5:3   warning  Unexpected var, use let or const instead  no-var
+    6:3   warning  Unexpected var, use let or const instead  no-var
+    7:3   warning  Unexpected var, use let or const instead  no-var
+    7:31  warning  Unexpected var, use let or const instead  no-var
+    8:3   warning  Unexpected var, use let or const instead  no-var
+    9:3   warning  Unexpected var, use let or const instead  no-var
+   11:3   warning  Unexpected var, use let or const instead  no-var
+   14:7   warning  Unexpected var, use let or const instead  no-var
+   17:14  warning  'e' is defined but never used             no-unused-vars
+   32:7   warning  Unexpected var, use let or const instead  no-var
+   33:7   warning  Unexpected var, use let or const instead  no-var
+   33:11  warning  'all' is assigned a value but never used  no-unused-vars
+   35:7   warning  Unexpected var, use let or const instead  no-var
+   37:9   warning  Unexpected var, use let or const instead  no-var
+   64:7   warning  Unexpected var, use let or const instead  no-var
+  103:33  error    'alert' is not defined                    no-undef
+  105:7   warning  Unexpected var, use let or const instead  no-var
+  106:7   warning  Unexpected var, use let or const instead  no-var
+  107:7   warning  Unexpected var, use let or const instead  no-var
+  108:7   warning  Unexpected var, use let or const instead  no-var
+  109:9   warning  Unexpected var, use let or const instead  no-var
+  110:39  error    'alert' is not defined                    no-undef
+  113:7   warning  Unexpected var, use let or const instead  no-var
+  114:7   warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\invoices.js
+    5:3    warning  Unexpected var, use let or const instead                             no-var
+    6:3    warning  Unexpected var, use let or const instead                             no-var
+    7:3    warning  Unexpected var, use let or const instead                             no-var
+    7:31   warning  Unexpected var, use let or const instead                             no-var
+    8:3    warning  Unexpected var, use let or const instead                             no-var
+    9:3    warning  Unexpected var, use let or const instead                             no-var
+   10:3    warning  Unexpected var, use let or const instead                             no-var
+   11:3    warning  Unexpected var, use let or const instead                             no-var
+   11:31   warning  Unexpected var, use let or const instead                             no-var
+   13:3    warning  Unexpected var, use let or const instead                             no-var
+   16:7    warning  Unexpected var, use let or const instead                             no-var
+   19:14   warning  'e' is defined but never used                                        no-unused-vars
+   22:3    warning  Unexpected var, use let or const instead                             no-var
+   23:3    warning  Unexpected var, use let or const instead                             no-var
+   37:7    warning  Unexpected var, use let or const instead                             no-var
+   38:7    warning  Unexpected var, use let or const instead                             no-var
+   57:3    warning  Unexpected var, use let or const instead                             no-var
+   60:5    warning  Unexpected var, use let or const instead                             no-var
+   72:5    warning  Unexpected var, use let or const instead                             no-var
+   82:5    warning  Unexpected var, use let or const instead                             no-var
+   84:7    warning  Unexpected var, use let or const instead                             no-var
+   85:7    warning  Unexpected var, use let or const instead                             no-var
+   86:7    warning  Unexpected var, use let or const instead                             no-var
+   93:5    warning  Unexpected var, use let or const instead                             no-var
+   98:5    warning  Unexpected var, use let or const instead                             no-var
+  102:5    warning  Unexpected var, use let or const instead                             no-var
+  107:25   warning  'r' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+  124:7    warning  Unexpected var, use let or const instead                             no-var
+  132:5    warning  Unexpected var, use let or const instead                             no-var
+  144:7    warning  Unexpected var, use let or const instead                             no-var
+  176:7    warning  Unexpected var, use let or const instead                             no-var
+  178:132  error    'alert' is not defined                                               no-undef
+  180:7    warning  Unexpected var, use let or const instead                             no-var
+  182:7    warning  Unexpected var, use let or const instead                             no-var
+  184:9    error    'alert' is not defined                                               no-undef
+  186:7    warning  Unexpected var, use let or const instead                             no-var
+  198:5    warning  Unexpected var, use let or const instead                             no-var
+  203:7    warning  Unexpected var, use let or const instead                             no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\landing.js
+  17:5  warning  Unexpected var, use let or const instead  no-var
+  24:5  warning  Unexpected var, use let or const instead  no-var
+  30:5  warning  Unexpected var, use let or const instead  no-var
+  34:7  warning  Unexpected var, use let or const instead  no-var
+  40:7  warning  Unexpected var, use let or const instead  no-var
+  49:5  warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\login.js
+   17:3  warning  Unexpected var, use let or const instead            no-var
+   18:3  warning  Unexpected var, use let or const instead            no-var
+   21:3  warning  Unexpected var, use let or const instead            no-var
+   22:3  warning  Unexpected var, use let or const instead            no-var
+   23:3  warning  Unexpected var, use let or const instead            no-var
+   24:3  warning  Unexpected var, use let or const instead            no-var
+   25:3  warning  Unexpected var, use let or const instead            no-var
+   26:3  warning  Unexpected var, use let or const instead            no-var
+   27:3  warning  Unexpected var, use let or const instead            no-var
+   28:3  warning  Unexpected var, use let or const instead            no-var
+   29:3  warning  Unexpected var, use let or const instead            no-var
+   30:3  warning  Unexpected var, use let or const instead            no-var
+   31:3  warning  Unexpected var, use let or const instead            no-var
+   33:3  warning  Unexpected var, use let or const instead            no-var
+   34:3  warning  Unexpected var, use let or const instead            no-var
+   35:3  warning  Unexpected var, use let or const instead            no-var
+   38:3  warning  Unexpected var, use let or const instead            no-var
+   41:3  warning  Unexpected var, use let or const instead            no-var
+   42:3  warning  Unexpected var, use let or const instead            no-var
+   43:3  warning  Unexpected var, use let or const instead            no-var
+   44:3  warning  Unexpected var, use let or const instead            no-var
+   45:3  warning  Unexpected var, use let or const instead            no-var
+   46:3  warning  Unexpected var, use let or const instead            no-var
+   47:3  warning  Unexpected var, use let or const instead            no-var
+   48:3  warning  Unexpected var, use let or const instead            no-var
+   49:3  warning  Unexpected var, use let or const instead            no-var
+   50:3  warning  Unexpected var, use let or const instead            no-var
+   51:3  warning  Unexpected var, use let or const instead            no-var
+   51:7  warning  'btnQuickToken' is assigned a value but never used  no-unused-vars
+   52:3  warning  Unexpected var, use let or const instead            no-var
+   53:3  warning  Unexpected var, use let or const instead            no-var
+   56:3  warning  Unexpected var, use let or const instead            no-var
+   57:3  warning  Unexpected var, use let or const instead            no-var
+   58:3  warning  Unexpected var, use let or const instead            no-var
+   59:3  warning  Unexpected var, use let or const instead            no-var
+   60:3  warning  Unexpected var, use let or const instead            no-var
+   61:3  warning  Unexpected var, use let or const instead            no-var
+   62:3  warning  Unexpected var, use let or const instead            no-var
+   63:3  warning  Unexpected var, use let or const instead            no-var
+   64:3  warning  Unexpected var, use let or const instead            no-var
+   65:3  warning  Unexpected var, use let or const instead            no-var
+   66:3  warning  Unexpected var, use let or const instead            no-var
+   69:3  warning  Unexpected var, use let or const instead            no-var
+   70:3  warning  Unexpected var, use let or const instead            no-var
+   71:3  warning  Unexpected var, use let or const instead            no-var
+   72:3  warning  Unexpected var, use let or const instead            no-var
+   73:3  warning  Unexpected var, use let or const instead            no-var
+   74:3  warning  Unexpected var, use let or const instead            no-var
+   75:3  warning  Unexpected var, use let or const instead            no-var
+   76:3  warning  Unexpected var, use let or const instead            no-var
+   77:3  warning  Unexpected var, use let or const instead            no-var
+   78:3  warning  Unexpected var, use let or const instead            no-var
+   79:3  warning  Unexpected var, use let or const instead            no-var
+   82:3  warning  Unexpected var, use let or const instead            no-var
+   83:3  warning  Unexpected var, use let or const instead            no-var
+   83:7  warning  'currentEmail' is assigned a value but never used   no-unused-vars
+   84:3  warning  Unexpected var, use let or const instead            no-var
+   90:5  warning  Unexpected var, use let or const instead            no-var
+   91:5  warning  Unexpected var, use let or const instead            no-var
+   92:5  warning  Unexpected var, use let or const instead            no-var
+  106:7  warning  Unexpected var, use let or const instead            no-var
+  107:7  warning  Unexpected var, use let or const instead            no-var
+  238:7  warning  Unexpected var, use let or const instead            no-var
+  252:5  warning  Unexpected var, use let or const instead            no-var
+  253:5  warning  Unexpected var, use let or const instead            no-var
+  277:9  warning  Unexpected var, use let or const instead            no-var
+  299:3  warning  Unexpected var, use let or const instead            no-var
+  300:3  warning  Unexpected var, use let or const instead            no-var
+  301:3  warning  Unexpected var, use let or const instead            no-var
+  302:3  warning  Unexpected var, use let or const instead            no-var
+  303:3  warning  Unexpected var, use let or const instead            no-var
+  304:3  warning  Unexpected var, use let or const instead            no-var
+  305:3  warning  Unexpected var, use let or const instead            no-var
+  306:3  warning  Unexpected var, use let or const instead            no-var
+  307:3  warning  Unexpected var, use let or const instead            no-var
+  308:3  warning  Unexpected var, use let or const instead            no-var
+  309:3  warning  Unexpected var, use let or const instead            no-var
+  323:7  warning  Unexpected var, use let or const instead            no-var
+  340:7  warning  Unexpected var, use let or const instead            no-var
+  356:5  warning  Unexpected var, use let or const instead            no-var
+  357:5  warning  Unexpected var, use let or const instead            no-var
+  358:5  warning  Unexpected var, use let or const instead            no-var
+  359:5  warning  Unexpected var, use let or const instead            no-var
+  442:5  warning  Unexpected var, use let or const instead            no-var
+  460:7  warning  Unexpected var, use let or const instead            no-var
+  506:7  warning  Unexpected var, use let or const instead            no-var
+  516:5  warning  Unexpected var, use let or const instead            no-var
+  534:9  warning  Unexpected var, use let or const instead            no-var
+  577:5  warning  Unexpected var, use let or const instead            no-var
+  592:9  warning  Unexpected var, use let or const instead            no-var
+  612:5  warning  Unexpected var, use let or const instead            no-var
+  613:5  warning  Unexpected var, use let or const instead            no-var
+  640:9  warning  Unexpected var, use let or const instead            no-var
+  676:3  warning  Unexpected var, use let or const instead            no-var
+  677:3  warning  Unexpected var, use let or const instead            no-var
+  678:3  warning  Unexpected var, use let or const instead            no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\status.js
+    4:3  warning  Unexpected var, use let or const instead  no-var
+    6:3  warning  Unexpected var, use let or const instead  no-var
+    7:3  warning  Unexpected var, use let or const instead  no-var
+   18:5  warning  Unexpected var, use let or const instead  no-var
+   19:5  warning  Unexpected var, use let or const instead  no-var
+   31:5  warning  Unexpected var, use let or const instead  no-var
+   33:5  warning  Unexpected var, use let or const instead  no-var
+   45:5  warning  Unexpected var, use let or const instead  no-var
+   46:5  warning  Unexpected var, use let or const instead  no-var
+   47:7  warning  Unexpected var, use let or const instead  no-var
+   52:5  warning  Unexpected var, use let or const instead  no-var
+   59:5  warning  Unexpected var, use let or const instead  no-var
+   79:5  warning  Unexpected var, use let or const instead  no-var
+   81:7  warning  Unexpected var, use let or const instead  no-var
+   94:5  warning  Unexpected var, use let or const instead  no-var
+  103:3  warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\public\assets\js\ui.js
+   16:5   warning  Unexpected var, use let or const instead  no-var
+   22:5   warning  Unexpected var, use let or const instead  no-var
+   35:5   warning  Unexpected var, use let or const instead  no-var
+   40:5   warning  Unexpected var, use let or const instead  no-var
+   49:5   warning  Unexpected var, use let or const instead  no-var
+   54:5   warning  Unexpected var, use let or const instead  no-var
+   67:3   warning  Unexpected var, use let or const instead  no-var
+   70:5   warning  Unexpected var, use let or const instead  no-var
+   71:5   warning  Unexpected var, use let or const instead  no-var
+   79:5   warning  Unexpected var, use let or const instead  no-var
+   81:5   warning  Unexpected var, use let or const instead  no-var
+   91:68  warning  'e' is defined but never used             no-unused-vars
+   96:9   warning  Unexpected var, use let or const instead  no-var
+   98:9   warning  Unexpected var, use let or const instead  no-var
+  108:7   warning  Unexpected var, use let or const instead  no-var
+  113:9   warning  Unexpected var, use let or const instead  no-var
+  121:5   warning  Unexpected var, use let or const instead  no-var
+  140:3   warning  Unexpected var, use let or const instead  no-var
+  191:5   warning  Unexpected var, use let or const instead  no-var
+  198:3   warning  Unexpected var, use let or const instead  no-var
+  209:5   warning  Unexpected var, use let or const instead  no-var
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\lib\http.js
+   53:32  error    'Buffer' is not defined                                                    no-undef
+  122:64  warning  'onError' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\lib\security.js
+  19:18  error    'Buffer' is not defined                           no-undef
+  20:22  error    'Buffer' is not defined                           no-undef
+  27:14  error    'Buffer' is not defined                           no-undef
+  27:39  error    'Buffer' is not defined                           no-undef
+  28:14  error    'Buffer' is not defined                           no-undef
+  28:39  error    'Buffer' is not defined                           no-undef
+  31:28  error    'Buffer' is not defined                           no-undef
+  31:46  error    'Buffer' is not defined                           no-undef
+  41:18  warning  'bytes' is never reassigned. Use 'const' instead  prefer-const
+  48:10  error    'Buffer' is not defined                           no-undef
+  51:15  error    'Buffer' is not defined                           no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\lib\virus-scanner.js
+   17:3   error  'Buffer' is not defined  no-undef
+   18:3   error  'Buffer' is not defined  no-undef
+   23:44  error  'Buffer' is not defined  no-undef
+   72:20  error  'Buffer' is not defined  no-undef
+   83:26  error  'Buffer' is not defined  no-undef
+   86:40  error  'Buffer' is not defined  no-undef
+   94:22  error  'Buffer' is not defined  no-undef
+  133:19  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\cms.service.js
+  460:9   warning  'specsObj' is never reassigned. Use 'const' instead        prefer-const
+  461:9   warning  'docsObj' is never reassigned. Use 'const' instead         prefer-const
+  596:9   warning  'productImgsMap' is never reassigned. Use 'const' instead  prefer-const
+  657:13  error    'Buffer' is not defined                                    no-undef
+  659:13  error    'Buffer' is not defined                                    no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\integration.service.js
+  9:10  warning  'log' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\kyc.service.js
+  16:55  warning  'webhooks' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+  55:24  error    'Buffer' is not defined                                                     no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\notify.service.js
+  19:11  warning  'C' is assigned a value but never used  no-unused-vars
+  39:49  error    'Buffer' is not defined                 no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\peppol-asp.client.js
+  47:15  error  'AbortSignal' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\review.service.js
+  77:67  warning  'note' is assigned a value but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\routes.js
+    4:31   warning  'fail' is defined but never used                                       no-unused-vars
+    4:37   warning  'json' is defined but never used                                       no-unused-vars
+    5:148  warning  'verifyCsrfToken' is defined but never used                            no-unused-vars
+  172:21   error    'Buffer' is not defined                                                no-undef
+  953:28   error    'Buffer' is not defined                                                no-undef
+  991:70   warning  'req' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+  991:75   warning  'res' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\services\webhooks.service.js
+  66:17  error  'AbortSignal' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\store\pg-repos.js
+  12:21  warning  'hashPassword' is defined but never used  no-unused-vars
+  19:19  error    'Buffer' is not defined                   no-undef
+  28:21  error    'Buffer' is not defined                   no-undef
+  30:10  error    'Buffer' is not defined                   no-undef
+  41:12  error    'Buffer' is not defined                   no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\src\store\repos.js
+  10:19  error  'Buffer' is not defined  no-undef
+  19:21  error  'Buffer' is not defined  no-undef
+  21:10  error  'Buffer' is not defined  no-undef
+  32:12  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\account-services.test.js
+  20:7  warning  'REVIEWER_PASSWORD' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\integration\api.test.js
+   80:18   error  'Buffer' is not defined  no-undef
+   81:25   error  'Buffer' is not defined  no-undef
+   81:40   error  'Buffer' is not defined  no-undef
+  200:116  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\integration\workspace.test.js
+  41:24  error  'Buffer' is not defined  no-undef
+  41:39  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\peppol-sandbox-roundtrip.test.js
+  69:29  error  'Buffer' is not defined  no-undef
+  70:3   error  'Buffer' is not defined  no-undef
+  71:3   error  'Buffer' is not defined  no-undef
+  72:3   error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\pg-integration-test.js
+   8:10  warning  'readFileSync' is defined but never used   no-unused-vars
+  14:7   warning  'ROOT' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\pg-mode-journey.test.js
+  150:15  error  'Buffer' is not defined  no-undef
+  150:30  error  'Buffer' is not defined  no-undef
+  150:60  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\token-exchange.test.js
+  34:13  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\test\unit\security-rules-store.test.js
+   5:31  warning  'ACTIONS' is defined but never used  no-unused-vars
+  56:33  error    'Buffer' is not defined              no-undef
+  57:33  error    'Buffer' is not defined              no-undef
+  58:33  error    'Buffer' is not defined              no-undef
+  59:33  error    'Buffer' is not defined              no-undef
+  60:33  error    'Buffer' is not defined              no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\tools\migrate-legacy-kyc.js
+  106:17  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\portal\tools\seed.js
+  15:10  warning  'hashPassword' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\apps\site\src\pages\sitemap.xml.js
+   58:55  warning  'hasArTwin' is assigned a value but never used. Allowed unused args must match /^_/u  no-unused-vars
+  136:14  error    'Response' is not defined                                                             no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\bringup.mjs
+  36:10  warning  'run' is defined but never used                                          no-unused-vars
+  53:41  warning  'label' is defined but never used. Allowed unused args must match /^_/u  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\check-pngs.cjs
+  1:12  error  'require' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\a11y.mjs
+  63:16  error    'WebSocket' is not defined     no-undef
+  86:16  warning  'e' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\authz-matrix.mjs
+  10:10  warning  'fileURLToPath' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\check-no-placeholders.mjs
+  25:7  warning  'files' is never reassigned. Use 'const' instead       prefer-const
+  44:5  warning  'violations' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\clean-db-build.mjs
+  10:47  warning  'REPO' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\lib.mjs
+  173:5  warning  'timer' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\link-crawl.mjs
+  33:5    warning  'queue' is never reassigned. Use 'const' instead  prefer-const
+  36:122  error    'Headers' is not defined                          no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\perf-budget.mjs
+   89:20  error  'Buffer' is not defined       no-undef
+   90:33  error  'Buffer' is not defined       no-undef
+  115:53  error  'AbortSignal' is not defined  no-undef
+  118:21  error  'Buffer' is not defined       no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\pg-reporting.mjs
+  9:55  warning  'rand' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\test-cms-buttons.mjs
+  15:7  warning  'CMS_HTML_PATH' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\ci\test-cms-e2e.mjs
+  17:7  warning  'REPO' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\cleanup-test-fixtures.mjs
+  56:7  warning  'JSON_DB_PATH' is assigned a value but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\dev-edge.mjs
+  63:7  warning  'st' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\dr-drill.mjs
+  122:60  error  'Buffer' is not defined  no-undef
+  166:61  error  'Buffer' is not defined  no-undef
+  243:78  error  'Buffer' is not defined  no-undef
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\golive-execute.js
+  18:37  warning  'existsSync' is defined but never used  no-unused-vars
+  56:12  warning  'e' is defined but never used           no-unused-vars
+  71:12  warning  'e' is defined but never used           no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\manual-e2e-audit.mjs
+  2:8  warning  'http' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\parity-checklist.js
+  108:7  warning  'htmlFiles' is never reassigned. Use 'const' instead   prefer-const
+  126:7  warning  'htmlFiles2' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\peppol-verify.js
+  61:29  error    'Buffer' is not defined                       no-undef
+  62:3   error    'Buffer' is not defined                       no-undef
+  63:3   error    'Buffer' is not defined                       no-undef
+  64:3   error    'Buffer' is not defined                       no-undef
+  89:7   warning  'r' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\postlive-review.js
+  12:39  warning  'existsSync' is defined but never used  no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\security-audit.js
+   7:10  warning  'createReadStream' is defined but never used         no-unused-vars
+  61:18  warning  'findings' is never reassigned. Use 'const' instead  prefer-const
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\test-phase1-verification.mjs
+  66:5  warning  'dotfileDenied' is assigned a value but never used        no-unused-vars
+  66:5  warning  'dotfileDenied' is never reassigned. Use 'const' instead  prefer-const
+  73:7  warning  'allowedPublic' is assigned a value but never used        no-unused-vars
+
+C:\software_project\Simal_Corporate_website\Codebase\scripts\update-slides.cjs
+  1:12  error  'require' is not defined  no-undef
+
+✖ 856 problems (102 errors, 754 warnings)
+  0 errors and 702 warnings potentially fixable with the `--fix` option.
+
+
+================ JOB parity ================
+CREATE EXTENSION
+CREATE EXTENSION
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+CREATE TABLE
+INSERT 0 2
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE TABLE
+CREATE INDEX
+CREATE TABLE
+CREATE INDEX
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:238: NOTICE:  trigger "invoices_immutable" for relation "invoices" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE FUNCTION
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:258: NOTICE:  trigger "invoice_lines_immutable" for relation "invoice_lines" does not exist, skipping
+DROP TRIGGER
+CREATE TRIGGER
+CREATE TABLE
+CREATE INDEX
+psql:C:/software_project/Simal_Corporate_website/Codebase/scripts/migrate.sql:279: NOTICE:  extension "citext" already exists, skipping
+CREATE EXTENSION
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+ALTER TABLE
+CREATE SEQUENCE
+ALTER TABLE
+ALTER TABLE
+DO
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 0
+UPDATE 0
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+UPDATE 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 3
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+INSERT 0 1
+[ci] simal_ci migrated + seeded
+
+>>>>>>>> ssg-build-for-parity: node C:\software_project\Simal_Corporate_website\Codebase\node_modules\astro\astro.js build
+[2m21:31:34[22m [34m[content][39m Syncing content
+[2m21:31:34[22m [34m[content][39m Synced content
+[2m21:31:34[22m [34m[types][39m Generated [2m43ms[22m
+[2m21:31:34[22m [34m[build][39m output: [34m"static"[39m
+[2m21:31:34[22m [34m[build][39m mode: [34m"static"[39m
+[2m21:31:34[22m [34m[build][39m directory: [34mC:\software_project\Simal_Corporate_website\Codebase\apps\site\dist-ci-parity\[39m
+[2m21:31:34[22m [34m[build][39m Collecting build info...
+[2m21:31:34[22m [34m[build][39m [32m✓ Completed in 75ms.[39m
+[2m21:31:34[22m [34m[build][39m Building static entrypoints...
+[2m21:31:36[22m [34m[vite][39m [32m✓ built in 1.70s[39m
+[2m21:31:36[22m [34m[build][39m [32m✓ Completed in 1.73s.[39m
+
+[42m[30m building client (vite) [39m[49m
+[2m21:31:36[22m [34m[vite][39m transforming...
+[2m21:31:36[22m [34m[vite][39m [32m✓[39m 16 modules transformed.
+[2m21:31:36[22m [34m[vite][39m rendering chunks...
+[2m21:31:36[22m [34m[vite][39m computing gzip size...
+[2m21:31:36[22m [34m[vite][39m [2mdist-ci-parity/[22m[36m_astro/index.astro_astro_type_script_index_0_lang.BhthWDNp.js       [39m[1m[2m 4.53 kB[22m[1m[22m[2m │ gzip: 1.71 kB[22m
+[2m21:31:36[22m [34m[vite][39m [2mdist-ci-parity/[22m[36m_astro/BaseLayout.astro_astro_type_script_index_0_lang.DQK8n6Kf.js  [39m[1m[2m 5.93 kB[22m[1m[22m[2m │ gzip: 2.17 kB[22m
+[2m21:31:36[22m [34m[vite][39m [2mdist-ci-parity/[22m[36m_astro/index.astro_astro_type_script_index_0_lang.D4GLGY4r.js       [39m[1m[2m 7.83 kB[22m[1m[22m[2m │ gzip: 2.99 kB[22m
+[2m21:31:36[22m [34m[vite][39m [2mdist-ci-parity/[22m[36m_astro/index.astro_astro_type_script_index_0_lang.fbcik37E.js       [39m[1m[2m11.69 kB[22m[1m[22m[2m │ gzip: 3.88 kB[22m
+[2m21:31:36[22m [34m[vite][39m [32m✓ built in 99ms[39m
+
+[42m[30m generating static routes [39m[49m
+[2m21:31:36[22m [32m▶[39m src/pages/404.astro
+[2m21:31:36[22m   [34m└─[39m [2m/404.html[22m [2m(+58ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/about/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/about/index.html[22m [2m(+11ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/about/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/ar/about/index.html[22m [2m(+9ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/contact/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/ar/contact/index.html[22m [2m(+7ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/ar/index.html[22m [2m(+44ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/insights/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/ar/insights/index.html[22m [2m(+10ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/legal/[slug].astro
+[2m21:31:36[22m   [34m├─[39m [2m/ar/legal/privacy-policy/index.html[22m [2m(+8ms)[22m 
+[2m21:31:36[22m   [34m├─[39m [2m/ar/legal/terms-conditions/index.html[22m [2m(+6ms)[22m 
+[2m21:31:36[22m   [34m├─[39m [2m/ar/legal/cookie-policy/index.html[22m [2m(+5ms)[22m 
+[2m21:31:36[22m   [34m├─[39m [2m/ar/legal/return-policy/index.html[22m [2m(+8ms)[22m 
+[2m21:31:36[22m   [34m├─[39m [2m/ar/legal/shipping-policy/index.html[22m [2m(+7ms)[22m 
+[2m21:31:36[22m   [34m├─[39m [2m/ar/legal/refund-policy/index.html[22m [2m(+6ms)[22m 
+[2m21:31:36[22m   [34m└─[39m [2m/ar/legal/accessibility-statement/index.html[22m [2m(+5ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/legal/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/ar/legal/index.html[22m [2m(+5ms)[22m 
+[2m21:31:36[22m [32m▶[39m src/pages/ar/onboarding/index.astro
+[2m21:31:36[22m   [34m└─[39m [2m/ar/onboarding/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/ar/products/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/ar/products/index.html[22m [2m(+11ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/ar/rfq/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/ar/rfq/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/ar/software/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/ar/software/index.html[22m [2m(+161ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/ar/solutions/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/ar/solutions/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/brands/[slug].astro
+[2m21:31:37[22m   [34m├─[39m [2m/brands/aiwa/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/arktek/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/crucial/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/dell/index.html[22m [2m(+4ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/hiksemi/index.html[22m [2m(+4ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/hikvision/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/honeywell/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/hp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/kingston/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/koorui/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/lenovo/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/other/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/msi/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/nearity/index.html[22m [2m(+4ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/pny/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/samsung/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/sandisk/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/teamgroup/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/toshiba/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/ugreen/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/brands/wd/index.html[22m [2m(+4ms)[22m 
+[2m21:31:37[22m   [34m└─[39m [2m/brands/zotac/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/brands/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/brands/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/careers/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/careers/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/compare/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/compare/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/contact/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/contact/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/insights/[slug].astro
+[2m21:31:37[22m   [34m├─[39m [2m/insights/authorized-it-distributors-uae/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/enterprise-ssd-buying-guide-2026/index.html[22m [2m(+4ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/unierp-transforms-sme/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/uae-data-protection-pdpl/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/ddr4-vs-ddr5/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/ai-in-erp-2026/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/cybersecurity-best-practices-uae/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/future-proof-it-infrastructure/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/industry-4-manufacturing-erp/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/simal-two-decades/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/top-ssds-for-resellers-2025/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/crucial-p510-launch/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/insights/peppol-in-90-days/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m└─[39m [2m/insights/why-gray-market-costs-more/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/insights/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/insights/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/legal/[slug].astro
+[2m21:31:37[22m   [34m├─[39m [2m/legal/privacy-policy/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/legal/terms-conditions/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/legal/cookie-policy/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/legal/return-policy/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/legal/shipping-policy/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/legal/refund-policy/index.html[22m [2m(+4ms)[22m 
+[2m21:31:37[22m   [34m└─[39m [2m/legal/accessibility-statement/index.html[22m [2m(+10ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/legal/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/legal/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/onboarding/index.astro
+[2m21:31:37[22m   [34m└─[39m [2m/onboarding/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m [32m▶[39m src/pages/products/[slug].astro
+[2m21:31:37[22m   [34m├─[39m [2m/products/1672/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/aiwa-22-flat-slim-monitor-75hz-fhd-hdmivga-56x36x11-cm-black/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/aiwa-mf2203-v-21-5-inch-fhd-black-slim-led-display-hdmi-vga-monitor/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/aiwa-mf240e-v-flat-slim-monitor/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/arktek-geforce-gt610-2gb-ddr3-64-bit-hdmi-dvi-vga/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/arktek-gt730-4gb-ddr3-128bit-low-profile/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/arktek-rtx3060-led-ga104-150-a1-3584sp-gddr6-12gb-13201777-12gbps_6b2aaad2/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-ddr4-pro-memory/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-ddr5-memory-desktop-and-laptop/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-ddr5-pro-memory/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-overlocking-ddr5-pro-memory/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-p3/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-p3-plus/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hs-ssd-e100/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-p310-2230/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-p310-2280/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-p510-nvme-ssd/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-t500/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-t500-heatsink/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-t700-ssd/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-t700-ssd-heatsink/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-t705-ssd/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-t705-ssd-2/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-x10-pro-portable-ssd/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-x9-portable-ssd/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/crucial-x9-pro-portable-ssd/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/dell-15-laptop-14th-gen-intel-core-3/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/elite-7s-portable-ssd/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/gtx1030-2gb-gddr5-64-bit-hdmi-dvi-vga/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hc000017-srg-1-5m-wht-6-uk/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-3-out-surge-cube-spike-guard/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-3-out-surge-protector-with-master-switch/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-4-out-surge-protector-with-master-switch/index.html[22m [2m(+10ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-6-out-surge-protector-with-master-switch-spike-guard-ex_24b617a1/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-6-out-surge-protector-with-master-switch-spike-guard-extension-board/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-8-out-surge-protector-with-master-switch/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-hc000016-srg-1-5m-wht-4-uk-platinum-series-4-extension-cord/index.html[22m [2m(+10ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-surge-protector-4-universal-sockets/index.html[22m [2m(+10ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-surge-protector-spike-guard-power-extension-board-4-uni_a13c0ee0/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-surge-protector-spike-guard-power-extension-board-4-universal-sockets/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-surge-protector-spike-guard-power-extension-power-strip-8-universal-sockets/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/honeywell-universal-world-travel-adapter/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hp-laptop/index.html[22m [2m(+5ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hs-essd-t100i-portable-ssd/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hs-ssd-e1000/index.html[22m [2m(+12ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hs-ssd-e100n/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/hs-ssd-future/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/kingston-xs1000-1tb-portable-ssd-red/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/koorui-27-inch-curved-gaming-monitor/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/koorui-27-inch-gaming-monitor/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/koorui-34-inch-gaming-monitor/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/lenovo-ideapad-slim-3-i5-13th-gen-15-3-inch/index.html[22m [2m(+6ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/msi-b450m-a-pro-max-ii-motherboard/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/nearity-c30r/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/rtx2060-6gb-gddr6-192-bit-dual-1dp-1hdmi-1dvi/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/samsung-t7-shield-portable-ssd-1tb/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/sandisk-extreme-pro-256gb-microsdxc/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/teamgroup-ted34g1600c1101-4gb-ddr3/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/toshiba-2tb-portable-external-hdd-2/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/toshiba-canvio-ready-2tb-portable-external-hdd/index.html[22m [2m(+7ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/ugreen-5-in-1-usb-c-hub/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/ugreen-cat-6-u-utp-lan-cable-black/index.html[22m [2m(+8ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/ugreen-cat-7-shielded-round-cable-with-braided-modular-plugs/index.html[22m [2m(+9ms)[22m 
+[2m21:31:37[22m   [34m├─[39m [2m/products/ugreen-cat-7-u-ftp-lan-cable-flat-design-10m-black/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-cat8-pure-copper-ethernet-cable-braided-black/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-dp-1-4-male-to-male-plastic-case-braided-cable/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-dp-male-to-male-cable/index.html[22m [2m(+10ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-hdmi-cables-am-m-cable-with-braided/index.html[22m [2m(+10ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-hdmi-cables-black/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-high-end-hdmi-cable-with-nylon-braid-black/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-209-9-in-1-4k-hdmi-universal-docking-station/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-210-10-in-1-usb-c-hub/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-312-12-in-1-4k-hdmi-universal-docking-station/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-revodok-pro-313-13-in-1-usb-c-docking-station/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-usb-c-hub-10-in-1-usb-c-dongle-with-4k-hdmi-vga-dual-monitor/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/ugreen-vga-male-to-male/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/products/western-digital-sn7100-wd-nvme-ssd/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/products/wind-pro-portable-ssd/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/products/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/products/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/resources/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/resources/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/rfq/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/rfq/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/search/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/search/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m [35mλ[39m src/pages/sitemap.xml.js
+[2m21:31:38[22m   [34m└─[39m [2m/sitemap.xml[22m [2m(+61ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/sitemap/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/sitemap/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/software/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/software/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/software/industries/[slug].astro
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/healthcare/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/banking/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/retail/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/manufacturing/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/education/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/government/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/logistics/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/industries/realestate/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/software/industries/agriculture/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/software/modules/[slug].astro
+[2m21:31:38[22m   [34m├─[39m [2m/software/modules/finance/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/modules/hr/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/modules/crm/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/modules/inventory/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/modules/manufacturing/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/modules/projects/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/software/modules/univat/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/software/products/[slug].astro
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/distribution-erp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/retail-erp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/garments-erp/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/mps-erp/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/univat/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/unipos/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/education-erp/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/field-service-erp/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/hotel-erp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/hospital-erp/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/ecommerce-platform/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/weather-systems/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/cattle-management/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/queue-management/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/collection-recovery/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/loan-management/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/custodian-banking/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/i-portal/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/asset-management/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/merchant-banking/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/unipos/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/products/univat/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/software/products/distribution-erp/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/software/services/[slug].astro
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/digital-transform/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/aiml/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/custom-dev/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/cloud/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/cybersecurity/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/consultancy/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/pm/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/devops/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/qa/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/uiux/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/services/mobile/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/software/services/data-bi/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/software/solutions/[slug].astro
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/distribution-erp/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/retail-erp/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/garments-erp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/mps-erp/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/univat/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/unipos/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/education-erp/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/field-service-erp/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/hotel-erp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/hospital-erp/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/ecommerce-platform/index.html[22m [2m(+9ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/weather-systems/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/cattle-management/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/queue-management/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/collection-recovery/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/loan-management/index.html[22m [2m(+8ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/custodian-banking/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/i-portal/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/software/solutions/asset-management/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/software/solutions/merchant-banking/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/telephony/index.html[22m [2m(+4ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+3ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+7ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m├─[39m [2m/solutions/support/index.html[22m [2m(+5ms)[22m 
+[2m21:31:38[22m   [34m└─[39m [2m/solutions/av/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m [32m▶[39m src/pages/solutions/index.astro
+[2m21:31:38[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+6ms)[22m 
+[2m21:31:38[22m [32m✓ Completed in 1.98s.
+[39m
+[2m21:31:38[22m [34m[build][39m 243 page(s) built in [1m4.04s[22m
+[2m21:31:38[22m [34m[build][39m [1mComplete![22m
+
+>>>>>>>> parity-checklist: node scripts/parity-checklist.js
+
+=== PARITY 1: Page Group Coverage ===
+PASS prototype has >30 page groups — 35 HTML files
+PASS SSG output >=180 pages — 242 pages
+PASS SSG route /index.html
+PASS SSG route /products/index.html
+PASS SSG route /products/crucial-t705-ssd-2/index.html
+PASS SSG route /solutions/amc/index.html
+PASS SSG route /insights/index.html
+PASS SSG route /insights/ai-in-erp-2026/index.html
+PASS SSG route /software/index.html
+PASS SSG route /software/products/unipos/index.html
+PASS SSG route /software/modules/finance/index.html
+PASS SSG route /software/services/custom-dev/index.html
+PASS SSG route /software/solutions/i-portal/index.html
+PASS SSG route /software/industries/healthcare/index.html
+PASS SSG route /about/index.html
+PASS SSG route /careers/index.html
+PASS SSG route /contact/index.html
+PASS SSG route /legal/index.html
+PASS SSG route /legal/privacy-policy/index.html
+PASS SSG route /rfq/index.html
+PASS sitemap.xml generated from PG
+
+=== PARITY 2: Assertion Mapping ===
+PASS products = 78 (81 prototype rows − 3 U+2010 duplicate slugs)
+PASS product_deep = 78
+PASS brands = 22 (ratified catalogue incl. zotac/pny)
+PASS hero_slides = 5
+PASS legal_policies = 14 (7 EN + 7 AR)
+PASS content_blocks = 121 (107 + 14 AR localization blocks)
+PASS settings simalTin exists
+PASS pg_trgm active
+PASS citext active
+PASS PG tables >= 22
+PASS it_solution blocks = 17
+PASS insight blocks = 14
+PASS software_product blocks = 23
+PASS software_module blocks = 7
+PASS software_service blocks = 12
+PASS software_solution blocks = 20
+PASS software_industry blocks = 9
+
+=== PARITY 3: Interactive Islands ===
+PASS hero carousel in home
+PASS hero numbered ticks
+PASS hero autoplay script
+PASS brand filter chips
+
+=== PARITY 4: localStorage Elimination ===
+PASS zero localStorage in output — 0/243 files
+PASS zero window.CATALOG in output
+
+=== PARITY 5b: Reference Resolution (href + src) ===
+PASS zero broken internal links — all internal hrefs resolve
+PASS zero broken asset references (src, relative included) — all asset srcs resolve
+
+=== PARITY 5c: Solution Deep Content ===
+PASS solution detail pages rendered — 12 pages
+PASS zero stubbed solution pages (what/scope/process/faq all present) — all solution pages carry full deep content
+
+=== PARITY 5: Cross-Link Graph ===
+PASS cross-link graph >= 1000 — 43759 links
+
+=== PARITY 6: Content Counts ===
+PASS total seeded rows >= 290 — 330 rows
+
+============================================================
+PARITY CHECKLIST: 50 PASS, 0 FAIL (50 total)
+ALL PARITY CHECKS PASS
+============================================================
+
+================ CI SUMMARY ================
+  FAIL  lint
+  PASS  parity
+1/2 jobs green

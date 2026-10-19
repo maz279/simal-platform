@@ -1,0 +1,108 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Admin — KYC Review Queue — Simal</title><link rel="stylesheet" href="../assets/styles.css"></head>
+<body class="panel">
+<div class="panel-shell">
+  <aside class="side">
+    <div class="s-brand"><span class="lg-mark">S</span><div><b>Simal Admin</b><small>KYC · Compliance</small></div></div>
+    <nav class="s-nav">
+      <div class="grp">Review</div>
+      <a class="on" href="#"><span class="ic">📋</span> Applications queue <span class="n-badge">7</span></a>
+      <a href="#"><span class="ic">🗂</span> Organizations</a>
+      <a href="#"><span class="ic">📄</span> Document vault audit</a>
+      <a href="#"><span class="ic">⏰</span> Expiring documents <span class="n-badge" style="background:var(--warn)">3</span></a>
+      <div class="grp">Data quality</div>
+      <a href="#"><span class="ic">🧾</span> TRN / Peppol report</a>
+      <a href="#"><span class="ic">🤝</span> Partner records</a>
+      <div class="grp">System</div>
+      <a href="#"><span class="ic">👥</span> Users & roles</a>
+      <a href="#"><span class="ic">📊</span> SLA dashboards</a>
+      <a href="#"><span class="ic">🧮</span> Audit log export</a>
+      <a href="#"><span class="ic">⚙️</span> Settings</a>
+    </nav>
+    <div class="s-foot">🔒 MFA active · every action audit-logged<br>Admin console · SG-3 hardened</div>
+  </aside>
+
+  <main class="p-main">
+    <div class="p-top">
+      <div><span class="crumb">Admin / Review</span><h1>Applications queue</h1></div>
+      <div class="sp"></div>
+      <div class="search" style="width:240px">🔍 Search org / reference…</div>
+      <span class="badge b-ok">SLA compliance: 96%</span>
+      <div class="avatar">SN</div>
+    </div>
+
+    <div class="p-body">
+      <div class="grid g4">
+        <div class="kpi blue"><span class="l">In queue</span><span class="v">7</span><span class="d">median wait 0.8 bd</span></div>
+        <div class="kpi"><span class="l">This week</span><span class="v">31</span><span class="d up">↑ 12% vs last week</span></div>
+        <div class="kpi"><span class="l">Approval rate</span><span class="v">84%</span><span class="d">30-day rolling</span></div>
+        <div class="kpi"><span class="l">SLA breaches</span><span class="v" style="color:var(--danger)">1</span><span class="d dn">escalated to manager</span></div>
+      </div>
+
+      <div class="card">
+        <div style="padding:14px 18px;display:flex;gap:10px;align-items:center;border-bottom:1px solid var(--line)">
+          <span class="chip on">All (7)</span><span class="chip">Submitted (2)</span><span class="chip">Under review (3)</span><span class="chip">Info required (1)</span><span class="chip">Breaching (1)</span>
+          <div class="sp" style="flex:1"></div><span class="note">Sorted by SLA age ↓ · business-day clock (Sun–Thu)</span>
+        </div>
+        <table class="tbl">
+          <tr><th>Reference</th><th>Organization</th><th>Track</th><th>State</th><th>SLA age</th><th>Assignee</th><th></th></tr>
+          <tr style="background:var(--danger-050)">
+            <td class="mono">SIMAL-KYC-0107</td><td><b>Emirates Component Trading LLC</b></td>
+            <td><span class="badge b-line">Customer</span></td><td><span class="badge b-warn">UNDER REVIEW</span></td>
+            <td><span class="badge b-err" style="background:var(--danger-050);color:var(--danger)">⚠ 1.6 bd — breach imminent</span></td>
+            <td><span class="avatar" style="width:26px;height:26px;font-size:10.5px">SN</span></td>
+            <td><a class="btn btn-sm btn-a" href="admin-review.html">Resume review</a></td></tr>
+          <tr>
+            <td class="mono">SIMAL-KYC-0112</td><td><b>Gulf Parts Supply FZE</b></td>
+            <td><span class="badge b-line">Vendor</span></td><td><span class="badge b-blue">SUBMITTED</span></td>
+            <td><span class="badge b-warn">0.9 bd</span></td><td><span class="note">Unassigned</span></td>
+            <td><a class="btn btn-sm btn-p" href="admin-review.html">Assign to me</a></td></tr>
+          <tr>
+            <td class="mono">SIMAL-KYC-0110</td><td><b>Al Noor Technologies</b></td>
+            <td><span class="badge b-line">Customer</span></td><td><span class="badge b-warn">INFO REQUIRED</span></td>
+            <td><span class="note">awaiting applicant</span></td><td><span class="avatar" style="width:26px;height:26px;font-size:10.5px">MK</span></td>
+            <td><a class="btn btn-sm btn-o" href="admin-review.html">View</a></td></tr>
+          <tr>
+            <td class="mono">SIMAL-KYC-0111</td><td><b>Sharjah Digital Retail LLC</b></td>
+            <td><span class="badge b-line">Customer</span></td><td><span class="badge b-blue">SUBMITTED</span></td>
+            <td><span class="badge b-ok">0.2 bd</span></td><td><span class="note">Unassigned</span></td>
+            <td><a class="btn btn-sm btn-p" href="admin-review.html">Assign to me</a></td></tr>
+          <tr>
+            <td class="mono">SIMAL-KYC-0106</td><td><b>Muscat IT Hub (Oman)</b></td>
+            <td><span class="badge b-line">Vendor</span></td><td><span class="badge b-warn">UNDER REVIEW</span></td>
+            <td><span class="badge b-warn">1.1 bd</span></td><td><span class="avatar" style="width:26px;height:26px;font-size:10.5px">MK</span></td>
+            <td><a class="btn btn-sm btn-o" href="admin-review.html">View</a></td></tr>
+        </table>
+        <div style="padding:12px 18px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line)">
+          <span class="note">5 of 7 shown · queue summary exports CSV</span>
+          <div style="display:flex;gap:8px"><span class="chip">1</span><span class="chip">2</span><span class="chip">Next ›</span></div>
+        </div>
+      </div>
+
+      <div class="grid g2">
+        <div class="card card-p">
+          <b style="font-size:14.5px">🧾 TRN / Peppol data quality — BO-5</b>
+          <p class="note" style="margin:6px 0 14px">Partner-base validity against the ≥98% objective</p>
+          <div style="display:flex;align-items:center;gap:18px">
+            <div style="width:130px;height:130px;border-radius:50%;background:conic-gradient(var(--ok) 0 97%, var(--danger) 97% 100%);display:grid;place-items:center"><div style="width:96px;height:96px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:24px;font-weight:800">97.4%</div></div>
+            <div style="flex:1;display:flex;flex-direction:column;gap:9px;font-size:13px">
+              <div style="display:flex;justify-content:space-between"><span>Format-valid TRN</span><b>1,214 / 1,246</b></div>
+              <div style="display:flex;justify-content:space-between"><span>Peppol ID constructed</span><b>1,208 / 1,246</b></div>
+              <div style="display:flex;justify-content:space-between"><span>Failing records (fixed this week)</span><b style="color:var(--ok)">↓ 12</b></div>
+              <a href="#" style="font-weight:650">Open failure list →</a>
+            </div>
+          </div>
+        </div>
+        <div class="card card-p">
+          <b style="font-size:14.5px">⏰ Expiring documents — 30/60/90</b>
+          <div class="spark" style="margin:16px 0 8px;height:70px"><i style="height:30%"></i><i style="height:45%"></i><i class="hi" style="height:66%"></i><i style="height:40%"></i><i style="height:55%"></i><i class="hi" style="height:72%"></i><i style="height:48%"></i><i style="height:38%"></i></div>
+          <table class="tbl" style="font-size:12.5px">
+            <tr><td>Licence — Emirates Component Trading</td><td><span class="badge b-warn">T-9 days</span></td></tr>
+            <tr><td>Licence — Grand Store Deira</td><td><span class="badge b-warn">T-24 days</span></td></tr>
+            <tr><td>Signatory ID — Muscat IT Hub</td><td><span class="badge b-line">T-58 days</span></td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+</body></html>

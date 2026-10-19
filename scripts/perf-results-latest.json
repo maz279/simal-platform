@@ -1,0 +1,96 @@
+{
+  "ts": "2026-10-07T02:46:27.156Z",
+  "rig": "local single-user lab (formal k6 rig per D4 §2 pending)",
+  "db": {
+    "budgetP95Ms": 50,
+    "worstP95Ms": 1.31,
+    "pass": true,
+    "rows": [
+      {
+        "name": "home: hero slides",
+        "p50": 0.24,
+        "p95": 0.45,
+        "avgMs": 0.31
+      },
+      {
+        "name": "home: testimonials",
+        "p50": 0.2,
+        "p95": 0.25,
+        "avgMs": 0.21
+      },
+      {
+        "name": "catalog: products list",
+        "p50": 0.56,
+        "p95": 0.95,
+        "avgMs": 0.6
+      },
+      {
+        "name": "catalog: brands",
+        "p50": 0.25,
+        "p95": 0.31,
+        "avgMs": 0.28
+      },
+      {
+        "name": "PDP: product by slug",
+        "p50": 0.23,
+        "p95": 0.37,
+        "avgMs": 0.26
+      },
+      {
+        "name": "PDP: deep record",
+        "p50": 0.2,
+        "p95": 0.31,
+        "avgMs": 0.24
+      },
+      {
+        "name": "search: trgm typo",
+        "p50": 1.08,
+        "p95": 1.31,
+        "avgMs": 1.13
+      },
+      {
+        "name": "solutions: blocks",
+        "p50": 0.43,
+        "p95": 1.15,
+        "avgMs": 0.5
+      },
+      {
+        "name": "insights: blocks",
+        "p50": 0.52,
+        "p95": 0.6,
+        "avgMs": 0.54
+      },
+      {
+        "name": "legal: policies",
+        "p50": 0.16,
+        "p95": 0.25,
+        "avgMs": 0.18
+      }
+    ]
+  },
+  "api": {
+    "budgetP95Ms": 200,
+    "worstP95Ms": 1.4,
+    "pass": true,
+    "rows": [
+      {
+        "name": "GET /api/health",
+        "p50": 0.6,
+        "p95": 1.3,
+        "avgMs": 0.8
+      },
+      {
+        "name": "GET /api/settings",
+        "p50": 0.6,
+        "p95": 0.9,
+        "avgMs": 0.6
+      },
+      {
+        "name": "GET /api/public/invites/NOCODE",
+        "p50": 0.8,
+        "p95": 1.4,
+        "avgMs": 0.8
+      }
+    ]
+  }
+}

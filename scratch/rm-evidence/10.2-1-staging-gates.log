@@ -1,0 +1,27 @@
+== staging build artifacts ==
+apps/site/dist-staging/index.html
+234
+
+== SITE_DIST gates against dist-staging ==
+--- check-no-placeholders ---
+=== GATE check-no-placeholders (PUB-7) ===
+PASS — Scanned 235 HTML files in dist. 0 placeholder / internal strings found.
+exit=0
+--- facts-consistency ---
+awards: home == about (2 entries: 2025 Hikvision — Best Distributor Partner | 2025 TeamGroup — Best Partner 2025)
+
+PASS facts-consistency: every published brand count, catalogue size and company-age figure equals the reference
+exit=0
+--- check-inline-scripts ---
+inline executable scripts: 0
+exit=0
+--- check-page-language ---
+scanned 218 English pages
+
+PASS page-language: every English page renders English content; Arabic parts are marked lang="ar"
+exit=0
+--- perf-budget ---
+================ PERF BUDGET SUMMARY ================
+Passed: 30 | Failed: 0
+ALL PERFORMANCE BUDGETS MET (PRD NFR-1 COMPLIANT).
+exit=0

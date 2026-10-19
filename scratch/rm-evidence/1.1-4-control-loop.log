@@ -1,0 +1,7 @@
+1. current text: "⚡ Gen5 is here — Crucial P510 now in Dubai stock."
+2. PUT marker: 200
+3. PUBLISH: 200 outboxId: pub_1792153696169
+4. SSG worker: processed in 14.094s
+5. MARKER ON LIVE SITE: true
+6. restore PUT: 200
+7. restore publish: 200 -> processed | marker gone from site: true | original back: true

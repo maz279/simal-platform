@@ -1,0 +1,10 @@
+=== HUNG-BUILD TIMEOUT DRILL (RM-1.1-3) — Fri Oct 16 20:33:03 MPST 2026 ===
+build script temporarily: node -e setTimeout(()=>{},200000) (200s hang)
+result: job pub_1792153828374 -> failed, durationMs=120040 (killed by the 120s timeout + SIGTERM) -> PASS
+build script restored to: astro build
+
+=== queue state after all drills ===
+ sent      |     1
+ failed    |    21
+ processed |    22
+

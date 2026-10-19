@@ -1,0 +1,39 @@
+# ==============================================================================
+# Simal Corporate Platform — Production pg_hba.conf Template (DAT-9)
+# Reference: PostgreSQL 16 Official Security Hardening Guide & OWASP ASVS 5.0.0
+#
+# RULE: Zero "trust" authentication allowed in production.
+# Mandatory: SCRAM-SHA-256 encrypted authentication for all database access.
+#
+# rm(7.1-2) fixes (roadmap v1.2): the template previously allowed ONLY simal_app,
+# which locked out (a) migrations — they run as the superuser against the app
+# database — and (b) the SSG build worker (simal_build, read-only). Both paths
+# are now explicit; everything else stays rejected.
+# ==============================================================================
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only (database host maintenance)
+local   all             postgres                                peer
+local   simal           simal_app                               scram-sha-256
+
+# --- application role (DML only, database-scoped) ----------------------------
+host    simal           simal_app       127.0.0.1/32            scram-sha-256
+host    simal           simal_app       ::1/128                 scram-sha-256
+
+# --- SSG build worker (read-only; F-2026-N001 / Task 1.1-2) -------------------
+host    simal           simal_build     127.0.0.1/32            scram-sha-256
+host    simal           simal_build     ::1/128                 scram-sha-256
+
+# --- migrations / maintenance (superuser, app database only) ------------------
+# Run DDL (migrate.sql, seed.sql, prod-db-roles.sql) from the database host or
+# CI over loopback; the migration role gets no network-wide reach.
+host    simal           simal           127.0.0.1/32            scram-sha-256
+host    simal           simal           ::1/128                 scram-sha-256
+local   simal           simal                                   peer
+
+# Specific subnet access if application cluster runs in a private VPC (example 10.0.0.0/16)
+# host  simal           simal_app       10.0.0.0/16             scram-sha-256
+
+# REJECT all other connections by default (Deny-All Policy)
+host    all             all             all                     reject

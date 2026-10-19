@@ -1,0 +1,8 @@
+PASS original Honeywell revision found — revision 7
+PASS rollback accepted — HTTP 200
+PASS 1672 is the Honeywell cord again — honeywell · accessories · Honeywell HC000018/SRG/1.5M/WHT/5/2U/UK 
+RESTORE 1672: ALL PASS
+PASS original revision of crucial-t705-ssd-2 found — revision 8
+PASS rollback accepted — HTTP 200
+PASS crucial-t705-ssd-2 restored — crucial · internal-ssd · Crucial T705 SSD
+RESTORE crucial-t705-ssd-2: ALL PASS

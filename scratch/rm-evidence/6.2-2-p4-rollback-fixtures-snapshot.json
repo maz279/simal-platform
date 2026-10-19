@@ -1,0 +1,94 @@
+{
+  "deletedAt": "2026-10-17T04:35:16.344Z",
+  "reason": "F-2026-N011 test-fixture residue: published with empty payload (no title/cat), emitting /insights/#cat-undefined breadcrumb links. Removed as part of rm(6.2-2); overlaps 6.3 dist-hygiene purge.",
+  "rows": [
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791831747021",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-w8tz4vr-@example.invalid",
+      "updated_at": "1791831747035"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791831782308",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-gi0ypaxr@example.invalid",
+      "updated_at": "1791831782324"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791831872234",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-0fxfqble@example.invalid",
+      "updated_at": "1791831872248"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791832056884",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-fmygmstq@example.invalid",
+      "updated_at": "1791832056899"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791903527022",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-pp_epl2c@example.invalid",
+      "updated_at": "1791903527045"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791906693206",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-n1c0xbsl@example.invalid",
+      "updated_at": "1791906693222"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791917106224",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-1gimnwj6@example.invalid",
+      "updated_at": "1791917106250"
+    },
+    {
+      "entity": "insight",
+      "entity_id": "p4-rollback-article-1791917829845",
+      "lang": "en",
+      "payload": {
+        "t": "State 2: Updated Draft",
+        "v": 2
+      },
+      "updated_by": "gate-admin-fmde-ldn@example.invalid",
+      "updated_at": "1791917829877"
+    }
+  ]
+}

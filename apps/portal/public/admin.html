@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Console — Simal KYC Portal</title>
+  <link rel="icon" type="image/png" href="assets/img/favicon.png">
+  <link rel="stylesheet" href="assets/css/base.css?v=8">
+  <link rel="stylesheet" href="assets/css/admin.css?v=8">
+</head>
+<body>
+
+  <!-- ==================== AUTH ==================== -->
+  <h1 class="sr-only">Simal KYC Admin Console — sign in</h1>
+  <div id="auth" class="auth-wrap">
+    <aside class="auth-side">
+      <div>
+        <div style="margin-bottom:36px">
+          <img class="auth-logo" src="assets/img/logo-lockup-white.png" alt="Simal Technologies" width="150" height="33">
+          <div class="auth-logo-caption">KYC Admin Console</div>
+        </div>
+        <h2>Verify. Approve.<br>Trade compliantly.</h2>
+        <p class="fp mt-4">Review partner submissions, verify documents against registries,
+          and maintain a clean counterparty master for UAE e-invoicing (Peppol).</p>
+      </div>
+      <div class="stack">
+        <span class="id-chip" id="auth-peppol">…</span>
+        <span class="small" style="color:rgba(255,255,255,.5)">Every action is audit-logged (NFR-10).</span>
+      </div>
+    </aside>
+    <main class="auth-main">
+      <div class="auth-card card card-pad" id="login-card">
+        <div class="stack">
+          <div>
+            <h2 style="font-size:var(--fs-2xl)">Sign in</h2>
+            <p class="muted small mb-0">Admin access is restricted to authorised Simal staff.</p>
+          </div>
+
+          <div class="field">
+            <label for="lg-email">Work email</label>
+            <input class="input" id="lg-email" type="email" autocomplete="username" placeholder="name@simalme.com">
+            <span class="error" id="lg-email-err" hidden>Enter a valid email address.</span>
+          </div>
+          <div class="field">
+            <label for="lg-pass">Password</label>
+            <div class="pw-wrap">
+              <input class="input" id="lg-pass" type="password" autocomplete="current-password" placeholder="••••••••" style="padding-inline-end:44px">
+              <button type="button" class="pw-toggle" id="pw-toggle" aria-label="Show password"></button>
+            </div>
+            <span class="error" id="lg-pass-err" hidden>Enter your password.</span>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" id="lg-submit">Continue</button>
+          <div class="alert alert-info" style="padding:10px 14px">
+            <span data-icon="lock" aria-hidden="true"></span>
+            <span class="small">Accounts are provisioned by the system administrator from environment
+            configuration — passwords are scrypt-hashed and every sign-in requires your authenticator
+            TOTP code. Failed attempts are rate-limited and audit-logged.</span>
+          </div>
+          <a class="small" href="index.html">← Back to public portal</a>
+        </div>
+      </div>
+
+      <div class="auth-card card card-pad" id="mfa-card" hidden>
+        <div class="stack" style="text-align:center">
+          <img src="assets/img/logo-tile.png" alt="Simal Technologies" width="56" height="56" class="auth-tile">
+          <div>
+            <h2 style="font-size:var(--fs-xl)">Two-factor authentication</h2>
+            <p class="muted small mb-0">Enter the 6-digit code from your authenticator app.</p>
+          </div>
+          <input class="input mono" id="mfa-code" inputmode="numeric" maxlength="6" placeholder="••••••"
+                 style="text-align:center;font-size:1.6rem;letter-spacing:.5em" aria-label="MFA code">
+          <span class="error" id="mfa-err" hidden>Enter the 6-digit code from your authenticator app.</span>
+          <button class="btn btn-primary btn-lg btn-block" id="mfa-submit">Verify &amp; sign in</button>
+          <button class="btn btn-ghost btn-sm" id="mfa-back">← Use a different account</button>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ==================== APP ==================== -->
+  <div id="app" class="app" hidden>
+    <h1 class="sr-only">Simal KYC Admin Console</h1>
+    <aside class="sidebar" id="sidebar">
+      <div class="sb-brand">
+        <img class="sb-logo" src="assets/img/logo-lockup-white.png" alt="Simal Technologies" width="129" height="28">
+        <span class="sb-app">KYC Admin Console</span>
+      </div>
+      <ul class="sb-nav" id="nav">
+        <li><a href="#/dashboard" data-view="dashboard"><span class="nav-ic" data-icon="dash"></span>Dashboard</a></li>
+        <li><a href="#/submissions" data-view="submissions"><span class="nav-ic" data-icon="inbox"></span>Submissions<span class="nav-count" id="nav-count">0</span></a></li>
+        <li><a href="#/reports" data-view="reports"><span class="nav-ic" data-icon="chart"></span>Reports</a></li>
+        <li><a href="#/analytics" data-view="analytics"><span class="nav-ic" data-icon="chart"></span>Analytics</a></li>
+        <li><a href="#/audit" data-view="audit"><span class="nav-ic" data-icon="history"></span>Audit Log</a></li>
+        <li><a href="#/outbox" data-view="outbox"><span class="nav-ic" data-icon="send"></span>Notifications</a></li>
+        <li><a href="#/users" data-view="users"><span class="nav-ic" data-icon="users"></span>Users</a></li>
+        <li><a href="#/settings" data-view="settings"><span class="nav-ic" data-icon="shield"></span>Settings</a></li>
+      </ul>
+      <div class="sb-foot">
+        <div class="row" style="justify-content:space-between">
+          <a class="btn btn-ghost btn-sm" style="color:var(--gray-300)" href="index.html">Public portal ↗</a>
+        </div>
+        <div class="row mt-2" style="justify-content:space-between">
+          <span>KYC System v1.0</span>
+        </div>
+        <div class="mt-2 small" id="sb-session" style="color:var(--gray-500)"></div>
+      </div>
+    </aside>
+
+    <div class="main">
+      <header class="topbar">
+        <div class="row">
+          <button class="btn btn-secondary btn-sm menu-btn" id="btn-menu" aria-label="Open menu"></button>
+          <div>
+            <div class="tb-title" id="tb-title">Dashboard</div>
+            <div class="tb-sub" id="tb-sub">Onboarding pipeline at a glance</div>
+          </div>
+        </div>
+        <div class="row">
+          <span class="badge badge-teal" id="tb-coverage">—</span>
+          <div class="user-chip">
+            <span class="avatar" id="tb-avatar">·</span>
+            <span><span style="font-weight:600;font-size:var(--fs-sm)" id="tb-user">—</span><br>
+            <span class="small muted" id="tb-role">—</span></span>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="btn-logout">Sign out</button>
+        </div>
+      </header>
+      <!-- rm(10.4-1 / PEN-2026-05): self-service TOTP enrolment for staff without MFA -->
+      <div id="mfa-banner" class="card" hidden style="margin:16px 24px 0;border-left:4px solid var(--warn-600);padding:12px 16px">
+        <div class="row" style="justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+          <div>
+            <b style="font-size:var(--fs-sm)">Set up two-factor authentication</b>
+            <div class="small muted">Your account has no authenticator yet. Production requires TOTP for every staff account.</div>
+          </div>
+          <button class="btn btn-primary btn-sm" id="mfa-setup-btn">Set up authenticator</button>
+        </div>
+        <div id="mfa-setup-panel" hidden style="margin-top:12px">
+          <div class="small" style="margin-bottom:6px">Add this secret to your authenticator app, then enter the 6-digit code.</div>
+          <code id="mfa-secret" class="mono" style="display:block;padding:8px 10px;background:var(--gray-50);border-radius:6px;word-break:break-all"></code>
+          <div class="row" style="gap:8px;margin-top:10px;align-items:center">
+            <input class="input" id="mfa-setup-code" inputmode="numeric" autocomplete="one-time-code" placeholder="123456" style="max-width:140px" aria-label="Authenticator code">
+            <button class="btn btn-primary btn-sm" id="mfa-confirm-btn">Confirm</button>
+            <span class="small muted" id="mfa-setup-err" role="alert"></span>
+          </div>
+        </div>
+      </div>
+      <div class="content" id="content"><!-- routed views render here --></div>
+    </div>
+  </div>
+
+  <script src="assets/js/ui.js?v=1"></script>
+  <script src="assets/js/api.js?v=6"></script>
+  <script src="assets/js/admin.js?v=16"></script>
+</body>
+</html>

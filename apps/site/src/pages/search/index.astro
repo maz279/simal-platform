@@ -1,0 +1,38 @@
+---
+// search/index.astro — NEW page from the conversion plan route table (Prototype
+// search.html): instant, typo-tolerant search over the full catalog. The prototype
+// searched client-side over CATALOG; production ports the same contract — the SSG
+// page embeds the catalog (78 SKUs) and the island matches with normalization +
+// subsequence tolerance. Header/hero search boxes route here.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const rows = await db`SELECT slug, name, brand, cat, cat_label, short, sku, imgs FROM products ORDER BY name`;
+const imgOf = (imgs: unknown): string => {
+  const v = Array.isArray(imgs) ? imgs[0] : (typeof imgs === 'string' && imgs !== 'null' ? JSON.parse(imgs)[0] : '');
+  return v && !v.startsWith('/') ? '/' + v : v;
+};
+const catalog = rows.map((p: any) => ({ slug: p.slug, name: p.name, brand: p.brand, cat: p.cat, catLabel: p.cat_label || p.cat, short: p.short, sku: p.sku, img: imgOf(p.imgs) }));
+---
+
+<BaseLayout title="Search — Simal Technologies" description="Search the catalog — typo-tolerant across names, brands, SKUs and categories.">
+  <section class="hero" style="padding:0"><div class="wrap" style="padding:46px 28px 40px;grid-template-columns:1fr">
+    <div style="max-width:720px">
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">typo-tolerant · instant</span>
+      <h1 style="font-size:34px;margin-top:10px">Search the catalog</h1>
+      <p class="lead">Names, brands, SKUs and categories — {catalog.length} SKUs, matched as you type.</p>
+      <div class="hero-search" style="margin-top:16px">
+        <input class="in" id="q" type="search" placeholder="e.g. crucial gen5, monitor, dock…" autocomplete="off" style="max-width:none;background:#fff;color:var(--ink);border-color:var(--line-2)" aria-label="Search catalog for products, brands, or SKUs">
+        <button class="btn btn-gold" id="go">Search</button>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="sec"><div class="wrap">
+    <p class="note" id="count-note" style="margin-bottom:16px">Type to search — or browse the <a href="/products/">full catalog</a>.</p>
+    <div class="grid g3" id="results"></div>
+  </div></section>
+
+  <script type="application/json" id="search-island-data" set:html={JSON.stringify({ catalog })}></script>
+<script src="/assets/js/search-island.js" defer></script>
+</BaseLayout>

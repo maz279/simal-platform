@@ -1,0 +1,80 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RFQ — Request a Quote — Simal Technologies</title>
+<link rel="stylesheet" href="assets/css/styles.css?v=136">
+<script src="data/catalog.js?v=131"></script><script src="data/brands.js?v=131"></script>
+<script src="data/content.js?v=131"></script><script src="assets/js/core.js?v=131"></script><script src="assets/js/chrome.js?v=131"></script>
+</head>
+<body data-page="rfq">
+<div id="chrome-top"></div>
+
+<div class="wrap"><div class="crumbs"><a href="index.html">Home</a> › <b>RFQ — Request a Quote</b></div></div>
+
+<section style="padding:8px 0 64px"><div class="wrap">
+  <div class="split" style="grid-template-columns:1.25fr .75fr;align-items:start">
+    <div>
+      <span class="eyebrow">No checkout — the channel works on quotes</span>
+      <h1 style="font-size:30px;font-weight:800;margin:6px 0 8px">Your RFQ basket</h1>
+      <p style="color:var(--slate);margin-bottom:20px">Review quantities, add your contact details, submit — you receive a <b>SIMAL-RFQ reference</b> instantly and a quoted price within one business day. No account needed.</p>
+
+      <div id="rfq-step-1">
+        <div class="card card-p" style="padding:20px">
+          <div id="basket-tbl"></div>
+          <div style="display:flex;justify-content:space-between;margin-top:16px;align-items:center;flex-wrap:wrap;gap:10px">
+            <a class="btn btn-o btn-sm" href="category.html">+ Add more SKUs</a>
+            <span class="note">Prices are quoted per RFQ — volume tiers apply</span>
+          </div>
+        </div>
+
+        <h2 style="font-size:19px;margin:30px 0 12px">Contact &amp; delivery</h2>
+        <div class="card card-p" style="padding:22px">
+          <div class="grid g2" style="gap:14px">
+            <div class="field"><label>Company name *</label><input class="in" id="f-co"></div>
+            <div class="field"><label>Contact person *</label><input class="in" id="f-name"></div>
+            <div class="field"><label>Work email *</label><input class="in" id="f-email" type="email" placeholder="you@company.ae"></div>
+            <div class="field"><label>Phone / WhatsApp *</label><input class="in" id="f-phone" placeholder="+971 …"></div>
+            <div class="field"><label>TRN (optional — for Peppol e-invoicing)</label><input class="in" id="f-trn" inputmode="numeric" maxlength="15" placeholder="15 digits"></div>
+            <div class="field"><label>Delivery emirate / city</label><input class="in" id="f-city" placeholder="Dubai"></div>
+          </div>
+          <div class="field" style="margin-top:14px"><label>Notes — target date, budget, alternate SKUs</label><textarea class="in" id="f-notes" rows="3" style="resize:vertical"></textarea></div>
+          <label class="consent" style="margin-top:14px"><input type="checkbox" id="f-consent"><span>I agree that Simal may process this enquiry under the UAE PDPL privacy notice. *</span></label>
+          <div style="display:flex;gap:12px;margin-top:20px;flex-wrap:wrap">
+            <button class="btn btn-p btn-lg" id="f-submit">Submit RFQ →</button>
+            <a class="btn btn-wa btn-lg" id="f-wa" href="#">Hand off to WhatsApp</a>
+          </div>
+          <p class="hint" style="margin-top:12px" id="f-err" hidden></p>
+        </div>
+      </div>
+
+      <div id="rfq-step-2" hidden>
+        <div class="card card-p" style="padding:34px;text-align:center">
+          <div style="font-size:44px">✅</div>
+          <h2 style="font-size:24px;margin:10px 0 6px">RFQ submitted</h2>
+          <p style="color:var(--slate)">Your reference</p>
+          <div style="font-family:Consolas,monospace;font-size:24px;font-weight:800;color:var(--blue);background:var(--blue-050);border:1px dashed var(--blue-100);border-radius:12px;padding:12px 22px;display:inline-block;margin:6px 0 12px" id="done-ref">SIMAL-RFQ-…</div>
+          <p style="color:var(--slate);max-width:520px;margin:0 auto 18px">A quotation is on its way to <b id="done-mail"></b> within one business day (Sun–Thu). Track it any time in your account — or just reply to the email.</p>
+          <div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+            <a class="btn btn-p" href="account.html">Track in my account</a>
+            <a class="btn btn-o" href="category.html">Keep browsing</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside>
+      <div class="card card-p" style="padding:20px;position:sticky;top:66px">
+        <h4 style="font-size:15px;margin-bottom:10px">How the RFQ engine works</h4>
+        <div class="timeline">
+          <div class="tl"><b>Submit</b><span>Instant SIMAL-RFQ reference</span></div>
+          <div class="tl"><b>Quote</b><span>≤ 1 business day, volume-tiered</span></div>
+          <div class="tl"><b>Confirm</b><span>PO → stock allocated from JAFZA</span></div>
+          <div class="tl"><b>Deliver</b><span>UAE same/next day · GCC same week</span></div>
+        </div>
+        <div class="alert al-info" style="margin-top:16px;font-size:12.5px"><b>Why no checkout?</b> Channel pricing is account- and volume-based. RFQ keeps it honest — and Peppol e-invoicing fields are captured from 2027.</div>
+      </div>
+    </aside>
+  </div>
+</div></section>
+
+<div id="chrome-bot"></div>
+<script src="assets/js/pages/rfq.js?v=131"></script>
+</body></html>

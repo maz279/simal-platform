@@ -1,0 +1,140 @@
+run-gates: clean-db, authz, pg-reporting, crawl, placeholders, a11y, perf  (GATE_ADMIN_URL host: 127.0.0.1:5433)
+
+
+>>>>>>>> clean-db — DAT-1 clean-DB SSG build
+[clean-db-build] scratch db ready — building SSG site into dist-gate/ …
+(node:18156) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+[2m20:30:02[22m [32m▶[39m src/pages/solutions/[id].astro
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/infra/index.html[22m [2m(+10ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+4ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/amc/index.html[22m [2m(+6ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/managed/index.html[22m [2m(+6ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/network-security/index.html[22m [2m(+4ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+7ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+5ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/cloud-security/index.html[22m [2m(+5ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/cabling/index.html[22m [2m(+7ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/av/index.html[22m [2m(+6ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/telephony/index.html[22m [2m(+6ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/firewall/index.html[22m [2m(+6ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+5ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/data-recovery/index.html[22m [2m(+5ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/licensing/index.html[22m [2m(+8ms)[22m 
+[2m20:30:02[22m   [34m├─[39m [2m/solutions/support/index.html[22m [2m(+5ms)[22m 
+[2m20:30:02[22m   [34m└─[39m [2m/solutions/av/index.html[22m [2m(+5ms)[22m 
+[2m20:30:02[22m [32m▶[39m src/pages/solutions/index.astro
+[2m20:30:02[22m   [34m└─[39m [2m/solutions/index.html[22m [2m(+7ms)[22m 
+[2m20:30:02[22m [32m✓ Completed in 2.07s.
+[39m
+[2m20:30:02[22m [34m[build][39m 241 page(s) built in [1m4.01s[22m
+[2m20:30:02[22m [34m[build][39m [1mComplete![22m
+
+
+=== GATE clean-db-build (DAT-1) ===
+PASS — 0 violations
+
+>>>>>>>> authz — SEC-3/SEC-5 role matrix (deny by default)
+{"ts":"2026-10-16T12:30:03.024Z","level":"info","event":"store","engine":"json-file-async","dataDir":"C:\\Users\\maz_2\\AppData\\Local\\Temp\\simal-gate-dBICgr"}
+{"ts":"2026-10-16T12:30:03.025Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+{"ts":"2026-10-16T12:30:03.200Z","level":"info","event":"http","id":"68263c6d-d087-467e-bce5-3d57435e2587","method":"POST","path":"/api/auth/login","status":200,"ms":40}
+{"ts":"2026-10-16T12:30:03.218Z","level":"info","event":"http","id":"2a683509-d7d4-43ec-a3c3-9bfcb5a29052","method":"POST","path":"/api/auth/mfa","status":200,"ms":8}
+{"ts":"2026-10-16T12:30:03.258Z","level":"info","event":"http","id":"a1dc5f41-0a7b-4f2c-add3-2ec9e7f6b334","method":"POST","path":"/api/auth/login","status":200,"ms":38}
+{"ts":"2026-10-16T12:30:03.296Z","level":"info","event":"http","id":"daa51e05-3042-4fc7-abdb-3f13b61e84de","method":"POST","path":"/api/auth/login","status":200,"ms":36}
+{"ts":"2026-10-16T12:30:03.371Z","level":"info","event":"http","id":"8e210e8f-2349-466e-a071-f74088e32fac","method":"POST","path":"/api/auth/login","status":200,"ms":37}
+
+=== GATE authz-matrix (SEC-3/SEC-5) ===
+PASS — 0 violations
+
+>>>>>>>> pg-reporting — DAT-3/APP-1 SLA age + reports on PG
+{"ts":"2026-10-16T12:30:04.094Z","level":"info","event":"store","engine":"postgresql","url":"postgres://simal:***@127.0.0.1:5433/simal_gate_pgr_mvay3oyl"}
+{"ts":"2026-10-16T12:30:04.095Z","level":"info","event":"watchlist_loaded","path":"./data/watchlist.csv","entries":5}
+pg-repos: connected, settings cached: [ 'simalTin', 'simalPeppol' ]
+{"ts":"2026-10-16T12:30:04.342Z","level":"info","event":"http","id":"92651597-7a1d-40c4-b661-9f5408f44852","method":"POST","path":"/api/auth/login","status":200,"ms":41}
+{"ts":"2026-10-16T12:30:04.356Z","level":"info","event":"http","id":"62917282-227c-4d63-896b-878266f9079b","method":"GET","path":"/api/admin/submissions","status":200,"ms":7}
+{"ts":"2026-10-16T12:30:04.363Z","level":"info","event":"http","id":"2a49a757-7c3b-4d47-98bb-1e1a966f1ef8","method":"POST","path":"/api/admin/reports/build","status":200,"ms":3}
+{"ts":"2026-10-16T12:30:04.368Z","level":"info","event":"http","id":"4eb21c4d-7016-4b7b-bdc8-83c671fceb53","method":"GET","path":"/api/admin/export.csv","status":200,"ms":4}
+
+=== GATE pg-reporting (DAT-3) ===
+PASS — 0 violations
+[pg-repos] Database client socket error: terminating connection due to administrator command
+[pg-repos] Database client socket error: read ECONNRESET
+[pg-repos] Database client socket error: Connection terminated unexpectedly
+
+>>>>>>>> crawl — PUB-3 internal link crawl of dist
+crawled 457 internal URLs; 0 non-2xx/3xx; 19 missing anchors (P3-9 scope)
+
+=== GATE link-crawl (PUB-3) ===
+PASS — 0 broken internal URLs
+
+>>>>>>>> placeholders — PUB-7 placeholder / internal strings scan
+=== GATE check-no-placeholders (PUB-7) ===
+PASS — Scanned 243 HTML files in dist. 0 placeholder / internal strings found.
+
+>>>>>>>> a11y — WCAG 2.x A/AA via axe-core
+page /: 0 violation rule(s) [0 serious/critical]
+page /products/: 0 violation rule(s) [0 serious/critical]
+page /brands/: 0 violation rule(s) [0 serious/critical]
+page /insights/: 0 violation rule(s) [0 serious/critical]
+page /software/: 0 violation rule(s) [0 serious/critical]
+page /contact/: 0 violation rule(s) [0 serious/critical]
+page /about/: 0 violation rule(s) [0 serious/critical]
+
+=== GATE a11y (WCAG 2.x A/AA, Phase 6 target) ===
+PASS — 0 violations
+
+>>>>>>>> perf — NFR-1 Lighthouse & CWV performance budgets
+--- CI Performance & CWV Budget Gate (NFR-1 / P8-6) ---
+Inspecting build artifacts in: C:\software_project\Simal_Corporate_website\Codebase\apps\site\dist
+
+1. Checking Asset & Bundle Budgets:
+  PASS: CSS chunk index.9q1LyLwM.css budget (raw <= 100KB, gzip <= 40KB) (raw: 14.7KB, gzip: 3.8KB)
+  PASS: CSS chunk index.Bt0qU5gi.css budget (raw <= 100KB, gzip <= 40KB) (raw: 42.1KB, gzip: 9.7KB)
+  PASS: JS chunk BaseLayout.astro_astro_type_script_index_0_lang.DQK8n6Kf.js budget (raw <= 200KB, gzip <= 60KB) (raw: 5.8KB, gzip: 2.1KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.BhthWDNp.js budget (raw <= 200KB, gzip <= 60KB) (raw: 4.4KB, gzip: 1.7KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.D4GLGY4r.js budget (raw <= 200KB, gzip <= 60KB) (raw: 7.6KB, gzip: 2.9KB)
+  PASS: JS chunk index.astro_astro_type_script_index_0_lang.fbcik37E.js budget (raw <= 200KB, gzip <= 60KB) (raw: 11.4KB, gzip: 3.8KB)
+
+2. Auditing Core Pages HTML Structure & Critical Hints:
+  PASS: Page index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 84.6KB, gzip: 18.1KB)
+  PASS: Page index.html includes font preconnect hints
+  PASS: Landing page has prioritized eager LCP hero element
+  PASS: Page index.html has responsive mobile viewport meta
+  PASS: Page products/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 159.7KB, gzip: 23.5KB)
+  PASS: Page products/index.html includes font preconnect hints
+  PASS: Page products/index.html has responsive mobile viewport meta
+  PASS: Page solutions/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 75.9KB, gzip: 14.5KB)
+  PASS: Page solutions/index.html includes font preconnect hints
+  PASS: Page solutions/index.html has responsive mobile viewport meta
+  PASS: Page rfq/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 67.9KB, gzip: 17.5KB)
+  PASS: Page rfq/index.html includes font preconnect hints
+  PASS: Page rfq/index.html has responsive mobile viewport meta
+  PASS: Page about/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 57.0KB, gzip: 13.0KB)
+  PASS: Page about/index.html includes font preconnect hints
+  PASS: Page about/index.html has responsive mobile viewport meta
+  PASS: Page contact/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 45.9KB, gzip: 11.4KB)
+  PASS: Page contact/index.html includes font preconnect hints
+  PASS: Page contact/index.html has responsive mobile viewport meta
+  PASS: Page ar/index.html HTML budget (raw <= 200KB, gzip <= 40KB) (raw: 54.0KB, gzip: 13.2KB)
+  PASS: Page ar/index.html includes font preconnect hints
+  PASS: Page ar/index.html has responsive mobile viewport meta
+
+3. Synthetic CWV Benchmark (Simulated 4G Mobile: 150ms RTT, 1.6 Mbps):
+  PASS: Live Edge TTFB <= 200ms (measured: 40ms)
+  PASS: Simulated 4G Mobile LCP <= 2.5s (2500ms) (estimated: 1013ms (TTFB: 40ms + RTT: 150ms + HTML: 423ms))
+  PASS: Simulated Lighthouse Performance Score >= 85 (score: 95/100)
+
+================ PERF BUDGET SUMMARY ================
+Passed: 31 | Failed: 0
+ALL PERFORMANCE BUDGETS MET (PRD NFR-1 COMPLIANT).
+
+================ GATE SUMMARY ================
+  PASS  clean-db
+  PASS  authz
+  PASS  pg-reporting
+  PASS  crawl
+  PASS  placeholders
+  PASS  a11y
+  PASS  perf
+==============================================
+All selected gates GREEN.

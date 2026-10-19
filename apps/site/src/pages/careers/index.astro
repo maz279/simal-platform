@@ -1,0 +1,177 @@
+---
+// careers/index.astro — careers landing. VISUAL CONTRACT: Prototype careers.html ported 1:1.
+// Restores two-column hero with Life at Simal stats card + WhatsApp CTA,
+// Four Desks Hiring Now open roles, interactive Application Form with role preselection,
+// Why people stay cards, and Benefits.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { db } from '../../lib/db';
+
+const DEFAULT_OPEN_ROLES = [
+  { code: 'UAE-001', title: 'Senior B2B Sales Executive — IT Hardware', dept: 'Sales & BD', exp: '3–5 yrs', icon: '📈' },
+  { code: 'UAE-002', title: 'Key Account Manager — GCC Region', dept: 'Sales & BD', exp: '5+ yrs', icon: '📈' },
+  { code: 'UAE-004', title: 'Product Manager — Storage & Memory', dept: 'Product', exp: '3–5 yrs', icon: '🏷️' },
+  { code: 'UAE-007', title: 'Logistics Coordinator — Import/Export', dept: 'Supply Chain', exp: '2–5 yrs', icon: '🚚' }
+];
+
+const [rolesBlockRow] = await db`SELECT payload FROM content_blocks WHERE entity = 'site' AND entity_id = 'careers-roles' AND lang = 'en'`;
+const rawRoles = rolesBlockRow?.payload;
+const openRoles: typeof DEFAULT_OPEN_ROLES = Array.isArray(rawRoles) && rawRoles.length ? rawRoles : DEFAULT_OPEN_ROLES;
+
+const jobPostingSchemas = openRoles.map(j => ({
+  '@type': 'JobPosting',
+  '@id': `https://simalme.com/careers/#${j.code}`,
+  'title': j.title,
+  'description': `${j.title} in ${j.dept} at Simal Technologies Middle East LLC, Dubai. Minimum experience: ${j.exp}.`,
+  'identifier': {
+    '@type': 'PropertyValue',
+    'name': 'Simal Technologies',
+    'value': j.code
+  },
+  'datePosted': '2026-10-12',
+  'validThrough': '2027-10-12',
+  'employmentType': 'FULL_TIME',
+  'hiringOrganization': {
+    '@id': 'https://simalme.com/#organization'
+  },
+  'jobLocation': {
+    '@type': 'Place',
+    'address': {
+      '@type': 'PostalAddress',
+      'streetAddress': 'Office 201, Dar Al Riffa Bldg, Khalid Bin Al Waleed Rd, Bur Dubai',
+      'addressLocality': 'Dubai',
+      'addressCountry': 'AE'
+    }
+  }
+}));
+
+const careersBreadcrumbs = {
+  '@type': 'BreadcrumbList',
+  '@id': 'https://simalme.com/careers/#breadcrumb',
+  'itemListElement': [
+    {
+      '@type': 'ListItem',
+      'position': 1,
+      'name': 'Home',
+      'item': 'https://simalme.com/'
+    },
+    {
+      '@type': 'ListItem',
+      'position': 2,
+      'name': 'Careers',
+      'item': 'https://simalme.com/careers/'
+    }
+  ]
+};
+---
+
+<BaseLayout 
+  title="Careers — Simal Technologies" 
+  description="Build the channel's next decade with us — small teams, real ownership, direct access to 21 global IT brands."
+  schemas={[...jobPostingSchemas, careersBreadcrumbs]}
+>
+  <!-- ===== Hero with Life at Simal card ===== -->
+  <section class="hero"><div class="wrap" style="padding:52px 28px 48px;display:grid;grid-template-columns:1fr .8fr;gap:28px;align-items:start">
+    <div>
+      <span class="badge b-dark" style="background:rgba(255,255,255,.14);color:#fff">bur dubai · jafza · hybrid field roles</span>
+      <h1 style="font-size:36px;line-height:1.2;margin:12px 0">Build the channel's<br><em style="font-style:normal;color:var(--yellow)">next decade with us.</em></h1>
+      <p class="lead" style="color:#DAE5F0;margin-bottom:24px">A 24-year distributor becoming a platform company — distribution, services and now software. Small teams, real ownership, direct access to principals like Crucial and Hikvision.</p>
+      <div class="cta" style="display:flex;gap:12px;flex-wrap:wrap">
+        <a class="btn btn-lg" style="background:#fff;color:var(--blue)" href="#roles">See open roles</a>
+        <a class="btn btn-lg btn-wa" href="https://wa.me/971508487861" target="_blank" rel="noopener">Ask HR on WhatsApp</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h2 style="font-size:18px;margin-bottom:12px">🧭 Life at Simal</h2>
+      <div class="row"><span>Team size</span><b>11–50</b></div>
+      <div class="row"><span>Principals you touch</span><b>21 brands</b></div>
+      <div class="row"><span>Market exposure</span><b>UAE · GCC · MEA · CIS</b></div>
+      <div class="row"><span>New since 2026</span><b>Software practice</b></div>
+    </div>
+  </div></section>
+
+  <!-- ===== Open Roles & Application Form ===== -->
+  <section class="sec" id="roles"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Open roles</span><h2>Four desks hiring now</h2></div></div>
+    <div class="grid g2" id="role-grid">
+      {openRoles.map((j) => (
+        <div class="card card-p">
+          <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+            <span class="badge b-blue">{j.dept}</span>
+            <span class="badge b-line">Dubai, UAE</span>
+            <span style="margin-left:auto;font-family:Consolas,monospace;font-size:11.5px;color:var(--slate)">{j.code}</span>
+          </div>
+          <h3 style="font-size:16px;margin:10px 0 4px">{j.title}</h3>
+          <p style="color:var(--slate);font-size:13px">{j.icon} Full-time · {j.exp} experience · posted 2026</p>
+          <button class="btn btn-o btn-sm apply-btn" style="margin-top:12px" data-role={j.title}>Apply for this role →</button>
+        </div>
+      ))}
+    </div>
+
+    <!-- Application Form -->
+    <div class="card card-p" style="margin-top:26px;padding:24px">
+      <h3 style="font-size:19px">Apply — or introduce yourself</h3>
+      <p class="note" style="margin-bottom:14px;color:var(--slate);font-size:13px">Direct channel recruitment — applications reviewed by department leads within 5 business days.</p>
+      <div class="grid g2" style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+        <div class="field"><label for="j-name">Full name *</label><input class="in" id="j-name" type="text" placeholder="Your name" autocomplete="name"></div>
+        <div class="field"><label for="j-email">Email *</label><input class="in" id="j-email" type="email" placeholder="you@domain.com" autocomplete="email"></div>
+        <div class="field"><label for="j-role">Role of interest</label>
+          <select class="in" id="j-role">
+            <option value="">General application</option>
+            <option>Senior B2B Sales Executive — IT Hardware</option>
+            <option>Key Account Manager — GCC Region</option>
+            <option>Product Manager — Storage & Memory</option>
+            <option>Logistics Coordinator — Import/Export</option>
+          </select>
+        </div>
+        <div class="field"><label for="j-link">LinkedIn / portfolio</label><input class="in" id="j-link" placeholder="https://linkedin.com/in/…"></div>
+        <div class="field"><label for="j-cv">CV / Resume (PDF, DOCX)</label><input class="in" id="j-cv" type="file" accept=".pdf,.doc,.docx" aria-label="Upload CV / Resume"></div>
+      </div>
+      <div class="field" style="margin-top:14px"><label for="j-why">Why Simal? (2–3 lines)</label><textarea class="in" id="j-why" rows="3" style="resize:vertical" placeholder="Tell us why you are interested in this role…"></textarea></div>
+      <label class="consent" for="j-ok" style="margin-top:12px;display:flex;gap:8px;align-items:center;font-size:13px"><input type="checkbox" id="j-ok"><span>Store my application under the PDPL privacy notice. *</span></label>
+      <button class="btn btn-p" id="j-go" style="margin-top:16px">Submit application →</button>
+      <p class="hint" id="j-err" hidden style="color:var(--red);margin-top:8px"></p>
+      <div id="j-done" hidden class="alert al-ok" style="margin-top:14px;padding:12px 14px;background:#EDFBF2;border-left:4px solid var(--ok);border-radius:8px;color:#0F5132"></div>
+    </div>
+  </div></section>
+
+  <!-- ===== Why People Stay & Benefits ===== -->
+  <section class="sec" style="background:#fff;border-top:1px solid var(--line)"><div class="wrap">
+    <div class="sec-head"><div><span class="eyebrow">Why people stay</span><h2>Real systems, real stakes</h2></div></div>
+    <div class="grid g3">
+      <div class="card card-p" style="border-top:4px solid var(--blue)"><b>Real systems, real stakes</b>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:8px">AMC contracts, bank-grade infrastructure projects, ERP go-lives — the work you do is production work from week one.</p></div>
+      <div class="card card-p" style="border-top:4px solid var(--g3)"><b>Certification backed</b>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:8px">Vendor and platform certifications are sponsored — the catalog we distribute is the stack you master.</p></div>
+      <div class="card card-p" style="border-top:4px solid var(--blue)"><b>Dubai + the region</b>
+        <p style="font-size:13.5px;color:var(--slate);margin-top:8px">Head office in Dubai with delivery across the Emirates and GCC travel when the project calls for it.</p></div>
+    </div>
+
+    <div class="card card-p" style="margin-top:30px;border-top:4px solid var(--g3)">
+      <span class="eyebrow">Benefits</span><h3 style="margin:8px 0 10px">The package</h3>
+      <div class="grid g2" style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        {[
+          'Employment visa and ICP processing handled by the company',
+          'Medical insurance per UAE labour law standards',
+          'Annual ticket allowance',
+          'Training and certification budget per role',
+          '22 calendar days annual leave, growing with tenure',
+          'Performance bonus reviewed annually'
+        ].map(b => (
+          <div style="display:flex;gap:8px;align-items:center;font-size:13.5px;color:var(--slate)">
+            <span style="color:var(--ok)">✓</span> {b}
+          </div>
+        ))}
+      </div>
+    </div>
+  </div></section>
+  <script src="/assets/js/careers-page.js?v=1" defer></script>
+</BaseLayout>
+
+<style>
+  @media(max-width:900px){
+    .hero .wrap { grid-template-columns: 1fr!important; padding: 36px 20px 32px!important; }
+    .grid.g2 { grid-template-columns: 1fr!important; }
+  }
+</style>
+
+

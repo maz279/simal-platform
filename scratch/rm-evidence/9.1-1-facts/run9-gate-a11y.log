@@ -1,0 +1,321 @@
+2026-10-17T16:21:49.6343975Z simal-rig-runner(version:v5.1.1)
+2026-10-17T16:21:49.6344097Z ::group::Runner Information
+2026-10-17T16:21:49.6344107Z Runner labels: ubuntu-latest, ubuntu-24.04
+2026-10-17T16:21:49.6344119Z Task: 164
+2026-10-17T16:21:49.6344124Z Job: gate-a11y
+2026-10-17T16:21:49.6344132Z Repository: simal-ci/simal-platform
+2026-10-17T16:21:49.6344143Z Triggered by event: push
+2026-10-17T16:21:49.6344152Z ::endgroup::
+2026-10-17T16:21:49.6344159Z ::group::Operating System
+2026-10-17T16:21:49.6344171Z Alpine Linux v3.24
+2026-10-17T16:21:49.6344179Z linux/amd64
+2026-10-17T16:21:49.6344185Z ::endgroup::
+2026-10-17T16:21:49.6349448Z workflow prepared
+2026-10-17T16:21:49.6503019Z ::group::Starting job container
+2026-10-17T16:21:49.6503364Z image: ghcr.io/catthehacker/ubuntu:act-24.04
+2026-10-17T16:21:49.6503413Z name: GITEA-ACTIONS-TASK-164-WORKFLOW-CI-JOB-gate-a11y-gate-a11y-af7a7dc7809e316bec885c9d99662149485e4d97c4c4edc4c477fcb902a41b14
+2026-10-17T16:21:49.6503448Z network: host
+2026-10-17T16:21:49.7034253Z docker pull image=ghcr.io/catthehacker/ubuntu:act-24.04 platform= username= forcePull=false
+2026-10-17T16:21:49.7674894Z docker create image=ghcr.io/catthehacker/ubuntu:act-24.04 platform= entrypoint=["sleep" "7200"] cmd=[] network="host"
+2026-10-17T16:21:49.8722755Z docker run image=ghcr.io/catthehacker/ubuntu:act-24.04 platform= entrypoint=["sleep" "7200"] cmd=[] network="host"
+2026-10-17T16:21:50.1697738Z ::endgroup::
+2026-10-17T16:21:50.2060940Z Prepare all required actions
+2026-10-17T16:21:50.8415256Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-17T16:21:51.1032900Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-17T16:21:51.3489104Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-10-17T16:21:51.6128290Z Download action repository 'browser-actions/setup-chrome@v1' (SHA:c785b87e244131f27c9f19c1a33e2ead956ab7ce)
+2026-10-17T16:21:51.6128653Z Complete job name: gate-a11y
+2026-10-17T16:21:51.6746254Z ::group::Run actions/checkout@v4
+2026-10-17T16:21:51.9570676Z ::add-matcher::/var/run/act/actions/0171910b83740495f3b9f6112ecd5f7772540e77732909d2c22c31fac9fc0569/dist/problem-matcher.json
+2026-10-17T16:21:51.9571321Z Syncing repository: simal-ci/simal-platform
+2026-10-17T16:21:51.9577400Z ::group::Getting Git version info
+2026-10-17T16:21:51.9577487Z Working directory is '/workspace/simal-ci/simal-platform'
+2026-10-17T16:21:51.9636692Z [command]/usr/bin/git version
+2026-10-17T16:21:51.9685656Z git version 2.55.0
+2026-10-17T16:21:51.9706524Z ::endgroup::
+2026-10-17T16:21:51.9744805Z Temporarily overriding HOME='/tmp/b47fc4a7-5865-428f-8c4d-24b5e0416179' before making global git config changes
+2026-10-17T16:21:51.9745786Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-17T16:21:51.9750212Z [command]/usr/bin/git config --global --add safe.directory /workspace/simal-ci/simal-platform
+2026-10-17T16:21:51.9793512Z Deleting the contents of '/workspace/simal-ci/simal-platform'
+2026-10-17T16:21:51.9797133Z ::group::Initializing the repository
+2026-10-17T16:21:51.9805992Z [command]/usr/bin/git init /workspace/simal-ci/simal-platform
+2026-10-17T16:21:51.9865090Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-17T16:21:51.9865585Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-17T16:21:51.9865647Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-17T16:21:51.9865684Z hint: call:
+2026-10-17T16:21:51.9865716Z hint:
+2026-10-17T16:21:51.9865751Z hint: 	git config --global init.defaultBranch <name>
+2026-10-17T16:21:51.9865785Z hint:
+2026-10-17T16:21:51.9865882Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-17T16:21:51.9865925Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-17T16:21:51.9865957Z hint:
+2026-10-17T16:21:51.9865989Z hint: 	git branch -m <name>
+2026-10-17T16:21:51.9866006Z hint:
+2026-10-17T16:21:51.9866025Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-17T16:21:51.9866110Z Initialized empty Git repository in /workspace/simal-ci/simal-platform/.git/
+2026-10-17T16:21:51.9875942Z [command]/usr/bin/git remote add origin http://host.docker.internal:3000/simal-ci/simal-platform
+2026-10-17T16:21:51.9933304Z ::endgroup::
+2026-10-17T16:21:51.9933375Z ::group::Disabling automatic garbage collection
+2026-10-17T16:21:51.9936426Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-17T16:21:51.9973124Z ::endgroup::
+2026-10-17T16:21:51.9973232Z ::group::Setting up auth
+2026-10-17T16:21:51.9979537Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-17T16:21:52.0019337Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-17T16:21:52.0287580Z [command]/usr/bin/git config --local --name-only --get-regexp http\.http\:\/\/host\.docker\.internal\:3000\/\.extraheader
+2026-10-17T16:21:52.0321921Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.http\:\/\/host\.docker\.internal\:3000\/\.extraheader' && git config --local --unset-all 'http.http://host.docker.internal:3000/.extraheader' || :"
+2026-10-17T16:21:52.0580184Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-17T16:21:52.0617334Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-17T16:21:52.0873312Z [command]/usr/bin/git config --local http.http://host.docker.internal:3000/.extraheader AUTHORIZATION: basic ***
+2026-10-17T16:21:52.0936108Z ::endgroup::
+2026-10-17T16:21:52.0936240Z ::group::Fetching the repository
+2026-10-17T16:21:52.0945713Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +8974c9aaafff0dcb8ced30a10ebf8bde4426aad6:refs/remotes/origin/main
+2026-10-17T16:22:03.5850053Z From http://host.docker.internal:3000/simal-ci/simal-platform
+2026-10-17T16:22:03.5850690Z  * [new ref]         8974c9aaafff0dcb8ced30a10ebf8bde4426aad6 -> origin/main
+2026-10-17T16:22:03.5854407Z ::endgroup::
+2026-10-17T16:22:03.5854486Z ::group::Determining the checkout info
+2026-10-17T16:22:03.5860545Z ::endgroup::
+2026-10-17T16:22:03.5865985Z [command]/usr/bin/git sparse-checkout disable
+2026-10-17T16:22:03.5910383Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-17T16:22:03.5948331Z ::group::Checking out the ref
+2026-10-17T16:22:03.5952257Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-17T16:22:05.7349405Z Updating files:  93% (773/825)Updating files:  94% (776/825)Updating files:  95% (784/825)Updating files:  96% (792/825)Updating files:  97% (801/825)Updating files:  98% (809/825)Updating files:  98% (813/825)Updating files:  99% (817/825)Updating files: 100% (825/825)Updating files: 100% (825/825), done.
+2026-10-17T16:22:05.7399996Z Switched to a new branch 'main'
+2026-10-17T16:22:05.7400739Z branch 'main' set up to track 'origin/main'.
+2026-10-17T16:22:05.7498945Z ::endgroup::
+2026-10-17T16:22:05.7540113Z [command]/usr/bin/git log -1 --format=%H
+2026-10-17T16:22:05.7576236Z 8974c9aaafff0dcb8ced30a10ebf8bde4426aad6
+2026-10-17T16:22:05.7592426Z ::remove-matcher owner=checkout-git::
+2026-10-17T16:22:05.7732721Z ::endgroup::
+2026-10-17T16:22:05.9303771Z ::group::Run actions/setup-node@v4
+2026-10-17T16:22:05.9303983Z with:
+2026-10-17T16:22:05.9304051Z   node-version: 22
+2026-10-17T16:22:06.6429723Z Found in cache @ /opt/hostedtoolcache/node/22.23.3/x64
+2026-10-17T16:22:06.6438444Z (node:146) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-17T16:22:06.6438973Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-17T16:22:06.6442524Z ::group::Environment details
+2026-10-17T16:22:06.7802313Z node: v22.23.3
+2026-10-17T16:22:06.7803450Z npm: 10.9.9
+2026-10-17T16:22:06.7803695Z yarn: 
+2026-10-17T16:22:06.7803867Z ::endgroup::
+2026-10-17T16:22:06.7804047Z ##[add-matcher]/var/run/act/actions/b636862b7b87ada7ede527bb6e19e1f2145def6c1396df875accf39cc9d3839e/.github/tsc.json
+2026-10-17T16:22:06.7804151Z ##[add-matcher]/var/run/act/actions/b636862b7b87ada7ede527bb6e19e1f2145def6c1396df875accf39cc9d3839e/.github/eslint-stylish.json
+2026-10-17T16:22:06.7804214Z ##[add-matcher]/var/run/act/actions/b636862b7b87ada7ede527bb6e19e1f2145def6c1396df875accf39cc9d3839e/.github/eslint-compact.json
+2026-10-17T16:22:06.7928394Z ::endgroup::
+2026-10-17T16:22:07.0428858Z ::group::Run npm install --no-save axe-core
+2026-10-17T16:22:07.0429488Z npm install --no-save axe-core
+2026-10-17T16:22:07.0429566Z shell: bash -e {0}
+2026-10-17T16:22:07.0429618Z ::endgroup::
+2026-10-17T16:22:10.9539190Z npm warn deprecated tsconfck@3.1.6: unmaintained
+2026-10-17T16:22:15.8818388Z npm warn deprecated eslint@9.39.5: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+2026-10-17T16:22:16.9730553Z 
+2026-10-17T16:22:16.9731261Z added 378 packages, and audited 382 packages in 10s
+2026-10-17T16:22:16.9731342Z 
+2026-10-17T16:22:16.9731377Z 173 packages are looking for funding
+2026-10-17T16:22:16.9731424Z   run `npm fund` for details
+2026-10-17T16:22:16.9950305Z 
+2026-10-17T16:22:16.9951022Z 3 vulnerabilities (1 low, 1 high, 1 critical)
+2026-10-17T16:22:16.9951102Z 
+2026-10-17T16:22:16.9951141Z To address all issues (including breaking changes), run:
+2026-10-17T16:22:16.9951741Z   npm audit fix --force
+2026-10-17T16:22:16.9951872Z 
+2026-10-17T16:22:16.9951953Z Run `npm audit` for details.
+2026-10-17T16:22:17.1903126Z ::group::Run restore dist from the build job
+2026-10-17T16:22:17.1903484Z with:
+2026-10-17T16:22:17.1903637Z   name: site-dist
+2026-10-17T16:22:17.1903694Z   path: apps/site/dist
+2026-10-17T16:22:17.8540468Z Downloading single artifact
+2026-10-17T16:22:17.8587608Z (node:239) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-17T16:22:17.8587988Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-17T16:22:17.8780453Z Preparing to download the following artifacts:
+2026-10-17T16:22:17.8780487Z - site-dist (ID: 9, Size: 11945523, Expected Digest: undefined)
+2026-10-17T16:22:17.8930047Z Redirecting to blob download url: http://host.docker.internal:3000/twirp/github.actions.results.api.v1.ArtifactService/DownloadArtifact
+2026-10-17T16:22:17.8930094Z Starting download of artifact to: /workspace/simal-ci/simal-platform/apps/site/dist
+2026-10-17T16:22:17.9030774Z (node:239) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-10-17T16:22:18.5929271Z SHA256 digest of downloaded artifact is 307ceed747aa3e6d1b2b1448ac629012cda3c3c32766d10415697f548e1eade7
+2026-10-17T16:22:18.5929820Z Artifact download completed successfully.
+2026-10-17T16:22:18.5929878Z Total of 1 artifact(s) downloaded
+2026-10-17T16:22:18.5929953Z Download artifact has finished successfully
+2026-10-17T16:22:18.6097641Z ::endgroup::
+2026-10-17T16:22:18.7762853Z ::group::Run install Chrome
+2026-10-17T16:22:18.7763078Z with:
+2026-10-17T16:22:18.7763145Z   install-dependencies: true
+2026-10-17T16:22:19.0253107Z Installing dependencies
+2026-10-17T16:22:19.0338254Z [command]/usr/bin/apt-get update
+2026-10-17T16:22:19.1653704Z Get:1 https://packages.microsoft.com/ubuntu/24.04/prod noble InRelease [3600 B]
+2026-10-17T16:22:19.2775563Z Get:2 https://packages.microsoft.com/ubuntu/24.04/prod noble/main all Packages [640 B]
+2026-10-17T16:22:19.2891211Z Get:3 https://packages.microsoft.com/ubuntu/24.04/prod noble/main amd64 Packages [617 kB]
+2026-10-17T16:22:19.4518673Z Get:4 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+2026-10-17T16:22:19.6945925Z Get:5 http://archive.ubuntu.com/ubuntu noble InRelease [256 kB]
+2026-10-17T16:22:19.9106406Z Get:7 https://ppa.launchpadcontent.net/git-core/ppa/ubuntu noble InRelease [24.3 kB]
+2026-10-17T16:22:20.3148110Z Get:8 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [55.6 kB]
+2026-10-17T16:22:20.4713856Z Get:6 https://packagecloud.io/github/git-lfs/ubuntu noble InRelease [29.2 kB]
+2026-10-17T16:22:20.4990523Z Get:9 https://ppa.launchpadcontent.net/git-core/ppa/ubuntu noble/main amd64 Packages [3812 B]
+2026-10-17T16:22:20.5683665Z Get:10 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2122 kB]
+2026-10-17T16:22:20.7474582Z Get:11 http://archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+2026-10-17T16:22:22.1909261Z Get:12 https://packagecloud.io/github/git-lfs/ubuntu noble/main amd64 Packages [1465 B]
+2026-10-17T16:22:22.1909928Z Get:13 http://archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+2026-10-17T16:22:22.1910211Z Get:14 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Packages [1549 kB]
+2026-10-17T16:22:22.1910235Z Get:15 http://security.ubuntu.com/ubuntu noble-security/main amd64 Packages [1409 kB]
+2026-10-17T16:22:22.3699069Z Get:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages [19.3 MB]
+2026-10-17T16:22:52.6438349Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:15.7043430Z Ign:17 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages
+2026-10-17T16:23:15.7044504Z Ign:18 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages
+2026-10-17T16:23:15.7044637Z Ign:19 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages
+2026-10-17T16:23:15.7044761Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:15.7044840Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:15.7044900Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:15.7045051Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:15.7045124Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:15.7045227Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:15.7045297Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:15.7045385Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:16.7028914Z Ign:17 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages
+2026-10-17T16:23:16.7029469Z Ign:18 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages
+2026-10-17T16:23:16.7029714Z Ign:19 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages
+2026-10-17T16:23:16.7030432Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:16.7030770Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:16.7030811Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:16.7032528Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:16.7034550Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:16.7037694Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:16.7046015Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:17.7090788Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:18.7037258Z Ign:17 http://archive.ubuntu.com/ubuntu noble/main amd64 Packages
+2026-10-17T16:23:18.7037559Z Ign:18 http://archive.ubuntu.com/ubuntu noble/restricted amd64 Packages
+2026-10-17T16:23:18.7037626Z Ign:19 http://archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages
+2026-10-17T16:23:18.7037733Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:18.7037798Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:18.7037857Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:18.7037911Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:18.7037969Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:18.7039186Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:18.7039379Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:21.7082848Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:21.7084678Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:21.7093016Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:21.7098100Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:21.7103206Z Ign:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:21.7109659Z Err:16 http://archive.ubuntu.com/ubuntu noble/universe amd64 Packages
+2026-10-17T16:23:21.7110084Z   Connection timed out [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7040727Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:22.7041289Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:22.7041417Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:22.7041446Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:22.7041479Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:22.7041507Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:22.7041917Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:22.7041969Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:22.7042087Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:22.7042117Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:22.7045553Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:22.7045964Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:22.7046041Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:22.7046128Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:22.7046160Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:22.7046229Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:22.7046271Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:22.7046584Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:22.7046663Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:22.7047964Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:22.7048410Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:22.7048491Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:22.7048975Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:22.7049039Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:22.7051333Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:22.7051632Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:22.7051680Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:22.7055322Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:22.7055678Z Ign:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:22.7055818Z Ign:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:22.7055854Z Ign:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:22.7059537Z Ign:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:22.7059815Z Ign:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:22.7059860Z Ign:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:22.7064920Z Ign:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:22.7065529Z Err:20 http://archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages
+2026-10-17T16:23:22.7065576Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7065601Z Err:21 http://archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages
+2026-10-17T16:23:22.7065618Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7065633Z Err:22 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages
+2026-10-17T16:23:22.7065658Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7065709Z Err:23 http://archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages
+2026-10-17T16:23:22.7065737Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7065764Z Err:24 http://archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages
+2026-10-17T16:23:22.7065792Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7065819Z Err:25 http://archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages
+2026-10-17T16:23:22.7065849Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7066085Z Err:26 http://archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Packages
+2026-10-17T16:23:22.7066136Z   Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.7217185Z Fetched 6451 kB in 1min 4s (101 kB/s)
+2026-10-17T16:23:22.9112246Z Reading package lists...
+2026-10-17T16:23:22.9181552Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble/universe/binary-amd64/Packages  Connection timed out [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182005Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/universe/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182052Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/multiverse/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182075Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/main/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182210Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-updates/restricted/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182278Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/main/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182772Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/universe/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182866Z W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/noble-backports/multiverse/binary-amd64/Packages  Unable to connect to archive.ubuntu.com:http: [IP: 91.189.92.23 80]
+2026-10-17T16:23:22.9182939Z W: Some index files failed to download. They have been ignored, or old ones used instead.
+2026-10-17T16:23:22.9230315Z [command]/usr/bin/apt-get install --yes --no-install-recommends libasound2t64 libatk-bridge2.0-0t64 libatk1.0-0t64 libcairo2 libcups2t64 libdbus-1-3 libexpat1 libgbm1 libglib2.0-0t64 libnss3 libpango-1.0-0 libxcomposite1 libxdamage1 libxfixes3 libxkbcommon0 libxrandr2
+2026-10-17T16:23:23.1001786Z Reading package lists...
+2026-10-17T16:23:23.1433148Z Building dependency tree...
+2026-10-17T16:23:23.1433616Z Reading state information...
+2026-10-17T16:23:23.1473260Z Package libatk1.0-0t64 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1473838Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1473912Z is only available from another source
+2026-10-17T16:23:23.1473940Z 
+2026-10-17T16:23:23.1473971Z Package libxkbcommon0 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1474001Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1474029Z is only available from another source
+2026-10-17T16:23:23.1474050Z 
+2026-10-17T16:23:23.1474089Z Package libatk-bridge2.0-0t64 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1474121Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1474150Z is only available from another source
+2026-10-17T16:23:23.1474180Z 
+2026-10-17T16:23:23.1474219Z Package libxfixes3 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1474266Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1474295Z is only available from another source
+2026-10-17T16:23:23.1474318Z 
+2026-10-17T16:23:23.1474345Z Package libxdamage1 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1474372Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1474410Z is only available from another source
+2026-10-17T16:23:23.1474432Z 
+2026-10-17T16:23:23.1474454Z Package libxcomposite1 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1474479Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1474506Z is only available from another source
+2026-10-17T16:23:23.1474529Z 
+2026-10-17T16:23:23.1474753Z Package libxrandr2 is not available, but is referred to by another package.
+2026-10-17T16:23:23.1474791Z This may mean that the package is missing, has been obsoleted, or
+2026-10-17T16:23:23.1474819Z is only available from another source
+2026-10-17T16:23:23.1474840Z 
+2026-10-17T16:23:23.1475250Z E: Package 'libatk-bridge2.0-0t64' has no installation candidate
+2026-10-17T16:23:23.1475352Z E: Package 'libatk1.0-0t64' has no installation candidate
+2026-10-17T16:23:23.1475391Z E: Package 'libxcomposite1' has no installation candidate
+2026-10-17T16:23:23.1475440Z E: Package 'libxdamage1' has no installation candidate
+2026-10-17T16:23:23.1475474Z E: Package 'libxfixes3' has no installation candidate
+2026-10-17T16:23:23.1475504Z E: Package 'libxkbcommon0' has no installation candidate
+2026-10-17T16:23:23.1475605Z E: Package 'libxrandr2' has no installation candidate
+2026-10-17T16:23:23.1491434Z ::error::The process '/usr/bin/apt-get' failed with exit code 100
+2026-10-17T16:23:23.1590030Z ::endgroup::
+2026-10-17T16:23:23.2241816Z ##[error]Process completed with exit code 1.
+2026-10-17T16:23:23.3456944Z Run Post actions/checkout@v4
+2026-10-17T16:23:23.3686479Z docker exec cmd=[node --preserve-symlinks-main /var/run/act/actions/0171910b83740495f3b9f6112ecd5f7772540e77732909d2c22c31fac9fc0569/dist/index.js] user= workdir=
+2026-10-17T16:23:23.5067275Z [command]/usr/bin/git version
+2026-10-17T16:23:23.5116965Z git version 2.55.0
+2026-10-17T16:23:23.5135856Z ***
+2026-10-17T16:23:23.5164577Z Temporarily overriding HOME='/tmp/24f9bf4d-c1d5-4629-8025-dcc006d45096' before making global git config changes
+2026-10-17T16:23:23.5165047Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-17T16:23:23.5175598Z [command]/usr/bin/git config --global --add safe.directory /workspace/simal-ci/simal-platform
+2026-10-17T16:23:23.5215054Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-17T16:23:23.5263943Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-17T16:23:23.5603518Z [command]/usr/bin/git config --local --name-only --get-regexp http\.http\:\/\/host\.docker\.internal\:3000\/\.extraheader
+2026-10-17T16:23:23.5629610Z http.http://host.docker.internal:3000/.extraheader
+2026-10-17T16:23:23.5641546Z [command]/usr/bin/git config --local --unset-all http.http://host.docker.internal:3000/.extraheader
+2026-10-17T16:23:23.5669033Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.http\:\/\/host\.docker\.internal\:3000\/\.extraheader' && git config --local --unset-all 'http.http://host.docker.internal:3000/.extraheader' || :"
+2026-10-17T16:23:23.5906936Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-17T16:23:23.5947755Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-17T16:23:23.6985695Z Success - Post actions/checkout@v4
+2026-10-17T16:23:23.8019191Z Cleaning up container for job gate-a11y
+2026-10-17T16:23:23.9881170Z Job failed
+2026-10-17T16:23:23.9882110Z job 'gate-a11y' failed

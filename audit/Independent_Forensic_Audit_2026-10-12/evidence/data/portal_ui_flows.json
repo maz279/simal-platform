@@ -1,0 +1,60 @@
+{
+ "statusPage": {
+  "showsRef": true,
+  "statusWord": "Approved",
+  "emptyObjectVisible": true,
+  "reviewerLine": "REVIEWER QUERIES Query · banking · 12 Oct 2026 P",
+  "timelineCount": 6,
+  "excerpt": "Skip to main content Partner Onboarding & KYC Portal Back to portal Sandbox Probe Trading LLC SIM-KYC-2026-10088 · Vendor / Supplier onboarding Approved PROGRESS Submission received 12 Oct 2026 · 12:45 PM Review started 12 Oct 2026 · 12:45 PM Query raised 12 Oct 2026 · 12:45 PM Partner responded 12 Oct 2026 · 12:46 PM Approved 12 Oct 2026 · 12:46 PM REVIEWER QUERIES Query · banking · 12 Oct 2026 Please re-upload the bank letter. Your response: Re-uploaded as requested. REVIEWER {} STATUS Approve"
+ },
+ "admin": {
+  "signedIn": true,
+  "rows": 0,
+  "hasRef": false,
+  "emptyObjectVisible": false,
+  "cols": [],
+  "excerpt": "Simal KYC Admin Console — sign in KYC ADMIN CONSOLE Verify. Approve. Trade compliantly. Review partner submissions, verify documents against registries, and maintain a clean counterparty master for UAE e-invoicing (Peppol). … Every action is audit-logged (NFR-10). Sign in Admin access is restricted to authorised Simal staff. Work email Password Continue Accounts are provisioned by the system administrator from enviro"
+ },
+ "adminRecord": {
+  "emptyObjectVisible": false,
+  "rawIban": false,
+  "maskedIban": false,
+  "buttons": [
+   "Continue"
+  ],
+  "excerpt": "Simal KYC Admin Console — sign in KYC ADMIN CONSOLE Verify. Approve. Trade compliantly. Review partner submissions, verify documents against registries, and maintain a clean counterparty master for UAE e-invoicing (Peppol). … Every action is audit-logged (NFR-10). Sign in Admin access is restricted to authorised Simal staff. Work email Password Continue Accounts are provisioned by the system administrator from enviro"
+ },
+ "adminErrors": [],
+ "einv_partner": {
+  "url": "/invoices.html",
+  "rows": 1,
+  "mentionsDelivered": true,
+  "mentionsPeppol": true,
+  "buttons": [
+   "My invoices",
+   "New invoice"
+  ],
+  "excerpt": "Simal — Partner Portal e-Invoicing (UAE Peppol · Phase 1) partner@simalme.com Sign out 1 TOTAL INVOICES 0 DRAFTS 1 IN VALIDATION 0 DELIVERED VIA PEPPOL My invoices New invoice REFERENCE BUYER TRN ISSUE DUE TOTAL (AED) STATUS SIM-INV-2026-5003 Sandbox Probe Trading LLC 100123456700003 2026-10-11T16:00:00.000Z 2026-10-25T16:00:00.000Z 4725.00 Submitted ⚠ Open"
+ },
+ "einv_partner_errors": [
+  "Authentication required"
+ ],
+ "einv_staff": {
+  "url": "/invoices-admin.html",
+  "rows": 8,
+  "mentionsDelivered": true,
+  "mentionsPeppol": true,
+  "buttons": [
+   "All",
+   "Submitted",
+   "Validated",
+   "Delivered",
+   "Rejected",
+   "Draft"
+  ],
+  "excerpt": "Simal — Staff Console e-Invoice validation & delivery (Peppol Phase 1) admin@simalme.com · super_admin KYC queue Sign out 8 ALL INVOICES 1 AWAITING VALIDATION 0 VALIDATED 6 DELIVERED 0 REJECTED All Submitted Validated Delivered Rejected Draft REFERENCE BUYER TRN PARTNER ISSUE TOTAL (AED) KYC STATUS AGE SIM-INV-2026-5003 4725.00 ✗ Submitted nulld Open REF-inv_imm_test_1791341150226_6 10.50 ✗ Delive"
+ },
+ "einv_staff_errors": [
+  "Authentication required"
+ ]
+}
