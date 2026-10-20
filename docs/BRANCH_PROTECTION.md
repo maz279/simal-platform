@@ -129,7 +129,7 @@ remotes now three:
 |---|---|---|
 | `origin` | `../remotes/simal-platform.git` (bare) | hash-preserving full history, update hook (no force/delete on main) |
 | `platform` | `http://localhost:3000/simal-ci/simal-platform.git` (Gitea) | **authoritative CI** — every push runs the 21-job `ci.yml`; branch protection via `infra/ci-platform/bootstrap.mjs --protect` |
-| `github` | `git@github.com:maz279/simal-platform.git` (private) | content mirror — **snapshot import, not full history** (see below) |
+| `github` | `https://github.com/maz279/simal-platform.git` (private; auth via the gh credential helper — `gh auth setup-git`) | content mirror — **chained snapshots, not full history** (see below) |
 
 **Why GitHub gets a snapshot, not the 113-commit history:** commits `ee69382`..`3d7f43e`
 (rm 8.1 window) carry vendored ClamAV build payloads (`clamav_rust.lib` 292 MB, four

@@ -30,6 +30,9 @@ Stay on the dev workstation, outside the repo, **never pushed**:
   remediated source of truth is `scripts/prod-db-roles.sql` in-repo)
 - `test_snap*.png`, `temp_kyc_*.html`, `simal-kyc-login-patch.zip`, `prototype-server.log`,
   `__pycache__/` — session clutter / one-shot artifacts
+- `downloads/` — tool installers fetched during unification (gh CLI MSI + zip). The extracted
+  portable gh (`downloads/gh-cli/bin/gh.exe`) is the fallback binary for
+  `scripts/github-mirror.mjs`; keep it when cleaning the installers
 
 `artifacts_cms_audit/` (underscore) was renamed `artifacts-cms-audit/` (hyphen) on import so
 the repo's `artifacts_*/` gitignore pattern (CI gate outputs) cannot shadow it.
